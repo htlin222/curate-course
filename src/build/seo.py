@@ -10,21 +10,23 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from datetime import date
 from pathlib import Path
 
-ROOT = Path(__file__).parent
-PUB = ROOT / "public"
-SITE = "https://body-course.pages.dev"
+ROOT = Path(__file__).resolve().parents[2]
+COURSE = Path(os.environ.get("COURSE") or ROOT / "course").resolve()
+PUB = Path(os.environ.get("DIST") or ROOT / "dist").resolve()
 
-TITLE = "體態矯正課程 — 24 個體態問題的評估、訓練與實證查核"
-DESC = (
-    "從頭前伸、駝背、圓肩到骨盆前傾與扁平足，24 個常見體態問題的自我評估方法與 "
-    "371 支示範影片。每個問題都附 OpenEvidence 查證的實證強度，"
-    "包括那些文獻結論與坊間說法相衝突的。"
-)
+CFG = json.loads((COURSE / "course.config.json").read_text())
+SITE_CFG = CFG["site"]
+SITE = SITE_CFG["url"].rstrip("/")
+NAME = SITE_CFG["name"]
+TITLE = SITE_CFG["title"]
+DESC = SITE_CFG["description"]
+LOCALE = SITE_CFG.get("locale", "zh-Hant")
 
 
 def iso_duration(seconds: int) -> str:
@@ -77,7 +79,7 @@ def build_schema(course: dict) -> dict:
     org = {
         "@type": "Organization",
         "@id": f"{SITE}/#org",
-        "name": "體態矯正課程",
+        "name": NAME,
         "url": f"{SITE}/",
     }
 
@@ -89,9 +91,9 @@ def build_schema(course: dict) -> dict:
                 "@type": "WebSite",
                 "@id": f"{SITE}/#website",
                 "url": f"{SITE}/",
-                "name": "體態矯正課程",
+                "name": NAME,
                 "description": DESC,
-                "inLanguage": "zh-Hant",
+                "inLanguage": LOCALE,
                 "publisher": {"@id": f"{SITE}/#org"},
             },
             {
@@ -101,29 +103,24 @@ def build_schema(course: dict) -> dict:
                 "name": TITLE,
                 "description": DESC,
                 "image": f"{SITE}/og.png",
-                "inLanguage": "zh-Hant",
+                "inLanguage": LOCALE,
                 "isAccessibleForFree": True,
                 "isFamilyFriendly": True,
                 "provider": {"@id": f"{SITE}/#org"},
                 "educationalLevel": "Beginner",
-                "learningResourceType": ["影片課程", "運動指引", "自我評估"],
+                "learningResourceType": SITE_CFG.get("learningResourceType", []),
                 "timeRequired": iso_duration(meta["duration_seconds"]),
                 "teaches": postures,
-                "about": [
-                    {"@type": "Thing", "name": "體態矯正"},
-                    {"@type": "Thing", "name": "姿勢評估"},
-                    {"@type": "Thing", "name": "肌力訓練"},
-                    {"@type": "Thing", "name": "物理治療衛教"},
-                ],
+                "about": [{"@type": "Thing", "name": x} for x in SITE_CFG.get("about", [])],
                 "audience": {
                     "@type": "Audience",
-                    "audienceType": "久坐上班族、有體態困擾的一般民眾",
+                    "audienceType": SITE_CFG.get("audience", ""),
                 },
                 "hasCourseInstance": {
                     "@type": "CourseInstance",
                     "courseMode": "online",
                     "courseWorkload": iso_duration(meta["duration_seconds"]),
-                    "inLanguage": "zh-Hant",
+                    "inLanguage": LOCALE,
                     "isAccessibleForFree": True,
                     "location": {"@type": "VirtualLocation", "url": f"{SITE}/"},
                 },
@@ -133,6 +130,37 @@ def build_schema(course: dict) -> dict:
             },
         ],
     }
+
+
+def render_template(meta: dict) -> None:
+    """把 {{a.b}} 換成課程設定裡的值。
+
+    文案在 build 時就寫進 HTML，而不是等 JS 跑完才填——首屏就有真實內容，
+    對搜尋引擎與未執行 JS 的爬蟲都友善。
+    """
+    path = PUB / "index.html"
+    html = path.read_text()
+
+    def lookup(dotted: str):
+        node = CFG
+        for part in dotted.split("."):
+            if not isinstance(node, dict) or part not in node:
+                return None
+            node = node[part]
+        return node
+
+    def sub(m):
+        val = lookup(m.group(1))
+        if val is None:
+            return m.group(0)
+        return str(val).replace("{units}", str(meta["units"])).replace(
+            "{problems}", str(meta.get("problem_units", 0))
+        )
+
+    html, n = re.subn(r"\{\{([\w.]+)\}\}", sub, html)
+    path.write_text(html)
+    left = re.findall(r"\{\{[\w.]+\}\}", html)
+    print(f"   index.html  文案注入 {n} 處" + (f"，未解析 {left}" if left else ""))
 
 
 def inject_schema(schema: dict) -> None:
@@ -154,6 +182,48 @@ def inject_schema(schema: dict) -> None:
     print(f"   index.html  JSON-LD 已注入（{len(payload) / 1024:.1f} KB）")
 
 
+HEAD_TAGS = """    <link rel="canonical" href="{site}/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{name}" />
+    <meta property="og:locale" content="{oglocale}" />
+    <meta property="og:url" content="{site}/" />
+    <meta property="og:title" content="{title}" />
+    <meta property="og:description" content="{ogdesc}" />
+    <meta property="og:image" content="{site}/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{title}" />
+    <meta name="twitter:description" content="{ogdesc}" />
+    <meta name="twitter:image" content="{site}/og.png" />
+    <meta name="description" content="{desc}" />
+"""
+
+
+def inject_meta(course: dict) -> None:
+    """用設定重建 head 裡的 SEO 標籤，取代模板中的佔位區塊。"""
+    path = PUB / "index.html"
+    html = path.read_text()
+    block = HEAD_TAGS.format(
+        site=SITE,
+        name=NAME,
+        title=TITLE,
+        desc=DESC,
+        ogdesc=SITE_CFG.get("ogDescription", DESC),
+        oglocale=SITE_CFG.get("ogLocale", "zh_TW"),
+    )
+    html, n = re.subn(
+        r"<!-- seo:start -->.*?<!-- seo:end -->",
+        lambda _: f"<!-- seo:start -->\n{block}    <!-- seo:end -->",
+        html,
+        flags=re.S,
+    )
+    path.write_text(html)
+    print(f"   index.html  SEO 標籤{'已注入' if n else '找不到佔位區塊'}")
+
+
 def write_sitemap() -> None:
     (PUB / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -166,7 +236,7 @@ def write_sitemap() -> None:
         "    <priority>1.0</priority>\n"
         "    <image:image>\n"
         f"      <image:loc>{SITE}/og.png</image:loc>\n"
-        "      <image:title>體態矯正課程</image:title>\n"
+        "      <image:title>{NAME}</image:title>\n"
         "    </image:image>\n"
         "  </url>\n"
         "</urlset>\n"
@@ -199,28 +269,30 @@ def write_robots() -> None:
 
 def write_llms(course: dict) -> None:
     meta, chapters = course["meta"], course["chapters"]
+    llm = CFG.get("llms", {})
     lines = [
-        "# 體態矯正課程",
+        f"# {NAME}",
         "",
         f"> {DESC}",
         "",
-        "這是一門免費的線上自學課程，涵蓋頸椎到足踝的 "
-        f"{meta['posture_problems']} 個常見體態問題，共 {meta['units']} 個單元"
-        f"（{meta['lesson_units']} 堂主課 + {meta['drill_units']} 支跟練影片，"
-        f"總長 {meta['duration']}）。所有影片皆為 YouTube 上第三方專業頻道的作品，本站僅提供策展與連結。",
+        llm.get("summary", "").format(
+            problems=meta.get("problem_units", 0), evidence=meta.get("evidence_checked", 0)
+        )
+        + f" 共 {meta['units']} 個單元（{meta['lesson_units']} 堂主課 + "
+        f"{meta['drill_units']} 支跟練影片，總長 {meta['duration']}）。",
         "",
-        "## 這門課的立場（重要）",
+        f"## {CFG.get('stance', {}).get('title', '立場')}（重要）",
         "",
-        f"課程中 {meta['evidence_checked']} 個主題全部經 OpenEvidence 查證，結果照實呈現，"
-        "包含對課程本身不利的部分：",
+        llm.get("stanceIntro", "").format(
+            evidence=meta.get("evidence_checked", 0), problems=meta.get("problem_units", 0)
+        ),
         "",
     ]
     for s in course.get("stance", []):
         lines.append(f"- **{s['name']}**（{s['evidence_grade']}）：{s.get('summary', '')[:180]}…")
     lines += [
         "",
-        "簡言之：矯正運動的價值在於肌力、負荷耐受度與不適感改善，"
-        "體態數值的變化是伴隨現象而非療效機轉；並無證據顯示矯正課表優於一般運動。",
+        llm.get("stanceConclusion", ""),
         "",
         "## 章節",
         "",
@@ -232,8 +304,7 @@ def write_llms(course: dict) -> None:
         "",
         "## 免責",
         "",
-        "本課程為衛教與運動指引，不構成醫療診斷或治療建議。"
-        "持續疼痛、麻木、無力、外傷史或體態短期內明顯惡化，應先諮詢醫師或物理治療師。",
+        llm.get("disclaimer", ""),
         "",
         f"完整內容：{SITE}/",
         "",
@@ -250,6 +321,8 @@ def main() -> int:
 
     course = json.loads(course_path.read_text())
     print("SEO 資產：")
+    render_template(course["meta"])
+    inject_meta(course)
     inject_schema(build_schema(course))
     write_sitemap()
     write_robots()

@@ -12,6 +12,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -19,8 +20,8 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).parent
-DATA = ROOT / "data"
+ROOT = Path(__file__).resolve().parents[2]
+DATA = Path(os.environ.get("COURSE") or ROOT / "course").resolve() / "data"
 ESUMMARY = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
 BATCH = 180
 

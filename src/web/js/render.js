@@ -9,18 +9,25 @@ export const esc = (s) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
   );
 
-export const KIND = {
-  release: { label: "放鬆", dot: "🔵", icon: "circle-dot" },
-  stretch: { label: "拉伸", dot: "🟢", icon: "move-vertical" },
-  train: { label: "訓練", dot: "🔴", icon: "dumbbell" },
-};
+/* 這些全部由 course.config.json 注入，框架本身不預設任何主題詞彙。
+   用可變物件而非重新指派，import 過的模組才拿得到更新後的內容。 */
+export const KIND = {};
+export const GRADE = {};
+export const UI = {};
+let CFG = {};
 
-const GRADE = {
-  strong: { label: "證據充分", cls: "Label--stretch" },
-  moderate: { label: "證據中等", cls: "Label--accent" },
-  limited: { label: "證據有限", cls: "Label--attention" },
-  contested: { label: "證據互斥", cls: "Label--danger" },
-};
+export function setConfig(cfg) {
+  CFG = cfg || {};
+  for (const o of [KIND, GRADE, UI]) for (const k of Object.keys(o)) delete o[k];
+
+  for (const k of CFG.kinds || []) KIND[k.id] = { label: k.label, tone: k.tone || "accent" };
+  for (const g of CFG.grades || []) GRADE[g.id] = { label: g.label, tone: g.tone || "accent" };
+  Object.assign(UI, CFG.ui || {});
+}
+
+/** 分級／類型都用 tone 對應到樣式，id 可以隨主題自由命名 */
+const toneCls = (o) => `Label--${o?.tone || "neutral"}`;
+const gradeOf = (id) => GRADE[id] || Object.values(GRADE)[0] || { label: id, tone: "neutral" };
 
 /* --- 影片 ---------------------------------------------------------------- */
 
@@ -67,7 +74,7 @@ function videoCard(v) {
     </a>`;
 }
 
-const LANG_LABEL = { zh: "繁中", en: "English", ja: "日本語" };
+const langLabel = (l) => (CFG.languages || {})[l] || l || "其他";
 
 /** 主課可能有多個語言版本，用小分頁切換 */
 function lessonBox(u) {
@@ -83,7 +90,7 @@ function lessonBox(u) {
             (l, i) => `
           <button class="LessonBox__lang${i === 0 ? " is-active" : ""}" type="button"
                   role="tab" aria-selected="${i === 0}" data-lesson="${i}">
-            ${esc(LANG_LABEL[l.lang] || l.lang || "其他")}
+            ${esc(langLabel(l.lang))}
           </button>`,
           )
           .join("")}
@@ -111,7 +118,7 @@ function muscleTags(list) {
 
 function drill(d) {
   const inner = `
-    <span class="Drill__marker Drill__marker--${esc(d.kind)}"></span>
+    <span class="Drill__marker" style="background:var(--fgColor-${esc((KIND[d.kind] || {}).tone || "accent")})"></span>
     <span class="Drill__main">
       <span class="Drill__name">${esc(d.name)}${d.en ? ` <span class="Drill__en">${esc(d.en)}</span>` : ""}</span>
       <span class="Drill__meta">
@@ -120,11 +127,11 @@ function drill(d) {
         ${d.channel ? `<span>· ${esc(d.channel)}</span>` : ""}
         ${d.duration ? `<span>· ${esc(d.duration)}</span>` : ""}
       </span>
-      ${(d.muscles || []).length ? `<span class="Drill__muscles">${muscleTags(d.muscles)}</span>` : ""}
+      ${(d.facets || []).length ? `<span class="Drill__muscles">${muscleTags(d.facets)}</span>` : ""}
     </span>
     ${playBtn(true, !d.url)}`;
 
-  const attrs = `class="Drill" data-kind="${esc(d.kind)}" data-muscles="${esc((d.muscles || []).join("|"))}"${d.cat ? ` data-cat="${esc(d.cat)}"` : ""}`;
+  const attrs = `class="Drill" data-kind="${esc(d.kind)}" data-facets="${esc((d.facets || []).join("|"))}"${d.cat ? ` data-cat="${esc(d.cat)}"` : ""}`;
 
   // 有連結就整列可點，跟主課卡片一致
   return d.url
@@ -138,7 +145,7 @@ function drillGroup(kind, list) {
   return `
     <div class="DrillGroup" data-group="${kind}">
       <h4 class="DrillGroup__title">
-        <span class="Drill__marker Drill__marker--${kind}"></span>
+        <span class="Drill__marker" style="background:var(--fgColor-${esc(k.tone)})"></span>
         ${k.label}
         <span class="Counter">${list.length}</span>
       </h4>
@@ -150,21 +157,12 @@ function drillGroup(kind, list) {
 
 function evidence(ev, unitId) {
   if (!ev) return "";
-  const g = GRADE[ev.evidence_grade] || GRADE.limited;
+  const g = gradeOf(ev.evidence_grade);
 
   const row = (key, val) =>
     val
       ? `<div class="Evidence__row"><span class="Evidence__key">${key}</span><span>${esc(val)}</span></div>`
       : "";
-
-  const flags = (ev.red_flags || []).length
-    ? `<div class="Evidence__row">
-         <span class="Evidence__key">就醫警訊</span>
-         <span class="Evidence__flags">
-           ${ev.red_flags.map((f) => `<span class="Label Label--danger">${esc(f)}</span>`).join("")}
-         </span>
-       </div>`
-    : "";
 
   const cites = (ev.citations || []).length
     ? `<div class="Evidence__cite">
@@ -177,25 +175,33 @@ function evidence(ev, unitId) {
        </div>`
     : "";
 
+  const rows = (UI.evidenceRows || [])
+    .map((r) =>
+      r.type === "flags"
+        ? (ev[r.field] || []).length
+          ? `<div class="Evidence__row">
+               <span class="Evidence__key">${esc(r.label)}</span>
+               <span class="Evidence__flags">
+                 ${ev[r.field].map((f) => `<span class="Label Label--danger">${esc(f)}</span>`).join("")}
+               </span>
+             </div>`
+          : ""
+        : row(r.label, ev[r.field]),
+    )
+    .join("");
+
   return `
     <section class="Evidence" data-evidence="${esc(unitId)}">
       <button class="Evidence__header" type="button" data-toggle="evidence">
         ${icon("microscope", 14)}
-        <span>實證強度</span>
-        <span class="Label ${g.cls}">${g.label}</span>
+        <span>${esc(UI.unitEvidenceLabel || "")}</span>
+        <span class="Label ${toneCls(g)}">${g.label}</span>
         <span class="Evidence__spacer"></span>
         ${ev.url ? `<span class="Label Label--neutral">OpenEvidence</span>` : ""}
         <span class="Evidence__chevron">${icon("chevron-right", 14)}</span>
       </button>
       <div class="Evidence__body">
-        ${row("與疼痛關聯", ev.pain_link)}
-        ${row("肌群模型", ev.muscle_model)}
-        ${row("骨性 vs 可練", ev.structural_vs_modifiable)}
-        ${row("介入效果", ev.intervention)}
-        ${row("評估信效度", ev.assessment_validity)}
-        ${row("摘要", ev.summary)}
-        ${flags}
-        ${row("課程須誠實告知", ev.caveats)}
+        ${rows}
         ${cites}
         ${
           ev.url
@@ -223,12 +229,12 @@ function drillEvidence(u) {
   const totalCites = cats.reduce((n, c) => n + c.citations.length, 0);
 
   const block = (cat) => {
-    const g = GRADE[cat.evidence_grade] || GRADE.limited;
+    const g = gradeOf(cat.evidence_grade);
     return `
       <details class="DrillEvCat">
         <summary>
           <span class="DrillEvCat__name">${esc(cat.name)}</span>
-          <span class="Label ${g.cls}">${g.label}</span>
+          <span class="Label ${toneCls(g)}">${g.label}</span>
           <span class="Counter">${cat.citations.length}</span>
         </summary>
         ${cat.summary ? `<p class="DrillEvCat__summary">${esc(cat.summary)}</p>` : ""}
@@ -251,7 +257,7 @@ function drillEvidence(u) {
     <section class="Evidence DrillEv" data-drillev="${esc(u.id)}">
       <button class="Evidence__header" type="button" data-toggle="drillev">
         ${icon("microscope", 14)}
-        <span>這些動作的實證</span>
+        <span>${esc(UI.drillEvidenceLabel || "")}</span>
         <span class="Counter">${cats.length} 類 · ${totalCites} 篇</span>
         <span class="Evidence__spacer"></span>
         <span class="Label Label--neutral">PubMed</span>
@@ -277,8 +283,8 @@ function muscles(tight, weak) {
 
   return `
     <div class="MuscleGrid">
-      ${block("tight", "flame", "傾向緊繃／過度活躍", tight)}
-      ${block("weak", "battery-low", "傾向無力／活化不足", weak)}
+      ${block("tight", "flame", UI.tightLabel || "", tight)}
+      ${block("weak", "battery-low", UI.weakLabel || "", weak)}
     </div>`;
 }
 
@@ -291,19 +297,16 @@ export function renderUnit(u, done) {
   });
   const total = (u.drills || []).length;
 
+  const typeLabel = (UI.unitTypes || {})[u.type];
   const badges = [
-    u.type === "posture"
-      ? `<span class="Label Label--neutral">體態問題</span>`
-      : u.type === "foundation"
-        ? `<span class="Label Label--accent">基礎</span>`
-        : u.type === "guide"
-          ? `<span class="Label Label--neutral">說明</span>`
-          : `<span class="Label Label--neutral">觀念</span>`,
+    typeLabel
+      ? `<span class="Label Label--${u.type === "foundation" ? "accent" : "neutral"}">${esc(typeLabel)}</span>`
+      : "",
     total ? `<span class="Label Label--neutral">${icon("layers", 11)} ${total}</span>` : "",
     // 實證強度直接標在標題列。contested 的單元不該要展開才看得到
     u.evidence?.evidence_grade
-      ? `<span class="Label ${(GRADE[u.evidence.evidence_grade] || GRADE.limited).cls}"
-               title="OpenEvidence 查證結果">${icon("microscope", 11)} ${(GRADE[u.evidence.evidence_grade] || GRADE.limited).label}</span>`
+      ? `<span class="Label ${toneCls(gradeOf(u.evidence.evidence_grade))}"
+               title="OpenEvidence 查證結果">${icon("microscope", 11)} ${gradeOf(u.evidence.evidence_grade).label}</span>`
       : "",
   ].join("");
 
@@ -312,13 +315,13 @@ export function renderUnit(u, done) {
     .join("");
 
   // 單元自身的肌群 + 底下所有動作的肌群，供側欄篩選比對
-  const allMuscles = [
-    ...new Set([...(u.muscles || []), ...(u.drills || []).flatMap((d) => d.muscles || [])]),
+  const allFacets = [
+    ...new Set([...(u.facets || []), ...(u.drills || []).flatMap((d) => d.facets || [])]),
   ];
 
   return `
     <article class="Unit${done ? " is-done" : ""}" id="${esc(u.id)}" data-unit="${esc(u.id)}"
-             data-muscles="${esc(allMuscles.join("|"))}">
+             data-facets="${esc(allFacets.join("|"))}">
       <button class="Unit__header" type="button" data-toggle="unit">
         <span class="Unit__check" data-action="toggle-done" role="checkbox"
               aria-checked="${done}" tabindex="0" title="標記為完成">${icon("check", 12)}</span>
@@ -335,7 +338,7 @@ export function renderUnit(u, done) {
           u.assessment
             ? `<div class="Assessment">
                  <span class="Assessment__icon">${icon("clipboard-check", 16)}</span>
-                 <span><span class="Assessment__label">怎麼自己評估</span>${esc(u.assessment)}</span>
+                 <span><span class="Assessment__label">${esc(UI.assessmentLabel || "")}</span>${esc(u.assessment)}</span>
                </div>`
             : ""
         }
@@ -349,18 +352,11 @@ export function renderUnit(u, done) {
 
 /* --- 立場聲明 ------------------------------------------------------------ */
 
-// 從 OpenEvidence 的完整回答提煉出的一句話結論
-const VERDICT = {
-  "concept-1": "體態偏差與疼痛確實相關，但因果關係在文獻中沒有共識。",
-  "concept-2": "交叉症候群是好用的記憶架構，不是已驗證的診斷。",
-  "concept-3": "矯正運動有效，但不是因為它把體態「調正」了。",
-};
-
 export function renderStance(stance) {
   if (!stance?.length) return "";
 
   const card = (s, i) => {
-    const g = GRADE[s.evidence_grade] || GRADE.limited;
+    const g = gradeOf(s.evidence_grade);
     const findings = (s.key_findings || []).length
       ? `<details>
            <summary>看完整實證（${s.key_findings.length} 項發現）</summary>
@@ -387,10 +383,10 @@ export function renderStance(stance) {
         <header class="StanceCard__head">
           <span class="StanceCard__n">${i + 1}</span>
           <span class="StanceCard__name">${esc(s.name)}</span>
-          <span class="Label ${g.cls}">${g.label}</span>
+          <span class="Label ${toneCls(g)}">${g.label}</span>
         </header>
         <div class="StanceCard__body">
-          <p class="StanceCard__verdict">${esc(VERDICT[s.unit] || "")}</p>
+          <p class="StanceCard__verdict">${esc((CFG.stance?.verdicts || {})[s.unit] || "")}</p>
           <p class="StanceCard__summary">${esc(s.summary)}</p>
           ${findings}
         </div>
@@ -409,22 +405,13 @@ export function renderStance(stance) {
 
   return `
     <div class="StancePage__intro">
-      <h2>${icon("microscope", 22)} 這門課的立場</h2>
-      <p>
-        在做這門課之前，我們先把三個最根本的問題丟給 OpenEvidence 查證：
-        體態真的會導致疼痛嗎？Janda 的交叉症候群是真的嗎？矯正運動到底有多有效？
-        答案沒有想像中好聽——但把它講清楚，比賣一個承諾誠實得多。
-        以下每一條結論都附原始文獻連結，你可以自己去查。
-      </p>
+      <h2>${icon("microscope", 22)} ${esc(CFG.stance?.title || "")}</h2>
+      <p>${esc(CFG.stance?.intro || "")}</p>
     </div>
     <div class="StancePage__grid">${stance.map(card).join("")}</div>
     <div class="StancePage__outro">
-      <strong>所以這門課的定位是什麼？</strong>
-      運動的效益來自肌力、負荷耐受度、神經生理止痛與心理社會因素，
-      <strong>而不是生物力學上把體態「調正」</strong>。體態數值的改善是伴隨現象，不是療效機轉；
-      也沒有證據顯示精心設計的矯正課表比一般運動更有效。
-      這不代表別練——而是別把它當成治病，把它當成一套讓身體更耐操、動起來更舒服的訓練。
-      真正需要診斷與治療的狀況，請去看醫師或物理治療師。
+      <strong>${esc(CFG.stance?.outroTitle || "")}</strong>
+      ${CFG.stance?.outro || ""}
     </div>`;
 }
 
@@ -464,35 +451,30 @@ export function renderChapter(ch, doneSet) {
 
 /* --- 首頁 ---------------------------------------------------------------- */
 
-const STEPS = [
-  ["clipboard-check", "先評估", "每個體態問題都附可以自己做的測試——靠牆、躺下、拍張側面照就能判斷。不確定自己屬於哪一型，就別急著跟著練。"],
-  ["dumbbell", "再跟著練", "每個問題配 9–18 支跟練影片，分成放鬆、拉伸、訓練三類，依久坐族的盛行率加權分配，不是平均攤。"],
-  ["microscope", "順便查證", "每個單元標了實證強度，動作類別附 PubMed 文獻。結果不好看的也照寫——這是這門課跟其他體態課最大的差別。"],
-];
-
 export function renderHome(course) {
   const { meta, chapters, stance } = course;
 
-  const steps = STEPS.map(
-    ([ic, title, body], i) => `
+  const L = CFG.landing || {};
+  const steps = (L.steps || []).map(
+    (s, i) => `
     <div class="Step">
-      <span class="Step__n">${icon(ic, 18)}</span>
+      <span class="Step__n">${icon(s.icon || "circle-dot", 18)}</span>
       <div>
-        <h3 class="Step__title">${i + 1}. ${esc(title)}</h3>
-        <p class="Step__body">${esc(body)}</p>
+        <h3 class="Step__title">${i + 1}. ${esc(s.title)}</h3>
+        <p class="Step__body">${esc(s.body)}</p>
       </div>
     </div>`,
   ).join("");
 
   const stanceCards = (stance || []).map((s) => {
-    const g = GRADE[s.evidence_grade] || GRADE.limited;
+    const g = gradeOf(s.evidence_grade);
     return `
       <div class="LandingStance">
         <div class="LandingStance__head">
-          <span class="Label ${g.cls}">${g.label}</span>
+          <span class="Label ${toneCls(g)}">${g.label}</span>
           <strong>${esc(s.name)}</strong>
         </div>
-        <p>${esc(VERDICT[s.unit] || "")}</p>
+        <p>${esc((CFG.stance?.verdicts || {})[s.unit] || "")}</p>
       </div>`;
   }).join("");
 
@@ -511,41 +493,39 @@ export function renderHome(course) {
 
   return `
     <section class="Landing__section">
-      <h2 class="Landing__h2">${icon("book-open", 20)} 怎麼用這門課</h2>
+      <h2 class="Landing__h2">${icon("book-open", 20)} ${esc(L.howTitle || "")}</h2>
       <div class="Steps">${steps}</div>
     </section>
 
     <section class="Landing__section">
-      <h2 class="Landing__h2">${icon("microscope", 20)} 開始之前，先知道這件事</h2>
+      <h2 class="Landing__h2">${icon("microscope", 20)} ${esc(L.stanceTitle || "")}</h2>
       <p class="Landing__lede">
-        我們把三個最根本的問題丟給 OpenEvidence 查證，答案沒有想像中好聽。
-        與其讓你練完才發現，不如一開始就講清楚。
+${esc(L.stanceLede || "")}
       </p>
       <div class="Landing__stance">${stanceCards}</div>
       <button class="btn" type="button" data-tab-link="stance">
-        讀完整實證與原始文獻 ${icon("chevron-right", 14)}
+        ${esc(CFG.ui?.tabs?.stance || "立場")} ${icon("chevron-right", 14)}
       </button>
     </section>
 
     <section class="Landing__section">
-      <h2 class="Landing__h2">${icon("layers", 20)} 十二個章節，從頭到腳</h2>
+      <h2 class="Landing__h2">${icon("layers", 20)} ${esc(L.chaptersTitle || "")}</h2>
       <div class="ChapterGrid">${chapterCards}</div>
     </section>
 
     <section class="Landing__cta">
       <div>
-        <h2 class="Landing__h2">準備好就開始</h2>
+        <h2 class="Landing__h2">${esc(L.ctaTitle || "")}</h2>
         <p class="Landing__lede">
-          ${meta.units} 個單元、${meta.video_slots} 支影片，全部免費。
-          進度存在你自己的瀏覽器裡，沒有帳號、沒有後端。
+${esc((L.ctaLede || "").replace("{units}", meta.units).replace("{videos}", meta.video_slots))}
         </p>
       </div>
       <div class="Landing__ctaBtns">
         <button class="btn btn-primary" type="button" data-tab-link="player">
-          ${icon("play", 14)} 進入上課模式
+          ${icon("play", 14)} ${esc(CFG.ui?.tabs?.player || "")}
         </button>
         <button class="btn" type="button" data-tab-link="course">
-          ${icon("layers", 14)} 瀏覽課程內容
+          ${icon("layers", 14)} ${esc(CFG.ui?.tabs?.course || "")}
         </button>
       </div>
     </section>`;

@@ -3,57 +3,40 @@
 
 from __future__ import annotations
 
+import importlib
 import json
+import os
 import re
+import shutil
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-import drills
-import muscles
+ROOT = Path(__file__).resolve().parents[2]
+COURSE = Path(os.environ.get("COURSE") or ROOT / "course").resolve()
+DATA = COURSE / "data"
+WEB = ROOT / "src" / "web"
+DIST = Path(os.environ.get("DIST") or ROOT / "dist").resolve()
+OUT = DIST / "course.json"
 
-ROOT = Path(__file__).parent
-DATA = ROOT / "data"
-OUT = ROOT / "public" / "course.json"
+CFG = json.loads((COURSE / "course.config.json").read_text())
 
-# 章節詮釋資料：順序、標題、Lucide icon
-CHAPTERS = [
-    ("CH0", "課程使用說明", "book-open", "ch0-3"),
-    ("CH1", "認識體態", "scan-line", "ch0-3"),
-    ("CH2", "中立姿勢", "target", "ch0-3"),
-    ("CH3", "呼吸、核心與脊椎", "wind", "ch0-3"),
-    ("CH4", "頸椎", "user-round", "ch4"),
-    ("CH5", "胸椎", "bone", "ch5"),
-    ("CH6", "腰椎", "move-vertical", "ch6"),
-    ("CH7", "肩胛骨", "shirt", "ch7"),
-    ("CH8", "骨盆", "diamond", "ch8"),
-    ("CH9", "髖關節", "activity", "ch9"),
-    ("CH10", "膝蓋", "move-diagonal", "ch10"),
-    ("CH11", "足踝", "footprints", "ch11"),
-]
+# 章節、配額、別名全部由課程設定決定，框架本身不認識任何主題
+CHAPTERS = [(c["code"], c["title"], c["icon"], c["source"]) for c in CFG["chapters"]]
+QUOTA = {c["code"]: (c["units"], c.get("drills", 0)) for c in CFG["chapters"]}
+EVIDENCE_ALIAS = CFG.get("evidenceAlias", {})
 
-# 設計階段議定的配額：章節 -> (單元數, 跟練影片數)
-QUOTA = {
-    "CH0": (1, 0),
-    "CH1": (4, 0),
-    "CH2": (4, 0),
-    "CH3": (4, 28),
-    "CH4": (2, 27),
-    "CH5": (4, 52),
-    "CH6": (2, 27),
-    "CH7": (4, 52),
-    "CH8": (3, 43),
-    "CH9": (3, 36),
-    "CH10": (4, 43),
-    "CH11": (2, 26),
-}
+# 課程可以自帶詞彙模組（肌群、動作類別之類）；沒有就退化成無分面、無分類
+sys.path.insert(0, str(COURSE))
 
-# 觀念篇的單元主題正好對應三題核心觀念查證，把實證註記接上去
-EVIDENCE_ALIAS = {
-    "ch1-u2": "concept-1",  # 體態與痠痛的關係
-    "ch1-u3": "concept-2",  # 肌肉・韌帶・筋膜與體態 → Janda 交叉症候群模型
-    "ch0-u1": "concept-3",  # 使用說明書 → 這門課到底能給你什麼
-}
+
+def _load_taxonomy(key: str):
+    name = (CFG.get("taxonomy") or {}).get(key)
+    return importlib.import_module(name) if name else None
+
+
+facets = _load_taxonomy("facets")
+categories = _load_taxonomy("categories")
 
 YT = re.compile(
     r"^https://(?:www\.)?youtube\.com/watch\?v=[\w-]{11}(?:&\S*)?$|^https://youtu\.be/[\w-]{11}"
@@ -144,6 +127,27 @@ def collect_evidence() -> dict:
     return ev
 
 
+def sync_web() -> None:
+    """把框架的前端骨架複製到產物目錄，course/assets 可覆寫同名檔。"""
+    DIST.mkdir(parents=True, exist_ok=True)
+    for src in WEB.rglob("*"):
+        if src.is_dir() or src.name == "og.html":
+            continue
+        dst = DIST / src.relative_to(WEB)
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src, dst)
+
+    # 課程可放自己的 favicon、覆寫樣式等
+    assets = COURSE / "assets"
+    if assets.is_dir():
+        for src in assets.rglob("*"):
+            if src.is_dir():
+                continue
+            dst = DIST / src.relative_to(assets)
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
+
+
 def main() -> int:
     evidence = collect_evidence()
     chapters, problems = [], []
@@ -204,7 +208,7 @@ def main() -> int:
                 u["evidence"] = evidence[ev_key]
 
             # 單元層級的肌群：緊繃 + 無力兩側都算涉及
-            u["muscles"] = muscles.extract(*(u.get("tight") or []), *(u.get("weak") or []))
+            u["facets"] = facets.extract(*(u.get("tight") or []), *(u.get("weak") or [])) if facets else []
 
             # 主課可以有多語言版本，第一支為預設
             if u.get("lesson"):
@@ -252,20 +256,20 @@ def main() -> int:
 
             for d in u.get("drills") or []:
                 kinds[d.get("kind")] += 1
-                d["muscles"] = muscles.extract(d.get("target"), d.get("name"))
-                cid = drills.classify(d)
+                d["facets"] = facets.extract(d.get("target"), d.get("name")) if facets else []
+                cid = categories.classify(d) if categories else None
                 if cid:
                     d["cat"] = cid
                     cat_counts[cid] += 1
                     if cid in drill_ev:
-                        d["catName"] = drills.NAMES[cid]
+                        d["catName"] = categories.NAMES[cid]
                 else:
                     uncategorised.append(d.get("name"))
 
-                for m in d["muscles"]:
+                for m in d["facets"]:
                     muscle_units[m].add(u["id"])
                     muscle_count[m] += 1
-            for m in u["muscles"]:
+            for m in u["facets"]:
                 muscle_units[m].add(u["id"])
                 muscle_count[m] += 1
 
@@ -282,19 +286,24 @@ def main() -> int:
     muscle_index = [
         {
             "name": m,
-            "group": muscles.GROUP_OF.get(m, "其他"),
+            "group": facets.GROUP_OF.get(m, "其他") if facets else "其他",
             "count": muscle_count[m],
             "units": sorted(muscle_units[m]),
         }
         for m in sorted(muscle_count, key=lambda x: -muscle_count[x])
         if muscle_count[m] >= 2
     ]
-    group_order = [*muscles.GROUPS, "其他"]
+    group_order = [*(facets.GROUPS if facets else []), "其他"]
     muscle_index.sort(key=lambda x: (group_order.index(x["group"]), -x["count"]))
 
+    ui_keys = (
+        "site", "hero", "ui", "kinds", "grades", "languages",
+        "nav", "stance", "landing", "footer",
+    )
     course = {
+        "config": {k: CFG[k] for k in ui_keys if k in CFG},
         "stance": stance,
-        "muscles": muscle_index,
+        "facets": muscle_index,
         "drillEvidence": drill_ev,
         "meta": {
             # 課程結構：371 個單元 = 37 堂主課 + 334 支跟練
@@ -310,15 +319,18 @@ def main() -> int:
             "duration_seconds": seconds,
             "duration_all": fmt_duration(seconds_all[0]),
             "duration_all_seconds": seconds_all[0],
-            "posture_problems": sum(
-                1 for c in chapters for u in c["units"] if u.get("type") == "posture"
+            "problem_units": sum(
+                1
+                for c in chapters
+                for u in c["units"]
+                if u.get("type") == (CFG.get("ui", {}).get("problemType") or "posture")
             ),
             "evidence_checked": len(evidence),
         },
         "chapters": chapters,
     }
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
+    sync_web()
     OUT.write_text(json.dumps(course, ensure_ascii=False, indent=1))
 
     print(f"→ {OUT.relative_to(ROOT)}  ({OUT.stat().st_size / 1024:.0f} KB)")

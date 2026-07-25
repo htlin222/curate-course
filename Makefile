@@ -1,6 +1,11 @@
 PY := uv run python
-PROJECT := body-course
-PORT := 8899
+COURSE ?= course
+DIST ?= dist
+PORT ?= 8899
+PROJECT ?= $(shell $(PY) -c "import json;print(json.load(open('$(COURSE)/course.config.json'))['site']['project'])")
+
+export COURSE
+export DIST
 
 .DEFAULT_GOAL := help
 
@@ -9,28 +14,28 @@ help: ## 列出可用指令
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'
 
 build: ## 合併資料 → public/course.json，含配額驗證與 SEO 產出
-	$(PY) build.py
+	$(PY) src/build/build.py
 
 icons: ## 重新下載 Lucide 圖示並打包成內嵌 sprite
-	$(PY) build_icons.py
+	$(PY) src/build/build_icons.py
 
 og: ## 用 headless Chrome 重新產生社群預覽圖
 	@"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
 		--headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
-		--window-size=1200,630 --screenshot="$(PWD)/public/og.png" "$(PWD)/tools/og.html"
-	@magick public/og.png -resize 1200x630 -strip public/og.png
-	@echo "→ public/og.png"
+		--window-size=1200,630 --screenshot="$(PWD)/$(DIST)/og.png" "$(PWD)/src/web/og.html"
+	@magick $(DIST)/og.png -resize 1200x630 -strip $(DIST)/og.png
+	@echo "→ $(DIST)/og.png"
 
 verify: ## 重驗所有影片連結與 PubMed 引用（打真實 API，會跑一陣子）
-	$(PY) verify_links.py
-	$(PY) verify_refs.py
+	$(PY) src/build/verify_links.py
+	$(PY) src/build/verify_refs.py
 
 serve: ## 本機預覽
 	@echo "→ http://localhost:$(PORT)"
-	@$(PY) -m http.server $(PORT) --directory public
+	@$(PY) -m http.server $(PORT) --directory $(DIST)
 
 deploy: build ## 建置後部署到 Cloudflare Pages
-	npm exec --yes -- wrangler@4 pages deploy public \
+	npm exec --yes -- wrangler@4 pages deploy $(DIST) \
 		--project-name $(PROJECT) --branch main --commit-dirty=true
 
 lint: ## ruff 檢查
@@ -43,6 +48,6 @@ fmt: ## ruff 格式化
 check: lint build ## 提交前跑這個
 
 clean: ## 清掉建置暫存
-	rm -rf .tmp .wrangler .ruff_cache __pycache__ **/__pycache__
+	rm -rf .tmp .wrangler .ruff_cache dist **/__pycache__
 
 .PHONY: help build icons og verify serve deploy lint fmt check clean

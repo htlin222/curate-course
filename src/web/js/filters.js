@@ -1,6 +1,6 @@
 // filters.js — 搜尋、動作類型、肌群篩選
 import { icon } from "./icons.js";
-import { esc } from "./render.js";
+import { esc, UI } from "./render.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -8,7 +8,7 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 /* --- 肌群面板 ------------------------------------------------------------ */
 
 export function renderMusclePanel(course) {
-  const list = course.muscles || [];
+  const list = course.facets || [];
   if (!list.length) {
     $("#musclePanel")?.remove();
     return;
@@ -39,7 +39,7 @@ export function renderMusclePanel(course) {
       )
       .join("") +
     `<button class="btn MusclePanel__clear" id="muscleClear" type="button">
-       ${icon("rotate-ccw", 12)} 清除肌群篩選
+       ${icon("rotate-ccw", 12)} ${esc(UI.facetClear || "")}
      </button>`;
 }
 
@@ -68,7 +68,7 @@ export function applyFilters(state, course) {
     let chapterHasMatch = false;
 
     $$(".Unit", chEl).forEach((unitEl) => {
-      const unitMuscles = (unitEl.dataset.muscles || "").split("|").filter(Boolean);
+      const unitMuscles = (unitEl.dataset.facets || "").split("|").filter(Boolean);
       const muscleOk = !sel.size || unitMuscles.some((m) => sel.has(m));
       const textOk = !q || unitEl.textContent.toLowerCase().includes(q);
       const match = muscleOk && textOk;
@@ -82,7 +82,7 @@ export function applyFilters(state, course) {
       // 動作層級：類型 + 肌群兩個維度
       $$(".Drill", unitEl).forEach((d) => {
         const kindOk = state.filter === "all" || d.dataset.kind === state.filter;
-        const dm = (d.dataset.muscles || "").split("|").filter(Boolean);
+        const dm = (d.dataset.facets || "").split("|").filter(Boolean);
         const mOk = !sel.size || dm.some((m) => sel.has(m));
         d.hidden = !(kindOk && mOk);
         if (kindOk && mOk) visibleDrills++;
@@ -102,7 +102,7 @@ export function applyFilters(state, course) {
   const totalDrills = course.meta.drill_units;
   const parts = [];
   if (q) parts.push(`「${state.query.trim()}」`);
-  if (sel.size) parts.push(`肌群：${[...sel].join("、")}`);
+  if (sel.size) parts.push(`${UI.facetPrefix || ""}：${[...sel].join("、")}`);
 
   $("#filterCount").textContent = parts.length
     ? `${visibleUnits} 個單元 · ${visibleDrills} 支動作符合 ${parts.join(" + ")}`
@@ -120,8 +120,8 @@ function toggleBlankslate(visibleUnits) {
       "beforeend",
       `<div class="Blankslate" id="filterBlank">
          ${icon("inbox", 32)}
-         <p class="Blankslate__heading">找不到符合的內容</p>
-         <p>換個關鍵字或清除肌群篩選再試一次。</p>
+         <p class="Blankslate__heading">${esc(UI.emptyTitle || "")}</p>
+         <p>${esc(UI.emptyHint || "")}</p>
        </div>`,
     );
   } else if (visibleUnits > 0 && existing) {

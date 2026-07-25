@@ -11,6 +11,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 import urllib.error
 import urllib.parse
@@ -18,7 +19,8 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-COURSE = Path(__file__).parent / "public" / "course.json"
+ROOT = Path(__file__).resolve().parents[2]
+COURSE = Path(os.environ.get("DIST") or ROOT / "dist").resolve() / "course.json"
 OEMBED = "https://www.youtube.com/oembed?url={}&format=json"
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/131.0 Safari/537.36"
 

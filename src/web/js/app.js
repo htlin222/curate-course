@@ -1,8 +1,12 @@
 // app.js — 載入課程資料、渲染、互動與進度追蹤
 import { mountIcons, icon } from "./icons.js";
-import { renderChapter, renderStance, renderHome, setDrillEvidence, esc } from "./render.js";
+import {
+  renderChapter, renderStance, renderHome, setDrillEvidence, setConfig, esc,
+} from "./render.js";
 import { renderMusclePanel, syncMuscleChips, applyFilters as runFilters } from "./filters.js";
-import { buildPlaylist, renderPlaylist, play, stop, fitFrame, watchFrame, initResizer } from "./player.js";
+import {
+  buildPlaylist, renderPlaylist, play, stop, fitFrame, watchFrame, initResizer, setLanguages,
+} from "./player.js";
 import { bindKeys, listen as ytListen } from "./keys.js";
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -53,26 +57,49 @@ function save(key, value) {
   }
 }
 
+/** 把 course.config.json 的文案寫進 header、Hero 與頁尾 */
+function applyChrome(data) {
+  const c = data.config || {};
+  const site = c.site || {};
+  const set = (sel, html) => {
+    const el = $(sel);
+    if (el && html != null) el.innerHTML = html;
+  };
+
+  document.title = site.title || site.name || document.title;
+  document.documentElement.lang = site.locale || "zh-Hant";
+  set(".AppHeader__brand span", esc(site.name || ""));
+  $("#search")?.setAttribute("placeholder", c.ui?.searchPlaceholder || "搜尋…");
+  set(".ProgressPanel__title", esc(c.ui?.progressLabel || ""));
+  set("#muscleToggle span:first-of-type", esc(c.ui?.facetLabel || ""));
+
+  for (const [key, label] of Object.entries(c.ui?.tabs || {})) {
+    set(`.TabNav__item[data-tab="${key}"] .TabNav__label`, esc(label));
+  }
+
+  set(".Hero__eyebrow", `${$(".Hero__eyebrow svg")?.outerHTML || ""} ${esc(c.hero?.eyebrow || "")}`);
+  set(".Hero h1", esc(c.hero?.heading || ""));
+  set(
+    ".Hero__lede",
+    (c.hero?.lede || "")
+      .replace("{units}", data.meta.units)
+      .replace("{problems}", data.meta.problem_units),
+  );
+  set(".AppFooter__disclaimer", c.footer?.disclaimer || "");
+  set(".AppFooter__credits", esc(c.footer?.credits || ""));
+}
+
 /* --- 統計 ---------------------------------------------------------------- */
 
 function renderStats() {
-  const { meta } = state.course;
-  // 全部是可從 course.json 實際算出來的數字，不放評分／學員數這類無法查證的社會證明
-  const stats = [
-    ["layers", `${meta.units}`, "個單元"],
-    ["clock", meta.duration, "課程時長"],
-    ["book-open", `${meta.lesson_units}`, "堂主課"],
-    ["dumbbell", `${meta.drill_units}`, "支跟練影片"],
-    ["accessibility", `${meta.posture_problems}`, "個體態問題"],
-    ["microscope", `${meta.evidence_checked}`, "題實證查核"],
-  ];
-
-  $("#heroStats").innerHTML = stats
+  const { meta, config } = state.course;
+  // 顯示哪些數字由 course.config.json 決定，全部是能從資料實際算出來的
+  $("#heroStats").innerHTML = (config.ui?.stats || [])
     .map(
-      ([ic, value, label, cls = ""]) => `
+      (s) => `
         <div class="Stat">
-          <span class="Stat__value">${icon(ic, 16)}<span class="${cls}">${esc(value)}</span></span>
-          <span class="Stat__label">${esc(label)}</span>
+          <span class="Stat__value">${icon(s.icon, 16)}<span>${esc(meta[s.field] ?? "")}</span></span>
+          <span class="Stat__label">${esc(s.label)}</span>
         </div>`,
     )
     .join("");
@@ -88,10 +115,10 @@ function renderStats() {
 /* --- 側欄 ---------------------------------------------------------------- */
 
 function renderNav() {
-  const groups = [
-    { title: "觀念篇", codes: ["CH0", "CH1", "CH2", "CH3"] },
-    { title: "體態篇", codes: ["CH4", "CH5", "CH6", "CH7", "CH8", "CH9", "CH10", "CH11"] },
-  ];
+  const groups = (state.course.config.nav || []).map((g) => ({
+    title: g.title,
+    codes: g.chapters,
+  }));
 
   $("#nav").innerHTML = groups
     .map(
@@ -492,6 +519,9 @@ async function init() {
   state.course = data;
   state.done = new Set(load(STORE.done, []));
 
+  setConfig(data.config);
+  setLanguages(data.config?.languages);
+  applyChrome(data);
   setDrillEvidence(data.drillEvidence);
 
   $("#chapters").innerHTML = data.chapters
