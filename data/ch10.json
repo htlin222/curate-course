@@ -1,0 +1,593 @@
+{
+  "chapter": "CH10",
+  "title": "膝蓋",
+  "units": [
+    {
+      "id": "ch10-u1",
+      "name": "膝超伸",
+      "en": "Knee Hyperextension / Genu Recurvatum",
+      "type": "posture",
+      "assessment": "【側面照】自然放鬆站立，請人從正側面拍照或錄影。以大轉子—膝關節中心—外踝三點連線判斷：正常時膝關節中心應落在連線上或略前方；若膝關節明顯落到連線後方（小腿往後倒、膝窩往後頂），即為陽性。【仰躺測試】仰躺放鬆，腳跟墊在毛巾捲上，若膝窩明顯往下沉、膝關節伸直角度超過 0°（約 5–10° 以上）為陽性。【習慣自檢】站著等公車、刷牙、排隊時，是否習慣把膝蓋「頂到底鎖死」來休息？這是最重要的線索。\n\n【可改善的部分】膝超伸絕大多數是「站姿習慣 + 動作控制不足」造成的功能性問題 —— 把體重靠在關節韌帶與後關節囊上休息，而不是用肌肉支撐。透過站姿本體感覺再教育（微屈膝站立）、腿後肌與臀肌的離心控制訓練、以及小腿三頭肌的放鬆，站姿與步態中的膝關節位置通常能有明顯且持久的改善。\n\n【不可改變的部分】先天全身性關節鬆弛（Beighton 分數偏高、俗稱「軟骨功」體質）的人，關節被動活動度本身是結締組織特性決定的，運動無法把它「收緊」；曾經前十字韌帶或後外側角受傷造成的韌帶鬆弛也一樣。這些人能練的是「主動控制範圍」—— 讓肌肉在活動範圍內接手工作，而不是縮小活動範圍本身。\n\n【何時該就醫】單側超伸且左右差異明顯、走路會突然「打軟腳」或膝蓋往後彈一下、膝關節腫脹或持續疼痛、有中風或其他神經系統病史、兒童或青少年正在發育中 —— 以上任一情況請先給骨科或物理治療師評估，不要自行訓練。",
+      "tight": [
+        "腓腸肌",
+        "比目魚肌",
+        "髂腰肌（髖屈肌群）",
+        "膕肌",
+        "股直肌"
+      ],
+      "weak": [
+        "腿後肌群（尤其離心控制）",
+        "臀大肌",
+        "股四頭肌（微屈膝的等長／離心控制）",
+        "脛前肌與足內在肌"
+      ],
+      "lesson": {
+        "title": "Knee Hyperextension Exercises for Strengthening and Preventing Injury",
+        "channel": "Ortho Eval Pal with Paul Marquis PT",
+        "url": "https://www.youtube.com/watch?v=OXsPNCcApNI",
+        "duration": "8:43",
+        "why": "物理治療師 Paul Marquis 從「為什麼膝蓋會習慣鎖死」講起，說明超伸如何把負荷從肌肉轉嫁到韌帶與後關節囊，再帶出強化與控制的動作。沒有承諾矯正腿型，重點放在控制與預防受傷，符合本章的誠實原則。"
+      },
+      "drills": [
+        {
+          "name": "小腿三頭肌滾筒放鬆",
+          "en": "Calf (Gastrocnemius/Soleus) Foam Rolling",
+          "kind": "release",
+          "target": "腓腸肌、比目魚肌",
+          "dose": "每側 60–90 秒，找到痠點停留深呼吸 3 次",
+          "title": "滾筒紓壓，放鬆小腿緊繃肌肉 | 康健陪你練",
+          "channel": "康健雜誌",
+          "url": "https://www.youtube.com/watch?v=oAYlsdKVhls",
+          "duration": "2:06"
+        },
+        {
+          "name": "足底筋膜按摩球放鬆",
+          "en": "Plantar Fascia Ball Release",
+          "kind": "release",
+          "target": "足底筋膜、足內在肌",
+          "dose": "每側 60–90 秒，坐姿輕壓即可",
+          "title": "Plantar Fascia Release with a Tennis Ball – 3 Minute Foot Pain Relief",
+          "channel": "Resilience Occupational Therapy",
+          "url": "https://www.youtube.com/watch?v=3gDuNVtDO_M",
+          "duration": "3:04"
+        },
+        {
+          "name": "股四頭肌滾筒放鬆",
+          "en": "Quadriceps Foam Rolling",
+          "kind": "release",
+          "target": "股四頭肌、股直肌",
+          "dose": "每側 60 秒，來回慢滾",
+          "title": "How To Foam Roll Your Quads",
+          "channel": "Movement As Medicine",
+          "url": "https://www.youtube.com/watch?v=asgAWqwC67c",
+          "duration": "2:39"
+        },
+        {
+          "name": "膕肌自我按摩",
+          "en": "Popliteus Self-Massage",
+          "kind": "release",
+          "target": "膕肌",
+          "dose": "每側 60 秒，膝窩內側偏下方，力道輕",
+          "title": "2 Min Popliteus Muscle Massage You Can Do From Home | Feelgoodlife",
+          "channel": "Feel Good Life with Coach Todd",
+          "url": "https://www.youtube.com/watch?v=1510EKJKv6w",
+          "duration": "8:36"
+        },
+        {
+          "name": "腓腸肌牆壁伸展",
+          "en": "Gastrocnemius Wall Stretch",
+          "kind": "stretch",
+          "target": "腓腸肌",
+          "dose": "每側 30 秒 × 3 組，後腳膝蓋打直、腳跟貼地",
+          "title": "Calf Stretch",
+          "channel": "Sheffield Teaching Hospitals NHS Foundation Trust",
+          "url": "https://www.youtube.com/watch?v=trC42QD0wQI",
+          "duration": "1:17"
+        },
+        {
+          "name": "比目魚肌屈膝伸展",
+          "en": "Bent-Knee Soleus Stretch",
+          "kind": "stretch",
+          "target": "比目魚肌",
+          "dose": "每側 30 秒 × 3 組，後腳膝蓋微彎",
+          "title": "Soleus Calf Stretch with a bent knee",
+          "channel": "Achilles Healers Sports Therapy",
+          "url": "https://www.youtube.com/watch?v=vzg233ClYdU",
+          "duration": "0:27"
+        },
+        {
+          "name": "跪姿髖屈肌伸展",
+          "en": "Half-Kneeling Hip Flexor Stretch",
+          "kind": "stretch",
+          "target": "髂腰肌、股直肌",
+          "dose": "每側 30 秒 × 3 組，先做骨盆後傾再前移",
+          "title": "How Physical Therapists Stretch the Hip Flexors",
+          "channel": "Rehab Science",
+          "url": "https://www.youtube.com/watch?v=bDWeLkeCbBg",
+          "duration": "5:07"
+        },
+        {
+          "name": "微屈膝站姿本體感覺再教育",
+          "en": "Soft-Knee Standing / Hyperextension Control",
+          "kind": "train",
+          "target": "股四頭肌與腿後肌共同收縮控制",
+          "dose": "每次 30–60 秒 × 5 組；一天中隨機提醒自己重做 5–10 次",
+          "title": "2 simple exercises to control hyperextended knees",
+          "channel": "Core de Ballet",
+          "url": "https://www.youtube.com/watch?v=bwlL0PQs29g",
+          "duration": "1:53"
+        },
+        {
+          "name": "北歐式腿後肌離心訓練",
+          "en": "Nordic Hamstring Curl (Eccentric)",
+          "kind": "train",
+          "target": "腿後肌群（離心）",
+          "dose": "3–5 下 × 3 組，慢速下降；新手先用彈力帶或高角度輔助",
+          "title": "Master The Nordic Hamstring Curl to Improve Your Hamstring Strength",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=F-AaE8mw_pY",
+          "duration": "7:48"
+        },
+        {
+          "name": "單腿羅馬尼亞硬舉",
+          "en": "Single-Leg Romanian Deadlift",
+          "kind": "train",
+          "target": "臀大肌、腿後肌群",
+          "dose": "每側 8–10 下 × 3 組，支撐腳全程保持微屈膝",
+          "title": "Fixing The Single Leg RDL Problem (INCREDIBLE CHANGES)",
+          "channel": "Squat University",
+          "url": "https://www.youtube.com/watch?v=J0bEKhnP-Mw",
+          "duration": "1:57"
+        },
+        {
+          "name": "單腿臀橋",
+          "en": "Single-Leg Glute Bridge",
+          "kind": "train",
+          "target": "臀大肌、腿後肌群",
+          "dose": "每側 10–12 下 × 3 組，頂端停 2 秒",
+          "title": "Single Leg Glute Bridge Exercise | How To Perform And Common Mistakes",
+          "channel": "Dr. Carl Baird",
+          "url": "https://www.youtube.com/watch?v=b1zTCyGJXCQ",
+          "duration": "2:03"
+        },
+        {
+          "name": "單腿平衡本體感覺訓練",
+          "en": "Single-Leg Balance / Proprioception Progression",
+          "kind": "train",
+          "target": "踝足穩定肌群、膝關節本體感覺",
+          "dose": "每側 30 秒 × 3 組，支撐腳保持微屈膝；進階閉眼或站軟墊",
+          "title": "Exercises to improve ankle balance and proprioception – Part 1",
+          "channel": "Prisma Health",
+          "url": "https://www.youtube.com/watch?v=I_vqLIwy5j4",
+          "duration": "5:53"
+        }
+      ]
+    },
+    {
+      "id": "ch10-u2",
+      "name": "X 型腿",
+      "en": "Genu Valgum / Knock Knees",
+      "type": "posture",
+      "assessment": "【靜態測量】雙腳腳尖朝正前方、膝蓋內側（股骨內髁）輕輕互相貼住站立，量兩腳內踝之間的距離。內踝間距超過約 3–5 公分即偏向膝外翻，超過 8 公分屬明顯。【動態測試】面對鏡子或錄影，做單腳蹲或從 20 公分台階慢慢下踏：若膝蓋往內倒、跑到第二腳趾的內側，就是動態膝外翻。【足部連動】同時看看站立時足弓是否塌陷、腳跟是否外翻 —— X 型腿常常是「足弓塌 → 脛骨內傾 → 膝外翻」的連鎖，源頭在足與髖，不在膝蓋本身。\n\n【可改善的部分】動態膝外翻（走路、下樓、蹲下時膝蓋內夾）幾乎完全是動作控制與肌力問題，是本單元訓練最有效的目標。強化臀中肌、臀大肌上束（髖外展與外旋）與足弓支撐肌群，配合足部負重感覺的重新學習，通常在 6–12 週內就能看到動作品質的改變，膝關節內側的壓力也會下降。外觀上，因為大腿與小腿的肌肉線條改變，看起來也會比較直。\n\n【不可改變的部分】成年人的靜態 X 型腿若來自骨性結構 —— 股骨頸前傾角過大、脛骨近端的骨骼形狀、股骨遠端外髁發育差異、或關節面已有磨損造成的角度改變 —— 這些是骨頭的形狀，任何運動都不可能改變它。請不要相信「幾週矯正 X 型腿」的說法。運動能做的是改善負荷分佈與外觀上的肌肉平衡，不是把骨頭掰直。真正要改變骨骼角度只有截骨手術一途。\n\n【何時該就醫】內踝間距明顯超過 8–10 公分、左右腿不對稱、膝關節內側或外側持續疼痛、關節有卡住或打軟腳、走路已明顯受影響；兒童若 7 歲後仍有明顯 X 型腿或短時間內惡化，務必看兒童骨科（生理性外翻通常 3–4 歲最明顯、7 歲前自行改善）。",
+      "tight": [
+        "闊筋膜張肌與髂脛束",
+        "內收肌群",
+        "腓骨長肌與腓骨短肌",
+        "股外側肌"
+      ],
+      "weak": [
+        "臀中肌",
+        "臀大肌上束（髖外展外旋）",
+        "髖深層外旋肌群",
+        "脛後肌與足內在肌"
+      ],
+      "lesson": {
+        "title": "The Truth About Knee Valgus",
+        "channel": "E3 Rehab",
+        "url": "https://www.youtube.com/watch?v=wJyJUUv_7DA",
+        "duration": "19:46",
+        "why": "E3 Rehab 用研究證據拆解「膝外翻＝壞姿勢」的迷思：區分結構性膝外翻與動態膝外翻，說明哪些真的和受傷風險有關、哪些只是被過度渲染。這正是本章要傳達的誠實態度 —— 先分清楚什麼能改、什麼不能改，再開始練。"
+      },
+      "drills": [
+        {
+          "name": "闊筋膜張肌按摩球放鬆",
+          "en": "TFL Trigger Point Ball Release",
+          "kind": "release",
+          "target": "闊筋膜張肌",
+          "dose": "每側 60–90 秒，髖骨前外側下方兩指處",
+          "title": "TFL Trigger Point Release - How to Release the Tensor Fascia Latae Muscle.",
+          "channel": "Aletha Health",
+          "url": "https://www.youtube.com/watch?v=PNQIVLyerZg",
+          "duration": "4:02"
+        },
+        {
+          "name": "內收肌群自我放鬆",
+          "en": "Adductor Self-Release",
+          "kind": "release",
+          "target": "內收肌群",
+          "dose": "每側 60–90 秒，避開鼠蹊部血管神經",
+          "title": "Decrease Groin and Hip Pain with this Adductor Self-Release",
+          "channel": "Carter Physiotherapy",
+          "url": "https://www.youtube.com/watch?v=p2uSQTxwez4",
+          "duration": "1:46"
+        },
+        {
+          "name": "腓骨肌自我按摩",
+          "en": "Peroneal Self-Massage",
+          "kind": "release",
+          "target": "腓骨長肌、腓骨短肌",
+          "dose": "每側 60 秒，小腿外側沿腓骨往下",
+          "title": "Effective self massage to the peroneal muscles",
+          "channel": "Backs & Beyond Osteopathic Clinic",
+          "url": "https://www.youtube.com/watch?v=jrs9mJEygsM",
+          "duration": "1:28"
+        },
+        {
+          "name": "股外側肌滾筒放鬆",
+          "en": "Vastus Lateralis Pin-and-Stretch Release",
+          "kind": "release",
+          "target": "股外側肌",
+          "dose": "每側 60–90 秒，壓住後配合膝關節屈伸",
+          "title": "Vastus Lateralis Self-administered Dynamic Release a.k.a. Pin and Stretch",
+          "channel": "Brookbush Institute",
+          "url": "https://www.youtube.com/watch?v=noPrtIFWpbM",
+          "duration": "5:41"
+        },
+        {
+          "name": "青蛙式內收肌伸展",
+          "en": "Frog Stretch (Adductor)",
+          "kind": "stretch",
+          "target": "內收肌群、股薄肌",
+          "dose": "30–45 秒 × 3 組，前後輕微搖動找張力",
+          "title": "The BEST Groin Stretch Ever Created!🤯",
+          "channel": "Squat University",
+          "url": "https://www.youtube.com/watch?v=rzZ8YO1qtps",
+          "duration": "1:00"
+        },
+        {
+          "name": "髂脛束與闊筋膜張肌伸展",
+          "en": "IT Band / TFL Stretch",
+          "kind": "stretch",
+          "target": "闊筋膜張肌、髂脛束",
+          "dose": "每側 30 秒 × 3 組",
+          "title": "How To Actually Fix A Tight IT-Band",
+          "channel": "Conor Harris",
+          "url": "https://www.youtube.com/watch?v=3_xhGD6pdwI",
+          "duration": "2:44"
+        },
+        {
+          "name": "踝關節背屈活動度訓練",
+          "en": "Ankle Dorsiflexion Mobility",
+          "kind": "stretch",
+          "target": "比目魚肌、距小腿關節",
+          "dose": "每側 10 下 × 3 組，膝蓋沿第二腳趾方向前推",
+          "title": "How To Actually Improve Your Ankle Mobility | 2 Key Exercises",
+          "channel": "David Grey Rehab",
+          "url": "https://www.youtube.com/watch?v=226bDcWQpyc",
+          "duration": "6:44"
+        },
+        {
+          "name": "側躺蚌殼式",
+          "en": "Side-Lying Clamshell",
+          "kind": "train",
+          "target": "臀中肌、髖深層外旋肌群",
+          "dose": "每側 15 下 × 3 組，骨盆不可後倒",
+          "title": "臀肌訓練─蚌殼式&側抬腿",
+          "channel": "Hunter 物理治療師",
+          "url": "https://www.youtube.com/watch?v=y1WcqWlY40w",
+          "duration": "1:53"
+        },
+        {
+          "name": "彈力帶怪獸走",
+          "en": "Banded Monster / Lateral Walk",
+          "kind": "train",
+          "target": "臀中肌、臀大肌上束",
+          "dose": "每方向 12–15 步 × 3 趟，微屈膝、膝蓋不內夾",
+          "title": "Monster Walks - Strengthening the gluteus medius",
+          "channel": "KOH Physical Therapy Lab®",
+          "url": "https://www.youtube.com/watch?v=O_GEUdxQETA",
+          "duration": "1:57"
+        },
+        {
+          "name": "短足運動（足弓訓練）",
+          "en": "Short Foot Exercise",
+          "kind": "train",
+          "target": "足內在肌、脛後肌",
+          "dose": "每側 10 下 × 3 組，每下維持 5 秒，腳趾不可蜷曲",
+          "title": "The Short Foot exercise | A great way to strengthen your feet",
+          "channel": "Elevate Chiropractic - Dr Craig Buscomb",
+          "url": "https://www.youtube.com/watch?v=z0-Vnmw2sxM",
+          "duration": "3:50"
+        },
+        {
+          "name": "台階下踏控制",
+          "en": "Step Down (Knee Alignment Control)",
+          "kind": "train",
+          "target": "臀中肌、股四頭肌離心控制",
+          "dose": "每側 8–10 下 × 3 組，全程膝蓋對齊第二腳趾",
+          "title": "Step Down Exercise",
+          "channel": "Institute of Sports and Spines",
+          "url": "https://www.youtube.com/watch?v=ee3lC7iLfss",
+          "duration": "1:22"
+        }
+      ]
+    },
+    {
+      "id": "ch10-u3",
+      "name": "O 型腿",
+      "en": "Genu Varum / Bow Legs",
+      "type": "posture",
+      "assessment": "【靜態測量】雙腳內踝併攏、膝蓋骨（髕骨）朝正前方站立，量兩側膝蓋內側（股骨內髁）之間的距離。膝間距超過約 3–5 公分即偏向膝內翻。注意：一定要先讓髕骨轉正再量，因為「假性 O 型腿」（股骨內旋造成的視覺錯覺）在髕骨轉正後膝間距就會消失 —— 這一型其實屬於 u4 的範疇。【鞋底線索】看看常穿的鞋，鞋底外緣是否磨損特別嚴重，這代表重心長期偏在足外側。\n\n【可改善的部分】如果轉正髕骨後膝間距明顯縮小，那多半是髖旋轉與足部承重習慣造成的功能性外觀問題，改善髖內旋活動度、強化內收肌與臀大肌、重新學習足部三點平均承重，外觀與動作品質都會有實質改善。即使是真正的骨性膝內翻，訓練仍然重要 —— 因為膝內翻會把負荷集中在膝關節內側腔室，強化髖外展肌與周邊肌力可以降低內側受力、減緩退化速度、減輕疼痛。\n\n【不可改變的部分】成年人真正的骨性膝內翻 —— 脛骨內翻（tibia vara）、股骨或脛骨的扭轉角、內側關節腔室已經磨損塌陷造成的角度 —— 這些是骨頭與軟骨的形狀，運動、拉伸、按摩、綁腿都無法改變。網路上「X 天掰直 O 型腿」的內容請直接略過。骨性角度只能靠截骨手術改變。本單元的目標明確寫在這裡：改善動作控制、減少內側腔室負荷、讓肌肉線條更平衡，不是把骨頭掰直。\n\n【何時該就醫】膝間距明顯超過 5–8 公分、左右不對稱、膝關節內側持續疼痛或有摩擦聲、上下樓困難、已知有退化性關節炎；兒童若 2 歲後 O 型腿仍持續或加重、單側特別明顯、身高明顯偏矮，須排除 Blount 氏症或佝僂病，請立即就診兒童骨科。",
+      "tight": [
+        "闊筋膜張肌與髂脛束",
+        "髖深層外旋肌群（含梨狀肌）",
+        "股二頭肌（外側腿後肌）",
+        "脛前肌與小腿前外側肌群"
+      ],
+      "weak": [
+        "內收肌群",
+        "髖內旋肌群",
+        "臀大肌",
+        "脛後肌與足弓支撐肌群"
+      ],
+      "lesson": {
+        "title": "The Big Lie About Bowlegs. How to Fix",
+        "channel": "Bob & Brad",
+        "url": "https://www.youtube.com/watch?v=tDRX5rfgma0",
+        "duration": "7:32",
+        "why": "兩位物理治療師直接點名網路上「掰直 O 型腿」的謊言，說清楚成年人骨性內翻無法靠運動改變，然後把重點導向真正有幫助的事：分辨真假 O 型腿、減少膝關節內側負荷。整支影片沒有任何矯正承諾，正是本單元需要的定調。"
+      },
+      "drills": [
+        {
+          "name": "髂脛束與大腿外側滾筒放鬆",
+          "en": "IT Band / Lateral Thigh Foam Rolling",
+          "kind": "release",
+          "target": "髂脛束、股外側肌",
+          "dose": "每側 60–90 秒，力道以能正常呼吸為準",
+          "title": "How To Foam Roll Your IT Band The RIGHT Way [Fast Knee Pain Relief!]",
+          "channel": "Tone and Tighten",
+          "url": "https://www.youtube.com/watch?v=Xl_L0o5N0bw",
+          "duration": "8:09"
+        },
+        {
+          "name": "臀部深層按摩球放鬆",
+          "en": "Glutes / Piriformis Ball Release",
+          "kind": "release",
+          "target": "梨狀肌、髖深層外旋肌群",
+          "dose": "每側 60–90 秒，坐在球上翹腳找痠點",
+          "title": "Tennis Ball Self-Massage for Your Glutes and Piriformis",
+          "channel": "The Online Physiotherapist",
+          "url": "https://www.youtube.com/watch?v=l3flN43z-EQ",
+          "duration": "2:53"
+        },
+        {
+          "name": "脛前肌自我放鬆",
+          "en": "Tibialis Anterior Self-Massage",
+          "kind": "release",
+          "target": "脛前肌",
+          "dose": "每側 60 秒，沿脛骨外緣往下推",
+          "title": "Tibialis Anterior Muscle Massage | Shin Splints Treatment",
+          "channel": "Rehab Science",
+          "url": "https://www.youtube.com/watch?v=dOQgpMPes3g",
+          "duration": "0:29"
+        },
+        {
+          "name": "腿後肌外側滾筒放鬆",
+          "en": "Lateral Hamstring Foam Rolling",
+          "kind": "release",
+          "target": "股二頭肌",
+          "dose": "每側 60–90 秒，大腿後外側慢滾",
+          "title": "Foam Rolling Hamstrings: Dos, Don'ts & How To",
+          "channel": "Sports Injury Physio",
+          "url": "https://www.youtube.com/watch?v=jV9SSJ3OkcA",
+          "duration": "7:57"
+        },
+        {
+          "name": "髖內旋活動度訓練",
+          "en": "Hip Internal Rotation Mobility",
+          "kind": "stretch",
+          "target": "髖深層外旋肌群、後側關節囊",
+          "dose": "每側 10 下 × 3 組，動作要慢、不追求角度",
+          "title": "Why You Need Hip Internal Rotation to Squat",
+          "channel": "Squat University",
+          "url": "https://www.youtube.com/watch?v=EKLcJvoqzbQ",
+          "duration": "1:40"
+        },
+        {
+          "name": "四字形臀部伸展",
+          "en": "Figure-4 Piriformis Stretch",
+          "kind": "stretch",
+          "target": "梨狀肌、臀大肌",
+          "dose": "每側 30 秒 × 3 組",
+          "title": "Figure 4 (Piriformis) Stretch for Sciatica Pain",
+          "channel": "Vive Health",
+          "url": "https://www.youtube.com/watch?v=E6sqUHFt6Ng",
+          "duration": "1:32"
+        },
+        {
+          "name": "外側腿後肌伸展",
+          "en": "Lateral Hamstring (Biceps Femoris) Stretch",
+          "kind": "stretch",
+          "target": "股二頭肌",
+          "dose": "每側 30 秒 × 3 組，腳尖稍微內轉找外側張力",
+          "title": "You Need to Do This Stretch (TIGHT Lateral Hamstrings / Biceps Femoris)",
+          "channel": "Upright Health",
+          "url": "https://www.youtube.com/watch?v=fJQWzy9QpII",
+          "duration": "8:58"
+        },
+        {
+          "name": "哥本哈根側平板",
+          "en": "Copenhagen Plank",
+          "kind": "train",
+          "target": "內收肌群",
+          "dose": "每側 15–20 秒 × 3 組；新手先做屈膝版本",
+          "title": "How to Set Up, Perform, & Program Copenhagen Planks (Progressions | Regressions | Alternatives)",
+          "channel": "E3 Rehab",
+          "url": "https://www.youtube.com/watch?v=YRRnnZsRs9U",
+          "duration": "7:19"
+        },
+        {
+          "name": "側躺髖內旋肌力訓練",
+          "en": "Side-Lying Hip Internal Rotation",
+          "kind": "train",
+          "target": "臀中肌前束、臀小肌（髖內旋肌群）",
+          "dose": "每側 12–15 下 × 3 組，骨盆固定不代償",
+          "title": "Hip Internal Rotation Strengthening - Side Lying",
+          "channel": "Morphopedics - Turning Students Into Clinicians",
+          "url": "https://www.youtube.com/watch?v=mIiwosQtBu8",
+          "duration": "0:58"
+        },
+        {
+          "name": "臀推",
+          "en": "Hip Thrust",
+          "kind": "train",
+          "target": "臀大肌",
+          "dose": "10–12 下 × 3 組，頂端夾臀停 2 秒、腰不反弓",
+          "title": "How to Properly Perform a Hip Thrust - Set Up, Execution, and Master Even Without A Hip Thruster",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=KFnKL7qSzVs",
+          "duration": "9:50"
+        },
+        {
+          "name": "高腳杯深蹲對位控制",
+          "en": "Goblet Squat (Alignment Focus)",
+          "kind": "train",
+          "target": "臀大肌、股四頭肌、足部三點承重",
+          "dose": "8–10 下 × 3 組，重心平均落在拇趾球、小趾球、腳跟",
+          "title": "How To: Goblet Squats",
+          "channel": "Mobility Doc",
+          "url": "https://www.youtube.com/watch?v=Mu7aVOjEBdA",
+          "duration": "3:30"
+        }
+      ]
+    },
+    {
+      "id": "ch10-u4",
+      "name": "上 X 下 O 型腿",
+      "en": "Femoral Internal Rotation + Tibial External Rotation (XO Legs)",
+      "type": "posture",
+      "assessment": "【核心辨識】站立時膝蓋骨（髕骨）朝向內側偏轉、兩膝有互相靠近的傾向（上段像 X），但小腿與腳掌卻朝外八、小腿之間留有空隙（下段像 O）。這不是兩種腿型同時發生，而是同一條連鎖：股骨內旋 + 脛骨相對外旋。【測試 1】坐姿屈膝 90°，讓大腿保持不動，觀察髕骨中心與脛骨粗隆（膝下的骨頭凸起）是否對齊；若脛骨粗隆明顯偏外側，代表脛骨外旋。【測試 2】俯臥屈膝 90°，比較兩側髖內旋／外旋角度；上 X 型通常內旋明顯大於外旋。【測試 3】站立看足弓 —— 這型幾乎都伴隨足弓塌陷與後足外翻。\n\n【重要觀念：矯正重點不在膝蓋】「上 X 下 O」是華語圈的流行說法，膝蓋只是被上下兩端夾在中間的受害者。真正要處理的是上游的髖關節（股骨內旋 → 見 CH9）與下游的足弓（足弓塌陷帶動脛骨代償性旋轉 → 見 CH11）。只練膝蓋周邊、或做夾腿、綁腿之類的動作，不但無效，還可能讓脛骨的旋轉代償更嚴重。本單元的訓練主軸是：恢復髖外旋肌力 + 重建足弓控制 + 教會脛骨往內轉回中立。\n\n【可改善的部分】旋轉方向的肌肉不平衡與動作控制是可以練的。髖深層外旋肌群與臀大肌的肌力、足內在肌與脛後肌撐起足弓的能力、以及走路與蹲下時「膝蓋對齊第二腳趾」的動作習慣，這些改善後外觀上的旋轉錯位通常會明顯減輕，膝關節與髕骨的軌跡也會更順。\n\n【不可改變的部分】如果旋轉錯位來自骨骼本身的扭轉角 —— 股骨前傾角過大（femoral anteversion）或脛骨外旋扭轉角過大（tibial torsion）—— 這是骨頭在發育期就長成的形狀，成年後任何運動、伸展、儀器都無法改變扭轉角度。你能練的是「在既有骨骼結構下把肌肉控制做到最好」，這仍然值得做，但請不要期待腿型完全變直。\n\n【何時該就醫】髕骨曾經脫位或半脫位、膝蓋前側疼痛且上下樓明顯加重、走路時髕骨有明顯彈跳感、左右差異很大、或兒童青少年扭轉角明顯影響走路（內八外八嚴重、常跌倒）—— 這些情況需要骨科或物理治療師做旋轉角度的臨床測量（如 Craig's test、thigh-foot angle），不要自行判斷。",
+      "tight": [
+        "闊筋膜張肌",
+        "臀小肌前束",
+        "內收肌群",
+        "股二頭肌（外側腿後肌）",
+        "腓骨長肌"
+      ],
+      "weak": [
+        "髖深層外旋肌群",
+        "臀大肌",
+        "膕肌與脛骨內旋控制肌群",
+        "脛後肌與足內在肌"
+      ],
+      "lesson": {
+        "title": "How Your Poor Tibial Rotation TRASHES Your Knees (esp. Meniscus & ACL)",
+        "channel": "Precision Movement",
+        "url": "https://www.youtube.com/watch?v=ctYNbtHYgsY",
+        "duration": "15:09",
+        "why": "完整解釋股骨與脛骨的相對旋轉如何在膝關節交會，為什麼「上 X 下 O」的問題根源在髖與足而不在膝，並示範脛骨旋轉的評估與矯正動作。是少見把這個複合型講清楚、又不做腿型承諾的教學影片。"
+      },
+      "drills": [
+        {
+          "name": "臀中肌與臀小肌按摩球放鬆",
+          "en": "Gluteus Medius / Minimus Ball Release",
+          "kind": "release",
+          "target": "臀小肌、臀中肌前束",
+          "dose": "每側 60–90 秒，髖骨外側偏前方",
+          "title": "Massage Ball Techniques for Hips & Glutes",
+          "channel": "Tune Up Fitness",
+          "url": "https://www.youtube.com/watch?v=bxELzhKHtIA",
+          "duration": "3:06"
+        },
+        {
+          "name": "大腿內側滾筒放鬆",
+          "en": "Inner Thigh (Adductor) Foam Rolling",
+          "kind": "release",
+          "target": "內收肌群",
+          "dose": "每側 60–90 秒，趴姿把大腿內側壓在滾筒上",
+          "title": "How to foam roll your inner thigh (adductor muscles)",
+          "channel": "Upright Health",
+          "url": "https://www.youtube.com/watch?v=hSxQuAYlPrE",
+          "duration": "1:00"
+        },
+        {
+          "name": "脛骨後肌自我放鬆",
+          "en": "Tibialis Posterior Self-Release",
+          "kind": "release",
+          "target": "脛骨後肌",
+          "dose": "每側 60 秒，小腿內側脛骨後緣往下按壓",
+          "title": "Self manual release to posterior tibialis for ankle pain",
+          "channel": "The Running PTs",
+          "url": "https://www.youtube.com/watch?v=xdd77lN1RVk",
+          "duration": "0:42"
+        },
+        {
+          "name": "90/90 髖旋轉伸展",
+          "en": "90/90 Hip Rotation Stretch",
+          "kind": "stretch",
+          "target": "髖旋轉肌群、髖關節囊",
+          "dose": "每側前後腿各 30–45 秒 × 2 組，重點在恢復外旋角度",
+          "title": "How to do a 90/90 Hip Stretch properly - CORRECT FORM IS ESSENTIAL",
+          "channel": "Jack Hanrahan Fitness",
+          "url": "https://www.youtube.com/watch?v=VYvMMw8z3rE",
+          "duration": "5:59"
+        },
+        {
+          "name": "沙發伸展（股直肌與髖屈肌）",
+          "en": "Couch Stretch",
+          "kind": "stretch",
+          "target": "股直肌、髂腰肌、闊筋膜張肌",
+          "dose": "每側 45–60 秒 × 2 組，全程夾臀維持骨盆後傾",
+          "title": "Couch Stretch",
+          "channel": "Men's Health",
+          "url": "https://www.youtube.com/watch?v=Fg-lwNBzVV8",
+          "duration": "0:53"
+        },
+        {
+          "name": "髖外旋肌力訓練",
+          "en": "Hip External Rotation Strengthening",
+          "kind": "train",
+          "target": "髖深層外旋肌群、臀大肌",
+          "dose": "每側 10–12 下 × 3 組，慢速控制、感受臀部深層出力",
+          "title": "Fix Your Hip External Rotation (FAST)",
+          "channel": "Zac Cupples",
+          "url": "https://www.youtube.com/watch?v=3vvHn0uuw3g",
+          "duration": "10:30"
+        },
+        {
+          "name": "小腿脛骨內轉練習",
+          "en": "Tibial Internal Rotation Control",
+          "kind": "train",
+          "target": "膕肌、脛骨內旋控制肌群",
+          "dose": "每側 10 下 × 3 組，每下維持 5 秒；大腿保持不動只轉小腿",
+          "title": "改善Ｘ型腿、走路小腿外八、膝蓋常常卡卡痛痛的，就用這招：「小腿脛骨內轉練習」來解除～",
+          "channel": "全人物理治療所",
+          "url": "https://www.youtube.com/watch?v=7Fp2XaDrcRM",
+          "duration": "5:52"
+        },
+        {
+          "name": "腳趾分離訓練",
+          "en": "Toe Yoga (Intrinsic Foot Muscles)",
+          "kind": "train",
+          "target": "足內在肌、拇趾外展肌",
+          "dose": "每側 10 下 × 3 組，大拇趾與其餘四趾分開控制",
+          "title": "Toe Yoga For Healthy And Strong Feet",
+          "channel": "Dr. Carl Baird",
+          "url": "https://www.youtube.com/watch?v=qojzpnKVOcc",
+          "duration": "3:12"
+        },
+        {
+          "name": "分腿蹲對位控制",
+          "en": "Split Squat (Alignment Integration)",
+          "kind": "train",
+          "target": "臀大肌、股四頭肌、髖足整合控制",
+          "dose": "每側 8–10 下 × 3 組，全程膝蓋對齊第二腳趾、足弓不塌",
+          "title": "Pain with Split Squats and Lunges? (How To Help)",
+          "channel": "E3 Rehab",
+          "url": "https://www.youtube.com/watch?v=VK_aa2Gj9-U",
+          "duration": "5:15"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,705 @@
+{
+  "chapter": "CH5",
+  "title": "胸椎",
+  "units": [
+    {
+      "id": "ch5-u1",
+      "name": "駝背",
+      "type": "posture",
+      "assessment": "靠牆站立（腳跟離牆約 5 公分），臀部與上背貼牆，眼睛平視。若後腦杓需刻意後仰或下巴上抬才能碰到牆，即為陽性。接著做關鍵鑑別：俯臥趴在硬床上、雙手放身體兩側、額頭貼床，請人從側面看上背弧度——弧度明顯變平者為「姿勢性駝背」（肌肉失衡為主，對運動反應好）；趴著弧度仍固定不動、像卡住一樣者為「結構性駝背」（如 Scheuermann 氏症、骨質疏鬆壓迫性骨折），運動只能改善代償與疼痛，需先就醫影像評估。另可測手臂上舉：仰躺屈膝、腰貼地，雙手伸直過頭，若手背無法貼地代表胸椎伸展與闊背肌受限。",
+      "tight": [
+        "胸大肌",
+        "胸小肌",
+        "上斜方肌",
+        "提肩胛肌",
+        "枕下肌群",
+        "闊背肌"
+      ],
+      "weak": [
+        "中斜方肌",
+        "下斜方肌",
+        "菱形肌",
+        "頸深屈肌",
+        "胸段豎脊肌",
+        "後三角肌"
+      ],
+      "lesson": {
+        "title": "逆轉駝背的秘訣，讓你放鬆時還是挺直的！！",
+        "channel": "三個字SunGuts",
+        "url": "https://www.youtube.com/watch?v=AGkJV1_vWEc",
+        "duration": "10:54",
+        "why": "物理治療師主講的繁中影片，重點放在「為什麼刻意挺胸沒用」——說明駝背是胸椎活動度不足加上深層穩定肌失能，而不是意志力問題，並示範完整居家流程，是本單元最好的觀念鋪陳。"
+      },
+      "drills": [
+        {
+          "name": "胸大肌筋膜放鬆",
+          "en": "Pec Major Myofascial Release",
+          "kind": "release",
+          "target": "胸大肌",
+          "dose": "每側 60–90 秒",
+          "title": "Myofascial Release of the Chest - Ask Dr. Abelson",
+          "channel": "Brian Abelson",
+          "url": "https://www.youtube.com/watch?v=NhdcEs60No4",
+          "duration": "2:04"
+        },
+        {
+          "name": "胸小肌按摩球放鬆",
+          "en": "Pec Minor Ball Release",
+          "kind": "release",
+          "target": "胸小肌",
+          "dose": "每側 60 秒",
+          "title": "How to release your pec minor with a Trigger Point ball",
+          "channel": "Dr. Erin Boynton",
+          "url": "https://www.youtube.com/watch?v=Yli_XWMh2M8",
+          "duration": "2:31"
+        },
+        {
+          "name": "胸椎滾筒伸展放鬆",
+          "en": "Thoracic Spine Foam Roll",
+          "kind": "release",
+          "target": "胸段豎脊肌、胸椎小面關節",
+          "dose": "上下滾動 8–10 趟，分三段各停留 3 次呼吸",
+          "title": "Foam roller thoracic spine extension movement and mobility | Feat. Tim Keeley | No.26 | Physio REHAB",
+          "channel": "Physio REHAB",
+          "url": "https://www.youtube.com/watch?v=qCrYe698zJU",
+          "duration": "5:31"
+        },
+        {
+          "name": "枕下肌群放鬆",
+          "en": "Suboccipital Release",
+          "kind": "release",
+          "target": "枕下肌群",
+          "dose": "仰躺 90–120 秒",
+          "title": "Suboccipital Release (Neck Pain and Headache Treatment)",
+          "channel": "Rehab Science",
+          "url": "https://www.youtube.com/watch?v=t1pdEAbys9o",
+          "duration": "2:44"
+        },
+        {
+          "name": "上斜方肌與提肩胛肌激痛點放鬆",
+          "en": "Upper Trap & Levator Scapulae Trigger Point Release",
+          "kind": "release",
+          "target": "上斜方肌、提肩胛肌",
+          "dose": "每側 60–90 秒",
+          "title": "Trigger Point Release with a Tennis Ball | Upper Trap, Levator Scapulae and Mid Trap/Rhomboids",
+          "channel": "Movement & Function",
+          "url": "https://www.youtube.com/watch?v=Gx-LM_G782I",
+          "duration": "6:25"
+        },
+        {
+          "name": "闊背肌滾筒放鬆",
+          "en": "Latissimus Dorsi Foam Roll",
+          "kind": "release",
+          "target": "闊背肌",
+          "dose": "每側 60 秒",
+          "title": "Self Myofascial Release: Foam Rolling - Latissimus Dorsi",
+          "channel": "National Academy of Sports Medicine (NASM)",
+          "url": "https://www.youtube.com/watch?v=1GaR-a9TWYM",
+          "duration": "1:33"
+        },
+        {
+          "name": "門框胸肌伸展",
+          "en": "Doorway Pec Stretch",
+          "kind": "stretch",
+          "target": "胸大肌、胸小肌",
+          "dose": "低/中/高三個手肘高度各 30 秒",
+          "title": "Doorway Pec and Shoulder Stretch with Dr. Raz",
+          "channel": "Center For Total Back Care",
+          "url": "https://www.youtube.com/watch?v=Dmm8_S23I74",
+          "duration": "1:29"
+        },
+        {
+          "name": "箱式趴姿闊背肌伸展",
+          "en": "Box Puppy Dog Stretch",
+          "kind": "stretch",
+          "target": "闊背肌、胸椎伸展",
+          "dose": "30–45 秒 × 3 次",
+          "title": "Cooldown 8 - The Box Puppy dog stretch to open the lats, pecs and upper spine",
+          "channel": "Mark Wildman",
+          "url": "https://www.youtube.com/watch?v=1Jfra8cWR0M",
+          "duration": "4:03"
+        },
+        {
+          "name": "側躺開書式胸椎旋轉",
+          "en": "Open Book Thoracic Rotation",
+          "kind": "stretch",
+          "target": "胸椎旋轉活動度、胸大肌",
+          "dose": "每側 8–10 次，末端停留 3 秒",
+          "title": "Open Books (Sidelying Thoracic Rotation)",
+          "channel": "Revival Performance Physical Therapy",
+          "url": "https://www.youtube.com/watch?v=rDviWORCWEw",
+          "duration": "1:36"
+        },
+        {
+          "name": "貓牛式",
+          "en": "Cat-Cow",
+          "kind": "stretch",
+          "target": "胸腰椎屈曲伸展活動度",
+          "dose": "緩慢 10 次循環，配合呼吸",
+          "title": "How to Do a Cat Cow Stretch: A Guide from Physical Therapists",
+          "channel": "Hinge Health",
+          "url": "https://www.youtube.com/watch?v=1Y0YjXS9sKI",
+          "duration": "1:03"
+        },
+        {
+          "name": "提肩胛肌伸展",
+          "en": "Levator Scapulae Stretch",
+          "kind": "stretch",
+          "target": "提肩胛肌",
+          "dose": "每側 30 秒 × 3 次",
+          "title": "Stretching for Pain Relief - Levator Scapulae",
+          "channel": "NAT Global Campus",
+          "url": "https://www.youtube.com/watch?v=EbzPCfIH9f0",
+          "duration": "2:56"
+        },
+        {
+          "name": "長凳胸椎伸展",
+          "en": "Bench Thoracic Extension Stretch",
+          "kind": "stretch",
+          "target": "闊背肌、胸椎伸展",
+          "dose": "30 秒 × 3 次，配合深呼吸下沉",
+          "title": "The Bench Stretch - The Ultimate Lat and Thoracic Spine Mobility Exercise",
+          "channel": "The Barbell Physio",
+          "url": "https://www.youtube.com/watch?v=6Fc0u9xPkL8",
+          "duration": "1:07"
+        },
+        {
+          "name": "收下巴（頸深屈肌啟動）",
+          "en": "Chin Tuck",
+          "kind": "train",
+          "target": "頸深屈肌",
+          "dose": "停 5 秒 × 10 次 × 3 組",
+          "title": "You're Doing Chin Tucks WRONG | Physical Therapist Teaches The Correct Way",
+          "channel": "Rehab and Revive",
+          "url": "https://www.youtube.com/watch?v=KqR1EoEmq9c",
+          "duration": "3:31"
+        },
+        {
+          "name": "俯臥 Y 字上抬",
+          "en": "Prone Y Raise (Lower Trap Activation)",
+          "kind": "train",
+          "target": "下斜方肌",
+          "dose": "10–12 次 × 3 組，頂端停 2 秒",
+          "title": "Improve Your Lower Trap Activation",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=r7ZSEd0E908",
+          "duration": "6:06"
+        },
+        {
+          "name": "彈力帶擴胸",
+          "en": "Band Pull-Apart",
+          "kind": "train",
+          "target": "菱形肌、中斜方肌、後三角肌",
+          "dose": "15 次 × 3 組",
+          "title": "Band Pull Aparts (Without Neck or Shoulder Pain)",
+          "channel": "Sports Rehab Expert",
+          "url": "https://www.youtube.com/watch?v=mHWlgqPvyxI",
+          "duration": "4:56"
+        },
+        {
+          "name": "牆天使",
+          "en": "Wall Angel",
+          "kind": "train",
+          "target": "中下斜方肌、前鋸肌、胸椎伸展控制",
+          "dose": "8–10 次 × 3 組，全程腰不離牆",
+          "title": "How to Perform Wall Angel for Tight Upper Back",
+          "channel": "Vive Health",
+          "url": "https://www.youtube.com/watch?v=1UU4VvklQ44",
+          "duration": "1:18"
+        },
+        {
+          "name": "面拉",
+          "en": "Face Pull",
+          "kind": "train",
+          "target": "後三角肌、中斜方肌、外旋肌群",
+          "dose": "12–15 次 × 3 組",
+          "title": "STOP F*cking Up Face Pulls (PROPER FORM!)",
+          "channel": "ATHLEAN-X™",
+          "url": "https://www.youtube.com/watch?v=ljgqer1ZpXg",
+          "duration": "6:22"
+        },
+        {
+          "name": "單臂啞鈴划船",
+          "en": "Single-Arm Dumbbell Row",
+          "kind": "train",
+          "target": "闊背肌、菱形肌、中斜方肌（功能性整合）",
+          "dose": "每側 8–10 次 × 3 組",
+          "title": "STOP F*cking Up Dumbbell Rows (PROPER FORM!)",
+          "channel": "ATHLEAN-X™",
+          "url": "https://www.youtube.com/watch?v=gfUg6qWohTk",
+          "duration": "4:59"
+        }
+      ]
+    },
+    {
+      "id": "ch5-u2",
+      "name": "肋骨外翻",
+      "type": "posture",
+      "assessment": "仰躺屈膝雙腳踩地，雙手指腹摸住兩側下肋緣（第 8–10 肋）。陽性：(1) 下肋緣明顯上翹外突，指尖可輕易插進肋弓下方、肋骨背側離地；(2) 慢慢吐氣到底時肋廓無法下沉內收、肋弓夾角仍大於 90 度；(3) 吸氣時只見胸廓整體上抬、下肋往前外側頂出，而非往側方與後方擴張；(4) 雙手上舉過頭時下肋立刻彈起、腰椎離地形成拱橋。核心問題是橫膈膜失去圓頂位置（Zone of Apposition 消失）、腹內壓建立不起來，不是腹肌力量不夠——一味練捲腹只會讓外翻更嚴重。處方順序必須是「先重建呼吸與橫膈膜位置，再訓練核心」。",
+      "tight": [
+        "胸腰段豎脊肌",
+        "闊背肌",
+        "腰方肌",
+        "髂腰肌",
+        "肋間外肌",
+        "斜角肌",
+        "胸鎖乳突肌"
+      ],
+      "weak": [
+        "腹內斜肌",
+        "腹橫肌",
+        "橫膈膜",
+        "腹外斜肌前下束",
+        "前鋸肌下段",
+        "臀大肌",
+        "膕旁肌"
+      ],
+      "lesson": {
+        "title": "肋骨外翻影響核心訓練：呼吸矯正＋核心肌群訓練教學｜啾c物理治療師",
+        "channel": "啾c物理治療師",
+        "url": "https://www.youtube.com/watch?v=-H75tY3fYAw",
+        "duration": "7:52",
+        "why": "繁中物理治療師從肋骨外翻的呼吸機轉切入，直接點出「先矯正呼吸、再訓練核心」的順序，與本單元 PRI 導向的處方邏輯完全一致，示範清楚且不販賣速成。"
+      },
+      "drills": [
+        {
+          "name": "胸腰段豎脊肌滾筒放鬆",
+          "en": "Thoracolumbar Erector Spinae Foam Roll",
+          "kind": "release",
+          "target": "胸腰段豎脊肌",
+          "dose": "上下慢滾 60–90 秒，痛點停留深呼吸 3 次",
+          "title": "How To Foam Roll Your Lower Back The RIGHT Way! [BETTER RESULTS]",
+          "channel": "Tone and Tighten",
+          "url": "https://www.youtube.com/watch?v=Orfqe-CQIZo",
+          "duration": "7:26"
+        },
+        {
+          "name": "闊背肌滾筒放鬆",
+          "en": "Latissimus Dorsi Foam Roll",
+          "kind": "release",
+          "target": "闊背肌",
+          "dose": "每側 60 秒，配合長吐氣",
+          "title": "Foam Rolling the Latissimus Dorsi",
+          "channel": "Psoas Massage + Bodywork",
+          "url": "https://www.youtube.com/watch?v=h8c9GGzeyKs",
+          "duration": "2:43"
+        },
+        {
+          "name": "腰方肌按摩球放鬆",
+          "en": "Quadratus Lumborum Lacrosse Ball Release",
+          "kind": "release",
+          "target": "腰方肌",
+          "dose": "每側 60–90 秒，壓住後緩慢吸吐 5 回合",
+          "title": "QL Mobilization with Lacrosse Ball for Low Back Pain",
+          "channel": "Physio Room Co",
+          "url": "https://www.youtube.com/watch?v=pTAwn3alfnA",
+          "duration": "2:23"
+        },
+        {
+          "name": "橫膈膜與肋弓下緣徒手放鬆",
+          "en": "Diaphragm / Costal Margin Self-Release",
+          "kind": "release",
+          "target": "橫膈膜、肋弓下緣附著點",
+          "dose": "指腹輕勾肋弓下緣，配合吐氣往內下推，每側 10 次呼吸",
+          "title": "How to release the diaphragm properly!",
+          "channel": "Osteo and Physio",
+          "url": "https://www.youtube.com/watch?v=wIeOZwv4RQI",
+          "duration": "2:25"
+        },
+        {
+          "name": "深蹲呼吸闊背肌伸展",
+          "en": "Deep Squat Breathing with Lat Stretch",
+          "kind": "stretch",
+          "target": "闊背肌、胸腰筋膜、後側肋廓",
+          "dose": "5–8 次深長呼吸，每次吸氣時肋廓往後方擴張",
+          "title": "EricCressey.com: Deep Squat Breathing with Lat Stretch",
+          "channel": "Eric Cressey",
+          "url": "https://www.youtube.com/watch?v=rwN5u_psGIc",
+          "duration": "2:33"
+        },
+        {
+          "name": "半跪姿髖屈肌伸展（骨盆後傾版）",
+          "en": "Half-Kneeling Hip Flexor Stretch with Posterior Pelvic Tilt",
+          "kind": "stretch",
+          "target": "髂腰肌、股直肌",
+          "dose": "每側 30 秒 × 3 次，全程維持骨盆後傾、肋骨不彈起",
+          "title": "Bulletproof Step-by-step Guide to the Half Kneeling Hip Flexor Stretch\" [stretching advice]",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=gqoPYLUgP48",
+          "duration": "1:00"
+        },
+        {
+          "name": "腰方肌伸展",
+          "en": "Quadratus Lumborum Stretch",
+          "kind": "stretch",
+          "target": "腰方肌",
+          "dose": "每側 30 秒 × 2 次",
+          "title": "The Quadratus Lumborum Stretch",
+          "channel": "Psoas Massage + Bodywork",
+          "url": "https://www.youtube.com/watch?v=m-U4X9R4JDo",
+          "duration": "1:43"
+        },
+        {
+          "name": "側彎肋間肌伸展",
+          "en": "Side-Bending Rib / Intercostal Stretch",
+          "kind": "stretch",
+          "target": "肋間肌、側腹筋膜、橫膈膜側緣",
+          "dose": "每側 5 次深呼吸，吸氣往被拉長側的肋間送氣",
+          "title": "Side-bending Rib Release - Open Up Ribs & Trunk, Stretch Diaphragm for Improved Breathing & Mobility",
+          "channel": "Dr. Jess Harvey, Osteopath & Health Coach",
+          "url": "https://www.youtube.com/watch?v=w2ezNt8exMY",
+          "duration": "1:51"
+        },
+        {
+          "name": "90/90 髖橋氣球呼吸",
+          "en": "90/90 Hip Lift with Balloon (PRI)",
+          "kind": "train",
+          "target": "腹內斜肌、腹橫肌、橫膈膜、膕旁肌",
+          "dose": "4–5 次吹氣循環 × 3 組（吐到底後停 3 秒再吸）",
+          "title": "90-90 Hip Lift with Balloon",
+          "channel": "PRI Postural Restoration Institute",
+          "url": "https://www.youtube.com/watch?v=4GoqjoEXaAw",
+          "duration": "3:53"
+        },
+        {
+          "name": "四足跪姿提腹",
+          "en": "All-Four Belly Lift (PRI)",
+          "kind": "train",
+          "target": "腹橫肌、腹內斜肌、前鋸肌",
+          "dose": "5 次呼吸 × 3 組，維持上背圓、肋骨往骨盆收",
+          "title": "Modified All Four Belly Lift - A Postural Restoration Institute® Technique",
+          "channel": "Lucy Hendricks",
+          "url": "https://www.youtube.com/watch?v=QfggtfozqH4",
+          "duration": "1:33"
+        },
+        {
+          "name": "死蟲式（吐氣下肋收攏）",
+          "en": "Dead Bug with Exhale",
+          "kind": "train",
+          "target": "腹直肌、腹內外斜肌（抗伸展）",
+          "dose": "每側 8 下 × 3 組，伸腿時同步長吐氣、下背不離地",
+          "title": "核心訓練：「死蟲式deadbug」",
+          "channel": "全人物理治療所",
+          "url": "https://www.youtube.com/watch?v=xZhwA0lgIs8",
+          "duration": "3:51"
+        },
+        {
+          "name": "前鋸肌牆面推滑（過頭進階）",
+          "en": "Serratus Anterior Wall Slide / Overhead Progression",
+          "kind": "train",
+          "target": "前鋸肌下段",
+          "dose": "10 下 × 3 組，全程肋骨不外翻",
+          "title": "Advanced Serratus Anterior Exercises: Improve your Overhead Reach",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=UWYpjtYwaXg",
+          "duration": "7:12"
+        },
+        {
+          "name": "站姿靠牆前伸（功能性整合）",
+          "en": "Standing Wall Supported Reach (PRI)",
+          "kind": "train",
+          "target": "腹內斜肌、腹橫肌（站姿功能性整合）",
+          "dose": "5 次呼吸 × 3 組，作為 90/90 躺姿轉移到直立的銜接動作",
+          "title": "Standing Wall Supported Reach Tutorial | A Postural Restoration Institute® Technique",
+          "channel": "FitFx Training",
+          "url": "https://www.youtube.com/watch?v=jzdu8AtvS_A",
+          "duration": "0:55"
+        }
+      ]
+    },
+    {
+      "id": "ch5-u3",
+      "name": "富貴包",
+      "type": "posture",
+      "assessment": "站姿側面觀察 C7–T1 交界（CT junction）是否有明顯隆起，並用三步驟區分「軟組織／脂肪堆積型」與「骨性後凸型」——這是本單元最關鍵的一步，因為兩者對運動的反應完全不同。(1) 放鬆姿勢測試：趴姿把額頭墊在手上、頸部完全放鬆，或仰躺讓頭自然後仰；若隆起明顯變小、變軟、輪廓消失，偏向軟組織／脂肪堆積；若形狀與高度幾乎不變，代表底下是骨頭（結構性 C7–T1 kyphosis）。(2) 徒手觸診：用拇指與食指捏起隆起處，能捏起一層可推動、可滑動、按壓不痛、質地像脂肪的軟墊者為脂肪墊；直接摸到堅硬、無法推動、與棘突連續的骨性突起，且要按到周邊肌肉才痠者為骨性後凸。(3) 姿勢改變測試：請對方主動挺胸、收下巴、把胸椎伸展開，若隆起明顯下降代表以姿勢／肌肉張力為主，運動介入效果好；若挺胸後隆起幾乎不動，代表已有結構性椎體楔形變或骨贅，運動只能改善周邊症狀與外觀比例，難以「消掉」。同時檢查是否伴隨頭部前移（耳垂落在肩峰前方 > 2.5 公分）、上胸椎後凸增加、肩胛前傾。臨床重點：脂肪／軟組織堆積型（尤其合併肥胖、久坐、內分泌因素）對運動反應有限，運動可改善頸胸活動度、疼痛與頭部前移，但脂肪墊本身需靠整體體脂下降才會縮小——這一點務必事先與學員說清楚，避免期待落差。若隆起短期內快速變大、伴隨神經症狀、夜間痛或體重驟變，應轉介醫療評估（排除脂肪瘤、庫欣氏症候群、脊椎病變）。",
+      "tight": [
+        "上斜方肌",
+        "提肩胛肌",
+        "枕下肌群",
+        "頭夾肌／頸夾肌",
+        "胸鎖乳突肌",
+        "胸小肌",
+        "胸大肌"
+      ],
+      "weak": [
+        "頸深屈肌（頸長肌、頭長肌）",
+        "深層頸伸肌（頸多裂肌、頸半棘肌）",
+        "中斜方肌",
+        "下斜方肌",
+        "菱形肌",
+        "前鋸肌"
+      ],
+      "lesson": {
+        "title": "脖子後面腫一坨，到底什麼是富貴包？",
+        "channel": "三個字SunGuts",
+        "url": "https://www.youtube.com/watch?v=xlwWRKVnE0A",
+        "duration": "8:01",
+        "why": "繁中物理治療背景頻道最貼題的一支，直接說明富貴包的成因並區分脂肪堆積與骨性後凸，同時點出「不是靠敲打按摩就會消」的期待管理，正好對應本單元 assessment 的核心分辨邏輯。"
+      },
+      "drills": [
+        {
+          "name": "上斜方肌按摩球放鬆",
+          "en": "Upper Trapezius Ball Release",
+          "kind": "release",
+          "target": "上斜方肌",
+          "dose": "每側 60–90 秒，找到痛點停留深呼吸 5 次",
+          "title": "Trigger Point Release with a Tennis Ball | Upper Trap, Levator Scapulae and Mid Trap/Rhomboids",
+          "channel": "Movement & Function",
+          "url": "https://www.youtube.com/watch?v=Gx-LM_G782I",
+          "duration": "6:25"
+        },
+        {
+          "name": "提肩胛肌與肩胛內側按摩球放鬆",
+          "en": "Levator Scapulae & Medial Scapula Ball Release",
+          "kind": "release",
+          "target": "提肩胛肌、菱形肌附著點",
+          "dose": "每側 60–90 秒，靠牆用球滾動找痛點",
+          "title": "肩胛骨內痠痛，如何用按摩球放鬆全解析！",
+          "channel": "三個字SunGuts",
+          "url": "https://www.youtube.com/watch?v=jOXTpr2qStY",
+          "duration": "7:39"
+        },
+        {
+          "name": "枕下肌群網球放鬆",
+          "en": "Suboccipital Release with Tennis Balls",
+          "kind": "release",
+          "target": "枕下肌群",
+          "dose": "仰躺 90–120 秒，配合小幅點頭 8–10 次",
+          "title": "Trigger Point Release for SUBOCCIPITALS | Best Technique with Tennis Balls",
+          "channel": "Movement & Function",
+          "url": "https://www.youtube.com/watch?v=Zf05OOHAV9M",
+          "duration": "7:47"
+        },
+        {
+          "name": "上胸椎（CT junction）滾筒放鬆",
+          "en": "Upper Thoracic Foam Roller Release",
+          "kind": "release",
+          "target": "上胸椎豎脊肌、頸胸交界筋膜",
+          "dose": "T1–T5 區段來回滾 60–90 秒，痛點停留 20 秒",
+          "title": "Foam Roller for Shoulder and Upper Thoracic Mobility",
+          "channel": "Physical Therapy & Hand Clinic of Hillsboro",
+          "url": "https://www.youtube.com/watch?v=EUt9y48Qeyk",
+          "duration": "7:27"
+        },
+        {
+          "name": "提肩胛肌伸展",
+          "en": "Levator Scapulae Stretch",
+          "kind": "stretch",
+          "target": "提肩胛肌",
+          "dose": "每側 30 秒 × 3 組，同側手固定肩胛避免代償",
+          "title": "Levator Scapulae Stretch - Eastside Wellness",
+          "channel": "Eastside Wellness Chiropractic",
+          "url": "https://www.youtube.com/watch?v=kAyltDVglKA",
+          "duration": "1:51"
+        },
+        {
+          "name": "上斜方肌伸展",
+          "en": "Upper Trapezius Stretch",
+          "kind": "stretch",
+          "target": "上斜方肌",
+          "dose": "每側 30 秒 × 3 組，坐姿手扶椅子下壓固定肩膀",
+          "title": "NUH Physiotherapy - Upper Trapezius Stretch",
+          "channel": "National University Hospital (NUH) Singapore",
+          "url": "https://www.youtube.com/watch?v=uwLcpgIqpnU",
+          "duration": "2:25"
+        },
+        {
+          "name": "胸大肌與胸小肌門框伸展",
+          "en": "Doorway Pec Stretch",
+          "kind": "stretch",
+          "target": "胸大肌、胸小肌",
+          "dose": "高、中、低三個角度各 30 秒，每側 1 輪",
+          "title": "迅速緩解胸前肌肉緊繃，最適合上班族的伸展運動，改善駝背和肩頸痠痛！｜羅伯特物理治療",
+          "channel": "羅伯特物理治療",
+          "url": "https://www.youtube.com/watch?v=a0UqYB_6i_E",
+          "duration": "1:27"
+        },
+        {
+          "name": "胸椎伸展活動度操",
+          "en": "Thoracic Extension Mobility Drill",
+          "kind": "stretch",
+          "target": "胸椎（T1–T8）伸展與旋轉活動度",
+          "dose": "每個動作 8–10 次 × 2 組，動作末端停 2 秒",
+          "title": "胸椎活動度不足？改善駝背圓肩、告別腰酸背痛｜啾c物理治療師",
+          "channel": "啾c物理治療師",
+          "url": "https://www.youtube.com/watch?v=h6886T-9xWc",
+          "duration": "6:11"
+        },
+        {
+          "name": "收下巴（頸深屈肌啟動）",
+          "en": "Chin Tuck / Deep Neck Flexor Activation",
+          "kind": "train",
+          "target": "頸深屈肌（頸長肌、頭長肌）",
+          "dose": "維持 5–10 秒 × 10 下 × 2 組，全程不可聳肩、不可用力低頭",
+          "title": "正確的縮下巴運動，改善脖子痠痛｜羅伯特物理治療",
+          "channel": "羅伯特物理治療",
+          "url": "https://www.youtube.com/watch?v=rvsoyJrKVSA",
+          "duration": "3:13"
+        },
+        {
+          "name": "深層頸伸肌訓練",
+          "en": "Deep Neck Extensor Strengthening",
+          "kind": "train",
+          "target": "頸多裂肌、頸半棘肌等深層頸伸肌",
+          "dose": "等長維持 5–10 秒 × 10 下 × 2 組，先收下巴再抗阻",
+          "title": "Neck extensor strengthening",
+          "channel": "Canadian Chiropractic Guideline Initiative (CCGI)",
+          "url": "https://www.youtube.com/watch?v=HbLiEFFH2Sg",
+          "duration": "1:49"
+        },
+        {
+          "name": "IYT 俯臥背肌訓練",
+          "en": "Prone I-Y-T Raises",
+          "kind": "train",
+          "target": "中斜方肌、下斜方肌、菱形肌",
+          "dose": "I / Y / T 各 8–10 下 × 2–3 組，頂點停 2 秒",
+          "title": "棒球選手都在練的「IYT背肌訓練」，透過正確控制肩胛骨跟背肌，空手就能強化背部，改善圓肩、駝背、肩頸痠痛。",
+          "channel": "全人物理治療所",
+          "url": "https://www.youtube.com/watch?v=CBbc3TQHUMU",
+          "duration": "3:15"
+        },
+        {
+          "name": "彈力帶面拉（功能性整合）",
+          "en": "Band Face Pull",
+          "kind": "train",
+          "target": "後三角肌、中／下斜方肌、外旋肌群（站姿抗阻整合）",
+          "dose": "12–15 下 × 3 組，收下巴且不聳肩，末端外旋停 1 秒",
+          "title": "Face Pull 到底怎麼做才有效？四大關鍵讓你的訓練成效再進化！｜肩膀訓練、後三角肌、南瓜肩",
+          "channel": "林勁瑋 x 大腦優先教練學院",
+          "url": "https://www.youtube.com/watch?v=qvLn2LEGvd4",
+          "duration": "6:14"
+        }
+      ]
+    },
+    {
+      "id": "ch5-u4",
+      "name": "胸椎過直",
+      "type": "posture",
+      "assessment": "胸椎過直（Flat Back / Thoracic Hypokyphosis）是駝背的反向問題：胸椎活動度一樣不足，但卡住的方向相反——胸椎被鎖在「伸展」位，缺的是屈曲。因此常見的「大量開胸」處方在這裡是錯的：滾筒開胸、Open Book 過度伸展、俯臥挺身式的胸椎伸展只會把已經過度伸展的胸段推得更遠，加重上背豎脊肌張力、肋廓前推與翼狀肩胛。本單元方向必須反過來——恢復胸椎屈曲活動度與呼吸機制：後側肋廓擴張、前鋸肌前推讓肩胛貼合胸廓、脊柱分節屈曲控制。可操作檢查（任一陽性即傾向）：(1) 仰躺平躺測試——躺在硬地板上，正常上背與地面之間應有可插入手掌的自然弧度；若上背幾乎整片貼地、與地面無間隙，且下巴被推得往上抬，即為陽性。(2) 靠牆站立測試——後腦杓、上背、臀部貼牆，觀察肩胛骨：若肩胛骨內緣異常突起呈翼狀（winging）、無法平貼胸廓，且胸骨明顯前凸（軍人式挺胸），為陽性。(3) 貓式測試——四足跪姿主動拱背，正常上背應能拱成平滑弧線；若上背段完全拱不起來、呈一條直線甚至凹陷，只有腰段在動，即為胸椎屈曲活動度不足。(4) 呼吸測試——雙手環抱後側肋廓吸氣，若只感覺胸口向前上抬、後側肋廓幾乎不擴張，代表呼吸機制被伸展姿勢鎖死。練習原則：放鬆與伸展一律不做胸椎伸展方向；訓練以前鋸肌與前側核心把肋廓「拉回來」為主。若同時合併腰椎過直／骨盆後傾（整體 Flat Back），需一併處理，不可只練胸椎。",
+      "tight": [
+        "胸段豎脊肌",
+        "脊椎旁肌群（多裂肌、半棘肌）",
+        "菱形肌",
+        "中/下斜方肌",
+        "闊背肌",
+        "腰方肌"
+      ],
+      "weak": [
+        "前鋸肌",
+        "腹直肌",
+        "腹內斜肌／腹外斜肌",
+        "腹橫肌",
+        "胸小肌（過度拉長）",
+        "橫膈膜（後側肋廓呼吸控制）"
+      ],
+      "lesson": {
+        "title": "How to Fix A Flat Thoracic Spine",
+        "channel": "PT Growth Academy",
+        "url": "https://www.youtube.com/watch?v=fyOSM_rz7c4",
+        "duration": "7:40",
+        "why": "少數直接針對「胸椎過直」而非駝背的物理治療教學；明確說明為什麼此族群不該再做胸椎伸展，而要恢復屈曲與呼吸機制，長度精簡且動作可直接落地。"
+      },
+      "drills": [
+        {
+          "name": "胸段豎脊肌滾筒放鬆",
+          "en": "Thoracic Erector Spinae Foam Roll",
+          "kind": "release",
+          "target": "胸段豎脊肌、脊椎旁肌群",
+          "dose": "沿胸段上下滾動 60–90 秒，痠點停留深呼吸 3–5 次；只做滾壓，不要把身體往後仰做胸椎伸展",
+          "title": "Self Myofascial Release: Foam Rolling-  Thoracic Spine",
+          "channel": "National Academy of Sports Medicine (NASM)",
+          "url": "https://www.youtube.com/watch?v=NS73eSohTbc",
+          "duration": "1:55"
+        },
+        {
+          "name": "菱形肌按摩球放鬆",
+          "en": "Rhomboid Massage Ball Release",
+          "kind": "release",
+          "target": "菱形肌、中斜方肌",
+          "dose": "每側 60–90 秒，靠牆或仰躺壓球，找到痠點停留深呼吸",
+          "title": "每日三分鐘處理肩胛骨痛，教你如何用按摩球有效放鬆菱形肌｜凝聚物理治療中心 Together Physio",
+          "channel": "Together Physio骨專科物理治療",
+          "url": "https://www.youtube.com/watch?v=XRWpq_aXTbE",
+          "duration": "2:28"
+        },
+        {
+          "name": "闊背肌滾筒放鬆",
+          "en": "Latissimus Dorsi Foam Roll",
+          "kind": "release",
+          "target": "闊背肌、大圓肌",
+          "dose": "每側側躺滾壓 60 秒；闊背肌張力會把胸椎拉向伸展並下壓肋廓，需先鬆開",
+          "title": "Self Myofascial Release: Foam Rolling - Latissimus Dorsi",
+          "channel": "National Academy of Sports Medicine (NASM)",
+          "url": "https://www.youtube.com/watch?v=1GaR-a9TWYM",
+          "duration": "1:33"
+        },
+        {
+          "name": "貓式分節拱背（胸椎屈曲）",
+          "en": "Cat-Camel (Thoracic Flexion Emphasis)",
+          "kind": "stretch",
+          "target": "胸椎屈曲活動度（胸段豎脊肌、脊椎旁肌）",
+          "dose": "10–12 次 × 2 組。只做「貓（拱背）」端並停留 3–5 秒，牛式僅回到中立即可，不要做到底",
+          "title": "Exercise for Spine Mobility | Cat-Camel",
+          "channel": "Elite Chiropractic and Performance",
+          "url": "https://www.youtube.com/watch?v=8qrClhwJdyE",
+          "duration": "2:52"
+        },
+        {
+          "name": "嬰兒式後側肋廓呼吸",
+          "en": "Child's Pose Posterior Rib Expansion Breathing",
+          "kind": "stretch",
+          "target": "後側肋廓擴張、橫膈膜、胸段脊椎旁肌",
+          "dose": "5–8 次呼吸 × 2–3 組，雙手放後側肋廓給觸覺回饋，吸氣把手往後推",
+          "title": "Child's Pose for Back Body Expansion",
+          "channel": "Core Exercise Solutions",
+          "url": "https://www.youtube.com/watch?v=b7desBkhI8g",
+          "duration": "6:14"
+        },
+        {
+          "name": "穿針式胸椎旋轉",
+          "en": "Thread the Needle",
+          "kind": "stretch",
+          "target": "胸椎旋轉活動度、菱形肌、後三角肌",
+          "dose": "每側 8–10 次，末端停留 3 秒；穿手時讓上背順勢微微拱起，不要用伸展代償",
+          "title": "How to Do a Thread the Needle Stretch: A Guide from Physical Therapists",
+          "channel": "Hinge Health",
+          "url": "https://www.youtube.com/watch?v=SkQhKf74nZk",
+          "duration": "1:14"
+        },
+        {
+          "name": "四足跪姿前鋸肌前推",
+          "en": "Quadruped Serratus Push-Up Plus",
+          "kind": "train",
+          "target": "前鋸肌（肩胛前伸、貼合胸廓）",
+          "dose": "12–15 次 × 3 組，頂端停 2 秒把上背推成微拱；手肘保持打直，避免用手肘彎曲做假動作",
+          "title": "Quadruped Scapular Push-Up",
+          "channel": "Elite Performance Institute",
+          "url": "https://www.youtube.com/watch?v=WJraJbTJY_E",
+          "duration": "1:00"
+        },
+        {
+          "name": "靠牆前鋸肌滑行",
+          "en": "Serratus Anterior Wall Slide",
+          "kind": "train",
+          "target": "前鋸肌、下斜方肌上旋控制",
+          "dose": "10–12 次 × 3 組，前臂持續推牆、上滑時肋廓下沉不要挺胸",
+          "title": "How to Perform a Serratus Anterior Wall Slide for Serratus Anterior Activation",
+          "channel": "Momenta Chiropractic",
+          "url": "https://www.youtube.com/watch?v=bYAvj2rFD5s",
+          "duration": "1:55"
+        },
+        {
+          "name": "皮拉提斯分節捲起",
+          "en": "Pilates Roll-Up (Segmental Spinal Articulation)",
+          "kind": "train",
+          "target": "脊柱分節屈曲控制、腹直肌、腹內外斜肌（功能性整合）",
+          "dose": "6–8 次 × 2–3 組，一節一節捲起／放下各 4 秒；做不到可先屈膝或抓大腿輔助",
+          "title": "How To Do The Pilates Roll Up Exercise - For Anyone!",
+          "channel": "Jessica Valant",
+          "url": "https://www.youtube.com/watch?v=HB9ex7zlpcE",
+          "duration": "6:03"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,363 @@
+{
+ "chapter": "CH6",
+ "title": "腰椎",
+ "units": [
+  {
+   "id": "ch6-u1",
+   "name": "腰椎過度前拱",
+   "en": "Lumbar Hyperlordosis / Anterior Pelvic Tilt",
+   "type": "posture",
+   "assessment": "① 仰臥屈膝躺平，把手掌從腰下空隙滑進去 —— 正常只能通過一個手掌的厚度；若整隻手、甚至半個拳頭都能輕鬆穿過並且左右滑動，即為陽性。② 靠牆站立（後腦杓、上背、臀部三點貼牆、腳跟離牆約 5 公分），腰與牆的縫隙超過一個手掌厚度為陽性。③ 側面照鏡或請人拍照：骨盆前上棘（ASIS，骨盆前方那兩顆突起）明顯低於恥骨聯合，骨盆像水盆往前倒水。④ Thomas test（湯瑪士測試）：仰躺於床緣，雙手抱一側膝蓋到胸口，觀察對側腿 —— 大腿浮起離床＝髂腰肌緊；小腿無法自然垂到 90 度＝股直肌緊；大腿往外飄＝闊筋膜張肌緊。這是下交叉症候群的典型表現：前側髖屈肌群與腰豎脊肌過度緊繃，後側臀大肌與前側腹肌群同時無力。",
+   "tight": [
+    "髂腰肌",
+    "股直肌",
+    "闊筋膜張肌",
+    "腰豎脊肌",
+    "腰方肌",
+    "內收肌群"
+   ],
+   "weak": [
+    "臀大肌",
+    "腹橫肌",
+    "腹內外斜肌",
+    "腹直肌",
+    "膕旁肌"
+   ],
+   "lesson": {
+    "title": "腰椎弧度過大造成腰痛？每天10分鐘改善下背痛｜啾c物理治療師",
+    "channel": "啾c物理治療師",
+    "url": "https://www.youtube.com/watch?v=1Jqt9SNXLyA",
+    "duration": "8:39",
+    "why": "整支專講腰椎前凸過大本身（而非骨盆），把弧度過大與下背痛的關係、以及十分鐘的日常課表講完，正好對應本單元的主題邊界。"
+   },
+   "drills": [
+    {
+     "name": "髂腰肌自我放鬆",
+     "en": "Psoas / Iliopsoas Release",
+     "kind": "release",
+     "target": "髂腰肌（腰大肌＋髂肌）",
+     "dose": "每側 60–90 秒，呼吸放鬆下沉，不憋氣",
+     "title": "How To Fix A Tight Psoas Muscle In 30 Seconds (The Easy Way)",
+     "channel": "Bob & Brad",
+     "url": "https://www.youtube.com/watch?v=-tQtbPzK3mI",
+     "duration": "7:59"
+    },
+    {
+     "name": "大腿前側／股直肌滾筒放鬆",
+     "en": "Rectus Femoris & Quadriceps Foam Roll",
+     "kind": "release",
+     "target": "股直肌、股四頭肌",
+     "dose": "每側 60–90 秒，慢速來回並在酸點停留",
+     "title": "跟著物理治療師一起滾筒放鬆------大腿前側篇",
+     "channel": "安健維康物理治療所",
+     "url": "https://www.youtube.com/watch?v=DqJggKznshE",
+     "duration": "5:48"
+    },
+    {
+     "name": "腰方肌按摩球放鬆",
+     "en": "Quadratus Lumborum Ball Release",
+     "kind": "release",
+     "target": "腰方肌、腰豎脊肌",
+     "dose": "每側 60 秒，壓在肋骨下緣與骨盆之間的側腰",
+     "title": "在家一分鐘用按摩球深層放鬆腰方肌 | 吳子謙 物理治療師 | Together Physio",
+     "channel": "Together Physio骨專科物理治療",
+     "url": "https://www.youtube.com/watch?v=IJkPQ-lj8uw",
+     "duration": "2:04"
+    },
+    {
+     "name": "闊筋膜張肌放鬆與活化",
+     "en": "TFL Release & Mobilization",
+     "kind": "release",
+     "target": "闊筋膜張肌",
+     "dose": "每側放鬆 60 秒，接續影片的活動度動作各 8–10 下",
+     "title": "4 Tensor Fascia Latae (TFL) Exercises",
+     "channel": "Rehab Science",
+     "url": "https://www.youtube.com/watch?v=XkLCMXzWtGs",
+     "duration": "7:42"
+    },
+    {
+     "name": "內收肌群滾筒放鬆",
+     "en": "Adductor Foam Roll",
+     "kind": "release",
+     "target": "內收肌群（大腿內側）",
+     "dose": "每側 60 秒，俯臥將大腿內側橫放滾筒上",
+     "title": "How to foam roll your inner thigh (adductor muscles)",
+     "channel": "Upright Health",
+     "url": "https://www.youtube.com/watch?v=hSxQuAYlPrE",
+     "duration": "1:00"
+    },
+    {
+     "name": "半跪姿髂腰肌伸展（含骨盆後傾）",
+     "en": "Half-Kneeling Hip Flexor Stretch with Posterior Tilt",
+     "kind": "stretch",
+     "target": "髂腰肌",
+     "dose": "每側 30 秒 × 3 組；必須先把骨盆後捲再前推，否則只是拉到腰椎",
+     "title": "STOP Hip Flexor Stretches Unless You Do This!",
+     "channel": "Bob & Brad",
+     "url": "https://www.youtube.com/watch?v=q4B2hwUxILM",
+     "duration": "6:55"
+    },
+    {
+     "name": "沙發伸展（股直肌）",
+     "en": "Couch Stretch",
+     "kind": "stretch",
+     "target": "股直肌、髂腰肌",
+     "dose": "每側 60–90 秒，腰不可塌陷代償",
+     "title": "The Couch Stretch Done Correctly",
+     "channel": "Tom Morrison",
+     "url": "https://www.youtube.com/watch?v=d9pOjXCKGN8",
+     "duration": "3:48"
+    },
+    {
+     "name": "嬰兒式（腰豎脊肌延展）",
+     "en": "Child's Pose",
+     "kind": "stretch",
+     "target": "腰豎脊肌、胸腰筋膜",
+     "dose": "60–90 秒，配合深呼吸讓下背隨吸氣撐開",
+     "title": "Child's pose [low back stretch]",
+     "channel": "[P]rehab",
+     "url": "https://www.youtube.com/watch?v=q-_M3Cfqmj4",
+     "duration": "0:46"
+    },
+    {
+     "name": "腰方肌側彎伸展",
+     "en": "Quadratus Lumborum Stretch",
+     "kind": "stretch",
+     "target": "腰方肌",
+     "dose": "每側 30 秒 × 2–3 組",
+     "title": "Single BEST Quadratus Lumborum Stretch, By Far!",
+     "channel": "Bob & Brad",
+     "url": "https://www.youtube.com/watch?v=ePMGFaGu1Z4",
+     "duration": "7:00"
+    },
+    {
+     "name": "貓牛式（腰椎前後彎活動度）",
+     "en": "Cat-Cow",
+     "kind": "stretch",
+     "target": "腰豎脊肌、腰椎節段活動度",
+     "dose": "10–12 次來回，重點在感覺得到骨盆帶著腰椎捲動",
+     "title": "How to Do a Cat Cow Stretch: A Guide from Physical Therapists",
+     "channel": "Hinge Health",
+     "url": "https://www.youtube.com/watch?v=1Y0YjXS9sKI",
+     "duration": "1:03"
+    },
+    {
+     "name": "仰臥骨盆後傾",
+     "en": "Supine Posterior Pelvic Tilt",
+     "kind": "train",
+     "target": "腹橫肌、腹直肌下段（骨盆控制入門）",
+     "dose": "10 次 × 3 組，每次維持 5 秒；腰下空隙要能主動壓平",
+     "title": "How to Do a Supine Posterior Pelvic Tilt Exercise | MedBridge",
+     "channel": "Medbridge",
+     "url": "https://www.youtube.com/watch?v=Q59R9p4rzxw",
+     "duration": "0:57"
+    },
+    {
+     "name": "死蟲式（基礎）",
+     "en": "Dead Bug",
+     "kind": "train",
+     "target": "腹橫肌、腹斜肌（抗伸展核心）",
+     "dose": "每側 8–10 次 × 3 組；全程腰貼地，腰一離地就是超過能力",
+     "title": "You're Doing Dead Bugs WRONG! Fix This for Stronger Abs & a Bulletproof Core",
+     "channel": "Squat University",
+     "url": "https://www.youtube.com/watch?v=0XVbn86Btj0",
+     "duration": "8:39"
+    },
+    {
+     "name": "死蟲式進階變化",
+     "en": "Dead Bug Progressions",
+     "kind": "train",
+     "target": "腹橫肌、腹內外斜肌",
+     "dose": "從影片中挑 2 個比目前程度難一階的版本，每側 6–8 次 × 3 組",
+     "title": "Top 10 DEAD BUG Variations for Core Strength",
+     "channel": "Zack Henderson",
+     "url": "https://www.youtube.com/watch?v=Rl54xj0xR04",
+     "duration": "6:19"
+    },
+    {
+     "name": "90/90 呼吸髖抬",
+     "en": "90-90 Hip Lift with Balloon Breathing",
+     "kind": "train",
+     "target": "腹內外斜肌、腹橫肌、膕旁肌（骨盆後傾定位）",
+     "dose": "4–5 次呼吸循環 × 3 組；吐氣到底時肋骨下沉、尾骨微捲",
+     "title": "90-90 Hip Lift with Balloon",
+     "channel": "PRI Postural Restoration Institute",
+     "url": "https://www.youtube.com/watch?v=4GoqjoEXaAw",
+     "duration": "3:53"
+    },
+    {
+     "name": "臀橋（臀大肌啟動）",
+     "en": "Glute Bridge",
+     "kind": "train",
+     "target": "臀大肌",
+     "dose": "12–15 次 × 3 組；上抬時先夾臀再推，不要用腰硬拱起來",
+     "title": "How to Perform the Perfect Glute Bridge",
+     "channel": "Airrosti Rehab Centers",
+     "url": "https://www.youtube.com/watch?v=OUgsJ8-Vi0E",
+     "duration": "2:20"
+    },
+    {
+     "name": "前平板支撐（骨盆中立）",
+     "en": "Front Plank with Neutral Pelvis",
+     "kind": "train",
+     "target": "腹橫肌、腹斜肌、臀大肌（整合性抗伸展）",
+     "dose": "20–40 秒 × 3 組；先微微骨盆後傾夾臀再撐起，腰不可下沉",
+     "title": "How To Plank (Proper Form | Cues | Progressions)",
+     "channel": "E3 Rehab",
+     "url": "https://www.youtube.com/watch?v=A2b2EmIg0dA",
+     "duration": "4:00"
+    }
+   ]
+  },
+  {
+   "id": "ch6-u2",
+   "name": "腰椎過直",
+   "en": "Flat Lumbar / Lumbar Hypolordosis",
+   "type": "posture",
+   "assessment": "① 仰臥屈膝躺平，手掌幾乎塞不進腰下，整段腰椎貼平地面，即為腰椎過直。② 靠牆站立時腰與牆之間連手指都難以插入，同時臀部扁平、骨盆前上棘（ASIS）高於恥骨聯合，骨盆像水盆往後倒 —— 這是骨盆後傾合併腰椎過直。③ **鑑別關鍵：屈曲偏好測試**。做捲腹、抱膝到胸、坐姿駝背時「反而覺得舒服放鬆」，而做俯臥撐起（趴著用手撐起上半身、髖部貼地）時覺得緊、酸或卡住 —— 代表身體長期處於屈曲、伸展方向已被封鎖。④ 直膝抬腿測試：仰躺單腳伸直抬起，若抬不到 70 度且骨盆被拉著往後捲，代表膕旁肌過緊在把骨盆往後拉。\n\n**這一點務必講清楚：腰椎過直的人再做捲腹、骨盆後傾、抱膝到胸，是把已經過度屈曲的腰椎推得更遠，屬反效果。** 方向必須反過來 —— 恢復前凸（俯臥伸展、髖屈肌延展）與豎脊肌耐力；核心要練 McGill 的 curl-up（下背保持中立、只捲起頭頸與上胸），而不是把腰椎壓平的傳統仰臥起坐（sit-up）。",
+   "tight": [
+    "膕旁肌",
+    "臀大肌",
+    "腹直肌",
+    "腹外斜肌",
+    "背闊肌"
+   ],
+   "weak": [
+    "髂腰肌",
+    "腰豎脊肌",
+    "多裂肌",
+    "胸腰段伸肌"
+   ],
+   "lesson": {
+    "title": "骨盆歪斜是長期腰痛元凶！從骨盆後傾改善腰椎過直的完整訓練｜啾c物理治療師",
+    "channel": "啾c物理治療師",
+    "url": "https://www.youtube.com/watch?v=GjhWMuzT0a8",
+    "duration": "11:15",
+    "why": "繁中物理治療師頻道中極少數專門處理「腰椎過直＋骨盆後傾」的完整教學，講到為什麼這類人不該再壓平腰椎，並給出恢復前凸的訓練順序，正是本單元最需要釐清的觀念"
+   },
+   "drills": [
+    {
+     "name": "腿後肌群滾筒放鬆",
+     "en": "Hamstring Foam Roll",
+     "kind": "release",
+     "target": "膕旁肌（腿後肌群）",
+     "dose": "每側 60–90 秒，坐姿把大腿後側壓在滾筒上慢速滾動",
+     "title": "Foam Rolling Hamstrings: Dos, Don'ts & How To",
+     "channel": "Sports Injury Physio",
+     "url": "https://www.youtube.com/watch?v=jV9SSJ3OkcA",
+     "duration": "7:57"
+    },
+    {
+     "name": "臀大肌／深層臀部按摩球放鬆",
+     "en": "Glute & Piriformis Ball Release",
+     "kind": "release",
+     "target": "臀大肌、梨狀肌",
+     "dose": "每側 60–90 秒，坐在球上找到酸點停留",
+     "title": "Tennis Ball Self-Massage for Your Glutes and Piriformis",
+     "channel": "The Online Physiotherapist",
+     "url": "https://www.youtube.com/watch?v=l3flN43z-EQ",
+     "duration": "2:53"
+    },
+    {
+     "name": "背闊肌滾筒放鬆",
+     "en": "Latissimus Dorsi Foam Roll",
+     "kind": "release",
+     "target": "背闊肌",
+     "dose": "每側 60 秒；背闊肌緊會把胸腰段往屈曲拉，限制腰椎回到前凸",
+     "title": "Self Myofascial Release: Foam Rolling - Latissimus Dorsi",
+     "channel": "National Academy of Sports Medicine (NASM)",
+     "url": "https://www.youtube.com/watch?v=1GaR-a9TWYM",
+     "duration": "1:33"
+    },
+    {
+     "name": "胸椎伸展滾筒鬆動",
+     "en": "Thoracic Extension over Foam Roller",
+     "kind": "release",
+     "target": "胸椎伸展活動度、胸段豎脊肌",
+     "dose": "每個節段 5–8 次伸展，由下往上分 3 段做",
+     "title": "Thoracic Spine Mobilizations with Foam Roller",
+     "channel": "joshrenkens",
+     "url": "https://www.youtube.com/watch?v=SxQkVD0UQNg",
+     "duration": "6:07"
+    },
+    {
+     "name": "俯臥撐起伸展（McKenzie）",
+     "en": "McKenzie Prone Press-Up",
+     "kind": "stretch",
+     "target": "腹直肌、腹外斜肌（前側鏈延展）＋恢復腰椎前凸",
+     "dose": "10 次 × 3 組，每次頂點停 2 秒；髖部全程貼地、臀部放鬆",
+     "title": "How To: McKenzie Press Ups for Low Back Pain and Sciatica",
+     "channel": "ProCare Injury Specialists",
+     "url": "https://www.youtube.com/watch?v=kFZ8-rMItKk",
+     "duration": "4:25"
+    },
+    {
+     "name": "腿後肌群伸展（骨盆前傾版）",
+     "en": "Hamstring Stretch with Anterior Pelvic Tilt",
+     "kind": "stretch",
+     "target": "膕旁肌",
+     "dose": "每側 30 秒 × 3 組；務必從坐骨帶動骨盆前傾去拉，不可彎腰駝背拉",
+     "title": "膕旁肌伸展，久坐大腿後側緊繃縮短，想改善大腿後側柔軟度，原來拉筋秘訣是「坐骨」！分享如何正確拉長膕旁肌卻不傷害腰椎。",
+     "channel": "全人物理治療所",
+     "url": "https://www.youtube.com/watch?v=HD9hT2HhDs8",
+     "duration": "5:29"
+    },
+    {
+     "name": "鴿式（臀大肌伸展）",
+     "en": "Pigeon Stretch",
+     "kind": "stretch",
+     "target": "臀大肌、髖外旋肌群",
+     "dose": "每側 60–90 秒；前腳脛骨盡量平行身體前方",
+     "title": "Pigeon Stretch | Do It Right!",
+     "channel": "Tom Merrick",
+     "url": "https://www.youtube.com/watch?v=2msg4jdu0vk",
+     "duration": "4:08"
+    },
+    {
+     "name": "麥吉爾捲腹",
+     "en": "McGill Curl-Up",
+     "kind": "train",
+     "target": "腹直肌、腹斜肌（不壓平腰椎的核心練法）",
+     "dose": "每側手放法 10 秒 × 6-4-2 階梯組；一手墊在腰下維持自然前凸，只捲起頭頸與上胸",
+     "title": "How To Correctly Perform The McGill Modified Curl Up",
+     "channel": "Ryan Hollien",
+     "url": "https://www.youtube.com/watch?v=_tz9WGVH25g",
+     "duration": "5:54"
+    },
+    {
+     "name": "俯臥背伸展",
+     "en": "Prone Back Extension",
+     "kind": "train",
+     "target": "腰豎脊肌、多裂肌（伸肌耐力）",
+     "dose": "10 次 × 3 組，每次頂點停 3–5 秒；抬起幅度小而穩，不追求抬高",
+     "title": "Prone Back Extension",
+     "channel": "Functional Fitness VA",
+     "url": "https://www.youtube.com/watch?v=cIYeKqLqVVs",
+     "duration": "2:22"
+    },
+    {
+     "name": "側橋（側平板）",
+     "en": "Side Plank / Side Bridge",
+     "kind": "train",
+     "target": "腹斜肌、腰方肌、臀中肌（側向穩定，不需屈曲腰椎）",
+     "dose": "每側 20–30 秒 × 3 組；先做屈膝版，穩定後再進到直腿版",
+     "title": "How to do the perfect Side Plank and most common mistakes",
+     "channel": "Get Exercise Confident",
+     "url": "https://www.youtube.com/watch?v=rCxF2nG9vQ0",
+     "duration": "3:19"
+    },
+    {
+     "name": "髖鉸鏈",
+     "en": "Hip Hinge",
+     "kind": "train",
+     "target": "髖伸肌群 + 腰豎脊肌等長維持（功能整合）",
+     "dose": "12 次 × 3 組，可持棍棒貼三點確認腰椎全程維持自然前凸",
+     "title": "How to Hip Hinge (for Beginners) | Strength Training For Beginners Series",
+     "channel": "Dr. Carl Baird",
+     "url": "https://www.youtube.com/watch?v=Dn3GexXx228",
+     "duration": "4:11"
+    }
+   ]
+  }
+ ]
+}

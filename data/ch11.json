@@ -1,0 +1,328 @@
+{
+  "chapter": "CH11",
+  "title": "足踝",
+  "units": [
+    {
+      "id": "ch11-u1",
+      "name": "功能性扁平足",
+      "en": "Flexible Flatfoot / Pes Planus",
+      "type": "posture",
+      "assessment": "【功能性 vs 僵硬性鑑別，這是本單元最重要的一步】(1) 坐姿不承重時看內側足弓：坐著把腳輕放地面、不用力，若足弓明顯存在；一站起來承重立刻塌陷變平 —— 這是功能性（可塑性）扁平足，代表足弓結構還在，只是缺乏肌肉主動支撐，可以靠訓練改善。(2) Jack test（大腳趾背屈測試）：站姿把大腳趾往上扳，若足弓隨之拱起、絞盤機制（windlass）啟動 = 陽性。(3) Heel-rise test（踮腳尖測試）：雙腳站立踮起腳尖，若足弓重新出現、腳跟由外翻轉為內翻 = 陽性。(2)(3) 為陽性 → 功能性扁平足，適合本單元訓練。若踮腳尖或扳大腳趾時足弓完全不重現、足部僵硬不動 = 陰性 → 僵硬性（結構性）扁平足（可能是跗骨聯合、退化性後足僵硬、成人後天扁平足晚期），訓練效果有限，請先就醫評估。⚠️ 安全提醒：足部疼痛持續兩週以上不緩解、單側突然塌陷變形、或本身有糖尿病、周邊神經病變、感覺遲鈍者，請先就醫，不要自行訓練。",
+      "tight": ["腓腸肌", "比目魚肌", "腓骨長肌", "腓骨短肌", "足底筋膜", "闊筋膜張肌"],
+      "weak": ["脛後肌", "屈趾長肌", "足部內在肌（拇趾外展肌、屈趾短肌）", "臀中肌"],
+      "lesson": {
+        "title": "扁平足、高足弓不是問題！恢復足弓絞盤機制的功能訓練完整版｜啾c物理治療師",
+        "channel": "啾c物理治療師",
+        "url": "https://www.youtube.com/watch?v=epeQuHtf-HE",
+        "duration": "12:12",
+        "why": "繁中物理治療師從絞盤機制（windlass）講起，把「足弓不是被撐起來、是被肌肉拉起來」的觀念講透，正好對應功能性扁平足可訓練的本質，示範清楚且有錯誤動作說明。"
+      },
+      "drills": [
+        {
+          "name": "足底筋膜按摩球放鬆",
+          "en": "Plantar Fascia Ball Release",
+          "kind": "release",
+          "target": "足底筋膜、屈趾短肌",
+          "dose": "每側 60-90 秒，慢速滾動，痛點停留呼吸 3 次",
+          "title": "Plantar Fascia Release with a Tennis Ball – 3 Minute Foot Pain Relief",
+          "channel": "Resilience Occupational Therapy",
+          "url": "https://www.youtube.com/watch?v=3gDuNVtDO_M",
+          "duration": "3:04"
+        },
+        {
+          "name": "小腿三頭肌滾筒放鬆",
+          "en": "Calf Foam Rolling (Gastrocnemius / Soleus)",
+          "kind": "release",
+          "target": "腓腸肌、比目魚肌",
+          "dose": "每側 60-90 秒，分上中下三段",
+          "title": "Calf Foam Rolling - When To Avoid It, When It Can Be Useful, How To Do It",
+          "channel": "Sports Injury Physio",
+          "url": "https://www.youtube.com/watch?v=MuPVRt6_BV8",
+          "duration": "8:47"
+        },
+        {
+          "name": "脛後肌（小腿內側深層）按摩放鬆",
+          "en": "Tibialis Posterior Massage Release",
+          "kind": "release",
+          "target": "脛後肌、屈趾長肌",
+          "dose": "每側 60 秒，沿脛骨內緣由中段往下推",
+          "title": "Tibialis Posterior Muscle Massage Video",
+          "channel": "The Physio Channel",
+          "url": "https://www.youtube.com/watch?v=AMv0LzkMet8",
+          "duration": "3:40"
+        },
+        {
+          "name": "腓骨肌群（小腿外側）放鬆",
+          "en": "Peroneal / Fibularis Release",
+          "kind": "release",
+          "target": "腓骨長肌、腓骨短肌",
+          "dose": "每側 60 秒，避開膝下腓骨頭（腓總神經）",
+          "title": "Peroneal Stretching & Myofascial Release",
+          "channel": "Brian Abelson",
+          "url": "https://www.youtube.com/watch?v=g38uNfDGVwI",
+          "duration": "3:45"
+        },
+        {
+          "name": "闊筋膜張肌與臀中肌按摩球放鬆",
+          "en": "TFL / Glute Medius Ball Release",
+          "kind": "release",
+          "target": "闊筋膜張肌、臀中肌",
+          "dose": "每側 60-90 秒（足弓塌陷常源自股骨內旋，連結 CH9 髖）",
+          "title": "Lacrosse Ball TFL Release",
+          "channel": "Stretch Health Canada",
+          "url": "https://www.youtube.com/watch?v=MHdzZvWJgJI",
+          "duration": "4:35"
+        },
+        {
+          "name": "腓腸肌靠牆伸展",
+          "en": "Gastrocnemius Wall Stretch",
+          "kind": "stretch",
+          "target": "腓腸肌",
+          "dose": "每側 30 秒 × 3 組，後腳膝蓋打直、腳跟踩實",
+          "title": "The Secret to Relieving Tight Calf Muscles with a physical therapist",
+          "channel": "Alyssa Kuhn, Arthritis Adventure",
+          "url": "https://www.youtube.com/watch?v=0HAu2W7GpIs",
+          "duration": "5:37"
+        },
+        {
+          "name": "比目魚肌屈膝伸展",
+          "en": "Soleus (Bent-Knee) Stretch",
+          "kind": "stretch",
+          "target": "比目魚肌",
+          "dose": "每側 30 秒 × 3 組，後腳膝蓋微彎、腳跟不離地",
+          "title": "Soleus Stretch - Ask Doctor Jo",
+          "channel": "AskDoctorJo",
+          "url": "https://www.youtube.com/watch?v=RCjNN6JfSmE",
+          "duration": "0:38"
+        },
+        {
+          "name": "大腳趾背屈活動度（絞盤機制）",
+          "en": "Big Toe Extension Mobility",
+          "kind": "stretch",
+          "target": "屈拇長肌、第一蹠趾關節、足底筋膜",
+          "dose": "每側 10 次 × 2 組，目標大腳趾背屈 ≥ 60 度",
+          "title": "3 Exercises For A Stiff Big Toe | Mobility Exercises That WORK!",
+          "channel": "Gait Happens",
+          "url": "https://www.youtube.com/watch?v=TrMCRmSaXMw",
+          "duration": "1:46"
+        },
+        {
+          "name": "踝關節背屈活動度（膝碰牆）",
+          "en": "Knee-to-Wall Ankle Dorsiflexion",
+          "kind": "stretch",
+          "target": "後側踝關節囊、比目魚肌",
+          "dose": "每側 10 次 × 2 組，腳跟全程不離地",
+          "title": "Knee To Wall Exercise for Ankle Mobility",
+          "channel": "Dr. Jess Harvey, Osteopath & Health Coach",
+          "url": "https://www.youtube.com/watch?v=ElrpduJn92Y",
+          "duration": "0:53"
+        },
+        {
+          "name": "足弓短縮運動（Short Foot / 足弓拱起）",
+          "en": "Short Foot Exercise (Foot Doming)",
+          "kind": "train",
+          "target": "足部內在肌（拇趾外展肌、屈趾短肌）",
+          "dose": "每側 10 次 × 3 組，每次維持 5 秒；腳趾不可蜷曲",
+          "title": "Barefoot Running Exercise: Foot Doming",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=rS5ucOyfgSg",
+          "duration": "0:54"
+        },
+        {
+          "name": "腳趾瑜伽（大腳趾／其餘四趾分離控制）",
+          "en": "Toe Yoga",
+          "kind": "train",
+          "target": "拇趾外展肌、伸趾長肌、足部內在肌",
+          "dose": "每側 10 次 × 2 組（大腳趾抬／四趾抬各一輪）",
+          "title": "Toe Yoga For Healthy And Strong Feet",
+          "channel": "Dr. Carl Baird",
+          "url": "https://www.youtube.com/watch?v=qojzpnKVOcc",
+          "duration": "3:12"
+        },
+        {
+          "name": "彈力帶抗阻足內翻（脛後肌強化）",
+          "en": "Resisted Ankle Inversion (Tibialis Posterior)",
+          "kind": "train",
+          "target": "脛後肌、屈趾長肌",
+          "dose": "每側 15 次 × 3 組，慢速離心回放 3 秒",
+          "title": "Tibialis Posterior strengthening exercise with a band",
+          "channel": "Ortho Eval Pal with Paul Marquis PT",
+          "url": "https://www.youtube.com/watch?v=MIRYOo1YLUs",
+          "duration": "1:18"
+        },
+        {
+          "name": "單腳提踵（漸進負荷）",
+          "en": "Single-Leg Heel Raise Progression",
+          "kind": "train",
+          "target": "腓腸肌、比目魚肌、脛後肌",
+          "dose": "每側 12-15 次 × 3 組，由雙腳平地進階到單腳站階梯",
+          "title": "The Calf Raise - Exercise Progression | Tim Keeley | Physio REHAB",
+          "channel": "Physio REHAB",
+          "url": "https://www.youtube.com/watch?v=HmgXnST4Mdw",
+          "duration": "8:01"
+        },
+        {
+          "name": "髖飛機（單腳平衡整合訓練）",
+          "en": "Hip Airplane (Single-Leg Integration)",
+          "kind": "train",
+          "target": "臀中肌、髖外旋肌群、足踝穩定肌群",
+          "dose": "每側 8 次 × 3 組，全程維持足弓不塌、膝蓋不內夾",
+          "title": "Hip Airplane Exercise For Improved Balance, Mobility, And Glute Med Strength",
+          "channel": "Dr. Carl Baird",
+          "url": "https://www.youtube.com/watch?v=9svtEV4vkp0",
+          "duration": "1:23"
+        }
+      ]
+    },
+    {
+      "id": "ch11-u2",
+      "name": "高足弓",
+      "en": "Pes Cavus / High Arch",
+      "type": "posture",
+      "assessment": "【自我檢測】(1) 濕腳印測試：踩濕後站在紙板上，正常足印中段內外側會有一條約 1/3 寬度的連接帶；高足弓的腳印中段極細甚至完全斷開，只看得到腳跟與前足兩塊。(2) 觀察足底壓力集中在前後兩端：常見腳跟與前足蹠骨頭下方長繭、走久痛，中足幾乎不承重。(3) 看腳趾是否呈爪狀（claw toes）、鞋底外側磨損特別嚴重、站立時腳跟略往內翻（後足內翻）。(4) 病史問診：是否反覆外側踝扭傷、單腳站立明顯搖晃 —— 高足弓避震能力差、足底接觸面小，是外側踝扭傷的高風險族群。(5) Coleman block test（外側木塊測試）：站在約 2-3 公分厚的板子上，只讓前足外側與腳跟著地、第一蹠骨懸空，若後足內翻能回正 = 柔軟型，訓練可改善；若後足仍固定內翻不動 = 僵硬型，需就醫。⚠️ 重要：高足弓的訓練方向與扁平足相反 —— 不要做 short foot、足弓上提這類「把足弓撐更高」的動作，那會加重問題。重點在放鬆足底與小腿、強化外翻（腓骨肌群）以穩定外側踝、以及本體感覺與落地緩衝訓練。⚠️ 安全提醒：高足弓若為單側新發生、或合併腳趾變形加劇、下肢無力麻木，可能是神經病變（如 Charcot-Marie-Tooth）的表現，務必就醫；足部疼痛持續不緩解、或本身有糖尿病、周邊神經病變者，也請先就醫再訓練。",
+      "tight": ["足底筋膜", "腓腸肌", "比目魚肌", "脛後肌", "屈趾長肌", "伸趾長肌", "髖外旋肌群（梨狀肌）"],
+      "weak": ["腓骨長肌", "腓骨短肌", "臀中肌", "踝關節周邊本體感覺穩定肌群"],
+      "lesson": {
+        "title": "FIX High Arches & High Arch Feet [Supination & Pes Cavus Foot Type]",
+        "channel": "Michigan Foot Doctors",
+        "url": "https://www.youtube.com/watch?v=dLWj0R_DaEA",
+        "duration": "19:30",
+        "why": "足踝專科醫師完整講解高足弓的成因、足底壓力分布、外側踝扭傷風險與該做／不該做的動作，正好對應本單元「不要撐高足弓、要強化外翻與避震」的核心觀念。"
+      },
+      "drills": [
+        {
+          "name": "足底筋膜深層按摩球放鬆",
+          "en": "Deep Plantar Fascia Ball Release",
+          "kind": "release",
+          "target": "足底筋膜、屈趾短肌、屈拇短肌",
+          "dose": "每側 90 秒，重點壓腳跟與前足蹠骨頭下方的痛點",
+          "title": "Foot Pain Remover - Self Myofascial Release Exercise - Ask Dr. Abelson",
+          "channel": "Brian Abelson",
+          "url": "https://www.youtube.com/watch?v=VOe86YFl0nU",
+          "duration": "2:43"
+        },
+        {
+          "name": "脛前肌與前側腔室滾筒放鬆",
+          "en": "Tibialis Anterior / Anterior Compartment Release",
+          "kind": "release",
+          "target": "脛前肌、伸趾長肌",
+          "dose": "每側 60 秒（爪狀趾者伸趾肌常過度使用）",
+          "title": "Tibialis anterior (shin) foam roller self release",
+          "channel": "Paul Martin Osteopaths",
+          "url": "https://www.youtube.com/watch?v=C5TCKZ7k_cg",
+          "duration": "0:23"
+        },
+        {
+          "name": "小腿三頭肌與跟腱滾筒放鬆",
+          "en": "Calf & Achilles Foam Roll",
+          "kind": "release",
+          "target": "腓腸肌、比目魚肌、跟腱周圍",
+          "dose": "每側 60-90 秒，特別加強靠近跟腱的下段",
+          "title": "Wellness Wednesday: Roll the ache out of your tight calves",
+          "channel": "Mayo Clinic",
+          "url": "https://www.youtube.com/watch?v=rpVMZziJeY8",
+          "duration": "1:02"
+        },
+        {
+          "name": "髖外旋肌群按摩球放鬆",
+          "en": "Piriformis / Deep Hip Rotator Ball Release",
+          "kind": "release",
+          "target": "梨狀肌、髖外旋肌群",
+          "dose": "每側 60-90 秒（高足弓常伴隨下肢外旋、髖外旋肌緊繃）",
+          "title": "Glute and Hip Rotator (Piriformis) Massage Using Tennis Ball",
+          "channel": "Ottawa Osteopathy & Sports Therapy",
+          "url": "https://www.youtube.com/watch?v=-vZhEMCHZ4A",
+          "duration": "0:26"
+        },
+        {
+          "name": "足底筋膜伸展",
+          "en": "Plantar Fascia Stretch",
+          "kind": "stretch",
+          "target": "足底筋膜、屈趾短肌",
+          "dose": "每側 30 秒 × 3 組，早上下床前先做一輪",
+          "title": "2 Simple Stretches for Plantar Fasciitis",
+          "channel": "Cleveland Clinic",
+          "url": "https://www.youtube.com/watch?v=GfVZ_j2or3U",
+          "duration": "1:09"
+        },
+        {
+          "name": "站姿小腿伸展（連動足底筋膜）",
+          "en": "Standing Calf Stretch for Plantar Fascia",
+          "kind": "stretch",
+          "target": "腓腸肌、比目魚肌、足底筋膜",
+          "dose": "每側 30 秒 × 3 組，直膝、屈膝各一輪",
+          "title": "Plantar Fascia Standing Calf Stretch (gastrocnemius and soleus muscles)",
+          "channel": "NHS Ayrshire & Arran",
+          "url": "https://www.youtube.com/watch?v=2_2GMXTc1BE",
+          "duration": "1:18"
+        },
+        {
+          "name": "彈力帶踝關節背屈鬆動",
+          "en": "Banded Ankle Dorsiflexion Mobilization",
+          "kind": "stretch",
+          "target": "距骨、後側踝關節囊",
+          "dose": "每側 15-20 次 × 2 組，帶子綁在踝關節前方往後拉",
+          "title": "Banded Joint Mobilizations for Stiff Ankles",
+          "channel": "Squat University",
+          "url": "https://www.youtube.com/watch?v=ILSbK8RnGdI",
+          "duration": "0:44"
+        },
+        {
+          "name": "屈趾肌群與爪狀趾伸展",
+          "en": "Toe Flexor / Claw Toe Stretch",
+          "kind": "stretch",
+          "target": "屈趾長肌、屈拇長肌、蹠趾關節",
+          "dose": "每趾 20-30 秒，每側走完五趾為一輪，做 2 輪",
+          "title": "Hammertoe Stretch and Mobilization",
+          "channel": "Correct Toes®",
+          "url": "https://www.youtube.com/watch?v=V9P8uMzmJIg",
+          "duration": "1:58"
+        },
+        {
+          "name": "彈力帶抗阻足外翻（腓骨肌群強化）",
+          "en": "Resisted Ankle Eversion (Peroneals)",
+          "kind": "train",
+          "target": "腓骨長肌、腓骨短肌",
+          "dose": "每側 15 次 × 3 組，離心回放 3 秒；這是高足弓最關鍵的訓練",
+          "title": "Ankle Eversion (fibularis longus/brevis) Exercise",
+          "channel": "Endurance Physio",
+          "url": "https://www.youtube.com/watch?v=JHyEHEwgc6A",
+          "duration": "1:13"
+        },
+        {
+          "name": "單腳平衡本體感覺訓練",
+          "en": "Single-Leg Balance / Proprioception Drills",
+          "kind": "train",
+          "target": "踝關節周邊穩定肌群、本體感覺",
+          "dose": "每側 30-45 秒 × 3 組，由睜眼平地進階到閉眼／軟墊",
+          "title": "4 Exercises to Improve Your Single Leg Stability and Balance",
+          "channel": "Rehab Science",
+          "url": "https://www.youtube.com/watch?v=tuA9yGQZOII",
+          "duration": "5:43"
+        },
+        {
+          "name": "彈力帶側走（臀中肌強化）",
+          "en": "Lateral Band Walk",
+          "kind": "train",
+          "target": "臀中肌、臀小肌",
+          "dose": "每方向 12-15 步 × 3 組，膝蓋不內夾、骨盆不晃",
+          "title": "5 Tips for Better Lateral Band Walks",
+          "channel": "Bret Contreras Glute Guy",
+          "url": "https://www.youtube.com/watch?v=dHJOQ4mjQ30",
+          "duration": "0:56"
+        },
+        {
+          "name": "單腳跳落地緩衝控制",
+          "en": "Single-Leg Hop and Stick",
+          "kind": "train",
+          "target": "下肢整體避震鏈（小腿三頭肌、股四頭肌、臀肌）",
+          "dose": "每側 6-8 次 × 3 組，落地要無聲、膝踝同時彎曲吸收",
+          "title": "How to Perform a Single Leg Hop (and Stick the Landing)",
+          "channel": "Miguel Aragoncillo",
+          "url": "https://www.youtube.com/watch?v=iULSY4NdKXM",
+          "duration": "1:43"
+        }
+      ]
+    }
+  ]
+}

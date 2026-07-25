@@ -1,0 +1,248 @@
+{
+  "conditions": [
+    {
+      "unit": "ch10-u1",
+      "name": "膝超伸",
+      "article_id": "dc132586-e861-4145-9a40-0ea38fb3c41f",
+      "url": "https://www.openevidence.com/ask/dc132586-e861-4145-9a40-0ea38fb3c41f",
+      "evidence_grade": "limited",
+      "pain_link": "膝超伸（操作型定義為伸直大於 5°）與膝痛、終末伸直的本體感覺控制不良、伸直型步態有相關，機轉上推測是長期過度伸直力矩造成後關節囊與後外側韌帶複合體受力過度。但現有文獻幾乎全是敘述性回顧、個案系列與手術世代研究，沒有前瞻性對照研究能建立因果或量化超伸對症狀的獨立貢獻。只能說「相關且機轉合理」，不能說「超伸導致疼痛」。",
+      "structural_vs_modifiable": "手術系列顯示成人個案中 59%（16/27）完全源於骨性變形、19% 以骨性為主，僅 22% 以軟組織為主。骨性因素包含脛骨後傾角（正常 7–10°，低於 5° 或反向即放大過度伸直力矩）與關節形態，運動完全無法改變。可訓練的只有關節囊韌帶鬆弛所衍生的動作控制與終末伸直本體感覺；斜膕韌帶是限制過度伸直的主要韌帶結構，切斷後造成的鬆弛甚至超過前後十字韌帶合併切斷。",
+      "muscle_model": "坊間常把超伸歸因於「股四頭肌無力或腿後肌無力」的單一肌肉失衡，但文獻只泛泛描述「肌肉失衡與本體感覺控制不良」，沒有 EMG 或肌力測試研究確認任何特定的無力模式。偏癱族群的個案系列顯示每位患者都同時存在多個因素（肌力不足、痙攣、後關節囊鬆弛、本體感覺缺損），單一肌群解釋並不成立。",
+      "intervention": "矯正運動的證據極弱——僅有專家意見與個案系列，沒有任何隨機對照試驗，也沒有任何效果量被報告。敘述性回顧提出的療程（矯正肌肉失衡、本體感覺練習、步態訓練、貼紮或護具輔助膝控制）沒有對照組與結果數據，整體證據停在 Level III–IV。反證很直接：骨性為主的變形手術矯正後有 86% 優良率，軟組織為主者則是 0%，說明骨性問題練不來、軟組織問題手術也解不掉。",
+      "assessment_validity": "量角器是標準測量工具，超伸操作型定義為伸直大於 5°；影像上以側位 X 光量 genu recurvatum angle 與脛骨後傾角。文獻並未針對膝超伸的量角器測量報告正式的效度與信度研究。",
+      "red_flags": [
+        "走路時即出現疼痛與不穩，且保守治療無效",
+        "不對稱的過度伸展，提示韌帶損傷",
+        "脛骨後傾角小於 5° 或反向，特別是合併後十字韌帶功能不全",
+        "變形角度大於 25°，或多平面合併變形（如超伸合併外翻）",
+        "影像判定為骨性為主的變形（保守治療反應差）",
+        "生長板外傷、感染、腫瘤或骨骼發育不良病史",
+        "外傷後過度伸直合併疑似後關節囊或十字韌帶斷裂"
+      ],
+      "caveats": "這是 CH10 中證據最薄弱的一題——沒有任何 RCT 支持矯正運動。課程可以教控制訓練與本體感覺練習，但不應承諾「把超伸練回來」。",
+      "citations": [
+        {"title": "Genu Recurvatum Syndrome", "journal": "Journal of Orthopaedic and Sports Physical Therapy", "year": 1998, "url": "https://pubmed.ncbi.nlm.nih.gov/9580896"},
+        {"title": "The Role of the Oblique Popliteal Ligament and Other Structures in Preventing Knee Hyperextension", "journal": "The American Journal of Sports Medicine", "year": 2010, "url": "https://pubmed.ncbi.nlm.nih.gov/20097929"},
+        {"title": "Proximal Osteotomy of the Tibia for the Treatment of Genu Recurvatum in Adults", "journal": "The Journal of Bone and Joint Surgery (Am)", "year": 1992, "url": "https://pubmed.ncbi.nlm.nih.gov/1583053"},
+        {"title": "Treatment Strategies for Genu Recurvatum in Adult Patients With Hemiparesis: A Case Series", "journal": "PM&R", "year": 2015, "url": "https://pubmed.ncbi.nlm.nih.gov/25460209"},
+        {"title": "Anterior Opening-Wedge High Tibial Osteotomy for Restoring Posterior Tibial Slope in PCL Insufficiency and Genu Recurvatum: A Narrative Review", "journal": "Knee Surgery, Sports Traumatology, Arthroscopy", "year": 2026, "url": "https://pubmed.ncbi.nlm.nih.gov/42485054"}
+      ]
+    },
+    {
+      "unit": "ch10-u2",
+      "name": "X 型腿（膝外翻）",
+      "article_id": "2c8a0bb7-f15d-4397-992b-23eff61c8977",
+      "url": "https://www.openevidence.com/ask/2c8a0bb7-f15d-4397-992b-23eff61c8977",
+      "evidence_grade": "contested",
+      "pain_link": "關係是相關性的，在病理性個案中可能是因果。未治療的病理性膝外翻與功能缺損、半月板撕裂與退化性關節炎有關；結構性外翻的女性在行走、跑步與單腳落地時呈現異常的髖膝運動學（髖屈曲減少、膝外展與外旋增加）。有症狀的外翻對線接受股骨內翻截骨後疼痛顯著下降（VAS 5.6 降至 2.1，Kujala 72 升至 87，Lysholm 76 升至 92，平均追蹤 44 個月）。但因果路徑仍未釐清——無法區分靜態對線是直接致痛，或對線與疼痛都只是共同生物力學失調的表現。",
+      "structural_vs_modifiable": "骨骼成熟、生長板閉合之後，機械軸、股骨與脛骨扭轉、股骨遠端關節形態都是固定的骨骼幾何，運動無法改變其中任何一項。運動能改變的是「動態膝外翻」——功能性動作中的膝關節位置，反映的是神經肌肉控制、肌力與軟組織功能。這個區分是本單元的核心：結構性膝外翻（站立 X 光量得）與動態膝外翻（動作中的膝位置）可以並存，但一個是骨骼幾何，一個是動作控制。",
+      "muscle_model": "「臀中肌與髖外旋肌無力造成 X 型腿」的模型，只在動態膝外翻上獲得支持：系統性回顧確認臀肌肌力與活化、軀幹側屈肌力、踝背屈活動度與中足活動度是單腳動作中動態膝外翻的可改變因子，生物回饋訓練有效。但這些研究處理的全是動作中的膝外翻，沒有任何一篇證明肌力訓練能改變靜態骨性對線。",
+      "intervention": "8 週綜合矯正運動在動態膝外翻的年輕男性身上顯著改善單腳蹲的 3D 運動學（膝內外翻、股骨旋轉、脛骨旋轉）並提升髖外展與外旋肌力（p<0.05），運動學改善的效果量為中至大（ES 0.69–1.47）。但關鍵事實是：這些研究沒有一篇測量機械軸或影像對線的變化，所有結果都是運動學或肌力指標。證據品質受限於樣本小、追蹤短、對象多為無症狀族群。骨骼成熟者要改變機械軸只有截骨手術一途。",
+      "assessment_validity": "全長站立 X 光量測關節導向角與機械軸是結構對線的黃金標準；來自 17 國、29 位小兒骨科醫師的國際德爾菲共識明確不同意「僅依內踝間距（IMD）決定手術」。IMD 適合篩檢與追蹤但精確度不足；2D 與 3D 動作分析只評估動作型態，不等於靜態對線。",
+      "red_flags": [
+        "機械軸落在 zone 2 以外（偏外側）、mLDFA 小於 87°，或 IMD 大於 8 公分",
+        "骨骼成熟後仍持續進展的變形，提示潛在病理",
+        "適當復健後仍持續的前膝痛、髕骨不穩或功能受限",
+        "需要接受關節保存手術（外側半月板移植、軟骨修復）而合併外翻對線者",
+        "懷疑代謝性骨病、骨骼發育不良或創傷後變形",
+        "步態異常、耐力下降或關節不穩且可歸因於對線"
+      ],
+      "caveats": "教學上必須把「結構性膝外翻」與「動態膝外翻」分開講。矯正運動的對象只有後者；成人的骨性對線只有截骨手術能改變。此外成人膝外翻的文獻本身就稀少，多數證據外推自兒童或年輕成人族群。",
+      "citations": [
+        {"title": "Three-Dimensional Hip and Knee Kinematics During Walking, Running, and Single-Limb Drop Landing in Females With and Without Genu Valgum", "journal": "Clinical Biomechanics", "year": 2016, "url": "https://pubmed.ncbi.nlm.nih.gov/26515886"},
+        {"title": "The Effectiveness of the Comprehensive Corrective Exercise Program on Kinematics and Strength of Lower Extremities in Males With Dynamic Knee Valgus: A Randomized Wait-List Controlled Trial", "journal": "BMC Musculoskeletal Disorders", "year": 2022, "url": "https://pubmed.ncbi.nlm.nih.gov/35869467"},
+        {"title": "Dynamic Knee Valgus in Single-Leg Movement Tasks: Potentially Modifiable Factors and Exercise Training Options", "journal": "International Journal of Environmental Research and Public Health", "year": 2020, "url": "https://pubmed.ncbi.nlm.nih.gov/33172101"},
+        {"title": "An International Consensus on Evaluation and Management of Idiopathic Genu Valgum: A Modified Delphi Survey", "journal": "Journal of Pediatric Orthopedics", "year": 2025, "url": "https://pubmed.ncbi.nlm.nih.gov/39901614"},
+        {"title": "Patellofemoral Dysbalance and Genua Valga: Outcome After Femoral Varisation Osteotomies", "journal": "Archives of Orthopaedic and Trauma Surgery", "year": 2018, "url": "https://pubmed.ncbi.nlm.nih.gov/29079908"}
+      ]
+    },
+    {
+      "unit": "ch10-u3",
+      "name": "O 型腿（膝內翻）",
+      "article_id": "607c5fc7-a210-4d2a-bc3a-eef730939751",
+      "url": "https://www.openevidence.com/ask/607c5fc7-a210-4d2a-bc3a-eef730939751",
+      "evidence_grade": "strong",
+      "pain_link": "這是 CH10 唯一因果證據明確的項目。Multicenter Osteoarthritis Study 顯示內翻對線（≤178°）與新發膝關節炎相關（校正後 OR 1.49, 95% CI 1.06–2.10），與內側腔室關節炎進展的關聯更強（校正後 OR 3.59, 95% CI 2.62–4.92，30 個月追蹤）。每增加一度內翻，內側為主關節炎的勝算比上升 1.39（95% CI 1.29–1.49），嚴重內側病變風險上升 1.52。機轉明確：內翻增加內側脛股壓力與膝內收力矩，形成「對線→軟骨流失→對線更差」的正回饋。",
+      "structural_vs_modifiable": "骨骼成熟的成人，內翻幾乎完全是結構性的——脛骨內翻、股骨彎曲、內側軟骨與半月板流失、脛骨扭轉，都是固定的骨與軟骨變形，軟組織介入無法改變。運動與動作控制訓練無法改變髖-膝-踝機械軸。一項 6 週強調髖膝肌力與柔軟度的運動課程改變了步態型態、降低了疼痛，但沒有改變膝關節負荷或對線。",
+      "muscle_model": "「內收肌太緊、臀肌太弱造成 O 型腿」的說法在文獻中沒有支持。可被改變的是行走時的膝內收力矩，而有效手段是搭配即時生物回饋的步態再訓練，不是特定肌群的伸展或強化。運動治療改善疼痛與功能的機轉是止痛、肌力與動作型態，不是結構改變。",
+      "intervention": "步態再訓練搭配即時生物回饋有中等品質證據可降低膝內收力矩（SMD -1.10, 95% CI -1.85 到 -0.35）並改善 WOMAC（SMD -0.86, 95% CI -1.33 到 -0.39，異質性高）。外側楔形鞋墊則不建議：AAOS 指引明確不推薦，統合分析顯示與中性鞋墊（適當安慰對照）相比效果幾乎為零（SMD -0.03，相當於 WOMAC 疼痛僅 -0.12 分），早期的正面結果多半來自不當的對照組。",
+      "assessment_validity": "全長站立 X 光量髖-膝-踝機械軸是黃金標準（自股骨頭中心經膝至踝中心）。透視引導的短站立位前後位 X 光可評估局部對線（股骨遠端-脛骨近端角）並與腔室關節炎型態及嚴重度相關。臨床上的膝間距與步態觀察只能篩檢，手術規劃必須用影像。",
+      "red_flags": [
+        "年齡小於 60–65 歲、活動量高、單腔室內側關節炎合併內翻——高位脛骨截骨候選（85% 以上可延後置換達 10 年）",
+        "Blount 病：進行性脛骨內翻合併特徵性的內側脛骨生長板與骨骺影像變化",
+        "代謝性骨病：佝僂病或骨軟化、低磷血症、腎性骨失養、Paget 病（合併系統性表現、鈣磷與鹼性磷酸酶異常、身材矮小或骨痛）",
+        "骨骼發育不良：軟骨發育不全、成骨不全等",
+        "保守治療下仍持續進展的變形或疼痛，尤其在年輕族群"
+      ],
+      "caveats": "O 型腿是「相關證據最強、卻也最不可能靠運動改變」的組合。誠實的訊息是：運動可以減痛、改善功能與負荷分布，但不會把腿練直；而外側楔形鞋墊這類常見建議在良好對照下的效果是零。",
+      "citations": [
+        {"title": "Varus and Valgus Alignment and Incident and Progressive Knee Osteoarthritis", "journal": "Annals of the Rheumatic Diseases", "year": 2010, "url": "https://pubmed.ncbi.nlm.nih.gov/20511608"},
+        {"title": "Effect of Local Alignment on Compartmental Patterns of Knee Osteoarthritis", "journal": "The Journal of Bone and Joint Surgery (Am)", "year": 2008, "url": "https://pubmed.ncbi.nlm.nih.gov/18762657"},
+        {"title": "Effectiveness of Gait Retraining Interventions in Individuals With Hip or Knee Osteoarthritis: A Systematic Review and Meta-Analysis", "journal": "Gait & Posture", "year": 2022, "url": "https://pubmed.ncbi.nlm.nih.gov/35500366"},
+        {"title": "Lateral Wedge Insoles as a Conservative Treatment for Pain in Patients With Medial Knee Osteoarthritis: A Meta-analysis", "journal": "JAMA", "year": 2013, "url": "https://jamanetwork.com/journals/jama/fullarticle/10.1001/jama.2013.243229"},
+        {"title": "Exercise Alters Gait Pattern but Not Knee Load in Patients with Knee Osteoarthritis", "journal": "BioMed Research International", "year": 2016, "url": "https://onlinelibrary.wiley.com/doi/10.1155/2016/7468937"},
+        {"title": "AAOS Clinical Practice Guideline Summary: Management of Osteoarthritis of the Knee (Nonarthroplasty), Third Edition", "journal": "JAAOS", "year": 2022, "url": "https://doi.org/10.5435/JAAOS-D-21-01233"}
+      ]
+    },
+    {
+      "unit": "ch10-u4",
+      "name": "上 X 下 O（股骨內旋合併脛骨外旋）",
+      "article_id": "2648dc5e-69b8-4253-a079-f58e9351395a",
+      "url": "https://www.openevidence.com/ask/2648dc5e-69b8-4253-a079-f58e9351395a",
+      "evidence_grade": "contested",
+      "pain_link": "相關但非確定的因果——旋轉變形比較像「易感因子」而非直接病因。關鍵證據是：單側前膝痛患者的無症狀對側肢，其旋轉輪廓與症狀側相似，但雙側都與健康對照不同，代表旋轉變形本身不足以致痛，必須有其他因素加入。1158 具屍骨的骨學研究更發現股骨前傾與脛骨扭轉和髖、膝關節炎皆無關聯，支持「依症狀而非依影像治療」。有症狀的合併變形族群（平均股骨前傾 38°、脛骨外旋 39°）中 86% 有疼痛，但扭轉角度與功能分數（PODCI）的關係很弱。",
+      "structural_vs_modifiable": "骨骼成熟後，股骨前傾與脛骨扭轉是固定的骨骼幾何，運動無法改變。一項比較長期規律運動者與久坐者下肢骨骼幾何的研究，只在股骨額狀面彎曲上找到 2° 差異，作者結論是「成年後透過運動改變骨骼幾何的能力有限，骨骺區尤其如此」。可以改變的是動態髖內旋、髖旋轉肌肌力與活化、骨盆傾斜與代償策略——核心與後鏈訓練可改變骨盆後傾 5–10°，藉此增加髖活動度、減少夾擠。物理治療處理的是疊在固定骨骼上的動作型態，不是扭轉本身。",
+      "muscle_model": "「上 X 下 O 是因為髖外旋肌無力加上足內旋」的常見說法，在文獻中沒有被驗證為病因；旋轉變形是發育期骨骼決定的。生物力學模型顯示股直肌、股外側肌與內側腓腸肌對髕股關節負荷與膝力矩影響最大，物理治療的合理標的是這些動態因素與近端髖臀肌無力，而非「把骨頭轉回來」。",
+      "intervention": "沒有任何高品質 RCT 直接比較運動與手術，也沒有任何研究報告成人保守治療的效果量。共識做法是先進行 3–6 個月物理治療（針對近端髖與臀肌無力）再考慮手術。股骨遠端去旋轉截骨的系統性回顧（309 膝、平均追蹤 36 個月）顯示能有效矯正前傾（平均 -19.4°, 95% CI -20.1 到 -18.7）、滿意度 93.3%，但只有 47% 的研究在 Kujala 分數上超過 MCID（Lysholm 33%、IKDC 27%）。整體證據為 Level III–IV，沒有 Level I RCT，也沒有公認的手術閾值。",
+      "assessment_validity": "CT 是量化股骨前傾與脛骨扭轉的黃金標準（股骨用 Murphy 法、脛骨用 Goutallier 法，ICC 良好至極佳）。Craig's test 只與 CT 中度相關（r=0.61），僅能解釋 CT 測值 23.4% 的變異，且在女性系統性低估，可篩檢但不足以做手術決策。髖旋轉活動度差值（髖 0° 位）與 CT 相關性最高（r=0.63），內外旋差 20° 提示異常版本。大腿-足角的效度資料有限；超音波適合兒童青少年追蹤但不足以做手術規劃。",
+      "red_flags": [
+        "CT 測得脛骨外旋大於 30° 或股骨內旋（前傾）大於 25°",
+        "3–6 個月物理治療無效的失能性前膝痛或髕骨不穩",
+        "反覆髕骨脫位合併已記錄的旋轉不良",
+        "髖內旋大於 85° 且外旋小於 10°",
+        "影響日常生活或運動參與的功能受損",
+        "股骨去旋轉手術前未評估髖關節（易造成術後髖痛）",
+        "術前疼痛程度極高或已接受多次膝部手術者，手術預後較差"
+      ],
+      "caveats": "「上 X 下 O」不是醫學診斷名詞，對應的是 miserable malalignment 或合併旋轉不良。教學上必須說清楚：這是骨頭的形狀，運動改不了，能練的只有動作型態；且無症狀的旋轉變形不需要治療，純美觀考量是手術的禁忌。",
+      "citations": [
+        {"title": "Lower Extremity Rotational Deformities and Patellofemoral Alignment Parameters in Patients With Anterior Knee Pain", "journal": "Knee Surgery, Sports Traumatology, Arthroscopy", "year": 2016, "url": "https://pubmed.ncbi.nlm.nih.gov/25931128"},
+        {"title": "Femoral Version and Tibial Torsion Are Not Associated With Hip or Knee Arthritis in a Large Osteological Collection", "journal": "Journal of Pediatric Orthopedics", "year": 2017, "url": "https://pubmed.ncbi.nlm.nih.gov/26214325"},
+        {"title": "Associations Between Long-Term Exercise Participation and Lower Limb Joint and Whole-Bone Geometry in Young and Older Adults", "journal": "Frontiers in Physiology", "year": 2023, "url": "https://pubmed.ncbi.nlm.nih.gov/37250122"},
+        {"title": "Derotational Distal Femoral Osteotomy Corrects Excessive Femoral Anteversion in Patients With Patellofemoral Instability: A Systematic Review", "journal": "Knee Surgery, Sports Traumatology, Arthroscopy", "year": 2024, "url": "https://pubmed.ncbi.nlm.nih.gov/38385776"},
+        {"title": "Validity and Clinical Significance of a Clinical Method to Measure Femoral Anteversion", "journal": "The Journal of Sports Medicine and Physical Fitness", "year": 2019, "url": "https://pubmed.ncbi.nlm.nih.gov/31215203"},
+        {"title": "Tibial Torsion and Patellofemoral Pain and Instability in the Adult Population: Current Concept Review", "journal": "Current Reviews in Musculoskeletal Medicine", "year": 2021, "url": "https://pubmed.ncbi.nlm.nih.gov/33420589"}
+      ]
+    },
+    {
+      "unit": "ch11-u1",
+      "name": "功能性／柔軟性扁平足",
+      "article_id": "2559c9b5-4c64-4fad-b2a4-3fe694970db5",
+      "url": "https://www.openevidence.com/ask/2559c9b5-4c64-4fad-b2a4-3fe694970db5",
+      "evidence_grade": "moderate",
+      "pain_link": "關係是相關性且高度依情境，不是一致的因果。文獻明確區分「無症狀扁平足」（良性解剖變異）與「進行性塌陷足變形（PCFD）」（病理性）。真正預測症狀的不是足弓高度，而是距下關節周圍半脫位與跗骨竇夾擠——跗骨竇最小距離小於 1.9 mm 最能區分有症狀與無症狀扁平足。前瞻證據很弱：29 篇研究的統合分析顯示非中性足型與下肢傷害只有微弱關聯（OR 1.23, 95% CI 1.11–1.37），且在兒童扁平足次族群與純前瞻性研究中並不顯著。此外有症狀族群中 48.6% 呈現痛覺可塑性特徵、61.7% 符合中樞敏感化，顯示持續疼痛涉及生物力學以外的機轉。",
+      "structural_vs_modifiable": "成人扁平足是「柔軟到僵硬」的光譜。結構面包括脛後肌腱退化、彈簧韌帶／距跟韌帶／三角韌帶／足底筋膜等多條穩定結構失效（需要多條同時失效才會出現典型平外翻變形），以及距骨下沉蹠屈、後足與中足外翻、前足外翻等骨性改變；一旦進展為僵硬變形，軟組織介入即無效，需手術。柔軟期是保守介入機會最大的階段，4–6 週的短足運動即足以產生可測量的改變。",
+      "muscle_model": "「足內在肌無力造成扁平足」的模型有部分支持——短足運動確實改善足弓高度與足姿，並提升拇趾外展肌活化。但統合分析發現介入組與對照組的肌肉肥大沒有顯著差異，代表改善主要來自神經肌肉控制而非肌肉變大。因此「把足弓肌肉練壯所以足弓變高」的敘事並不精確。",
+      "intervention": "6 篇 RCT（201 人）的統合分析顯示短足運動顯著降低舟狀骨下沉（MD -0.23, 95% CI -0.45 到 -0.02）與 FPI-6（MD -0.67, 95% CI -0.98 到 -0.36）；單純運動對舟狀骨下沉的效果最大（SMD -3.058）。鞋墊對疼痛的效果更強（SMD -1.651, 95% CI -2.237 到 -1.065），鞋墊加運動最佳（SMD -2.591），並可改善跟骨傾斜角（SMD 0.513）。但多數證據是短期（運動最多 8 週，鞋墊與貼紮多為單次或急性效果），長期效果不明；而且「結構改變幅度」與「症狀改善幅度」之間的關係只是間接推論，未被直接建立。研究方法學品質多為中等。",
+      "assessment_validity": "舟狀骨下沉測試信度最佳（組內 ICC 0.934–0.970，組間 ICC 0.712–0.811），與 FPI-6 高度相關（r 0.754–0.8）。FPI-6 組內信度極佳（ICC 0.945）但組間僅中等（ICC 0.575），不過在預測下肢傷害上關聯最強（OR 2.58, 95% CI 1.33–5.02）。足弓高度指數靜態與動態的再測信度皆佳（ICC 0.850 與 0.876）。負重 CT 可早期辨識半脫位與夾擠，區分穩定扁平足與 PCFD。",
+      "red_flags": [
+        "無法被動矯正的僵硬變形（需關節融合類手術）",
+        "保守治療下仍持續進展的足弓塌陷，提示轉為 PCFD",
+        "無法完成單腳提踵，或出現 too-many-toes 徵象（脛後肌腱功能不全）",
+        "3–6 個月結構化保守治療後仍持續疼痛",
+        "外側疼痛，提示跗骨竇夾擠或距下關節周圍半脫位",
+        "踝關節受累（第四期），或影像顯示僵硬變形已出現關節炎變化",
+        "懷疑跗骨聯合或其他需個別化處置的特定病因"
+      ],
+      "caveats": "扁平足本身不是病，文獻的核心訊息是「有症狀才處理」。同時要注意：成人扁平足常被過晚診斷，若已從柔軟轉為僵硬，運動介入的窗口就關閉了——課程應同時教「什麼時候該轉介」。",
+      "citations": [
+        {"title": "From Asymptomatic Flatfoot to Progressive Collapsing Foot Deformity: Peritalar Subluxation Is the Main Driver of Symptoms", "journal": "The Journal of Bone and Joint Surgery (Am)", "year": 2025, "url": "https://pubmed.ncbi.nlm.nih.gov/40758778"},
+        {"title": "Association Between Foot Type and Lower Extremity Injuries: Systematic Literature Review With Meta-Analysis", "journal": "Journal of Orthopaedic and Sports Physical Therapy", "year": 2013, "url": "https://pubmed.ncbi.nlm.nih.gov/23756327"},
+        {"title": "Effects of the Short-Foot Exercise on Foot Alignment and Muscle Hypertrophy in Flatfoot Individuals: A Meta-Analysis", "journal": "International Journal of Environmental Research and Public Health", "year": 2022, "url": "https://pubmed.ncbi.nlm.nih.gov/36231295"},
+        {"title": "Optimizing Flatfoot Management With Foot Orthoses: A Systematic Review and Meta-Analysis", "journal": "American Journal of Physical Medicine & Rehabilitation", "year": 2025, "url": "https://pubmed.ncbi.nlm.nih.gov/41065643"},
+        {"title": "Reliability of Different Clinical Techniques for Assessing Foot Posture", "journal": "Journal of Manipulative and Physiological Therapeutics", "year": 2020, "url": "https://pubmed.ncbi.nlm.nih.gov/32829944"},
+        {"title": "Central Sensitization and Pain Phenotypes in Symptomatic Pes Planus: A Multicenter Cross-Sectional Study", "journal": "The Journal of Foot and Ankle Surgery", "year": 2025, "url": "https://pubmed.ncbi.nlm.nih.gov/41022306"}
+      ]
+    },
+    {
+      "unit": "ch11-u2",
+      "name": "高足弓",
+      "article_id": "a2cdc6ba-970a-4128-9aac-78fac5966531",
+      "url": "https://www.openevidence.com/ask/a2cdc6ba-970a-4128-9aac-78fac5966531",
+      "evidence_grade": "limited",
+      "pain_link": "有紀錄但主要是相關而非確立的因果。高足弓者常報告前足蹠骨痛、足底跟痛、外側踝不穩與下肢壓力性骨折；生物力學模型顯示結構改變造成蹠骨局部超載，足底筋膜過度受力可能加重慢性蹠骨痛。其他報告的關聯包括種子骨區疼痛、疼痛性胼胝、踝關節炎、阿基里斯腱炎、膝痛、髂脛束症候群與髖關節炎。但證據多為觀察性報告與生物力學研究，缺乏能建立時序因果的前瞻世代研究，也難以區分哪些是直接後果、哪些只是共病。",
+      "structural_vs_modifiable": "高足弓以骨性變形為主，且典型是僵硬、雙側的：跟骨傾斜角增加、第一列蹠屈、後足內翻、前足內收與中足旋後，橫弓曲度過大造成內在僵硬。CMT 相關的高足弓其前足內收與中足旋後是對照組的 3 倍。運動能改變足弓高度的證據極有限——僅一項單次靜態伸展合併經皮電刺激的 RCT 顯示介入後立即與一週後跟骨傾斜角與第一蹠骨傾斜角有統計上顯著的下降，但屬單次介入、追蹤極短，臨床意義不明。整體而言此變形被描述為僵硬，軟組織介入的可改變性有限。",
+      "muscle_model": "高足弓的肌肉失衡（如腓骨長肌相對強於脛前肌）多半是神經病變的「結果」而非可訓練的「原因」。這使得「伸展緊的、強化弱的」這種一般矯正邏輯在此特別不適用——先排除神經病因遠比排課表重要。",
+      "intervention": "2007 年 Cochrane 回顧的結論是「對於高足弓的預防或治療，沒有任何一種方法有確切證據」。保守處理通常是足部矯具與加強緩衝的鞋具以降低與重新分配足底壓力，但沒有高品質試驗證實療效，也沒有已建立的效果量。伸展與強化緊繃／無力肌群、清除胼胝、平衡策略都屬經驗性做法；唯一的 RCT 只報告影像變化，未報告疼痛或功能結果。",
+      "assessment_validity": "Coleman block test 是評估後足柔軟度的關鍵臨床檢查——把木塊墊在外側柱以排除蹠屈第一列的影響，若後足內翻可矯正為外翻代表僅需處理高足弓，僵硬則需額外處置（通常是跟骨外移截骨）。改良 mSHCG 足部模型可量化後足柔軟度並顯著區分平外翻足、內翻高足弓與正常足（p<0.001）。影像上跟骨傾斜角、Meary 角、Hibb 角與第一蹠骨傾斜角與站立位後足內翻相關性中上（R² 0.407–0.854），但與動態後足活動度相關性弱（R² 0.23–0.30），代表影像無法預測功能性柔軟度。FPI 在高足弓的效度未見專門驗證資料。",
+      "red_flags": [
+        "任何成人的高足弓都應評估潛在神經病因，尤其是 Charcot-Marie-Tooth（大型世代中高足弓患者 63% 有 CMT）",
+        "進行性或雙側變形、家族性足部變形或神經症狀家族史",
+        "無力、萎縮、感覺喪失、步態不穩，或痙攣、反射亢進、共濟失調等表現",
+        "保守治療（物理治療、矯具）失敗，或嚴重、進行性變形限制功能",
+        "反覆外側踝不穩、壓力性骨折、脛距關節炎加速、腓骨肌腱病變、軟組織潰瘍",
+        "Coleman block test 顯示後足僵硬，提示需要骨性矯正",
+        "鞋具難以合腳、行走耐受度下降"
+      ],
+      "caveats": "高足弓在體態課程中最重要的價值不是「矯正」，而是「篩檢與轉介」。把高足弓當成單純的肌力或柔軟度問題處理，可能延誤遺傳性神經病變的診斷；CMT 世代中 71% 有足部變形、30% 需要手術。",
+      "citations": [
+        {"title": "Interventions for the Prevention and Treatment of Pes Cavus", "journal": "Cochrane Database of Systematic Reviews", "year": 2007, "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD006154.pub2/full"},
+        {"title": "Immediate and Short-Term Radiological Changes After Combining Static Stretching and Transcutaneous Electrical Stimulation in Adults With Cavus Foot: A Randomized Controlled Trial", "journal": "Medicine", "year": 2019, "url": "https://pubmed.ncbi.nlm.nih.gov/31725676"},
+        {"title": "Utility of the Coleman Block Test", "journal": "Current Opinion in Pediatrics", "year": 2025, "url": "https://pubmed.ncbi.nlm.nih.gov/41036730"},
+        {"title": "Hindfoot Flexibility Assessment of Cavovarus and Planovalgus Feet by Modified Shriners Hospitals for Children - Greenville Foot Model", "journal": "Gait & Posture", "year": 2024, "url": "https://pubmed.ncbi.nlm.nih.gov/38823334"},
+        {"title": "Prevalence and Orthopedic Management of Foot and Ankle Deformities in Charcot-Marie-Tooth Disease", "journal": "Muscle & Nerve", "year": 2018, "url": "https://onlinelibrary.wiley.com/doi/10.1002/mus.25724"},
+        {"title": "Charcot-Marie-Tooth Disease of the Foot and Ankle: Imaging Features and Pathophysiology", "journal": "RadioGraphics", "year": 2023, "url": "https://pubmed.ncbi.nlm.nih.gov/36862083"}
+      ]
+    },
+    {
+      "unit": "concept-1",
+      "name": "靜態體態對線與疼痛的關係",
+      "article_id": "aa90a31e-d8b4-4adc-8faa-7574e69dd209",
+      "url": "https://www.openevidence.com/ask/aa90a31e-d8b4-4adc-8faa-7574e69dd209",
+      "evidence_grade": "contested",
+      "summary": "靜態體態對線與肌肉骨骼疼痛的關係目前是「有相關、但因果未定」，傳統的「不良體態導致疼痛」模型已被實質挑戰。頸痛成人的頭部前伸確實比無症狀者多（MD 4.84°, 95% CI 0.14–9.54），與疼痛強度（r=-0.55）與失能（r=-0.42）呈中度相關；但在青少年完全沒有關聯（MD -1.05, 95% CI -4.23 到 2.12），顯示年齡是重要干擾因子。腰痛方面，統合分析發現的不是「前凸過大」而是「前凸減少」（椎間盤病變 SMD -0.94；年齡配對族群 SMD -0.33），與傳統教學方向相反；2025 年的統合分析在較廣族群中甚至找不到顯著差異，唯一穩定的發現是骨盆傾斜略增（SMD 0.23, I²=72%）。胸椎後凸在有無腰痛者之間沒有差異。最關鍵的是 Swain 等人 2020 年涵蓋 41 篇系統性回顧的傘狀回顧，明確結論是「對於物理暴露與腰痛的因果關係並無共識；相關性有被記錄，但不構成腰痛的因果解釋」。因此，體態偏差可能是疼痛的適應結果、個體差異或被干擾的關係，而非主要因果因子。",
+      "key_findings": [
+        "頭部前伸與頸痛在成人有中度相關（r=-0.42 到 -0.55），但在青少年無關聯；橫斷研究無法判斷是體態先於疼痛，或疼痛造成體態適應。",
+        "腰痛與「腰椎前凸減少」相關而非「前凸過大」，與坊間教學方向相反；胸椎後凸角與腰痛之間沒有差異。",
+        "Swain 2020 傘狀回顧（41 篇系統性回顧）：僅納入前瞻性研究的回顧結論一致性最低，缺乏劑量反應關係，不滿足 Bradford Hill 因果判準。",
+        "短時間（20 分鐘）的駝背坐姿在無症狀者身上不會造成疼痛、腰椎活動度或本體感覺的不良變化，只降低軀幹肌肉活動；但長時間久坐確實與立即的腰痛增加有關（10 篇研究一致）。",
+        "所有存在的關聯效果量普遍偏小至中等，異質性高、測量方法不一致，證據品質整體為混合至中等。"
+      ],
+      "caveats": "「相關不等於因果」在這裡是實質限制而非修辭。把體態當成疼痛的單一解釋，既超出證據，也可能強化學員對自己身體的恐懼與失能感——這是課程必須避免的傷害。",
+      "citations": [
+        {"title": "No Consensus on Causality of Spine Postures or Physical Exposure and Low Back Pain: A Systematic Review of Systematic Reviews", "journal": "Journal of Biomechanics", "year": 2020, "url": "https://pubmed.ncbi.nlm.nih.gov/31451200"},
+        {"title": "The Relationship Between Forward Head Posture and Neck Pain: A Systematic Review and Meta-Analysis", "journal": "Current Reviews in Musculoskeletal Medicine", "year": 2019, "url": "https://pubmed.ncbi.nlm.nih.gov/31773477"},
+        {"title": "The Relationships Between Low Back Pain and Lumbar Lordosis: A Systematic Review and Meta-Analysis", "journal": "The Spine Journal", "year": 2017, "url": "https://pubmed.ncbi.nlm.nih.gov/28476690"},
+        {"title": "Postural Asymmetry in Low Back Pain - A Systematic Review and Meta-Analysis of Observational Studies", "journal": "Disability and Rehabilitation", "year": 2025, "url": "https://pubmed.ncbi.nlm.nih.gov/39166267"},
+        {"title": "Do Different Sitting Postures Affect Spinal Biomechanics of Asymptomatic Individuals?", "journal": "Gait & Posture", "year": 2019, "url": "https://pubmed.ncbi.nlm.nih.gov/30380507"},
+        {"title": "Association of Exposures to Seated Postures With Immediate Increases in Back Pain: A Systematic Review", "journal": "Journal of Manipulative and Physiological Therapeutics", "year": 2020, "url": "https://pubmed.ncbi.nlm.nih.gov/32081511"}
+      ]
+    },
+    {
+      "unit": "concept-2",
+      "name": "Janda 上／下交叉症候群的效度",
+      "article_id": "c62d2bff-c35b-40cc-88aa-301e4066150d",
+      "url": "https://www.openevidence.com/ask/c62d2bff-c35b-40cc-88aa-301e4066150d",
+      "evidence_grade": "limited",
+      "summary": "Janda 的上、下交叉症候群目前仍是「臨床啟發式模型」，而非經過驗證的診斷實體。文獻中缺乏以 EMG、影像或標準化肌力測試系統性驗證其所描述之緊繃／無力配對模式的研究，這些模式基本上是理論建構。上交叉症候群甚至沒有專屬的 ICD 代碼；2026 年的敘述性回顧承認基層醫師對它的認識零散，且未提供任何客觀測量的效度證據。Janda 的張力性／相位性肌肉分類同樣屬理論架構——2023 年關於相位性與張力性肌肉協同的研究確實顯示兩者神經基質不同，但探討的是動作中抗重力與共同收縮的 EMG 成分，並非驗證 Janda 對特定肌肉的歸類。臨床評估的評分者間信度沒有任何資料，也沒有標準化診斷準則。治療上，唯一的 RCT 初步試驗顯示以此模型為基礎的訓練並未展現特異性優勢，而下交叉症候群導向治療則完全沒有比較性研究。",
+      "key_findings": [
+        "沒有任何 EMG、影像或肌力測試研究能重現 Janda 所描述的特定緊繃／無力配對；這些模式屬理論建構而非已驗證的解剖事實。",
+        "上交叉症候群沒有 ICD 代碼、沒有標準化診斷準則，臨床評估的評分者間信度沒有資料。",
+        "張力性／相位性肌肉分類缺乏實證支持；現有的 phasic/tonic 肌肉協同研究探討的是不同層次的問題，不能拿來背書 Janda 的分類。",
+        "2026 年 30 人的 RCT 初步試驗中，動作控制訓練與軟組織治療對上交叉症候群的止痛效果相當（VAS 皆由約 3.3 降至約 1.5, p<0.001），動作控制在部分頸椎活動度與體態指標略優；但每組僅 15 人、無控制組、也未與一般運動比較，無法推論效果具特異性。",
+        "沒有任何研究比較下交叉症候群導向治療與一般運動或其他介入。"
+      ],
+      "caveats": "交叉症候群可以當作方便記憶的臨床啟發式，用來組織觀察與選擇動作；但不應被當成已驗證的診斷或病因解釋。對學員說「因為你有上交叉症候群所以會痛」已超出現有證據，且無法證明依此模型設計的課表優於一般運動。",
+      "citations": [
+        {"title": "Upper Crossed Syndrome in the Workplace: A Narrative Review With Clinical Recommendations for Non-Pharmacologic Management", "journal": "International Journal of Environmental Research and Public Health", "year": 2026, "url": "https://pubmed.ncbi.nlm.nih.gov/41595914"},
+        {"title": "Motor Control Training Versus Soft Tissue Therapy in the Treatment of Upper Crossed Syndrome: A Randomized Controlled Pilot Trial", "journal": "Scientific Reports", "year": 2026, "url": "https://pubmed.ncbi.nlm.nih.gov/41957076"},
+        {"title": "Phasic and Tonic Muscle Synergies Are Different in Number, Structure and Sparseness", "journal": "Human Movement Science", "year": 2023, "url": "https://pubmed.ncbi.nlm.nih.gov/37708594"}
+      ]
+    },
+    {
+      "unit": "concept-3",
+      "name": "矯正運動的實際成效",
+      "article_id": "2c6f1cb8-8f56-4475-b522-f71e88952a74",
+      "url": "https://www.openevidence.com/ask/2c6f1cb8-8f56-4475-b522-f71e88952a74",
+      "evidence_grade": "moderate",
+      "summary": "矯正運動能產生統計上顯著但幅度不大的體態對線改善，然而「對線改善中介了症狀改善」這一步從未被證明，而且在頭對頭試驗中矯正／體態導向運動並不優於一般運動。7 篇 RCT（627 人）的統合分析顯示顱椎角改善有大的合併效果（OR 6.7, 95% CI 2.53–17.9, p=0.0005，Level 1a 證據），約 8 週可改善 6–7°（MCID 為 1.40°）；肩部前移的改善較小（ES 0.16–0.457，MCID 1.34°）；胸椎後凸角也能被治療性運動降低。但同一篇回顧中顱角並未顯著改善（OR 0.7, p=0.2）而疼痛卻有改善，這本身就暗示對線改變並非症狀改善的必要條件。文獻明確承認「頭部前伸與疼痛的關係，以及治療性運動後兩者改善之間的關係，仍有待建立」，且沒有任何正式的中介分析。最有力的反證是 JAMA 的 2971 人叢集 RCT：個別化體態治療在 3 個月改善 ODI -4.3 分，低於生物心理社會介入的 -5.8 分，兩者都低於 ODI 的 MCID（6 分），而體態治療一年多花 941 美元醫療支出卻沒有更好的臨床結果。",
+      "key_findings": [
+        "對線確實可以改變：顱椎角 8 週約改善 6–7°（Level 1a 證據，OR 6.7），胸椎後凸角、肩角亦有小至中等幅度改善，效果量 Cohen's d 0.79–1.69。",
+        "但沒有任何中介分析證明對線改變導致疼痛改善；在同一批研究中，疼痛改善與對線改善可以彼此脫鉤（顱角無顯著改善而疼痛改善）。",
+        "頭對頭試驗一致顯示矯正／體態導向運動不優於一般運動：穩定性訓練 vs 一般運動（一般運動的失能改善反而更好，Level II）；動作控制 vs 其他運動在中期（MD -3, 95% CI -7 到 1）與長期（MD -2.7）無差異（高度確定性）；肩胛後縮 vs McKenzie 兩組間無顯著差異（p>0.05）。",
+        "JAMA 2971 人、33 中心的實用性叢集 RCT 中，體態治療的臨床效益低於 MCID，且一年醫療支出顯著更高（多 941 美元, RR 1.40, p<0.001）。",
+        "運動的效益較可能來自非特異性機轉——肌力、負荷耐受度、內源性止痛與神經可塑性、心理社會因素——而非生物力學上的「把體態調正」。"
+      ],
+      "caveats": "這不代表矯正運動沒有價值，而是它的價值不在於「把體態調正所以不痛」。誠實的定位是：運動能改善肌力、動作品質、負荷耐受度與主觀不適感，體態數值的改變是伴隨現象而非療效機轉；且並沒有證據顯示精心設計的矯正課表比一般運動更有效。",
+      "citations": [
+        {"title": "Effect of a Biopsychosocial Intervention or Postural Therapy on Disability and Health Care Spending Among Patients With Acute and Subacute Spine Pain", "journal": "JAMA", "year": 2022, "url": "https://jamanetwork.com/journals/jama/fullarticle/10.1001/jama.2022.22625"},
+        {"title": "Effectiveness of Therapeutic Exercise on Forward Head Posture: A Systematic Review and Meta-Analysis", "journal": "Journal of Manipulative and Physiological Therapeutics", "year": 2018, "url": "https://pubmed.ncbi.nlm.nih.gov/30107937"},
+        {"title": "Non-Pharmacological and Non-Surgical Treatments for Low Back Pain in Adults: An Overview of Cochrane Reviews", "journal": "Cochrane Database of Systematic Reviews", "year": 2025, "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD014691.pub2/full"},
+        {"title": "Craniovertebral Angle and Neck Disability Among University Students With Forward Head Posture: Scapular Retraction Exercises Versus McKenzie Method", "journal": "Scientific Reports", "year": 2026, "url": "https://pubmed.ncbi.nlm.nih.gov/42135384"},
+        {"title": "Establishing Minimal Clinically Important Difference for Effectiveness of Corrective Exercises on Craniovertebral and Shoulder Angles", "journal": "BMC Pediatrics", "year": 2022, "url": "https://pubmed.ncbi.nlm.nih.gov/35477430"},
+        {"title": "The Effect of Various Therapeutic Exercises on Forward Head Posture, Rounded Shoulder, and Hyperkyphosis Among People With Upper Crossed Syndrome: A Systematic Review and Meta-Analysis", "journal": "BMC Musculoskeletal Disorders", "year": 2024, "url": "https://pubmed.ncbi.nlm.nih.gov/38302926"}
+      ]
+    }
+  ]
+}

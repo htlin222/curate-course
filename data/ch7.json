@@ -1,0 +1,706 @@
+{
+  "chapter": "CH7",
+  "title": "肩胛骨",
+  "units": [
+    {
+      "id": "ch7-u1",
+      "name": "圓肩",
+      "type": "posture",
+      "assessment": "平躺在硬地板上、雙手自然放身側放鬆，請人從側面看肩峰（肩膀最前上方骨突）後緣到地面的距離，若明顯離地超過 2.5 公分（約一指幅）即偏圓肩；或背靠牆站立，後腦、上背、臀部貼牆時，若雙側肩膀後方無法自然貼上牆面、需刻意用力才貼得到，也判定為圓肩。",
+      "tight": [
+        "胸大肌",
+        "胸小肌",
+        "前三角肌",
+        "背闊肌",
+        "上斜方肌",
+        "提肩胛肌"
+      ],
+      "weak": [
+        "中斜方肌",
+        "下斜方肌",
+        "菱形肌",
+        "棘下肌",
+        "小圓肌",
+        "前鋸肌"
+      ],
+      "lesson": {
+        "title": "The 3 Neglected Muscles to Fix Posture & Rounded Shoulders FOR GOOD",
+        "channel": "Precision Movement",
+        "url": "https://www.youtube.com/watch?v=RRNhzxTjAFM",
+        "duration": "16:45",
+        "why": "優先頻道 Precision Movement 系統性拆解圓肩的真正成因（被忽略的下斜方、前鋸肌、旋轉肌群），從評估講到矯正策略，不是單一動作教學。"
+      },
+      "drills": [
+        {
+          "name": "胸小肌按摩球放鬆",
+          "en": "Pec Minor Ball Release",
+          "kind": "release",
+          "target": "胸小肌",
+          "dose": "每側 60 秒",
+          "title": "Unlock Shoulder Mobility: How to Use a Lacrosse Ball for Tight Pec Minor and Rounded Shoulders",
+          "channel": "Performance Place Sports Care & Chiropractic",
+          "url": "https://www.youtube.com/watch?v=mghh0eR7Uz4",
+          "duration": "1:41"
+        },
+        {
+          "name": "胸大肌滾筒放鬆",
+          "en": "Pec Major Foam Roll Release",
+          "kind": "release",
+          "target": "胸大肌",
+          "dose": "每側 60–90 秒",
+          "title": "Foam Roll Pec Roll Out",
+          "channel": "Coury & Buehler Physical Therapy",
+          "url": "https://www.youtube.com/watch?v=c_VqpJzKY-g",
+          "duration": "2:10"
+        },
+        {
+          "name": "上斜方肌與提肩胛肌按摩球放鬆",
+          "en": "Upper Trap & Levator Scapulae Ball Release",
+          "kind": "release",
+          "target": "上斜方肌、提肩胛肌",
+          "dose": "每側 60 秒",
+          "title": "Trigger Point Release with a Tennis Ball | Upper Trap, Levator Scapulae and Mid Trap/Rhomboids",
+          "channel": "Movement & Function",
+          "url": "https://www.youtube.com/watch?v=Gx-LM_G782I",
+          "duration": "6:24"
+        },
+        {
+          "name": "背闊肌滾筒放鬆",
+          "en": "Lat Foam Roll Release",
+          "kind": "release",
+          "target": "背闊肌",
+          "dose": "每側 60–90 秒",
+          "title": "Self Myofascial Release: Foam Rolling - Latissimus Dorsi",
+          "channel": "National Academy of Sports Medicine (NASM)",
+          "url": "https://www.youtube.com/watch?v=1GaR-a9TWYM",
+          "duration": "1:33"
+        },
+        {
+          "name": "前三角與喙肱肌放鬆",
+          "en": "Anterior Deltoid & Coracobrachialis Release",
+          "kind": "release",
+          "target": "前三角肌、喙肱肌",
+          "dose": "每側 45–60 秒",
+          "title": "Massage ball to release front of shoulder pain",
+          "channel": "Duke Chiropractic",
+          "url": "https://www.youtube.com/watch?v=bxRGPACFreU",
+          "duration": "0:48"
+        },
+        {
+          "name": "胸椎滾筒鬆動",
+          "en": "Thoracic Spine Foam Roll Mobilization",
+          "kind": "release",
+          "target": "胸椎伸展活動度",
+          "dose": "10 次 × 2 組",
+          "title": "Thoracic Spine Mobility using a Foam Roller",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=SQF-0s1CckA",
+          "duration": "0:35"
+        },
+        {
+          "name": "門框胸大肌伸展",
+          "en": "Doorway Pec Major Stretch",
+          "kind": "stretch",
+          "target": "胸大肌",
+          "dose": "每側 30 秒 × 3",
+          "title": "How to do the Doorway Pec Stretch for Rounded Shoulders",
+          "channel": "REACH Rehab + Chiropractic Performance Center",
+          "url": "https://www.youtube.com/watch?v=qv6el4OhHjA",
+          "duration": "2:44"
+        },
+        {
+          "name": "胸小肌牆角伸展",
+          "en": "Pec Minor Corner Stretch",
+          "kind": "stretch",
+          "target": "胸小肌",
+          "dose": "每側 30 秒 × 3",
+          "title": "Pectoral Stretch: Stretching Chest with in Corner Option",
+          "channel": "Kaiser Permanente Santa Rosa",
+          "url": "https://www.youtube.com/watch?v=BLW8Qg2UrdQ",
+          "duration": "1:26"
+        },
+        {
+          "name": "跪姿背闊肌伸展",
+          "en": "Kneeling Lat Stretch",
+          "kind": "stretch",
+          "target": "背闊肌",
+          "dose": "每側 30 秒 × 3",
+          "title": "The Bench Stretch - The Ultimate Lat and Thoracic Spine Mobility Exercise",
+          "channel": "The Barbell Physio",
+          "url": "https://www.youtube.com/watch?v=6Fc0u9xPkL8",
+          "duration": "1:06"
+        },
+        {
+          "name": "開書式胸椎旋轉伸展",
+          "en": "Open Book Thoracic Rotation",
+          "kind": "stretch",
+          "target": "胸椎、胸大肌",
+          "dose": "每側 8 次",
+          "title": "Open Books (Sidelying Thoracic Rotation)",
+          "channel": "Revival Performance Physical Therapy",
+          "url": "https://www.youtube.com/watch?v=rDviWORCWEw",
+          "duration": "1:36"
+        },
+        {
+          "name": "上斜方肌與提肩胛肌伸展",
+          "en": "Upper Trap & Levator Scapulae Stretch",
+          "kind": "stretch",
+          "target": "上斜方肌、提肩胛肌",
+          "dose": "每側 30 秒 × 2",
+          "title": "3 Neck Stretches: Levator Scapulae, Upper Trapezius, and Scalenes\"",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=_f0jjpWp9NA",
+          "duration": "0:40"
+        },
+        {
+          "name": "靠牆肱二頭肌與肩前側伸展",
+          "en": "Wall Biceps & Anterior Shoulder Stretch",
+          "kind": "stretch",
+          "target": "肱二頭肌、前三角肌",
+          "dose": "每側 30 秒 × 2",
+          "title": "Standing Wall Pec/Biceps Stretch",
+          "channel": "Theory of Motion Exercise Library",
+          "url": "https://www.youtube.com/watch?v=ZPN1cDnv300",
+          "duration": "0:14",
+          "note": "此動作在 YouTube 上少有專業頻道的獨立教學；本片為動作示範庫短片，僅 14 秒但正面／側面角度完整、動作對位清楚，觀看數 12,090，故保留。若需口語講解可搭配主課影片。"
+        },
+        {
+          "name": "俯臥 Y 字抬舉",
+          "en": "Prone Y Raise",
+          "kind": "train",
+          "target": "下斜方肌",
+          "dose": "12 次 × 3 組",
+          "title": "Y-Raise A.K.A. Prone V-Raise - Lower Trapezius Strengthening Exercise",
+          "channel": "PhysioExercise",
+          "url": "https://www.youtube.com/watch?v=juoKsTqy77E",
+          "duration": "0:45"
+        },
+        {
+          "name": "俯臥 T 字抬舉",
+          "en": "Prone T Raise",
+          "kind": "train",
+          "target": "中斜方肌、菱形肌",
+          "dose": "12 次 × 3 組",
+          "title": "Prone T Exercise For Physical Therapy",
+          "channel": "Potomac Valley Orthopaedic Associates",
+          "url": "https://www.youtube.com/watch?v=jv_Qu4KLRp4",
+          "duration": "2:10"
+        },
+        {
+          "name": "靠牆天使",
+          "en": "Wall Angel",
+          "kind": "train",
+          "target": "下斜方肌、前鋸肌、胸椎伸展",
+          "dose": "10 次 × 3 組",
+          "title": "Wall Angel Exercise",
+          "channel": "sportandspinal",
+          "url": "https://www.youtube.com/watch?v=YO87HFVgsGo",
+          "duration": "2:47"
+        },
+        {
+          "name": "彈力帶肩外旋",
+          "en": "Band External Rotation",
+          "kind": "train",
+          "target": "棘下肌、小圓肌",
+          "dose": "每側 15 次 × 3 組",
+          "title": "Shoulder External Rotation with Resistive Band - Ask Doctor Jo",
+          "channel": "AskDoctorJo",
+          "url": "https://www.youtube.com/watch?v=_UvmPNGtlPM",
+          "duration": "0:38"
+        },
+        {
+          "name": "彈力帶坐姿划船",
+          "en": "Seated Band Row",
+          "kind": "train",
+          "target": "中斜方肌、菱形肌、背闊肌",
+          "dose": "12 次 × 3 組",
+          "title": "Seated Rows with Resistance Bands",
+          "channel": "Vive Health",
+          "url": "https://www.youtube.com/watch?v=ovn27-bSHj4",
+          "duration": "1:05"
+        },
+        {
+          "name": "彈力帶面拉",
+          "en": "Band Face Pull",
+          "kind": "train",
+          "target": "後三角肌、中下斜方肌、旋轉肌群",
+          "dose": "15 次 × 3 組",
+          "title": "Strengthen Mid Back & Posture with Banded Face Pulls - The Source Chiropractic",
+          "channel": "The Source Chiropractic",
+          "url": "https://www.youtube.com/watch?v=d3SvguM80_s",
+          "duration": "1:59"
+        }
+      ]
+    },
+    {
+      "id": "ch7-u2",
+      "name": "翼狀肩胛",
+      "type": "posture",
+      "assessment": "【自我檢測】1) 靠牆伏地挺身測試：面牆站立，雙手與肩同高撐牆，慢慢做 10 下靠牆伏地挺身，請人從後方觀察或用手機錄影——若肩胛骨內緣（靠近脊椎那側）或下角明顯從肋廓上翹起、像翅膀一樣浮出來，即為陽性。2) 四足跪姿推地測試：四足跪姿把地板往下推、上背推圓，若肩胛內緣仍翹起無法貼服肋廓，代表前鋸肌無法有效把肩胛「壓」在胸廓上。3) 手臂上舉測試：側身對鏡，雙手緩慢上舉過頭再放下，觀察肩胛是否能順暢上旋；若上斜方肌先聳起、肩胛卻不上旋，多半是前鋸肌與下斜方肌無力。4) 靜態站姿觀察：放鬆站立時單側或雙側肩胛內緣即明顯突起，且常伴隨圓肩與胸小肌緊繃。\n【重要就醫提醒】本單元處理的是「功能性／肌力型」翼狀肩胛——由前鋸肌、下斜方肌無力加上胸小肌與背闊肌緊繃造成的肩胛控制不良，可以靠放鬆＋伸展＋肌力訓練改善。但若你有以下情形，請先就醫（骨科／復健科／神經內科）做神經學檢查，不要自行訓練：放鬆站姿時翼狀就非常誇張且單側明顯不對稱；手術（如腋下淋巴清除、第一肋切除）、背重物、外傷或病毒感染後「突然」出現；伴隨肩部無力、麻木、灼痛或手臂完全無法舉過頭；症狀持續惡化。這些可能是長胸神經（long thoracic nerve）損傷造成的真性翼狀肩胛，也可能是副神經（斜方肌）或背肩胛神經受損，需要神經傳導檢查與醫療處置，單純肌力訓練無法解決。\n【訓練提醒】本單元訓練比例高，前鋸肌是絕對主角。放鬆與伸展只是為了讓肩胛能自由上旋與後傾，真正改變體態的是後面 6 個前鋸肌漸進式訓練。動作品質重於次數：全程感覺「把地板／牆面推遠、上背推圓」，若肩胛又翹起就退回上一階難度。",
+      "tight": [
+        "胸小肌",
+        "背闊肌",
+        "菱形肌",
+        "上斜方肌"
+      ],
+      "weak": [
+        "前鋸肌",
+        "下斜方肌",
+        "中斜方肌"
+      ],
+      "lesson": {
+        "title": "Scapular Dyskinesis | Winging (Myths Busted | Evidence Based)",
+        "channel": "E3 Rehab",
+        "url": "https://www.youtube.com/watch?v=dk2DkybMJ38",
+        "duration": "14:01",
+        "why": "E3 Rehab（DPT 團隊）以實證角度系統性拆解肩胛動作異常與翼狀肩胛：說明肩胛正常運動學、區分神經損傷造成的真性翼狀肩胛與常見的功能性／肌力型肩胛動作異常，破除「肩胛一定要完美對稱」「翼狀＝一定會受傷」等迷思，並說明合理的評估流程與以漸進負荷為核心的矯正策略。時長 14:01 落在主課範圍內，觀念正確且不販賣恐懼，適合作為本單元的觀念底層。"
+      },
+      "drills": [
+        {
+          "name": "胸小肌按摩球放鬆",
+          "en": "Pec Minor Ball Release",
+          "kind": "release",
+          "target": "胸小肌",
+          "dose": "每側 60 秒",
+          "title": "How to release your pec minor with a Trigger Point ball",
+          "channel": "Dr. Erin Boynton",
+          "url": "https://www.youtube.com/watch?v=Yli_XWMh2M8",
+          "duration": "2:31",
+          "note": "示範者為骨科醫師（Dr. Erin Boynton, MD, FRCSC），影片直接說明胸小肌位置、按壓角度，以及胸小肌緊繃如何影響肩胛位置；觀看數 8,669 已達標準。"
+        },
+        {
+          "name": "背闊肌滾筒放鬆",
+          "en": "Lat Foam Roll Release",
+          "kind": "release",
+          "target": "背闊肌",
+          "dose": "每側 60–90 秒",
+          "title": "Self Myofascial Release: Foam Rolling - Latissimus Dorsi",
+          "channel": "National Academy of Sports Medicine (NASM)",
+          "url": "https://www.youtube.com/watch?v=1GaR-a9TWYM",
+          "duration": "1:33"
+        },
+        {
+          "name": "肩胛內緣菱形肌按摩球放鬆",
+          "en": "Rhomboid Ball Release",
+          "kind": "release",
+          "target": "菱形肌",
+          "dose": "每側 60 秒",
+          "title": "Trigger Point Release with a Tennis Ball | Upper Trap, Levator Scapulae and Mid Trap/Rhomboids",
+          "channel": "Movement & Function",
+          "url": "https://www.youtube.com/watch?v=Gx-LM_G782I",
+          "duration": "6:24",
+          "note": "影片附章節時間戳，菱形肌／中斜方肌段落自 4:10 開始；前半段的上斜方肌、提肩胛肌放鬆對本單元列出的緊繃肌群同樣適用。"
+        },
+        {
+          "name": "胸椎滾筒鬆動",
+          "en": "Thoracic Spine Foam Roll Mobilization",
+          "kind": "release",
+          "target": "胸椎伸展活動度",
+          "dose": "10 次 × 2 組",
+          "title": "Foam Roller Thoracic Spine Extensions",
+          "channel": "The Barbell Physio",
+          "url": "https://www.youtube.com/watch?v=81kPLsMt6wY",
+          "duration": "0:50",
+          "note": "The Barbell Physio 為 DPT 經營之頻道。示範精簡（50 秒），滾筒位置與伸展角度清楚，並提示不要用腰椎代償。"
+        },
+        {
+          "name": "門框胸小肌伸展",
+          "en": "Doorway Pec Minor Stretch",
+          "kind": "stretch",
+          "target": "胸小肌",
+          "dose": "每側 30 秒 × 3",
+          "title": "Simple Doorway Pec Minor Stretch: Fixing Rounded Shoulders",
+          "channel": "Fitness 4 Back Pain",
+          "url": "https://www.youtube.com/watch?v=Wd40VoY958I",
+          "duration": "1:37",
+          "note": "示範者 Rick Kaselj 具運動科學碩士（MS）與矯正運動專業背景；影片明確區分胸小肌與胸大肌的手臂高度差異，並提醒肩胛要維持後收。"
+        },
+        {
+          "name": "跪姿背闊肌伸展",
+          "en": "Kneeling Lat Stretch",
+          "kind": "stretch",
+          "target": "背闊肌",
+          "dose": "每側 30 秒 × 3",
+          "title": "The Bench Stretch - The Ultimate Lat and Thoracic Spine Mobility Exercise",
+          "channel": "The Barbell Physio",
+          "url": "https://www.youtube.com/watch?v=6Fc0u9xPkL8",
+          "duration": "1:06"
+        },
+        {
+          "name": "穿針式胸椎旋轉伸展",
+          "en": "Thread the Needle Thoracic Stretch",
+          "kind": "stretch",
+          "target": "胸椎、後肩胛",
+          "dose": "每側 8 次",
+          "title": "Thoracic mobility exercise - thread the needle",
+          "channel": "Revival Performance Physical Therapy",
+          "url": "https://www.youtube.com/watch?v=6roMIB2YV4Y",
+          "duration": "1:43"
+        },
+        {
+          "name": "靠牆前鋸肌滑行",
+          "en": "Serratus Wall Slide",
+          "kind": "train",
+          "target": "前鋸肌、下斜方肌",
+          "dose": "10 次 × 3 組",
+          "title": "Wall Slides for Serratus Anterior  Activation",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=oMSVe7PWJ3o",
+          "duration": "0:34",
+          "note": "[P]rehab Guys（DPT 團隊）動作示範庫影片，長度僅 34 秒但角度清楚，明確示範「前臂推牆、肩胛往前往上繞」的重點；觀看數 55 萬。"
+        },
+        {
+          "name": "四足跪姿肩胛前推",
+          "en": "Quadruped Scapular Protraction",
+          "kind": "train",
+          "target": "前鋸肌",
+          "dose": "12 次 × 3 組",
+          "title": "4 Scapular Pushup Progressions",
+          "channel": "Precision Movement",
+          "url": "https://www.youtube.com/watch?v=fLAf2YG4flw",
+          "duration": "5:31",
+          "note": "由四足跪姿肩胛前推起手，依序介紹 4 個難度階段並說明常見代償（聳肩、塌腰、手肘鎖死），可同時作為本動作與後續進階的參考。"
+        },
+        {
+          "name": "伏地挺身加強式（Push-up Plus）",
+          "en": "Push-Up Plus",
+          "kind": "train",
+          "target": "前鋸肌",
+          "dose": "10 次 × 3 組",
+          "title": "Push Up Plus",
+          "channel": "E3 Rehab Exercise Library",
+          "url": "https://www.youtube.com/watch?v=RFbjeyq_ZPc",
+          "duration": "0:14",
+          "note": "E3 Rehab 官方動作示範庫（DPT 團隊）的純示範片段，長度僅 14 秒；動作角度乾淨、頂端「再多推出去一點」的幅度明確。講解重點請搭配本單元主課影片與上一支 Precision Movement 進階影片。"
+        },
+        {
+          "name": "彈力帶前鋸肌前推",
+          "en": "Band Serratus Punch (Protraction Press)",
+          "kind": "train",
+          "target": "前鋸肌",
+          "dose": "15 次 × 3 組",
+          "title": "Serratus Punches with Resistive Band - Ask Doctor Jo",
+          "channel": "AskDoctorJo",
+          "url": "https://www.youtube.com/watch?v=Vn7ur-0O4CY",
+          "duration": "0:32",
+          "note": "Doctor Jo 為執業物理治療師（PT, DPT）。示範為 32 秒短片，彈力帶繞背、單手向前出拳並「多送出肩胛」的動作路徑清楚。"
+        },
+        {
+          "name": "熊爬",
+          "en": "Bear Crawl",
+          "kind": "train",
+          "target": "前鋸肌、核心、肩胛穩定",
+          "dose": "20 公尺 × 3 趟",
+          "title": "Crawling Fixed My Back. Not Stretching.",
+          "channel": "GMB Fitness (Praxis)",
+          "url": "https://www.youtube.com/watch?v=6JCowqOSk_g",
+          "duration": "5:48",
+          "note": "影片附章節：1:16 基本 Bear Walk、2:11 交叉步熊爬、3:15 旋轉熊爬、4:29 課表安排。本單元先做 1:16 的基本熊爬即可，重點在全程把地板推遠、上背維持推圓。"
+        },
+        {
+          "name": "過頭前鋸肌上舉（Landmine Press 或牆面過頭滑行）",
+          "en": "Overhead Serratus Press",
+          "kind": "train",
+          "target": "前鋸肌上旋功能",
+          "dose": "每側 10 次 × 3 組",
+          "title": "Landmine Press - The Safest Open Chain Shoulder Strengthening Exercise | Tim Keeley | Physio REHAB",
+          "channel": "Physio REHAB",
+          "url": "https://www.youtube.com/watch?v=n1NSt-h-tHA",
+          "duration": "5:03",
+          "note": "示範者 Tim Keeley 為澳洲物理治療師。影片說明 Landmine Press 相較傳統肩推能在較安全的角度誘發肩胛上旋與前鋸肌參與，並示範單手跪姿與站姿版本；沒有槓鈴者可改做牆面過頭滑行。"
+        }
+      ]
+    },
+    {
+      "id": "ch7-u3",
+      "name": "肱骨前移",
+      "type": "posture",
+      "assessment": "四項自我檢測：①仰躺平躺檢測——放鬆仰躺於硬地板或治療床，手臂自然放身側，從側面觀察或用手指探摸肩峰前緣；正常肱骨頭後緣應貼近檯面，若肩峰前緣／肱骨頭明顯突出高於檯面超過一指幅（約 2–3 公分以上），且用手輕壓肱骨頭往後會感到明顯彈性阻擋或牽拉痛，即為陽性。②划船動作檢測——做彈力帶或坐姿划船時，把手指輕放在肱骨頭前緣；正常後拉時肱骨頭應往後滑移離開手指，若一啟動肱骨頭反而往前頂住手指、肩膀往前捲、動作全靠手肘往後拉而背部沒有感覺，即為陽性。③臥推／伏地挺身下降檢測——下放到底時，肩膀前側是否明顯往前塌陷、肱骨頭前突並伴隨前側夾痛或撞擊感。④肩後側緊繃度檢測——做跨體伸展與睡姿伸展時左右比較，患側水平內收與內旋角度明顯受限（內旋差異大於 15–20 度），代表後關節囊、棘下肌與小圓肌緊繃，這正是把肱骨頭往前推的主要力量來源；再加上肩胛下肌與後三角控制不足，肱骨頭就會在動作中失去置中而持續前移。",
+      "tight": [
+        "後關節囊",
+        "棘下肌",
+        "小圓肌",
+        "後三角肌",
+        "胸大肌",
+        "背闊肌",
+        "大圓肌"
+      ],
+      "weak": [
+        "肩胛下肌",
+        "後三角肌",
+        "中斜方肌",
+        "下斜方肌"
+      ],
+      "lesson": {
+        "title": "肩膀痛的隱形元凶：肱骨前移的評估與改善運動｜啾c物理治療師",
+        "channel": "啾c物理治療師",
+        "url": "https://www.youtube.com/watch?v=l7ojcgFNfCU",
+        "duration": "9:30",
+        "why": "繁中物理治療師頻道，主題完全命中本單元「肱骨前移」，9:30 落在主課 5–20 分鐘區間，結構正是成因＋自我評估＋改善運動三段式。內容說明肩後側軟組織緊繃與前側穩定不足如何把肱骨頭推向前方造成肩痛，並示範自我檢測與矯正動作，可直接對應本單元的 assessment 與 release／train 安排。同等品質下優先繁中，62 萬次觀看、專業 PT 背景，符合品質門檻。"
+      },
+      "drills": [
+        {
+          "name": "後三角與後關節囊按摩球放鬆",
+          "en": "Posterior Deltoid & Capsule Ball Release",
+          "kind": "release",
+          "target": "後三角肌、後關節囊",
+          "dose": "每側 60 秒",
+          "title": "Posterior shoulder release/rotator cuff pain | Lacrosse Ball | Travis Dodds Physio",
+          "channel": "travisdoddsphysio",
+          "url": "https://www.youtube.com/watch?v=jDNf1o8UoaM",
+          "duration": "2:28"
+        },
+        {
+          "name": "棘下肌與小圓肌按摩球放鬆",
+          "en": "Infraspinatus & Teres Minor Ball Release",
+          "kind": "release",
+          "target": "棘下肌、小圓肌",
+          "dose": "每側 60–90 秒",
+          "title": "Teres Minor/Major & Infraspinatus Release",
+          "channel": "Brian Abelson",
+          "url": "https://www.youtube.com/watch?v=Lj60uYlh_1c",
+          "duration": "2:18"
+        },
+        {
+          "name": "胸大肌與前三角放鬆",
+          "en": "Pec Major & Anterior Deltoid Release",
+          "kind": "release",
+          "target": "胸大肌、前三角肌",
+          "dose": "每側 60 秒",
+          "title": "How to Self Massage the Chest Muscles (Pectoralis Major & Minor)",
+          "channel": "Bob & Brad",
+          "url": "https://www.youtube.com/watch?v=MT_Hbe_7NrA",
+          "duration": "9:11"
+        },
+        {
+          "name": "背闊肌與大圓肌滾筒放鬆",
+          "en": "Lat & Teres Major Foam Roll",
+          "kind": "release",
+          "target": "背闊肌、大圓肌",
+          "dose": "每側 60–90 秒",
+          "title": "Foam Rolling the Latissimus Dorsi",
+          "channel": "Psoas Massage + Bodywork",
+          "url": "https://www.youtube.com/watch?v=h8c9GGzeyKs",
+          "duration": "2:43"
+        },
+        {
+          "name": "睡姿伸展",
+          "en": "Sleeper Stretch",
+          "kind": "stretch",
+          "target": "後關節囊、棘下肌",
+          "dose": "每側 30 秒 × 3",
+          "title": "Sleeper Stretch for posterior inferior glenohumeral joint fibrosis",
+          "channel": "Dr. Andreo Spina",
+          "url": "https://www.youtube.com/watch?v=2QdKCBh28SY",
+          "duration": "2:45"
+        },
+        {
+          "name": "跨體肩後側伸展",
+          "en": "Cross-Body Shoulder Stretch",
+          "kind": "stretch",
+          "target": "後三角肌、後關節囊",
+          "dose": "每側 30 秒 × 3",
+          "title": "Eliminate Shoulder Pain With This Exercise - Cross Body Adduction (Posterior Capsule Stretch)",
+          "channel": "Physical Therapy & Hand Clinic of Hillsboro",
+          "url": "https://www.youtube.com/watch?v=KrBCD8Hv-fk",
+          "duration": "5:38"
+        },
+        {
+          "name": "門框胸大肌伸展",
+          "en": "Doorway Pec Stretch",
+          "kind": "stretch",
+          "target": "胸大肌、前三角肌",
+          "dose": "每側 30 秒 × 3",
+          "title": "How to do the Doorway Pec Stretch for Rounded Shoulders",
+          "channel": "REACH Rehab + Chiropractic Performance Center",
+          "url": "https://www.youtube.com/watch?v=qv6el4OhHjA",
+          "duration": "2:44"
+        },
+        {
+          "name": "肩胛下肌等長內旋（貼腹推壓）",
+          "en": "Belly Press Isometric Internal Rotation",
+          "kind": "train",
+          "target": "肩胛下肌｜手肘夾在體側、手掌貼腹，用「肩膀往內轉」的力把手掌壓進肚子，感覺肩窩深處收緊、肱骨頭往後坐回關節窩；手肘不可往後跑、肩膀不可聳起或往前捲",
+          "dose": "每側 10 秒 × 8 次",
+          "title": "Subscapularis Isometric",
+          "channel": "Peak Chiropractic and Kinesiology",
+          "url": "https://www.youtube.com/watch?v=iXuv4PfRM6M",
+          "duration": "1:54",
+          "note": "觀看數 3,967 低於 5,000 門檻。此為單一動作的稀有專項示範（多數影片把貼腹推壓混在多動作合輯中），頻道為專業 chiropractic/kinesiology 診所、示範清楚且長度 1:54 合適，故依稀有動作例外採用。"
+        },
+        {
+          "name": "俯臥水平外展",
+          "en": "Prone Horizontal Abduction (Rear Delt Raise)",
+          "kind": "train",
+          "target": "後三角肌、中斜方肌｜俯臥手臂垂於床緣外，拇指朝上往外抬至與肩同高；抬起時想像肱骨頭往後、往下坐回關節窩，肩膀不可往耳朵聳、也不可讓肩頭往前掉",
+          "dose": "12 次 × 3 組",
+          "title": "EricCressey.com: Prone Horizontal Abduction to Upward Rotation",
+          "channel": "Eric Cressey",
+          "url": "https://www.youtube.com/watch?v=WEaDRp1lmJ8",
+          "duration": "2:47"
+        },
+        {
+          "name": "彈力帶划船（強調肱骨頭後移）",
+          "en": "Band Row with Posterior Humeral Glide Cue",
+          "kind": "train",
+          "target": "後三角肌、中斜方肌、菱形肌｜全程把手指放在肩前當回饋點，後拉時肱骨頭要「離開手指往後滑」，不可往前頂手指；先讓肩胛往後下沉、再讓手肘往後走，肩前不可出現凸起或夾痛",
+          "dose": "12 次 × 3 組",
+          "title": "ROW BETTER: How to Fix Anterior Humeral Gliding and Scapular Elevation...The Seated Row",
+          "channel": "OmarIsuf",
+          "url": "https://www.youtube.com/watch?v=-sVVFmOcfc0",
+          "duration": "3:19",
+          "note": "頻道非 PT/DPT 而是資深肌力訓練教練，但這是搜尋結果中唯一整支直接示範「划船時如何避免肱骨前移（anterior humeral gliding）」的技術影片，與本單元核心動作提示完全對應，16.8 萬次觀看，故採用。"
+        },
+        {
+          "name": "彈力帶面拉",
+          "en": "Band Face Pull",
+          "kind": "train",
+          "target": "後三角肌、旋轉肌群、中下斜方肌｜拉到臉／下巴高度時同步外旋，肩胛下沉後收，感受肱骨頭往後置中；避免聳肩、頭往前伸或用腰往後倒代償",
+          "dose": "15 次 × 3 組",
+          "title": "How To PROPERLY Do Face Pulls For Prehab & Shoulder Health - Technique",
+          "channel": "Citizen Athletics",
+          "url": "https://www.youtube.com/watch?v=CU4Xc2qlLC0",
+          "duration": "6:32"
+        },
+        {
+          "name": "壺鈴底朝上過頭支撐／推舉",
+          "en": "Bottoms-Up Kettlebell Press",
+          "kind": "train",
+          "target": "旋轉肌群整體共同收縮、肩關節置中｜壺鈴倒立的不穩定會強迫肩胛下肌與後側旋轉肌一起把肱骨頭「夾」回關節窩中央；推的過程肋骨不外翻、肩膀不往前頂，感覺肩窩是被鎖住而非往前滑",
+          "dose": "每側 8 次 × 3 組",
+          "title": "Kettlebell Bottoms Up | Benefits, Exercises, How To Perform",
+          "channel": "E3 Rehab",
+          "url": "https://www.youtube.com/watch?v=TJjRZBpY75I",
+          "duration": "7:21"
+        }
+      ]
+    },
+    {
+      "id": "ch7-u4",
+      "name": "垂肩",
+      "type": "posture",
+      "assessment": "垂肩即「肩胛骨下旋症候群」（Scapular Downward Rotation Syndrome, SDRS）：肩胛骨在靜態下被過度下壓（depression）＋下旋（downward rotation），常合併外展與前傾。可操作檢查（任一陽性即傾向）：(1) 肩胛下角定位——背對鏡子放鬆站立，摸出肩胛骨上角與下角，正常下角應略偏外側；垂肩者下角明顯內收靠向脊椎、上角外開，整片肩胛像被往下往內拉。(2) 鎖骨角度——正常鎖骨自胸骨往外微微上斜約 0～20 度；垂肩者鎖骨呈水平甚至下垂，肩線塌陷。(3) 兩側比對——量 C7 到肩峰的距離與肩峰高度，垂肩側距離變長、肩膀明顯較低（高低肩）。(4) 上舉上旋測試——手臂由體側舉到 180 度，肩胛應同步上旋 45～60 度；垂肩者上旋不足、上舉末端卡住，或以整個肩帶亂聳、腰椎過度伸展代償。(5) 症狀線索——頸側（提肩胛肌止點）長期緊繃酸痛、頭痛，以及手麻、刺痛、夜間上肢麻醒等胸廓出口症候群（TOS）樣症狀，因為肩胛持續下壓會把臂神經叢與鎖骨下血管往下拉扯。\n\n【最關鍵：矯正方向與圓肩完全相反】這類人不該再做任何「肩胛下壓（scapular depression）」的提示。健身房與瑜伽最常聽到的「肩膀往下沉」「把肩胛骨放進後褲袋」「肩膀遠離耳朵」「肩胛下壓後收（down and back）」，對圓肩／上交叉症候群或許適用，但套在垂肩者身上會直接加重下壓與下旋，讓頸部緊繃、夾擠與手麻惡化。垂肩要刻意反過來做：訓練上斜方肌的上旋（upward rotation）與上提（elevation）功能，以及前鋸肌的上旋作用，讓肩胛骨能主動往上、往外轉。換句話說，圓肩是「放鬆上斜方肌、強化下斜方肌、把肩胛收下來」；垂肩則是「放鬆提肩胛肌／菱形肌／背闊肌／胸小肌這些下旋下壓肌群，強化上斜方肌上旋纖維與前鋸肌，把肩胛帶上去」。兩者策略方向相反，學員務必先用上述檢測確認自己屬於哪一種，切勿把圓肩的「肩胛下壓後收」課表直接搬過來用。\n\n【練習通用提示】所有上肢動作改用「讓肩胛骨跟著手臂一起往上轉」的提示，允許並鼓勵聳肩與上旋同時發生；避免任何刻意壓低肩膀、用力夾緊肩胛的指令；過頭動作全程保持肩胛主動上旋，而非把肩膀「鎖死壓住」。",
+      "tight": [
+        "提肩胛肌",
+        "菱形肌",
+        "背闊肌",
+        "胸小肌"
+      ],
+      "weak": [
+        "上斜方肌",
+        "前鋸肌",
+        "下斜方肌"
+      ],
+      "lesson": {
+        "title": "Shoulder muscle balance test - how to fix depressed shoulders",
+        "channel": "Upright Health",
+        "url": "https://www.youtube.com/watch?v=BBU4zQAkBG4",
+        "duration": "5:18",
+        "why": "優先頻道 Upright Health 直接以 depressed shoulders（垂肩／肩胛下壓）為主題，5 分鐘內走完「肌肉平衡自我檢測 → 為什麼肩胛被下旋肌群往下拉 → 該補強哪一側」，是少數專講此題而非泛談肩胛穩定的教學片。核心觀念與本單元一致：垂肩的問題不是肩膀太高，矯正方向要往「上提／上旋」走，正好對照並修正一般人把圓肩的「肩胛下壓後收」提示誤套到垂肩身上的錯誤。建議先跟著影片做左右側檢測，再依結果決定後續 drill 的偏側劑量。"
+      },
+      "drills": [
+        {
+          "name": "提肩胛肌按摩球放鬆",
+          "en": "Levator Scapulae Ball Release",
+          "kind": "release",
+          "target": "提肩胛肌",
+          "dose": "每側 60 秒",
+          "title": "Levator Scapulae Soft Tissue Mobilization With Lacrosse Ball",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=4-BijFQb4_I",
+          "duration": "1:16"
+        },
+        {
+          "name": "菱形肌按摩球放鬆",
+          "en": "Rhomboid Ball Release",
+          "kind": "release",
+          "target": "菱形肌",
+          "dose": "每側 60 秒",
+          "title": "Simple Rhomboid Self Massage (GET A BALL)",
+          "channel": "Performance Place Sports Care & Chiropractic",
+          "url": "https://www.youtube.com/watch?v=axb1dl4vJOE",
+          "duration": "9:56"
+        },
+        {
+          "name": "背闊肌滾筒放鬆",
+          "en": "Lat Foam Roll Release",
+          "kind": "release",
+          "target": "背闊肌",
+          "dose": "每側 60–90 秒",
+          "title": "Self Myofascial Release: Foam Rolling - Latissimus Dorsi",
+          "channel": "National Academy of Sports Medicine (NASM)",
+          "url": "https://www.youtube.com/watch?v=1GaR-a9TWYM",
+          "duration": "1:33"
+        },
+        {
+          "name": "提肩胛肌伸展",
+          "en": "Levator Scapulae Stretch",
+          "kind": "stretch",
+          "target": "提肩胛肌",
+          "dose": "每側 30 秒 × 3",
+          "title": "Levator Scapulae Stretch Guide",
+          "channel": "Restore Plus Physical Therapy",
+          "url": "https://www.youtube.com/watch?v=5RzkpkiMU18",
+          "duration": "1:12"
+        },
+        {
+          "name": "門框胸小肌伸展",
+          "en": "Doorway Pec Minor Stretch",
+          "kind": "stretch",
+          "target": "胸小肌",
+          "dose": "每側 30 秒 × 3",
+          "title": "Stop Stretching Your Pecs Like This!",
+          "channel": "Squat University",
+          "url": "https://www.youtube.com/watch?v=wwKWBwj-05U",
+          "duration": "5:19",
+          "note": "優先頻道 Squat University（Aaron Horschig, DPT）示範門框胸／胸小肌伸展的正確做法與最常見錯誤（手位太高、只拉到胸大肌、肩關節前推代償），比一般只做動作不講錯誤的示範片更適合本單元。"
+        },
+        {
+          "name": "肩胛平面舉加聳肩",
+          "en": "Scaption with Shrug (Full-Can Scaption)",
+          "kind": "train",
+          "target": "上斜方肌、前鋸肌、上旋功能",
+          "dose": "12 次 × 3 組",
+          "title": "Corrective Exercise for the Trapezius Serratus Anterior Upward Rotation of the Scapulae",
+          "channel": "Eric Beard",
+          "url": "https://www.youtube.com/watch?v=_5sBqtjkUzc",
+          "duration": "2:50",
+          "note": "純「scaption with shrug」關鍵字的影片幾乎都是 10–30 秒無講解、或觀看數低於 5000 的診所短片；此片由矯正運動專家 Eric Beard 示範肩胛平面上舉搭配主動上提／上旋，明確訓練上斜方肌＋前鋸肌的上旋力偶，與本動作目的一致且有講解。"
+        },
+        {
+          "name": "過頭聳肩",
+          "en": "Overhead Shrug",
+          "kind": "train",
+          "target": "上斜方肌上旋纖維",
+          "dose": "12 次 × 3 組",
+          "title": "Trapezius exercise for a low/depressed shoulder: Overhead shrug",
+          "channel": "Integrative Personal Training",
+          "url": "https://www.youtube.com/watch?v=WvFhnUWjMVA",
+          "duration": "1:45"
+        },
+        {
+          "name": "靠牆前鋸肌上滑",
+          "en": "Wall Slide with Upward Rotation",
+          "kind": "train",
+          "target": "前鋸肌、上斜方肌",
+          "dose": "10 次 × 3 組",
+          "title": "How to Perform a Serratus Anterior Wall Slide for Serratus Anterior Activation",
+          "channel": "Momenta Chiropractic",
+          "url": "https://www.youtube.com/watch?v=bYAvj2rFD5s",
+          "duration": "1:54"
+        },
+        {
+          "name": "單臂過頭負重行走",
+          "en": "Overhead Carry (Waiter Walk)",
+          "kind": "train",
+          "target": "上旋肌群整合、肩胛穩定",
+          "dose": "每側 20 公尺 × 3 趟",
+          "title": "Improving Shoulder Stability For Pitchers : Kettlebell Waiter Walk",
+          "channel": "Tread Athletics",
+          "url": "https://www.youtube.com/watch?v=xBX70V15bnk",
+          "duration": "6:10"
+        }
+      ]
+    }
+  ]
+}

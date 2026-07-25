@@ -1,0 +1,364 @@
+{
+  "chapter": "CH4",
+  "title": "頸椎",
+  "units": [
+    {
+      "id": "ch4-u1",
+      "name": "頭前伸",
+      "type": "posture",
+      "assessment": "側面站姿拍照，以耳垂中心與肩峰中心拉一條鉛垂線：耳垂落在肩峰前方超過 2.5 公分即為陽性（可量 craniovertebral angle，正常 ≥ 50°，< 48° 屬明顯頭前伸）。臨床快篩：靠牆站立（腳跟離牆 5 公分），臀部與上背貼牆、眼睛平視，若後腦杓需刻意後仰或下巴上抬才碰得到牆即為陽性。第二項鑑別是「收下巴測試」——坐姿做 chin tuck 後若視線水平度改善、頸部後方變舒服，代表是可逆的姿勢性頭前伸（本單元適用）；若收下巴當下反而更緊、更痛、頭暈或上肢麻，要懷疑頸椎曲度已變直（見 u2 軍人頸）或有神經根壓迫，先停止並就醫。第三項是仰臥測試：平躺不墊枕，若後腦杓無法自然貼床、下巴朝天花板翹起，代表枕下肌群與後頸筋膜已縮短。頭前伸屬於上交叉症候群的一部分，通常會同時出現圓肩與駝背，評估時要一起看胸椎。",
+      "tight": [
+        "枕下肌群",
+        "上斜方肌",
+        "提肩胛肌",
+        "胸鎖乳突肌",
+        "斜角肌",
+        "胸小肌"
+      ],
+      "weak": [
+        "頸深屈肌（頭長肌／頸長肌）",
+        "中斜方肌",
+        "下斜方肌",
+        "菱形肌",
+        "前鋸肌"
+      ],
+      "lesson": {
+        "title": "這個習慣害你烏龜頸！脖子前傾該怎麼辦？",
+        "channel": "三個字SunGuts",
+        "url": "https://www.youtube.com/watch?v=fJywDb-kxQ0",
+        "duration": "7:25",
+        "why": "物理治療師主講的繁中影片，先講清楚頭前伸真正的成因是「胸椎與呼吸模式」而不是單純意志力挺胸，再帶到收下巴的正確做法與常見錯誤，作為本單元的觀念鋪陳最完整。"
+      },
+      "drills": [
+        {
+          "name": "枕下肌群網球放鬆",
+          "en": "Suboccipital Tennis Ball Release",
+          "kind": "release",
+          "target": "枕下肌群（頭後大／小直肌、頭上／下斜肌）",
+          "dose": "仰躺，兩顆球置於枕骨下緣兩側，維持 90 秒，可加輕微點頭",
+          "title": "Trigger Point Release for SUBOCCIPITALS | Best Technique with Tennis Balls",
+          "channel": "Movement & Function",
+          "url": "https://www.youtube.com/watch?v=Zf05OOHAV9M",
+          "duration": "7:46"
+        },
+        {
+          "name": "上斜方肌按摩球放鬆",
+          "en": "Upper Trapezius Ball Release",
+          "kind": "release",
+          "target": "上斜方肌",
+          "dose": "每側 60–90 秒，找到痛點後停留並緩慢轉頭",
+          "title": "Seated Upper Trapezius Myofascial Release",
+          "channel": "Human Kinetics",
+          "url": "https://www.youtube.com/watch?v=TYGSTK-_7CY",
+          "duration": "1:36"
+        },
+        {
+          "name": "提肩胛肌按摩球放鬆",
+          "en": "Levator Scapulae Ball Release",
+          "kind": "release",
+          "target": "提肩胛肌",
+          "dose": "靠牆每側 60 秒，配合同側手臂上下擺動",
+          "title": "Levator Scapulae Soft Tissue Mobilization With Lacrosse Ball",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=4-BijFQb4_I",
+          "duration": "1:16"
+        },
+        {
+          "name": "胸鎖乳突肌徒手放鬆",
+          "en": "SCM Self-Massage",
+          "kind": "release",
+          "target": "胸鎖乳突肌",
+          "dose": "每側 45–60 秒，以拇指與食指輕捏提起，力道要輕",
+          "title": "SCM Self-Massage",
+          "channel": "Psoas Massage + Bodywork",
+          "url": "https://www.youtube.com/watch?v=nNTtiLOqT8Q",
+          "duration": "2:13"
+        },
+        {
+          "name": "胸小肌按摩球放鬆",
+          "en": "Pec Minor Ball Release",
+          "kind": "release",
+          "target": "胸小肌",
+          "dose": "靠牆每側 60 秒，球置於鎖骨下方喙突內側",
+          "title": "MB5 Massage Ball: Pec Minor",
+          "channel": "TriggerPoint",
+          "url": "https://www.youtube.com/watch?v=i03VyvWNeqM",
+          "duration": "2:40"
+        },
+        {
+          "name": "胸椎滾筒放鬆",
+          "en": "Thoracic Spine Foam Roll",
+          "kind": "release",
+          "target": "胸段豎脊肌、胸椎後關節",
+          "dose": "上／中／下胸椎各 8–10 次來回，共 2–3 分鐘",
+          "title": "Foam roller thoracic spine extension movement and mobility | Feat. Tim Keeley | No.26 | Physio REHAB",
+          "channel": "Physio REHAB",
+          "url": "https://www.youtube.com/watch?v=qCrYe698zJU",
+          "duration": "5:30"
+        },
+        {
+          "name": "枕下肌群伸展",
+          "en": "Suboccipital Stretch",
+          "kind": "stretch",
+          "target": "枕下肌群",
+          "dose": "30 秒 × 3 次，只點頭不低頭，感受在髮際線下方",
+          "title": "Suboccipital Stretch for Neck Pain and Headaches | Chesterfield Chiropractor",
+          "channel": "Elite Chiropractic and Performance",
+          "url": "https://www.youtube.com/watch?v=GSji_RWsXlM",
+          "duration": "0:46"
+        },
+        {
+          "name": "上斜方肌伸展",
+          "en": "Upper Trapezius Stretch",
+          "kind": "stretch",
+          "target": "上斜方肌",
+          "dose": "每側 30 秒 × 3 次，同側手壓椅面固定肩胛不聳肩",
+          "title": "Upper Trapezius Stretch - Ask Doctor Jo",
+          "channel": "AskDoctorJo",
+          "url": "https://www.youtube.com/watch?v=-r0eoFS7_5Q",
+          "duration": "0:32"
+        },
+        {
+          "name": "提肩胛肌伸展",
+          "en": "Levator Scapulae Stretch",
+          "kind": "stretch",
+          "target": "提肩胛肌",
+          "dose": "每側 30 秒 × 3 次，先轉頭 45 度再低頭看向對側腋下",
+          "title": "Levator Scapula Stretch",
+          "channel": "Intermountain Health",
+          "url": "https://www.youtube.com/watch?v=Jv3eKDYfajQ",
+          "duration": "1:24"
+        },
+        {
+          "name": "胸鎖乳突肌伸展",
+          "en": "Sternocleidomastoid Stretch",
+          "kind": "stretch",
+          "target": "胸鎖乳突肌",
+          "dose": "每側 20–30 秒 × 3 次，動作要慢，出現頭暈立刻停止",
+          "title": "S C M (Sternocleidomastoid muscle) Stretch",
+          "channel": "Lonsdale Wellness Studio",
+          "url": "https://www.youtube.com/watch?v=DVebkG8aDG4",
+          "duration": "1:58"
+        },
+        {
+          "name": "斜角肌伸展",
+          "en": "Scalene Stretch",
+          "kind": "stretch",
+          "target": "前／中／後斜角肌",
+          "dose": "每側每個方向 20 秒，若手臂出現麻感代表壓到臂神經叢，減少幅度",
+          "title": "Scalene neck muscle stretch: anterior, middle, posterior scalene (POGO Physio)",
+          "channel": "POGO Physio",
+          "url": "https://www.youtube.com/watch?v=LQVfMP-d0A8",
+          "duration": "1:28"
+        },
+        {
+          "name": "胸大肌門框伸展",
+          "en": "Doorway Pec Stretch",
+          "kind": "stretch",
+          "target": "胸大肌、胸小肌",
+          "dose": "手肘 90 度置於門框，每側 30 秒 × 3 次，肋骨不要往前推",
+          "title": "How to Do a Doorway Pec Stretch Exercise | 90 Degrees Abduction | MedBridge",
+          "channel": "Medbridge",
+          "url": "https://www.youtube.com/watch?v=M850sCj9LHQ",
+          "duration": "0:37"
+        },
+        {
+          "name": "仰臥顱頸屈曲點頭",
+          "en": "Supine Craniocervical Flexion Nod",
+          "kind": "train",
+          "target": "頸深屈肌（頭長肌／頸長肌）",
+          "dose": "10 次 × 3 組，每次維持 5–10 秒；只做「點頭」，下巴不可用力縮到底",
+          "title": "Supine Deep Neck Flexor Training Video: Michelle Lyons | MedBridge",
+          "channel": "Medbridge",
+          "url": "https://www.youtube.com/watch?v=UTKWWeG8g-c",
+          "duration": "0:48"
+        },
+        {
+          "name": "仰臥收下巴",
+          "en": "Supine Chin Tuck",
+          "kind": "train",
+          "target": "頸深屈肌",
+          "dose": "10 次 × 3 組，每次維持 5 秒；胸鎖乳突肌浮出代表用錯肌肉",
+          "title": "Deep Neck Flexor Strengthening",
+          "channel": "Nicklaus Children's Hospital",
+          "url": "https://www.youtube.com/watch?v=CpwvQT8axGk",
+          "duration": "1:19"
+        },
+        {
+          "name": "坐姿／靠牆收下巴",
+          "en": "Seated & Wall Chin Tuck (Cervical Retraction)",
+          "kind": "train",
+          "target": "頸深屈肌、頸椎後縮動作控制",
+          "dose": "10 次 × 3 組，每次維持 5 秒，每工作 1 小時做 1 組",
+          "title": "Chin tucks (retraction) for neck pain and spine posture | Feat. Tim Keeley | No.40 | Physio REHAB",
+          "channel": "Physio REHAB",
+          "url": "https://www.youtube.com/watch?v=vhFGQxDVzF8",
+          "duration": "5:27"
+        },
+        {
+          "name": "頸深屈肌耐力測試與訓練（仰臥抬頭）",
+          "en": "Deep Neck Flexor Endurance Test / Hold",
+          "kind": "train",
+          "target": "頸深屈肌耐力",
+          "dose": "收下巴後把頭抬離床面約 2.5 公分，撐到下巴翹起為止；男性目標 ≥ 38 秒、女性 ≥ 29 秒，每週測 1 次並以 3 × 最長時間 50% 做訓練",
+          "title": "Neck Flexor Endurance Test | Deep Neck Flexors",
+          "channel": "Physiotutors",
+          "url": "https://www.youtube.com/watch?v=0JEWM_McBmM",
+          "duration": "1:52"
+        },
+        {
+          "name": "俯臥 Y 字抬臂（下斜方肌啟動）",
+          "en": "Prone Y Raise / Lower Trap Activation",
+          "kind": "train",
+          "target": "下斜方肌、中斜方肌",
+          "dose": "12 次 × 3 組，拇指朝上，先把肩胛往後下方沉再抬手，不聳肩",
+          "title": "Improve Your Lower Trap Activation",
+          "channel": "[P]rehab",
+          "url": "https://www.youtube.com/watch?v=r7ZSEd0E908",
+          "duration": "6:06"
+        },
+        {
+          "name": "彈力帶 Face Pull（站姿整合）",
+          "en": "Band Face Pull",
+          "kind": "train",
+          "target": "中／下斜方肌、菱形肌、肩外旋肌群",
+          "dose": "12–15 次 × 3 組，全程保持收下巴，拉到臉側時肩胛後收不聳肩",
+          "title": "How To PROPERLY Do Face Pulls For Prehab & Shoulder Health - Technique",
+          "channel": "Citizen Athletics",
+          "url": "https://www.youtube.com/watch?v=CU4Xc2qlLC0",
+          "duration": "6:32"
+        }
+      ]
+    },
+    {
+      "id": "ch4-u2",
+      "name": "軍人頸（頸椎生理曲度變直）",
+      "type": "posture",
+      "assessment": "軍人頸的核心問題是「頸椎前凸消失」，不是頭往前跑，兩者必須分清楚，否則訓練方向會完全相反。影像上以 C2–C7 Cobb 角判定：正常 20–40°，< 20° 為變直（military / straight neck），出現負值則為反曲（cervical kyphosis）。沒有影像時用三個徒手鑑別：（1）仰臥不墊枕，手掌從後頸下方滑進去——正常頸椎前凸應能塞進約一個手掌厚度的空隙；軍人頸者後頸幾乎完全貼床、塞不進去，而單純頭前伸者反而是後腦杓懸空、下巴翹高。（2）主動後仰測試：坐姿慢慢抬頭往後看天花板，軍人頸者活動度明顯受限、像卡住，且動作集中在上頸段（頭往後折）而不是整段均勻展開。（3）收下巴反應測試：這是最關鍵的鑑別——頭前伸者做 chin tuck 會覺得後頸放鬆、視線變輕鬆；軍人頸者做 chin tuck 反而更緊、更酸、甚至頭暈，因為 chin tuck 本質是頸椎屈曲，會把僅存的前凸再拉直。所以軍人頸「不能一味做收下巴」，訓練重點要放在恢復頸椎前凸（毛巾捲仰臥伸展、Denneroll 概念的支撐性伸展）與恢復胸椎伸展，讓頸椎有空間重新彎回來；chin tuck 只在曲度改善後、作為深層屈肌啟動的低強度輔助使用。若有頭暈、視力變化、上肢無力或麻木，先就醫排除椎動脈與神經根問題再開始運動。",
+      "tight": [
+        "胸鎖乳突肌",
+        "前斜角肌",
+        "上斜方肌",
+        "提肩胛肌",
+        "胸大肌",
+        "胸小肌"
+      ],
+      "weak": [
+        "頸深伸肌群（頸半棘肌、頸多裂肌）",
+        "枕下伸肌群（頭後大直肌、頭下斜肌）",
+        "頭夾肌／頸夾肌",
+        "中斜方肌",
+        "下斜方肌",
+        "胸段豎脊肌"
+      ],
+      "lesson": {
+        "title": "How to Fix Cervical Kyphosis, Flat Neck, or Military Neck | Neck Posture Fix",
+        "channel": "Dr. Jon Saunders",
+        "url": "https://www.youtube.com/watch?v=Bsf4nUtj49s",
+        "duration": "9:29",
+        "why": "少數專門把「曲度變直／反曲」與一般頭前伸分開講的影片，先用側面 X 光解釋 Cobb 角與正常前凸，再說明為什麼要用支撐性後伸而不是一直收下巴，並示範居家可做的曲度恢復流程，正好對應本單元的鑑別重點。"
+      },
+      "drills": [
+        {
+          "name": "上斜方肌／提肩胛肌網球放鬆",
+          "en": "Upper Trap & Levator Scapulae Tennis Ball Release",
+          "kind": "release",
+          "target": "上斜方肌、提肩胛肌",
+          "dose": "靠牆每側 60–90 秒，先放鬆把頸椎往上拉直的肌肉，後續伸展才做得動",
+          "title": "Trigger Point Release with a Tennis Ball | Upper Trap, Levator Scapulae and Mid Trap/Rhomboids",
+          "channel": "Movement & Function",
+          "url": "https://www.youtube.com/watch?v=Gx-LM_G782I",
+          "duration": "6:24"
+        },
+        {
+          "name": "胸鎖乳突肌／前斜角肌徒手放鬆",
+          "en": "SCM & Anterior Scalene Manual Release",
+          "kind": "release",
+          "target": "胸鎖乳突肌、前斜角肌",
+          "dose": "每側 45–60 秒，力道要輕；這兩條是把頸椎往前拉直的主要兇手",
+          "title": "Self Massage - Sternocleidomastoid (SCM) Release",
+          "channel": "Aware Health",
+          "url": "https://www.youtube.com/watch?v=D9eyWpgcSyA",
+          "duration": "1:02"
+        },
+        {
+          "name": "胸椎旁脊肌滾筒放鬆",
+          "en": "Thoracic Paraspinal Foam Roll",
+          "kind": "release",
+          "target": "胸段豎脊肌、胸椎後關節",
+          "dose": "上／中胸椎各 8–10 次來回，共 2 分鐘；胸椎鬆開頸椎才有空間彎回前凸",
+          "title": "Foam Roller Thoracic Extension",
+          "channel": "Rehab My Patient",
+          "url": "https://www.youtube.com/watch?v=9Y11Kc0E0og",
+          "duration": "0:48"
+        },
+        {
+          "name": "毛巾捲仰臥頸椎伸展（恢復前凸）",
+          "en": "Supine Cervical Extension over Towel Roll",
+          "kind": "stretch",
+          "target": "頸椎前凸（C3–C6）、頸前軟組織",
+          "dose": "毛巾捲成直徑約 8–10 公分橫放在頸椎最凹處，仰躺放鬆 5 分鐘起，逐週加到 10–15 分鐘；本單元最核心的動作，出現頭暈或手麻立刻停止並降低捲徑",
+          "title": "Towel Neck Exercises",
+          "channel": "Cumberland Chiropractic and Sports Medicine",
+          "url": "https://www.youtube.com/watch?v=BKdISzYXp64",
+          "duration": "1:15"
+        },
+        {
+          "name": "胸椎滾筒伸展",
+          "en": "Thoracic Extension over Foam Roller",
+          "kind": "stretch",
+          "target": "胸椎伸展活動度",
+          "dose": "分 3 個節段各做 8–10 次後仰，臀部不離地、下巴保持收好避免代償到頸椎",
+          "title": "Foam Roller Thoracic Extension Mobility",
+          "channel": "The Barbell Physio",
+          "url": "https://www.youtube.com/watch?v=DAU0meAX3wc",
+          "duration": "1:08"
+        },
+        {
+          "name": "前頸伸展（胸鎖乳突肌）",
+          "en": "Anterior Neck / SCM Stretch",
+          "kind": "stretch",
+          "target": "胸鎖乳突肌、頸前筋膜",
+          "dose": "每側 20–30 秒 × 3 次，把頸椎前側「打開」讓前凸回得來；動作要慢",
+          "title": "NECK: Sternocleidomastoid (SCM) Stretch",
+          "channel": "From The Neck Up",
+          "url": "https://www.youtube.com/watch?v=f0tJZrpHGzo",
+          "duration": "0:56"
+        },
+        {
+          "name": "頸椎後伸活動度與肌力訓練",
+          "en": "Cervical Extension Mobility & Strength",
+          "kind": "train",
+          "target": "頸深伸肌群（頸半棘肌、頸多裂肌）、頭／頸夾肌",
+          "dose": "8–10 次 × 3 組，動作分段慢慢展開，避免只從上頸段往後折",
+          "title": "Improve your Neck Extension Mobility and Strength | Tim Keeley | Physio REHAB",
+          "channel": "Physio REHAB",
+          "url": "https://www.youtube.com/watch?v=R1lzCQ-IewY",
+          "duration": "7:37"
+        },
+        {
+          "name": "彈力帶頸椎後伸等長",
+          "en": "Banded Isometric Neck Extension",
+          "kind": "train",
+          "target": "頸後伸肌群",
+          "dose": "彈力帶繞過後腦，等長推 8 次 × 3 組，每次 6–8 秒；力道由輕開始，高血壓者避免憋氣",
+          "title": "Neck exercise using a resistance band",
+          "channel": "Dr Chris Norris",
+          "url": "https://www.youtube.com/watch?v=u1ale4IwGTQ",
+          "duration": "3:28"
+        },
+        {
+          "name": "俯臥眼鏡蛇（頸胸整合）",
+          "en": "Prone Cobra",
+          "kind": "train",
+          "target": "胸段豎脊肌、中／下斜方肌、頸後伸肌群",
+          "dose": "撐 10 秒 × 8 次，或 30 秒 × 3 組；頸椎跟著胸椎一起延伸，不是單獨仰頭",
+          "title": "How To Do A Prone Cobra | Improve Posture",
+          "channel": "GuerrillaZen Fitness",
+          "url": "https://www.youtube.com/watch?v=2Z7uGBbsvf8",
+          "duration": "4:51"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "_meta": {
+    "source": "OpenEvidence (Ask OpenEvidence Light with citations)",
+    "queried_at": "2026-07-25",
+    "scope": "CH7 肩胛帶 / CH8 骨盆 / CH9 髖關節，共 10 個體態問題",
+    "evidence_grade_definitions": {
+      "strong": "在同儕審查文獻中是公認的臨床實體，病理機轉與鑑別診斷明確",
+      "moderate": "關聯性有一致的研究支持，介入有系統性回顧或統合分析支持，但因果性仍未確立",
+      "limited": "文獻存在但數量少、樣本小、品質低，或僅有短期替代指標",
+      "contested": "關聯性被高品質研究否證或高度爭議，或該「診斷」本身在文獻中不成立"
+    },
+    "usage_note": "本檔為課程實證註記用途，非醫療診斷。凡標示 contested 者，課程講述時務必同步說明其限制。"
+  },
+  "conditions": [
+    {
+      "unit": "ch7-u1",
+      "name": "圓肩",
+      "name_en": "Rounded shoulders / scapular protraction (forward shoulder posture)",
+      "article_id": "16aa4e89-ec73-4917-a7db-85c99b8d2a17",
+      "url": "https://www.openevidence.com/ask/16aa4e89-ec73-4917-a7db-85c99b8d2a17",
+      "evidence_grade": "contested",
+      "pain_link": "圓肩與疼痛的關聯是相關性而非因果性，且被高品質研究挑戰。Lewis 等人比較 60 位有症狀與 60 位無症狀者，發現上半身姿勢並不符合臨床模型描述的固定型態，也沒有證據支持姿勢與肌肉失衡是夾擠症候群的病因。少數例外是「後側肩關節緊繃」與自陳疼痛失能有關（OR 1.16, 95% CI 1.04–1.29），但胸小肌長度本身與疼痛失能無顯著關聯。",
+      "muscle_model": "傳統模型（胸大小肌、上斜方、提肩胛肌縮短；中下斜方、前鋸肌被拉長無力）主要是臨床推論，缺乏直接 EMG 或影像佐證。已知較確定的是：胸小肌靜態長度較短與肩胛內轉增加、胸椎後凸增加有相關（無症狀族群）；但胸小肌長度並不預測疼痛與失能。應在課程中誠實說明這是「模型」不是「已證實的病理」。",
+      "intervention": "22 篇研究的系統性回顧與統合分析顯示，治療性運動可顯著改善圓肩角度（95% CI −1.822 至 −1.15）、前傾頭與胸椎後凸角度（p = 0.001）。一項 RCT 以橫膈呼吸再教育合併肩胛穩定訓練，每週 3 次共 4 週即改善壓痛閾值、顱椎角、圓肩角度與頸部失能指數。重點：目前證據支持「角度可改變」，但「角度改變等於疼痛改善」的因果鏈並未被證實。",
+      "assessment_validity": "同一施測者可用 Pectoralis Minor Index、Acromion-to-Wall Index 與 Thoracic Curvature 三項組合（組內信度 ICC 0.77–0.94）；跨施測者則建議用 AWI、ATI、TC（ICC 0.82–0.85）。PMI 與 Scapular Index 的施測者間信度不足，不適合多人評估。",
+      "red_flags": [
+        "近期外傷後急性肩痛（懷疑骨折、脫位、急性旋轉肌撕裂）",
+        "後方胸鎖關節脫位、第 IV/V/VI 型肩鎖關節損傷 → 需緊急手術評估",
+        "年輕運動員首次盂肱關節脫位、全層旋轉肌撕裂 → 需骨科評估",
+        "進行性神經學缺損、感覺異常或無力（懷疑頸神經根或臂神經叢問題）",
+        "夜間痛、體重減輕、發燒等全身症狀（懷疑感染或腫瘤）"
+      ],
+      "caveats": "應誠實告知學員：「圓肩會導致肩痛」在文獻中並未成立，無症狀者一樣可能有圓肩。訓練的合理理由是改善活動度、肌力與功能表現，而不是「矯正姿勢以消除疼痛」。避免把姿勢照片當成病理診斷。",
+      "citations": [
+        {
+          "title": "Subacromial impingement syndrome: The role of posture and muscle imbalance",
+          "journal": "Journal of Shoulder and Elbow Surgery",
+          "year": 2005,
+          "url": "https://doi.org/10.1016/j.jse.2004.08.007"
+        },
+        {
+          "title": "The effect of various therapeutic exercises on forward head posture, rounded shoulder, and hyperkyphosis among people with upper crossed syndrome: a systematic review and meta-analysis",
+          "journal": "BMC Musculoskeletal Disorders",
+          "year": 2024,
+          "url": "https://doi.org/10.1186/s12891-024-07224-4"
+        },
+        {
+          "title": "Are pectoralis minor length and posterior shoulder tightness associated with patient-reported shoulder pain and disability?",
+          "journal": "Journal of Hand Therapy",
+          "year": 2025,
+          "url": "https://doi.org/10.1016/j.jht.2024.10.003"
+        },
+        {
+          "title": "Clinical Measures Related to Forward Shoulder Posture: A Reliability and Correlational Study",
+          "journal": "Journal of Manipulative and Physiological Therapeutics",
+          "year": 2019,
+          "url": "https://doi.org/10.1016/j.jmpt.2019.03.006"
+        },
+        {
+          "title": "Resting Position Variables at the Shoulder: Evidence to Support a Posture-Impairment Association",
+          "journal": "Physical Therapy",
+          "year": 2006,
+          "url": "https://doi.org/10.1093/ptj/86.4.549"
+        }
+      ]
+    },
+    {
+      "unit": "ch7-u2",
+      "name": "翼狀肩胛",
+      "name_en": "Scapular winging / scapular dyskinesis",
+      "article_id": "a73a74b4-a115-477b-9ce5-d44cd7d91e0b",
+      "url": "https://www.openevidence.com/ask/a73a74b4-a115-477b-9ce5-d44cd7d91e0b",
+      "evidence_grade": "strong",
+      "pain_link": "真正的翼狀肩胛（尤其神經源性）與肩痛、無力、活動度受限及功能障礙有明確的機轉性關聯，文獻直接描述為「使人失能」。相較之下，較廣義的「肩胛運動異常（scapular dyskinesis）」與頸部失能、肩功能障礙呈正相關，但因果方向仍有爭議，可能是原因、結果或代償。無症狀者也可能出現肩胛運動異常。",
+      "muscle_model": "此處不是模型而是有神經電生理與影像佐證：前鋸肌無力（長胸神經）造成內側翼狀，EMG 顯示 CMAP 振幅極低、最大收縮呈神經源性型態、靜止時有去神經電位（纖維顫動）。斜方肌無力（副神經）造成外側翼狀，EMG 型態相同。菱形肌無力（背肩胛神經）較少見，超音波可見回音增強與萎縮。另需注意肌肉自肩胛急性撕脫是「被低估」的非神經源性成因。",
+      "intervention": "中等確定性證據顯示以肩胛為核心的運動計畫在 6–12 週可改善肩功能、失能與盂肱關節活動度；但對疼痛、肌力與運動表現的證據為低至極低確定性。一項 RCT（n=28）顯示 6 週特定肩胛運動在 QuickDASH（p=0.001）、SICK scapula 量表（p=0.003）優於按摩，但兩組疼痛皆下降，暗示非特異性效果。運動對非神經源性運動異常較有效；真正神經源性翼狀多需自行恢復或手術。",
+      "assessment_validity": "系統性回顧結論是「目前沒有任何一項肩胛評估工具具足夠效度可推薦於臨床」。Lateral scapular slide test 效標效度不足；視覺式 scapular dyskinesis test 易誤判、不應單獨作為診斷工具；wall push-up test 常用但無確立效度（僅適合誘發長胸神經麻痺的內側翼狀）。",
+      "red_flags": [
+        "單側翼狀肩胛 → 高度懷疑神經源性，須轉診 EMG／神經科",
+        "可見肌肉萎縮（斜方肌、肩胛周圍）",
+        "外傷、手術或病毒感染後急性發作（含 Parsonage-Turner 症候群）",
+        "矯正運動下仍進行性無力",
+        "伴隨神經學症狀：感覺異常、聲音沙啞／吞嚥困難（副神經合併顱神經侵犯）、頸部無力",
+        "頸部腫塊或淋巴結腫大（懷疑腫瘤壓迫神經）",
+        "無法將手臂抬高過 90 度或顯著功能受限",
+        "雙側運動異常經 6–8 週運動仍無改善（4–6 週內非急迫轉診）"
+      ],
+      "caveats": "課程必須明確分流：長胸神經麻痺（前鋸肌、內側翼狀、肩前屈／推牆時明顯）與副神經麻痺（斜方肌、外側翼狀、外展時惡化、伴肩下垂與斜方肌萎縮、同側胸鎖乳突肌無力）都是醫療診斷，不是體態問題。單側 + 萎縮 + 急性發作 = 立即轉診，不可先訓練。健身或體態指導只適用於雙側、無萎縮、肌力對稱、可用口令提示改善的姿勢性運動異常。",
+      "citations": [
+        {
+          "title": "Scapular Winging: Evaluation and Treatment",
+          "journal": "The Journal of Bone and Joint Surgery (American Volume)",
+          "year": 2015,
+          "url": "https://doi.org/10.2106/jbjs.o.00727"
+        },
+        {
+          "title": "Anatomy, Etiology, and Management of Scapular Winging",
+          "journal": "The Journal of Hand Surgery",
+          "year": 2019,
+          "url": "https://doi.org/10.1016/j.jhsa.2018.08.008"
+        },
+        {
+          "title": "Unilateral winged scapula: Clinical and electrodiagnostic experience with 128 cases, with special attention to long thoracic nerve palsy",
+          "journal": "Muscle & Nerve",
+          "year": 2018,
+          "url": "https://doi.org/10.1002/mus.26059"
+        },
+        {
+          "title": "Validity of Clinical Measurement Instruments Assessing Scapular Function: Insufficient Evidence to Recommend Any Instrument",
+          "journal": "Journal of Orthopaedic & Sports Physical Therapy",
+          "year": 2020,
+          "url": "https://doi.org/10.2519/jospt.2020.9265"
+        },
+        {
+          "title": "Combined Use of EMG and Muscle Ultrasound for the Evaluation of Scapular Winging",
+          "journal": "Muscle & Nerve",
+          "year": 2026,
+          "url": "https://doi.org/10.1002/mus.70134"
+        }
+      ]
+    },
+    {
+      "unit": "ch7-u3",
+      "name": "肱骨前移",
+      "name_en": "Anterior humeral glide / humeral anterior glide syndrome (Sahrmann MSI)",
+      "article_id": "3709e3a7-cced-4ba7-b2eb-57f5f3ec37e6",
+      "url": "https://www.openevidence.com/ask/3709e3a7-cced-4ba7-b2eb-57f5f3ec37e6",
+      "evidence_grade": "contested",
+      "pain_link": "「肱骨頭前移」作為可量測的運動學現象確實存在於文獻中；但「humeral anterior glide syndrome」作為一個診斷名稱，主要來自 Shirley Sahrmann 的 movement system impairment（MSI）學派，並非骨科／物理治療界廣泛採用的診斷。骨釘追蹤研究顯示有症狀者在肩屈曲 90–120 度間比無症狀者多約 1.4 mm 的前向位移，但原作者明言「這些差異的臨床意義尚不清楚」。方向性（是位移造成痛，還是痛造成位移）未定。",
+      "muscle_model": "提出的模式（胸大小肌、闊背肌、前三角縮短；後側旋轉肌群、下斜方、前鋸肌被拉長無力）主要是臨床推論。間接支持：MRI 研究顯示前向不穩定者後側旋轉肌截面積較小（肩胛下肌／後側旋轉肌比 1.18 ± 0.40）；EMG 顯示前向不穩定者肌肉活化型態改變（胸大肌與肱二頭肌活化受抑、棘上肌與肩胛下肌共同收縮下降），指向「動作控制改變」而非單純肌力失衡。",
+      "intervention": "沒有針對「肱骨前移症候群」本身的介入試驗。相關證據：dynamic humeral centering RCT（n=70，6 週）顯示部分效益但效果量未清楚報告；動作控制訓練與漸進阻力訓練＋徒手治療（8 週）改善等長肌力，但都是多成分介入無法歸因。Mobilization with movement 對動作時疼痛有中等效果（SMD −0.6）、外展增加 12.7 度，但異質性高（I² 61–87%）。整體品質低至中等、追蹤期短。",
+      "assessment_validity": "超音波評估肱骨頭位置有中等程度整體證據（level 2a），施測者內信度佳（ICC 0.76–0.99）、施測者間 ICC 0.66–0.99。觸診法信度較差（施測者間 ICC 0.48–0.68，90 度外展內轉位僅 0.48）。Modified Scapular Assistance Test 有高品質證據顯示「不可靠」。",
+      "red_flags": [
+        "外傷後懷疑骨折、脫位或急性旋轉肌撕裂",
+        "真正的盂肱關節不穩定（反覆脫位／半脫位），尤其年輕運動員的創傷性前向不穩定 → 骨科評估",
+        "進行性神經學缺損（懷疑神經損傷或頸椎病變）",
+        "感染徵象（發燒、紅、熱、全身症狀）",
+        "疑似惡性腫瘤（不明體重減輕、夜間痛、癌症病史）",
+        "血管受損徵象（膚色改變、溫差、脈搏消失）",
+        "保守治療 6–12 週未改善"
+      ],
+      "caveats": "課程應誠實標示：「肱骨前移症候群」是 Sahrmann MSI 學派的分類語彙，不是骨科／影像學上的公認診斷。實測位移僅約 1–2 mm，接近量測誤差，臨床意義未明。目前肩部領域的趨勢反而是主張淘汰單純機械式的「夾擠症候群」標籤。可以把它當成一個教學上的動作觀察線索，但不應對學員宣稱「你的肱骨跑到前面了，所以會痛」。",
+      "citations": [
+        {
+          "title": "Comparison of 3-Dimensional Shoulder Complex Kinematics in Individuals With and Without Shoulder Pain, Part 2: Glenohumeral Joint",
+          "journal": "Journal of Orthopaedic & Sports Physical Therapy",
+          "year": 2014,
+          "url": "https://doi.org/10.2519/jospt.2014.5556"
+        },
+        {
+          "title": "Translations of the Humerus in Persons With Shoulder Impingement Symptoms",
+          "journal": "Journal of Orthopaedic & Sports Physical Therapy",
+          "year": 2002,
+          "url": "https://doi.org/10.2519/jospt.2002.32.6.248"
+        },
+        {
+          "title": "Shoulder impingement revisited: evolution of diagnostic understanding in orthopedic surgery and physical therapy",
+          "journal": "Medical & Biological Engineering & Computing",
+          "year": 2014,
+          "url": "https://doi.org/10.1007/s11517-013-1074-1"
+        },
+        {
+          "title": "Use of a Movement System Impairment Diagnosis for Physical Therapy in the Management of a Patient With Shoulder Pain",
+          "journal": "Journal of Orthopaedic & Sports Physical Therapy",
+          "year": 2007,
+          "url": "https://doi.org/10.2519/jospt.2007.2283"
+        },
+        {
+          "title": "What is the reliability of clinical measurement tests for humeral head position? A systematic review",
+          "journal": "Journal of Hand Therapy",
+          "year": 2017,
+          "url": "https://doi.org/10.1016/j.jht.2017.06.010"
+        }
+      ]
+    },
+    {
+      "unit": "ch7-u4",
+      "name": "垂肩",
+      "name_en": "Depressed scapula / scapular downward rotation syndrome",
+      "article_id": "9e15fc4c-1dd9-44cd-9f10-c53e1b666b88",
+      "url": "https://www.openevidence.com/ask/9e15fc4c-1dd9-44cd-9f10-c53e1b666b88",
+      "evidence_grade": "limited",
+      "pain_link": "相關但非明確因果。值得注意的發現：即使是無症狀者，肩胛下垂排列者在上肢神經動力測試中神經組織敏感度顯著較高（疼痛較強、肘伸直角度較小），且頸部與上肢的壓痛閾值較低，暗示長期壓迫／牽張臂神經叢可能是頸臂疼痛的前驅因子。夾擠症候群者在上舉時確實有較多的肩胛下轉與前傾，但無法判定是原因或疼痛後的動作適應。文獻並未將肩胛下垂列為胸廓出口症候群的主要成因。",
+      "muscle_model": "主要是臨床推論。文獻中並未找到 EMG 或影像證據直接證實闊背肌、菱形肌、提肩胛肌、胸小肌「結構性縮短」，或上斜方肌、前鋸肌「被拉長」。已有的 EMG 證據是活化型態改變而非長度改變。肌力方面：前鋸肌與上斜方肌肌力顯著影響肩胛下方區域位置（R² > 24.5%），下斜方影響中立位內外側位置（11.3%），前鋸肌在 90 度外展時影響 34.5%。",
+      "intervention": "6 週肩胛導向運動計畫在 QuickDASH（p=0.001）、SICK scapula（p=0.003）、hand press-up test（p=0.026）優於按摩，但兩組疼痛降幅相近。證據量與品質都有限（主要引用研究 n=28）。系統性回顧指出關於運動治療對肩胛功能障礙的效果「高品質證據甚少」。最佳療程長度不明，現有研究多為 6 週。",
+      "assessment_validity": "受過訓練的評估者以視覺觀察靜態與動態肩胛位置有高信度（施測者間一致度 80–95.9%，κ > 0.81；施測者內 80.7–89.3%，κ 0.67–0.81）。建議組合：靜態用視覺觀察＋肩峰距離（Baylor／double square 法）；半動態用視覺觀察＋傾角儀評估肩胛上轉；有夾擠症狀者用 scapular repositioning test 與 scapular assistance test。",
+      "red_flags": [
+        "神經性胸廓出口症候群徵象：手部無力、感覺異常，尤其大／小魚際肌萎縮（C8-T1 分布）",
+        "症狀因手臂上舉或過頭活動而加劇",
+        "誘發測試陽性：elevated arm stress test（3 分鐘無法完成握放）、upper limb tension test、鎖骨上壓痛測試",
+        "出現運動無力或肌肉萎縮 → 代表壓迫較嚴重，需緊急評估",
+        "進行性神經學缺損、頸神經根病變徵象（皮節感覺喪失、肌節無力、反射改變）",
+        "血管症狀（膚色改變、溫差、脈搏消失）",
+        "外傷後急性發作；發燒、體重減輕、夜間盜汗等全身症狀",
+        "適當物理治療後症狀持續 → 轉診做電生理檢查與 MR neurography"
+      ],
+      "caveats": "垂肩／肩胛下轉症候群的「肌肉長度模型」在文獻中沒有直接驗證，應以「這是一個臨床觀察分類」的方式呈現。真正需要提醒學員的重點是：肩胛下垂族群的神經組織敏感度較高，若出現手部麻、無力或萎縮，屬於神經性胸廓出口症候群的鑑別範圍，應轉診而非繼續訓練。",
+      "citations": [
+        {
+          "title": "The influence of a depressed scapular alignment on upper limb neural tissue mechanosensitivity and local pressure pain sensitivity",
+          "journal": "Musculoskeletal Science and Practice",
+          "year": 2017,
+          "url": "https://doi.org/10.1016/j.msksp.2017.03.001"
+        },
+        {
+          "title": "Scapular asymmetry in participants with and without shoulder impingement syndrome; a three-dimensional motion analysis",
+          "journal": "Clinical Biomechanics",
+          "year": 2016,
+          "url": "https://doi.org/10.1016/j.clinbiomech.2016.09.001"
+        },
+        {
+          "title": "Effect of Scapular Stabilizer Muscles Strength on Scapular Position",
+          "journal": "Sports Health",
+          "year": 2023,
+          "url": "https://doi.org/10.1177/19417381231155192"
+        },
+        {
+          "title": "Intrarater and interrater reliability of three classifications for scapular dyskinesis in athletes",
+          "journal": "PLOS ONE",
+          "year": 2017,
+          "url": "https://doi.org/10.1371/journal.pone.0181518"
+        },
+        {
+          "title": "Neurogenic Thoracic Outlet Syndrome: A Current Literature Review",
+          "journal": "The American Surgeon",
+          "year": 2025,
+          "url": "https://doi.org/10.1177/00031348251358432"
+        }
+      ]
+    },
+    {
+      "unit": "ch8-u1",
+      "name": "骨盆前傾",
+      "name_en": "Anterior pelvic tilt / lower crossed syndrome",
+      "article_id": "a95496dc-304d-498b-a168-739dd4d476d1",
+      "url": "https://www.openevidence.com/ask/a95496dc-304d-498b-a168-739dd4d476d1",
+      "evidence_grade": "contested",
+      "pain_link": "相關但非因果，且證據互相衝突。一項坦尚尼亞研究發現有症狀下背痛者骨盆前傾角度較大，但腰椎前凸角與腹肌肌力兩組無差異。關鍵反證：超過 35,900 位無症狀志願者的統合分析顯示骨盆傾斜平均 12.5 ± 7.3 度，且 60 歲以上顯著增加；MEANS 研究中 32.1% 完全無痛者的 PI-LL ≤ −10 度（相對前傾）。有症狀與無症狀族群大幅重疊，直接挑戰「前傾 → 下背痛」的簡單因果模型。",
+      "muscle_model": "Janda 的下交叉症候群主要是臨床建構，近期研究未能證實。2023 年 45 位女性的 tensiomyography 研究專門檢驗此假說：骨盆傾斜確實與豎脊肌、臀大肌、腹直肌、腹外斜肌、股直肌的硬度顯著相關（皆 p < 0.001），但「硬度改變的方向並不符合下交叉症候群的描述」，作者結論是「LCS 可能不是解釋髖腰區肌筋膜關係的唯一模型」。俯臥髖伸展 EMG 顯示闊筋膜張肌相對活化增加與骨盆前傾增加相關（r = 0.52），但這是任務特異的協調型態，不等於靜態肌肉長度模型成立。",
+      "intervention": "效果有限且結果不一。8 週後鏈與核心訓練（每週 2 次）在 19 位健康者顯著減少骨盆前傾並改善 H:Q 比與垂直跳，但受試者無症狀且未測疼痛。更嚴謹的研究：42 位髖臼後傾合併過度骨盆前傾患者做 8 週居家運動，HAGOS 疼痛僅改善 5.2 分（95% CI −0.3 至 10.6，未達最小臨床重要差異），骨盆傾斜僅改變 −1.6 度（95% CI −3.9 至 0.7），即「無臨床意義的改變」。無高品質 RCT、無長期追蹤。",
+      "assessment_validity": "只有影像學方法有確立效度：站立側位 X 光測骨盆傾斜的施測者內／間信度極佳（ICC > 0.96），局部骨盆片比全脊椎片信度更高（p < 0.002），平均誤差 < 1 度。正常值 12.5 ± 7.3 度，隨年齡增加，女性高於男性。重要缺口：文獻中未找到傾角儀、PALM（palpation meter）或攝影測量法用於骨盆傾斜的效度／信度驗證研究。",
+      "red_flags": [
+        "馬尾症候群徵象：鞍區麻木、大小便功能異常、雙下肢無力或麻木 → 急診",
+        "進行性神經學缺損、嚴重或進行性運動無力",
+        "發病年齡 < 20 歲或 > 55 歲",
+        "癌症病史、不明原因體重減輕、發燒、免疫抑制、靜脈藥物使用、近期細菌感染、長期類固醇使用",
+        "嚴重且持續不緩解的疼痛，平躺或夜間更痛",
+        "重大外傷史、結構性變形、廣泛性神經症狀"
+      ],
+      "caveats": "這是本章最需要誠實說明的一項：無症狀者的骨盆前傾範圍極廣，單純「角度大」不構成介入指徵。下交叉症候群的肌肉硬度方向已被 tensiomyography 研究否證，且最嚴謹的 8 週運動介入未達最小臨床重要差異。臨床常用的傾角儀／PALM／照片測量目前也沒有效度證據。課程應把骨盆前傾定位為「一個觀察指標」而非「一種需要矯正的病」。",
+      "citations": [
+        {
+          "title": "Pelvic tilt and stiffness of the muscles stabilising the lumbo-pelvic-hip (LPH) complex in tensiomyography examination",
+          "journal": "PLOS ONE",
+          "year": 2024,
+          "url": "https://doi.org/10.1371/journal.pone.0312480"
+        },
+        {
+          "title": "Exercise in patients with acetabular retroversion and excessive anterior pelvic tilt: A feasibility and intervention study",
+          "journal": "Musculoskeletal Science and Practice",
+          "year": 2022,
+          "url": "https://doi.org/10.1016/j.msksp.2022.102613"
+        },
+        {
+          "title": "Age and Gender Based Spinopelvic and Regional Spinal Alignment in Asymptomatic Adult Volunteers (MEANS)",
+          "journal": "Spine",
+          "year": 2022,
+          "url": "https://doi.org/10.1097/brs.0000000000004415"
+        },
+        {
+          "title": "Balance of hip and trunk muscle activity is associated with increased anterior pelvic tilt during prone hip extension",
+          "journal": "Journal of Electromyography and Kinesiology",
+          "year": 2012,
+          "url": "https://doi.org/10.1016/j.jelekin.2012.03.003"
+        },
+        {
+          "title": "Accuracy and Reliability of Standing Lateral Lumbar Radiographs for Measurements of Spinopelvic Parameters",
+          "journal": "Spine",
+          "year": 2021,
+          "url": "https://doi.org/10.1097/brs.0000000000003930"
+        }
+      ]
+    },
+    {
+      "unit": "ch8-u2",
+      "name": "骨盆後傾",
+      "name_en": "Posterior pelvic tilt / flat back / sway back posture",
+      "article_id": "f479469e-9d28-45e3-98ef-b9fb812c25fd",
+      "url": "https://www.openevidence.com/ask/f479469e-9d28-45e3-98ef-b9fb812c25fd",
+      "evidence_grade": "limited",
+      "pain_link": "相關但仍有爭議，且高度取決於情境。2026 年前瞻研究顯示非特異性慢性下背痛者在沙發久坐 30 分鐘時，疼痛加劇與骨盆後傾增加顯著相關（r = −0.694, p = 0.001），而腰部肌肉活動無變化；健康對照組同樣出現骨盆後傾但沒有疼痛增加，暗示這是「易感者的誘發姿勢」而非普遍病因。另一角度：Wakayama 大型族群研究（n=1121）顯示，骨盆代償（骨盆後旋以維持平衡）者的下背痛率、VAS 與 ODI 皆顯著較高——但那是脊椎矢狀面失衡的代償，不是原發姿勢問題。",
+      "muscle_model": "傳統模型（腿後肌、臀大肌、腹直肌、腹外斜縮短；髖屈肌、腰豎脊肌、髂腰肌被拉長無力）主要是解剖位置的生物力學推論，缺乏慢性適應的直接驗證。現有 EMG 只證明「急性姿勢效應」：骨盆後傾位增加腹直肌活化、降低股直肌活化；停經女性研究顯示後傾位增加腹直肌、臀大肌與內收大肌的生物電活動。這些是姿勢當下的活化改變，不等於長期結構性縮短或延長。",
+      "intervention": "小型 RCT 支持，效果尚可但樣本小。2021 年 RCT（n=36）在柔軟型平背女性中，12 週（每週 3 次、每次 60 分鐘）矯正性運動在腰椎前凸角改善上顯著優於阻力訓練（p < 0.01）與物理治療（p < 0.001），ODI 也顯著較低（p < 0.001）。2025 年 RCT（n=30）以 8 週 NASM 矯正運動改善腰椎前凸角（F = 24.82, p = 0.001）與臀大肌肌電活性（F = 5.11, p = 0.032）。皆為短期、年輕、柔軟型變形族群，不可外推到僵硬型變形或退化性長者。",
+      "assessment_validity": "站立側位腰椎 X 光量測脊椎骨盆參數準確可靠：與全脊椎 EOS 影像的平均差異 < 1 度，兩法之間 ICC 0.872–0.976，施測者內／間 ICC > 0.960。新提出的 sacral tilt（S1T、S2T）與腰椎前凸的相關性（r = −0.543、−0.559）甚至優於骨盆入射角（r = 0.528），且不需顯示股骨頭。臨床常用的軟尺／flexible ruler 未找到針對骨盆後傾的效度驗證。",
+      "red_flags": [
+        "嚴重動態矢狀面失衡：站立或行走 30 秒內 C7SVA > 20 cm",
+        "僵硬型變形：動態側位 X 光腰椎活動度 < 10 度 → 屬結構性，非運動可矯正",
+        "PI-LL mismatch > 75 度 → 應轉介手術評估（預後與併發症率顯著較差）",
+        "神經性間歇跛行或神經根症狀（懷疑腰椎椎管狹窄、退化性脊椎滑脫）",
+        "無法維持水平視線或直立姿勢，需以屈膝、踝背屈等代償",
+        "嚴重背痛合併疲勞、無法執行日常活動；進行性神經學症狀",
+        "MRI 顯示脊旁肌嚴重退化（T2 高訊號、大量脂肪浸潤）"
+      ],
+      "caveats": "課程最重要的分流是「柔軟型 vs 僵硬型」。矯正運動的證據只適用於柔軟型平背的年輕族群；中高齡者的骨盆後傾常是腰椎椎管狹窄、退化性滑脫或成人脊椎變形的『代償』，此時強行「矯正」不但無效還可能有害，應轉診。也應說明久坐時骨盆後傾是普遍現象，健康者一樣會發生。",
+      "citations": [
+        {
+          "title": "Low back pain during prolonged sitting on a sofa is associated with pelvic posterior tilt in individuals with non-specific chronic low back pain",
+          "journal": "European Spine Journal",
+          "year": 2026,
+          "url": "https://doi.org/10.1007/s00586-026-10015-1"
+        },
+        {
+          "title": "Pelvic compensation accompanying spinal malalignment and back pain-related factors in a general population: the Wakayama spine study",
+          "journal": "Scientific Reports",
+          "year": 2023,
+          "url": "https://doi.org/10.1038/s41598-023-39044-2"
+        },
+        {
+          "title": "Effect of Different Exercise Types on the Cross-Sectional Area and Lumbar Lordosis Angle in Patients with Flat Back Syndrome",
+          "journal": "International Journal of Environmental Research and Public Health",
+          "year": 2021,
+          "url": "https://doi.org/10.3390/ijerph182010923"
+        },
+        {
+          "title": "Characteristics and standards of severe sagittal imbalance in adult patients with spinal deformities",
+          "journal": "BMC Musculoskeletal Disorders",
+          "year": 2024,
+          "url": "https://doi.org/10.1186/s12891-024-07231-5"
+        },
+        {
+          "title": "Adult spinal deformity",
+          "journal": "The Lancet",
+          "year": 2019,
+          "url": "https://doi.org/10.1016/s0140-6736(19)31125-0"
+        }
+      ]
+    },
+    {
+      "unit": "ch8-u3",
+      "name": "骨盆歪斜",
+      "name_en": "Lateral pelvic tilt / pelvic obliquity",
+      "article_id": "0fbc36f4-bd4e-4ae5-868f-511d8e908f4c",
+      "url": "https://www.openevidence.com/ask/0fbc36f4-bd4e-4ae5-868f-511d8e908f4c",
+      "evidence_grade": "moderate",
+      "pain_link": "相關而非明確因果。橫斷面研究顯示骨盆角度不對稱（OR 1.17）與 PSIS 距地高度不對稱（OR 1.21）與年輕成人非特異性慢性下背痛有關，但研究明確聲明未建立因果。回顧文獻指出「與背痛的直接關聯是可疑的」，反而與膝關節炎發生率輕度上升的關聯較可能成立。長短腳（LLD）是主要成因之一：約 90% 人口 LLD < 1.0 cm；≥ 1 cm 會造成臨床上明顯的步態不對稱；≥ 5 mm 可能導致長期髖膝病變；> 2 cm 一般共識需要治療。髖部病變多見於長腳側，下背問題多見於短腳側。",
+      "muscle_model": "此項有相對紮實的 EMG 證據（但是「活化型態」而非「結構長度」）。側臥髖外展時若允許骨盆側傾，腰方肌活化達 60.39% MVIC、臀中肌僅 25.03% MVIC；以壓力生物回饋固定腰椎防止骨盆側傾後，腰方肌降至 27.90%、臀中肌升至 46.06%。多篇研究一致顯示腰方肌過度活化是弱髖外展肌的代償。步態分析顯示 LLD ≥ 1 cm 兒童骨盆側傾增加，並伴隨長腳側髖內收與內旋增加。",
+      "intervention": "增高鞋墊的證據較運動更明確（但等級為 Level IV）。前瞻觀察研究（n=80）以 100% LLD 矯正的客製化增高鞋墊，疼痛 NPRS 由 7.8 降至 4 個月時 1.1、2 年時 0，所有額狀面姿勢參數顯著改善，無不良反應。兒童研究（n=12）顯示矯正鞋墊即刻改善步長、速度與峰值足底壓力，並消除兩側踝背屈、髖內收與骨盆側傾的顯著差異。針對骨盆歪斜「矯正運動」本身則沒有臨床結果試驗，只有 EMG 生物力學研究證明運動可改變臀中肌／腰方肌活化比。無高品質 RCT。",
+      "assessment_validity": "站立正位 X 光是全球參考標準，可可靠量化 LLD 與骨盆傾斜。Block test（墊塊測試）是最有用的臨床方法，也是區分「肢體來源 vs 脊椎來源」的關鍵：墊塊矯正後骨盆傾斜與腰椎彎曲消失 → LLD；持續存在 → 脊椎病因。ASIS 至內踝軟尺測量為有效的臨床測量，但信度從差到極佳不等。3D 動作分析（以踝、膝、髖關節中心計算）與 X 光平均差僅 0.7–1.0 mm，優於軟尺（1.8 mm）。髂嵴觸診本身未經系統性驗證。",
+      "red_flags": [
+        "墊塊／增高測試後骨盆傾斜與腰彎「不消失」→ 結構性脊椎病因，須影像評估",
+        "脊椎側彎：骨盆高側與側彎凸側相關性達 89%，先天性或麻痺性側彎需骨科評估",
+        "髖部病變：髖關節攣縮可造成骨盆歪斜；髖臼外移百分比不對稱 ≥ 5% 與骨盆高側相關性 81%",
+        "神經性病因：麻痺性側彎；腦性麻痺者骨盆歪斜盛行率由 GMFCS II 級 16% 升至 V 級 34%",
+        "進行性變形、合併神經症狀，或造成顯著功能障礙",
+        "兒童族群：< 10 歲多為骨盆以下因素（74%），≥ 11 歲多為骨盆以上或混合（76%），須追蹤"
+      ],
+      "caveats": "應告知學員：骨盆歪斜多半是結構性長短腳的表現，不是「肌肉把骨盆拉歪了」。臨床上最有用的一步是墊塊測試——若墊高後歪斜消失，處理方向是鞋墊而非拉筋；若不消失，屬脊椎結構問題需轉診。目前沒有任何「矯正運動改善骨盆歪斜」的臨床結果試驗，僅有 EMG 層級的證據。也要說明 90% 的人本來就有 < 1 cm 的長短腳，屬正常變異。",
+      "citations": [
+        {
+          "title": "The association between pelvic asymmetry and non-specific chronic low back pain as assessed by the global postural system",
+          "journal": "BMC Musculoskeletal Disorders",
+          "year": 2020,
+          "url": "https://doi.org/10.1186/s12891-020-03617-3"
+        },
+        {
+          "title": "Leg length discrepancy: A systematic review on the validity and reliability of clinical assessments and imaging diagnostics used in clinical practice",
+          "journal": "PLOS ONE",
+          "year": 2021,
+          "url": "https://doi.org/10.1371/journal.pone.0261457"
+        },
+        {
+          "title": "Effects of Lumbar Stabilization Using a Pressure Biofeedback Unit on Muscle Activity and Lateral Pelvic Tilt During Hip Abduction in Sidelying",
+          "journal": "Archives of Physical Medicine and Rehabilitation",
+          "year": 2006,
+          "url": "https://doi.org/10.1016/j.apmr.2006.08.327"
+        },
+        {
+          "title": "Leg Length Discrepancy and Nonspecific Low Back Pain: 3-D Stereophotogrammetric Quantitative Posture Evaluation Confirms Positive Effects of Customized Heel-Lift Orthotics",
+          "journal": "Frontiers in Bioengineering and Biotechnology",
+          "year": 2022,
+          "url": "https://doi.org/10.3389/fbioe.2021.743132"
+        },
+        {
+          "title": "Differentiating Spinal Deformity Versus Leg Length Discrepancy in Patients With Pelvic Obliquity",
+          "journal": "Spine",
+          "year": 2026,
+          "url": "https://doi.org/10.1097/brs.0000000000005683"
+        }
+      ]
+    },
+    {
+      "unit": "ch9-u1",
+      "name": "股骨內旋",
+      "name_en": "Femoral internal rotation / femoral anteversion & dynamic knee valgus",
+      "article_id": "a7bf090e-c0c8-4b0d-a674-717a04232f10",
+      "url": "https://www.openevidence.com/ask/a7bf090e-c0c8-4b0d-a674-717a04232f10",
+      "evidence_grade": "moderate",
+      "pain_link": "相關性明確、因果性未證實，較像「易感因子」。髕股關節痛：單側前膝痛患者的雙側股骨前傾角相近（有症狀側與無症狀側相同）但都與健康對照不同，顯示前傾角是體質性易感因子而非直接原因。ACL：291 位女高中生前瞻研究顯示非接觸性 ACL 傷者著地時動態膝外翻顯著較大（8.3 ± 4.3 vs 5.1 ± 4.1 cm）；但另一項 217 位女性團隊運動員 4.5 年前瞻研究則發現解剖學測量（含靜態膝排列）與 ACL 傷害風險無顯著關聯。髖夾擠：股骨版本角對髖內旋活動度的預測力甚至強於 cam 病變。",
+      "muscle_model": "傳統模型（闊筋膜張肌、內收肌、內旋肌縮短；臀中肌、臀大肌、深層外旋肌被拉長無力）主要是理論建構，缺乏直接的 EMG 或影像驗證。現有證據偏向功能面：肌肉骨骼模擬顯示股骨前傾者臀中肌的外展貢獻較低（即使淨外展力矩相當）、整體肌肉力較低；股直肌在所有版本角下都強烈影響髕股關節負荷。",
+      "intervention": "髖肌力訓練對「症狀」的效果證據最強，對「動作學」則證據薄弱。統合分析：髖肌力訓練減痛顯著優於不做髖訓練（SMD = −1.91, 95% CI −2.92 至 −0.9），也優於單純膝訓練（VAS SMD −1.740 vs −1.302）；功能面 AKPS SMD 1.205 vs 1.023；髖外展肌力 SMD 0.848、外旋肌力 SMD 0.780。肌力進步與疼痛／功能進步的關聯極強（髖外展肌 r = −0.91 對疼痛、r = 0.94 對功能）。反面：5 週單獨髖外展訓練或功能性動作控制訓練，動態膝外翻與內旋均未達統計顯著（僅有趨勢）。多數研究療程 4–6 週，PEDro 方法學品質偏低。",
+      "assessment_validity": "股骨前傾角的黃金標準是 CT／MRI。Craig's test（大轉子突起角度測試）信度尚可（施測者內 ICC 0.88–0.90、施測者間 0.83）但效度僅中等（對 MRI ICC 0.67–0.69），量測標準誤約 6 度、95% CI 達 ±11.8 度，且傾向低估（女性尤甚）；CT 前傾角與性別合起來只能解釋 Craig's test 變異的 23.4%；DXA 驗證研究直接結論 Craig's test「無法提供有效的真實股骨版本測量」。臨床替代：髖內旋減外旋差值與 MRI 相關性最高（r = 0.63），差距 20 度提示版本異常。二維動作分析可辨識與 ACL 風險有關的動態膝外翻。",
+      "red_flags": [
+        "股骨頭骨骺滑脫（SCFE）：10–16 歲、體重過重或快速生長期青少年的進行性髖／膝痛，髖內旋受限、屈曲內旋誘發疼痛",
+        "Legg-Calvé-Perthes 病：4–10 歲兒童髖痛、跛行、髖外展與內旋受限，可能以轉移性膝痛表現",
+        "髖臼發育不良（DDH）：嬰幼兒髖不穩、髖外展不對稱、長短腳、異常步態；成人則為活動時髖痛與活動度受限",
+        "髖股夾擠（FAI）需手術評估：保守治療 3–6 個月無效、機械性症狀（喀啦聲、卡住、鎖住）、前方夾擠測試陽性且影像有 cam/pincer 型態",
+        "急性外傷或骨折：突發劇痛、無法承重、可見變形或明顯腫脹",
+        "神經學症狀：進行性無力、感覺改變、大小便功能異常"
+      ],
+      "caveats": "課程必須誠實區分「骨頭」與「動作」。股骨前傾角是固定的骨性扭轉，健康成人間變異可達 30 度，臨床上有問題時的治療是去旋轉截骨術——被動的非手術方法不會改變骨性結構。運動能改變的是動作控制與肌力，不是骨頭。此外，肌力訓練確實顯著改善疼痛與功能，但目前並沒有證據顯示它是靠「減少膝外翻角度」達成的——不要把效果歸因於未被證實的機轉。",
+      "citations": [
+        {
+          "title": "Femoral anteversion: significance and measurement",
+          "journal": "Journal of Anatomy",
+          "year": 2020,
+          "url": "https://doi.org/10.1111/joa.13249"
+        },
+        {
+          "title": "Effects of Hip Abductor Muscles Exercises on Pain and Function in Patients With Patellofemoral Pain: A Systematic Review and Meta-Analysis",
+          "journal": "Journal of Strength and Conditioning Research",
+          "year": 2019,
+          "url": "https://doi.org/10.1519/jsc.0000000000002658"
+        },
+        {
+          "title": "Dual-Energy X-Ray Absorptiometry Does Not Confirm Validity of the Craig's Test",
+          "journal": "Journal of Clinical Densitometry",
+          "year": 2024,
+          "url": "https://doi.org/10.1016/j.jocd.2024.101466"
+        },
+        {
+          "title": "Two-dimensional motion analysis of dynamic knee valgus identifies female high school athletes at risk of non-contact anterior cruciate ligament injury",
+          "journal": "Knee Surgery, Sports Traumatology, Arthroscopy",
+          "year": 2018,
+          "url": "https://doi.org/10.1007/s00167-017-4681-9"
+        },
+        {
+          "title": "No Association Between Anatomic Factors and Non-Contact ACL Injury Risk in 217 Female Team Sport Players: A Prospective 4.5-Year Study",
+          "journal": "Scandinavian Journal of Medicine & Science in Sports",
+          "year": 2026,
+          "url": "https://doi.org/10.1111/sms.70290"
+        },
+        {
+          "title": "A randomised trial into the effect of an isolated hip abductor strengthening programme and a functional motor control programme on knee kinematics and hip muscle strength",
+          "journal": "BMC Musculoskeletal Disorders",
+          "year": 2015,
+          "url": "https://doi.org/10.1186/s12891-015-0563-9"
+        }
+      ]
+    },
+    {
+      "unit": "ch9-u2",
+      "name": "假胯寬",
+      "name_en": "\"False hip width\" (假胯寬) — greater trochanter prominence",
+      "article_id": "b18c94a2-e964-4cfa-8569-b9a5bd8480ca",
+      "url": "https://www.openevidence.com/ask/b18c94a2-e964-4cfa-8569-b9a5bd8480ca",
+      "evidence_grade": "contested",
+      "pain_link": "「假胯寬」這個詞在被索引的同儕審查醫學／生物力學文獻中完全不存在——它是純粹的網路／社群健身用語，沒有任何科學診斷基礎。與「大轉子突出」有關且真實存在的臨床實體是大轉子疼痛症候群（GTPS），年發生率 1–2/1000、工業化國家終生盛行率 10–25%、女性為男性 3–4 倍，主要疼痛來源是臀中肌與臀小肌肌腱病變（不是過去以為的滑囊炎）。但要注意：GTPS 的影像所見與症狀相關性差，無症狀者也常見肌腱異常。",
+      "muscle_model": "髖寬與大轉子突出主要由固定骨骼形態決定，不是肌肉張力問題。決定因素包括：股骨頸幹角（平均 124.7 ± 6.2 度，女性較外翻）、股骨偏心距（平均 42.9 ± 6.8 mm，與頸幹角負相關）、股骨前傾角（平均 14.5 ± 8.1 度，女性較大）、骨盆寬度與髂骨間寬度。大轉子尖端平均比股骨頭中心高 7.0 mm。前傾角減少（後傾）時大轉子相對更偏後、外側看起來更突出——這是固定的解剖關係，不是姿勢變化。臀肌量與皮下脂肪分布會影響外觀輪廓，但不改變骨性的大轉子間距。",
+      "intervention": "沒有證據支持運動、伸展或姿勢矯正能改變骨成熟成人的大轉子突出或大轉子間寬度。2023 年比較長期運動參與者與久坐者的研究發現：成年後透過運動改變骨骼幾何的能力有限，尤其在骨骺區域；受訓練者僅股骨額狀面彎曲多 2 度，近端股骨幾何（含大轉子區）無顯著差異，作者結論是下肢幾何與肌肉功能無關、成人期無法有意義地改變。左右側近端股骨不對稱本來就常見（頸幹角差 2.9 度、偏心距 3.8 mm、股骨頸版本 5.1 度），且大致與含身體活動在內的人口學參數無關。",
+      "assessment_validity": "黃金標準是股骨頸軸位 CT（施測者間再現性 0.95，與真實解剖扭轉平均差 < 1 度）；需限制輻射時可用軸位 MRI（ICC 0.86）。斜位 MRI 不應使用（會線性高估）。臨床測試不可靠：大轉子突起角度測試（TPAT）僅在 55% 的案例中誤差落在 10 度內；3D 影像顯示大轉子突起實際位在股骨頸軸「前方」平均 27 度（範圍 0–52 度），違反該測試的基本假設。",
+      "red_flags": [
+        "大轉子疼痛症候群／臀肌肌腱病：40–60 歲女性外側髖痛，走路、久坐、側睡患側加劇；Trendelenburg 步態或測試陽性",
+        "抗發炎藥物與物理治療無效 → 考慮臀中肌肌腱撕裂，需骨科轉診（大型部分或完全撕裂通常需手術）",
+        "成人髖臼發育不良：年輕成人前側髖／鼠蹊痛，可能合併全身關節鬆弛、活動度受限、夾擠測試陽性；需影像確診，臨床上常被忽略而延誤",
+        "髖股夾擠（FAI）：年輕成人髖屈曲或旋轉加劇的鼠蹊痛，FADIR／FABER 測試陽性，內旋與外展顯著受限、坐姿相關症狀常見",
+        "股骨頭骨骺滑脫（SCFE）病史：青少年／年輕成人髖痛合併活動度受限；陳舊性 SCFE 被認為會導致成人 cam 型 FAI"
+      ],
+      "caveats": "這一項必須對學員完全說清楚：「假胯寬」不是醫學診斷，在任何被索引的醫學文獻中都找不到這個構念，它是社群媒體健身用語。造成大轉子外觀突出的主因是骨成熟後就固定的骨骼形態（頸幹角、股骨偏心距、前傾角、骨盆寬度），成人無法用運動或伸展改變。訓練可以改變的是臀部肌肉量與體脂分布造成的外觀輪廓，以及活動度與肌力——但不能宣稱「把胯練窄」。若學員的主訴只是外觀而沒有疼痛、活動受限或機械性症狀，並不需要任何醫療介入。",
+      "citations": [
+        {
+          "title": "Upper Femur Anatomy Depends on Age and Gender: A Three-Dimensional Computed Tomography Comparative Bone Morphometric Analysis of 628 Healthy Patients' Hips",
+          "journal": "The Journal of Arthroplasty",
+          "year": 2019,
+          "url": "https://doi.org/10.1016/j.arth.2019.05.036"
+        },
+        {
+          "title": "Associations between long-term exercise participation and lower limb joint and whole-bone geometry in young and older adults",
+          "journal": "Frontiers in Physiology",
+          "year": 2023,
+          "url": "https://doi.org/10.3389/fphys.2023.1150562"
+        },
+        {
+          "title": "Position of the greater trochanter and functional femoral antetorsion",
+          "journal": "The Bone & Joint Journal",
+          "year": 2018,
+          "url": "https://doi.org/10.1302/0301-620x.100b6.bjj-2017-1068.r1"
+        },
+        {
+          "title": "Assessment of Femoral Anteversion in Children With Cerebral Palsy: Accuracy of the Trochanteric Prominence Angle Test",
+          "journal": "Journal of Pediatric Orthopaedics",
+          "year": 2002,
+          "url": "https://doi.org/10.1097/01241398-200203000-00007"
+        },
+        {
+          "title": "Gluteal Tendinopathy",
+          "journal": "JBJS Reviews",
+          "year": 2023,
+          "url": "https://doi.org/10.2106/jbjs.rvw.23.00101"
+        },
+        {
+          "title": "Which Factors Influence Proximal Femoral Asymmetry? A 3D CT Analysis of 345 Femoral Pairs",
+          "journal": "The Bone & Joint Journal",
+          "year": 2018,
+          "url": "https://doi.org/10.1302/0301-620x.100b7.bjj-2017-1601.r1"
+        }
+      ]
+    },
+    {
+      "unit": "ch9-u3",
+      "name": "股骨前移",
+      "name_en": "Anterior femoral glide syndrome (Sahrmann MSI)",
+      "article_id": "7ebac33c-c9ca-4b44-99a6-87b83dbf831d",
+      "url": "https://www.openevidence.com/ask/7ebac33c-c9ca-4b44-99a6-87b83dbf831d",
+      "evidence_grade": "contested",
+      "pain_link": "「股骨前移症候群」在同儕審查文獻中不是一個被驗證的診斷實體。此名詞來自 Sahrmann 的 Movement System Impairment（MSI）分類架構，屬臨床模型而非實證診斷分類；沒有任何研究專門驗證、定義或探討它。沒有證據把它連結到疼痛結果。前側髖痛的實證診斷架構是 FAI、盂唇撕裂、髖屈肌肌腱病與髂腰肌相關病理，這些都有明確的影像所見與理學測試。",
+      "muscle_model": "MSI 模型提出的肌肉失衡（腿後肌、闊筋膜張肌、髂腰肌主導／緊縮；臀大肌、深層外旋肌無力）針對「股骨前移症候群」缺乏 EMG 或影像驗證。腰椎 MSI 分類研究曾發現髖活動度型態與下背痛分類有相關，但那並不驗證髖部專屬的 MSI 症候群。髖部動作控制測試在有經驗評估者間信度尚可（加權 kappa 0.56–0.87），但「測量信度」不等於「診斷構念的效度」。",
+      "intervention": "沒有任何研究檢驗針對「股骨前移症候群」的矯正運動，因此無法提供效果量或證據品質。相關但屬不同診斷的證據：髖骨關節炎與已驗證的髖痛病症，運動治療（合併或不合併徒手治療）有效；運動相關鼠蹊痛的 Cochrane 回顧支持多模式介入（肌力、伸展、徒手治療）——但這些是針對有明確病理生理的診斷，不是動作損傷症候群。",
+      "assessment_validity": "沒有任何評估方法對此「診斷」具有確立效度。動態超音波可可靠測量次毫米級的股骨頭位移（施測者內 ICC 0.794–0.945、施測者間 0.725–0.846），但關鍵是：健康無病理志願者在誘發姿勢（伸展＋外旋）下的股骨頭前移平均僅 0.62–1.03 mm，標準差接近甚至超過平均值本身，代表量測值落在誤差臨界；也沒有任何診斷閾值存在。",
+      "red_flags": [
+        "急性外傷後無法承重（骨折，含運動員因過度訓練／能量失衡導致的股骨頸壓力性骨折）",
+        "劇痛合併活動度明顯受限與疼痛步態（缺血性壞死、化膿性關節炎、骨折）",
+        "全身症狀：發燒、體重減輕、夜間痛（懷疑感染或惡性腫瘤）",
+        "缺血性壞死危險因子：類固醇使用、酒精、血紅素病變、化療",
+        "機械性症狀：卡住、鎖住（懷疑盂唇撕裂或游離體）",
+        "合併腹部／骨盆症狀（泌尿、腸道或月經症狀，可能為轉移痛）",
+        "年輕運動族群活動相關鼠蹊痛（FAI、盂唇病變，需影像檢查）",
+        "保守治療於預期時程內未改善"
+      ],
+      "caveats": "課程應如實標示：「股骨前移症候群」是 Sahrmann MSI 學派的分類語彙，不是骨科或影像學上的公認診斷，也沒有任何介入研究。髖關節是高度包覆的球窩關節，有盂唇密封與強韌關節囊韌帶，實測位移僅 0.6–1.0 mm，接近量測誤差。可以把它當成一種「髖伸展時代償型態」的教學語言，但不應向學員宣稱其股骨頭跑到前面所以會痛；前側髖痛應循 FAI／盂唇／髂腰肌等已驗證架構思考，必要時轉診。",
+      "citations": [
+        {
+          "title": "Can Dynamic Ultrasonography of the Hip Reliably Assess Anterior Femoral Head Translation?",
+          "journal": "Clinical Orthopaedics & Related Research",
+          "year": 2019,
+          "url": "https://doi.org/10.1097/corr.0000000000000457"
+        },
+        {
+          "title": "Dynamic ultrasound assessment of hip instability and anterior and posterior hip impingement",
+          "journal": "Skeletal Radiology",
+          "year": 2023,
+          "url": "https://doi.org/10.1007/s00256-022-04264-6"
+        },
+        {
+          "title": "Intertester and intratester reliability of movement control tests on the hip for patients with hip osteoarthritis",
+          "journal": "BMC Musculoskeletal Disorders",
+          "year": 2017,
+          "url": "https://doi.org/10.1186/s12891-017-1388-5"
+        },
+        {
+          "title": "Hip Pain in Adults: Evaluation and Differential Diagnosis",
+          "journal": "American Family Physician",
+          "year": 2021,
+          "url": "https://www.aafp.org/link_out?pmid=33448767"
+        },
+        {
+          "title": "Conservative interventions for managing exercise-related musculoskeletal groin pain",
+          "journal": "Cochrane Database of Systematic Reviews",
+          "year": 2025,
+          "url": "https://doi.org/10.1002/14651858.cd016137"
+        }
+      ]
+    }
+  ]
+}

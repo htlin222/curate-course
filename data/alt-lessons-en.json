@@ -1,0 +1,167 @@
+{
+  "lessons": [
+    {
+      "unit": "ch0-u1",
+      "lang": "en",
+      "title": "When Posture Matters | Posture and Biomechanics",
+      "channel": "Physiotutors",
+      "url": "https://www.youtube.com/watch?v=9hCn9iV-Xk8",
+      "duration": "5:18",
+      "why": "作為課程入門總覽，這支由物理治療教育頻道講解「姿勢在什麼情況下才真的重要」，建立整套課程的判斷框架；繁中版偏向「為何矯正後會回彈、該用什麼公式」，英文版則從實證角度先幫學員校正期待值。"
+    },
+    {
+      "unit": "ch1-u4",
+      "lang": "en",
+      "title": "STOP Neck & Back Pain at Your Desk, Plus Getting Perfect Posture!",
+      "channel": "Bob & Brad",
+      "url": "https://www.youtube.com/watch?v=5AAL2RcIxM8",
+      "duration": "9:21",
+      "why": "兩位物理治療師實地示範螢幕高度、椅背、手肘與坐姿如何改變頸腰負荷，對應本單元的「工作站」面向；繁中版是脊椎教育系列的桌前姿勢指南，英文版多了現場調整與替代方案的操作示範。"
+    },
+    {
+      "unit": "ch2-u1",
+      "lang": "en",
+      "title": "I Disagree with Doctors about Posture",
+      "channel": "MovementbyDavid",
+      "url": "https://www.youtube.com/watch?v=Ol8qRpffgOE",
+      "duration": "6:00",
+      "why": "從「沒有唯一正確姿勢、中立位是一個可自由進出的活動範圍」切入解釋中立姿勢的本質；繁中版用骨盆前傾／後傾教你找骨盆中立位，英文版則補上為何不該把中立位當成僵硬定格的觀念。"
+    },
+    {
+      "unit": "ch2-u4",
+      "lang": "en",
+      "title": "Core stability | Core exercises | The Truth about the core and low back pain",
+      "channel": "Physiotutors",
+      "url": "https://www.youtube.com/watch?v=95xIMQBq8-I",
+      "duration": "11:07",
+      "why": "系統整理核心穩定與下背痛的實證關係，說明核心無力會與不會造成什麼問題，並帶出脊椎活動與穩定的分工；繁中版偏概念科普，英文版附研究依據與訓練選擇的判準。"
+    },
+    {
+      "unit": "ch3-u1",
+      "lang": "en",
+      "title": "The RIGHT Way to Breathe & Brace for Heavy Lifts",
+      "channel": "Squat University",
+      "url": "https://www.youtube.com/watch?v=TRmayQcweUc",
+      "duration": "11:03",
+      "why": "把橫膈呼吸與腹內壓核心啟動一次講完，包含 360 度擴張、常見閉氣錯誤與如何在動作中維持；繁中版著重呼吸基本功與腰痛改善，英文版延伸到負重情境下的核心啟動。"
+    },
+    {
+      "unit": "ch3-u2",
+      "lang": "en",
+      "title": "My Top 3: Thoracic Mobility Exercises",
+      "channel": "Tom Merrick",
+      "url": "https://www.youtube.com/watch?v=X2kVtZ2G2tw",
+      "duration": "11:00",
+      "why": "三個胸椎伸展／旋轉動作逐一拆解起始位、代償點與進階方式，鏡頭角度清楚可直接跟練；繁中版從駝背改善的脈絡談胸椎活動度，英文版更聚焦動作本身的品質控制。"
+    },
+    {
+      "unit": "ch3-u4",
+      "lang": "en",
+      "title": "10 Best Neck Pain Exercises/Stretches Ever Created",
+      "channel": "Bob & Brad",
+      "url": "https://www.youtube.com/watch?v=cog4Dds__a0",
+      "duration": "11:46",
+      "why": "十個頸椎活動度與伸展動作依難度排序示範，涵蓋旋轉、側屈、後縮與上頸段，適合作為頸椎保養菜單；繁中版是完整的頸椎保養教學，英文版則是可直接照做的動作庫。"
+    },
+    {
+      "unit": "ch4-u1",
+      "lang": "en",
+      "title": "Most Effective Exercise for Forward Head Posture?",
+      "channel": "Upright Health",
+      "url": "https://www.youtube.com/watch?v=lFffuFAAfz0",
+      "duration": "7:14",
+      "why": "直接處理頭前伸最關鍵的深層頸屈肌與上頸段控制，示範縮下巴的正確與錯誤版本；繁中版偏成因科普（生活習慣如何造成烏龜頸），英文版把重心放在單一高效動作的執行細節。"
+    },
+    {
+      "unit": "ch5-u1",
+      "lang": "en",
+      "title": "Thoracic Spine Kyphosis Exercises",
+      "channel": "Rehab Science",
+      "url": "https://www.youtube.com/watch?v=BioAye0-q5Y",
+      "duration": "8:24",
+      "why": "物理治療師針對胸椎後凸給出伸展＋伸展肌群強化的完整組合，並說明為何只靠拉伸無法維持；繁中版強調「放鬆時仍能挺直」的觀念，英文版提供可量化的動作處方。"
+    },
+    {
+      "unit": "ch5-u2",
+      "lang": "en",
+      "title": "Fix Rib Flare In 1 Exercise (fast results)",
+      "channel": "Conor Harris",
+      "url": "https://www.youtube.com/watch?v=EXr2mM-diEI",
+      "duration": "8:11",
+      "why": "肋骨外翻的英文首選講者，從橫膈與腹壁的位置關係解釋外翻成因，再用單一動作把肋廓帶回骨盆上方；繁中版把重點放在呼吸矯正＋核心訓練的完整流程，英文版則深入生物力學機轉。"
+    },
+    {
+      "unit": "ch5-u3",
+      "lang": "en",
+      "title": "Get Rid of Your Midback Hump with these Strength & Mobility Exercises",
+      "channel": "[P]rehab",
+      "url": "https://www.youtube.com/watch?v=oSwe1h485SA",
+      "duration": "11:10",
+      "why": "英文沒有「富貴包」一詞，這支以 cervicothoracic junction 隆起（dowager's / midback hump）為題，兼顧活動度與肌力兩側；繁中版偏「這一坨到底是什麼」的成因解說，英文版直接給訓練方案。"
+    },
+    {
+      "unit": "ch6-u1",
+      "lang": "en",
+      "title": "Exercises for hyper-lordotic lower back and anterior tilt | Feat. Tim Keeley | No.188 | Physio REHAB",
+      "channel": "Physio REHAB",
+      "url": "https://www.youtube.com/watch?v=TEGVHcINjRQ",
+      "duration": "8:56",
+      "why": "由物理治療師 Tim Keeley 示範腰椎過度前拱的評估與矯正順序（放鬆髖屈與腰伸肌群→核心後傾控制）；繁中版是十分鐘跟練菜單，英文版多了臨床評估與動作選擇的邏輯說明。"
+    },
+    {
+      "unit": "ch6-u2",
+      "lang": "en",
+      "title": "How to Fix Posterior Pelvic Tilt (Complete Guide + Exercises)",
+      "channel": "Upright Health",
+      "url": "https://www.youtube.com/watch?v=4cHgCjJlDkE",
+      "duration": "34:57",
+      "why": "腰椎過直在英文語境多從骨盆後傾切入，這支完整指南從評估、活動度到重建腰椎前凸逐步帶；與繁中版同樣採「從骨盆後傾改善腰椎過直」的思路，但篇幅長得多（近 35 分鐘），適合當作精讀版而非快速跟練。"
+    },
+    {
+      "unit": "ch7-u3",
+      "lang": "en",
+      "title": "How to Get Rid of Anterior (Front) Shoulder Pain",
+      "channel": "Rehab Science",
+      "url": "https://www.youtube.com/watch?v=GEH6Y-_1X84",
+      "duration": "7:04",
+      "why": "YouTube 上少有專講 anterior humeral glide 且達品質門檻的影片，這支從肱骨頭前移造成的前側肩痛切入，講後側關節囊／旋轉肌控制與肱骨頭回中；繁中版有明確的肱骨前移評估流程，英文版則以症狀為入口，是最接近的對應主題。"
+    },
+    {
+      "unit": "ch8-u1",
+      "lang": "en",
+      "title": "Fix Anterior Pelvic Tilt for Good (Full Step-by-Step Routine)",
+      "channel": "Squat University",
+      "url": "https://www.youtube.com/watch?v=XkaVLh59mkc",
+      "duration": "6:28",
+      "why": "骨盆前傾的完整流程：先評估是結構還是控制問題，再依序放鬆髖屈、啟動臀肌與腹壁；繁中版偏「為何造成腰痛與久站不適」的成因解說，英文版是可直接照做的步驟式菜單。"
+    },
+    {
+      "unit": "ch8-u3",
+      "lang": "en",
+      "title": "4 Exercises to Fix Your Hip Shift [Stabilize Your Hips!]",
+      "channel": "Precision Movement",
+      "url": "https://www.youtube.com/watch?v=jZSuEaabaZA",
+      "duration": "16:00",
+      "why": "英文常以 hip shift / lateral pelvic tilt 稱呼骨盆側傾，這支用四個動作處理腰方肌、臀中肌與內收肌的左右失衡；繁中版含評估與矯正兩段，英文版動作拆解更細、每個動作都有代償提醒。"
+    },
+    {
+      "unit": "ch9-u2",
+      "lang": "en",
+      "title": null,
+      "channel": null,
+      "url": null,
+      "duration": null,
+      "why": null,
+      "note": "「假胯寬」是華語圈流行語，英文並無對應診斷或普及說法。已針對 hip width appearance、greater trochanter prominence、femoral anteversion 與外觀、hip shelf / femoral internal rotation 等方向搜尋，符合條件者皆不合格：Physiotutors「Craig's Test | Femoral Anteversion」僅 3:12 且純為評估測試，不足以當主課；Rick Olderman「What Is Femoral Anteversion...」播放數 4,758（低於 5,000 門檻）且該頻道已用於 ch9-u3；其餘討論髖寬外觀的影片多為無專業背景的塑形／瘦腿內容，不符品質門檻。故留空，不硬塞。"
+    },
+    {
+      "unit": "ch11-u1",
+      "lang": "en",
+      "title": "Exercises for Flat Feet",
+      "channel": "[P]rehab",
+      "url": "https://www.youtube.com/watch?v=CN_mpwOOboc",
+      "duration": "15:07",
+      "why": "物理治療師團隊完整講解功能性扁平足：足弓為何塌、如何用 short foot 與脛後肌訓練重建動態支撐，並帶到單腳站與步態整合；繁中版強調足弓絞盤機制（windlass），英文版則以漸進訓練架構呈現同一觀念。"
+    }
+  ]
+}

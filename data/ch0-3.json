@@ -1,0 +1,570 @@
+{
+  "_meta": {
+    "scope": "CH0–CH3（Part 1 主課 13 支 + Part 2 跟練 28 支 = 41 支）",
+    "curated_at": "2026-07-25",
+    "verification": "每個 video ID 均以 YouTube oEmbed API（HTTP 200 + title/author 比對）與 yt-dlp 中繼資料實際驗證存在、公開、非下架。duration 與播放數取自驗證當下的實際數值。",
+    "counts": {
+      "lessons": 13,
+      "drills": 28,
+      "release": 9,
+      "stretch": 9,
+      "train": 10
+    }
+  },
+  "chapters": [
+    {
+      "chapter": "CH0",
+      "title": "課程使用說明",
+      "units": [
+        {
+          "id": "ch0-u1",
+          "name": "使用說明書",
+          "type": "guide",
+          "summary": "說明這門課要怎麼用：先建立「體態不是靠意志力挺直就好」的正確期待，再理解評估→放鬆→拉伸→訓練的完整流程。體態改了又回去，多半是因為只做了矯正動作、卻沒有處理背後的活動度與控制能力。這支影片先把整套矯正邏輯的框架講清楚，後面每一章都是這個框架的展開。",
+          "lesson": {
+            "title": "體態改了又回去？物理治療師公開改善體態的核心公式，從此不反彈｜啾c物理治療師",
+            "channel": "啾c物理治療師",
+            "url": "https://www.youtube.com/watch?v=IasNstQF6z8",
+            "duration": "8:40",
+            "why": "台灣物理治療師用一支影片講完「為什麼體態會反彈」與矯正的整體公式，正好可以當成整門課的開場總覽，而不是又一支單一動作教學。"
+          }
+        }
+      ]
+    },
+    {
+      "chapter": "CH1",
+      "title": "認識體態",
+      "units": [
+        {
+          "id": "ch1-u1",
+          "name": "體態四大成因",
+          "type": "concept",
+          "summary": "體態不是單一原因造成的，可分成結構性（骨骼形狀、關節活動度的先天限制）、習慣性（長期姿勢與動作模式）、代償性（某處受限，別處替它工作）與心理性（壓力、情緒、自我形象）四類。搞清楚自己屬於哪一類，才知道該把力氣花在放鬆、拉伸還是訓練上。",
+          "lesson": {
+            "title": "Why \"Standing Tall With Shoulders Back\" Is The WORST Posture Cue - Do This Instead!",
+            "channel": "Conor Harris",
+            "url": "https://www.youtube.com/watch?v=mp999gLgxUY",
+            "duration": "11:34",
+            "why": "直接拆解「用力挺胸」為什麼無效，說明體態背後是骨架位置、呼吸與代償模式在決定，而不是意志力；把結構性與代償性成因講得最清楚的一支。"
+          }
+        },
+        {
+          "id": "ch1-u2",
+          "name": "體態與痠痛的關係",
+          "type": "concept",
+          "summary": "體態偏差與疼痛之間是相關性、不是因果。研究上很多人有明顯的頭前伸或駝背卻完全不痛，也有體態端正的人長期痠痛。這個單元要建立誠實的期待：矯正體態能改善活動品質與耐受度，但不保證疼痛消失。",
+          "lesson": {
+            "title": "Do You NEED To Fix Your Posture? (Probably Not)",
+            "channel": "E3 Rehab",
+            "url": "https://www.youtube.com/watch?v=R05pjBE7eFo",
+            "duration": "10:48",
+            "why": "E3 Rehab 兩位物理治療博士以實證回顧姿勢與疼痛的關聯，是市面上少數不誇大、把相關性與因果關係講清楚的影片，正好對應本單元的誠實立場。"
+          }
+        },
+        {
+          "id": "ch1-u3",
+          "name": "肌肉・韌帶・筋膜與體態",
+          "type": "concept",
+          "summary": "維持體態的不只是肌肉出力，還包括韌帶的被動張力與筋膜這層連續的結締組織網。長期固定姿勢會讓一側適應性縮短、另一側被拉長變弱，筋膜也會跟著改變滑動性。理解這三種組織的分工，才知道為什麼「只拉筋」或「只練肌力」都不夠。",
+          "lesson": {
+            "title": "Understanding Fascia – Flexibility, Power & Pain",
+            "channel": "YOGABODY",
+            "url": "https://www.youtube.com/watch?v=hrpdiMc_bEI",
+            "duration": "12:18",
+            "why": "把筋膜這層最常被誤解的結締組織講得完整且不神化，涵蓋它與柔軟度、疼痛、姿勢的關係，長度適合當概念課；市面上多數同題材影片不是太短就是純推銷。"
+          }
+        },
+        {
+          "id": "ch1-u4",
+          "name": "環境如何影響體態",
+          "type": "concept",
+          "summary": "體態有很大一部分是環境塑造出來的：桌椅高度、螢幕位置、鞋子的跟高與楦頭、床墊軟硬，以及每天低頭看手機的時數。與其每天花十分鐘矯正、其餘十四小時繼續破壞，不如先把環境調對。這個單元教你怎麼一項一項檢查自己的生活場景。",
+          "lesson": {
+            "title": "如何維持電腦桌前好姿勢？｜脊椎友善指南 系列（中文字幕）",
+            "channel": "身體智慧-脊椎健康教育的領導品牌",
+            "url": "https://www.youtube.com/watch?v=IGo7K8bRWgk",
+            "duration": "15:40",
+            "why": "「脊椎友善指南」系列從桌椅、螢幕到坐姿力學逐項示範怎麼調環境，是繁中裡把工作站設定講得最系統化的一支，比單純的人體工學清單更能落地。"
+          }
+        }
+      ]
+    },
+    {
+      "chapter": "CH2",
+      "title": "中立姿勢",
+      "units": [
+        {
+          "id": "ch2-u1",
+          "name": "什麼是中立姿勢",
+          "type": "concept",
+          "summary": "中立不是一個「標準照片姿勢」，而是骨盆、肋廓與頭顱三個環節能自由進出的區間中點——在那裡關節壓力最平均、肌肉最省力、呼吸最順。這個單元用骨盆前傾／後傾的兩端來定位中立位置，讓你先能感覺到自己現在偏向哪一邊。",
+          "lesson": {
+            "title": "骨盆前傾？骨盆後傾？認知「骨盆中立位置」",
+            "channel": "身體智慧-脊椎健康教育的領導品牌",
+            "url": "https://www.youtube.com/watch?v=euOfPZLweCw",
+            "duration": "6:58",
+            "why": "從前傾與後傾兩個極端切入定義中立位置，是最容易讓初學者「感覺得到」中立在哪裡的教法，比抽象的 neutral spine 定義影片實用。"
+          }
+        },
+        {
+          "id": "ch2-u2",
+          "name": "活動度如何影響中立位",
+          "type": "concept",
+          "summary": "身體會自動把重心擺在最省力的位置。當髖、踝或胸椎的活動度不足，站直時就必須從別的地方借角度，中立位自然被推走——這就是代償。這個單元用搖擺背（swayback）當範例，示範怎麼從姿勢反推是哪個關節被卡住。",
+          "lesson": {
+            "title": "How to Address the Root Cause of Swayback Posture - Exercises + Assessments",
+            "channel": "Conor Harris",
+            "url": "https://www.youtube.com/watch?v=KwfyapcnVqk",
+            "duration": "19:25",
+            "why": "完整走過一次「活動度受限 → 站姿偏離中立 → 用評估找出源頭 → 對症矯正」的推理鏈，是把本單元抽象概念變成可操作流程的最佳範例。"
+          }
+        },
+        {
+          "id": "ch2-u3",
+          "name": "呼吸如何影響中立位",
+          "type": "concept",
+          "summary": "橫膈膜是肋廓的地板、骨盆底是腹腔的地板，兩者在正常呼吸時應該像活塞一樣同步升降。當肋廓外翻、骨盆前傾，這兩片橫膈就不再平行，腹內壓無法有效建立，核心就永遠啟動不起來。呼吸因此是中立位的地基，而不是收操時的附加項目。",
+          "lesson": {
+            "title": "Diaphragm, Pelvic Floor, Posture, and Breathing: How do they relate?",
+            "channel": "aewellness",
+            "url": "https://www.youtube.com/watch?v=n9zl4c2Wiz8",
+            "duration": "8:15",
+            "why": "少數同時把橫膈膜、骨盆底、姿勢與呼吸四者關係串起來講的影片，主題與本單元幾乎一對一吻合，長度也剛好落在概念課的區間。"
+          }
+        },
+        {
+          "id": "ch2-u4",
+          "name": "核心與脊柱靈活",
+          "type": "concept",
+          "summary": "核心的工作不是把脊椎鎖死，而是在四肢動作時提供一個穩定但可調整的中軸，讓脊椎該分節活動時能活動、該剛性時能剛性。核心無力的人會用腰椎過度伸展或憋氣硬撐來代替，這正是體態長期歪掉又難以維持的原因。",
+          "lesson": {
+            "title": "核心肌群無力，到底會出現什麼問題？",
+            "channel": "三個字SunGuts",
+            "url": "https://www.youtube.com/watch?v=_ZkqnGipOtk",
+            "duration": "8:03",
+            "why": "三個字用臨床案例說明核心無力如何連鎖影響脊椎穩定與代償，講「為什麼」而不是丟一套動作，正是本單元需要的概念鋪陳。"
+          }
+        }
+      ]
+    },
+    {
+      "chapter": "CH3",
+      "title": "呼吸、核心與脊椎",
+      "units": [
+        {
+          "id": "ch3-u1",
+          "name": "呼吸矯正＋核心啟動",
+          "type": "foundation",
+          "assessment": "仰躺屈膝，一手放胸口、一手放下側肋。正常吸氣時下側肋應向兩側與後方擴張、胸口幾乎不動；若胸口先上抬、肩膀聳起，或肋骨只往前頂而兩側不動，即為呼吸模式異常。再以手指壓入肚臍旁兩指處，吐氣末端應摸到腹橫肌輕微收緊；若毫無反應或反而外推，代表深層核心未啟動。",
+          "tight": [
+            "橫膈膜",
+            "髂腰肌",
+            "豎脊肌（胸腰段）",
+            "斜角肌／胸鎖乳突肌（代償吸氣肌）"
+          ],
+          "weak": [
+            "腹橫肌",
+            "多裂肌",
+            "骨盆底肌",
+            "下腹斜肌群"
+          ],
+          "lesson": {
+            "title": "所有運動的基礎！呼吸法如何穩定核心、改善腰痛，治療師教你呼吸基本功｜啾c物理治療師",
+            "channel": "啾c物理治療師",
+            "url": "https://www.youtube.com/watch?v=aU86wIpmgz0",
+            "duration": "11:50",
+            "why": "把 360° 呼吸、腹內壓與核心穩定的因果關係從頭講到尾並實際示範，是繁中裡最完整的呼吸矯正教學，適合當整門課的地基單元。"
+          },
+          "drills": [
+            {
+              "name": "橫膈膜自我放鬆",
+              "en": "Diaphragm Self Release",
+              "kind": "release",
+              "target": "橫膈膜、肋弓下緣",
+              "dose": "每側 60–90 秒，配合緩慢吐氣下壓",
+              "title": "Diaphragm Muscle Self Release for Tension",
+              "channel": "Stop Chasing Pain",
+              "url": "https://www.youtube.com/watch?v=b_xXvW_BOJw",
+              "duration": "1:42"
+            },
+            {
+              "name": "胸腰段豎脊肌滾筒放鬆",
+              "en": "Thoracolumbar Erector Spinae Foam Roll",
+              "kind": "release",
+              "target": "豎脊肌（胸腰段）、胸腰筋膜",
+              "dose": "上下滾動 60–90 秒，痛點停留 20 秒",
+              "title": "Lower back pain: Foam roller Massage (Erector Spinae and QL)",
+              "channel": "ACTIV CHIROPRACTIC",
+              "url": "https://www.youtube.com/watch?v=8375SOirAQ4",
+              "duration": "3:04"
+            },
+            {
+              "name": "髂腰肌按摩球放鬆",
+              "en": "Psoas Lacrosse Ball Release",
+              "kind": "release",
+              "target": "髂腰肌",
+              "dose": "每側 60–90 秒，全程緩慢深呼吸",
+              "title": "Release Your Psoas With A Lacrosse Ball (For Low Back Pain Relief)",
+              "channel": "Vibrance Chiropractic",
+              "url": "https://www.youtube.com/watch?v=GReGKB8RvZQ",
+              "duration": "6:41"
+            },
+            {
+              "name": "肋間肌／胸廓側邊伸展",
+              "en": "Intercostal & Lateral Rib Cage Stretch",
+              "kind": "stretch",
+              "target": "肋間肌、腹斜肌、闊背肌下段",
+              "dose": "每側 30 秒 × 2 組，配合側邊吸氣",
+              "title": "Our full 5 minute guided routine for helping with INTERCOSTAL MUSCLE PAIN!",
+              "channel": "Osteo and Physio",
+              "url": "https://www.youtube.com/watch?v=4cVWtiRV0wY",
+              "duration": "6:28"
+            },
+            {
+              "name": "半跪姿髖屈肌伸展",
+              "en": "Half-Kneeling Hip Flexor Stretch",
+              "kind": "stretch",
+              "target": "髂腰肌、股直肌",
+              "dose": "每側 30 秒 × 3 組，骨盆後傾下固定",
+              "title": "拯救骨盆前傾的重要拉筋：「髖屈肌伸展運動 hip flexor strtech」。伸展鼠蹊部，打開髖部前側。",
+              "channel": "全人物理治療所",
+              "url": "https://www.youtube.com/watch?v=LvUUoiisZP8",
+              "duration": "4:19"
+            },
+            {
+              "name": "嬰兒式背側擴張呼吸",
+              "en": "Child's Pose Back Body Expansion Breathing",
+              "kind": "stretch",
+              "target": "背側肋廓、胸腰筋膜、橫膈膜後側纖維",
+              "dose": "10 次深呼吸 × 2 組",
+              "title": "Child's Pose for Back Body Expansion",
+              "channel": "Core Exercise Solutions",
+              "url": "https://www.youtube.com/watch?v=b7desBkhI8g",
+              "duration": "6:15"
+            },
+            {
+              "name": "90/90 呼吸（PRI 復位）",
+              "en": "90/90 Hip Lift with Breathing (PRI)",
+              "kind": "train",
+              "target": "橫膈膜、腹內外斜肌、骨盆底肌",
+              "dose": "5 次呼吸 × 4 組（吐氣 5 秒、憋 3 秒、吸氣 3 秒）",
+              "title": "REPOSITIONING TECHNIQUE 1 - 90 90 Hip lift with Hip Shift",
+              "channel": "movement101",
+              "url": "https://www.youtube.com/watch?v=M-lfb58JeQA",
+              "duration": "4:10"
+            },
+            {
+              "name": "腹橫肌啟動",
+              "en": "Transverse Abdominis Activation",
+              "kind": "train",
+              "target": "腹橫肌",
+              "dose": "收縮維持 10 秒 × 10 次，全程正常呼吸不憋氣",
+              "title": "Transverse abdominis activation",
+              "channel": "Canadian Chiropractic Guideline Initiative (CCGI)",
+              "url": "https://www.youtube.com/watch?v=Ielt7Mj-F_I",
+              "duration": "2:00"
+            },
+            {
+              "name": "死蟲式",
+              "en": "Dead Bug",
+              "kind": "train",
+              "target": "腹橫肌、腹直肌、抗伸展控制",
+              "dose": "每側 8 下 × 3 組，腰椎全程貼地",
+              "title": "核心訓練：「死蟲式deadbug」",
+              "channel": "全人物理治療所",
+              "url": "https://www.youtube.com/watch?v=xZhwA0lgIs8",
+              "duration": "3:51"
+            },
+            {
+              "name": "鳥狗式",
+              "en": "Bird Dog",
+              "kind": "train",
+              "target": "多裂肌、臀大肌、抗旋轉控制",
+              "dose": "每側 8 下 × 3 組，頂點停 3 秒",
+              "title": "鳥狗式（Bird-Dog ）為基礎的核心運動，其中包含背肌跟臀肌與核心的應用，不需要墊子以外的設備，就可以喚醒核心，延伸脊椎改善下背痛。",
+              "channel": "全人物理治療所",
+              "url": "https://www.youtube.com/watch?v=kAkWUtcayOs",
+              "duration": "5:18"
+            },
+            {
+              "name": "仰臥抬腿行進",
+              "en": "Supine Marching",
+              "kind": "train",
+              "target": "腹橫肌、下腹、髖屈控制",
+              "dose": "每側 10 下 × 3 組，維持腹內壓不塌腰",
+              "title": "Supine Marching | B3 Physical Therapy",
+              "channel": "Cara Giusti, PT, DPT",
+              "url": "https://www.youtube.com/watch?v=4Xx3Ibpn83A",
+              "duration": "1:22"
+            },
+            {
+              "name": "棒式（呼吸與腹內壓整合）",
+              "en": "Plank with Bracing & Breathing",
+              "kind": "train",
+              "target": "全核心整合、抗伸展",
+              "dose": "20–40 秒 × 3 組，以全程能正常呼吸為準",
+              "title": "棒式兩大錯誤雷區是…？教你循序做出正確棒式！｜棒式教學、核心運動、腹肌訓練、四足跪姿 ft. Julie 教練",
+              "channel": "林勁瑋 x 大腦優先教練學院",
+              "url": "https://www.youtube.com/watch?v=9rGRS9PAzqg",
+              "duration": "6:03"
+            }
+          ]
+        },
+        {
+          "id": "ch3-u2",
+          "name": "胸椎活動度矯正",
+          "type": "foundation",
+          "assessment": "坐在椅子上雙手抱胸、骨盆固定不動向單側旋轉，正常應可達 45 度以上且兩側對稱；差距超過 10 度或任一側不足 30 度即為受限。伸展測試：靠牆坐姿雙手上舉貼牆，若上背無法貼牆、或必須折腰才能完成，代表胸椎伸展不足。",
+          "tight": [
+            "胸椎豎脊肌",
+            "闊背肌",
+            "胸大肌／胸小肌",
+            "腹直肌上段"
+          ],
+          "weak": [
+            "中／下斜方肌",
+            "菱形肌",
+            "胸椎多裂肌"
+          ],
+          "lesson": {
+            "title": "駝背改善從這步開始！打開胸椎活動度，告別圓肩上背痛｜啾c物理治療師",
+            "channel": "啾c物理治療師",
+            "url": "https://www.youtube.com/watch?v=mXqVxRPNRC8",
+            "duration": "8:47",
+            "why": "明確說明為什麼胸椎活動度是駝背與圓肩的第一步，並示範伸展與旋轉兩個方向，動作與講解都到位。"
+          },
+          "drills": [
+            {
+              "name": "胸椎滾筒放鬆",
+              "en": "Thoracic Spine Foam Rolling",
+              "kind": "release",
+              "target": "胸椎豎脊肌、胸椎小面關節",
+              "dose": "分三段（上／中／下胸椎）各 60 秒",
+              "title": "Thoracic Spine Foam Rolling",
+              "channel": "Dr. Beau Beard",
+              "url": "https://www.youtube.com/watch?v=hJuoqOHLbzY",
+              "duration": "1:13"
+            },
+            {
+              "name": "闊背肌滾筒放鬆",
+              "en": "Latissimus Dorsi Foam Roll (SMR)",
+              "kind": "release",
+              "target": "闊背肌、大圓肌",
+              "dose": "每側 60–90 秒，側躺手臂上舉",
+              "title": "Self Myofascial Release: Foam Rolling - Latissimus Dorsi",
+              "channel": "National Academy of Sports Medicine (NASM)",
+              "url": "https://www.youtube.com/watch?v=1GaR-a9TWYM",
+              "duration": "1:33"
+            },
+            {
+              "name": "開書式（側躺胸椎旋轉）",
+              "en": "Open Book / Sidelying Thoracic Rotation",
+              "kind": "stretch",
+              "target": "胸椎旋轉、胸大肌、前鋸肌",
+              "dose": "每側 8 下，末端配合一次吐氣停留",
+              "title": "Open Books (Sidelying Thoracic Rotation)",
+              "channel": "Revival Performance Physical Therapy",
+              "url": "https://www.youtube.com/watch?v=rDviWORCWEw",
+              "duration": "1:36"
+            },
+            {
+              "name": "穿針式",
+              "en": "Thread the Needle",
+              "kind": "stretch",
+              "target": "胸椎旋轉、菱形肌、後三角",
+              "dose": "每側 30 秒 × 2 組",
+              "title": "跟背痛說再見 - 穿針式",
+              "channel": "亞洲瑜伽 Yoga Asia",
+              "url": "https://www.youtube.com/watch?v=VaWNeZ_QzZ0",
+              "duration": "1:01"
+            },
+            {
+              "name": "四足跪姿胸椎旋轉",
+              "en": "Quadruped Thoracic Rotation",
+              "kind": "train",
+              "target": "胸椎旋轉主動控制、多裂肌",
+              "dose": "每側 10 下 × 2 組，腰椎不跟著轉",
+              "title": "Quadruped Thoracic Rotation for Spine Mobility",
+              "channel": "Vive Health",
+              "url": "https://www.youtube.com/watch?v=AzCghjjWt5k",
+              "duration": "1:21"
+            },
+            {
+              "name": "下斜方肌啟動（俯臥 Y 抬舉）",
+              "en": "Lower Trap Activation / Prone Y Raise",
+              "kind": "train",
+              "target": "下斜方肌、中斜方肌",
+              "dose": "10–12 下 × 3 組，頂點停 2 秒不聳肩",
+              "title": "Improve Your Lower Trap Activation",
+              "channel": "[P]rehab",
+              "url": "https://www.youtube.com/watch?v=r7ZSEd0E908",
+              "duration": "6:06"
+            }
+          ]
+        },
+        {
+          "id": "ch3-u3",
+          "name": "腰椎活動度矯正",
+          "type": "foundation",
+          "assessment": "四足跪姿做貓牛式，觀察腰段是否能分節屈曲與伸展；若整段腰椎像一塊板子一起動、或動作全部集中在胸腰交界的單一節，即為分節控制不足。仰臥膝碰胸測試：單腳抱膝時對側大腿應能貼床，若浮起代表髖屈肌緊繃連帶限制腰椎中立。",
+          "tight": [
+            "腰方肌",
+            "梨狀肌／深層臀旋轉肌",
+            "腰段豎脊肌",
+            "髂腰肌"
+          ],
+          "weak": [
+            "腰椎多裂肌",
+            "臀大肌",
+            "下腹核心（骨盆控制）"
+          ],
+          "lesson": {
+            "title": "4 Movements to Improve Low Back (Lumbar) Mobility",
+            "channel": "Rehab Science",
+            "url": "https://www.youtube.com/watch?v=qkYtE740cHg",
+            "duration": "6:29",
+            "why": "Rehab Science（Tom Walters, DPT）用四個方向（屈曲／伸展／側彎／旋轉）系統性帶過腰椎活動度，示範清楚且明確提醒腰椎該動多少、不該動多少。"
+          },
+          "drills": [
+            {
+              "name": "腰方肌按摩球放鬆",
+              "en": "Quadratus Lumborum Ball Release",
+              "kind": "release",
+              "target": "腰方肌",
+              "dose": "每側 60–90 秒，找到痛點後緩慢呼吸",
+              "title": "在家一分鐘用按摩球深層放鬆腰方肌 | 吳子謙 物理治療師 | Together Physio",
+              "channel": "Together Physio骨專科物理治療",
+              "url": "https://www.youtube.com/watch?v=IJkPQ-lj8uw",
+              "duration": "2:04"
+            },
+            {
+              "name": "梨狀肌／臀部按摩球放鬆",
+              "en": "Glute & Piriformis Ball Release",
+              "kind": "release",
+              "target": "梨狀肌、臀大肌、臀中肌",
+              "dose": "每側 90 秒，坐姿翹腿加壓",
+              "title": "Tennis Ball Self-Massage for Your Glutes and Piriformis",
+              "channel": "The Online Physiotherapist",
+              "url": "https://www.youtube.com/watch?v=l3flN43z-EQ",
+              "duration": "2:53"
+            },
+            {
+              "name": "貓牛式",
+              "en": "Cat-Cow",
+              "kind": "stretch",
+              "target": "腰椎屈曲／伸展分節活動",
+              "dose": "10 個來回 × 2 組，配合吸吐節奏",
+              "title": "瑜珈--貓牛式cat cow yoga pose , 紓緩痠痛，延展背部脊椎，讓脊椎柔軟不僵硬，喚醒深層核心肌群。",
+              "channel": "全人物理治療所",
+              "url": "https://www.youtube.com/watch?v=nGFe2xwdTB8",
+              "duration": "4:01"
+            },
+            {
+              "name": "仰臥脊椎扭轉",
+              "en": "Supine Spinal Twist",
+              "kind": "stretch",
+              "target": "腰椎旋轉、腰方肌、臀中肌",
+              "dose": "每側 45–60 秒，肩胛保持貼地",
+              "title": "Lying Spinal Twist Stretch - for lower back mobility - #clinicalyoga",
+              "channel": "Core Elements Training",
+              "url": "https://www.youtube.com/watch?v=2SCXbr33pRw",
+              "duration": "6:21"
+            },
+            {
+              "name": "骨盆前後傾控制",
+              "en": "Anterior / Posterior Pelvic Tilt Control",
+              "kind": "train",
+              "target": "下腹核心、臀大肌、骨盆主動控制",
+              "dose": "12 下 × 3 組，緩慢進出兩端後停在中立",
+              "title": "物理治療 骨盆後傾",
+              "channel": "詹珞瑤 物理治療師 Veronica Rehab",
+              "url": "https://www.youtube.com/watch?v=bMfvglEZEpo",
+              "duration": "1:02"
+            }
+          ]
+        },
+        {
+          "id": "ch3-u4",
+          "name": "頸椎活動度矯正",
+          "type": "foundation",
+          "assessment": "坐姿頸部主動活動度：旋轉應達 70–80 度、側彎 40–45 度、伸展 50 度且左右對稱。縮下巴測試：靠牆站立做 chin tuck，若下巴無法水平後收、或後收時頭必須上仰，代表深頸屈肌無力、枕下肌群過緊。也可用側面照量頸椎椎體角（CVA），角度偏小即頭前伸。",
+          "tight": [
+            "枕下肌群",
+            "上斜方肌",
+            "提肩胛肌",
+            "斜角肌／胸鎖乳突肌"
+          ],
+          "weak": [
+            "頸深屈肌（頭長肌、頸長肌）",
+            "中／下斜方肌",
+            "頸椎多裂肌"
+          ],
+          "lesson": {
+            "title": "頸椎保養完整教學：預防頸椎退化、改善肩頸痠痛｜啾c物理治療師",
+            "channel": "啾c物理治療師",
+            "url": "https://www.youtube.com/watch?v=gGiL3T64tww",
+            "duration": "10:25",
+            "why": "從頸椎結構、退化機轉講到活動度與保養動作的完整教學，涵蓋範圍剛好對應本單元「先理解再動作」的順序。"
+          },
+          "drills": [
+            {
+              "name": "枕下肌群按摩球放鬆",
+              "en": "Suboccipital Release",
+              "kind": "release",
+              "target": "枕下肌群",
+              "dose": "仰躺 90–120 秒，配合微幅點頭",
+              "title": "Suboccipital Release (Neck Pain and Headache Treatment)",
+              "channel": "Rehab Science",
+              "url": "https://www.youtube.com/watch?v=t1pdEAbys9o",
+              "duration": "2:44"
+            },
+            {
+              "name": "提肩胛肌按摩球放鬆",
+              "en": "Levator Scapulae Soft Tissue Mobilization",
+              "kind": "release",
+              "target": "提肩胛肌、上斜方肌",
+              "dose": "每側 60–90 秒，靠牆加壓配合手臂上下",
+              "title": "Levator Scapulae Soft Tissue Mobilization With Lacrosse Ball",
+              "channel": "[P]rehab",
+              "url": "https://www.youtube.com/watch?v=4-BijFQb4_I",
+              "duration": "1:17"
+            },
+            {
+              "name": "上斜方肌伸展",
+              "en": "Upper Trapezius Stretch",
+              "kind": "stretch",
+              "target": "上斜方肌",
+              "dose": "每側 30 秒 × 3 組，對側手抓椅緣固定肩胛",
+              "title": "Upper Trapezius: Stretching Neck and Above Shoulder",
+              "channel": "Kaiser Permanente Santa Rosa",
+              "url": "https://www.youtube.com/watch?v=VWKA4RJA0cc",
+              "duration": "4:17"
+            },
+            {
+              "name": "提肩胛肌伸展",
+              "en": "Levator Scapulae Stretch",
+              "kind": "stretch",
+              "target": "提肩胛肌",
+              "dose": "每側 30 秒 × 3 組，先轉頭 45 度再低頭",
+              "title": "Levator Scapulae Stretch Guide",
+              "channel": "Restore Plus Physical Therapy",
+              "url": "https://www.youtube.com/watch?v=5RzkpkiMU18",
+              "duration": "1:12"
+            },
+            {
+              "name": "縮下巴（頸深屈肌訓練）",
+              "en": "Chin Tuck / Deep Neck Flexor Activation",
+              "kind": "train",
+              "target": "頸深屈肌（頭長肌、頸長肌）",
+              "dose": "維持 5–10 秒 × 10 次 × 2 組，不可用力後仰",
+              "title": "正確的縮下巴運動，改善脖子痠痛｜羅伯特物理治療",
+              "channel": "羅伯特物理治療",
+              "url": "https://www.youtube.com/watch?v=rvsoyJrKVSA",
+              "duration": "3:13"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
