@@ -47,16 +47,21 @@
 剩下兩堂是「假胯寬」與「股骨前移」——前者英文沒有對應診斷、後者繁中沒有合格內容，
 留空而不硬湊。
 
-## 三個分頁
+## 四個檢視
 
+- **首頁**（點 header 的品牌）— 三步驟用法、立場摘要、十二章總覽、開始的入口。
 - **課程內容** — 章節樹、自我評估、肌群標籤、跟練清單、實證註記。
   點任何影片會切到上課模式站內播放（⌘/Ctrl+click 仍照常開新分頁）。
-- **上課模式** — 左側嵌入播放（走 `youtube-nocookie.com`），右側 406 支播放清單，
-  滿版高度、可搜尋、可只看未完成。支援 `?tab=player&play=12` 深連結。
+- **上課模式** — 左側嵌入播放（走 `youtube-nocookie.com`），右側 406 支播放清單。
+  滿版高度、欄寬可用握把拖曳、可搜尋、可只看未完成，支援 `?tab=player&play=12` 深連結。
 - **這門課的立場** — 三題核心觀念的完整查證結果與原始文獻。
 
 側欄可**依肌群篩選**：58 個標準化肌群依部位分組，點下去就篩出所有涉及該肌群的單元與動作。
 動作內的肌群標籤也可直接點。
+
+**鍵盤快捷鍵**（按 `?` 叫出說明）：iframe 跨域，所以播放控制走 YouTube IFrame Player API
+的 `postMessage`——`Space`/`K` 播放暫停、`J`/`L` ±10 秒、`M` 靜音、`F` 全螢幕、
+`0–9` 跳段、`Shift+N`/`Shift+P` 切換課程影片。
 
 ## 動作類別的 PubMed 文獻
 
@@ -69,14 +74,19 @@
 
 ## 開發
 
-```bash
-python3 build.py          # data/*.json → public/course.json（含配額驗證 + SEO 產出）
-python3 verify_links.py   # 用 YouTube oEmbed 重驗每一個影片連結是否存活
-python3 verify_refs.py    # 用 PubMed E-utilities 重驗每一個 PMID 與標題
-python3 build_icons.py    # 下載 Lucide 圖示，打包成內嵌 sprite
-python3 -m http.server 8899 --directory public
+Python 環境用 [uv](https://docs.astral.sh/uv/) 管理；建置腳本只用標準庫，
+沒有執行期相依，`uv run` 會自動處理虛擬環境。
 
-npm exec --yes -- wrangler@4 pages deploy public --project-name body-course
+```bash
+make            # 列出所有指令
+make build      # data/*.json → public/course.json（含配額驗證 + SEO 產出）
+make serve      # 本機預覽 http://localhost:8899
+make verify     # 重驗所有影片連結與 PubMed 引用（打真實 API）
+make icons      # 重新下載 Lucide 圖示並打包
+make og         # 重新產生社群預覽圖
+make lint       # ruff 檢查
+make check      # lint + build，提交前跑這個
+make deploy     # 建置後部署到 Cloudflare Pages
 ```
 
 `build.py` 會擋下配額不符的建置，並自動：套用 YouTube 實際 metadata（時長／頻道／觀看數）、
@@ -98,19 +108,11 @@ npm exec --yes -- wrangler@4 pages deploy public --project-name body-course
 > 無 cookie 的 `yt-dlp` 會誤報影片失效（實測有一支被誤殺的其實正常）；
 > innertube API 直連會回 ERROR，必須在真實 YouTube 頁面 context 內呼叫才拿得到 metadata。
 
-`build.py` 會擋下配額不符的建置：每章單元數與跟練影片數都對照 `QUOTA` 表檢查，
-數量不對就以非零狀態碼結束。
-
-`verify_links.py` 不信任任何上游宣稱，一律重打 YouTube oEmbed 端點。
-被刪除、設為私人或不允許嵌入的影片會被抓出來。`--prune` 可把失效連結
-自動改成 `null` 並註記，網站會顯示為虛線的「尚未找到合格影片」卡片。
-
-> 註：`WebFetch` 直接打 `youtube.com/watch` 會被 Google 擋成 captcha，
-> 驗證必須走 `youtube.com/oembed`。
-
 ## 檔案
 
 ```
+pyproject.toml       uv 專案設定與 ruff 規則
+Makefile             所有常用指令
 build.py             合併、配額驗證、metadata 套用
 muscles.py           肌群名稱正規化與部位分組
 drills.py            動作類別定義與比對規則
@@ -128,12 +130,13 @@ public/
   index.html
   course.json        建置產物
   og.png             社群預覽圖（由 tools/og.html 以 headless Chrome 產生）
-  css/               tokens / layout / course / evidence / stance / tabs / player
+  css/               tokens / layout / course / evidence / stance / tabs / player / landing
   js/
     icons.js         Lucide sprite（建置時內嵌，零外部請求）
-    render.js        資料 → DOM
+    render.js        資料 → DOM（含首頁與立場頁）
     filters.js       搜尋、類型、肌群篩選
-    player.js        上課模式：播放清單與嵌入播放
+    player.js        上課模式：播放清單、嵌入播放、欄寬拖曳
+    keys.js          YouTube IFrame API 快捷鍵
     app.js           載入、分頁、互動、進度追蹤
 docs/
   VIDEO_SPEC.md      影片策展規格（品質門檻與驗證要求）
@@ -154,3 +157,9 @@ docs/
 
 實證註記反映查詢當下的文獻狀態，不等於臨床指引。影片版權歸原 YouTube 頻道所有，
 本站僅提供連結。
+
+## 授權
+
+程式碼採 MIT，見 [LICENSE](LICENSE)。**影片著作權屬原 YouTube 頻道**，本專案只存
+連結與公開中繼資料，不重製也不代管。Lucide 圖示為 ISC，PubMed 與 OpenEvidence
+引用的文獻著作權屬各出版者。
