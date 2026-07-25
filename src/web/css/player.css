@@ -314,6 +314,11 @@ body[data-tab="player"] .AppFooter {
   display: none;
 }
 
+/* 頁尾不在時也不需要墊底空間 */
+body[data-tab="player"] {
+  padding-bottom: 0;
+}
+
 @media (max-width: 1012px) {
   /* 窄螢幕改上下堆疊：影片在上、清單在下，各自佔一段固定高度 */
   .Player {

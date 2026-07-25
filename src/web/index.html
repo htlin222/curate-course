@@ -197,11 +197,16 @@
     </main>
 
     <footer class="AppFooter">
-      <div class="AppFooter__inner">
-        <p class="AppFooter__disclaimer">{{footer.disclaimer}}</p>
-        <p class="AppFooter__credits">{{footer.credits}}</p>
-        <p>設計語彙取自 <a href="https://primer.style/" rel="noopener">Primer</a>，圖示為 <a href="https://lucide.dev/icons/" rel="noopener">Lucide</a>（ISC）。</p>
-      </div>
+      <details class="AppFooter__details">
+        <summary class="AppFooter__summary" title="展開免責聲明與版權資訊">
+          <span class="AppFooter__disclaimer">{{footer.disclaimer}}</span>
+          <svg class="AppFooter__chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+        </summary>
+        <div class="AppFooter__more">
+          <p class="AppFooter__credits">{{footer.credits}}</p>
+          <p>設計語彙取自 <a href="https://primer.style/" rel="noopener">Primer</a>，圖示為 <a href="https://lucide.dev/icons/" rel="noopener">Lucide</a>（ISC）。</p>
+        </div>
+      </details>
     </footer>
 
     <script type="module" src="js/app.js"></script>
