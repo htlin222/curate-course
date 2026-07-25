@@ -3,6 +3,9 @@
 .env.*
 !.env.example
 
+# Claude Code 的暫存 worktree，不是專案的一部分
+.claude/worktrees/
+
 # 建置暫存
 .tmp/
 .wrangler/
