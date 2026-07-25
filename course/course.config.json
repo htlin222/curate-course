@@ -309,6 +309,32 @@
       "drills": 26
     }
   ],
+  "audit": {
+    "duration": {
+      "lesson": {
+        "min": "4:00",
+        "max": "22:00"
+      },
+      "drill": {
+        "min": "0:30",
+        "max": "10:00"
+      }
+    },
+    "driftSeconds": 30,
+    "minViews": 5000,
+    "metaCoverage": 1,
+    "drillsPerUnit": {
+      "min": 5,
+      "max": 18
+    },
+    "maxSharedVideos": 50,
+    "requireAssessment": [
+      "posture"
+    ],
+    "minAssessmentChars": 80,
+    "minCitations": 2,
+    "allowMissingUrls": 4
+  },
   "evidenceAlias": {
     "ch1-u2": "concept-1",
     "ch1-u3": "concept-2",

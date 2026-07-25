@@ -16,9 +16,10 @@
 **一、結構。** 章節 → 單元 → 項目三層，配額寫進設定檔，數量不對就建置失敗。
 不會出現「這章塞了 40 支、那章只有 3 支」的失衡。
 
-**二、連結真的活著。** 幾百個格子最大的風險是連結是捏造的。所以有兩道獨立關卡：
-`verify_links.py` 對每個 YouTube 連結重打 oEmbed、`verify_refs.py` 對每個 PMID 重打
-PubMed API。**不信任任何上游宣稱**，包括 AI agent 自稱驗證過的。
+**二、連結真的活著。** 幾百個格子最大的風險是連結是捏造的。所以有兩層關卡：
+`make audit` 離線把設定檔、配額、影片長度、實證欄位全查一遍（確定性，不打網路）；
+`make verify` 再對每個 YouTube 連結重打 oEmbed、對每個 PMID 重打 PubMed API。
+**不信任任何上游宣稱**，包括 AI agent 自稱驗證過的。
 
 **三、可查證的深度。** 每個單元可以掛證據強度與原始文獻。範例課程的 24 個主題全部經
 OpenEvidence 查證，其中 9 個被判為 `contested`——結果照實寫進網站，包含對課程自己不利的部分。
@@ -90,24 +91,52 @@ course/
 }
 ```
 
-### 3. 建置
+### 3. 建置與稽核
 
 ```bash
-make build && make serve
+make build && make audit && make serve
 ```
 
-配額不符、URL 格式錯誤、同單元重複影片都會被擋下來。
+配額不符、URL 格式錯誤、同單元重複影片會讓建置直接失敗。
+`make audit` 再往下查一層——而且**不打網路**，同樣的輸入永遠得到同樣的報告：
+
+```
+設定檔    schema 拼字與型別、圖示有沒有打包、nav 有沒有漏章、佔位符會不會被替換
+結構      各章配額、id 唯一、kind/type 是否已定義、每單元項目數是否失衡
+影片      中繼資料覆蓋率、長度是否落在設定區間、宣稱長度與實際的誤差、觀看數低標、
+          留空的格子有沒有寫清楚原因
+內容深度  自我評估夠不夠具體、evidence_grade 是否合法、PMID 格式、每類文獻篇數
+```
+
+門檻寫在 `course.config.json` 的 `audit` 區塊（影片長度區間、最低觀看數、每單元項目數
+上下限…），不是寫死在程式裡。`--json` 給 agent 讀、`--strict` 讓警告也變成錯誤。
 
 ---
 
 ## 讓 AI 幫你策展
 
-repo 內附 `.claude/skills/curate-course/SKILL.md`。在 Claude Code 裡開這個專案，
-直接說「幫我用這個框架做一門 X 的課程」，agent 會照著 skill 走完整流程：
-談結構 → 定配額 → 並行策展 → 驗證連結 → 補中繼資料 → 加引用 → 建置部署。
+repo 內附一個 Claude Code skill。在 Claude Code 裡開這個專案，輸入：
 
-Skill 裡寫死了幾條不可退讓的規則，最重要的是：**video ID 必須取自實際搜尋結果，
-不可憑記憶拼湊；找不到合格影片就留空並說明原因。**
+```
+/curate-course 幫我用這個框架做一門古典吉他入門課
+```
+
+或直接用自己的話說「幫我用這個框架做一門 X 的課程」，agent 會照著 skill 走完整流程：
+談結構 → 定配額 → 並行策展 → 驗證連結 → 補中繼資料 → 加引用 → 稽核 → 建置部署。
+
+Skill 本身採漸進揭露，主檔只有流程骨架，細節按需載入：
+
+```
+.claude/skills/curate-course/
+  SKILL.md              鐵則、七步流程、驗收清單
+  reference/config.md   設定檔欄位、schema、圖示、tone、詞彙模組
+  reference/curating.md 策展 agent 指示範本、oEmbed 驗證、資料格式、多語言
+  reference/evidence.md 單元／類別兩層實證、PubMed E-utilities 用法
+  reference/quality.md  audit 與 verify 的分工、門檻怎麼調、踩過的坑
+```
+
+裡頭寫死了幾條不可退讓的規則，最重要的是：**video ID 必須取自實際搜尋結果，
+不可憑記憶拼湊；找不到合格影片就留空並在 `note` 說明原因**——留空而不說明會被稽核擋下。
 
 ---
 
@@ -115,12 +144,13 @@ Skill 裡寫死了幾條不可退讓的規則，最重要的是：**video ID 必
 
 ```
 make build     course/ → dist/，含配額驗證與 SEO 產出
+make audit     離線稽核設定檔、配額、影片長度與實證深度（不打網路，可放 CI）
 make verify    重驗每個影片連結與每個 PMID（打真實 API）
 make serve     本機預覽
 make icons     重新下載 Lucide 圖示並打包成內嵌 sprite
 make og        重新產生社群預覽圖
 make lint      ruff 檢查
-make check     lint + build，提交前跑這個
+make check     lint + build + audit，提交前跑這個
 make deploy    部署到 Cloudflare Pages
 ```
 
@@ -164,6 +194,8 @@ src/
     build.py          合併、配額驗證、中繼資料套用
     seo.py            JSON-LD / sitemap / robots / llms.txt / 模板注入
     build_icons.py    Lucide sprite 打包
+    audit.py          離線品質稽核（設定檔／配額／長度／實證）
+    course.schema.json  設定檔結構，編輯器自動完成 + 稽核擋拼字
     verify_links.py   YouTube oEmbed 驗證
     verify_refs.py    PubMed 引用驗證
   web/
@@ -190,7 +222,7 @@ dist/                 ← 建置產物（gitignored）
 | 多語言 | 35 個單元有繁中／英文兩版 |
 | 證據查核 | 24 個主題 + 3 個核心觀念（OpenEvidence） |
 | 文獻 | 55 個動作類別、423 篇 PubMed 引用 |
-| 驗證 | 連結 100% 有效、PMID 100% 存在且標題相符 |
+| 驗證 | 稽核零錯誤、連結 100% 有效、PMID 100% 存在且標題相符 |
 
 查證結果沒有很好看，而這正是重點：
 

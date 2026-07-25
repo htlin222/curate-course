@@ -276,22 +276,11 @@ svg {
   white-space: nowrap;
 }
 
-.Label--release {
-  color: var(--fgColor-accent);
-  background-color: var(--bgColor-accent-muted);
-  border-color: color-mix(in srgb, var(--fgColor-accent) 30%, transparent);
-}
-
-.Label--stretch {
+/* tone 是主題無關的：config 的 kinds/grades 只挑 tone，不認識任何主題詞彙 */
+.Label--success {
   color: var(--fgColor-success);
   background-color: var(--bgColor-success-muted);
   border-color: color-mix(in srgb, var(--fgColor-success) 30%, transparent);
-}
-
-.Label--train {
-  color: var(--fgColor-danger);
-  background-color: var(--bgColor-danger-muted);
-  border-color: color-mix(in srgb, var(--fgColor-danger) 30%, transparent);
 }
 
 .Label--neutral {

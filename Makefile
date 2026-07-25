@@ -26,6 +26,9 @@ og: ## 用 headless Chrome 重新產生社群預覽圖
 	@magick $(DIST)/og.png -resize 1200x630 -strip $(DIST)/og.png
 	@echo "→ $(DIST)/og.png"
 
+audit: ## 離線稽核設定檔、配額、影片長度與實證深度（確定性，不打網路）
+	$(PY) src/build/audit.py
+
 verify: ## 重驗所有影片連結與 PubMed 引用（打真實 API，會跑一陣子）
 	$(PY) src/build/verify_links.py
 	$(PY) src/build/verify_refs.py
@@ -45,9 +48,9 @@ fmt: ## ruff 格式化
 	uv run ruff format .
 	uv run ruff check --fix .
 
-check: lint build ## 提交前跑這個
+check: lint build audit ## 提交前跑這個（含離線稽核）
 
 clean: ## 清掉建置暫存
 	rm -rf .tmp .wrangler .ruff_cache dist **/__pycache__
 
-.PHONY: help build icons og verify serve deploy lint fmt check clean
+.PHONY: help build icons og audit verify serve deploy lint fmt check clean

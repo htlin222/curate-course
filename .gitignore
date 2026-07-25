@@ -11,6 +11,9 @@
 .wrangler/
 dist/
 
+# 有些人的全域 gitignore 有 build/ 規則，會連框架的 src/build/ 一起吃掉
+!src/build/
+
 # Python（uv 管理虛擬環境）
 .venv/
 __pycache__/
