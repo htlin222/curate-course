@@ -1,6 +1,7 @@
 // player.js — 上課模式：把整門課攤平成播放清單，左側嵌入播放
 import { icon } from "./icons.js";
 import { esc, KIND, UI } from "./render.js";
+import { button as discussButton, panel as discussPanel } from "./discuss.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 
@@ -153,6 +154,7 @@ export function play(item, { total }) {
         <button class="btn" data-step="1" type="button"><span class="Player__btnText">${esc(UI.nextLabel || "")}</span> ${icon("chevron-right", 14)}</button>
         <button class="btn" data-mark-unit="${esc(item.unitId)}" type="button">${icon("check", 14)} ${esc(UI.doneLabel || "")}</button>
         <button class="btn btn-icon" data-toggle-list type="button" title="收起／顯示清單">${icon("layers", 16)}<span class="visually-hidden" data-list-label>收起清單</span></button>
+        ${discussButton()}
         <a class="btn btn-icon" href="${esc(item.url)}" target="_blank" rel="noopener" title="${esc(UI.openExternal || "")}">${icon("external-link", 16)}</a>
       </div>
     </div>
@@ -164,7 +166,8 @@ export function play(item, { total }) {
              ${item.assessment ? `<p class="Player__note"><strong>怎麼自己評估　</strong>${esc(item.assessment)}</p>` : ""}
            </details>`
         : ""
-    }`;
+    }
+    ${discussPanel()}`;
 
   fitFrame();
 }

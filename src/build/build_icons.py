@@ -17,7 +17,7 @@ from pathlib import Path
 
 LUCIDE_VERSION = "0.469.0"
 CDN = f"https://unpkg.com/lucide-static@{LUCIDE_VERSION}/icons/{{}}.svg"
-OUT = Path(__file__).parent / "public" / "js" / "icons.js"
+OUT = Path(__file__).resolve().parents[2] / "src" / "web" / "js" / "icons.js"
 
 ICONS = [
     # 介面
@@ -41,6 +41,8 @@ ICONS = [
     "graduation-cap",
     "microscope",
     "grip-vertical",
+    "message-circle",
+    "github",
     # 單元內容
     "clipboard-check",
     "triangle-alert",
@@ -114,7 +116,7 @@ export function icon(name, size = 16, cls = "") {{
 }}
 """)
     print(
-        f"→ {OUT.relative_to(Path(__file__).parent)}  {len(names)} 個圖示，{OUT.stat().st_size / 1024:.1f} KB"
+        f"→ {OUT.relative_to(Path(__file__).resolve().parents[2])}  {len(names)} 個圖示，{OUT.stat().st_size / 1024:.1f} KB"
     )
     return 0
 

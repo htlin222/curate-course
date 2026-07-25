@@ -8,6 +8,7 @@ import {
   buildPlaylist, renderPlaylist, play, stop, fitFrame, watchFrame, initResizer, setLanguages,
 } from "./player.js";
 import { bindKeys, listen as ytListen } from "./keys.js";
+import * as discuss from "./discuss.js";
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -313,6 +314,20 @@ function bindEvents() {
       return;
     }
 
+    const disc = e.target.closest("[data-toggle-discuss]");
+    if (disc) {
+      const panel = $("#discussPanel");
+      panel.hidden = !panel.hidden;
+      if (!panel.hidden) {
+        discuss.mount(state.playlist[state.playing]);
+        panel.scrollIntoView({ block: "nearest" });
+      } else {
+        discuss.close();
+      }
+      requestAnimationFrame(fitFrame);
+      return;
+    }
+
     const goto = e.target.closest("[data-goto-unit]");
     if (goto) {
       e.preventDefault();
@@ -470,6 +485,7 @@ function bindEvents() {
     document.documentElement.dataset.theme = next;
     save(STORE.theme, next);
     syncThemeIcon();
+    discuss.syncTheme();
   });
 
   // 側欄高亮
@@ -521,6 +537,7 @@ async function init() {
 
   setConfig(data.config);
   setLanguages(data.config?.languages);
+  discuss.setDiscussions(data.config?.discussions);
   applyChrome(data);
   setDrillEvidence(data.drillEvidence);
 

@@ -533,3 +533,41 @@ body[data-tab="player"] .AppFooter {
   color: var(--fgColor-muted);
   line-height: 1.6;
 }
+
+/* --- 每支影片的 GitHub Discussions ---------------------------------------- */
+
+.Discuss {
+  margin-top: var(--base-size-12);
+  background-color: var(--bgColor-default);
+  border: 1px solid var(--borderColor-default);
+  border-radius: var(--borderRadius-medium);
+  overflow: hidden;
+}
+
+.Discuss__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--base-size-8);
+  padding: var(--base-size-8) var(--base-size-12);
+  background-color: var(--bgColor-muted);
+  border-bottom: 1px solid var(--borderColor-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.Discuss__note {
+  font-weight: 400;
+  color: var(--fgColor-muted);
+}
+
+.Discuss__body {
+  padding: var(--base-size-8) var(--base-size-12);
+  min-height: 120px;
+}
+
+/* giscus 自帶容器寬度，讓它填滿 */
+.Discuss__body .giscus,
+.Discuss__body .giscus-frame {
+  width: 100%;
+}

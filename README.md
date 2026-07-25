@@ -141,11 +141,18 @@ make deploy    部署到 Cloudflare Pages
 外加：分面篩選、全文搜尋、localStorage 進度追蹤、深淺色主題、
 YouTube IFrame API 快捷鍵（按 `?` 看清單）。
 
+**每支影片一串討論**：上課模式的動作列有「討論」按鈕，用
+[giscus](https://giscus.app) 把留言存進 repo 的 GitHub Discussions，
+`data-term` 綁 video id，所以同一支影片在不同單元共用同一串。
+啟用方式：到 <https://github.com/apps/giscus> 安裝到你的 repo，
+再把 `repoId` / `categoryId` 填進 `course.config.json` 的 `discussions`。
+面板只在點開時才載入 giscus，不影響首屏。
+
 **SEO**：`Course` JSON-LD（含 syllabus 與 citation）、OG/Twitter 卡、sitemap、
 robots、`llms.txt`。文案在建置時就注入 HTML，不等 JS 執行，首屏就有真實內容。
 
-**零外部請求**：Primer 設計語彙用 CSS 變數自行實作，Lucide 圖示打包成內嵌 sprite。
-只有你按下播放時才會連到 YouTube。
+**首屏零外部請求**：Primer 設計語彙用 CSS 變數自行實作，Lucide 圖示打包成內嵌 sprite。
+只有按下播放時才連 YouTube、點開討論時才連 giscus。
 
 ---
 

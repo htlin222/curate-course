@@ -135,7 +135,9 @@
     "nextLabel": "下一部影片",
     "doneLabel": "完成",
     "openExternal": "在 YouTube 開啟",
-    "moreLabel": "選片理由與自我評估"
+    "moreLabel": "選片理由與自我評估",
+    "discussLabel": "討論",
+    "discussNote": "留言會同步到 GitHub Discussions，需要 GitHub 帳號才能發言。每支影片各有一串討論。"
   },
   "kinds": [
     {
@@ -357,5 +359,17 @@
     "stanceIntro": "課程中 {evidence} 個主題全部經 OpenEvidence 查證，結果照實呈現，包含對課程本身不利的部分：",
     "stanceConclusion": "簡言之：矯正運動的價值在於肌力、負荷耐受度與不適感改善，體態數值的變化是伴隨現象而非療效機轉；並無證據顯示矯正課表優於一般運動。",
     "disclaimer": "本課程為衛教與運動指引，不構成醫療診斷或治療建議。持續疼痛、麻木、無力、外傷史或體態短期內明顯惡化，應先諮詢醫師或物理治療師。"
+  },
+  "discussions": {
+    "provider": "giscus",
+    "repo": "htlin222/curate-course",
+    "repoId": "R_kgDOTjdcNg",
+    "category": "General",
+    "categoryId": "DIC_kwDOTjdcNs4DB9da",
+    "mapping": "specific",
+    "termPrefix": "video",
+    "lang": "zh-TW",
+    "reactions": true,
+    "inputPosition": "top"
   }
 }
