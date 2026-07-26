@@ -108,3 +108,44 @@ gh api -X PATCH repos/<owner>/<repo> -F has_discussions=true
 gh api graphql -f query='{ repository(owner:"<owner>", name:"<repo>") {
   id  discussionCategories(first:20){ nodes { id name } } } }'
 ```
+
+
+## 瀏覽次數徽章（選用）
+
+設定檔加上 `counter` 就會在 header 顯示累計瀏覽次數，拿掉就整個消失。
+
+```bash
+make counter   # 建 D1 資料庫 → 建表 → 寫出 wrangler.jsonc（冪等，可重跑）
+make deploy
+```
+
+`make counter` 冪等：重跑會沿用既有資料庫，不會把數字歸零。
+產生的 `wrangler.jsonc` 含每門課自己的 `database_id`，已被 gitignore。
+
+### 為什麼是 D1，不是 KV 或 Durable Object
+
+這三個都能存一個數字，但只有 D1 適合：
+
+| | 免費額度 | 為什麼不選 |
+|---|---|---|
+| **KV** | 1,000 寫入/日 | 而且**同一個 key 每秒最多寫 1 次**，訪客一多就撞 429。計數器是最不適合 KV 的用法 |
+| **Durable Object** | 有免費方案 | 計數器的教科書解，但 **Pages 專案不能自己託管 DO class**，必須另外部署一個 Worker 再綁定——對「clone 下來就能跑」來說設定成本太高 |
+| **D1** ✅ | 100,000 列寫入/日 | 直接綁 Pages Functions，全程 CLI 建得完 |
+| Web Analytics | 免費 | 只能看儀表板，**沒有公開讀取 API**，餵不了頁面上的數字 |
+
+遞增用單一語句 `INSERT … ON CONFLICT DO UPDATE SET n = n + 1 RETURNING n`，
+不需要交易，也沒有 read-modify-write 的競態。
+
+### 這個數字誠實嗎
+
+- 數的是**累計頁面瀏覽**，不是不重複訪客。重整一次就多一次
+- 伺服器端擋掉常見爬蟲 UA（回 `counted: false`），但擋不完
+- 沒有 cookie、沒有指紋、不碰任何個人資料
+
+`title` 欄位就是拿來把上面這幾點講給讀者聽的，別寫成「訪客人數」。
+
+### 壞掉時會怎樣
+
+沒綁 D1、本機預覽、API 掛掉，`/api/hits` 一律回 503，前端讓徽章維持隱藏。
+**寧可沒有這個功能，也不要在 header 留一個壞掉的空殼。** `_headers` 對 `/api/*`
+設 `no-store`，否則數字會被邊緣快取凍住。

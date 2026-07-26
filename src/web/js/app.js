@@ -90,6 +90,36 @@ function applyChrome(data) {
   set(".AppFooter__credits", esc(c.footer?.credits || ""));
 }
 
+/* --- 瀏覽次數 -------------------------------------------------------------
+   設定檔沒有 counter 區塊就整個不做。API 失敗（沒綁 D1、離線、本機預覽）
+   就讓徽章維持隱藏——寧可沒有這個功能，也不要顯示一個壞掉的空殼。 */
+
+async function renderHits(cfg) {
+  const conf = cfg?.counter;
+  if (!conf) return;
+
+  const box = $("#hitCounter");
+  if (!box) return;
+
+  try {
+    const res = await fetch("/api/hits", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      cache: "no-store",
+    });
+    if (!res.ok) return;
+    const { hits } = await res.json();
+    if (typeof hits !== "number") return;
+
+    $("#hitCount").textContent = hits.toLocaleString();
+    $("#hitLabel").textContent = conf.label || "";
+    box.title = conf.title || "";
+    box.hidden = false;
+  } catch {
+    /* 靜默失敗：計數器不該影響課程本身 */
+  }
+}
+
 /* --- 統計 ---------------------------------------------------------------- */
 
 function renderStats() {
@@ -539,6 +569,7 @@ async function init() {
   setLanguages(data.config?.languages);
   discuss.setDiscussions(data.config?.discussions);
   applyChrome(data);
+  renderHits(data.config); // 不 await，取數慢不該擋住畫面
   setDrillEvidence(data.drillEvidence);
 
   $("#chapters").innerHTML = data.chapters

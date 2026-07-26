@@ -299,7 +299,7 @@ def main() -> int:
     ui_keys = (
         "site", "hero", "ui", "kinds", "grades", "languages",
         "nav", "stance", "landing", "footer",
-        "discussions",
+        "discussions", "counter",
     )
     course = {
         "config": {k: CFG[k] for k in ui_keys if k in CFG},

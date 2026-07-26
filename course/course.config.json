@@ -397,5 +397,9 @@
     "lang": "zh-TW",
     "reactions": true,
     "inputPosition": "top"
+  },
+  "counter": {
+    "label": "次瀏覽",
+    "title": "累計頁面瀏覽次數，不是不重複訪客；已排除常見爬蟲。"
   }
 }
