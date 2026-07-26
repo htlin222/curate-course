@@ -17,6 +17,7 @@
 | `evidenceAlias` | unit id → 實證資料的 key，用在共用同一份查核的單元 |
 | `taxonomy` | 選用的詞彙模組（見下） |
 | `audit` | **品質門檻** → `make audit` 照這裡檢查（見 `quality.md`） |
+| `counter` | 選用：header 的累計瀏覽次數徽章（Pages Function + D1）。整組拿掉就不顯示，也完全不打 API |
 | `discussions` | 選用：giscus 設定，每支影片一串 GitHub Discussions。整組拿掉就沒有討論面板。**換主題必換 `repo`/`repoId`/`categoryId`**，否則留言會靜靜掉到上一個主題的 repo |
 | `landing` / `stance` / `footer` / `llms` | 首頁、立場頁、頁尾、`llms.txt` 的文案 |
 

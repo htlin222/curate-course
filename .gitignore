@@ -6,6 +6,9 @@
 # Claude Code 的暫存 worktree，不是專案的一部分
 .claude/worktrees/
 
+# make counter 產生，含每門課自己的 D1 database_id
+wrangler.jsonc
+
 # 建置暫存
 .tmp/
 .wrangler/

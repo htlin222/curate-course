@@ -149,6 +149,15 @@
     },
     "footer": { "type": "object" },
     "llms": { "type": "object" },
+    "counter": {
+      "type": "object",
+      "description": "選用：累計瀏覽次數徽章（Pages Function + D1）。整組拿掉就不顯示，也不會打 API。",
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string", "description": "數字後面的字，例如「次瀏覽」" },
+        "title": { "type": "string", "description": "hover 時的說明，講清楚數的是什麼" }
+      }
+    },
     "discussions": {
       "type": "object",
       "description": "每支影片一串留言（giscus → GitHub Discussions）。整組拿掉就沒有討論面板。",

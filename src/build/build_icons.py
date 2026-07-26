@@ -40,6 +40,7 @@ ICONS = [
     "users",
     "graduation-cap",
     "microscope",
+    "eye",
     "grip-vertical",
     "message-circle",
     "github",

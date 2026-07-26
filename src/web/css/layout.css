@@ -497,3 +497,34 @@
   line-height: 1.7;
   color: var(--fgColor-muted);
 }
+
+/* 瀏覽次數徽章。預設 hidden，只有真的取到數字才顯示——
+   沒綁 D1、離線、或 API 掛掉時就當作沒有這個功能，不留一個壞掉的空殼。 */
+.HitCounter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--base-size-4);
+  padding: 0 var(--base-size-8);
+  flex-shrink: 0;
+  font-size: var(--text-body-size-small);
+  color: var(--fgColor-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.HitCounter[hidden] {
+  display: none;
+}
+
+/* 窄螢幕先犧牲文字標籤，再犧牲整個徽章——搜尋框與分頁比它重要 */
+@media (max-width: 900px) {
+  .HitCounter__label {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .HitCounter {
+    display: none;
+  }
+}

@@ -25,3 +25,7 @@
 
 /llms.txt
   Cache-Control: public, max-age=86400
+
+# 計數 API 不能被任何一層快取，否則數字會凍在某個值
+/api/*
+  Cache-Control: no-store, max-age=0
