@@ -38,7 +38,22 @@
 }]}
 ```
 
-## PMID 怎麼取
+## 識別碼怎麼取：先確認你的主題在哪個資料庫
+
+**PubMed 只收生醫。** 邏輯學、論證理論、倫理學、科學哲學的期刊幾乎完全不在裡面——
+`Informal Logic`、`Argumentation`、`Synthese`、`Ethics`、`Philosophy of Science` 查了都是空的。
+在這些主題硬要 PMID，只會逼出捏造的引用。
+
+| 主題 | 用什麼 | 識別碼 |
+|---|---|---|
+| 生醫、運動科學、復健、營養 | PubMed E-utilities | PMID |
+| 邏輯、論證、倫理、哲學、人文社科 | Crossref | DOI |
+
+選 DOI 不只是「PubMed 沒有所以退而求其次」：**DOI 是 Humanities Source (EBSCO) 這類
+全文資料庫共用的識別碼**，所以同一筆引用既能在 Crossref 公開驗證（任何人都查得到，
+不需要訂閱），又能讓有機構訂閱的讀者直接在 EBSCO 開全文。PMID 做不到後者。
+
+### PMID 怎麼取
 
 一律用 PubMed E-utilities，**不可自行填寫標題**：
 
@@ -50,6 +65,40 @@ curl -s "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&r
 `make verify` 會重打一次 esummary，比對每筆宣稱的標題與 PMID 對不對得上。
 `make audit` 只查格式（純數字、6–9 位）與每類的篇數下限——真偽只有打 API 才算數。
 `python3 src/build/verify_refs.py --fix` 可以直接用 API 回傳值覆寫 title/journal/year。
+
+### DOI 怎麼取
+
+Crossref 不需要金鑰，但**請在 User-Agent 帶上聯絡信箱**（`mailto:`），
+那是它們的 polite pool，沒帶會被降速：
+
+```bash
+UA='curate-course/1.0 (mailto:you@example.com)'
+
+# 搜尋
+curl -s -A "$UA" "https://api.crossref.org/works?rows=5&select=DOI,title,container-title,issued,type&query.bibliographic=<查詢>"
+
+# 逐筆反查（等同 esummary 的角色）
+curl -s -A "$UA" "https://api.crossref.org/works/10.22329/il.v37i1.4696"
+```
+
+回傳的 `message.title[0]` / `message.container-title[0]` / `message.issued.date-parts[0][0]`
+分別對應 title / journal / year，一律用 API 回傳值填，不可自己打。
+
+citation 寫 `doi` 而不是 `pmid`，`url` 用 `https://doi.org/<DOI>`：
+
+```json
+{ "doi": "10.22329/il.v37i1.4696", "title": "API 回傳的標題",
+  "journal": "Informal Logic", "year": 2017,
+  "url": "https://doi.org/10.22329/il.v37i1.4696",
+  "design": "conceptual-analysis", "takeaway": "…" }
+```
+
+人文主題的 `design` 值也要換一組，`meta-analysis` / `rct` 在這裡沒有意義：
+`conceptual-analysis` / `formal-proof` / `case-study` / `corpus-study` /
+`experimental-philosophy` / `systematic-review`。
+
+> **注意**：`verify_refs.py` 目前只驗 PMID。要做人文主題的課，得先讓它認得 `doi`
+> 欄位並改打 Crossref——不然文件說了要驗，實際上沒有人在驗，跟沒驗一樣。
 
 ## 誠實比好看重要
 
