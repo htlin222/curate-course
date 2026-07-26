@@ -63,12 +63,48 @@ COURSE=courses/guitar python3 src/build/audit.py   # 多課程並存
 | 現象 | 真相 |
 |---|---|
 | `WebFetch` 打 `youtube.com/watch` 拿不到東西 | 會被 Google 導向 captcha 頁，改用 oEmbed 端點 |
-| `yt-dlp` 說影片不存在 | 無 cookie 時會誤報「Sign in to confirm you're not a bot」，不是影片失效 |
+| `yt-dlp` 說影片不存在 | 無 cookie 時會誤報「Sign in to confirm you're not a bot」，不是影片失效。單次搜尋沒事，連抓數百支就會被擋——加 `--cookies-from-browser chrome` 借用登入狀態即可。另有少數影片要 `--ignore-no-formats-error` 才拿得到中繼資料 |
 | innertube API 回 ERROR | 必須在真實 YouTube 分頁的 context 內呼叫才有效 |
 | 改了樣式但線上沒變 | 檢查 `_headers` 的 Cache-Control，沒有 hash 檔名就別設長快取 |
-| 並行 agent 互相覆蓋檔案 | 每個 agent 給獨立的輸出路徑與檔名前綴 |
+| 並行 agent 互相覆蓋檔案 | 每個 agent 給獨立的輸出路徑與檔名前綴，**暫存目錄也要各給一個子目錄**——`q1.txt` 這種通用檔名一定會被別人蓋掉 |
 | 數字對不起來 | 單元數、影片欄位數、去重後支數是三個不同的東西，UI 上要講清楚 |
 | 章節圖示顯示空白 | 圖示沒加進 `build_icons.py` 的 `ICONS`，或加了沒跑 `make icons` |
 | 標籤沒有顏色 | `tone` 只能用 `tokens.css` 裡有 `.Label--<tone>` 的那幾個 |
 | 側欄少一整章 | `nav` 分組沒列到那個章節碼——章節存在不代表側欄看得到 |
 | 總時長怪怪的 | 多語言版本會灌進「所有欄位合計」，課程時長只算主要版本 |
+| 分類 patterns 加了肌肉名之後歸類全亂 | `classify()` 會比對 `target` 欄位，那裡放的就是肌肉名——把「臀中肌」當 pattern，所有目標含臀中肌的動作都會掉進臀肌啟動。patterns 只能用**動作名**，改完一定要 diff 前後的歸類結果 |
+| PMID 全部驗過了，卻還是有沒驗到的 | `verify_refs.py` 要同時掃 `drill-evidence-*.json` 的 `categories` **與** `oe-*.json` 的 `conditions`。只驗一層等於留了一半的門沒鎖 |
+
+
+## 換主題時最容易漏掉的
+
+這些不會讓 `make audit` 變紅，但會讓網站繼續講上一個主題的事——上線後才被使用者發現。
+
+| 症狀 | 檢查 |
+|---|---|
+| **留言跑到別的 repo** | `discussions` 的 `repo` / `repoId` / `categoryId` 還是上一個主題的值。換主題一定要在新 repo 開 Discussions 並換掉這三個 |
+| 品牌圖示還是舊主題的 | `site.brandIcon` 有進 `course.json` 也被稽核檢查，但**前端要真的去讀它**；`index.html` 裡的圖示只是預設值 |
+| 篩選籤寫著上一個主題的類型 | FilterBar 的按鈕若寫死在 `index.html`，換 `kinds` 不會跟著變。要從設定檔產生 |
+| `make build` 的類型統計全是 0 | 統計行若寫死 `kinds['release']` 這種 id，換主題就對不到。改成迭代 `CFG["kinds"]` |
+| 「支跟練影片」之類的名詞不對題 | 項目名詞要放進 `ui`（例如 `ui.drillNoun`），不要寫死在 JS 裡 |
+| `og.png` 還是舊課程 | `src/web/og.html` 是靜態模板，數字與文案都要手動對齊 `make build` 的輸出，再跑 `make og` |
+
+### giscus 到底接上了沒
+
+肉眼看討論面板分不出「還沒人留言」和「App 沒授權」，用 API 問：
+
+```bash
+curl -s "https://giscus.app/api/discussions?repo=<url編碼的owner%2Frepo>&term=t&category=General&strict=false&number=0&first=1"
+```
+
+- `{"error":"Discussion not found"}` → **正常**，只是還沒人留言（第一則留言時才建立討論串）
+- `{"error":"giscus is not installed on this repository"}` → App 還沒授權到這個 repo，
+  去 <https://github.com/apps/giscus/installations/new> 加上去
+
+取 `repoId` / `categoryId` 不必開 giscus.app，用 GitHub API 更快：
+
+```bash
+gh api -X PATCH repos/<owner>/<repo> -F has_discussions=true
+gh api graphql -f query='{ repository(owner:"<owner>", name:"<repo>") {
+  id  discussionCategories(first:20){ nodes { id name } } } }'
+```
