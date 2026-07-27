@@ -80,12 +80,7 @@ function applyChrome(data) {
 
   set(".Hero__eyebrow", `${$(".Hero__eyebrow svg")?.outerHTML || ""} ${esc(c.hero?.eyebrow || "")}`);
   set(".Hero h1", esc(c.hero?.heading || ""));
-  set(
-    ".Hero__lede",
-    (c.hero?.lede || "")
-      .replace("{units}", data.meta.units)
-      .replace("{problems}", data.meta.problem_units),
-  );
+  set(".Hero__lede", fillTokens(c.hero?.lede || "", data.meta));
   set(".AppFooter__disclaimer", c.footer?.disclaimer || "");
   set(".AppFooter__credits", esc(c.footer?.credits || ""));
 }
@@ -135,9 +130,9 @@ function renderStats() {
     )
     .join("");
 
-  // 371（單元）／406（影片欄位）／344（去重）是三個不同的東西，講清楚免得對不上
+  // 單元數／影片欄位數／去重後支數是三個不同的東西，講清楚免得對不上
   $("#heroNote").innerHTML =
-    `${meta.units} ${UI.unitNoun || "個單元"} = ${meta.lesson_units} ${UI.lessonNoun || "堂主課"} + ${meta.drill_units} ${UI.drillNoun || "支跟練影片"}。` +
+    `${meta.lesson_units} ${UI.unitNoun || "個單元"}，每個單元 1 ${UI.lessonNoun || "堂主課"} + 共 ${meta.drill_units} ${UI.drillNoun || "支跟練影片"}。` +
     `另有 ${meta.alt_lessons} 支多語言版本，播放清單共 ${meta.video_slots} 支；` +
     `扣掉跨單元共用的，實際是 ${meta.video_unique} 支不重複影片，` +
     `每個語言版本都看過的話總長 ${meta.duration_all}。`;
@@ -666,4 +661,19 @@ function renderFilterBar(cfg) {
           `<span class="Drill__marker Drill__marker--${esc(k.id)}"></span>${esc(k.label)}</button>`,
       )
       .join("");
+}
+
+/** 文案佔位符。三個數字互不相同，只給 {units} 會逼人把「368 個影片欄位」寫成
+    「368 個單元」——meta.units 是欄位合計，不是章節單元數。 */
+export function fillTokens(text, meta) {
+  const map = {
+    units: meta.units,
+    lessonUnits: meta.lesson_units,
+    drillUnits: meta.drill_units,
+    slots: meta.video_slots,
+    videos: meta.video_unique,
+    problems: meta.problem_units,
+    evidence: meta.evidence_checked,
+  };
+  return String(text ?? "").replace(/\{(\w+)\}/g, (m, k) => (k in map ? map[k] : m));
 }

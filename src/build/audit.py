@@ -268,7 +268,8 @@ def audit_topic_coupling(cfg: dict, rep: Report) -> None:
                     if tok not in known:
                         bad.append(f"{path}.{key} 用了未定義的佔位符 {{{tok}}}")
     if bad:
-        rep.err(sec, f"文案佔位符打錯字（{len(bad)} 處），會原樣印在頁面上", bad[:6])
+        rep.err(sec, f"文案佔位符打錯字（{len(bad)} 處），會原樣印在頁面上"
+                     f"。可用：{'、'.join(sorted(known))}", bad[:6])
 
 
 def audit_config(cfg: dict, rep: Report) -> None:
@@ -394,20 +395,8 @@ def audit_config(cfg: dict, rep: Report) -> None:
                 [f"可用：{'、'.join(sorted(fields))}"],
             )
 
-    # 文案佔位符：只有這幾個會被替換，寫錯就會原樣印在頁面上
-    known = {"units", "problems", "videos", "evidence"}
-    stray = []
-    for path, text in (
-        ("hero.lede", cfg.get("hero", {}).get("lede")),
-        ("landing.ctaLede", cfg.get("landing", {}).get("ctaLede")),
-        ("llms.summary", cfg.get("llms", {}).get("summary")),
-        ("llms.stanceIntro", cfg.get("llms", {}).get("stanceIntro")),
-    ):
-        for token in re.findall(r"\{(\w+)\}", text or ""):
-            if token not in known:
-                stray.append(f"{path} 的 {{{token}}}")
-    if stray:
-        rep.err(sec, f"{len(stray)} 個佔位符不會被替換（可用：{'、'.join(sorted(known))}）", stray)
+    # 佔位符檢查已移到 audit_topic_coupling()：那裡掃 hero/landing/llms/stance
+    # 的所有欄位，涵蓋範圍比這裡原本寫死的四條路徑廣。
 
 
 # ── 資料走訪 ──────────────────────────────────────────────────────────────
