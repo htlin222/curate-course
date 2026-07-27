@@ -70,6 +70,13 @@ function applyChrome(data) {
   document.title = site.title || site.name || document.title;
   document.documentElement.lang = site.locale || "zh-Hant";
   set(".AppHeader__brand span", esc(site.name || ""));
+  // 品牌圖示：index.html 裡的那顆只是預設值，換主題一定要從設定檔重畫，
+  // 否則 header 會一直掛著上一個主題的圖示（稽核查得到 brandIcon 有打包，
+  // 但查不到前端有沒有真的去讀它）。
+  const brandSvg = $(".AppHeader__brand svg");
+  if (brandSvg && site.brandIcon) {
+    brandSvg.outerHTML = icon(site.brandIcon, 20);
+  }
   $("#search")?.setAttribute("placeholder", c.ui?.searchPlaceholder || "搜尋…");
   set(".ProgressPanel__title", esc(c.ui?.progressLabel || ""));
   set("#muscleToggle span:first-of-type", esc(c.ui?.facetLabel || ""));
@@ -513,20 +520,78 @@ function bindEvents() {
     discuss.syncTheme();
   });
 
-  // 側欄高亮
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const code = entry.target.dataset.chapter;
-        $$("[data-nav]").forEach((a) =>
-          a.classList.toggle("is-active", a.dataset.nav === code),
-        );
-      });
-    },
-    { rootMargin: "-72px 0px -70% 0px" },
-  );
-  $$(".Chapter").forEach((c) => observer.observe(c));
+  // 側欄高亮：每次都從所有章節的實際位置重算，不依賴 observer 的事件順序。
+  //
+  // 舊版對每個 isIntersecting 的 entry 直接 toggle，有兩個問題：
+  //   1. 兩個章節同時落在觀察帶內時，最後被迭代到的那個贏，而順序是不保證的；
+  //      只要兩者都持續 intersecting 就不會再有 callback，高亮從此卡住。
+  //   2. 點側欄連結只有原生錨點跳轉，若跳轉後 intersecting 的集合沒變，
+  //      callback 根本不觸發，高亮完全不動。
+  // 章節愈少、愈長，這兩個問題愈明顯。
+  const NAV_LINE = 96; // 判定線：視窗頂端往下這麼多 px，約略是 header 下緣
+
+  const canScroll = () => document.documentElement.scrollHeight > window.innerHeight + 4;
+
+  function activeChapterCode() {
+    const chapters = $$(".Chapter");
+    if (!chapters.length) return null;
+    let current = chapters[0].dataset.chapter;
+    for (const c of chapters) {
+      const { top, bottom } = c.getBoundingClientRect();
+      // 已越過判定線且尚未捲出去的那一章就是當前章節
+      if (top <= NAV_LINE && bottom > NAV_LINE) return c.dataset.chapter;
+      if (top <= NAV_LINE) current = c.dataset.chapter;
+    }
+    // 捲到最底要把最後一章點亮，否則它永遠亮不起來
+    if (canScroll() && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      return chapters[chapters.length - 1].dataset.chapter;
+    }
+    return current;
+  }
+
+  function setNavActive(code) {
+    if (!code) return;
+    $$("[data-nav]").forEach((a) => a.classList.toggle("is-active", a.dataset.nav === code));
+  }
+
+  // 使用者剛點的章節。捲動位置還沒落定前不能被 scroll-spy 蓋掉，
+  // 而且章節全部收合、整頁不能捲的時候，永遠以使用者的點選為準——
+  // 那種情況下四章同時可見，scroll-spy 本來就分辨不出「現在在哪一章」。
+  let picked = null;
+  let pickedUntil = 0;
+
+  let navTick = 0;
+  function syncNavHighlight() {
+    if (navTick) return;
+    navTick = requestAnimationFrame(() => {
+      navTick = 0;
+      if (picked && (performance.now() < pickedUntil || !canScroll())) {
+        return setNavActive(picked);
+      }
+      picked = null;
+      setNavActive(activeChapterCode());
+    });
+  }
+
+  function pickChapter(code) {
+    if (!code) return;
+    picked = code;
+    pickedUntil = performance.now() + 700; // 等錨點捲動落定
+    setNavActive(code);
+  }
+
+  $("#nav").addEventListener("click", (e) => {
+    pickChapter(e.target.closest("[data-nav]")?.dataset.nav);
+  });
+  // 直接開 /#CH3 這種網址進來也要對
+  addEventListener("hashchange", () => pickChapter(location.hash.slice(1) || null));
+  if (location.hash) pickChapter(location.hash.slice(1));
+
+  addEventListener("scroll", syncNavHighlight, { passive: true });
+  addEventListener("resize", syncNavHighlight, { passive: true });
+  // 章節展開／收合會改變高度，捲動位置沒變但當前章節可能已經不同
+  $("#chapters").addEventListener("click", () => setTimeout(syncNavHighlight, 0));
+  syncNavHighlight();
 }
 
 function syncThemeIcon() {

@@ -275,19 +275,12 @@
 .NavList__item.is-active {
   background-color: var(--bgColor-neutral-muted);
   font-weight: 600;
+  /* 選取指示線用 inset shadow，不用另一個絕對定位的圓角元素。
+     inset shadow 完全貼著元素自己的 border-radius 走，畫面上只有一個半徑；
+     原本那根浮動的膠囊條是在 6px 圓角的項目旁邊再放一個全圓角，兩種半徑並置。 */
+  box-shadow: inset 2px 0 0 var(--fgColor-accent);
 }
 
-.NavList__item.is-active::before {
-  content: "";
-  position: absolute;
-  left: -4px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 2px;
-  height: 20px;
-  background-color: var(--fgColor-accent);
-  border-radius: var(--borderRadius-full);
-}
 
 .NavList__icon {
   color: var(--fgColor-muted);
