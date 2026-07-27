@@ -9,7 +9,7 @@
 |---|---|
 | `site` | 標題、描述、網址、語系、關鍵字 → 直接餵給 SEO 與 JSON-LD |
 | `hero` | 首頁大標與說明，可用 `{units}` `{problems}` 佔位 |
-| `ui` | **所有介面文案**。分頁名、篩選標籤、統計欄位、實證欄位標題、單元型別 |
+| `ui` | **所有介面文案**。分頁名、篩選標籤、統計欄位、實證欄位標題、單元型別，以及**所有主題名詞**（`unitNoun`／`lessonNoun`／`drillNoun`／`evidenceSource` 等，見 `quality.md`）|
 | `kinds` | 項目類型與配色（`id` / `label` / `tone`），至少一種 |
 | `grades` | 證據分級（沒有實證維度就整組刪掉） |
 | `chapters` | 章節碼、標題、Lucide 圖示、資料來源檔、配額 |
