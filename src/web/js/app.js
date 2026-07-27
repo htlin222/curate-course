@@ -1,7 +1,7 @@
 // app.js — 載入課程資料、渲染、互動與進度追蹤
 import { mountIcons, icon } from "./icons.js";
 import {
-  renderChapter, renderStance, renderHome, setDrillEvidence, setConfig, esc,
+  renderChapter, renderStance, renderHome, setDrillEvidence, setConfig, esc, UI,
 } from "./render.js";
 import { renderMusclePanel, syncMuscleChips, applyFilters as runFilters } from "./filters.js";
 import {
@@ -137,7 +137,7 @@ function renderStats() {
 
   // 371（單元）／406（影片欄位）／344（去重）是三個不同的東西，講清楚免得對不上
   $("#heroNote").innerHTML =
-    `${meta.units} 個單元 = ${meta.lesson_units} 堂主課 + ${meta.drill_units} 支跟練影片。` +
+    `${meta.units} ${UI.unitNoun || "個單元"} = ${meta.lesson_units} ${UI.lessonNoun || "堂主課"} + ${meta.drill_units} ${UI.drillNoun || "支跟練影片"}。` +
     `另有 ${meta.alt_lessons} 支多語言版本，播放清單共 ${meta.video_slots} 支；` +
     `扣掉跨單元共用的，實際是 ${meta.video_unique} 支不重複影片，` +
     `每個語言版本都看過的話總長 ${meta.duration_all}。`;
@@ -210,7 +210,7 @@ function updateChapterMeta() {
     $(".Chapter__progress .ProgressBar__fill", el).style.width = `${pct}%`;
     const drillTotal = ch.units.reduce((n, u) => n + (u.drills?.length || 0), 0);
     $(".Chapter__meta", el).textContent =
-      `${ch.units.length} 個單元${drillTotal ? ` · ${drillTotal} 支跟練影片` : ""}${done ? ` · 已完成 ${done}` : ""}`;
+      `${ch.units.length} ${UI.unitNoun || "個單元"}${drillTotal ? ` · ${drillTotal} ${UI.drillNoun || "支跟練影片"}` : ""}${done ? ` · 已完成 ${done}` : ""}`;
   });
 }
 
@@ -566,6 +566,7 @@ async function init() {
   state.done = new Set(load(STORE.done, []));
 
   setConfig(data.config);
+  renderFilterBar(data.config);
   setLanguages(data.config?.languages);
   discuss.setDiscussions(data.config?.discussions);
   applyChrome(data);
@@ -649,3 +650,20 @@ async function init() {
 }
 
 init();
+
+/** 篩選列的按鈕依設定檔的 kinds 生成。
+    寫死在 index.html 裡的按鈕換主題不會跟著變，而且不會有任何錯誤訊息。 */
+function renderFilterBar(cfg) {
+  const group = $(".FilterBar__group");
+  if (!group) return;
+  group.setAttribute("aria-label", cfg?.ui?.kindFilterLabel || "類型篩選");
+  group.innerHTML =
+    '<button class="FilterBar__btn is-active" data-filter="all" type="button">全部</button>' +
+    (cfg?.kinds || [])
+      .map(
+        (k) =>
+          `<button class="FilterBar__btn" data-filter="${esc(k.id)}" type="button">` +
+          `<span class="Drill__marker Drill__marker--${esc(k.id)}"></span>${esc(k.label)}</button>`,
+      )
+      .join("");
+}

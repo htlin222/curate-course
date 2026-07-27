@@ -38,7 +38,10 @@ def build_schema(course: dict) -> dict:
     meta = course["meta"]
     chapters = course["chapters"]
 
-    postures = [u["name"] for ch in chapters for u in ch["units"] if u.get("type") == "posture"]
+    # 主題單元的型別由 ui.problemType 決定。寫死 "posture" 換主題會產出空的 teaches，
+    # 而且 JSON-LD 依然合法，所以不會有任何錯誤——這種沉默的失敗最難發現。
+    _ptype = (CFG.get("ui") or {}).get("problemType", "posture")
+    postures = [u["name"] for ch in chapters for u in ch["units"] if u.get("type") == _ptype]
 
     syllabus = [
         {
@@ -53,7 +56,8 @@ def build_schema(course: dict) -> dict:
                     else ""
                 )
                 + (
-                    f"，附 {sum(len(u.get('drills') or []) for u in ch['units'])} 支跟練影片"
+                    f"，附 {sum(len(u.get('drills') or []) for u in ch['units'])} "
+                    f"{(CFG.get('ui') or {}).get('drillNoun', '支跟練影片')}"
                     if any(u.get("drills") for u in ch["units"])
                     else ""
                 )
@@ -153,9 +157,23 @@ def render_template(meta: dict) -> None:
         val = lookup(m.group(1))
         if val is None:
             return m.group(0)
-        return str(val).replace("{units}", str(meta["units"])).replace(
-            "{problems}", str(meta.get("problem_units", 0))
-        )
+        # 三個數字互不相同，文案裡要能分別取用：
+        #   units       所有影片欄位合計（主課 + 項目）——體態課把它們統稱為「單元」
+        #   lessonUnits 章節單元數（= 主課數）
+        #   videos      去重後的實際影片支數
+        # 只提供 {units} 會逼作者把「368 個影片欄位」寫成「368 個單元」。
+        out = str(val)
+        for token, value in (
+            ("{units}", meta["units"]),
+            ("{lessonUnits}", meta.get("lesson_units", 0)),
+            ("{drillUnits}", meta.get("drill_units", 0)),
+            ("{slots}", meta.get("video_slots", meta["units"])),
+            ("{videos}", meta.get("video_unique", 0)),
+            ("{problems}", meta.get("problem_units", 0)),
+            ("{evidence}", meta.get("evidence_checked", 0)),
+        ):
+            out = out.replace(token, str(value))
+        return out
 
     html, n = re.subn(r"\{\{([\w.]+)\}\}", sub, html)
     path.write_text(html)

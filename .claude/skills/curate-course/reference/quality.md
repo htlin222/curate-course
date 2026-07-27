@@ -78,6 +78,42 @@ COURSE=courses/guitar python3 src/build/audit.py   # 多課程並存
 
 ## 換主題時最容易漏掉的
 
+**大部分已經有稽核在擋了。** `make audit` 的「主題耦合」區段會抓三件事：前端有沒有寫死
+項目類型 id、`ui.problemType` 對不對得到單元、文案佔位符有沒有打錯字。這三種 bug 的共同
+特徵是**不會報錯**——類型 id 寫死在前端，換主題後項目全部不顯示但主控台一片安靜；
+`teaches` 找不到單元就產出空陣列，JSON-LD 依然合法。沉默的失敗最貴。
+
+### 主題詞彙一律走設定檔
+
+程式裡不該出現任何主題名詞。`ui` 底下這幾個欄位就是為此存在的：
+
+| 欄位 | 用在哪 | 體態課的值 |
+|---|---|---|
+| `unitNoun` / `lessonNoun` / `drillNoun` / `drillNounShort` | 統計行、章節卡片、篩選計數 | 個單元／堂主課／支跟練影片／支跟練 |
+| `kindFilterLabel` | 篩選列的無障礙標籤 | 動作類型篩選 |
+| `missingTitle` / `missingHint` | 找不到合格影片時的卡片 | 尚未找到合格影片／… |
+| `lessonLangLabel` / `watchLabel` / `facetFilterHint` | 語言分頁、項目連結、分面標籤的 title | — |
+| `evidenceSource` / `evidenceSourceLink` | 實證查核的來源名稱與連結文字 | OpenEvidence／在 OpenEvidence 讀完整回答 |
+
+全部有預設值，不填不會壞，但會講出上一個主題的話。
+
+### 文案佔位符有七個，別只用 {units}
+
+`{units}` 是**所有影片欄位合計**（主課 + 項目），不是章節單元數。體態課刻意把 371 個
+欄位統稱為「單元」，所以那裡沒問題；但塔羅課有 62 個單元、368 個欄位，寫
+「{units} 個單元」就會印出「368 個單元」——數字沒錯，話講錯了。
+
+| 佔位符 | 意義 |
+|---|---|
+| `{units}` | 影片欄位合計（主課 + 項目） |
+| `{lessonUnits}` / `{drillUnits}` | 章節單元數／項目數 |
+| `{slots}` / `{videos}` | 影片欄位數／去重後實際支數 |
+| `{problems}` / `{evidence}` | 主題單元數／實證查核則數 |
+
+打錯字會被稽核擋下，不會原樣印到頁面上。
+
+### 剩下這些還是要自己看
+
 這些不會讓 `make audit` 變紅，但會讓網站繼續講上一個主題的事——上線後才被使用者發現。
 
 | 症狀 | 檢查 |

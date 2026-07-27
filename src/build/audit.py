@@ -223,6 +223,54 @@ def css_tones() -> set[str]:
     return set(re.findall(r"\.Label--([a-z-]+)", (WEB / "css" / "tokens.css").read_text()))
 
 
+def audit_topic_coupling(cfg: dict, rep: Report) -> None:
+    """抓「換主題時會靜靜壞掉」的那一類問題。
+
+    這些 bug 的共同特徵是**不會報錯**：類型 id 寫死在前端，換主題後項目全部
+    不顯示；`teaches` 找不到單元就產出空陣列，JSON-LD 依然合法。稽核不查，
+    就要等上線後使用者回報。
+    """
+    sec = "主題耦合"
+    src = ROOT / "src" / "web"
+    kind_ids = {k.get("id") for k in cfg.get("kinds") or [] if isinstance(k, dict)}
+
+    # 1) 前端不得寫死任何 kind id
+    offenders = []
+    for f in [*sorted(src.glob("js/*.js")), src / "index.html"]:
+        if not f.exists() or f.name == "icons.js":
+            continue
+        for i, line in enumerate(f.read_text().splitlines(), 1):
+            code = line.split("//")[0]
+            # data-filter="${...}" 是 renderFilterBar() 自己在生成，那是正解不是問題
+            if "data-filter=" in code and 'data-filter="all"' not in code and "${" not in code:
+                offenders.append(f"{f.name}:{i} 篩選鈕寫死 kind id，應由 renderFilterBar() 生成")
+            for kid in kind_ids:
+                if kid and f'"{kid}"' in code and "Drill__marker--" not in code:
+                    offenders.append(f"{f.name}:{i} 寫死 kind id「{kid}」，應迭代 CFG.kinds")
+    if offenders:
+        rep.err(sec, f"前端寫死了項目類型 id（{len(offenders)} 處）", offenders[:8])
+    else:
+        rep.ok(sec, "前端未寫死任何項目類型 id")
+
+    # 2) ui.problemType 必須真的對得到單元，否則 JSON-LD 的 teaches 會是空的
+    ptype = (cfg.get("ui") or {}).get("problemType")
+    if ptype and ptype not in (cfg.get("ui") or {}).get("unitTypes", {}):
+        rep.err(sec, f"ui.problemType「{ptype}」不在 ui.unitTypes 裡，JSON-LD 的 teaches 會是空的")
+
+    # 3) 文案佔位符只認得這幾個，打錯字會原樣輸出到頁面上
+    known = {"units", "lessonUnits", "drillUnits", "slots", "videos", "problems", "evidence"}
+    bad = []
+    for path, node in (("hero", cfg.get("hero")), ("landing", cfg.get("landing")),
+                       ("llms", cfg.get("llms")), ("stance", cfg.get("stance"))):
+        for key, val in (node or {}).items():
+            if isinstance(val, str):
+                for tok in re.findall(r"\{(\w+)\}", val):
+                    if tok not in known:
+                        bad.append(f"{path}.{key} 用了未定義的佔位符 {{{tok}}}")
+    if bad:
+        rep.err(sec, f"文案佔位符打錯字（{len(bad)} 處），會原樣印在頁面上", bad[:6])
+
+
 def audit_config(cfg: dict, rep: Report) -> None:
     sec = "設定檔"
     # 設定檔可能本身就壞掉——稽核要能報出來，不能自己爆掉，所以一律用 .get()
@@ -736,6 +784,7 @@ def main() -> int:
 
     rep = Report()
     audit_config(cfg, rep)
+    audit_topic_coupling(cfg, rep)
     units = walk(cfg, rep)
     audit_structure(cfg, units, opts, rep)
     audit_videos(cfg, units, opts, rep)

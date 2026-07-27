@@ -105,8 +105,8 @@ export function applyFilters(state, course) {
   if (sel.size) parts.push(`${UI.facetPrefix || ""}：${[...sel].join("、")}`);
 
   $("#filterCount").textContent = parts.length
-    ? `${visibleUnits} 個單元 · ${visibleDrills} 支動作符合 ${parts.join(" + ")}`
-    : `顯示 ${visibleDrills} / ${totalDrills} 支跟練影片`;
+    ? `${visibleUnits} ${UI.unitNoun || "個單元"} · ${visibleDrills} ${UI.drillNoun || "支跟練影片"}符合 ${parts.join(" + ")}`
+    : `顯示 ${visibleDrills} / ${totalDrills} ${UI.drillNoun || "支跟練影片"}`;
 
   toggleBlankslate(visibleUnits);
   return { visibleUnits, visibleDrills };
