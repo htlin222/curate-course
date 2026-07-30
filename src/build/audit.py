@@ -726,14 +726,16 @@ def audit_depth(cfg: dict, units: list[dict], opts: dict, rep: Report) -> None:
         for r in units
         if r["unit"].get("type") in need
     }
-    if need and targeted:
+    # config 沒有 grades 就是宣告「這門課沒有實證維度」（語言課、技能課常見）。
+    # 這時候還一直列出「未查核」的單元只是噪音，會淹掉真正該看的警告。
+    if need and targeted and grades:
         covered = len(targeted & ev_units)
         gap = sorted(targeted - ev_units)
         msg = f"實證查核 {covered}/{len(targeted)} 個主題（另有 {len(ev_units - targeted)} 個非章節主題）"
         rep.warn(sec, msg + "，未查核：" + "、".join(gap), []) if gap else rep.ok(sec, msg)
 
     # 類別層級文獻
-    cats, thin_cats, bad_pmid = {}, [], []
+    cats, thin_cats, bad_ref = {}, [], []
     for path in sorted(DATA.glob("drill-evidence-*.json")):
         blob = load_json(path)
         for cat in (blob or {}).get("categories", []) if isinstance(blob, dict) else []:
@@ -746,10 +748,16 @@ def audit_depth(cfg: dict, units: list[dict], opts: dict, rep: Report) -> None:
             if len(cites) < opts["minCitations"]:
                 thin_cats.append(f"{cat['id']}（{len(cites)} 篇）")
             for c in cites:
+                # 生醫走 PubMed（pmid），人文社科走 Crossref（doi）——兩者擇一即可。
+                # PubMed 幾乎不收邏輯、語言學、倫理學的期刊，硬要 PMID 只會逼出捏造的引用。
                 pmid = str(c.get("pmid") or "").strip()
-                if not (pmid.isdigit() and 6 <= len(pmid) <= 9):
-                    bad_pmid.append(
-                        f"{cat['id']} · pmid={c.get('pmid')!r} · {(c.get('title') or '')[:40]}"
+                doi = str(c.get("doi") or "").strip()
+                ok_pmid = pmid.isdigit() and 6 <= len(pmid) <= 9
+                ok_doi = doi.startswith("10.") and "/" in doi
+                if not (ok_pmid or ok_doi):
+                    bad_ref.append(
+                        f"{cat['id']} · pmid={c.get('pmid')!r} doi={c.get('doi')!r}"
+                        f" · {(c.get('title') or '')[:40]}"
                     )
 
     if bad_grade:
@@ -758,9 +766,11 @@ def audit_depth(cfg: dict, units: list[dict], opts: dict, rep: Report) -> None:
             f"{len(bad_grade)} 筆 evidence_grade 不在 config.grades（{'、'.join(sorted(grades))}）",
             bad_grade,
         )
-    if bad_pmid:
+    if bad_ref:
         rep.err(
-            sec, f"{len(bad_pmid)} 筆 PMID 格式不合法（跑 make verify 打真實 API 才算數）", bad_pmid
+            sec,
+            f"{len(bad_ref)} 筆引用沒有合法的 pmid 或 doi（跑 make verify 打真實 API 才算數）",
+            bad_ref,
         )
     if thin_cats:
         rep.warn(sec, f"{len(thin_cats)} 個類別的文獻少於 {opts['minCitations']} 篇", thin_cats)
