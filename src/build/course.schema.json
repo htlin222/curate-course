@@ -149,6 +149,54 @@
     },
     "footer": { "type": "object" },
     "llms": { "type": "object" },
+    "paywall": {
+      "type": "object",
+      "description": "選用：加入購物車 + 0 元結帳的解鎖流程。整組拿掉就完全不存在。設計與接真金流的待辦見 docs/PAYWALL.md。",
+      "additionalProperties": false,
+      "required": ["mode", "products"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["demo"],
+          "description": "demo = 0 元本地結帳，解鎖狀態存 localStorage。live 尚未實作，填別的值會整組關掉（fail closed）。"
+        },
+        "currency": { "type": "string", "description": "ISO 幣別代碼，例如 TWD。只影響顯示的符號。" },
+        "orderPrefix": { "type": "string", "description": "訂單編號前綴，例如 BC → BC-20260730-4F2A" },
+        "freeChapters": {
+          "type": "array",
+          "description": "免費試看的章節代碼。不在這裡、也沒被任何 product 解鎖的章節就是鎖定。",
+          "items": { "type": "string" }
+        },
+        "honesty": {
+          "type": "string",
+          "description": "必寫：講明這門課免費、劃掉的原價是虛構的。有 listAmount 就一定要有這行，不然是假折扣。"
+        },
+        "products": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "amount"],
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "note": { "type": "string", "description": "品項下面的一行小字" },
+              "amount": { "type": "number", "minimum": 0, "description": "實付金額。demo 應為 0。" },
+              "listAmount": { "type": "number", "minimum": 0, "description": "被劃掉的原價。虛構的，所以要搭配 honesty。" },
+              "unlocks": {
+                "description": "\"*\" 解鎖全部，或章節代碼陣列",
+                "oneOf": [
+                  { "type": "string", "enum": ["*"] },
+                  { "type": "array", "items": { "type": "string" } }
+                ]
+              }
+            }
+          }
+        },
+        "ui": { "type": "object", "description": "全部文案。缺的欄位會退回程式碼裡的預設值。" }
+      }
+    },
     "counter": {
       "type": "object",
       "description": "選用：累計瀏覽次數徽章（Pages Function + D1）。整組拿掉就不顯示，也不會打 API。",

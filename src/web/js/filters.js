@@ -104,9 +104,12 @@ export function applyFilters(state, course) {
   if (q) parts.push(`「${state.query.trim()}」`);
   if (sel.size) parts.push(`${UI.facetPrefix || ""}：${[...sel].join("、")}`);
 
+  // paywall 鎖住的章節不渲染動作，所以分母對不上時要講清楚為什麼
+  const locked = state.lockedNote ? ` · ${state.lockedNote}` : "";
+
   $("#filterCount").textContent = parts.length
     ? `${visibleUnits} 個單元 · ${visibleDrills} 支動作符合 ${parts.join(" + ")}`
-    : `顯示 ${visibleDrills} / ${totalDrills} 支跟練影片`;
+    : `顯示 ${visibleDrills} / ${totalDrills} 支跟練影片${locked}`;
 
   toggleBlankslate(visibleUnits);
   return { visibleUnits, visibleDrills };

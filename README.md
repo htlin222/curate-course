@@ -145,12 +145,14 @@ Skill 本身採漸進揭露，主檔只有流程骨架，細節按需載入：
 ```
 make build     course/ → dist/，含配額驗證與 SEO 產出
 make audit     離線稽核設定檔、配額、影片長度與實證深度（不打網路，可放 CI）
+make test      前端純邏輯的單元測試（node:test，零依賴、不需要瀏覽器）
+make e2e       paywall 端對端流程並截圖（Playwright，需要 Chrome）
 make verify    重驗每個影片連結與每個 PMID（打真實 API）
 make serve     本機預覽
 make icons     重新下載 Lucide 圖示並打包成內嵌 sprite
 make og        重新產生社群預覽圖
 make lint      ruff 檢查
-make check     lint + build + audit，提交前跑這個
+make check     lint + test + build + audit，提交前跑這個
 make deploy    部署到 Cloudflare Pages
 ```
 
@@ -178,6 +180,12 @@ YouTube IFrame API 快捷鍵（按 `?` 看清單）。
 再把 `repoId` / `categoryId` 填進 `course.config.json` 的 `discussions`。
 面板只在點開時才載入 giscus，不影響首屏。
 
+**選用的 0 元 paywall**：`course.config.json` 加 `paywall` 區塊，就會多出「加入購物車 →
+0 元結帳 → 解鎖」的流程：前幾章免費試看，其餘章節顯示鎖頭、點下去彈出結帳，
+結完帳全部解鎖。金額真的是 0，被劃掉的原價是虛構的，介面上有一行字直接講明。
+拿掉那個區塊就完全回到全站開放。設計與接真金流要補的東西見
+[docs/PAYWALL.md](docs/PAYWALL.md)。
+
 **SEO**：`Course` JSON-LD（含 syllabus 與 citation）、OG/Twitter 卡、sitemap、
 robots、`llms.txt`。文案在建置時就注入 HTML，不等 JS 執行，首屏就有真實內容。
 
@@ -201,6 +209,11 @@ src/
   web/
     index.html        模板，{{token}} 於建置時替換
     css/  js/         前端
+    js/paywall-core.js  0 元 paywall 的純邏輯，被 node --test 直接載入
+tests/
+  paywall-core.test.js  單元測試（零依賴）
+  e2e-paywall.cjs       Playwright 端對端 + 截圖
+docs/PAYWALL.md       paywall 設計與接真金流的待辦
 course/               ← 你的課程
 dist/                 ← 建置產物（gitignored）
 ```

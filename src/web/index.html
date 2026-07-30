@@ -17,11 +17,14 @@
     <link rel="stylesheet" href="css/tabs.css" />
     <link rel="stylesheet" href="css/player.css" />
     <link rel="stylesheet" href="css/landing.css" />
+    <link rel="stylesheet" href="css/paywall.css" />
     <script>
       // 在繪製前套用主題，避免深色使用者看到白色閃屏
       (function () {
         try {
-          var t = localStorage.getItem("bc:theme");
+          // app.js 存的是 JSON（"dark"，含引號），這裡一定要 parse。
+          // 忘了 parse 的話 data-theme 會變成 '"dark"'，選了深色的人在淺色系統上重載會看到淺色。
+          var t = JSON.parse(localStorage.getItem("bc:theme") || "null");
           if (t) document.documentElement.dataset.theme = t;
         } catch (e) {}
       })();
@@ -79,6 +82,8 @@
       </span>
 
       <div class="AppHeader__actions">
+        <!-- 購物車：設定檔有 paywall 區塊才會顯示 -->
+        <button class="btn btn-invisible btn-icon" id="cartBtn" type="button" hidden></button>
         <button class="btn btn-invisible btn-icon" id="expandAll" type="button" title="全部展開／收合">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-layers" /></svg>
         </button>

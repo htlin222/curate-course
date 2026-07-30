@@ -32,6 +32,17 @@ counter: ## 建立瀏覽次數用的 D1 資料庫並寫出 wrangler 綁定（冪
 audit: ## 離線稽核設定檔、配額、影片長度與實證深度（確定性，不打網路）
 	$(PY) src/build/audit.py
 
+test: ## 前端純邏輯的單元測試（零依賴、不需要瀏覽器）
+	node --test 'tests/*.test.js'
+
+e2e: build ## paywall 端對端流程並截圖到 .tmp/paywall-shots（需要 Chrome）
+	@mkdir -p .tmp
+	@$(PY) -m http.server $(PORT) --directory $(DIST) > /dev/null 2>&1 & \
+		echo $$! > .tmp/serve.pid
+	@sleep 1
+	@NODE_PATH=$$(npm root -g) node tests/e2e-paywall.cjs; \
+		status=$$?; kill `cat .tmp/serve.pid` 2>/dev/null; rm -f .tmp/serve.pid; exit $$status
+
 verify: ## 重驗所有影片連結與 PubMed 引用（打真實 API，會跑一陣子）
 	$(PY) src/build/verify_links.py
 	$(PY) src/build/verify_refs.py
@@ -51,9 +62,9 @@ fmt: ## ruff 格式化
 	uv run ruff format .
 	uv run ruff check --fix .
 
-check: lint build audit ## 提交前跑這個（含離線稽核）
+check: lint test build audit ## 提交前跑這個（含單元測試與離線稽核）
 
 clean: ## 清掉建置暫存
 	rm -rf .tmp .wrangler .ruff_cache dist **/__pycache__
 
-.PHONY: help build icons og counter audit verify serve deploy lint fmt check clean
+.PHONY: help build icons og counter audit test e2e verify serve deploy lint fmt check clean

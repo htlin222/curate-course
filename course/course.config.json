@@ -398,6 +398,54 @@
     "reactions": true,
     "inputPosition": "top"
   },
+  "paywall": {
+    "mode": "demo",
+    "currency": "TWD",
+    "orderPrefix": "BC",
+    "freeChapters": ["CH0", "CH1", "CH2", "CH3"],
+    "honesty": "這門課從來沒收費過，被劃掉的原價是虛構的。0 元結帳只是個 UX 實驗，付款欄位不會送到任何地方，解鎖狀態只存在你自己的瀏覽器裡。",
+    "products": [
+      {
+        "id": "full",
+        "name": "完整課程",
+        "note": "體態篇 8 章 · 24 個體態問題 · 306 支跟練影片",
+        "amount": 0,
+        "listAmount": 1880,
+        "unlocks": "*"
+      }
+    ],
+    "ui": {
+      "cartLabel": "購物車",
+      "addToCart": "加入購物車",
+      "goCheckout": "前往結帳",
+      "keepBrowsing": "繼續逛",
+      "backToCart": "回購物車",
+      "laterLabel": "再看看",
+      "closeLabel": "關閉",
+      "emptyCart": "購物車是空的",
+      "discountBadge": "限時 100% OFF",
+      "lockedLabel": "鎖定",
+      "trialLabel": "試看",
+      "gateTitle": "這一章需要完整課程",
+      "gateBody": "觀念篇的 CH0–CH3 免費試看。體態篇 8 章、24 個體態問題與 306 支跟練影片要結帳後才解鎖——結帳金額是 0 元，不用付款、不用註冊。",
+      "gateCardNote": "· 結帳後解鎖",
+      "checkoutTitle": "結帳",
+      "payNone": "不用付款",
+      "payLabel": "完成結帳",
+      "payingLabel": "處理中…",
+      "termsLabel": "我知道這門課是免費的，這個結帳流程純屬玩笑，我的資料不會被送到任何地方。",
+      "receiptTitle": "結帳完成",
+      "receiptBody": "全部 12 章已解鎖。祝你練得順利。",
+      "receiptHint": "這張收據存在你自己的瀏覽器裡，沒有任何一筆資料離開這台電腦。清掉瀏覽器資料就會回到鎖定狀態，再結一次帳就好。",
+      "startLearning": "開始上課",
+      "viewReceipt": "看收據",
+      "ownedLabel": "已解鎖",
+      "ctaLockedTitle": "體態篇還鎖著",
+      "ctaLockedNote": "8 章、24 個體態問題、306 支跟練影片。結帳金額 0 元，不用付款也不用註冊。",
+      "ctaOwnedTitle": "全部章節已解鎖",
+      "ctaOwnedNote": "12 章、371 個單元都可以看了。"
+    }
+  },
   "counter": {
     "label": "次瀏覽",
     "title": "累計頁面瀏覽次數，不是不重複訪客；已排除常見爬蟲。"

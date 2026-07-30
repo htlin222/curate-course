@@ -176,6 +176,19 @@ def validate(node, schema: dict, path: str, defs: dict, out: list[str]) -> None:
         out.append(f"{path} 應為 integer")
         return
 
+    if variants := schema.get("oneOf"):
+        # 任一分支通過就算過（paywall.products[].unlocks 是 "*" 或章節陣列）
+        failures = []
+        for variant in variants:
+            errs: list[str] = []
+            validate(node, variant, path, defs, errs)
+            if not errs:
+                failures = []
+                break
+            failures.append(errs)
+        if failures:
+            out.append(f"{path} 不符合任何一種允許的形式：{node!r}")
+
     if (enum := schema.get("enum")) and node not in enum:
         out.append(f"{path} 只能是 {'/'.join(map(str, enum))}，實際是 {node!r}")
     if (pat := schema.get("pattern")) and isinstance(node, str) and not re.match(pat, node):
