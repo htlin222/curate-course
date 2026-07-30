@@ -44,6 +44,16 @@ ICONS = [
     "grip-vertical",
     "message-circle",
     "github",
+    # paywall
+    "lock",
+    "lock-open",
+    "shopping-cart",
+    "receipt",
+    "credit-card",
+    "tag",
+    "sparkles",
+    "circle-check-big",
+    "trash-2",
     # 單元內容
     "clipboard-check",
     "triangle-alert",

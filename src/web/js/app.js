@@ -1,14 +1,18 @@
 // app.js — 載入課程資料、渲染、互動與進度追蹤
 import { mountIcons, icon } from "./icons.js";
 import {
-  renderChapter, renderStance, renderHome, setDrillEvidence, setConfig, esc, UI,
+  renderChapter, renderStance, renderHome, setDrillEvidence, setConfig, setAccess, esc, UI,
 } from "./render.js";
+import * as paywall from "./paywall.js";
 import { renderMusclePanel, syncMuscleChips, applyFilters as runFilters } from "./filters.js";
 import {
   buildPlaylist, renderPlaylist, play, stop, fitFrame, watchFrame, initResizer, setLanguages,
 } from "./player.js";
 import { bindKeys, listen as ytListen } from "./keys.js";
 import * as discuss from "./discuss.js";
+
+/** bindEvents() 內的 scroll-spy 掛上來，讓章節重繪後能重算側欄高亮 */
+let syncNav = () => {};
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -37,6 +41,7 @@ const state = {
   playing: -1,
   playlistQuery: "",
   onlyTodo: false,
+  lockedNote: "", // paywall 鎖住幾章，寫在篩選列的計數旁邊
 };
 
 /* --- 儲存 ---------------------------------------------------------------- */
@@ -257,11 +262,14 @@ function refreshPlaylist() {
     currentIndex: state.playing,
     query: state.playlistQuery,
     onlyTodo: state.onlyTodo,
+    canPlay: (it) => paywall.canAccess(it.chCode),
   });
 }
 
 function playAt(i) {
   if (i < 0 || i >= state.playlist.length) return;
+  // 唯一的播放入口，所以 gate 只要擋這裡（清單點擊、鍵盤上下部、深連結都會經過）
+  if (!paywall.canAccess(state.playlist[i].chCode)) return paywall.openGate();
   state.playing = i;
   save(STORE.playing, i);
   play(state.playlist[i], { total: state.playlist.length });
@@ -276,11 +284,47 @@ function playAt(i) {
 
 /* --- 事件 ---------------------------------------------------------------- */
 
+/* --- paywall -------------------------------------------------------------
+   能不能看的判定只有 paywall.canAccess() 一個來源（見 docs/PAYWALL.md）。
+   解鎖後這裡負責把受影響的畫面重畫一次。 */
+
+function renderChapters() {
+  $("#chapters").innerHTML = state.course.chapters
+    .map((ch) => renderChapter(ch, state.done))
+    .join("");
+  const locked = state.course.chapters.filter((ch) => !paywall.canAccess(ch.code)).length;
+  state.lockedNote = locked ? `${locked} 章尚未解鎖` : "";
+  syncNav(); // 解鎖後章節重畫，高亮要跟著重算
+}
+
+function onPaywallChange(payload) {
+  renderChapters();
+  $("#landingBody").innerHTML = renderHome(state.course);
+  renderNav();
+  refreshPlaylist();
+  applyFilters();
+  if (payload?.start) setTab("player");
+}
+
 function bindEvents() {
   // 分頁切換
   $$(".TabNav__item").forEach((b) =>
     b.addEventListener("click", () => setTab(b.dataset.tab)),
   );
+
+  // paywall：鎖頭、招呼卡、購物車鈕。全站只有這三個入口
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-pw-gate]")) {
+      e.preventDefault();
+      return paywall.openGate();
+    }
+    if (e.target.closest("[data-pw-receipt]")) {
+      e.preventDefault();
+      return paywall.openReceipt();
+    }
+  });
+
+  $("#cartBtn")?.addEventListener("click", () => paywall.openFromHeader());
 
   // 品牌與首頁上的按鈕都走同一個入口
   document.addEventListener("click", (e) => {
@@ -591,6 +635,7 @@ function bindEvents() {
   addEventListener("resize", syncNavHighlight, { passive: true });
   // 章節展開／收合會改變高度，捲動位置沒變但當前章節可能已經不同
   $("#chapters").addEventListener("click", () => setTimeout(syncNavHighlight, 0));
+  syncNav = syncNavHighlight;
   syncNavHighlight();
 }
 
@@ -633,9 +678,14 @@ async function init() {
   renderHits(data.config); // 不 await，取數慢不該擋住畫面
   setDrillEvidence(data.drillEvidence);
 
-  $("#chapters").innerHTML = data.chapters
-    .map((ch) => renderChapter(ch, state.done))
-    .join("");
+  // paywall 要在畫任何章節之前決定好，不然會先閃一下未鎖的樣子。
+  // demo 版 ready() 不需要等，但真 paywall 會在這裡問伺服器。
+  if (paywall.init(data.config, { onChange: onPaywallChange })) {
+    await paywall.ready();
+    setAccess(paywall.canAccess);
+  }
+
+  renderChapters();
 
   const stanceEl = $("#view-stance");
   if (data.stance?.length) {
@@ -686,8 +736,10 @@ async function init() {
   if (state.tab === "player" && Number.isInteger(deepPlay) && state.playlist[deepPlay]) {
     state.playing = deepPlay;
   }
-  // 還原上次看到哪，但不自動播放，回來時先看到資訊就好
-  if (state.tab === "player" && state.playlist[state.playing]) {
+  // 還原上次看到哪，但不自動播放，回來時先看到資訊就好。
+  // 上次看的那支後來被鎖住（清掉訂單）就別還原，不然一進站就跳 paywall
+  const resume = state.playlist[state.playing];
+  if (state.tab === "player" && resume && paywall.canAccess(resume.chCode)) {
     playAt(state.playing);
   }
 

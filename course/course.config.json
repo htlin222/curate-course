@@ -1,417 +1,470 @@
 {
- "$schema": "../src/build/course.schema.json",
- "site": {
-  "project": "body-course",
-  "name": "體態矯正課程",
-  "url": "https://body-course.pages.dev",
-  "locale": "zh-Hant",
-  "ogLocale": "zh_TW",
-  "brandIcon": "activity",
-  "title": "體態矯正課程 — 24 個體態問題的評估、訓練與實證查核",
-  "description": "從頭前伸、駝背、圓肩到骨盆前傾與扁平足，24 個常見體態問題的自我評估方法與 371 支示範影片。每個問題都附 OpenEvidence 查證的實證強度，包括那些文獻結論與坊間說法相衝突的。",
-  "ogDescription": "頸椎到足踝 24 個體態問題，每個都告訴你怎麼自測、該練什麼，以及這套說法在醫學文獻裡站不站得住腳。371 個單元、27 題實證查核。",
-  "keywords": [
-   "體態矯正",
-   "姿勢評估",
-   "駝背",
-   "圓肩",
-   "骨盆前傾",
-   "扁平足",
-   "物理治療"
-  ],
-  "audience": "久坐上班族、有體態困擾的一般民眾",
-  "about": [
-   "體態矯正",
-   "姿勢評估",
-   "肌力訓練",
-   "物理治療衛教"
-  ],
-  "learningResourceType": [
-   "影片課程",
-   "運動指引",
-   "自我評估"
-  ]
- },
- "hero": {
-  "eyebrow": "自學課程",
-  "heading": "從頭到腳，把體態拆解成可以練的東西",
-  "lede": "十二個章節、{units} 個單元，涵蓋頸椎到足踝的 {problems} 個常見體態問題。每個問題都告訴你三件事：<strong>怎麼自己評估</strong>、<strong>該練什麼</strong>，以及<strong>這套說法在醫學文獻裡站得住腳嗎</strong>。"
- },
- "ui": {
-  "searchPlaceholder": "搜尋單元、動作或肌群…",
-  "tabs": {
-   "course": "課程內容",
-   "player": "上課模式",
-   "stance": "這門課的立場"
+  "$schema": "../src/build/course.schema.json",
+  "site": {
+    "project": "body-course",
+    "name": "體態矯正課程",
+    "url": "https://body-course.pages.dev",
+    "locale": "zh-Hant",
+    "ogLocale": "zh_TW",
+    "brandIcon": "activity",
+    "title": "體態矯正課程 — 24 個體態問題的評估、訓練與實證查核",
+    "description": "從頭前伸、駝背、圓肩到骨盆前傾與扁平足，24 個常見體態問題的自我評估方法與 371 支示範影片。每個問題都附 OpenEvidence 查證的實證強度，包括那些文獻結論與坊間說法相衝突的。",
+    "ogDescription": "頸椎到足踝 24 個體態問題，每個都告訴你怎麼自測、該練什麼，以及這套說法在醫學文獻裡站不站得住腳。371 個單元、27 題實證查核。",
+    "keywords": [
+      "體態矯正",
+      "姿勢評估",
+      "駝背",
+      "圓肩",
+      "骨盆前傾",
+      "扁平足",
+      "物理治療"
+    ],
+    "audience": "久坐上班族、有體態困擾的一般民眾",
+    "about": [
+      "體態矯正",
+      "姿勢評估",
+      "肌力訓練",
+      "物理治療衛教"
+    ],
+    "learningResourceType": [
+      "影片課程",
+      "運動指引",
+      "自我評估"
+    ]
   },
-  "progressLabel": "學習進度",
-  "facetLabel": "依肌群篩選",
-  "assessmentLabel": "怎麼自己評估",
-  "tightLabel": "傾向緊繃／過度活躍",
-  "weakLabel": "傾向無力／活化不足",
-  "lessonLabel": "主課",
-  "drillEvidenceLabel": "這些動作的實證",
-  "unitEvidenceLabel": "實證強度",
-  "stats": [
-   {
-    "icon": "layers",
-    "field": "units",
-    "label": "個單元"
-   },
-   {
-    "icon": "clock",
-    "field": "duration",
-    "label": "課程時長"
-   },
-   {
-    "icon": "book-open",
-    "field": "lesson_units",
-    "label": "堂主課"
-   },
-   {
-    "icon": "dumbbell",
-    "field": "drill_units",
-    "label": "支跟練影片"
-   },
-   {
-    "icon": "accessibility",
-    "field": "problem_units",
-    "label": "個體態問題"
-   },
-   {
-    "icon": "microscope",
-    "field": "evidence_checked",
-    "label": "題實證查核"
-   }
+  "hero": {
+    "eyebrow": "自學課程",
+    "heading": "從頭到腳，把體態拆解成可以練的東西",
+    "lede": "十二個章節、{units} 個單元，涵蓋頸椎到足踝的 {problems} 個常見體態問題。每個問題都告訴你三件事：<strong>怎麼自己評估</strong>、<strong>該練什麼</strong>，以及<strong>這套說法在醫學文獻裡站得住腳嗎</strong>。"
+  },
+  "ui": {
+    "searchPlaceholder": "搜尋單元、動作或肌群…",
+    "tabs": {
+      "course": "課程內容",
+      "player": "上課模式",
+      "stance": "這門課的立場"
+    },
+    "progressLabel": "學習進度",
+    "facetLabel": "依肌群篩選",
+    "assessmentLabel": "怎麼自己評估",
+    "tightLabel": "傾向緊繃／過度活躍",
+    "weakLabel": "傾向無力／活化不足",
+    "lessonLabel": "主課",
+    "drillEvidenceLabel": "這些動作的實證",
+    "unitEvidenceLabel": "實證強度",
+    "stats": [
+      {
+        "icon": "layers",
+        "field": "units",
+        "label": "個單元"
+      },
+      {
+        "icon": "clock",
+        "field": "duration",
+        "label": "課程時長"
+      },
+      {
+        "icon": "book-open",
+        "field": "lesson_units",
+        "label": "堂主課"
+      },
+      {
+        "icon": "dumbbell",
+        "field": "drill_units",
+        "label": "支跟練影片"
+      },
+      {
+        "icon": "accessibility",
+        "field": "problem_units",
+        "label": "個體態問題"
+      },
+      {
+        "icon": "microscope",
+        "field": "evidence_checked",
+        "label": "題實證查核"
+      }
+    ],
+    "unitTypes": {
+      "posture": "體態問題",
+      "foundation": "基礎",
+      "guide": "說明",
+      "concept": "觀念"
+    },
+    "evidenceRows": [
+      {
+        "field": "pain_link",
+        "label": "與疼痛關聯"
+      },
+      {
+        "field": "muscle_model",
+        "label": "肌群模型"
+      },
+      {
+        "field": "structural_vs_modifiable",
+        "label": "骨性 vs 可練"
+      },
+      {
+        "field": "intervention",
+        "label": "介入效果"
+      },
+      {
+        "field": "assessment_validity",
+        "label": "評估信效度"
+      },
+      {
+        "field": "summary",
+        "label": "摘要"
+      },
+      {
+        "field": "red_flags",
+        "label": "就醫警訊",
+        "type": "flags"
+      },
+      {
+        "field": "caveats",
+        "label": "課程須誠實告知"
+      }
+    ],
+    "problemType": "posture",
+    "facetClear": "清除肌群篩選",
+    "facetPrefix": "肌群",
+    "emptyTitle": "找不到符合的內容",
+    "emptyHint": "換個關鍵字或清除肌群篩選再試一次。",
+    "playlistSearch": "搜尋播放清單…",
+    "prevLabel": "上一部影片",
+    "nextLabel": "下一部影片",
+    "doneLabel": "完成",
+    "openExternal": "在 YouTube 開啟",
+    "moreLabel": "選片理由與自我評估",
+    "discussLabel": "討論",
+    "discussNote": "留言會同步到 GitHub Discussions，需要 GitHub 帳號才能發言。每支影片各有一串討論。",
+    "lessonNoun": "堂主課",
+    "drillNoun": "支跟練影片",
+    "drillNounShort": "支跟練",
+    "unitNoun": "個單元",
+    "kindFilterLabel": "動作類型篩選",
+    "missingTitle": "尚未找到合格影片",
+    "missingHint": "這個主題在 YouTube 上沒有品質足夠的示範",
+    "lessonLangLabel": "主課語言",
+    "watchLabel": "觀看示範",
+    "facetFilterHint": "篩選涉及 {name} 的內容",
+    "evidenceSource": "OpenEvidence",
+    "evidenceSourceLink": "在 OpenEvidence 讀完整回答"
+  },
+  "kinds": [
+    {
+      "id": "release",
+      "label": "放鬆",
+      "tone": "accent"
+    },
+    {
+      "id": "stretch",
+      "label": "拉伸",
+      "tone": "success"
+    },
+    {
+      "id": "train",
+      "label": "訓練",
+      "tone": "danger"
+    }
   ],
-  "unitTypes": {
-   "posture": "體態問題",
-   "foundation": "基礎",
-   "guide": "說明",
-   "concept": "觀念"
-  },
-  "evidenceRows": [
-   {
-    "field": "pain_link",
-    "label": "與疼痛關聯"
-   },
-   {
-    "field": "muscle_model",
-    "label": "肌群模型"
-   },
-   {
-    "field": "structural_vs_modifiable",
-    "label": "骨性 vs 可練"
-   },
-   {
-    "field": "intervention",
-    "label": "介入效果"
-   },
-   {
-    "field": "assessment_validity",
-    "label": "評估信效度"
-   },
-   {
-    "field": "summary",
-    "label": "摘要"
-   },
-   {
-    "field": "red_flags",
-    "label": "就醫警訊",
-    "type": "flags"
-   },
-   {
-    "field": "caveats",
-    "label": "課程須誠實告知"
-   }
+  "grades": [
+    {
+      "id": "strong",
+      "label": "證據充分",
+      "tone": "success"
+    },
+    {
+      "id": "moderate",
+      "label": "證據中等",
+      "tone": "accent"
+    },
+    {
+      "id": "limited",
+      "label": "證據有限",
+      "tone": "attention"
+    },
+    {
+      "id": "contested",
+      "label": "證據互斥",
+      "tone": "danger"
+    }
   ],
-  "problemType": "posture",
-  "facetClear": "清除肌群篩選",
-  "facetPrefix": "肌群",
-  "emptyTitle": "找不到符合的內容",
-  "emptyHint": "換個關鍵字或清除肌群篩選再試一次。",
-  "playlistSearch": "搜尋播放清單…",
-  "prevLabel": "上一部影片",
-  "nextLabel": "下一部影片",
-  "doneLabel": "完成",
-  "openExternal": "在 YouTube 開啟",
-  "moreLabel": "選片理由與自我評估",
-  "discussLabel": "討論",
-  "discussNote": "留言會同步到 GitHub Discussions，需要 GitHub 帳號才能發言。每支影片各有一串討論。",
-  "lessonNoun": "堂主課",
-  "drillNoun": "支跟練影片",
-  "drillNounShort": "支跟練",
-  "unitNoun": "個單元",
-  "kindFilterLabel": "動作類型篩選",
-  "missingTitle": "尚未找到合格影片",
-  "missingHint": "這個主題在 YouTube 上沒有品質足夠的示範",
-  "lessonLangLabel": "主課語言",
-  "watchLabel": "觀看示範",
-  "facetFilterHint": "篩選涉及 {name} 的內容",
-  "evidenceSource": "OpenEvidence",
-  "evidenceSourceLink": "在 OpenEvidence 讀完整回答"
- },
- "kinds": [
-  {
-   "id": "release",
-   "label": "放鬆",
-   "tone": "accent"
+  "languages": {
+    "zh": "繁中",
+    "en": "English",
+    "ja": "日本語"
   },
-  {
-   "id": "stretch",
-   "label": "拉伸",
-   "tone": "success"
+  "taxonomy": {
+    "facets": "taxonomy.muscles",
+    "categories": "taxonomy.drills"
   },
-  {
-   "id": "train",
-   "label": "訓練",
-   "tone": "danger"
+  "nav": [
+    {
+      "title": "觀念篇",
+      "chapters": [
+        "CH0",
+        "CH1",
+        "CH2",
+        "CH3"
+      ]
+    },
+    {
+      "title": "體態篇",
+      "chapters": [
+        "CH4",
+        "CH5",
+        "CH6",
+        "CH7",
+        "CH8",
+        "CH9",
+        "CH10",
+        "CH11"
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "code": "CH0",
+      "title": "課程使用說明",
+      "icon": "book-open",
+      "source": "ch0-3",
+      "units": 1,
+      "drills": 0
+    },
+    {
+      "code": "CH1",
+      "title": "認識體態",
+      "icon": "scan-line",
+      "source": "ch0-3",
+      "units": 4,
+      "drills": 0
+    },
+    {
+      "code": "CH2",
+      "title": "中立姿勢",
+      "icon": "target",
+      "source": "ch0-3",
+      "units": 4,
+      "drills": 0
+    },
+    {
+      "code": "CH3",
+      "title": "呼吸、核心與脊椎",
+      "icon": "wind",
+      "source": "ch0-3",
+      "units": 4,
+      "drills": 28
+    },
+    {
+      "code": "CH4",
+      "title": "頸椎",
+      "icon": "user-round",
+      "source": "ch4",
+      "units": 2,
+      "drills": 27
+    },
+    {
+      "code": "CH5",
+      "title": "胸椎",
+      "icon": "bone",
+      "source": "ch5",
+      "units": 4,
+      "drills": 52
+    },
+    {
+      "code": "CH6",
+      "title": "腰椎",
+      "icon": "move-vertical",
+      "source": "ch6",
+      "units": 2,
+      "drills": 27
+    },
+    {
+      "code": "CH7",
+      "title": "肩胛骨",
+      "icon": "shirt",
+      "source": "ch7",
+      "units": 4,
+      "drills": 52
+    },
+    {
+      "code": "CH8",
+      "title": "骨盆",
+      "icon": "diamond",
+      "source": "ch8",
+      "units": 3,
+      "drills": 43
+    },
+    {
+      "code": "CH9",
+      "title": "髖關節",
+      "icon": "activity",
+      "source": "ch9",
+      "units": 3,
+      "drills": 36
+    },
+    {
+      "code": "CH10",
+      "title": "膝蓋",
+      "icon": "move-diagonal",
+      "source": "ch10",
+      "units": 4,
+      "drills": 43
+    },
+    {
+      "code": "CH11",
+      "title": "足踝",
+      "icon": "footprints",
+      "source": "ch11",
+      "units": 2,
+      "drills": 26
+    }
+  ],
+  "audit": {
+    "duration": {
+      "lesson": {
+        "min": "4:00",
+        "max": "22:00"
+      },
+      "drill": {
+        "min": "0:30",
+        "max": "10:00"
+      }
+    },
+    "driftSeconds": 30,
+    "minViews": 5000,
+    "metaCoverage": 1,
+    "drillsPerUnit": {
+      "min": 5,
+      "max": 18
+    },
+    "maxSharedVideos": 50,
+    "requireAssessment": [
+      "posture"
+    ],
+    "minAssessmentChars": 80,
+    "minCitations": 2,
+    "allowMissingUrls": 4
+  },
+  "evidenceAlias": {
+    "ch1-u2": "concept-1",
+    "ch1-u3": "concept-2",
+    "ch0-u1": "concept-3"
+  },
+  "stance": {
+    "title": "這門課的立場",
+    "intro": "在做這門課之前，我們先把三個最根本的問題丟給 OpenEvidence 查證：體態真的會導致疼痛嗎？Janda 的交叉症候群是真的嗎？矯正運動到底有多有效？答案沒有想像中好聽——但把它講清楚，比賣一個承諾誠實得多。以下每一條結論都附原始文獻連結，你可以自己去查。",
+    "verdicts": {
+      "concept-1": "體態偏差與疼痛確實相關，但因果關係在文獻中沒有共識。",
+      "concept-2": "交叉症候群是好用的記憶架構，不是已驗證的診斷。",
+      "concept-3": "矯正運動有效，但不是因為它把體態「調正」了。"
+    },
+    "outroTitle": "所以這門課的定位是什麼？",
+    "outro": "運動的效益來自肌力、負荷耐受度、神經生理止痛與心理社會因素，<strong>而不是生物力學上把體態「調正」</strong>。體態數值的改善是伴隨現象，不是療效機轉；也沒有證據顯示精心設計的矯正課表比一般運動更有效。這不代表別練——而是別把它當成治病，把它當成一套讓身體更耐操、動起來更舒服的訓練。真正需要診斷與治療的狀況，請去看醫師或物理治療師。"
+  },
+  "landing": {
+    "howTitle": "怎麼用這門課",
+    "steps": [
+      {
+        "icon": "clipboard-check",
+        "title": "先評估",
+        "body": "每個體態問題都附可以自己做的測試——靠牆、躺下、拍張側面照就能判斷。不確定自己屬於哪一型，就別急著跟著練。"
+      },
+      {
+        "icon": "dumbbell",
+        "title": "再跟著練",
+        "body": "每個問題配 9–18 支跟練影片，分成放鬆、拉伸、訓練三類，依久坐族的盛行率加權分配，不是平均攤。"
+      },
+      {
+        "icon": "microscope",
+        "title": "順便查證",
+        "body": "每個單元標了實證強度，動作類別附 PubMed 文獻。結果不好看的也照寫——這是這門課跟其他體態課最大的差別。"
+      }
+    ],
+    "stanceTitle": "開始之前，先知道這件事",
+    "stanceLede": "我們把三個最根本的問題丟給 OpenEvidence 查證，答案沒有想像中好聽。與其讓你練完才發現，不如一開始就講清楚。",
+    "chaptersTitle": "十二個章節，從頭到腳",
+    "ctaTitle": "準備好就開始",
+    "ctaLede": "{units} 個單元、{videos} 支影片，全部免費。進度存在你自己的瀏覽器裡，沒有帳號、沒有後端。"
+  },
+  "footer": {
+    "disclaimer": "<strong>免責聲明。</strong>本課程為衛教與運動指引，<strong>不構成醫療診斷或治療建議</strong>。若你有持續疼痛、麻木、無力、外傷史，或體態不對稱在短期內明顯惡化，請先諮詢醫師或物理治療師，不要自行以運動處理。課程中的「實證強度」註記由 OpenEvidence 查詢生成並附上原始文獻連結，反映的是查詢當下的文獻狀態，不等於臨床指引。",
+    "credits": "影片為 YouTube 上第三方創作者的作品，版權歸原頻道所有，本站僅提供連結。"
+  },
+  "llms": {
+    "summary": "這是一門免費的線上自學課程，涵蓋頸椎到足踝的 {problems} 個常見體態問題。所有影片皆為 YouTube 上第三方專業頻道的作品，本站僅提供策展與連結。",
+    "stanceIntro": "課程中 {evidence} 個主題全部經 OpenEvidence 查證，結果照實呈現，包含對課程本身不利的部分：",
+    "stanceConclusion": "簡言之：矯正運動的價值在於肌力、負荷耐受度與不適感改善，體態數值的變化是伴隨現象而非療效機轉；並無證據顯示矯正課表優於一般運動。",
+    "disclaimer": "本課程為衛教與運動指引，不構成醫療診斷或治療建議。持續疼痛、麻木、無力、外傷史或體態短期內明顯惡化，應先諮詢醫師或物理治療師。"
+  },
+  "discussions": {
+    "provider": "giscus",
+    "repo": "htlin222/curate-course",
+    "repoId": "R_kgDOTjdcNg",
+    "category": "General",
+    "categoryId": "DIC_kwDOTjdcNs4DB9da",
+    "mapping": "specific",
+    "termPrefix": "video",
+    "lang": "zh-TW",
+    "reactions": true,
+    "inputPosition": "top"
+  },
+  "paywall": {
+    "mode": "demo",
+    "currency": "TWD",
+    "orderPrefix": "BC",
+    "freeChapters": [
+      "CH0",
+      "CH1",
+      "CH2",
+      "CH3"
+    ],
+    "honesty": "這門課從來沒收費過，被劃掉的原價是虛構的。0 元結帳只是個 UX 實驗，付款欄位不會送到任何地方，解鎖狀態只存在你自己的瀏覽器裡。",
+    "products": [
+      {
+        "id": "full",
+        "name": "完整課程",
+        "note": "體態篇 8 章 · 24 個體態問題 · 306 支跟練影片",
+        "amount": 0,
+        "listAmount": 1880,
+        "unlocks": "*"
+      }
+    ],
+    "ui": {
+      "cartLabel": "購物車",
+      "addToCart": "加入購物車",
+      "goCheckout": "前往結帳",
+      "keepBrowsing": "繼續逛",
+      "backToCart": "回購物車",
+      "laterLabel": "再看看",
+      "closeLabel": "關閉",
+      "emptyCart": "購物車是空的",
+      "discountBadge": "限時 100% OFF",
+      "lockedLabel": "鎖定",
+      "trialLabel": "試看",
+      "gateTitle": "這一章需要完整課程",
+      "gateBody": "觀念篇的 CH0–CH3 免費試看。體態篇 8 章、24 個體態問題與 306 支跟練影片要結帳後才解鎖——結帳金額是 0 元，不用付款、不用註冊。",
+      "gateCardNote": "· 結帳後解鎖",
+      "checkoutTitle": "結帳",
+      "payNone": "不用付款",
+      "payLabel": "完成結帳",
+      "payingLabel": "處理中…",
+      "termsLabel": "我知道這門課是免費的，這個結帳流程純屬玩笑，我的資料不會被送到任何地方。",
+      "receiptTitle": "結帳完成",
+      "receiptBody": "全部 12 章已解鎖。祝你練得順利。",
+      "receiptHint": "這張收據存在你自己的瀏覽器裡，沒有任何一筆資料離開這台電腦。清掉瀏覽器資料就會回到鎖定狀態，再結一次帳就好。",
+      "startLearning": "開始上課",
+      "viewReceipt": "看收據",
+      "ownedLabel": "已解鎖",
+      "ctaLockedTitle": "體態篇還鎖著",
+      "ctaLockedNote": "8 章、24 個體態問題、306 支跟練影片。結帳金額 0 元，不用付款也不用註冊。",
+      "ctaOwnedTitle": "全部章節已解鎖",
+      "ctaOwnedNote": "12 章、371 個單元都可以看了。"
+    }
+  },
+  "counter": {
+    "label": "次瀏覽",
+    "title": "累計頁面瀏覽次數，不是不重複訪客；已排除常見爬蟲。"
   }
- ],
- "grades": [
-  {
-   "id": "strong",
-   "label": "證據充分",
-   "tone": "success"
-  },
-  {
-   "id": "moderate",
-   "label": "證據中等",
-   "tone": "accent"
-  },
-  {
-   "id": "limited",
-   "label": "證據有限",
-   "tone": "attention"
-  },
-  {
-   "id": "contested",
-   "label": "證據互斥",
-   "tone": "danger"
-  }
- ],
- "languages": {
-  "zh": "繁中",
-  "en": "English",
-  "ja": "日本語"
- },
- "taxonomy": {
-  "facets": "taxonomy.muscles",
-  "categories": "taxonomy.drills"
- },
- "nav": [
-  {
-   "title": "觀念篇",
-   "chapters": [
-    "CH0",
-    "CH1",
-    "CH2",
-    "CH3"
-   ]
-  },
-  {
-   "title": "體態篇",
-   "chapters": [
-    "CH4",
-    "CH5",
-    "CH6",
-    "CH7",
-    "CH8",
-    "CH9",
-    "CH10",
-    "CH11"
-   ]
-  }
- ],
- "chapters": [
-  {
-   "code": "CH0",
-   "title": "課程使用說明",
-   "icon": "book-open",
-   "source": "ch0-3",
-   "units": 1,
-   "drills": 0
-  },
-  {
-   "code": "CH1",
-   "title": "認識體態",
-   "icon": "scan-line",
-   "source": "ch0-3",
-   "units": 4,
-   "drills": 0
-  },
-  {
-   "code": "CH2",
-   "title": "中立姿勢",
-   "icon": "target",
-   "source": "ch0-3",
-   "units": 4,
-   "drills": 0
-  },
-  {
-   "code": "CH3",
-   "title": "呼吸、核心與脊椎",
-   "icon": "wind",
-   "source": "ch0-3",
-   "units": 4,
-   "drills": 28
-  },
-  {
-   "code": "CH4",
-   "title": "頸椎",
-   "icon": "user-round",
-   "source": "ch4",
-   "units": 2,
-   "drills": 27
-  },
-  {
-   "code": "CH5",
-   "title": "胸椎",
-   "icon": "bone",
-   "source": "ch5",
-   "units": 4,
-   "drills": 52
-  },
-  {
-   "code": "CH6",
-   "title": "腰椎",
-   "icon": "move-vertical",
-   "source": "ch6",
-   "units": 2,
-   "drills": 27
-  },
-  {
-   "code": "CH7",
-   "title": "肩胛骨",
-   "icon": "shirt",
-   "source": "ch7",
-   "units": 4,
-   "drills": 52
-  },
-  {
-   "code": "CH8",
-   "title": "骨盆",
-   "icon": "diamond",
-   "source": "ch8",
-   "units": 3,
-   "drills": 43
-  },
-  {
-   "code": "CH9",
-   "title": "髖關節",
-   "icon": "activity",
-   "source": "ch9",
-   "units": 3,
-   "drills": 36
-  },
-  {
-   "code": "CH10",
-   "title": "膝蓋",
-   "icon": "move-diagonal",
-   "source": "ch10",
-   "units": 4,
-   "drills": 43
-  },
-  {
-   "code": "CH11",
-   "title": "足踝",
-   "icon": "footprints",
-   "source": "ch11",
-   "units": 2,
-   "drills": 26
-  }
- ],
- "audit": {
-  "duration": {
-   "lesson": {
-    "min": "4:00",
-    "max": "22:00"
-   },
-   "drill": {
-    "min": "0:30",
-    "max": "10:00"
-   }
-  },
-  "driftSeconds": 30,
-  "minViews": 5000,
-  "metaCoverage": 1,
-  "drillsPerUnit": {
-   "min": 5,
-   "max": 18
-  },
-  "maxSharedVideos": 50,
-  "requireAssessment": [
-   "posture"
-  ],
-  "minAssessmentChars": 80,
-  "minCitations": 2,
-  "allowMissingUrls": 4
- },
- "evidenceAlias": {
-  "ch1-u2": "concept-1",
-  "ch1-u3": "concept-2",
-  "ch0-u1": "concept-3"
- },
- "stance": {
-  "title": "這門課的立場",
-  "intro": "在做這門課之前，我們先把三個最根本的問題丟給 OpenEvidence 查證：體態真的會導致疼痛嗎？Janda 的交叉症候群是真的嗎？矯正運動到底有多有效？答案沒有想像中好聽——但把它講清楚，比賣一個承諾誠實得多。以下每一條結論都附原始文獻連結，你可以自己去查。",
-  "verdicts": {
-   "concept-1": "體態偏差與疼痛確實相關，但因果關係在文獻中沒有共識。",
-   "concept-2": "交叉症候群是好用的記憶架構，不是已驗證的診斷。",
-   "concept-3": "矯正運動有效，但不是因為它把體態「調正」了。"
-  },
-  "outroTitle": "所以這門課的定位是什麼？",
-  "outro": "運動的效益來自肌力、負荷耐受度、神經生理止痛與心理社會因素，<strong>而不是生物力學上把體態「調正」</strong>。體態數值的改善是伴隨現象，不是療效機轉；也沒有證據顯示精心設計的矯正課表比一般運動更有效。這不代表別練——而是別把它當成治病，把它當成一套讓身體更耐操、動起來更舒服的訓練。真正需要診斷與治療的狀況，請去看醫師或物理治療師。"
- },
- "landing": {
-  "howTitle": "怎麼用這門課",
-  "steps": [
-   {
-    "icon": "clipboard-check",
-    "title": "先評估",
-    "body": "每個體態問題都附可以自己做的測試——靠牆、躺下、拍張側面照就能判斷。不確定自己屬於哪一型，就別急著跟著練。"
-   },
-   {
-    "icon": "dumbbell",
-    "title": "再跟著練",
-    "body": "每個問題配 9–18 支跟練影片，分成放鬆、拉伸、訓練三類，依久坐族的盛行率加權分配，不是平均攤。"
-   },
-   {
-    "icon": "microscope",
-    "title": "順便查證",
-    "body": "每個單元標了實證強度，動作類別附 PubMed 文獻。結果不好看的也照寫——這是這門課跟其他體態課最大的差別。"
-   }
-  ],
-  "stanceTitle": "開始之前，先知道這件事",
-  "stanceLede": "我們把三個最根本的問題丟給 OpenEvidence 查證，答案沒有想像中好聽。與其讓你練完才發現，不如一開始就講清楚。",
-  "chaptersTitle": "十二個章節，從頭到腳",
-  "ctaTitle": "準備好就開始",
-  "ctaLede": "{units} 個單元、{videos} 支影片，全部免費。進度存在你自己的瀏覽器裡，沒有帳號、沒有後端。"
- },
- "footer": {
-  "disclaimer": "<strong>免責聲明。</strong>本課程為衛教與運動指引，<strong>不構成醫療診斷或治療建議</strong>。若你有持續疼痛、麻木、無力、外傷史，或體態不對稱在短期內明顯惡化，請先諮詢醫師或物理治療師，不要自行以運動處理。課程中的「實證強度」註記由 OpenEvidence 查詢生成並附上原始文獻連結，反映的是查詢當下的文獻狀態，不等於臨床指引。",
-  "credits": "影片為 YouTube 上第三方創作者的作品，版權歸原頻道所有，本站僅提供連結。"
- },
- "llms": {
-  "summary": "這是一門免費的線上自學課程，涵蓋頸椎到足踝的 {problems} 個常見體態問題。所有影片皆為 YouTube 上第三方專業頻道的作品，本站僅提供策展與連結。",
-  "stanceIntro": "課程中 {evidence} 個主題全部經 OpenEvidence 查證，結果照實呈現，包含對課程本身不利的部分：",
-  "stanceConclusion": "簡言之：矯正運動的價值在於肌力、負荷耐受度與不適感改善，體態數值的變化是伴隨現象而非療效機轉；並無證據顯示矯正課表優於一般運動。",
-  "disclaimer": "本課程為衛教與運動指引，不構成醫療診斷或治療建議。持續疼痛、麻木、無力、外傷史或體態短期內明顯惡化，應先諮詢醫師或物理治療師。"
- },
- "discussions": {
-  "provider": "giscus",
-  "repo": "htlin222/curate-course",
-  "repoId": "R_kgDOTjdcNg",
-  "category": "General",
-  "categoryId": "DIC_kwDOTjdcNs4DB9da",
-  "mapping": "specific",
-  "termPrefix": "video",
-  "lang": "zh-TW",
-  "reactions": true,
-  "inputPosition": "top"
- },
- "counter": {
-  "label": "次瀏覽",
-  "title": "累計頁面瀏覽次數，不是不重複訪客；已排除常見爬蟲。"
- }
 }

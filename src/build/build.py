@@ -299,7 +299,7 @@ def main() -> int:
     ui_keys = (
         "site", "hero", "ui", "kinds", "grades", "languages",
         "nav", "stance", "landing", "footer",
-        "discussions", "counter",
+        "discussions", "counter", "paywall",
     )
     course = {
         "config": {k: CFG[k] for k in ui_keys if k in CFG},
@@ -332,6 +332,9 @@ def main() -> int:
     }
 
     sync_web()
+    # TODO(paywall): 真要收費的話，付費章節的 lesson.url / drill.url 要從這份公開的
+    # course.json 抽到 course.paid.json，由 functions/api/entitlement.js 驗證後才回傳。
+    # 現在的 paywall 是 0 元的 UX 實驗，硬鎖只在前端，擋不住 F12。見 docs/PAYWALL.md。
     OUT.write_text(json.dumps(course, ensure_ascii=False, indent=1))
 
     # DIST 可能指到 repo 外（多課程並存時很常見），relative_to 會直接拋例外

@@ -1,5 +1,6 @@
 // render.js — 把 course.json 的資料轉成 DOM 字串
 import { icon } from "./icons.js";
+import { normalize as normalizePaywall, formatAmount } from "./paywall-core.js";
 
 /** HTML 逸出，資料雖為自產仍一律過濾 */
 export const esc = (s) =>
@@ -23,7 +24,19 @@ export function setConfig(cfg) {
   for (const k of CFG.kinds || []) KIND[k.id] = { label: k.label, tone: k.tone || "accent" };
   for (const g of CFG.grades || []) GRADE[g.id] = { label: g.label, tone: g.tone || "accent" };
   Object.assign(UI, CFG.ui || {});
+  PW = normalizePaywall(CFG.paywall);
 }
+
+/* paywall：渲染時要知道每一章能不能看。判定本身在 paywall-core，
+   這裡只拿到一個問句——誰都不准自己比對章節代碼。 */
+let PW = null;
+let ACCESS = () => true;
+
+export function setAccess(fn) {
+  ACCESS = typeof fn === "function" ? fn : () => true;
+}
+
+const pwT = (k, fallback = "") => PW?.ui?.[k] ?? fallback;
 
 /** 分級／類型都用 tone 對應到樣式，id 可以隨主題自由命名 */
 const toneCls = (o) => `Label--${o?.tone || "neutral"}`;
@@ -290,7 +303,7 @@ function muscles(tight, weak) {
 
 /* --- 單元 ---------------------------------------------------------------- */
 
-export function renderUnit(u, done) {
+export function renderUnit(u, done, locked = false) {
   // 類型一律迭代設定檔的 kinds。寫死 id 換主題會讓所有項目消失，且不會有任何錯誤訊息。
   const counts = Object.fromEntries((CFG.kinds || []).map((k) => [k.id, 0]));
   (u.drills || []).forEach((d) => {
@@ -319,6 +332,25 @@ export function renderUnit(u, done) {
   const allFacets = [
     ...new Set([...(u.facets || []), ...(u.drills || []).flatMap((d) => d.facets || [])]),
   ];
+
+  // 鎖定的單元只出標題列，不渲染 body：硬鎖不是靠 CSS 遮起來，是根本不產生內容。
+  // 標題與摘要留著，這樣搜尋還找得到、也看得出解鎖後有什麼。
+  if (locked) {
+    return `
+      <article class="Unit is-locked" id="${esc(u.id)}" data-unit="${esc(u.id)}"
+               data-facets="${esc(allFacets.join("|"))}" data-locked="1">
+        <button class="Unit__header" type="button" data-pw-gate>
+          <span class="Unit__lock" title="${esc(pwT("lockedLabel", "鎖定"))}">${icon("lock", 13)}</span>
+          <span class="Unit__main">
+            <span class="Unit__title">${esc(u.name)} ${badges}
+              <span class="Label Label--neutral">${icon("lock", 10)} ${esc(pwT("lockedLabel", "鎖定"))}</span>
+            </span>
+            ${u.summary ? `<span class="Unit__summary">${esc(u.summary)}</span>` : ""}
+          </span>
+          <span class="Unit__chevron">${icon("chevron-right", 16)}</span>
+        </button>
+      </article>`;
+  }
 
   return `
     <article class="Unit${done ? " is-done" : ""}" id="${esc(u.id)}" data-unit="${esc(u.id)}"
@@ -418,15 +450,40 @@ export function renderStance(stance) {
 
 /* --- 章節 ---------------------------------------------------------------- */
 
+/** 鎖定章節的招呼卡，擺在章節內容最上面 */
+function gateCard(drillTotal, unitTotal) {
+  if (!PW) return "";
+  const p = PW.products[0];
+  return `
+    <div class="PaywallGate">
+      <span class="PaywallGate__icon">${icon("lock", 16)}</span>
+      <span class="PaywallGate__main">
+        <p class="PaywallGate__title">${esc(pwT("gateTitle", "這一章需要完整課程"))}</p>
+        <p class="PaywallGate__note">
+          ${unitTotal} 個單元${drillTotal ? ` · ${drillTotal} 支跟練影片` : ""}
+          ${esc(pwT("gateCardNote", ""))}
+        </p>
+      </span>
+      <span class="Price">
+        ${p.listAmount > p.amount ? `<s class="Price__list">${esc(formatAmount(p.listAmount, PW.currency))}</s>` : ""}
+        <span class="Price__now">${esc(formatAmount(p.amount, PW.currency))}</span>
+      </span>
+      <button class="btn btn-primary" type="button" data-pw-gate>
+        ${icon("shopping-cart", 14)} ${esc(pwT("addToCart", "加入購物車"))}
+      </button>
+    </div>`;
+}
+
 export function renderChapter(ch, doneSet) {
   const doneCount = ch.units.filter((u) => doneSet.has(u.id)).length;
   const pct = ch.units.length ? Math.round((doneCount / ch.units.length) * 100) : 0;
   const drillTotal = ch.units.reduce((n, u) => n + (u.drills?.length || 0), 0);
+  const locked = !ACCESS(ch.code);
 
   return `
-    <section class="Chapter" id="${esc(ch.code)}" data-chapter="${esc(ch.code)}">
+    <section class="Chapter${locked ? " is-locked" : ""}" id="${esc(ch.code)}" data-chapter="${esc(ch.code)}">
       <button class="Chapter__header" type="button" data-toggle="chapter">
-        <span class="Chapter__num">${icon(ch.icon || "circle-dot", 18)}</span>
+        <span class="Chapter__num">${icon(locked ? "lock" : ch.icon || "circle-dot", 18)}</span>
         <span class="Chapter__titles">
           <span class="Chapter__title">
             <span class="Chapter__code">${esc(ch.code)}</span>
@@ -437,6 +494,11 @@ export function renderChapter(ch, doneSet) {
             ${doneCount ? ` · 已完成 ${doneCount}` : ""}
           </span>
         </span>
+        ${
+          locked
+            ? `<span class="Chapter__lock">${icon("lock", 13)} ${esc(pwT("lockedLabel", "鎖定"))}</span>`
+            : ""
+        }
         <span class="Chapter__progress">
           <span class="ProgressBar ProgressBar--thin">
             <span class="ProgressBar__fill" style="width:${pct}%"></span>
@@ -445,7 +507,8 @@ export function renderChapter(ch, doneSet) {
         <span class="Chapter__chevron">${icon("chevron-right", 16)}</span>
       </button>
       <div class="Chapter__body">
-        ${ch.units.map((u) => renderUnit(u, doneSet.has(u.id))).join("")}
+        ${locked ? gateCard(drillTotal, ch.units.length) : ""}
+        ${ch.units.map((u) => renderUnit(u, doneSet.has(u.id), locked)).join("")}
       </div>
     </section>`;
 }
@@ -481,16 +544,54 @@ export function renderHome(course) {
 
   const chapterCards = chapters.map((ch) => {
     const drills = ch.units.reduce((n, u) => n + (u.drills?.length || 0), 0);
+    const locked = !ACCESS(ch.code);
     return `
       <button class="ChapterCard" type="button" data-goto-chapter="${esc(ch.code)}">
-        <span class="ChapterCard__icon">${icon(ch.icon || "circle-dot", 18)}</span>
+        <span class="ChapterCard__icon">${icon(locked ? "lock" : ch.icon || "circle-dot", 18)}</span>
         <span class="ChapterCard__main">
           <span class="ChapterCard__title"><span class="Chapter__code">${esc(ch.code)}</span> ${esc(ch.title)}</span>
-          <span class="ChapterCard__meta">${ch.units.length} ${(UI.unitNoun || "個單元").replace(/^個/, "")}${drills ? ` · ${drills} ${UI.drillNounShort || "支跟練"}` : ""}</span>
+          <span class="ChapterCard__meta">
+            ${ch.units.length} ${(UI.unitNoun || "個單元").replace(/^個/, "")}${drills ? ` · ${drills} ${UI.drillNounShort || "支跟練"}` : ""}
+            ${PW ? ` · ${esc(locked ? pwT("lockedLabel", "鎖定") : pwT("trialLabel", "試看"))}` : ""}
+          </span>
           <span class="ChapterCard__units">${ch.units.map((u) => esc(u.name)).join("、")}</span>
         </span>
       </button>`;
   }).join("");
+
+  // paywall 的首頁區塊：買過了就換成已解鎖的樣子
+  const lockedCount = PW ? chapters.filter((ch) => !ACCESS(ch.code)).length : 0;
+  const paywallCta = !PW
+    ? ""
+    : lockedCount
+      ? `<div class="PaywallCta">
+           <span class="PaywallGate__icon">${icon("lock", 16)}</span>
+           <span class="PaywallCta__main">
+             <p class="PaywallCta__title">${esc(pwT("ctaLockedTitle", ""))}</p>
+             <p class="PaywallCta__note">${esc(pwT("ctaLockedNote", ""))}</p>
+           </span>
+           <span class="Price">
+             ${
+               PW.products[0].listAmount > PW.products[0].amount
+                 ? `<s class="Price__list">${esc(formatAmount(PW.products[0].listAmount, PW.currency))}</s>`
+                 : ""
+             }
+             <span class="Price__now">${esc(formatAmount(PW.products[0].amount, PW.currency))}</span>
+           </span>
+           <button class="btn btn-primary" type="button" data-pw-gate>
+             ${icon("shopping-cart", 14)} ${esc(pwT("addToCart", "加入購物車"))}
+           </button>
+         </div>`
+      : `<div class="PaywallCta">
+           <span class="PaywallGate__icon">${icon("lock-open", 16)}</span>
+           <span class="PaywallCta__main">
+             <p class="PaywallCta__title">${esc(pwT("ctaOwnedTitle", ""))}</p>
+             <p class="PaywallCta__note">${esc(pwT("ctaOwnedNote", ""))}</p>
+           </span>
+           <button class="btn" type="button" data-pw-receipt>
+             ${icon("receipt", 14)} ${esc(pwT("viewReceipt", "看收據"))}
+           </button>
+         </div>`;
 
   return `
     <section class="Landing__section">
@@ -529,5 +630,6 @@ ${esc((L.ctaLede || "").replace("{units}", meta.units).replace("{videos}", meta.
           ${icon("layers", 14)} ${esc(CFG.ui?.tabs?.course || "")}
         </button>
       </div>
-    </section>`;
+    </section>
+    ${paywallCta}`;
 }
