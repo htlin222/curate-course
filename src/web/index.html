@@ -183,17 +183,10 @@
 
       <div class="Layout__main">
         <div class="FilterBar">
-          <div class="FilterBar__group" role="group" aria-label="動作類型篩選">
+          <div class="FilterBar__group" role="group">
+            <!-- 按鈕由 app.js 的 renderFilterBar() 依 course.config.json 的 kinds 生成。
+                 這裡只留「全部」，避免首屏閃過上一個主題的類型名稱。 -->
             <button class="FilterBar__btn is-active" data-filter="all" type="button">全部</button>
-            <button class="FilterBar__btn" data-filter="release" type="button">
-              <span class="Drill__marker Drill__marker--release"></span>放鬆
-            </button>
-            <button class="FilterBar__btn" data-filter="stretch" type="button">
-              <span class="Drill__marker Drill__marker--stretch"></span>拉伸
-            </button>
-            <button class="FilterBar__btn" data-filter="train" type="button">
-              <span class="Drill__marker Drill__marker--train"></span>訓練
-            </button>
           </div>
           <div class="FilterBar__spacer"></div>
           <span class="FilterBar__count" id="filterCount"></span>

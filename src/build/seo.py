@@ -22,6 +22,7 @@ PUB = Path(os.environ.get("DIST") or ROOT / "dist").resolve()
 
 CFG = json.loads((COURSE / "course.config.json").read_text())
 SITE_CFG = CFG["site"]
+_UI = CFG.get("ui") or {}
 SITE = SITE_CFG["url"].rstrip("/")
 NAME = SITE_CFG["name"]
 TITLE = SITE_CFG["title"]
@@ -38,7 +39,10 @@ def build_schema(course: dict) -> dict:
     meta = course["meta"]
     chapters = course["chapters"]
 
-    postures = [u["name"] for ch in chapters for u in ch["units"] if u.get("type") == "posture"]
+    # 主題單元的型別由 ui.problemType 決定。寫死 "posture" 換主題會產出空的 teaches，
+    # 而且 JSON-LD 依然合法，所以不會有任何錯誤——這種沉默的失敗最難發現。
+    _ptype = (CFG.get("ui") or {}).get("problemType", "posture")
+    postures = [u["name"] for ch in chapters for u in ch["units"] if u.get("type") == _ptype]
 
     syllabus = [
         {
@@ -53,7 +57,8 @@ def build_schema(course: dict) -> dict:
                     else ""
                 )
                 + (
-                    f"，附 {sum(len(u.get('drills') or []) for u in ch['units'])} 支跟練影片"
+                    f"，附 {sum(len(u.get('drills') or []) for u in ch['units'])} "
+                    f"{(CFG.get('ui') or {}).get('drillNoun', '支跟練影片')}"
                     if any(u.get("drills") for u in ch["units"])
                     else ""
                 )
@@ -153,9 +158,7 @@ def render_template(meta: dict) -> None:
         val = lookup(m.group(1))
         if val is None:
             return m.group(0)
-        return str(val).replace("{units}", str(meta["units"])).replace(
-            "{problems}", str(meta.get("problem_units", 0))
-        )
+        return fill(val, meta)
 
     html, n = re.subn(r"\{\{([\w.]+)\}\}", sub, html)
     path.write_text(html)
@@ -267,6 +270,32 @@ def write_robots() -> None:
     print("   robots.txt")
 
 
+# 文案佔位符只有這一份定義。之前 HTML 注入與 llms.txt 各有一套替換邏輯，
+# 結果 llms.txt 只認得兩個 token，作者在設定檔用了第三個就直接 KeyError。
+TOKENS = ("units", "lessonUnits", "drillUnits", "slots", "videos", "problems", "evidence")
+
+
+def token_map(meta: dict) -> dict:
+    """三個數字互不相同：units 是影片欄位合計，lessonUnits 才是章節單元數。"""
+    return {
+        "units": meta["units"],
+        "lessonUnits": meta.get("lesson_units", 0),
+        "drillUnits": meta.get("drill_units", 0),
+        "slots": meta.get("video_slots", meta["units"]),
+        "videos": meta.get("video_unique", 0),
+        "problems": meta.get("problem_units", 0),
+        "evidence": meta.get("evidence_checked", 0),
+    }
+
+
+def fill(text: str | None, meta: dict) -> str:
+    """未知的 token 原樣保留，讓 make audit 抓得到，不要靜靜吞掉。"""
+    tokens = token_map(meta)
+    return re.sub(
+        r"\{(\w+)\}", lambda m: str(tokens.get(m.group(1), m.group(0))), str(text or "")
+    )
+
+
 def write_llms(course: dict) -> None:
     meta, chapters = course["meta"], course["chapters"]
     llm = CFG.get("llms", {})
@@ -275,17 +304,14 @@ def write_llms(course: dict) -> None:
         "",
         f"> {DESC}",
         "",
-        llm.get("summary", "").format(
-            problems=meta.get("problem_units", 0), evidence=meta.get("evidence_checked", 0)
-        )
-        + f" 共 {meta['units']} 個單元（{meta['lesson_units']} 堂主課 + "
-        f"{meta['drill_units']} 支跟練影片，總長 {meta['duration']}）。",
+        fill(llm.get("summary"), meta)
+        + f" 共 {meta['lesson_units']} {_UI.get('unitNoun', '個單元')}"
+        f"（{meta['video_slots']} 個影片欄位、去重後 {meta['video_unique']} 支，"
+        f"總長 {meta['duration']}）。",
         "",
         f"## {CFG.get('stance', {}).get('title', '立場')}（重要）",
         "",
-        llm.get("stanceIntro", "").format(
-            evidence=meta.get("evidence_checked", 0), problems=meta.get("problem_units", 0)
-        ),
+        fill(llm.get("stanceIntro"), meta),
         "",
     ]
     for s in course.get("stance", []):

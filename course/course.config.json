@@ -137,7 +137,19 @@
     "openExternal": "在 YouTube 開啟",
     "moreLabel": "選片理由與自我評估",
     "discussLabel": "討論",
-    "discussNote": "留言會同步到 GitHub Discussions，需要 GitHub 帳號才能發言。每支影片各有一串討論。"
+    "discussNote": "留言會同步到 GitHub Discussions，需要 GitHub 帳號才能發言。每支影片各有一串討論。",
+    "lessonNoun": "堂主課",
+    "drillNoun": "支跟練影片",
+    "drillNounShort": "支跟練",
+    "unitNoun": "個單元",
+    "kindFilterLabel": "動作類型篩選",
+    "missingTitle": "尚未找到合格影片",
+    "missingHint": "這個主題在 YouTube 上沒有品質足夠的示範",
+    "lessonLangLabel": "主課語言",
+    "watchLabel": "觀看示範",
+    "facetFilterHint": "篩選涉及 {name} 的內容",
+    "evidenceSource": "OpenEvidence",
+    "evidenceSourceLink": "在 OpenEvidence 讀完整回答"
   },
   "kinds": [
     {
@@ -402,7 +414,12 @@
     "mode": "demo",
     "currency": "TWD",
     "orderPrefix": "BC",
-    "freeChapters": ["CH0", "CH1", "CH2", "CH3"],
+    "freeChapters": [
+      "CH0",
+      "CH1",
+      "CH2",
+      "CH3"
+    ],
     "honesty": "這門課從來沒收費過，被劃掉的原價是虛構的。0 元結帳只是個 UX 實驗，付款欄位不會送到任何地方，解鎖狀態只存在你自己的瀏覽器裡。",
     "products": [
       {

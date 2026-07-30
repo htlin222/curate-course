@@ -337,9 +337,12 @@ def main() -> int:
     # 現在的 paywall 是 0 元的 UX 實驗，硬鎖只在前端，擋不住 F12。見 docs/PAYWALL.md。
     OUT.write_text(json.dumps(course, ensure_ascii=False, indent=1))
 
-    print(f"→ {OUT.relative_to(ROOT)}  ({OUT.stat().st_size / 1024:.0f} KB)")
+    # DIST 可能指到 repo 外（多課程並存時很常見），relative_to 會直接拋例外
+    _shown = OUT.relative_to(ROOT) if OUT.is_relative_to(ROOT) else OUT
+    print(f"→ {_shown}  ({OUT.stat().st_size / 1024:.0f} KB)")
     print(f"   主課單元 {unit_total} · 跟練影片 {drill_total} · 合計 {unit_total + drill_total}")
-    print(f"   放鬆 {kinds['release']} / 拉伸 {kinds['stretch']} / 訓練 {kinds['train']}")
+    # 統計行迭代設定檔的 kinds。寫死 id 換主題會讓每一類都印 0，看起來像資料壞了。
+    print("   " + " / ".join(f"{k['label']} {kinds.get(k['id'], 0)}" for k in CFG["kinds"]))
     print(
         f"   影片 {unit_total + drill_total + alt_count[0]} 個欄位"
         f"（含 {alt_count[0]} 支多語言版本）· 去重後 {len(seen_urls)} 支"

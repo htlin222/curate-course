@@ -97,8 +97,8 @@ citation 寫 `doi` 而不是 `pmid`，`url` 用 `https://doi.org/<DOI>`：
 `conceptual-analysis` / `formal-proof` / `case-study` / `corpus-study` /
 `experimental-philosophy` / `systematic-review`。
 
-> **注意**：`verify_refs.py` 目前只驗 PMID。要做人文主題的課，得先讓它認得 `doi`
-> 欄位並改打 Crossref——不然文件說了要驗，實際上沒有人在驗，跟沒驗一樣。
+> `verify_refs.py` 兩種識別碼都驗：`pmid` 打 PubMed esummary、`doi` 打 Crossref，
+> 一筆一筆比對回傳的標題。`--fix` 會用 API 回傳值覆寫 title/journal/year。
 
 ## 誠實比好看重要
 

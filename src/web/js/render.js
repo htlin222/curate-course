@@ -64,8 +64,8 @@ function videoCard(v) {
       <div class="VideoCard VideoCard--missing">
         <span class="VideoCard__badge">${icon("book-open", 16)}</span>
         <span class="VideoCard__main">
-          <span class="VideoCard__title">尚未找到合格影片</span>
-          <span class="VideoCard__meta">${esc(v?.note || "這個主題在 YouTube 上沒有品質足夠的示範")}</span>
+          <span class="VideoCard__title">${esc(UI.missingTitle || "尚未找到合格影片")}</span>
+          <span class="VideoCard__meta">${esc(v?.note || UI.missingHint || "這個主題在 YouTube 上沒有品質足夠的示範")}</span>
         </span>
         ${playBtn(false, true)}
       </div>`;
@@ -97,7 +97,7 @@ function lessonBox(u) {
 
   return `
     <div class="LessonBox">
-      <div class="LessonBox__langs" role="tablist" aria-label="主課語言">
+      <div class="LessonBox__langs" role="tablist" aria-label="${esc(UI.lessonLangLabel || "主課語言")}">
         ${lessons
           .map(
             (l, i) => `
@@ -124,7 +124,7 @@ function muscleTags(list) {
     .map(
       (m) =>
         `<button class="Label Label--neutral Label--muscle" data-muscle="${esc(m)}"
-                 type="button" title="篩選涉及 ${esc(m)} 的內容">${esc(m)}</button>`,
+                 type="button" title="${esc((UI.facetFilterHint || "篩選涉及 {name} 的內容").replace("{name}", m))}">${esc(m)}</button>`,
     )
     .join("");
 }
@@ -148,8 +148,8 @@ function drill(d) {
 
   // 有連結就整列可點，跟主課卡片一致
   return d.url
-    ? `<li ${attrs}><a class="Drill__link" href="${esc(d.url)}" target="_blank" rel="noopener" title="${esc(d.title || "觀看示範")}">${inner}</a></li>`
-    : `<li ${attrs}><span class="Drill__link" aria-disabled="true" title="尚未找到合格影片">${inner}</span></li>`;
+    ? `<li ${attrs}><a class="Drill__link" href="${esc(d.url)}" target="_blank" rel="noopener" title="${esc(d.title || UI.watchLabel || "觀看示範")}">${inner}</a></li>`
+    : `<li ${attrs}><span class="Drill__link" aria-disabled="true" title="${esc(UI.missingTitle || "尚未找到合格影片")}">${inner}</span></li>`;
 }
 
 function drillGroup(kind, list) {
@@ -210,7 +210,7 @@ function evidence(ev, unitId) {
         <span>${esc(UI.unitEvidenceLabel || "")}</span>
         <span class="Label ${toneCls(g)}">${g.label}</span>
         <span class="Evidence__spacer"></span>
-        ${ev.url ? `<span class="Label Label--neutral">OpenEvidence</span>` : ""}
+        ${ev.url && UI.evidenceSource ? `<span class="Label Label--neutral">${esc(UI.evidenceSource)}</span>` : ""}
         <span class="Evidence__chevron">${icon("chevron-right", 14)}</span>
       </button>
       <div class="Evidence__body">
@@ -218,7 +218,7 @@ function evidence(ev, unitId) {
         ${cites}
         ${
           ev.url
-            ? `<div class="Evidence__cite"><a href="${esc(ev.url)}" target="_blank" rel="noopener">在 OpenEvidence 讀完整回答 ${icon("external-link", 11)}</a></div>`
+            ? `<div class="Evidence__cite"><a href="${esc(ev.url)}" target="_blank" rel="noopener">${esc(UI.evidenceSourceLink || "讀完整回答")} ${icon("external-link", 11)}</a></div>`
             : ""
         }
       </div>
@@ -304,7 +304,8 @@ function muscles(tight, weak) {
 /* --- 單元 ---------------------------------------------------------------- */
 
 export function renderUnit(u, done, locked = false) {
-  const counts = { release: 0, stretch: 0, train: 0 };
+  // 類型一律迭代設定檔的 kinds。寫死 id 換主題會讓所有項目消失，且不會有任何錯誤訊息。
+  const counts = Object.fromEntries((CFG.kinds || []).map((k) => [k.id, 0]));
   (u.drills || []).forEach((d) => {
     if (counts[d.kind] != null) counts[d.kind]++;
   });
@@ -319,12 +320,12 @@ export function renderUnit(u, done, locked = false) {
     // 實證強度直接標在標題列。contested 的單元不該要展開才看得到
     u.evidence?.evidence_grade
       ? `<span class="Label ${toneCls(gradeOf(u.evidence.evidence_grade))}"
-               title="OpenEvidence 查證結果">${icon("microscope", 11)} ${gradeOf(u.evidence.evidence_grade).label}</span>`
+               title="${esc(UI.unitEvidenceLabel || "")}">${icon("microscope", 11)} ${gradeOf(u.evidence.evidence_grade).label}</span>`
       : "",
   ].join("");
 
-  const groups = ["release", "stretch", "train"]
-    .map((k) => drillGroup(k, (u.drills || []).filter((d) => d.kind === k)))
+  const groups = (CFG.kinds || [])
+    .map((k) => drillGroup(k.id, (u.drills || []).filter((d) => d.kind === k.id)))
     .join("");
 
   // 單元自身的肌群 + 底下所有動作的肌群，供側欄篩選比對
@@ -427,7 +428,7 @@ export function renderStance(stance) {
           ${
             s.url
               ? `<div class="StanceCard__cites" style="margin-top:6px">
-                   <a href="${esc(s.url)}" target="_blank" rel="noopener">在 OpenEvidence 讀完整回答 ${icon("external-link", 10)}</a>
+                   <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(UI.evidenceSourceLink || "讀完整回答")} ${icon("external-link", 10)}</a>
                  </div>`
               : ""
           }
@@ -489,7 +490,7 @@ export function renderChapter(ch, doneSet) {
             ${esc(ch.title)}
           </span>
           <span class="Chapter__meta">
-            ${ch.units.length} 個單元${drillTotal ? ` · ${drillTotal} 支跟練影片` : ""}
+            ${ch.units.length} ${UI.unitNoun || "個單元"}${drillTotal ? ` · ${drillTotal} ${UI.drillNoun || "支跟練影片"}` : ""}
             ${doneCount ? ` · 已完成 ${doneCount}` : ""}
           </span>
         </span>
@@ -550,7 +551,7 @@ export function renderHome(course) {
         <span class="ChapterCard__main">
           <span class="ChapterCard__title"><span class="Chapter__code">${esc(ch.code)}</span> ${esc(ch.title)}</span>
           <span class="ChapterCard__meta">
-            ${ch.units.length} 單元${drills ? ` · ${drills} 支跟練` : ""}
+            ${ch.units.length} ${(UI.unitNoun || "個單元").replace(/^個/, "")}${drills ? ` · ${drills} ${UI.drillNounShort || "支跟練"}` : ""}
             ${PW ? ` · ${esc(locked ? pwT("lockedLabel", "鎖定") : pwT("trialLabel", "試看"))}` : ""}
           </span>
           <span class="ChapterCard__units">${ch.units.map((u) => esc(u.name)).join("、")}</span>
