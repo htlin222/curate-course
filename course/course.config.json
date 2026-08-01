@@ -401,11 +401,12 @@
     "disclaimer": "本課程為衛教與運動指引，不構成醫療診斷或治療建議。持續疼痛、麻木、無力、外傷史或體態短期內明顯惡化，應先諮詢醫師或物理治療師。"
   },
   "discussions": {
+    "setupNote": "留言會送到下面這個 repo 的 GitHub Discussions。三個 REPLACE_ME 換成你自己的：到 https://giscus.app 填入你的 repo（需先安裝 giscus App 並開啟 Discussions），把它產生的 data-repo / data-repo-id / data-category-id 抄過來。沒換之前討論面板只會顯示 giscus 的錯誤——這是刻意的，壞掉好過把讀者的留言靜靜送進別人的 repo。整組 discussions 刪掉就沒有討論面板。",
     "provider": "giscus",
-    "repo": "htlin222/curate-course",
-    "repoId": "R_kgDOTjdcNg",
+    "repo": "REPLACE_ME/REPLACE_ME",
+    "repoId": "REPLACE_ME",
     "category": "General",
-    "categoryId": "DIC_kwDOTjdcNs4DB9da",
+    "categoryId": "REPLACE_ME",
     "mapping": "specific",
     "termPrefix": "video",
     "lang": "zh-TW",

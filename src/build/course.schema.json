@@ -488,6 +488,10 @@
       "type": "object",
       "description": "每支影片一串留言（giscus → GitHub Discussions）。整組拿掉就沒有討論面板。",
       "properties": {
+        "setupNote": {
+          "type": "string",
+          "description": "給人看的設定提醒，程式不讀。三個識別碼換成自己的之後可以刪掉。"
+        },
         "provider": {
           "type": "string",
           "enum": [
@@ -496,6 +500,7 @@
         },
         "repo": {
           "type": "string",
+          "description": "留言要送去的 GitHub repo（owner/name）。務必換成自己的——這個值填錯不會有任何錯誤，留言只會安靜地跑到別人家。",
           "pattern": "^[\\w.-]+/[\\w.-]+$"
         },
         "repoId": {
