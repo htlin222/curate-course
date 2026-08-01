@@ -40,8 +40,14 @@
 短標籤與屬性（`site.title`、`ui.searchPlaceholder`、`ui.playlistSearch`、各種 `title=`）
 塞不進 `<strong>`，所以那裡的 `**` 記號會被**拿掉只留文字**，不會讓使用者看到字面的星號。
 
-唯一的額外規則在 `og.title` / `og.lede`：真正的換行字元會變成 `<br>`。og 是一張
-1200×630 的固定畫布，斷句位置必須由你決定。
+兩個例外，都是因為出口不是 HTML：
+
+- `og.title` / `og.lede`：真正的換行字元會變成 `<br>`。og 是一張 1200×630 的固定畫布，
+  斷句位置必須由你決定。
+- **`llms` 整個區塊：原樣輸出，不逸出也不展開。** `llms.txt` 是純文字（Markdown 風格），
+  沒有任何 HTML sink——逸出只會讓讀者看到字面的 `&amp;`，而 `**粗體**` 在那裡本來就是
+  Markdown 自己的粗體語法。這是契約裡唯一一個「不逸出、不展開」的出口，理由是那裡
+  根本沒有需要被防的注入面。數字佔位符照樣會填。
 
 ### 為什麼值得記這一條
 
@@ -69,6 +75,41 @@
 
 七個在建置期與執行期指向同一個 meta 欄位。打錯字（`{unit}`）不會被靜靜吞掉：
 原樣保留，然後 `make audit` 報錯。
+
+## `llms.txt`：整份是模板
+
+`llms.txt` 跟 `og.html` 一樣，框架只提供結構（`#` / `##` / `-` / 空行），**一個字都不寫**。
+所有句子來自 `llms` 區塊；**沒宣告的欄位就整塊不輸出**（不是輸出空字串留下半截段落）：
+
+| 欄位 | 產出 |
+|---|---|
+| `summary` | 開頭摘要。課程規模的數字自己寫進來 |
+| `stanceTitle` / `stanceIntro` / `stanceItem` / `stanceConclusion` | 立場段。沒有立場資料時整段消失 |
+| `chaptersTitle` / `chapterItem` / `unitSeparator` | 章節清單 |
+| `disclaimerTitle` / `disclaimer` | 免責段 |
+| `footer` | 結尾帶出網址那一行。沒寫就只印裸網址 |
+
+除了上面七個數字 token，這裡另外可以用 `[[值]]`——就是 `og.html` 模板的同一套機制，
+只是記號從 `{{…}}` 換成 `[[…]]`：模板住在設定檔裡，而 `make audit` 會把 `{{durationHours}}`
+讀成打錯字的數字佔位符 `{durationHours}`。
+
+| 範圍 | 可用的值 |
+|---|---|
+| 每個欄位 | `[[course]]` `[[url]]` `[[durationHours]]` `[[durationMinutes]]` |
+| `stanceItem` | `[[name]]` `[[grade]]` `[[summary]]` `[[summaryShort]]`（前 180 字，刪節號自己加） |
+| `chapterItem` | `[[code]]` `[[title]]` `[[units]]` `[[unitCount]]` |
+
+打錯的 `[[值]]` 不會靜靜消失，`make build` 直接掛掉。總長刻意拆成時與分兩個數字，
+而不是給一個組好的 `26 小時 3 分`——那個字串裡的「小時」是中文，不該由框架決定。
+
+```jsonc
+"llms": {
+  "chaptersTitle": "Chapters",
+  "chapterItem": "**[[code]] [[title]]**: [[units]]",
+  "unitSeparator": ", ",
+  "footer": "Full course: [[url]]"
+}
+```
 
 ## Schema
 

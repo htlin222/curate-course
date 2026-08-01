@@ -1,7 +1,7 @@
 [project]
-name = "body-course"
+name = "curate-course"
 version = "1.0.0"
-description = "體態矯正課程 — 策展 371 個單元的課程網站，含 YouTube 影片驗證與 PubMed 實證查核"
+description = "從 YouTube 策展影片課程網站的框架：配額驗證、影片連結重驗、實證查核與 SEO 產出。主題由 course/ 決定"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
