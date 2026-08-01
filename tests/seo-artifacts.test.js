@@ -65,12 +65,29 @@ describe("JSON-LD", { skip }, () => {
 
   test("teaches 用的是設定檔的 ui.problemType，不是寫死的型別", () => {
     const type = course.config.ui?.problemType;
-    if (!type) return;
+    if (!type) {
+      assert.ok(
+        !("teaches" in node("Course")),
+        "沒設定 ui.problemType 就不該宣告 teaches——寧可不宣告，也不要宣告錯的",
+      );
+      return;
+    }
     const expected = course.chapters.flatMap((ch) =>
       ch.units.filter((u) => u.type === type).map((u) => u.name),
     );
     assert.deepEqual(node("Course").teaches, expected);
     assert.equal(expected.length, meta.problem_units);
+  });
+
+  test("語言與難度只在設定檔有寫時才宣告", () => {
+    const site = course.config.site;
+    for (const n of [node("Course"), node("WebSite")]) {
+      assert.equal(n.inLanguage, site.locale, "inLanguage 必須等於 site.locale（沒設就不能有）");
+    }
+    assert.equal(node("Course").hasCourseInstance.inLanguage, site.locale);
+    assert.equal(node("Course").educationalLevel, site.educationalLevel);
+    // 沒設 ogLocale 就不該有這個標籤，而不是塞一個猜的
+    assert.equal(/property="og:locale"/.test(index), Boolean(site.ogLocale));
   });
 
   test("timeRequired 是 ISO 8601 duration，且對得上課程總長", () => {
@@ -83,6 +100,59 @@ describe("JSON-LD", { skip }, () => {
   test("og:image 與 JSON-LD 的 image 都指到 /og.png", () => {
     assert.match(index, /<meta property="og:image" content="[^"]+\/og\.png" \/>/);
     assert.match(node("Course").image, /\/og\.png$/);
+  });
+});
+
+/* --- 主題耦合：框架不准知道這門課叫什麼 ------------------------------------ */
+
+describe("seo.py 沒有寫死這門課的主題", { skip }, () => {
+  // seo.py 曾經寫著 .get("problemType", "posture")——正上方的註解甚至已經寫明
+  // 「寫死換主題會產出空的 teaches……這種沉默的失敗最難發現」，程式卻沒照做。
+  // 這是啟發式檢查：只掃設定檔裡「屬於這門課」的識別字有沒有變成 seo.py 的字串字面值。
+  const generic = new Set([
+    "name", "title", "url", "type", "units", "label", "description",
+    "icon", "image", "summary", "stats", "grades", "kinds", "site", "duration",
+  ]);
+
+  /** 去掉註解——那裡面本來就會引用舊值來說明當初錯在哪，不算寫死 */
+  function stripComments(src) {
+    return src
+      .split("\n")
+      .map((line) => {
+        let quote = null;
+        for (let i = 0; i < line.length; i++) {
+          const c = line[i];
+          if (quote) {
+            if (c === "\\") i++;
+            else if (c === quote) quote = null;
+          } else if (c === '"' || c === "'") quote = c;
+          else if (c === "#") return line.slice(0, i);
+        }
+        return line;
+      })
+      .join("\n");
+  }
+
+  test("設定檔裡的主題識別字不該出現在框架程式碼裡", () => {
+    const src = stripComments(readFileSync(repo("src/build/seo.py"), "utf8"));
+    const candidates = [
+      ...new Set([
+        ...Object.keys(config.ui?.unitTypes || {}),
+        config.ui?.problemType,
+        config.site?.locale,
+        config.site?.ogLocale,
+        config.site?.educationalLevel,
+      ]),
+    ].filter((v) => v && v.length >= 4 && !generic.has(v));
+
+    const leaked = candidates.filter((v) =>
+      new RegExp(`["']${v.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`).test(src),
+    );
+    assert.deepEqual(
+      leaked,
+      [],
+      `這些值屬於 course/，不該寫進 src/build/seo.py：${leaked.join("、")}`,
+    );
   });
 });
 

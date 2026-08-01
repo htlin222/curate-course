@@ -61,6 +61,10 @@
             "type": "string"
           }
         },
+        "educationalLevel": {
+          "type": "string",
+          "description": "schema.org 的 educationalLevel，例如 Beginner；不設定就不宣告（框架不替你猜難度）"
+        },
         "audience": {
           "type": "string"
         },

@@ -26,11 +26,18 @@ WEB = ROOT / "src" / "web"
 CFG = json.loads((COURSE / "course.config.json").read_text())
 SITE_CFG = CFG["site"]
 _UI = CFG.get("ui") or {}
+# 名詞一律走設定檔。沒設定就只留數字，不要把中文名詞塞進別的語言的課程裡。
+UNIT_NOUN = _UI.get("unitNoun", "")
+DRILL_NOUN = _UI.get("drillNoun", "")
 SITE = SITE_CFG["url"].rstrip("/")
 NAME = SITE_CFG["name"]
 TITLE = SITE_CFG["title"]
 DESC = SITE_CFG["description"]
-LOCALE = SITE_CFG.get("locale", "zh-Hant")
+# 沒設定就不宣告語言。原本這裡預設 "zh-Hant"，等於幫每一門沒設 locale 的課
+# 對搜尋引擎宣稱它是繁體中文的——猜錯了照樣是合法的 JSON-LD，不會有人發現。
+LOCALE = SITE_CFG.get("locale")
+# 語言標記統一從這裡展開，才不會漏掉其中一處
+LANG = {"inLanguage": LOCALE} if LOCALE else {}
 
 
 def iso_duration(seconds: int) -> str:
@@ -41,6 +48,10 @@ def iso_duration(seconds: int) -> str:
 def die(msg: str) -> None:
     print(f"✗ {msg}", file=sys.stderr)
     sys.exit(1)
+
+
+def warn(msg: str) -> None:
+    print(f"   ⚠ {msg}")
 
 
 def build_schema(course: dict) -> dict:
@@ -58,26 +69,32 @@ def build_schema(course: dict) -> dict:
             "course.json 自己就對不上，不要餵給搜尋引擎"
         )
 
-    # 主題單元的型別由 ui.problemType 決定。寫死 "posture" 換主題會產出空的 teaches，
-    # 而且 JSON-LD 依然合法，所以不會有任何錯誤——這種沉默的失敗最難發現。
-    _ptype = (CFG.get("ui") or {}).get("problemType", "posture")
-    postures = [u["name"] for ch in chapters for u in ch["units"] if u.get("type") == _ptype]
+    # 主題單元的型別由 ui.problemType 決定。這裡原本寫死 fallback "posture"，
+    # 而正上方的註解就寫著「寫死換主題會產出空的 teaches……這種沉默的失敗最難發現」——
+    # 註解說對了，程式沒照做。健身課用 movement、語言課用別的，都會挑到空集合或錯的集合。
+    # 現在沒設定就不猜：teaches 整個不宣告。寧可不宣告，也不要宣告錯的。
+    _ptype = _UI.get("problemType")
+    teaches = [u["name"] for ch in chapters for u in ch["units"] if u.get("type") == _ptype] if _ptype else []
+    if not _ptype:
+        warn("沒有設定 ui.problemType，JSON-LD 不宣告 teaches（設了才知道哪些單元是主題單元）")
+    elif not teaches:
+        warn(f"ui.problemType 是「{_ptype}」，但沒有任何單元是這個型別，teaches 會是空的——多半是打錯字")
 
+    _unit_noun, _drill_noun = UNIT_NOUN, DRILL_NOUN
     syllabus = [
         {
             "@type": "Syllabus",
             "position": i,
             "name": f"{ch['code']} {ch['title']}",
             "description": (
-                f"{len(ch['units'])} 個單元"
+                f"{len(ch['units'])}{_unit_noun and ' ' + _unit_noun}"
                 + (
                     f"：{'、'.join(u['name'] for u in ch['units'])}"
                     if len(ch["units"]) <= 4
                     else ""
                 )
                 + (
-                    f"，附 {sum(len(u.get('drills') or []) for u in ch['units'])} "
-                    f"{(CFG.get('ui') or {}).get('drillNoun', '支跟練影片')}"
+                    f"，附 {sum(len(u.get('drills') or []) for u in ch['units'])} {_drill_noun}".rstrip()
                     if any(u.get("drills") for u in ch["units"])
                     else ""
                 )
@@ -117,7 +134,7 @@ def build_schema(course: dict) -> dict:
                 "url": f"{SITE}/",
                 "name": NAME,
                 "description": DESC,
-                "inLanguage": LOCALE,
+                **LANG,
                 "publisher": {"@id": f"{SITE}/#org"},
             },
             {
@@ -127,14 +144,20 @@ def build_schema(course: dict) -> dict:
                 "name": TITLE,
                 "description": DESC,
                 "image": f"{SITE}/og.png",
-                "inLanguage": LOCALE,
+                **LANG,
                 "isAccessibleForFree": True,
                 "isFamilyFriendly": True,
                 "provider": {"@id": f"{SITE}/#org"},
-                "educationalLevel": "Beginner",
+                # 原本寫死 "Beginner"：不管課程實際難度，每一門課都對搜尋引擎宣稱是入門。
+                # 改成沒設定就不宣告——這是關於課程的事實陳述，猜不得。
+                **(
+                    {"educationalLevel": SITE_CFG["educationalLevel"]}
+                    if SITE_CFG.get("educationalLevel")
+                    else {}
+                ),
                 "learningResourceType": SITE_CFG.get("learningResourceType", []),
                 "timeRequired": iso_duration(meta["duration_seconds"]),
-                "teaches": postures,
+                **({"teaches": teaches} if teaches else {}),
                 "about": [{"@type": "Thing", "name": x} for x in SITE_CFG.get("about", [])],
                 "audience": {
                     "@type": "Audience",
@@ -144,7 +167,7 @@ def build_schema(course: dict) -> dict:
                     "@type": "CourseInstance",
                     "courseMode": "online",
                     "courseWorkload": iso_duration(meta["duration_seconds"]),
-                    "inLanguage": LOCALE,
+                    **LANG,
                     "isAccessibleForFree": True,
                     "location": {"@type": "VirtualLocation", "url": f"{SITE}/"},
                 },
@@ -208,8 +231,7 @@ HEAD_TAGS = """    <link rel="canonical" href="{site}/" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{name}" />
-    <meta property="og:locale" content="{oglocale}" />
-    <meta property="og:url" content="{site}/" />
+{oglocale}    <meta property="og:url" content="{site}/" />
     <meta property="og:title" content="{title}" />
     <meta property="og:description" content="{ogdesc}" />
     <meta property="og:image" content="{site}/og.png" />
@@ -234,7 +256,13 @@ def inject_meta(course: dict) -> None:
         title=TITLE,
         desc=DESC,
         ogdesc=SITE_CFG.get("ogDescription", DESC),
-        oglocale=SITE_CFG.get("ogLocale", "zh_TW"),
+        # 原本預設 "zh_TW"。沒設定就整個標籤不要輸出——社群平台寧可自己猜語言，
+        # 也好過被我們斬釘截鐵地告知一個錯的。
+        oglocale=(
+            f'    <meta property="og:locale" content="{SITE_CFG["ogLocale"]}" />\n'
+            if SITE_CFG.get("ogLocale")
+            else ""
+        ),
     )
     html, n = re.subn(
         r"<!-- seo:start -->.*?<!-- seo:end -->",
@@ -324,15 +352,18 @@ def write_llms(course: dict) -> None:
         f"> {DESC}",
         "",
         fill(llm.get("summary"), meta)
-        + f" 共 {meta['lesson_units']} {_UI.get('unitNoun', '個單元')}"
-        f"（{meta['video_slots']} 個影片欄位、去重後 {meta['video_unique']} 支，"
+        + f" 共 {meta['lesson_units']} {UNIT_NOUN}".rstrip()
+        + f"（{meta['video_slots']} 個影片欄位、去重後 {meta['video_unique']} 支，"
         f"總長 {meta['duration']}）。",
         "",
-        f"## {CFG.get('stance', {}).get('title', '立場')}（重要）",
-        "",
-        fill(llm.get("stanceIntro"), meta),
-        "",
     ]
+    # 標題是課程自己的用語，框架不替它發明一個（原本沒設定就寫死「立場」）
+    stance_title = (CFG.get("stance") or {}).get("title")
+    if course.get("stance") and not stance_title:
+        warn("有立場聲明但沒設定 stance.title，llms.txt 的這一段會沒有標題")
+    if stance_title:
+        lines += [f"## {stance_title}（重要）", ""]
+    lines += [fill(llm.get("stanceIntro"), meta), ""]
     for s in course.get("stance", []):
         lines.append(f"- **{s['name']}**（{s['evidence_grade']}）：{s.get('summary', '')[:180]}…")
     lines += [
@@ -446,20 +477,18 @@ def render_og(course: dict) -> None:
         for g in grades
     )
 
-    source = _UI.get("evidenceSource")
     values = {
-        "locale": LOCALE,
+        # 整個屬性一起給，沒設定 locale 就不要留下 lang=""（更不能是 lang="None"）
+        "htmlLang": f' lang="{LOCALE}"' if LOCALE else "",
         "brandIcon": icon_svg(SITE_CFG.get("brandIcon"), 26),
         "brandName": NAME,
         "title": fill(og.get("title") or (CFG.get("hero") or {}).get("heading") or TITLE, meta),
         "lede": fill(og.get("lede") or SITE_CFG.get("ogDescription") or DESC, meta),
         "stats": stats_html,
-        "evidenceIcon": icon_svg(og.get("evidenceIcon", "microscope"), 20),
-        "evidenceLabel": fill(
-            og.get("evidenceLabel")
-            or (f"全部經 {source} 查證，結果照實寫" if source else ""),
-            meta,
-        ),
+        "evidenceIcon": icon_svg(og.get("evidenceIcon"), 20),
+        # 這句話是課程自己的措辭（連查證來源都不一定是 OpenEvidence），
+        # 沒設定就留白，不要由框架代寫一句中文
+        "evidenceLabel": fill(og.get("evidenceLabel", ""), meta),
         "chips": chips_html,
         "url": og.get("url") or re.sub(r"^https?://|/$", "", SITE),
     }
@@ -476,7 +505,7 @@ def render_og(course: dict) -> None:
     # #11：make og 以前寫進 gitignored 的 dist/，重新 clone 之後 /og.png 就是 404。
     # 現在的正解是輸出到 course/assets/（會進版控，build 時再複製到 dist）。
     if not (COURSE / "assets" / "og.png").exists():
-        print("   ⚠ 找不到 course/assets/og.png，社群卡片會破圖。跑 make og 產一張（會進版控）")
+        warn("找不到 course/assets/og.png，社群卡片會破圖。跑 make og 產一張（會進版控）")
 
 
 def main() -> int:
@@ -487,6 +516,10 @@ def main() -> int:
 
     course = json.loads(course_path.read_text())
     print("SEO 資產：")
+    if not LOCALE:
+        warn("沒有設定 site.locale，JSON-LD 不宣告 inLanguage（猜一個語言比不講更糟）")
+    if not SITE_CFG.get("ogLocale"):
+        warn("沒有設定 site.ogLocale，不輸出 og:locale")
     render_template(course["meta"])
     inject_meta(course)
     inject_schema(build_schema(course))

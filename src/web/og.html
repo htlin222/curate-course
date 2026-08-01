@@ -4,7 +4,7 @@
   seo.py 的 render_og() 會把 {{...}} 換成 course.json 算好的值，寫出 dist/og.html，
   make og 再對那一份截圖。手改這個檔案裡的數字沒有意義，下次 make build 就會被蓋掉。
 -->
-<html lang="{{locale}}">
+<html{{htmlLang}}>
   <head>
     <meta charset="utf-8" />
     <title>OG image</title>
