@@ -1,0 +1,52 @@
+# 每次 push 與 PR 都跑 make check。
+#
+# 這個 repo 的產出是「幾百個外部連結 + 幾百筆文獻引用」，最大的風險是
+# 靜默退化：改了框架但沒人發現某個課程資料再也建不起來。make check 是
+# 離線且確定性的（lint + 單元測試 + 建置配額 + 稽核），適合放進 CI。
+#
+# 連結與 PMID 的真偽驗證不在這裡——那要打外部 API，見 verify.yml。
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 安裝 uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: lint + 單元測試 + 建置 + 稽核
+        run: make check
+
+      # 稽核只回報「有沒有錯誤」，警告數量本身也是訊號——
+      # 讓它出現在 job summary，PR 上直接看得到有沒有變多
+      - name: 把稽核結果寫進 summary
+        if: always()
+        run: |
+          {
+            echo '### make audit'
+            echo '```'
+            make audit 2>&1 | tail -30 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

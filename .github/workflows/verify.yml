@@ -1,0 +1,70 @@
+# 每週重驗所有外部連結與文獻引用。
+#
+# 這個框架的產出是幾百個 YouTube 連結與幾百筆 PMID/DOI。影片會被下架、
+# 改成私人、或整個頻道消失，而**沒有任何人會通知你**——課程就這樣慢慢爛掉。
+# make check 是離線的，抓不到這件事，所以需要一個會打真實 API 的排程。
+#
+# 失敗時開一張 issue（已存在就更新同一張，不要每週洗版）。
+name: verify
+
+on:
+  schedule:
+    - cron: '17 3 * * 1'   # 每週一 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: 重驗連結與引用
+        id: verify
+        run: |
+          set +e
+          make verify 2>&1 | tee /tmp/verify.log
+          echo "code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: 結果寫進 summary
+        if: always()
+        run: |
+          {
+            echo '### make verify'
+            echo '```'
+            tail -40 /tmp/verify.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 有失效就開／更新 issue
+        if: always() && steps.verify.outputs.code != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="連結或引用失效：每週驗證未通過"
+          BODY=$(printf '每週 `make verify` 未通過。以下是最後 40 行輸出：\n\n```\n%s\n```\n\n[執行紀錄](%s/%s/actions/runs/%s)\n\n> 這張 issue 由 verify.yml 自動維護，下次驗證仍失敗會更新同一張，通過後會自動關閉。' \
+            "$(tail -40 /tmp/verify.log)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")
+          EXISTING=$(gh issue list --state open --label link-rot --limit 1 --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "$BODY"
+          else
+            gh label create link-rot --description "自動偵測到的失效連結或引用" --color B60205 2>/dev/null || true
+            gh issue create --title "$TITLE" --label link-rot --body "$BODY"
+          fi
+
+      - name: 全部通過就關掉舊的 issue
+        if: always() && steps.verify.outputs.code == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for n in $(gh issue list --state open --label link-rot --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "本週 \`make verify\` 全數通過，自動關閉。"
+          done
