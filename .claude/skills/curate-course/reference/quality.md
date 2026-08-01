@@ -21,6 +21,7 @@
 | 結構 | 各章配額、單元 id 唯一、`kind`/`type` 是否已定義、同單元項目重名、每單元項目數是否失衡、`evidenceAlias` 指向幽靈單元 |
 | 影片 | 中繼資料覆蓋率、不可用狀態、URL 格式、同單元重複、跨單元共用過多、**長度是否落在設定的區間**、宣稱長度與實際的誤差、觀看數低標、留空的格子有沒有寫 `note` |
 | 內容深度 | 指定型別的單元有沒有可操作的 `assessment`、主課有沒有 `why`、`evidence_grade` 是否合法、PMID 格式、每個類別的文獻篇數 |
+| 文案風格 | **AI 寫作痕跡**（只警告）：否定式排比、宣傳性最高級、模糊歸因、填充連接詞、三個以上並排的粗體，以及破折號的**密度**。同時掃設定檔文案與資料檔散文（`summary`／`assessment`／`why`／`note`）。只在 `site.locale` 為 `zh-*` 時啟用，改法見 `writing.md` |
 
 ## 門檻寫在哪
 
@@ -40,7 +41,8 @@
   "requireAssessment": ["posture"],              // 這些 unitType 必須寫自我評估
   "minAssessmentChars": 80,
   "minCitations": 2,           // 每個文獻類別至少幾篇
-  "allowMissingUrls": 4        // 容許幾個「誠實留空且有 note」的格子
+  "allowMissingUrls": 4,       // 容許幾個「誠實留空且有 note」的格子
+  "copyStyle": { "maxDashRatio": 0.05 }         // 容許幾成文案欄位用破折號
 }
 ```
 

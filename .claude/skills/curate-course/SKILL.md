@@ -57,6 +57,7 @@ COURSE=courses/guitar make build audit serve   # 之後每次
 
 **2. 寫設定檔**——`$COURSE/course.config.json` 決定站台的一切，程式裡不寫死任何文案。
 → 欄位、schema、圖示、tone、詞彙模組：**`reference/config.md`**
+→ 文案的語域與 AI 寫作痕跡（`make audit` 會列警告）：**`reference/writing.md`**
 
 **3. 策展影片**（最耗時，一定要並行）——一次一章，派獨立輸出路徑的 subagent。
 用 `yt-dlp --flat-playlist` 搜尋，一次就拿到 id／秒數／觀看數／頻道／標題，
@@ -110,6 +111,8 @@ make deploy    # 部署到 Cloudflare Pages
 - [ ] `og.png` 已更新成新主題
 - [ ] `discussions` 指向**這門課自己的 repo**，且 giscus API 回的是
       `Discussion not found` 而不是 `giscus is not installed`
+- [ ] 文案讀過一遍，沒有 AI 寫作痕跡也沒有語域不一致（見 `reference/writing.md`；
+      `make audit` 只抓得到最明顯的幾類，三段式與金句要自己讀）
 - [ ] `LICENSE` 的著作權人、`docs/plans/` 的設計文件都換成這門課自己的
 - [ ] 品牌圖示、篩選籤、項目名詞都跟著設定檔走，沒有留下上一個主題的字樣
       （見 `reference/quality.md` 的「換主題時最容易漏掉的」）
