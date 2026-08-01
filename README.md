@@ -159,6 +159,7 @@ Skill 本身採漸進揭露，主檔只有流程骨架，細節按需載入：
   reference/curating.md yt-dlp 搜尋與中繼資料、oEmbed 驗證、資料格式、多語言
   reference/evidence.md 單元／類別兩層實證、PubMed E-utilities 用法
   reference/quality.md  audit 與 verify 的分工、門檻怎麼調、踩過的坑
+  reference/writing.md  文案的語域、AI 寫作痕跡與怎麼改
 ```
 
 裡頭寫死了幾條不可退讓的規則，最重要的是：**video ID 必須取自實際搜尋結果，
