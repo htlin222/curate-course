@@ -875,6 +875,19 @@
           "minimum": 0,
           "description": "單一類別佔已分類項目的比例上限（0–1），超過只會警告：通常代表 patterns 用到了會出現在 target 欄位的詞"
         },
+        "copyStyle": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "文案的 AI 寫作痕跡檢查（只警告，且只在 site.locale 為 zh-* 時啟用）",
+          "properties": {
+            "maxDashRatio": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "容許幾成的文案欄位用破折號。中文破折號有正當用法，量的是密度而不是單一實例——超過才報一則聚合警告。預設 0.05"
+            }
+          }
+        },
         "ignoreDataFiles": {
           "type": "array",
           "description": "course/data/ 底下刻意不給建置讀的檔名；其餘讀不到的資料檔一律報錯",

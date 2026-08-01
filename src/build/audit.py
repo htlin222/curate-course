@@ -379,6 +379,79 @@ COPY_TOKENS = ("units", "lessonUnits", "drillUnits", "slots", "videos", "problem
 # 從舊版本升級上來的設定檔會靜靜地把 <strong> 印在畫面上，所以要主動抓。
 TAG = re.compile(r"</?[a-zA-Z][a-zA-Z0-9]*\s*/?>")
 
+# ── AI 寫作痕跡 ──────────────────────────────────────────────────────────
+#
+# 這份表跟這一節其他檢查不同：其他幾條問「會不會壞」，這一條問「讀起來像不像
+# 人寫的」。文案是課程唯一直接對使用者說話的地方，而 LLM 寫出來的中文有一組
+# 很固定的痕跡——三段式、否定式排比、揭示前的破折號、沒有出處的「專家認為」。
+# 它們不會讓 build 掛掉，網站看起來也完全正常，只是聽起來像機器。
+#
+# 一律只警告，不擋交付。風格要判斷力，而稽核沒有判斷力：「三類」在這門課裡
+# 是真的有三種動作類型，不是為了湊三段式。命中之後自己讀一遍再決定。
+#
+# 樣式來自 Wikipedia:Signs of AI writing（WikiProject AI Cleanup 整理），
+# 中文對照取自 kevintsai1202/Humanizer-zh-TW。只收誤判率低、而且改法明確的；
+# 需要讀懂整段語意才判斷得出來的（虛假範圍、同義詞循環）留給人看。
+SLOP = [
+    (
+        "否定式排比",
+        re.compile(r"(?:不只|不僅|不光|不單)(?:是)?[^。！？]{0,25}(?:而是|而且|還是)"
+                   r"|不是[^。！？]{0,25}而是"),
+        "直接講你要講的那一半。「不是 A 而是 B」多半只需要 B",
+    ),
+    (
+        "膚淺的意義昇華",
+        re.compile(r"彰顯了?|凸顯了?|體現了?|標誌著|見證了|奠定了?[^。]{0,6}基礎"
+                   r"|反映了更廣泛|為[^。]{0,10}做出貢獻|不斷演進|持續演進"),
+        "刪掉這句，或換成一個具體事實",
+    ),
+    (
+        "宣傳性語言",
+        re.compile(r"最大的|最好的|最重要的|最佳|首屈一指|獨一無二|令人讚嘆|嘆為觀止"
+                   r"|充滿活力|坐落[於在]|必[遊看]|開創性|革命性|前所未有"),
+        "拿掉最高級。要主張比別人好，得給得出比較的依據",
+    ),
+    (
+        "模糊歸因",
+        re.compile(r"專家(?:認為|指出|表示)|業界報告|研究表明|眾所周知|一般認為"
+                   r"|普遍認為|許多人認為"),
+        "指名道姓：哪一篇、哪一年、連結在哪。這門課有 PMID，用它",
+    ),
+    (
+        "填充連接詞",
+        re.compile(r"此外[，,]|值得注意的是|總而言之|綜上所述|簡言之|換句話說"
+                   r"|深入探討|至關重要|在這個時間點|為了實現這一目標"),
+        "刪掉即可，句子的意思不會少",
+    ),
+    (
+        "通用積極結論",
+        re.compile(r"未來可期|值得期待|邁出了?[^。]{0,6}重要的?一步|開啟[^。]{0,6}新篇章"
+                   r"|前景[光廣]明"),
+        "換成一件具體會發生的事，或整句刪掉",
+    ),
+    (
+        "過度限定",
+        re.compile(r"可能潛在|或許可能|某種程度上可以說|在一定程度上可能|似乎有可能"),
+        "留一個限定詞就好",
+    ),
+    (
+        "對話殘留",
+        re.compile(r"希望這對[你您]有幫助|好問題|當然！|如有需要請告訴我"),
+        "這是聊天視窗裡的話，不是課程文案",
+    ),
+]
+
+BOLD = re.compile(r"\*\*.+?\*\*")
+
+# 破折號單獨處理，不放進 SLOP。
+#
+# 中文破折號有正當用法（補充說明、話題轉換），逐處報警會產生幾十行「這處其實
+# 沒問題」，而一個天天喊狼來了的檢查等於沒有檢查。Humanizer 原文抱怨的也是
+# **頻率**——「LLM 使用破折號比人類更頻繁」——所以這裡量的是密度，不是實例。
+# 超過門檻才報一則，附幾個例子讓人抽查。門檻走 audit.copyStyle.maxDashRatio。
+DASH = re.compile("——")
+DASH_RATIO = 0.05
+
 
 def copy_strings(cfg: dict):
     """yield (dotted path, 字串)：設定檔裡所有會變成畫面文案的字串。"""
@@ -471,6 +544,91 @@ def audit_copy(cfg: dict, rep: Report) -> None:
         )
     else:
         rep.ok(sec, "文案欄位都沒有 HTML 標籤（一律逸出 + **粗體**）")
+
+
+def prose_strings(units: list[dict]):
+    """(path, 字串)：資料檔裡由人（或策展 agent）寫的散文。
+
+    `units` 是 walk() 的回傳值，形狀是 [{code, unit}]，不是裸的單元。
+
+    只收散文。`title` / `channel` 是照抄 YouTube 的事實，`name` / `en` /
+    `target` / `dose` 是課程術語——那些欄位改一個字就是錯的，不該進風格檢查。
+    """
+    out: list[tuple[str, str]] = []
+    for row in units:
+        u = row.get("unit") if isinstance(row, dict) and "unit" in row else row
+        if not isinstance(u, dict):
+            continue
+        uid = u.get("id") or "?"
+        for key in ("summary", "assessment"):
+            if v := u.get(key):
+                out.append((f"{uid}.{key}", v))
+        lesson = u.get("lesson") or {}
+        for key in ("why", "note"):
+            if v := lesson.get(key):
+                out.append((f"{uid}.lesson.{key}", v))
+        for d in u.get("drills") or []:
+            if v := (d or {}).get("note"):
+                out.append((f"{uid}.drills[{(d or {}).get('name') or '?'}].note", v))
+    return out
+
+
+def audit_copy_style(cfg: dict, units: list[dict], rep: Report) -> None:
+    """AI 寫作痕跡。只警告，見 SLOP 上方的說明。
+
+    同時掃兩處：設定檔的文案欄位（slogan、立場、頁尾）與資料檔的散文
+    （`assessment`、`lesson.why`、留空的 `note`）。後者是策展 agent 寫的，
+    量比前者大得多，而且沒有任何人會逐條讀完——正是最需要機器先看一眼的地方。
+
+    只在中文語系跑：詞表是中文的，套到別的語系一個字都不會命中，卻會讓人
+    以為「檢查過了」——沉默的通過跟沉默的失敗一樣貴。
+    """
+    sec = "文案"
+    locale = str((cfg.get("site") or {}).get("locale") or "")
+    if not locale.lower().startswith("zh"):
+        rep.ok(sec, f"文案風格檢查不適用於 {locale or '未宣告的語系'}（詞表是中文的）")
+        return
+
+    hits: list[str] = []
+    dashed: list[str] = []
+    scanned = 0
+    for path, val in [*copy_strings(cfg), *prose_strings(units)]:
+        # 短欄位是按鈕與標籤，塞不下這些寫法，掃了只會製造雜訊
+        if len(val) < 8:
+            continue
+        scanned += 1
+        for label, pattern, fix in SLOP:
+            if m := pattern.search(val):
+                start = max(0, m.start() - 12)
+                hits.append(f"{path}：{label} →「…{val[start:m.end() + 12]}…」／{fix}")
+        if m := DASH.search(val):
+            dashed.append(f"{path}：「…{val[max(0, m.start() - 14):m.end() + 14]}…」")
+        # 三個以上粗體並排：粗體用來標記重點，三個就沒有重點了。
+        # 這同時是「三段式法則」最好抓的形態——LLM 很愛把想法湊成三組再各自加粗。
+        if len(BOLD.findall(val)) >= 3:
+            hits.append(f"{path}：連續 {len(BOLD.findall(val))} 個 **粗體**"
+                        "／留一個真正的重點，其餘寫成白話")
+
+    limit = float(((cfg.get("audit") or {}).get("copyStyle") or {}).get("maxDashRatio", DASH_RATIO))
+    ratio = len(dashed) / scanned if scanned else 0.0
+    if dashed and ratio > limit:
+        rep.warn(
+            sec,
+            f"{len(dashed)} 個欄位用了破折號（占 {ratio:.0%}，門檻 {limit:.0%}）"
+            "。中文破折號有正當用法，但這個密度是 AI 文本的特徵——抽查幾處，"
+            "用在「揭示前製造停頓」的改成句號",
+            dashed[:6],
+        )
+
+    if hits:
+        rep.warn(
+            sec,
+            f"{len(hits)} 處文案有 AI 寫作痕跡（風格問題，逐條看過再決定；"
+            "改法見 skill 的 reference/writing.md）",
+            hits[:12],
+        )
+    else:
+        rep.ok(sec, "設定檔文案與單元散文都沒有常見的 AI 寫作痕跡")
 
 
 def audit_framework_version(cfg: dict, rep: Report) -> None:
@@ -1275,6 +1433,8 @@ def main() -> int:
     audit_identity(cfg, rep)
     audit_data_files(cfg, opts, rep)
     units = walk(cfg, rep)
+    # 排在 walk 之後：這一條要同時看設定檔的文案與資料檔的散文
+    audit_copy_style(cfg, units, rep)
     audit_structure(cfg, units, opts, rep)
     audit_taxonomy(cfg, units, opts, rep)
     audit_videos(cfg, units, opts, rep)
