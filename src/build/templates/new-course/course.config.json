@@ -1,0 +1,47 @@
+{
+  "$schema": "../../src/build/course.schema.json",
+  "site": {
+    "project": "__PROJECT__",
+    "name": "__NAME__",
+    "url": "https://__PROJECT__.pages.dev",
+    "title": "__NAME__",
+    "description": "一門還沒有內容的課。把這句話換成一句話講清楚這門課在教什麼。",
+    "brandIcon": "book-open"
+  },
+  "hero": {
+    "eyebrow": "課程骨架",
+    "heading": "__NAME__",
+    "lede": "目前有 {units} 個單元。內容還沒開始策展。"
+  },
+  "ui": {
+    "stats": [
+      { "icon": "layers", "field": "units", "label": "單元" },
+      { "icon": "clock", "field": "duration", "label": "總長度" }
+    ],
+    "tabs": {
+      "landing": "首頁",
+      "course": "課程",
+      "stance": "立場",
+      "player": "上課"
+    },
+    "searchPlaceholder": "搜尋單元",
+    "playlistSearch": "搜尋播放清單",
+    "progressLabel": "學習進度",
+    "facetLabel": "分面篩選"
+  },
+  "kinds": [{ "id": "basic", "label": "基本", "tone": "neutral" }],
+  "chapters": [
+    {
+      "code": "CH1",
+      "title": "第一章",
+      "icon": "book-open",
+      "source": "ch1",
+      "units": 0,
+      "drills": 0
+    }
+  ],
+  "footer": {
+    "disclaimer": "這是用 curate-course 建立的課程骨架，內容尚未策展。",
+    "credits": "影片版權屬於各自的 YouTube 頻道。"
+  }
+}

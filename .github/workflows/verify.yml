@@ -20,12 +20,23 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        # 只驗真的有外部連結的課。骨架課沒有影片也沒有引用，排進來只是浪費配額。
+        course: [examples/body]
+    env:
+      COURSE: ${{ matrix.course }}
     steps:
       - uses: actions/checkout@v4
 
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
+
+      # verify_links.py 讀的是 dist/<課程名>/course.json，不先 build 就沒有東西可驗
+      - name: 先建置
+        run: make build
 
       - name: 重驗連結與引用
         id: verify

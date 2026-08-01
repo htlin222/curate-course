@@ -1,6 +1,6 @@
 # 設定檔
 
-`course/course.config.json` 決定站台的一切。程式裡沒有一個字是寫死的——分頁名稱、篩選標籤、
+`$COURSE/course.config.json` 決定站台的一切。程式裡沒有一個字是寫死的——分頁名稱、篩選標籤、
 統計欄位、證據分級的顯示文字，全部從這裡讀。
 
 ## 關鍵欄位
@@ -140,12 +140,18 @@
 
 ## 圖示
 
-名稱去 <https://lucide.dev/icons/> 查，把用到的加進 `src/build/build_icons.py` 的 `ICONS`
-再跑 `make icons`。網站不吃任何外部請求，圖示在建置時就打包成內嵌 sprite——
+名稱去 <https://lucide.dev/icons/> 查，**直接寫進設定檔就好**，然後跑 `make icons`。
+要打包哪些圖示是從設定檔推導出來的（任何叫 `icon` 或 `xxxIcon` 的欄位），
+不必去編輯框架的任何檔案。網站不吃任何外部請求，圖示在建置時就打包成內嵌 sprite——
 **沒打包的圖示線上會是空白**，`make audit` 會先抓到。
 
 config 裡會用到圖示的地方：`site.brandIcon`、`chapters[].icon`、`ui.stats[].icon`、
-`landing.steps[].icon`。
+`landing.steps[].icon`。設定檔以外的地方（`$COURSE/assets/` 裡的自訂樣板）也想用圖示時，
+用頂層的 `icons` 陣列當逃生門。
+
+sprite 分兩份：`src/web/js/icons.js` 只裝框架介面自己用的圖示，內容與課程無關；
+這門課的圖示產在 `$COURSE/assets/js/icons.js`，建置時覆蓋掉框架那一份。
+所以兩門課並存時，`make icons` 不會把另一門課的圖示洗掉。
 
 ## tone
 
@@ -155,7 +161,7 @@ config 裡會用到圖示的地方：`site.brandIcon`、`chapters[].icon`、`ui.
 
 ## 詞彙模組（選用）
 
-`course/taxonomy/` 放兩個可選模組，在 config 的 `taxonomy` 指定 import 路徑：
+`$COURSE/taxonomy/` 放兩個可選模組，在 config 的 `taxonomy` 指定 import 路徑：
 
 - **`facets`**——提供 `extract(*texts) -> [str]`、`GROUPS`、`GROUP_OF`。
   用來做側欄的分面篩選。體態課是肌群；烹飪課可能是食材或技法；程式課可能是語言特性。

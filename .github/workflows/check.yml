@@ -1,8 +1,20 @@
-# 每次 push 與 PR 都跑 make check。
+# 每次 push 與 PR 都對**每一門課**跑 make check。
 #
 # 這個 repo 的產出是「幾百個外部連結 + 幾百筆文獻引用」，最大的風險是
 # 靜默退化：改了框架但沒人發現某個課程資料再也建不起來。make check 是
 # 離線且確定性的（lint + 單元測試 + 建置配額 + 稽核），適合放進 CI。
+#
+# 為什麼是 matrix 而不是一門課：
+#
+# README 與 SKILL.md 都寫「換主題只要改課程目錄」，但只要 CI 裡只有一門課，
+# 這句話就只能靠人自律——框架被主題污染時不會有任何東西失敗（issue #22）。
+# 兩門課同時建置，主題洩漏才會被自動抓到：
+#
+#   examples/body  現成的體態課，內容完整，證明框架演進不會弄壞既有課程
+#   骨架課         由 make new-course 當場產生，證明「零單元的新課建得起來」，
+#                  而且不必先抄一份 examples/body 才有東西可跑
+#
+# 兩門課的 DIST 各自獨立（dist/<課程名>），互相覆蓋產物的話這個 matrix 就白做了。
 #
 # 連結與 PMID 的真偽驗證不在這裡——那要打外部 API，見 verify.yml。
 name: check
@@ -24,6 +36,18 @@ jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    strategy:
+      # 一門課掛掉不要中斷另一門：兩份報告一起看才知道是框架壞了還是資料壞了
+      fail-fast: false
+      matrix:
+        include:
+          - name: examples/body
+            course: examples/body
+            scaffold: ''
+          - name: new-course 骨架
+            course: courses/ci-skeleton
+            scaffold: ci-skeleton
+    name: check（${{ matrix.name }}）
     steps:
       - uses: actions/checkout@v4
 
@@ -36,17 +60,48 @@ jobs:
         with:
           enable-cache: true
 
+      # 骨架是當場產生的，不進版控：範本壞掉的話這一步就會失敗，
+      # 而不是等到某個使用者照著 README 跑 make new-course 才發現。
+      - name: 產生課程骨架
+        if: matrix.scaffold != ''
+        run: make new-course NAME=${{ matrix.scaffold }}
+
       - name: lint + 單元測試 + 建置 + 稽核
+        env:
+          COURSE: ${{ matrix.course }}
         run: make check
 
       # 稽核只回報「有沒有錯誤」，警告數量本身也是訊號——
       # 讓它出現在 job summary，PR 上直接看得到有沒有變多
       - name: 把稽核結果寫進 summary
         if: always()
+        env:
+          COURSE: ${{ matrix.course }}
         run: |
           {
-            echo '### make audit'
+            echo '### make audit — ${{ matrix.name }}'
             echo '```'
             make audit 2>&1 | tail -30 || true
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+  # matrix 保證每一門課自己建得起來，這一關保證「框架沒有偷偷認識某一門課」。
+  # 分開一個 job 是因為它跟課程無關：它掃的是 src/，跑一次就夠。
+  decoupling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    name: 框架與主題脫鉤
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 課程清單
+        run: python3 src/build/coursepath.py --list
+
+      # 不設 COURSE：這些測試掃的是 src/ 與所有 examples/，
+      # 不需要（也不應該）綁在某一門課上。
+      - name: src/ 不得夾帶任何課程的專屬字串
+        run: node --test tests/decoupling.test.js

@@ -36,23 +36,45 @@ OpenEvidence 查證，其中 9 個被判為 `contested`——結果照實寫進�
 git clone https://github.com/<you>/curate-course.git
 cd curate-course
 
-make build     # course/ → dist/
+make build     # examples/body/ → dist/body/
 make serve     # http://localhost:8899
 ```
 
-看到的是範例的體態課。接著換成你的主題。
+看到的是範例的體態課。接著開一門你自己的。
 
 ---
 
 ## 換成你的主題
 
-**你只需要動 `course/`**，其他都是框架。
+框架本身**不內含任何一門課**。課程住在自己的目錄裡，`COURSE` 指定是哪一門：
+
+```bash
+make new-course NAME=guitar          # → courses/guitar/，產出即可建置
+COURSE=courses/guitar make build     # → dist/guitar/
+COURSE=courses/guitar make serve
+```
+
+剛產生的骨架是一門零單元的課，但它**現在就建得起來**——先看到站台跑起來，
+再往裡面填內容，而不是先猜哪些欄位是必填的。
 
 ```
-course/
+courses/guitar/
 ├── course.config.json   站台設定、章節、配額、所有 UI 文案
 ├── data/                策展資料（影片、實證、中繼資料）
+├── assets/              favicon、og.png、這門課自己的圖示 sprite
 └── taxonomy/            選用：主題專屬的詞彙模組
+```
+
+**你只需要動這個目錄**，其他都是框架。這不再只是一句承諾：CI 同時建置
+`examples/body` 與一門當場產生的骨架課，還有一顆測試會掃 `src/` 底下有沒有
+出現任何範例課的專屬字串——框架被主題污染時，CI 會紅。
+
+`COURSE` 沒設而 repo 裡剛好只有一門課時會自動選它；有兩門以上就直接報錯，
+要你講清楚是哪一門。猜錯的代價是把 A 課的資料建成 B 課的站台，而且不會有
+任何錯誤訊息。`DIST` 預設是 `dist/<課程名>`，所以多門課並存不會互相覆蓋產物。
+
+```bash
+make courses                         # 列出 repo 裡所有課程，以及現在會建哪一門
 ```
 
 ### 1. 設定
@@ -77,7 +99,7 @@ course/
 
 ### 2. 資料
 
-`course/data/<source>.json`，一章一檔：
+`<課程目錄>/data/<source>.json`，一章一檔：
 
 ```jsonc
 {
@@ -152,7 +174,9 @@ oEmbed 算數。
 ## 指令
 
 ```
-make build     course/ → dist/，含配額驗證與 SEO 產出
+make new-course NAME=x   產生一門新課的骨架（→ courses/x/），產出即可 make build
+make courses   列出 repo 裡所有課程，以及現在會建哪一門
+make build     <課程>/ → dist/<課程名>/，含配額驗證與 SEO 產出
 make audit     離線稽核設定檔、配額、影片長度與實證深度（不打網路，可放 CI）
 make test      前端純邏輯的單元測試（node:test，零依賴、不需要瀏覽器）
 make e2e       paywall 端對端流程並截圖（Playwright，需要 Chrome）
@@ -165,7 +189,12 @@ make check     lint + test + build + audit，提交前跑這個
 make deploy    部署到 Cloudflare Pages
 ```
 
-多課程並存：`COURSE=courses/guitar DIST=dist-guitar make build`
+每個指令都吃 `COURSE`（不設而只有一門課時會自動選它）：
+
+```bash
+COURSE=courses/guitar make check
+COURSE=examples/body  make check
+```
 
 ---
 
@@ -208,9 +237,12 @@ robots、`llms.txt`。文案在建置時就注入 HTML，不等 JS 執行，首�
 ```
 src/
   build/
+    coursepath.py     解析 COURSE／DIST，所有進入點的唯一真相來源
+    new_course.py     make new-course 的骨架產生器
+    templates/        骨架範本
     build.py          合併、配額驗證、中繼資料套用
     seo.py            JSON-LD / sitemap / robots / llms.txt / 模板注入
-    build_icons.py    Lucide sprite 打包
+    build_icons.py    Lucide sprite 打包（框架一份、每門課各一份）
     audit.py          離線品質稽核（設定檔／配額／長度／實證）
     course.schema.json  設定檔結構，編輯器自動完成 + 稽核擋拼字
     verify_links.py   YouTube oEmbed 驗證
@@ -222,20 +254,30 @@ src/
 tests/
   paywall-core.test.js  單元測試（零依賴）
   e2e-paywall.cjs       Playwright 端對端 + 截圖
+  decoupling.test.js    框架與主題脫鉤（src/ 不得夾帶課程專屬字串）
 docs/PAYWALL.md       paywall 設計與接真金流的待辦
-course/               ← 你的課程
-dist/                 ← 建置產物（gitignored）
+examples/body/        ← 隨框架附的範例課
+courses/<你的課>/      ← 你的課程（make new-course 產生）
+dist/<課程名>/         ← 建置產物（gitignored，每門課各自獨立）
 ```
 
-框架不 import 任何主題詞彙。`course/taxonomy/` 是可插拔的：
+框架不 import 任何主題詞彙。`<課程>/taxonomy/` 是可插拔的：
 提供 `extract()` 就有分面篩選，提供 `classify()` 就能把引用掛在類別上，
 兩個都不給也能跑。
+
+`examples/` 與 `courses/` 底下的課程結構完全相同——範例課沒有任何特權，
+框架也不為它留任何例外，這是「框架真的與主題無關」唯一站得住腳的證明方式。
+
+**圖示 sprite 也是每門課一份**：`src/web/js/icons.js` 只裝框架介面自己用的圖示，
+內容與課程無關；課程的章節圖示產在 `<課程>/assets/js/icons.js`，建置時覆蓋掉
+框架那一份。以前只有一份全域 sprite，兩門課並存時後跑 `make icons` 的那門會把
+前一門的圖示洗掉，而且不會報錯——只有打開網站才看得到一排空白方塊。
 
 ---
 
 ## 範例課程：體態矯正
 
-`course/` 現成的內容。做它的過程順便驗證了框架的每個環節：
+`examples/body/` 的內容。做它的過程順便驗證了框架的每個環節：
 
 | | |
 |---|---|

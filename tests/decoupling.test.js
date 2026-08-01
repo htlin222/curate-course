@@ -7,11 +7,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 import { THEME_KEY, STATE_KEYS, prefixOf, keysFor, migrateLegacy } from "../src/web/js/store.js";
+import { ROOT, repo, courseDirs, readJSON } from "./_paths.js";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = path.join(ROOT, "src", "web");
 
 const read = (rel) => fs.readFileSync(path.join(ROOT, rel), "utf8");
@@ -187,6 +186,140 @@ test("#26 首屏寫死的預設值都有對應的設定檔覆寫路徑", () => {
   assert.match(app, /ui\?\.facetIcon/);
 });
 
+/* --- #22：框架不得夾帶任何一門範例課的專屬字串 ---------------------------- */
+
+/**
+ * 去掉註解。這個 repo 的註解大量引用「當初錯在哪」——包括舊主題的字樣——
+ * 那是資產不是洩漏，掃進來只會逼人把最有價值的說明刪掉。
+ *
+ * 不是完整的 parser：只要能分辨「字串裡」與「字串外」就夠了，
+ * 因為漏判的後果只是少擋一次，不是誤擋。
+ */
+function stripComments(text, ext) {
+  if (ext === ".json") return text;
+  if (ext === ".html") return text.replaceAll(/<!--[\s\S]*?-->/g, " ");
+
+  const hash = ext === ".py";
+  let out = "";
+  let quote = null;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    // Python 的三引號在這個 repo 就是註解：docstring 大量記錄「當初錯在哪」，
+    // 那些說明必須能自由引用舊主題的字樣。
+    if (!quote && hash && (text.startsWith('"""', i) || text.startsWith("'''", i))) {
+      const mark = text.slice(i, i + 3);
+      const end = text.indexOf(mark, i + 3);
+      i = end === -1 ? text.length : end + 2;
+      out += " ";
+      continue;
+    }
+    if (quote) {
+      if (c === "\\") {
+        i++;
+        continue;
+      }
+      if (c === quote) quote = null;
+      out += c;
+      continue;
+    }
+    if (c === '"' || c === "'" || (!hash && c === "`")) {
+      quote = c;
+      out += c;
+      continue;
+    }
+    if (hash && c === "#") {
+      while (i < text.length && text[i] !== "\n") i++;
+      out += "\n";
+      continue;
+    }
+    if (!hash && c === "/" && text[i + 1] === "/") {
+      while (i < text.length && text[i] !== "\n") i++;
+      out += "\n";
+      continue;
+    }
+    if (!hash && c === "/" && text[i + 1] === "*") {
+      const end = text.indexOf("*/", i + 2);
+      i = end === -1 ? text.length : end + 1;
+      out += " ";
+      continue;
+    }
+    out += c;
+  }
+  return out;
+}
+
+/** src/ 底下所有檔案（框架的全部：前端、建置腳本、schema、範本）。 */
+function frameworkFiles() {
+  const out = [];
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        if (entry.name === "__pycache__") continue;
+        walk(full);
+      } else if (entry.isFile() && !/\.(png|jpg|jpeg|gif|webp|ico|woff2?)$/i.test(entry.name)) {
+        out.push(full);
+      }
+    }
+  };
+  walk(repo("src"));
+  return out;
+}
+
+/**
+ * 一門課的「專屬字串」：出現在框架裡就代表框架認識了這個主題。
+ *
+ * 刻意從設定檔**推導**而不是手列一份詞表——手列的清單只認得體態課，
+ * 換成吉他課或統計課之後它就永遠是綠燈，等於沒有這顆測試。
+ */
+function courseTokens(config) {
+  const tokens = new Map(); // token -> 它是設定檔的哪一個欄位
+  const add = (label, value) => {
+    if (typeof value === "string" && value.trim().length >= 2) tokens.set(value.trim(), label);
+  };
+
+  add("site.project", config.site?.project);
+  add("site.name", config.site?.name);
+  add("site.title", config.site?.title);
+  add("hero.heading", config.hero?.heading);
+  // 主題名詞：換主題時這幾個一定會變，寫進框架就是把主題釘死在框架上
+  add("ui.problemType", config.ui?.problemType);
+  add("ui.facetPrefix", config.ui?.facetPrefix);
+  add("ui.categoryNoun", config.ui?.categoryNoun);
+  for (const [key, mod] of Object.entries(config.taxonomy || {})) add(`taxonomy.${key}`, mod);
+  (config.chapters || []).forEach((ch, i) => add(`chapters[${i}].title`, ch.title));
+  return tokens;
+}
+
+test("#22 src/ 底下沒有任何範例課的專屬字串（框架不准認識任何主題）", () => {
+  const courses = courseDirs(["examples"]);
+  assert.ok(courses.length > 0, "examples/ 底下至少要有一門範例課，測試才有意義");
+
+  const files = frameworkFiles().map((f) => [
+    path.relative(ROOT, f),
+    stripComments(fs.readFileSync(f, "utf8"), path.extname(f)),
+  ]);
+  const hits = [];
+
+  for (const dir of courses) {
+    const rel = path.relative(ROOT, dir);
+    const tokens = courseTokens(readJSON(path.join(dir, "course.config.json")));
+    for (const [token, field] of tokens) {
+      for (const [file, text] of files) {
+        if (text.includes(token)) hits.push(`${file} 出現「${token}」（${rel} 的 ${field}）`);
+      }
+    }
+  }
+
+  assert.deepEqual(
+    hits,
+    [],
+    "範例課是 examples/ 底下的資料，不是框架的一部分。\n" +
+      "框架裡出現它的字串，代表「換主題只改課程目錄」這個不變式已經破了：\n" +
+      hits.join("\n"),
+  );
+});
+
 /* --- #38：新增章節圖示不必改框架檔案 -------------------------------------- */
 
 /** build_icons.py 模組層級的 FRAMEWORK_ICONS。 */
@@ -232,28 +365,86 @@ test("#38 FRAMEWORK_ICONS 裡沒有課程專屬的圖示", () => {
   );
 });
 
-test("#38 課程設定檔裡的圖示不必列進框架清單就會被打包", () => {
-  const config = JSON.parse(read("course/course.config.json"));
-  const framework = new Set(frameworkIcons());
-  const sprite = new Set(
-    JSON.parse(read("src/web/js/icons.js").match(/ICON_NAMES = (\[.*?\]);/s)[1]),
-  );
-
-  const fromConfig = new Set();
+/** 設定檔裡所有 icon／xxxIcon 欄位的值。 */
+function configIcons(config) {
+  const found = new Set();
   const walk = (node) => {
     if (Array.isArray(node)) return node.forEach(walk);
     if (node && typeof node === "object") {
       for (const [k, v] of Object.entries(node)) {
-        if (typeof v === "string" && (k === "icon" || k.endsWith("Icon"))) fromConfig.add(v);
+        if (typeof v === "string" && (k === "icon" || k.endsWith("Icon"))) found.add(v);
         else walk(v);
       }
     }
   };
   walk(config);
+  for (const name of config.icons || []) found.add(name);
+  return found;
+}
 
-  const courseOnly = [...fromConfig].filter((n) => !framework.has(n));
-  assert.ok(courseOnly.length > 0, "這門課應該有自己的章節圖示，測試才有意義");
-  for (const name of courseOnly) {
-    assert.ok(sprite.has(name), `${name} 只寫在 course.config.json 裡，卻沒有被打包進 sprite`);
+/** 一份 icons.js 打包了哪些圖示。檔案不存在回 null。 */
+function spriteNames(file) {
+  if (!fs.existsSync(file)) return null;
+  const m = fs.readFileSync(file, "utf8").match(/ICON_NAMES = (\[.*?\]);/s);
+  return m ? new Set(JSON.parse(m[1])) : null;
+}
+
+/**
+ * 這門課線上實際會拿到的 sprite。
+ *
+ * build.py 的 sync_web() 先複製 src/web、再讓 $COURSE/assets/ 覆蓋同名檔，
+ * 所以課程有自己的 icons.js 時，dist 拿到的是課程那一份（整檔取代，不是合併）。
+ */
+function effectiveSprite(courseDir) {
+  return (
+    spriteNames(path.join(courseDir, "assets", "js", "icons.js")) ??
+    spriteNames(repo("src", "web", "js", "icons.js"))
+  );
+}
+
+test("#38 每一門課的圖示都被打包進「它自己會拿到的」那份 sprite", () => {
+  const courses = courseDirs();
+  assert.ok(courses.length > 0, "repo 裡至少要有一門課，測試才有意義");
+
+  for (const dir of courses) {
+    const rel = path.relative(ROOT, dir);
+    const sprite = effectiveSprite(dir);
+    assert.ok(sprite, `${rel} 找不到任何 sprite`);
+    for (const name of configIcons(readJSON(path.join(dir, "course.config.json")))) {
+      assert.ok(
+        sprite.has(name),
+        `${rel}：${name} 只寫在 course.config.json 裡，卻沒有被打包（線上會是空白方塊）\n` +
+          `  跑 COURSE=${rel} make icons`,
+      );
+    }
+  }
+});
+
+/* --- #22：框架的 sprite 是全域的，所以它不准裝任何一門課的圖示 ------------- */
+
+test("#22 src/web/js/icons.js 只裝框架自己的圖示（它是全域的，會被每一門課共用）", () => {
+  const framework = new Set(frameworkIcons());
+  const packaged = spriteNames(repo("src", "web", "js", "icons.js"));
+  assert.ok(packaged, "src/web/js/icons.js 不見了");
+
+  const extra = [...packaged].filter((n) => !framework.has(n)).sort();
+  assert.deepEqual(
+    extra,
+    [],
+    "這份 sprite 每一門課都會讀到，塞進課程專屬的圖示等於讓後跑 make icons 的那門課\n" +
+      "  把前一門洗掉（而且不會報錯，只有打開網站才看得出來）。\n" +
+      "  課程的圖示應該產在 <course>/assets/js/icons.js。",
+  );
+});
+
+test("#22 有自訂圖示的課程，自己那份 sprite 必須自帶全部框架圖示", () => {
+  // 課程的 icons.js 是整檔覆蓋 dist/js/icons.js，不是合併：少了框架圖示，
+  // 播放鍵、搜尋、深淺色切換就會整排變成空白方塊。
+  const framework = new Set(frameworkIcons());
+  for (const dir of courseDirs()) {
+    const own = spriteNames(path.join(dir, "assets", "js", "icons.js"));
+    if (!own) continue; // 沒有自訂圖示的課直接用框架那一份，本來就不會有這個檔
+    const missing = [...framework].filter((n) => !own.has(n)).sort();
+    assert.deepEqual(missing, [], `${path.relative(ROOT, dir)}/assets/js/icons.js 少了框架圖示`);
   }
 });
