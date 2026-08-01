@@ -1,6 +1,9 @@
 [project]
 name = "curate-course"
-version = "1.0.0"
+# 課程設定檔靠這個數字知道自己寫給哪一版框架（見 coursepath.FRAMEWORK_VERSION）。
+# 只有主版號有意義：改主版號＝有非改不可的變更，同一個 commit 要在
+# docs/MIGRATION.md 補上那一段，否則 make audit 會叫人去看一段不存在的文件。
+version = "2.0.0"
 description = "從 YouTube 策展影片課程網站的框架：配額驗證、影片連結重驗、實證查核與 SEO 產出。主題由 course/ 決定"
 readme = "README.md"
 requires-python = ">=3.11"

@@ -7,6 +7,7 @@
 
 | 欄位 | 作用 |
 |---|---|
+| `frameworkVersion` | 這份設定檔寫給哪一版框架（見下一節）。沒填視為 v1，`make audit` 會擋 |
 | `site` | 標題、描述、網址、語系、關鍵字 → 直接餵給 SEO 與 JSON-LD |
 | `hero` | 首頁大標與說明，可用 `{units}` `{problems}` 等佔位符（見下） |
 | `ui` | **所有介面文案**。分頁名、篩選標籤、統計欄位、實證欄位標題、單元型別，以及**所有主題名詞**（`unitNoun`／`lessonNoun`／`drillNoun`／`evidenceSource` 等，見 `quality.md`）|
@@ -20,6 +21,23 @@
 | `counter` | 選用：header 的累計瀏覽次數徽章（Pages Function + D1）。整組拿掉就不顯示，也完全不打 API |
 | `discussions` | 選用：giscus 設定，每支影片一串 GitHub Discussions。整組拿掉就沒有討論面板。**換主題必換 `repo`/`repoId`/`categoryId`**，否則留言會靜靜掉到上一個主題的 repo |
 | `landing` / `stance` / `footer` / `llms` | 首頁、立場頁、頁尾、`llms.txt` 的文案。寫法見下一節「文案怎麼寫」 |
+
+## 這份設定檔寫給哪一版框架
+
+課程躺在自己的目錄裡不動，框架靠 `git pull` 前進——兩者是分開演進的，所以設定檔要
+自己講清楚它是照哪一版的規則寫的：
+
+```jsonc
+"frameworkVersion": "2.0.0",
+```
+
+**只有主版號有意義**，次版號與修訂號對不上稽核一個字都不會說。主版號落後就是
+`make audit` 的錯誤，訊息會指向 `docs/MIGRATION.md` 裡對應的那一段；`make new-course`
+產出的骨架會自動填上當下的版號。
+
+這個欄位存在的理由是**破壞性變更不會是紅色的**。v1 的 `<strong>` 在 v2 變成字面文字，
+但設定檔照樣通過 schema、`make build` 照樣成功——沒有版號的話，你只會在上線之後
+從頁面上發現。
 
 ## 文案怎麼寫
 

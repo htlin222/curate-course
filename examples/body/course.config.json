@@ -1,5 +1,6 @@
 {
   "$schema": "../src/build/course.schema.json",
+  "frameworkVersion": "2.0.0",
   "site": {
     "project": "body-course",
     "name": "體態矯正課程",

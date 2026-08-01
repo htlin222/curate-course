@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import os
 import sys
+import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -36,6 +37,36 @@ COURSE_GLOBS = ("courses/*", "examples/*")
 
 class CourseError(RuntimeError):
     """解析失敗。訊息本身就是給人看的說明，不要再包裝。"""
+
+
+# ── 框架版號 ──────────────────────────────────────────────────────────────
+#
+# 課程與框架是兩個獨立演進的東西：課程躺在自己的目錄裡，框架靠 git pull 前進。
+# 沒有版號的話，破壞性變更就是一次靜默的行為改變——設定檔照樣通過 schema，
+# build 照樣成功，只有頁面上的字悄悄變成字面的 <strong>。
+#
+# 契約只有一條：**只有主版號有意義**。主版號一樣就保證相容，不一樣就代表中間
+# 有非改不可的東西，`make audit` 會擋下來並指向 docs/MIGRATION.md。次版號與
+# 修訂號隨便對不上，稽核一個字都不會說。
+
+
+def _read_framework_version(root: Path = ROOT) -> str:
+    """框架自己的版號。唯一真相是 pyproject.toml，不另外寫一份常數在程式裡——
+    兩處宣告同一個版號，遲早會有一處忘了改，而那正是這個檢查要消滅的東西。"""
+    try:
+        with (root / "pyproject.toml").open("rb") as fh:
+            return str(tomllib.load(fh)["project"]["version"])
+    except (OSError, KeyError, TypeError, tomllib.TOMLDecodeError):
+        return ""
+
+
+FRAMEWORK_VERSION = _read_framework_version()
+
+
+def major(version: str) -> int | None:
+    """取主版號；不是 `數字.數字.數字` 就回 None（呼叫端自己決定怎麼報）。"""
+    head = (version or "").strip().split(".")[0]
+    return int(head) if head.isdigit() else None
 
 
 def candidates(root: Path = ROOT) -> list[Path]:

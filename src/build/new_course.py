@@ -52,9 +52,14 @@ def main(argv: list[str]) -> int:
     shutil.copytree(TEMPLATE, target)
 
     config = target / "course.config.json"
-    # 顯示用的名字先用 NAME 原樣；schema 只管 project，標題是給人看的，之後隨時改
+    # 顯示用的名字先用 NAME 原樣；schema 只管 project，標題是給人看的，之後隨時改。
+    # frameworkVersion 由建立當下的框架填，不寫死在範本裡——寫死的話，框架跳版之後
+    # 新開的課會立刻收到一則叫它去遷移的錯誤，而它根本就是新的。
     config.write_text(
-        config.read_text().replace("__PROJECT__", name).replace("__NAME__", name)
+        config.read_text()
+        .replace("__PROJECT__", name)
+        .replace("__NAME__", name)
+        .replace("__FRAMEWORK_VERSION__", coursepath.FRAMEWORK_VERSION)
     )
 
     # $schema 是相對路徑，深度跟著實際落點走，寫死 ../../ 只有 courses/x 會對

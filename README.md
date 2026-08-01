@@ -155,7 +155,7 @@ Skill 本身採漸進揭露，主檔只有流程骨架，細節按需載入：
 ```
 .claude/skills/curate-course/
   SKILL.md              鐵則、七步流程、驗收清單
-  reference/config.md   設定檔欄位、schema、圖示、tone、詞彙模組、哪些文案吃 HTML
+  reference/config.md   設定檔欄位、schema、frameworkVersion、圖示、tone、詞彙模組、文案怎麼寫
   reference/curating.md yt-dlp 搜尋與中繼資料、oEmbed 驗證、資料格式、多語言
   reference/evidence.md 單元／類別兩層實證、PubMed E-utilities 用法
   reference/quality.md  audit 與 verify 的分工、門檻怎麼調、踩過的坑
@@ -255,6 +255,8 @@ tests/
   paywall-core.test.js  單元測試（零依賴）
   e2e-paywall.cjs       Playwright 端對端 + 截圖
   decoupling.test.js    框架與主題脫鉤（src/ 不得夾帶課程專屬字串）
+  framework-version.test.js  跳主版號就必須有對應的遷移指南章節
+docs/MIGRATION.md     框架跳主版號時，既有課程要改什麼
 docs/PAYWALL.md       paywall 設計與接真金流的待辦
 examples/body/        ← 隨框架附的範例課
 courses/<你的課>/      ← 你的課程（make new-course 產生）
