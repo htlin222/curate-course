@@ -20,6 +20,7 @@
       "扁平足",
       "物理治療"
     ],
+    "educationalLevel": "Beginner",
     "audience": "久坐上班族、有體態困擾的一般民眾",
     "about": [
       "體態矯正",
@@ -37,6 +38,30 @@
     "eyebrow": "自學課程",
     "heading": "從頭到腳，把體態拆解成可以練的東西",
     "lede": "十二個章節、{units} 個單元，涵蓋頸椎到足踝的 {problems} 個常見體態問題。每個問題都告訴你三件事：<strong>怎麼自己評估</strong>、<strong>該練什麼</strong>，以及<strong>這套說法在醫學文獻裡站得住腳嗎</strong>。"
+  },
+  "og": {
+    "evidenceIcon": "microscope",
+    "evidenceLabel": "全部經 OpenEvidence 查證，結果照實寫",
+    "title": "從頭到腳，<br />把體態拆解成<em>可以練的東西</em>",
+    "lede": "頸椎到足踝 {problems} 個體態問題，每個都告訴你怎麼自測、該練什麼，<br />以及這套說法在醫學文獻裡站不站得住腳。",
+    "stats": [
+      {
+        "field": "units",
+        "label": "個單元"
+      },
+      {
+        "field": "duration_hours",
+        "label": "影片總時長"
+      },
+      {
+        "field": "problem_units",
+        "label": "個體態問題"
+      },
+      {
+        "field": "evidence_checked",
+        "label": "題實證查核"
+      }
+    ]
   },
   "ui": {
     "searchPlaceholder": "搜尋單元、動作或肌群…",

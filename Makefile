@@ -2,6 +2,10 @@ PY := uv run python
 COURSE ?= course
 DIST ?= dist
 PORT ?= 8899
+CHROME ?= /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+# 進版控的那一份才是本體：dist/ 被 gitignore，重新 clone 之後只有這裡的圖還在。
+# build.py 的 sync_web() 會把 $(COURSE)/assets/ 複製進 $(DIST)，所以 /og.png 自然可用。
+OG_PNG := $(COURSE)/assets/og.png
 PROJECT ?= $(shell $(PY) -c "import json;print(json.load(open('$(COURSE)/course.config.json'))['site']['project'])")
 
 export COURSE
@@ -19,12 +23,16 @@ build: ## 合併資料 → public/course.json，含配額驗證與 SEO 產出
 icons: ## 重新下載 Lucide 圖示並打包成內嵌 sprite
 	$(PY) src/build/build_icons.py
 
-og: ## 用 headless Chrome 重新產生社群預覽圖
-	@"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+og: build ## 用 headless Chrome 重新產生社群預覽圖（截圖來源是 build 注入好數值的 $(DIST)/og.html）
+	@test -x "$(CHROME)" || { echo "✗ 找不到 Chrome：$(CHROME)（用 make og CHROME=... 指定）"; exit 1; }
+	@command -v magick > /dev/null || { echo "✗ 找不到 magick（brew install imagemagick）"; exit 1; }
+	@mkdir -p $(dir $(OG_PNG))
+	@"$(CHROME)" \
 		--headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
-		--window-size=1200,630 --screenshot="$(PWD)/$(DIST)/og.png" "$(PWD)/src/web/og.html"
-	@magick $(DIST)/og.png -resize 1200x630 -strip $(DIST)/og.png
-	@echo "→ $(DIST)/og.png"
+		--window-size=1200,630 --screenshot="$(abspath $(OG_PNG))" "$(abspath $(DIST)/og.html)"
+	@magick $(OG_PNG) -resize 1200x630 -strip $(OG_PNG)
+	@cp $(OG_PNG) $(DIST)/og.png
+	@echo "→ $(OG_PNG)（記得 git add）· 已同步一份到 $(DIST)/og.png"
 
 counter: ## 建立瀏覽次數用的 D1 資料庫並寫出 wrangler 綁定（冪等，可重跑）
 	$(PY) src/build/setup_counter.py
@@ -62,7 +70,9 @@ fmt: ## ruff 格式化
 	uv run ruff format .
 	uv run ruff check --fix .
 
-check: lint test build audit ## 提交前跑這個（含單元測試與離線稽核）
+# build 排在 test 前面：有一部分測試是拿 dist/ 的產出物（JSON-LD、og.html）
+# 跟 course.json 對數字，沒先 build 就只能整組跳過。
+check: lint build test audit ## 提交前跑這個（含單元測試與離線稽核）
 
 clean: ## 清掉建置暫存
 	rm -rf .tmp .wrangler .ruff_cache dist **/__pycache__
