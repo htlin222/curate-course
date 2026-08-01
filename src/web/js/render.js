@@ -38,6 +38,14 @@ export function setAccess(fn) {
 
 const pwT = (k, fallback = "") => PW?.ui?.[k] ?? fallback;
 
+/** 引用連結：生醫走 PubMed（pmid），人文社科走 Crossref／doi.org（doi）。
+    兩者都沒有就退回 c.url，再沒有就不給連結——絕不生出打不開的網址。 */
+function citeRef(c) {
+  if (c.pmid) return { href: `https://pubmed.ncbi.nlm.nih.gov/${c.pmid}/`, label: `PMID ${c.pmid}` };
+  if (c.doi) return { href: `https://doi.org/${c.doi}`, label: `DOI ${c.doi}` };
+  return { href: c.url || "#", label: "" };
+}
+
 /** 分級／類型都用 tone 對應到樣式，id 可以隨主題自由命名 */
 const toneCls = (o) => `Label--${o?.tone || "neutral"}`;
 const gradeOf = (id) => GRADE[id] || Object.values(GRADE)[0] || { label: id, tone: "neutral" };
@@ -253,14 +261,15 @@ function drillEvidence(u) {
         ${cat.summary ? `<p class="DrillEvCat__summary">${esc(cat.summary)}</p>` : ""}
         <ol class="DrillEvCat__cites">
           ${cat.citations
-            .map(
-              (c) => `
+            .map((c) => {
+              const ref = citeRef(c);
+              return `
             <li>
-              <a href="https://pubmed.ncbi.nlm.nih.gov/${esc(c.pmid)}/" target="_blank" rel="noopener">${esc(c.title)}</a>
-              <span class="DrillEvCat__src">${esc(c.journal || "")}${c.year ? ` ${esc(c.year)}` : ""}${c.design ? ` · ${esc(c.design)}` : ""} · PMID ${esc(c.pmid)}</span>
+              <a href="${esc(ref.href)}" target="_blank" rel="noopener">${esc(c.title)}</a>
+              <span class="DrillEvCat__src">${esc(c.journal || "")}${c.year ? ` ${esc(c.year)}` : ""}${c.design ? ` · ${esc(c.design)}` : ""}${ref.label ? ` · ${esc(ref.label)}` : ""}</span>
               ${c.takeaway ? `<span class="DrillEvCat__take">${esc(c.takeaway)}</span>` : ""}
-            </li>`,
-            )
+            </li>`;
+            })
             .join("")}
         </ol>
       </details>`;
