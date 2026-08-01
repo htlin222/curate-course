@@ -110,5 +110,6 @@ make deploy    # 部署到 Cloudflare Pages
 - [ ] `og.png` 已更新成新主題
 - [ ] `discussions` 指向**這門課自己的 repo**，且 giscus API 回的是
       `Discussion not found` 而不是 `giscus is not installed`
+- [ ] `LICENSE` 的著作權人、`docs/plans/` 的設計文件都換成這門課自己的
 - [ ] 品牌圖示、篩選籤、項目名詞都跟著設定檔走，沒有留下上一個主題的字樣
       （見 `reference/quality.md` 的「換主題時最容易漏掉的」）

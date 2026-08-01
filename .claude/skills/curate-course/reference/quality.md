@@ -133,7 +133,9 @@ COURSE=courses/guitar python3 src/build/audit.py   # 多課程並存
 | 篩選籤寫著上一個主題的類型 | FilterBar 的按鈕若寫死在 `index.html`，換 `kinds` 不會跟著變。要從設定檔產生 |
 | `make build` 的類型統計全是 0 | 統計行若寫死 `kinds['release']` 這種 id，換主題就對不到。改成迭代 `CFG["kinds"]` |
 | 「支跟練影片」之類的名詞不對題 | 項目名詞要放進 `ui`（例如 `ui.drillNoun`），不要寫死在 JS 裡 |
-| `og.png` 還是舊課程 | `src/web/og.html` 是靜態模板，數字與文案都要手動對齊 `make build` 的輸出，再跑 `make og` |
+| `og.png` 還是舊課程 | 模板本身已經不用管了——`make build` 會把統計與分級注入 `dist/og.html`，少填一個佔位符就直接讓 build 掛掉。會留下的是 **`assets/og.png` 這個提交進 repo 的截圖檔**：數字變了沒人會提醒你，換主題或改完統計要重跑 `make og` 再 `git add` |
+| `LICENSE` 掛著別人的名字 | `Copyright (c) 2026 curate-course contributors` 是框架的，clone 下來要換成自己的。免責聲明框架只給通用句，主題專屬的那句寫在 `course.config.json` 的 `footer.disclaimer` 與 `llms.disclaimer` |
+| `docs/plans/` 留著範例課程的設計文件 | `2026-07-25-example-course-design.md` 記的是 `examples/body/` 的規劃，不是你的課的。要嘛刪掉，要嘛換成自己的 |
 
 ### giscus 到底接上了沒
 
