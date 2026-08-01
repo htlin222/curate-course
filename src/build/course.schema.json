@@ -99,7 +99,7 @@
         },
         "lede": {
           "type": "string",
-          "description": "可用 {units} {problems} 佔位"
+          "description": "首頁大標下方的說明段。可用文案佔位符 {units} {lessonUnits} {drillUnits} {slots} {videos} {problems} {evidence}"
         }
       }
     },
@@ -110,11 +110,11 @@
       "properties": {
         "title": {
           "type": "string",
-          "description": "大標，允許 <br> 與 <em>；預設用 hero.heading"
+          "description": "大標；換行字元會變成 <br>。預設用 hero.heading"
         },
         "lede": {
           "type": "string",
-          "description": "副標，允許 <br>，可用 {units} {problems} 佔位；預設用 site.ogDescription"
+          "description": "副標；換行字元會變成 <br>。可用文案佔位符 {units} {lessonUnits} {drillUnits} {slots} {videos} {problems} {evidence}。預設用 site.ogDescription"
         },
         "stats": {
           "type": "array",
@@ -152,7 +152,7 @@
     },
     "ui": {
       "type": "object",
-      "description": "所有介面文案，程式裡不寫死任何一個字",
+      "description": "所有介面文案，程式裡不寫死任何一個字。additionalProperties 是 false：拼錯的欄位會被 make audit 擋下來，而不是靜靜地退回框架的預設字串",
       "properties": {
         "stats": {
           "type": "array",
@@ -270,8 +270,97 @@
         "evidenceSourceLink": {
           "type": "string",
           "description": "連到完整查核結果的連結文字（預設「在 OpenEvidence 讀完整回答」）"
+        },
+        "searchPlaceholder": {
+          "type": "string",
+          "description": "header 搜尋框的 placeholder（index.html 首屏就注入）"
+        },
+        "playlistSearch": {
+          "type": "string",
+          "description": "上課模式播放清單搜尋框的 placeholder"
+        },
+        "progressLabel": {
+          "type": "string",
+          "description": "側欄學習進度面板的標題"
+        },
+        "facetLabel": {
+          "type": "string",
+          "description": "分面篩選面板的標題"
+        },
+        "facetClear": {
+          "type": "string",
+          "description": "清掉所有分面選擇的按鈕文字"
+        },
+        "facetPrefix": {
+          "type": "string",
+          "description": "篩選計數列裡分面的前綴，也用在 build 的輸出（預設「分面」）"
+        },
+        "categoryNoun": {
+          "type": "string",
+          "description": "類別的稱呼，用在 build 的輸出（預設「類別」）"
+        },
+        "assessmentLabel": {
+          "type": "string",
+          "description": "單元自我評估區塊的小標"
+        },
+        "unitEvidenceLabel": {
+          "type": "string",
+          "description": "單元層級實證區塊的標題"
+        },
+        "drillEvidenceLabel": {
+          "type": "string",
+          "description": "類別層級實證區塊的標題"
+        },
+        "tightLabel": {
+          "type": "string",
+          "description": "兩欄對照清單左邊那一欄的小標"
+        },
+        "weakLabel": {
+          "type": "string",
+          "description": "兩欄對照清單右邊那一欄的小標"
+        },
+        "lessonLabel": {
+          "type": "string",
+          "description": "播放清單與播放器裡「主課」的標籤"
+        },
+        "doneLabel": {
+          "type": "string",
+          "description": "上課模式「標記完成」按鈕的文字"
+        },
+        "prevLabel": {
+          "type": "string",
+          "description": "上課模式「上一支」按鈕的文字"
+        },
+        "nextLabel": {
+          "type": "string",
+          "description": "上課模式「下一支」按鈕的文字"
+        },
+        "moreLabel": {
+          "type": "string",
+          "description": "上課模式補充說明摺疊區的文字"
+        },
+        "openExternal": {
+          "type": "string",
+          "description": "在 YouTube 開啟的連結 title"
+        },
+        "emptyTitle": {
+          "type": "string",
+          "description": "篩選後沒有結果時的標題"
+        },
+        "emptyHint": {
+          "type": "string",
+          "description": "篩選後沒有結果時的說明"
+        },
+        "discussLabel": {
+          "type": "string",
+          "description": "討論面板的標題（要設定 discussions 才會出現）"
+        },
+        "discussNote": {
+          "type": "string",
+          "description": "討論面板的說明"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "kinds": {
       "type": "array",
@@ -388,7 +477,38 @@
       }
     },
     "stance": {
-      "type": "object"
+      "type": "object",
+      "description": "立場聲明頁的文案。intro 與 outro 是同一組長文，行為一致",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "立場聲明頁的標題，也用在 llms.txt"
+        },
+        "intro": {
+          "type": "string",
+          "description": "標題底下的開場段"
+        },
+        "outroTitle": {
+          "type": "string",
+          "description": "結語的小標"
+        },
+        "outro": {
+          "type": "string",
+          "description": "結語段"
+        },
+        "keyPrefix": {
+          "type": "string",
+          "description": "立場聲明在資料檔裡的 key 前綴（預設 concept-）"
+        },
+        "verdicts": {
+          "type": "object",
+          "description": "unit id → 一句話結論，顯示在立場卡片與首頁",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
     },
     "landing": {
       "type": "object",
@@ -417,15 +537,69 @@
         },
         "ctaLede": {
           "type": "string",
-          "description": "可用 {units} {videos} 佔位"
+          "description": "最下方行動呼籲的說明。可用文案佔位符 {units} {lessonUnits} {drillUnits} {slots} {videos} {problems} {evidence}"
+        },
+        "howTitle": {
+          "type": "string",
+          "description": "「怎麼用這門課」區塊的標題"
+        },
+        "stanceTitle": {
+          "type": "string",
+          "description": "立場聲明區塊的標題"
+        },
+        "stanceLede": {
+          "type": "string",
+          "description": "立場聲明區塊的說明段"
+        },
+        "chaptersTitle": {
+          "type": "string",
+          "description": "章節總覽區塊的標題"
+        },
+        "ctaTitle": {
+          "type": "string",
+          "description": "最下方行動呼籲的標題"
+        }
+      },
+      "description": "首頁各區塊的文案",
+      "additionalProperties": false
+    },
+    "footer": {
+      "type": "object",
+      "description": "頁尾兩行，index.html 首屏就注入",
+      "additionalProperties": false,
+      "properties": {
+        "disclaimer": {
+          "type": "string",
+          "description": "頁尾第一行（收合狀態下唯一看得到的那一行）"
+        },
+        "credits": {
+          "type": "string",
+          "description": "展開後的版權說明"
         }
       }
     },
-    "footer": {
-      "type": "object"
-    },
     "llms": {
-      "type": "object"
+      "type": "object",
+      "description": "llms.txt 的文案。純文字檔，不涉及 HTML",
+      "additionalProperties": false,
+      "properties": {
+        "summary": {
+          "type": "string",
+          "description": "開頭那一段課程摘要。可用文案佔位符 {units} {lessonUnits} {drillUnits} {slots} {videos} {problems} {evidence}"
+        },
+        "stanceIntro": {
+          "type": "string",
+          "description": "立場聲明段的開場。可用文案佔位符 {units} {lessonUnits} {drillUnits} {slots} {videos} {problems} {evidence}"
+        },
+        "stanceConclusion": {
+          "type": "string",
+          "description": "立場聲明段的結語"
+        },
+        "disclaimer": {
+          "type": "string",
+          "description": "免責段"
+        }
+      }
     },
     "paywall": {
       "type": "object",

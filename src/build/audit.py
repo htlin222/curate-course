@@ -58,7 +58,12 @@ DEFAULTS = {
 YT = re.compile(
     r"^https://(?:www\.)?youtube\.com/watch\?v=[\w-]{11}(?:&\S*)?$|^https://youtu\.be/[\w-]{11}"
 )
-SECTIONS = ("設定檔", "主題耦合", "結構與配額", "影片", "內容深度")
+SECTIONS = ("設定檔", "文案", "主題耦合", "結構與配額", "影片", "內容深度")
+
+# 文案欄位所在的頂層區塊。這些區塊底下的字串一律走「先逸出、只認得 **粗體**」，
+# 寫 HTML 標籤不會有效果，只會原樣印在頁面上。
+COPY_SECTIONS = ("site", "hero", "ui", "nav", "landing", "stance", "footer", "llms", "og",
+                 "kinds", "grades", "languages", "counter", "paywall")
 
 # 資料檔依「頂層有哪些鍵」判斷用途，不看檔名——oe- / drill-evidence- 這些前綴
 # 是「這門課用 OpenEvidence」的歷史，而 ui.evidenceSource 是可換的。
@@ -343,19 +348,111 @@ def audit_topic_coupling(cfg: dict, rep: Report) -> None:
     if ptype and ptype not in (cfg.get("ui") or {}).get("unitTypes", {}):
         rep.err(sec, f"ui.problemType「{ptype}」不在 ui.unitTypes 裡，JSON-LD 的 teaches 會是空的")
 
-    # 3) 文案佔位符只認得這幾個，打錯字會原樣輸出到頁面上
-    known = {"units", "lessonUnits", "drillUnits", "slots", "videos", "problems", "evidence"}
-    bad = []
-    for path, node in (("hero", cfg.get("hero")), ("landing", cfg.get("landing")),
-                       ("llms", cfg.get("llms")), ("stance", cfg.get("stance"))):
-        for key, val in (node or {}).items():
-            if isinstance(val, str):
-                for tok in re.findall(r"\{(\w+)\}", val):
-                    if tok not in known:
-                        bad.append(f"{path}.{key} 用了未定義的佔位符 {{{tok}}}")
+
+# ── 文案 ──────────────────────────────────────────────────────────────────
+# 這一節看的是「設定檔的字怎麼變成頁面上的字」。三種失敗都不會讓建置掛掉，
+# 只會讓使用者看到字面的 {{ui.progressLabel}} 或 <strong>——所以只能靠稽核擋。
+
+# 文案佔位符只有這一份定義，必須與 src/build/seo.py 的 TOKEN_FIELDS
+# 及 src/web/js/copy.js 的 TOKEN_FIELDS 完全一致（tests/copy-contract.test.js 會比對）。
+COPY_TOKENS = ("units", "lessonUnits", "drillUnits", "slots", "videos", "problems", "evidence")
+
+# HTML 標籤：文案契約改成「逸出 + **粗體**」之後，這些寫法一律無效。
+# 從舊版本升級上來的設定檔會靜靜地把 <strong> 印在畫面上，所以要主動抓。
+TAG = re.compile(r"</?[a-zA-Z][a-zA-Z0-9]*\s*/?>")
+
+
+def copy_strings(cfg: dict):
+    """yield (dotted path, 字串)：設定檔裡所有會變成畫面文案的字串。"""
+
+    def walk(node, path):
+        if isinstance(node, dict):
+            for k, v in node.items():
+                walk(v, f"{path}.{k}")
+        elif isinstance(node, list):
+            for i, v in enumerate(node):
+                walk(v, f"{path}[{i}]")
+        elif isinstance(node, str):
+            yield_.append((path.lstrip("."), node))
+
+    yield_: list[tuple[str, str]] = []
+    for key in COPY_SECTIONS:
+        if key in cfg:
+            walk(cfg[key], key)
+    return yield_
+
+
+def template_tokens() -> list[str]:
+    """index.html 裡所有 {{a.b}}。這是「首屏需要哪些設定欄位」唯一的真相來源。"""
+    path = WEB / "index.html"
+    if not path.exists():
+        return []
+    return sorted(set(re.findall(r"\{\{([\w.]+)\}\}", path.read_text())))
+
+
+def audit_copy(cfg: dict, rep: Report) -> None:
+    sec = "文案"
+
+    # 1) 佔位符打錯字：{units} 打成 {unit} 會原樣印在頁面上。
+    #    ui.facetFilterHint 有自己的 {name}（由前端填入分面名稱），不走這套。
+    bad = [
+        f"{path} 用了未定義的佔位符 {{{tok}}}"
+        for path, val in copy_strings(cfg)
+        for tok in re.findall(r"\{(\w+)\}", val)
+        if tok not in COPY_TOKENS and not (path == "ui.facetFilterHint" and tok == "name")
+    ]
     if bad:
         rep.err(sec, f"文案佔位符打錯字（{len(bad)} 處），會原樣印在頁面上"
-                     f"。可用：{'、'.join(sorted(known))}", bad[:6])
+                     f"。可用：{'、'.join(COPY_TOKENS)}", bad[:8])
+
+    # 2) #28：index.html 用到的 {{a.b}} 沒設定，就會原樣輸出到正式 HTML。
+    #    以前 build 只印一行「未解析 [...]」，audit 依然 0 錯誤——換主題的人根本
+    #    不知道有這幾個欄位存在（它們也不在 schema 裡，見 #15）。
+    def lookup(dotted: str):
+        node = cfg
+        for part in dotted.split("."):
+            if not isinstance(node, dict) or part not in node:
+                return None
+            node = node[part]
+        return node
+
+    tokens = template_tokens()
+    if missing := [t for t in tokens if lookup(t) is None]:
+        rep.err(
+            sec,
+            f"index.html 用到 {len(missing)} 個沒有設定的文案欄位，"
+            "會有字面的 {{…}} 出現在正式頁面上",
+            [f"{{{{{t}}}}} ← 設定檔缺 {t}" for t in missing],
+        )
+    elif tokens:
+        rep.ok(sec, f"index.html 的 {len(tokens)} 個文案佔位符都有對應的設定")
+
+    # 3) 產物複驗：真的送出去的那份 HTML 裡不該有任何 {{…}}。
+    #    第 2 條只看得到 index.html 這個模板，這一條連 seo.py 自己漏掉的都抓得到。
+    built = DIST / "index.html"
+    dist_cfg = load_json(DIST / "course.json")
+    same_course = isinstance(dist_cfg, dict) and (dist_cfg.get("config") or {}).get(
+        "site", {}
+    ).get("project") == (cfg.get("site") or {}).get("project")
+    if built.exists() and same_course:
+        if left := sorted(set(re.findall(r"\{\{[\w.]+\}\}", built.read_text()))):
+            rep.err(sec, f"{DIST.name}/index.html 還有 {len(left)} 個沒替換掉的佔位符"
+                         "（重跑 make build 再看一次）", left)
+        else:
+            rep.ok(sec, f"{DIST.name}/index.html 沒有殘留的佔位符")
+
+    # 4) 文案不吃 HTML：一律先逸出，只認得 `**粗體**`。
+    #    寫 <strong> 以前在少數幾個欄位「剛好會生效」，其餘欄位原樣印出——
+    #    同一個 stance 物件的 intro 與 outro 就是相反的（#20）。現在全部一致。
+    if tagged := [f"{path}：{val[:60]}" for path, val in copy_strings(cfg) if TAG.search(val)]:
+        rep.err(
+            sec,
+            f"{len(tagged)} 個文案欄位寫了 HTML 標籤。文案一律先逸出，"
+            "標籤只會原樣印在頁面上——要強調請改用 **粗體**",
+            tagged[:8],
+        )
+    else:
+        rep.ok(sec, "文案欄位都沒有 HTML 標籤（一律逸出 + **粗體**）")
 
 
 def audit_config(cfg: dict, rep: Report) -> None:
@@ -1104,6 +1201,7 @@ def main() -> int:
 
     rep = Report()
     audit_config(cfg, rep)
+    audit_copy(cfg, rep)
     audit_topic_coupling(cfg, rep)
     audit_identity(cfg, rep)
     audit_data_files(cfg, opts, rep)

@@ -1,6 +1,7 @@
 // filters.js — 搜尋、項目類型、分面篩選
 import { icon } from "./icons.js";
 import { esc, UI } from "./render.js";
+import { rich, text } from "./copy.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -39,7 +40,7 @@ export function renderFacetPanel(course) {
       )
       .join("") +
     `<button class="btn FacetPanel__clear" id="facetClear" type="button">
-       ${icon("rotate-ccw", 12)} ${esc(UI.facetClear || "")}
+       ${icon("rotate-ccw", 12)} ${rich(UI.facetClear || "")}
      </button>`;
 }
 
@@ -102,14 +103,14 @@ export function applyFilters(state, course) {
   const totalDrills = course.meta.drill_units;
   const parts = [];
   if (q) parts.push(`「${state.query.trim()}」`);
-  if (sel.size) parts.push(`${UI.facetPrefix || ""}：${[...sel].join("、")}`);
+  if (sel.size) parts.push(`${text(UI.facetPrefix || "")}：${[...sel].join("、")}`);
 
   // paywall 鎖住的章節不渲染動作，所以分母對不上時要講清楚為什麼
   const locked = state.lockedNote ? ` · ${state.lockedNote}` : "";
 
   $("#filterCount").textContent = parts.length
-    ? `${visibleUnits} ${UI.unitNoun || "個單元"} · ${visibleDrills} ${UI.drillNoun || "支跟練影片"}符合 ${parts.join(" + ")}`
-    : `顯示 ${visibleDrills} / ${totalDrills} ${UI.drillNoun || "支跟練影片"}${locked}`;
+    ? `${visibleUnits} ${text(UI.unitNoun || "個單元")} · ${visibleDrills} ${text(UI.drillNoun || "支跟練影片")}符合 ${parts.join(" + ")}`
+    : `顯示 ${visibleDrills} / ${totalDrills} ${text(UI.drillNoun || "支跟練影片")}${locked}`;
 
   toggleBlankslate(visibleUnits);
   return { visibleUnits, visibleDrills };
@@ -123,8 +124,8 @@ function toggleBlankslate(visibleUnits) {
       "beforeend",
       `<div class="Blankslate" id="filterBlank">
          ${icon("inbox", 32)}
-         <p class="Blankslate__heading">${esc(UI.emptyTitle || "")}</p>
-         <p>${esc(UI.emptyHint || "")}</p>
+         <p class="Blankslate__heading">${rich(UI.emptyTitle || "")}</p>
+         <p>${rich(UI.emptyHint || "")}</p>
        </div>`,
     );
   } else if (visibleUnits > 0 && existing) {
