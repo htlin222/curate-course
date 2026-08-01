@@ -1,5 +1,5 @@
 /* ==========================================================================
-   tabs.css — 分頁導覽、立場獨立頁、肌群篩選面板、統一播放鈕
+   tabs.css — 分頁導覽、立場獨立頁、分面篩選面板、統一播放鈕
    ========================================================================== */
 
 /* --- TabNav（Primer UnderlineNav，內嵌於 header 同一列） ------------------ */
@@ -122,9 +122,9 @@
   color: var(--fgColor-default);
 }
 
-/* --- 肌群篩選面板 -------------------------------------------------------- */
+/* --- 分面篩選面板 -------------------------------------------------------- */
 
-.MusclePanel {
+.FacetPanel {
   margin-top: var(--base-size-16);
   background-color: var(--bgColor-muted);
   border: 1px solid var(--borderColor-default);
@@ -132,7 +132,7 @@
   overflow: hidden;
 }
 
-.MusclePanel__head {
+.FacetPanel__head {
   display: flex;
   align-items: center;
   gap: var(--base-size-8);
@@ -146,25 +146,25 @@
   text-align: left;
 }
 
-.MusclePanel__head:hover {
+.FacetPanel__head:hover {
   background-color: var(--bgColor-neutral-muted);
   color: var(--fgColor-default);
 }
 
-.MusclePanel__head > span:first-of-type {
+.FacetPanel__head > span:first-of-type {
   flex: 1;
 }
 
-.MusclePanel__chevron {
+.FacetPanel__chevron {
   display: inline-flex;
   transition: transform 0.15s ease;
 }
 
-.MusclePanel.is-open .MusclePanel__chevron {
+.FacetPanel.is-open .FacetPanel__chevron {
   transform: rotate(90deg);
 }
 
-.MusclePanel__body {
+.FacetPanel__body {
   display: none;
   padding: 0 var(--base-size-12) var(--base-size-12);
   max-height: 46vh;
@@ -172,11 +172,11 @@
   overscroll-behavior: contain;
 }
 
-.MusclePanel.is-open .MusclePanel__body {
+.FacetPanel.is-open .FacetPanel__body {
   display: block;
 }
 
-.MuscleGroup__title {
+.FacetGroup__title {
   padding: var(--base-size-8) 0 var(--base-size-4);
   font-size: 11px;
   font-weight: 600;
@@ -185,13 +185,13 @@
   letter-spacing: 0.04em;
 }
 
-.MuscleChips {
+.FacetChips {
   display: flex;
   flex-wrap: wrap;
   gap: var(--base-size-4);
 }
 
-.MuscleChip {
+.FacetChip {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -205,24 +205,24 @@
   white-space: nowrap;
 }
 
-.MuscleChip:hover {
+.FacetChip:hover {
   border-color: var(--borderColor-accent-emphasis);
   color: var(--fgColor-accent);
 }
 
-.MuscleChip.is-active {
+.FacetChip.is-active {
   color: var(--fgColor-onEmphasis);
   background-color: var(--fgColor-accent);
   border-color: var(--fgColor-accent);
 }
 
-.MuscleChip__n {
+.FacetChip__n {
   font-size: 10px;
   font-variant-numeric: tabular-nums;
   opacity: 0.6;
 }
 
-.MusclePanel__clear {
+.FacetPanel__clear {
   width: 100%;
   margin-top: var(--base-size-12);
   justify-content: center;
@@ -230,17 +230,17 @@
   padding: 4px 8px;
 }
 
-/* 單元／動作內可點擊的肌群標籤 */
-.Label--muscle {
+/* 單元／項目內可點擊的分面標籤 */
+.Label--facet {
   cursor: pointer;
 }
 
-.Label--muscle:hover {
+.Label--facet:hover {
   color: var(--fgColor-accent);
   border-color: var(--borderColor-accent-emphasis);
 }
 
-.Label--muscle.is-active {
+.Label--facet.is-active {
   color: var(--fgColor-onEmphasis);
   background-color: var(--fgColor-accent);
   border-color: var(--fgColor-accent);
