@@ -128,6 +128,7 @@
     "problemType": "posture",
     "facetClear": "清除肌群篩選",
     "facetPrefix": "肌群",
+    "categoryNoun": "動作類別",
     "emptyTitle": "找不到符合的內容",
     "emptyHint": "換個關鍵字或清除肌群篩選再試一次。",
     "playlistSearch": "搜尋播放清單…",

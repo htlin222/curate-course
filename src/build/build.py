@@ -25,6 +25,16 @@ CFG = json.loads((COURSE / "course.config.json").read_text())
 CHAPTERS = [(c["code"], c["title"], c["icon"], c["source"]) for c in CFG["chapters"]]
 QUOTA = {c["code"]: (c["units"], c.get("drills", 0)) for c in CFG["chapters"]}
 EVIDENCE_ALIAS = CFG.get("evidenceAlias", {})
+UI = CFG.get("ui") or {}
+
+# 不屬於任何章節的實證條目 = 首頁的立場聲明。前綴可換（預設 concept-），
+# 但**不限數量**：寫幾則就出現幾則，多寫的不會被靜靜丟掉。
+STANCE_PREFIX = (CFG.get("stance") or {}).get("keyPrefix") or "concept-"
+
+# video-meta.json 是 YouTube 取數的快取，不是課程內容，依名字讀取
+VIDEO_META = "video-meta.json"
+# 資料檔依「頂層有哪些鍵」判斷用途，不看檔名。任何一個都沒有 = 沒有人會讀它。
+DATA_KEYS = ("conditions", "categories", "lessons", "chapters", "chapter", "units")
 
 # 課程可以自帶詞彙模組（肌群、動作類別之類）；沒有就退化成無分面、無分類
 sys.path.insert(0, str(COURSE))
@@ -78,22 +88,18 @@ def detect_lang(text: str | None) -> str:
 def collect_alt_lessons() -> dict:
     """unit_id -> 其他語言的主課影片清單。"""
     out: dict[str, list] = defaultdict(list)
-    for path in sorted(DATA.glob("alt-lessons-*.json")):
-        blob = load_json(path)
-        for les in (blob or {}).get("lessons", []):
-            if isinstance(les, dict) and les.get("unit") and les.get("url"):
-                out[les["unit"]].append(les)
+    for _, les in data_rows("lessons"):
+        if les.get("unit") and les.get("url"):
+            out[les["unit"]].append(les)
     return out
 
 
 def collect_drill_evidence() -> dict:
-    """合併各 agent 產出的動作類別文獻。"""
+    """合併各 agent 產出的類別層級文獻。"""
     out = {}
-    for path in sorted(DATA.glob("drill-evidence-*.json")):
-        blob = load_json(path)
-        for cat in (blob or {}).get("categories", []):
-            if isinstance(cat, dict) and cat.get("id"):
-                out[cat["id"]] = cat
+    for _, cat in data_rows("categories"):
+        if cat.get("id"):
+            out[cat["id"]] = cat
     return out
 
 
@@ -103,28 +109,85 @@ def fmt_duration(total: int) -> str:
     return f"{h} 小時 {m} 分" if h else f"{m} 分"
 
 
+_BROKEN: list[str] = []
+
+
 def load_json(path: Path):
     if not path.exists():
         return None
     try:
         return json.loads(path.read_text())
     except json.JSONDecodeError as e:
+        # 壞掉的 JSON 曾經只印一行 stderr 就繼續跑：實證整片消失、建置照樣成功。
+        # 記下來，最後併進 problems 讓 build 直接失敗。
         print(f"  ✗ {path.name} JSON 解析失敗：{e}", file=sys.stderr)
+        _BROKEN.append(f"data/{path.name} 不是合法 JSON：第 {e.lineno} 行 {e.msg}")
         return None
 
 
+_BLOBS: dict[Path, dict] | None = None
+
+
+def data_blobs() -> dict[Path, dict]:
+    """course/data/*.json 一次全部讀進來（只快取解析成功的物件）。
+
+    刻意**不看檔名**：實證檔叫 oe-*.json 只是「這門課用 OpenEvidence」的歷史，
+    而 ui.evidenceSource 是可換的。改成看頂層鍵之後，檔案要叫
+    pubmed-ch1.json 或 evidence-頸椎.json 都讀得到。
+    """
+    global _BLOBS
+    if _BLOBS is None:
+        _BLOBS = {}
+        for path in sorted(DATA.glob("*.json")):
+            blob = load_json(path)
+            if isinstance(blob, dict):
+                _BLOBS[path] = blob
+    return _BLOBS
+
+
+def data_rows(key: str):
+    """yield (path, dict)：所有資料檔頂層 `key` 陣列裡的物件節點。"""
+    for path, blob in data_blobs().items():
+        node = blob.get(key)
+        if isinstance(node, list):
+            for row in node:
+                # agent 分批寫入時檔內可能殘留佔位字串，跳過非物件節點
+                if isinstance(row, dict):
+                    yield path, row
+
+
+def unread_data_files() -> list[str]:
+    """列出沒有任何一步會讀到的資料檔——鍵名打錯就是這樣靜靜消失的。"""
+    return [
+        path.name
+        for path, blob in data_blobs().items()
+        if path.name != VIDEO_META and not any(k in blob for k in DATA_KEYS)
+    ]
+
+
 def collect_evidence() -> dict:
-    """把 oe-*.json 攤平成 unit_id -> evidence dict。"""
+    """把所有帶 conditions 的資料檔攤平成 unit_id -> evidence dict。"""
     ev = {}
-    for path in sorted(DATA.glob("oe-*.json")):
-        blob = load_json(path)
-        if not blob:
-            continue
-        for cond in blob.get("conditions", []):
-            # agent 分批寫入時檔內可能殘留佔位字串，跳過非物件節點
-            if isinstance(cond, dict) and cond.get("unit"):
-                ev[cond["unit"]] = cond
+    for _, cond in data_rows("conditions"):
+        if cond.get("unit"):
+            ev[cond["unit"]] = cond
     return ev
+
+
+def _stance_order(key: str) -> tuple[int, str]:
+    """concept-2 要排在 concept-10 前面；非數字尾巴一律排最後、字典序。"""
+    tail = key[len(STANCE_PREFIX) :]
+    return (int(tail), "") if tail.isdigit() else (10**6, key)
+
+
+def collect_stance(evidence: dict) -> list:
+    """前綴相符的實證條目全部都是立場聲明，不設上限。
+
+    這裡曾經寫死 ("concept-1", "concept-2", "concept-3")，第 4 則之後
+    不報錯也不顯示——查得越徹底、丟掉越多。要截斷是版面的事，交給前端。
+    """
+    keys = sorted((k for k in evidence if k.startswith(STANCE_PREFIX)), key=_stance_order)
+    return [evidence[k] for k in keys]
 
 
 def sync_web() -> None:
@@ -165,8 +228,8 @@ def main() -> int:
     seconds_all = [0]  # 含多語言版本的總長度
     alt_count = [0]
     cat_counts, uncategorised = Counter(), []
-    muscle_units: dict[str, set] = defaultdict(set)
-    muscle_count: Counter = Counter()
+    facet_units: dict[str, set] = defaultdict(set)
+    facet_count: Counter = Counter()
 
     # 各章 JSON 可能一檔含多章（ch0-3），先把所有來源讀進來
     sources = {}
@@ -207,7 +270,7 @@ def main() -> int:
             if ev_key in evidence:
                 u["evidence"] = evidence[ev_key]
 
-            # 單元層級的肌群：緊繃 + 無力兩側都算涉及
+            # 單元層級的分面：緊繃 + 無力兩側都算涉及
             u["facets"] = facets.extract(*(u.get("tight") or []), *(u.get("weak") or [])) if facets else []
 
             # 主課可以有多語言版本，第一支為預設
@@ -257,21 +320,24 @@ def main() -> int:
             for d in u.get("drills") or []:
                 kinds[d.get("kind")] += 1
                 d["facets"] = facets.extract(d.get("target"), d.get("name")) if facets else []
-                cid = categories.classify(d) if categories else None
-                if cid:
-                    d["cat"] = cid
-                    cat_counts[cid] += 1
-                    if cid in drill_ev:
-                        d["catName"] = categories.NAMES[cid]
-                else:
-                    uncategorised.append(d.get("name"))
+                if categories:
+                    cid = categories.classify(d)
+                    if cid:
+                        d["cat"] = cid
+                        cat_counts[cid] += 1
+                        if cid in drill_ev:
+                            d["catName"] = categories.NAMES[cid]
+                    else:
+                        # 沒設定 categories 時每個項目都「未分類」，那是假警報：
+                        # 只在真的有分類維度時才記錄。
+                        uncategorised.append(d.get("name"))
 
                 for m in d["facets"]:
-                    muscle_units[m].add(u["id"])
-                    muscle_count[m] += 1
+                    facet_units[m].add(u["id"])
+                    facet_count[m] += 1
             for m in u["facets"]:
-                muscle_units[m].add(u["id"])
-                muscle_count[m] += 1
+                facet_units[m].add(u["id"])
+                facet_count[m] += 1
 
         unit_total += len(units)
         drill_total += got_drills
@@ -279,22 +345,22 @@ def main() -> int:
 
     dupes = {u: n for u, n in seen_urls.items() if n > 1}
 
-    # concept-* 不屬於任何章節，抽出來當首頁的立場聲明
-    stance = [evidence[k] for k in ("concept-1", "concept-2", "concept-3") if k in evidence]
+    # 前綴相符的實證條目不屬於任何章節，全部抽出來當首頁的立場聲明
+    stance = collect_stance(evidence)
 
-    # 肌群索引：依部位分組，數量少的不進篩選器（避免上百個一次性標籤）
-    muscle_index = [
+    # 分面索引：依分組排序，數量少的不進篩選器（避免上百個一次性標籤）
+    facet_index = [
         {
             "name": m,
             "group": facets.GROUP_OF.get(m, "其他") if facets else "其他",
-            "count": muscle_count[m],
-            "units": sorted(muscle_units[m]),
+            "count": facet_count[m],
+            "units": sorted(facet_units[m]),
         }
-        for m in sorted(muscle_count, key=lambda x: -muscle_count[x])
-        if muscle_count[m] >= 2
+        for m in sorted(facet_count, key=lambda x: -facet_count[x])
+        if facet_count[m] >= 2
     ]
     group_order = [*(facets.GROUPS if facets else []), "其他"]
-    muscle_index.sort(key=lambda x: (group_order.index(x["group"]), -x["count"]))
+    facet_index.sort(key=lambda x: (group_order.index(x["group"]), -x["count"]))
 
     ui_keys = (
         "site", "hero", "ui", "kinds", "grades", "languages",
@@ -304,7 +370,7 @@ def main() -> int:
     course = {
         "config": {k: CFG[k] for k in ui_keys if k in CFG},
         "stance": stance,
-        "facets": muscle_index,
+        "facets": facet_index,
         "drillEvidence": drill_ev,
         "meta": {
             # 課程結構：371 個單元 = 37 堂主課 + 334 支跟練
@@ -320,13 +386,21 @@ def main() -> int:
             "duration_seconds": seconds,
             "duration_all": fmt_duration(seconds_all[0]),
             "duration_all_seconds": seconds_all[0],
+            # 主題單元的型別由 ui.problemType 決定；沒設定就是「這門課沒有這個維度」。
+            # 之前退回寫死的 "posture"，換主題後這個數字會莫名其妙地變成 0 或亂數。
             "problem_units": sum(
                 1
                 for c in chapters
                 for u in c["units"]
-                if u.get("type") == (CFG.get("ui", {}).get("problemType") or "posture")
+                if UI.get("problemType") and u.get("type") == UI["problemType"]
             ),
+            # 實證有兩層，三個數字都給出來，課程自己決定 ui.stats 要秀哪一個：
+            # evidence_checked 只有單元層級（含立場聲明），category_evidence_checked
+            # 是類別層級，evidence_total 才是對外可以講的「總查核則數」。
             "evidence_checked": len(evidence),
+            "stance_count": len(stance),
+            "category_evidence_checked": len(drill_ev),
+            "evidence_total": len(evidence) + len(drill_ev),
         },
         "chapters": chapters,
     }
@@ -350,16 +424,41 @@ def main() -> int:
     print(
         f"   課程時長 {fmt_duration(seconds)}"
         f" · 全部語言版本 {fmt_duration(seconds_all[0])}"
-        f" · 實證查核 {len(evidence)} 題"
     )
-    print(
-        f"   YouTube metadata {meta_hits[0]}/{meta_hits[0] + len(meta_miss)} 命中"
-        f" · 肌群索引 {len(muscle_index)} 項"
-        f" · 動作類別 {len(cat_counts)} 類（文獻 {len(drill_ev)} 類）"
-    )
+
+    # 輸出的名詞跟著 ui 走，框架本身不認識任何主題（預設一律中性）
+    facet_noun = UI.get("facetPrefix") or "分面"
+    cat_noun = UI.get("categoryNoun") or "類別"
+
+    if evidence or drill_ev:
+        ev_bits = [f"單元層級 {len(evidence)} 則"]
+        if stance:
+            ev_bits.append(f"其中立場聲明 {len(stance)} 則")
+        if drill_ev:
+            ev_bits.append(f"{cat_noun}層級 {len(drill_ev)} 則")
+            ev_bits.append(f"合計 {len(evidence) + len(drill_ev)} 則")
+        print(f"   實證查核 {' · '.join(ev_bits)}")
+
+    bits = [f"YouTube metadata {meta_hits[0]}/{meta_hits[0] + len(meta_miss)} 命中"]
+    if facets:
+        bits.append(f"{facet_noun}索引 {len(facet_index)} 項")
+    if categories:
+        bits.append(f"{cat_noun} {len(cat_counts)} 類（文獻 {len(drill_ev)} 類）")
+    print("   " + " · ".join(bits))
+
+    # 分類分布：單一類別吃掉一大半通常代表 patterns 寫得太寬（門檻檢查在 audit.py）
+    if categories and cat_counts:
+        classified = sum(cat_counts.values())
+        top = "、".join(
+            f"{categories.NAMES.get(cid, cid)} {n}（{n / classified:.0%}）"
+            for cid, n in cat_counts.most_common(3)
+        )
+        print(f"   {cat_noun}分布 前三 {top} · 未分類 {len(uncategorised)}")
+    # 沒設定 categories 就不會有 uncategorised，這裡不會再對著一門沒有分類維度的課叫
     if uncategorised:
         print(
-            f"   ⚠ 未分類動作 {len(uncategorised)}：{'、'.join(x for x in uncategorised[:5] if x)}"
+            f"   ⚠ 未歸類到任何{cat_noun} {len(uncategorised)} 項："
+            f"{'、'.join(x for x in uncategorised[:5] if x)}"
         )
 
     if missing_urls:
@@ -372,6 +471,13 @@ def main() -> int:
         print(f"\n✗ URL 格式不正確 {len(bad_urls)} 支：")
         for b in bad_urls[:10]:
             print(f"   · {b}")
+    # 讀不到 / 沒人讀的資料檔一律講出來：靜靜跳過等於整片內容消失卻沒人知道
+    if orphan_files := unread_data_files():
+        print(f"\n⚠ {len(orphan_files)} 個資料檔沒有任何一步會讀到（頂層鍵打錯了？）：")
+        for name in orphan_files:
+            print(f"   · data/{name}（可用的頂層鍵：{'、'.join(DATA_KEYS)}）")
+    problems.extend(dict.fromkeys(_BROKEN))  # 同一個檔可能被讀兩次，訊息去重
+
     same_unit_dupes = {k: n for k, n in within_unit.items() if n > 1}
     if same_unit_dupes:
         print(f"\n✗ 同一單元內重複的影片 {len(same_unit_dupes)} 筆：")

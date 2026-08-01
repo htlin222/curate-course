@@ -46,12 +46,23 @@ DEFAULTS = {
     "minAssessmentChars": 40,
     "minCitations": 1,
     "allowMissingUrls": 0,
+    # 單一類別佔「已分類項目」的比例上限。超過通常代表 patterns 寫得太寬
+    # （典型死法：把會出現在 target 欄位的分面詞彙拿來當 pattern），
+    # 那一類會把別類餓死，而歸類結果不會有任何錯誤訊息。
+    "maxCategoryShare": 0.25,
+    # course/data/ 底下刻意不給建置讀的檔案（草稿、備份）。其餘讀不到的一律報錯。
+    "ignoreDataFiles": [],
 }
 
 YT = re.compile(
     r"^https://(?:www\.)?youtube\.com/watch\?v=[\w-]{11}(?:&\S*)?$|^https://youtu\.be/[\w-]{11}"
 )
-SECTIONS = ("設定檔", "結構與配額", "影片", "內容深度")
+SECTIONS = ("設定檔", "主題耦合", "結構與配額", "影片", "內容深度")
+
+# 資料檔依「頂層有哪些鍵」判斷用途，不看檔名——oe- / drill-evidence- 這些前綴
+# 是「這門課用 OpenEvidence」的歷史，而 ui.evidenceSource 是可換的。
+DATA_KEYS = ("conditions", "categories", "lessons", "chapters", "chapter", "units")
+VIDEO_META = "video-meta.json"
 
 
 # ── 小工具 ────────────────────────────────────────────────────────────────
@@ -99,6 +110,50 @@ def load_json(path: Path):
         return None
     except json.JSONDecodeError as e:
         return e
+
+
+_BLOBS: dict[Path, dict] | None = None
+_BAD_JSON: list[tuple[str, str]] = []  # (檔名, 說明)
+
+
+def data_blobs() -> dict[Path, dict]:
+    """course/data/*.json 一次全部讀進來（只留解析成功的物件），與 build.py 同一套規則。"""
+    global _BLOBS
+    if _BLOBS is None:
+        _BLOBS = {}
+        for path in sorted(DATA.glob("*.json")):
+            blob = load_json(path)
+            if isinstance(blob, dict):
+                _BLOBS[path] = blob
+            elif isinstance(blob, json.JSONDecodeError):
+                _BAD_JSON.append((path.name, f"data/{path.name}：第 {blob.lineno} 行 {blob.msg}"))
+    return _BLOBS
+
+
+def data_rows(key: str):
+    """yield (path, dict)：所有資料檔頂層 `key` 陣列裡的物件節點。"""
+    for path, blob in data_blobs().items():
+        node = blob.get(key)
+        if isinstance(node, list):
+            for row in node:
+                if isinstance(row, dict):
+                    yield path, row
+
+
+def stance_prefix(cfg: dict) -> str:
+    return (cfg.get("stance") or {}).get("keyPrefix") or "concept-"
+
+
+def load_taxonomy(cfg: dict, key: str):
+    """匯入課程的詞彙模組；沒設定或匯入失敗都回 None（失敗由 audit_config 報）。"""
+    name = (cfg.get("taxonomy") or {}).get(key)
+    if not name:
+        return None
+    sys.path.insert(0, str(COURSE))
+    try:
+        return importlib.import_module(name)
+    except Exception:
+        return None
 
 
 class Report:
@@ -265,6 +320,23 @@ def audit_topic_coupling(cfg: dict, rep: Report) -> None:
     else:
         rep.ok(sec, "前端未寫死任何項目類型 id")
 
+    # 1b) 建置腳本同理。它不會讓網站壞掉，但輸出與產物會**用上一個主題的話講話**：
+    #     `ui.problemType` 退回寫死的預設值，換主題後統計數字會莫名歸零或亂數。
+    vocab = {
+        **{k: "kinds" for k in kind_ids if k},
+        **{k: "ui.unitTypes" for k in (cfg.get("ui") or {}).get("unitTypes", {})},
+        **{g.get("id"): "grades" for g in cfg.get("grades") or [] if isinstance(g, dict)},
+    }
+    leaks = []
+    for f in sorted((ROOT / "src" / "build").glob("*.py")):
+        for i, line in enumerate(f.read_text().splitlines(), 1):
+            code = line.split("#")[0]
+            for word, origin in vocab.items():
+                if word and f'"{word}"' in code:
+                    leaks.append(f"{f.name}:{i} 寫死了 {origin} 的 id「{word}」")
+    if leaks:
+        rep.warn(sec, f"建置腳本寫死了課程詞彙（{len(leaks)} 處），換主題會靜靜講錯話", leaks)
+
     # 2) ui.problemType 必須真的對得到單元，否則 JSON-LD 的 teaches 會是空的
     ptype = (cfg.get("ui") or {}).get("problemType")
     if ptype and ptype not in (cfg.get("ui") or {}).get("unitTypes", {}):
@@ -412,6 +484,44 @@ def audit_config(cfg: dict, rep: Report) -> None:
     # 的所有欄位，涵蓋範圍比這裡原本寫死的四條路徑廣。
 
 
+def audit_data_files(cfg: dict, opts: dict, rep: Report) -> None:
+    """course/data/ 底下每個 JSON 都要有人讀。
+
+    建置改成看內容不看檔名之後，「檔名不對所以整片實證消失」不會再發生；
+    剩下的沉默失敗是**頂層鍵打錯**（conditions 寫成 condition）或章節檔沒被
+    任何 chapters[].source 指到——資料在檔案裡，網站上卻沒有，且不報錯。
+    """
+    sec = "設定檔"
+    blobs = data_blobs()
+    sources = {c.get("source") for c in cfg.get("chapters") or [] if isinstance(c, dict)}
+    ignore = set(opts["ignoreDataFiles"])
+
+    # 章節來源檔的解析錯誤由 walk() 報過了，這裡只補其餘的檔案
+    if broken := [msg for name, msg in _BAD_JSON if Path(name).stem not in sources]:
+        rep.err(sec, f"{len(broken)} 個資料檔不是合法 JSON（內容會整片被跳過）", broken)
+
+    orphan, unused = [], []
+    for path, blob in blobs.items():
+        if path.name == VIDEO_META or path.name in ignore:
+            continue
+        if not any(k in blob for k in DATA_KEYS):
+            orphan.append(f"data/{path.name}（頂層鍵：{'、'.join(list(blob)[:6]) or '空的'}）")
+        elif ("chapter" in blob or "chapters" in blob) and path.stem not in sources:
+            unused.append(f"data/{path.name}")
+
+    if orphan:
+        rep.err(
+            sec,
+            f"{len(orphan)} 個資料檔沒有任何一步會讀到"
+            f"（可用的頂層鍵：{'、'.join(DATA_KEYS)}；刻意放的請列進 audit.ignoreDataFiles）",
+            orphan,
+        )
+    if unused:
+        rep.warn(sec, f"{len(unused)} 個章節檔沒有被任何 chapters[].source 指到", unused)
+    if blobs and not orphan:
+        rep.ok(sec, f"course/data/ 的 {len(blobs)} 個資料檔全部讀得到（依內容判斷，不看檔名）")
+
+
 # ── 資料走訪 ──────────────────────────────────────────────────────────────
 
 
@@ -529,6 +639,64 @@ def audit_structure(cfg: dict, units: list[dict], opts: dict, rep: Report) -> No
         rep.err(sec, f"evidenceAlias 指向不存在的單元：{'、'.join(ghost)}")
 
     rep.stats.update(chapters=len(quota), lesson_units=total_u, drill_units=total_d)
+
+
+def audit_taxonomy(cfg: dict, units: list[dict], opts: dict, rep: Report) -> None:
+    """分類分布：單一類別吃掉不成比例的項目 = patterns 寫太寬。
+
+    根因幾乎都是同一個：`classify()` 的 haystack 含 `target`，所以拿**會出現在
+    target 的詞**（分面詞彙、部位詞、目標詞）當 pattern，等於比對到所有以它為
+    目標的項目。兩個 taxonomy 模組的詞彙必須互斥。這件事不會報錯，只會讓
+    歸類結果悄悄變形，所以改用統計特徵抓。
+    """
+    sec = "結構與配額"
+    mod = load_taxonomy(cfg, "categories")
+    if mod is None:
+        return  # 沒設定分類維度是合法的，不是缺陷，別發假警報
+
+    counts: Counter = Counter()
+    uncategorised = 0
+    for r in units:
+        for d in r["unit"].get("drills") or []:
+            try:
+                cid = mod.classify(d)
+            except Exception as e:
+                rep.err(sec, f"taxonomy.categories 的 classify() 執行失敗：{type(e).__name__}: {e}")
+                return
+            if cid:
+                counts[cid] += 1
+            else:
+                uncategorised += 1
+
+    classified = sum(counts.values())
+    total = classified + uncategorised
+    if not total:
+        return
+    names = getattr(mod, "NAMES", {})
+    top = [
+        f"{names.get(cid, cid)} {n}（{n / classified:.0%}）" for cid, n in counts.most_common(3)
+    ]
+    line = (
+        f"{len(counts)} 個類別 · 已分類 {classified}/{total}"
+        f"（未分類 {uncategorised}，{uncategorised / total:.0%}）· 前三：{'、'.join(top)}"
+    )
+
+    share = counts.most_common(1)[0][1] / classified if classified else 0
+    if share > opts["maxCategoryShare"]:
+        cid, n = counts.most_common(1)[0]
+        rep.warn(
+            sec,
+            f"「{names.get(cid, cid)}」吃掉 {n}/{classified} 個已分類項目（{share:.0%}），"
+            f"超過 audit.maxCategoryShare {opts['maxCategoryShare']:.0%}"
+            f"——patterns 是不是用到了會出現在 target 欄位的詞？",
+            [line],
+        )
+    elif classified == 0:
+        rep.warn(sec, f"{total} 個項目一個都沒被分類（patterns 對不上資料？）")
+    else:
+        rep.ok(sec, line)
+
+    rep.stats.update(categories_used=len(counts), uncategorised=uncategorised)
 
 
 # ── 影片 ──────────────────────────────────────────────────────────────────
@@ -709,18 +877,29 @@ def audit_depth(cfg: dict, units: list[dict], opts: dict, rep: Report) -> None:
 
     # 單元層級實證
     ev_units, bad_grade = set(), []
-    for path in sorted(DATA.glob("oe-*.json")):
-        blob = load_json(path)
-        for cond in (blob or {}).get("conditions", []) if isinstance(blob, dict) else []:
-            if not isinstance(cond, dict) or not cond.get("unit"):
-                continue
-            ev_units.add(cond["unit"])
-            if grades and cond.get("evidence_grade") not in grades:
-                bad_grade.append(
-                    f"{path.name} · {cond['unit']} grade={cond.get('evidence_grade')!r}"
-                )
+    for path, cond in data_rows("conditions"):
+        if not cond.get("unit"):
+            continue
+        ev_units.add(cond["unit"])
+        if grades and cond.get("evidence_grade") not in grades:
+            bad_grade.append(f"{path.name} · {cond['unit']} grade={cond.get('evidence_grade')!r}")
 
     alias = cfg.get("evidenceAlias", {})
+
+    # 實證條目的 key 只有兩種歸宿：對得到單元，或是立場聲明（前綴 concept-）。
+    # 兩者皆非就是寫了也不會出現在網站任何地方，而且數字照樣把它算進去。
+    prefix = stance_prefix(cfg)
+    all_ids = {r["unit"].get("id") for r in units}
+    valid = all_ids | {alias.get(i, i) for i in all_ids}
+    if lost := sorted(k for k in ev_units if k not in valid and not k.startswith(prefix)):
+        rep.err(
+            sec,
+            f"{len(lost)} 筆實證的 unit 既對不到單元，也不是立場聲明"
+            f"（要當立場聲明請用 {prefix}* 命名，要掛到單元請用 evidenceAlias）",
+            lost,
+        )
+
+    stance_keys = sorted(k for k in ev_units if k.startswith(prefix))
     targeted = {
         alias.get(r["unit"].get("id"), r["unit"].get("id"))
         for r in units
@@ -736,29 +915,27 @@ def audit_depth(cfg: dict, units: list[dict], opts: dict, rep: Report) -> None:
 
     # 類別層級文獻
     cats, thin_cats, bad_ref = {}, [], []
-    for path in sorted(DATA.glob("drill-evidence-*.json")):
-        blob = load_json(path)
-        for cat in (blob or {}).get("categories", []) if isinstance(blob, dict) else []:
-            if not isinstance(cat, dict) or not cat.get("id"):
-                continue
-            cats[cat["id"]] = cat
-            if grades and cat.get("evidence_grade") not in grades:
-                bad_grade.append(f"{path.name} · {cat['id']} grade={cat.get('evidence_grade')!r}")
-            cites = cat.get("citations") or []
-            if len(cites) < opts["minCitations"]:
-                thin_cats.append(f"{cat['id']}（{len(cites)} 篇）")
-            for c in cites:
-                # 生醫走 PubMed（pmid），人文社科走 Crossref（doi）——兩者擇一即可。
-                # PubMed 幾乎不收邏輯、語言學、倫理學的期刊，硬要 PMID 只會逼出捏造的引用。
-                pmid = str(c.get("pmid") or "").strip()
-                doi = str(c.get("doi") or "").strip()
-                ok_pmid = pmid.isdigit() and 6 <= len(pmid) <= 9
-                ok_doi = doi.startswith("10.") and "/" in doi
-                if not (ok_pmid or ok_doi):
-                    bad_ref.append(
-                        f"{cat['id']} · pmid={c.get('pmid')!r} doi={c.get('doi')!r}"
-                        f" · {(c.get('title') or '')[:40]}"
-                    )
+    for path, cat in data_rows("categories"):
+        if not cat.get("id"):
+            continue
+        cats[cat["id"]] = cat
+        if grades and cat.get("evidence_grade") not in grades:
+            bad_grade.append(f"{path.name} · {cat['id']} grade={cat.get('evidence_grade')!r}")
+        cites = cat.get("citations") or []
+        if len(cites) < opts["minCitations"]:
+            thin_cats.append(f"{cat['id']}（{len(cites)} 篇）")
+        for c in cites:
+            # 生醫走 PubMed（pmid），人文社科走 Crossref（doi）——兩者擇一即可。
+            # PubMed 幾乎不收邏輯、語言學、倫理學的期刊，硬要 PMID 只會逼出捏造的引用。
+            pmid = str(c.get("pmid") or "").strip()
+            doi = str(c.get("doi") or "").strip()
+            ok_pmid = pmid.isdigit() and 6 <= len(pmid) <= 9
+            ok_doi = doi.startswith("10.") and "/" in doi
+            if not (ok_pmid or ok_doi):
+                bad_ref.append(
+                    f"{cat['id']} · pmid={c.get('pmid')!r} doi={c.get('doi')!r}"
+                    f" · {(c.get('title') or '')[:40]}"
+                )
 
     if bad_grade:
         rep.err(
@@ -776,9 +953,55 @@ def audit_depth(cfg: dict, units: list[dict], opts: dict, rep: Report) -> None:
         rep.warn(sec, f"{len(thin_cats)} 個類別的文獻少於 {opts['minCitations']} 篇", thin_cats)
     if cats:
         n_cites = sum(len(c.get("citations") or []) for c in cats.values())
-        rep.ok(sec, f"{len(cats)} 個類別 · {n_cites} 篇引用 · {len(ev_units)} 個單元層級查核")
+        # 三個數字一起講。只講其中一個，README 與首頁就會各說各話（#16）。
+        rep.ok(
+            sec,
+            f"實證合計 {len(ev_units) + len(cats)} 則 = 單元層級 {len(ev_units)}"
+            f"（含立場聲明 {len(stance_keys)}）+ 類別層級 {len(cats)} · 引用 {n_cites} 篇",
+        )
 
-    rep.stats.update(evidence_units=len(ev_units), categories=len(cats))
+    rep.stats.update(
+        evidence_units=len(ev_units),
+        stance=len(stance_keys),
+        categories=len(cats),
+        evidence_total=len(ev_units) + len(cats),
+    )
+    audit_built_meta(cfg, units, ev_units, stance_keys, cats, rep)
+
+
+def audit_built_meta(
+    cfg: dict, units: list[dict], ev_units: set, stance_keys: list, cats: dict, rep: Report
+) -> None:
+    """比對 build 產物與稽核自己數出來的數字。
+
+    #13 的病徵就是這個：資料裡有 7 則立場聲明，audit 數得出來，build 只放了 3 則，
+    兩邊對不起來卻沒有人比對。這條規則讓「build 悄悄丟掉資料」直接變成錯誤。
+    """
+    sec = "內容深度"
+    built = load_json(DIST / "course.json")
+    if not isinstance(built, dict):
+        return  # 還沒建置過就沒得比
+    meta = built.get("meta") or {}
+    if meta.get("lesson_units") != len(units):
+        return  # dist/ 是別門課或還沒重建的產物，比了只會誤報
+
+    expect = {
+        "stance（首頁立場聲明）": (len(built.get("stance") or []), len(stance_keys)),
+        "meta.evidence_checked": (meta.get("evidence_checked"), len(ev_units)),
+    }
+    for key, want in (
+        ("meta.category_evidence_checked", len(cats)),
+        ("meta.evidence_total", len(ev_units) + len(cats)),
+    ):
+        if key.split(".")[1] in meta:
+            expect[key] = (meta[key.split(".")[1]], want)
+
+    if off := [f"{k}：產物 {got}，資料裡有 {want}" for k, (got, want) in expect.items() if got != want]:
+        rep.err(
+            sec,
+            f"{len(off)} 個數字與 dist/course.json 對不起來（build 把資料丟掉了？重跑 make build）",
+            off,
+        )
 
 
 # ── 進入點 ────────────────────────────────────────────────────────────────
@@ -797,8 +1020,10 @@ def main() -> int:
     rep = Report()
     audit_config(cfg, rep)
     audit_topic_coupling(cfg, rep)
+    audit_data_files(cfg, opts, rep)
     units = walk(cfg, rep)
     audit_structure(cfg, units, opts, rep)
+    audit_taxonomy(cfg, units, opts, rep)
     audit_videos(cfg, units, opts, rep)
     audit_depth(cfg, units, opts, rep)
 

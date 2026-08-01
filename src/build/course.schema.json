@@ -586,6 +586,18 @@
           "type": "integer",
           "minimum": 0,
           "description": "容許幾個誠實留空的格子"
+        },
+        "maxCategoryShare": {
+          "type": "number",
+          "minimum": 0,
+          "description": "單一類別佔已分類項目的比例上限（0–1），超過只會警告：通常代表 patterns 用到了會出現在 target 欄位的詞"
+        },
+        "ignoreDataFiles": {
+          "type": "array",
+          "description": "course/data/ 底下刻意不給建置讀的檔名；其餘讀不到的資料檔一律報錯",
+          "items": {
+            "type": "string"
+          }
         }
       }
     }
