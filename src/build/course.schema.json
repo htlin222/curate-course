@@ -883,7 +883,7 @@
   "$defs": {
     "icon": {
       "type": "string",
-      "description": "Lucide 圖示名，必須已加進 build_icons.py 的 ICONS 並跑過 make icons",
+      "description": "Lucide 圖示名，必須跑過 make icons 打包進這門課的 sprite",
       "pattern": "^[a-z0-9-]+$"
     },
     "labelled": {

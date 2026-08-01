@@ -18,18 +18,21 @@ from __future__ import annotations
 
 import importlib
 import json
-import os
 import re
 import subprocess
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-COURSE = Path(os.environ.get("COURSE") or ROOT / "course").resolve()
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import coursepath  # 框架自己的模組，要先把 src/build 加進路徑
+
+ROOT = coursepath.ROOT
+COURSE = coursepath.course_dir()
+COURSE_REL = COURSE.relative_to(ROOT) if COURSE.is_relative_to(ROOT) else COURSE
 DATA = COURSE / "data"
 WEB = ROOT / "src" / "web"
-DIST = Path(os.environ.get("DIST") or ROOT / "dist").resolve()
+DIST = coursepath.dist_dir(COURSE)
 SCHEMA = Path(__file__).parent / "course.schema.json"
 
 # 沒寫 audit 區塊時的通則門檻。單位：秒數用 "分:秒" 字串，比例用 0–1。
@@ -287,9 +290,23 @@ def validate(node, schema: dict, path: str, defs: dict, out: list[str]) -> None:
 # ── 設定檔 ────────────────────────────────────────────────────────────────
 
 
-def sprite_icons() -> set[str]:
-    m = re.search(r"ICON_NAMES = (\[.*?\]);", (WEB / "js" / "icons.js").read_text(), re.S)
+def _sprite_names(path: Path) -> set[str]:
+    if not path.is_file():
+        return set()
+    m = re.search(r"ICON_NAMES = (\[.*?\]);", path.read_text(), re.S)
     return set(json.loads(m.group(1))) if m else set()
+
+
+def sprite_icons() -> set[str]:
+    """這門課線上實際會拿到的圖示。
+
+    sync_web() 先複製 src/web、再讓 $COURSE/assets/ 覆蓋，所以課程有自己的
+    sprite 時，dist 拿到的是課程那一份。稽核必須看同一份，否則 A 課的
+    sprite 會替 B 課背書——這正是 sprite 還是全域檔案時的老問題。
+    """
+    return _sprite_names(COURSE / "assets" / "js" / "icons.js") or _sprite_names(
+        WEB / "js" / "icons.js"
+    )
 
 
 def css_tones() -> set[str]:
@@ -516,7 +533,7 @@ def audit_config(cfg: dict, rep: Report) -> None:
     if absent := sorted(label for label, name in used.items() if name and name not in icons):
         rep.err(
             sec,
-            f"{len(absent)} 個圖示不在 sprite 內（把名稱加進 build_icons.py 的 ICONS 再跑 make icons）",
+            f"{len(absent)} 個圖示不在 sprite 內（跑 COURSE={COURSE_REL} make icons 重打包）",
             absent,
         )
     else:

@@ -16,8 +16,12 @@ import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-COURSE = ROOT / os.environ.get("COURSE", "course")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import coursepath  # 框架自己的模組，要先把 src/build 加進路徑
+
+ROOT = coursepath.ROOT
+COURSE = coursepath.course_dir()
+DIST = coursepath.dist_dir(COURSE)
 CFG = json.loads((COURSE / "course.config.json").read_text())
 PROJECT = CFG["site"]["project"]
 DB_NAME = f"{PROJECT}-hits"
@@ -207,7 +211,10 @@ def main() -> int:
         json.dumps(
             {
                 "name": PROJECT,
-                "pages_build_output_dir": os.environ.get("DIST", "dist"),
+                # 產物目錄跟著課程走，兩門課各自有自己的 wrangler 設定
+                "pages_build_output_dir": str(
+                    DIST.relative_to(ROOT) if DIST.is_relative_to(ROOT) else DIST
+                ),
                 "compatibility_date": "2025-01-01",
                 "d1_databases": [
                     {"binding": "HITS", "database_name": DB_NAME, "database_id": db_id}

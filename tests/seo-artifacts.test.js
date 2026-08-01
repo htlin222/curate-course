@@ -8,18 +8,16 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
-import { isAbsolute, join } from "node:path";
+import { join } from "node:path";
 
-const dist = (name) => fileURLToPath(new URL(`../dist/${name}`, import.meta.url));
-const repo = (name) => fileURLToPath(new URL(`../${name}`, import.meta.url));
-const courseDir = process.env.COURSE
-  ? isAbsolute(process.env.COURSE)
-    ? process.env.COURSE
-    : repo(process.env.COURSE)
-  : repo("course");
+import { repo, activeCourse, activeDist } from "./_paths.js";
 
-const ready = existsSync(dist("course.json")) && existsSync(dist("index.html"));
+// DIST 跟著 COURSE 走（dist/<課程名>），兩門課才不會互相覆蓋產物
+const dist = (name) => join(activeDist(), name);
+const courseDir = activeCourse();
+
+const ready =
+  !!courseDir && existsSync(dist("course.json")) && existsSync(dist("index.html"));
 const skip = ready ? false : "需要先跑 make build（make check 會自動處理）";
 
 const course = ready ? JSON.parse(readFileSync(dist("course.json"), "utf8")) : null;
@@ -306,7 +304,9 @@ describe("og.html", { skip: skip || (existsSync(dist("og.html")) ? false : "沒�
   test("品牌圖示是從 sprite 取的，不是內嵌寫死的 path", () => {
     const icon = course.config.site?.brandIcon;
     if (!icon) return;
-    const sprite = readFileSync(repo("src/web/js/icons.js"), "utf8");
+    // 讀 dist 那一份：sprite 已經不是全域檔案了，課程有自己的圖示時
+    // $COURSE/assets/js/icons.js 會覆蓋掉框架那一份，線上跑的是覆蓋後的結果
+    const sprite = readFileSync(dist("js/icons.js"), "utf8");
     const m = sprite.match(new RegExp(`<symbol id=\\\\"i-${icon}\\\\"[^>]*>(.*?)</symbol>`, "s"));
     assert.ok(m, `icons.js 裡沒有 i-${icon}，make icons 沒跑過`);
     // sprite 是 JSON 字串，路徑裡的 " 被跳脫過，還原後才能比對
@@ -314,15 +314,15 @@ describe("og.html", { skip: skip || (existsSync(dist("og.html")) ? false : "沒�
   });
 });
 
-/* --- #11 og.png：只能經由進版控的 course/assets/ 進 dist ------------------- */
+/* --- #11 og.png：只能經由進版控的 <course>/assets/ 進 dist ------------------- */
 
 describe("og.png 的位置", { skip }, () => {
-  test("dist/og.png 存在就代表 course/assets/og.png 也要在（否則重新 clone 就 404）", () => {
+  test("dist/og.png 存在就代表 <course>/assets/og.png 也要在（否則重新 clone 就 404）", () => {
     if (!existsSync(dist("og.png"))) return; // 還沒跑過 make og
     const tracked = join(courseDir, "assets", "og.png");
     assert.ok(
       existsSync(tracked),
-      "dist/ 有 og.png 但 course/assets/ 沒有：這張圖不會進版控，重新 clone 後 /og.png 是 404",
+      "dist/ 有 og.png 但 <course>/assets/ 沒有：這張圖不會進版控，重新 clone 後 /og.png 是 404",
     );
     assert.deepEqual(
       readFileSync(dist("og.png")),

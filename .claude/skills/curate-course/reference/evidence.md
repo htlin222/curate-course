@@ -10,7 +10,7 @@
 ## 單元層級
 
 每個主題的整體證據強度、常見迷思、就醫警訊。體態課用 OpenEvidence 查了 24 個問題，
-結果寫進 `course/data/oe-*.json`：
+結果寫進 `$COURSE/data/oe-*.json`：
 
 ```json
 { "conditions": [{
@@ -31,8 +31,8 @@
 ## 類別層級
 
 個別項目通常沒有專屬文獻（「臀橋」沒有自己的 RCT，「臀肌訓練」才有）。先把項目歸納成
-數十個類別（`course/taxonomy/drills.py` 的 `classify()`），再為每個類別找文獻，
-寫進 `course/data/drill-evidence-*.json`：
+數十個類別（`$COURSE/taxonomy/drills.py` 的 `classify()`），再為每個類別找文獻，
+寫進 `$COURSE/data/drill-evidence-*.json`：
 
 ```json
 { "categories": [{
