@@ -71,7 +71,7 @@ COURSE=courses/guitar python3 src/build/audit.py   # 多課程並存
 | 改了樣式但線上沒變 | 檢查 `_headers` 的 Cache-Control，沒有 hash 檔名就別設長快取 |
 | 並行 agent 互相覆蓋檔案 | 每個 agent 給獨立的輸出路徑與檔名前綴，**暫存目錄也要各給一個子目錄**——`q1.txt` 這種通用檔名一定會被別人蓋掉 |
 | 數字對不起來 | 單元數、影片欄位數、去重後支數是三個不同的東西，UI 上要講清楚 |
-| 章節圖示顯示空白 | 圖示沒加進 `build_icons.py` 的 `ICONS`，或加了沒跑 `make icons` |
+| 章節圖示顯示空白 | 設定檔改了圖示但沒跑 `make icons` 重打包這門課的 sprite |
 | 標籤沒有顏色 | `tone` 只能用 `tokens.css` 裡有 `.Label--<tone>` 的那幾個 |
 | 側欄少一整章 | `nav` 分組沒列到那個章節碼——章節存在不代表側欄看得到 |
 | 總時長怪怪的 | 多語言版本會灌進「所有欄位合計」，課程時長只算主要版本 |

@@ -23,8 +23,11 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-DATA = Path(os.environ.get("COURSE") or ROOT / "course").resolve() / "data"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import coursepath  # 框架自己的模組，要先把 src/build 加進路徑
+
+ROOT = coursepath.ROOT
+DATA = coursepath.course_dir() / "data"
 ESUMMARY = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
 CROSSREF = "https://api.crossref.org/works/"
 BATCH = 180

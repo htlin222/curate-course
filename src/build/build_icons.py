@@ -1,28 +1,31 @@
 #!/usr/bin/env python3
-"""下載 Lucide 圖示並打包成內嵌 SVG sprite（src/web/js/icons.js）。
+"""下載 Lucide 圖示並打包成內嵌 SVG sprite。網站不吃任何外部請求。
 
-網站不吃任何外部請求，圖示在建置時就打包進 JS。
+**兩份 sprite，因為 sprite 不能是全域的。**
 
-要打包哪些圖示分成兩半：
+* `src/web/js/icons.js` —— 只放 `FRAMEWORK_ICONS`，也就是 src/web 裡寫死的
+  `icon("…")` 與 `#i-…`。內容**與 COURSE 無關**，跑哪一門課產出都一模一樣。
+* `$COURSE/assets/js/icons.js` —— 這門課自己的那一份（框架 ∪ 課程圖示）。
+  `build.py` 的 `sync_web()` 會先複製 src/web、再用 `$COURSE/assets/` 覆蓋，
+  所以這一份會蓋掉 `dist/js/icons.js`，前端一行都不必改。
 
-* `FRAMEWORK_ICONS` —— 框架自己的介面用得到的（搜尋、播放、深淺色…）。
-  這份清單對應 src/web 裡寫死的 `icon("…")` 與 `#i-…`，換主題不會變動。
-* 課程的圖示 —— 直接從 `$COURSE/course.config.json` 掃出來：任何叫 `icon`
-  或 `xxxIcon` 的欄位（site.brandIcon、chapters[].icon、ui.stats[].icon、
-  landing.steps[].icon…），外加選用的頂層 `icons` 陣列當逃生門。
+以前只有前者，而且課程的圖示也塞在裡面：兩門課並存時，後跑 `make icons`
+的那一門會把前一門的圖示洗掉，被洗掉的那門課線上就是一排空白方塊——
+不會報錯，只有打開網站才看得出來。現在課程圖示寫在自己的目錄，
+第二門課再怎麼跑都碰不到第一門課的產物。
 
-所以「章節想換一個圖示」只要改 `course/`，不必再編輯這支框架腳本——
-這是 README 對使用者的承諾。
+課程要打包哪些圖示是從 `$COURSE/course.config.json` **推導**出來的：任何叫
+`icon` 或 `xxxIcon` 的欄位（site.brandIcon、chapters[].icon、ui.stats[].icon、
+landing.steps[].icon…），外加選用的頂層 `icons` 陣列當逃生門。
 
 用法：
-    make icons                         # 預設打包 course/
-    COURSE=courses/guitar make icons   # 多課程並存時，切到哪門課就打包哪門課
+    make icons                          # 用預設解析出來的那門課
+    COURSE=examples/body make icons     # 多課程並存時明講是哪一門
 """
 
 from __future__ import annotations
 
 import json
-import os
 import re
 import sys
 import urllib.error
@@ -30,12 +33,18 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import coursepath  # 框架自己的模組，要先把 src/build 加進路徑
+
 LUCIDE_VERSION = "0.469.0"
 CDN = f"https://unpkg.com/lucide-static@{LUCIDE_VERSION}/icons/{{}}.svg"
 
-ROOT = Path(__file__).resolve().parents[2]
-COURSE = Path(os.environ.get("COURSE") or ROOT / "course").resolve()
-OUT = ROOT / "src" / "web" / "js" / "icons.js"
+ROOT = coursepath.ROOT
+COURSE = coursepath.course_dir()
+# 框架那一份：內容不隨課程改變，所以兩門課同時存在也不會互相覆蓋
+FRAMEWORK_OUT = ROOT / "src" / "web" / "js" / "icons.js"
+# 課程那一份：sync_web() 會拿它覆蓋 dist/js/icons.js
+COURSE_OUT = COURSE / "assets" / "js" / "icons.js"
 
 # 框架介面自己要用的圖示。這些名稱在 src/web 裡是寫死的字串，
 # tests/decoupling.test.js 會雙向比對，多一個少一個都會被抓出來。
@@ -123,25 +132,16 @@ def fetch(name: str) -> tuple[str, str | None]:
         return name, None
 
 
-def main() -> int:
-    from_course = course_icons(COURSE / "course.config.json")
-    wanted = sorted(set(FRAMEWORK_ICONS) | from_course)
+def render(names: list[str], bodies: dict[str, str], note: str) -> str:
+    """產生一份完整可用的 icons.js。
 
-    with ThreadPoolExecutor(max_workers=8) as pool:
-        results = dict(pool.map(fetch, wanted))
-
-    missing = [n for n, v in results.items() if v is None]
-    if missing:
-        print(f"✗ 取不到 {len(missing)} 個圖示：{', '.join(missing)}", file=sys.stderr)
-        print("  Lucide 沒有這個名字？到 https://lucide.dev/icons/ 對一下拼字", file=sys.stderr)
-        return 1
-
-    names = sorted(results)
-    sprite = "".join(f'<symbol id="i-{n}" viewBox="0 0 24 24">{results[n]}</symbol>' for n in names)
-
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(f"""\
+    課程那一份是**整檔覆蓋** dist/js/icons.js，不是合併，所以它必須自帶
+    mountIcons()／icon() 與框架圖示，少一樣前端就整個掛掉。
+    """
+    sprite = "".join(f'<symbol id="i-{n}" viewBox="0 0 24 24">{bodies[n]}</symbol>' for n in names)
+    return f"""\
 // icons.js — 由 build_icons.py 產生，請勿手動編輯
+// {note}
 // Lucide v{LUCIDE_VERSION}（ISC License）· https://lucide.dev/icons/
 export const ICON_SPRITE =
   {json.dumps(sprite, ensure_ascii=False)};
@@ -163,13 +163,49 @@ export function mountIcons() {{
 export function icon(name, size = 16, cls = "") {{
   return `<svg class="${{cls}}" width="${{size}}" height="${{size}}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-${{name}}"/></svg>`;
 }}
-""")
-    shown = OUT.relative_to(ROOT) if OUT.is_relative_to(ROOT) else OUT
-    print(
-        f"→ {shown}  {len(names)} 個圖示"
-        f"（框架 {len(FRAMEWORK_ICONS)} + {COURSE.name} {len(from_course)}）"
-        f"，{OUT.stat().st_size / 1024:.1f} KB"
+"""
+
+
+def write(path: Path, text: str, label: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text)
+    shown = path.relative_to(ROOT) if path.is_relative_to(ROOT) else path
+    print(f"→ {shown}  {label}，{path.stat().st_size / 1024:.1f} KB")
+
+
+def main() -> int:
+    framework = sorted(set(FRAMEWORK_ICONS))
+    from_course = course_icons(COURSE / "course.config.json")
+    course_only = sorted(from_course - set(framework))
+    wanted = sorted(set(framework) | from_course)
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        results = dict(pool.map(fetch, wanted))
+
+    missing = [n for n, v in results.items() if v is None]
+    if missing:
+        print(f"✗ 取不到 {len(missing)} 個圖示：{', '.join(missing)}", file=sys.stderr)
+        print("  Lucide 沒有這個名字？到 https://lucide.dev/icons/ 對一下拼字", file=sys.stderr)
+        return 1
+
+    write(
+        FRAMEWORK_OUT,
+        render(framework, results, "框架介面用的圖示，與課程無關——不要把章節圖示加進來"),
+        f"框架 {len(framework)} 個圖示",
     )
+
+    if course_only:
+        write(
+            COURSE_OUT,
+            render(wanted, results, f"{COURSE.name} 這門課的 sprite（框架 + 課程），覆蓋 dist/js/icons.js"),
+            f"{COURSE.name} {len(wanted)} 個圖示（含 {len(course_only)} 個課程專屬）",
+        )
+    elif COURSE_OUT.exists():
+        # 課程把自訂圖示拿光了，殘留的那一份會繼續覆蓋 dist，而且永遠不再更新
+        COURSE_OUT.unlink()
+        print(f"→ 移除 {COURSE_OUT.relative_to(ROOT)}（這門課沒有框架以外的圖示）")
+    else:
+        print(f"·  {COURSE.name} 沒有框架以外的圖示，直接用框架那一份")
     return 0
 
 

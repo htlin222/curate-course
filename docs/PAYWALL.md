@@ -20,7 +20,7 @@
 
 ## 設定
 
-`course/course.config.json` 的 `paywall` 區塊。**沒有這個區塊，整個功能不存在** ——
+`$COURSE/course.config.json` 的 `paywall` 區塊。**沒有這個區塊，整個功能不存在** ——
 跟 `counter` 同一個模式，別的課程沿用這個框架時預設不會有 paywall。
 
 ```jsonc

@@ -107,7 +107,7 @@ innertube 也一樣：它的 `playabilityStatus: OK` 只回答「這支影片能
 
 ## 輸出格式
 
-寫進 `course/data/<source>.json`：
+寫進 `$COURSE/data/<source>.json`：
 
 ```json
 {
@@ -137,7 +137,7 @@ innertube 也一樣：它的 `playabilityStatus: OK` 只回答「這支影片能
 
 ## 多語言
 
-同一個單元想提供第二語言版本，另外寫進 `course/data/alt-lessons-<lang>.json`：
+同一個單元想提供第二語言版本，另外寫進 `$COURSE/data/alt-lessons-<lang>.json`：
 
 ```json
 { "lessons": [{ "unit": "ch5-u1", "lang": "en", "title": "", "channel": "", "url": "", "why": "" }] }
@@ -152,7 +152,7 @@ innertube 也一樣：它的 `playabilityStatus: OK` 只回答「這支影片能
 
 ```bash
 # 1. 從策展資料撈出所有 video id
-python3 - course/data > ids.txt <<'PY'
+python3 - "$COURSE/data" > ids.txt <<'PY'
 import glob, re, sys
 ids = set()
 for f in glob.glob(f"{sys.argv[1]}/*.json"):
@@ -166,7 +166,7 @@ yt-dlp --no-update --cookies-from-browser chrome --ignore-no-formats-error \
   --print "%(id)s|%(duration)s|%(view_count)s|%(channel)s|%(title)s" > meta.txt
 
 # 3. 轉成 video-meta.json
-python3 - meta.txt course/data/video-meta.json <<'PY'
+python3 - meta.txt "$COURSE/data/video-meta.json" <<'PY'
 import json, sys
 num = lambda s: int(float(s)) if s.replace(".", "", 1).isdigit() else 0
 out = {}

@@ -1,6 +1,24 @@
 PY := uv run python
-COURSE ?= course
-DIST ?= dist
+
+# 這個框架本身不內含任何一門課：課程住在 courses/<名字>/ 或 examples/<名字>/。
+# COURSE 是主要路徑而不是選項——解析規則只有一份，寫在 src/build/coursepath.py，
+# Makefile 與所有 Python 進入點問的都是它，不可能各自算出不一樣的答案。
+#
+#   COURSE=examples/body make build     # 明講（repo 裡有兩門以上時是必要的）
+#   make build                          # 只有一門課時才會自動選定
+#
+# --or-empty：解析不了就給空字串而不是讓 make 整個爆掉，help 之類的目標仍然可用；
+# 真正的錯誤訊息由各腳本自己印（它們問的是同一個解析器）。
+COURSE ?= $(shell python3 src/build/coursepath.py --or-empty)
+# 立刻求值一次。COURSE 被 export、又被 DIST 引用，遞迴展開會讓上面那行每次都重跑。
+COURSE := $(COURSE)
+COURSE_NAME := $(notdir $(COURSE))
+
+# DIST 必須跟著 COURSE 走。以前兩門課都寫進 dist/，後建的直接蓋掉先建的——
+# 而且蓋掉之後 dist/course.json 仍然是一份合法的 course.json，沒有人會發現。
+DIST ?= dist/$(COURSE_NAME)
+DIST := $(DIST)
+
 PORT ?= 8899
 CHROME ?= /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 # 進版控的那一份才是本體：dist/ 被 gitignore，重新 clone 之後只有這裡的圖還在。
@@ -17,7 +35,13 @@ help: ## 列出可用指令
 	@grep -E '^[a-z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'
 
-build: ## 合併資料 → public/course.json，含配額驗證與 SEO 產出
+new-course: ## 產生一門新課的骨架（make new-course NAME=my-course [DIR=...]），產出即可 make build
+	@$(PY) src/build/new_course.py "$(NAME)" "$(DIR)"
+
+courses: ## 列出這個 repo 裡的所有課程，以及目前會建置哪一門
+	@python3 src/build/coursepath.py --list
+
+build: ## 合併資料 → $(DIST)/course.json，含配額驗證與 SEO 產出
 	$(PY) src/build/build.py
 
 icons: ## 重新下載 Lucide 圖示並打包成內嵌 sprite
@@ -77,4 +101,4 @@ check: lint build test audit ## 提交前跑這個（含單元測試與離線稽
 clean: ## 清掉建置暫存
 	rm -rf .tmp .wrangler .ruff_cache dist **/__pycache__
 
-.PHONY: help build icons og counter audit test e2e verify serve deploy lint fmt check clean
+.PHONY: help new-course courses build icons og counter audit test e2e verify serve deploy lint fmt check clean

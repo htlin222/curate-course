@@ -14,7 +14,7 @@ wrangler.jsonc
 .wrangler/
 dist/
 # dist/ 是產物，不進版控是對的——但社群平台要抓 /og.png，所以那張圖的本體放在
-# course/assets/og.png（進版控），make og 直接輸出到那裡，build 時再複製進 dist/。
+# <課程>/assets/og.png（進版控），make og 直接輸出到那裡，build 時再複製進 dist/。
 
 # 有些人的全域 gitignore 有 build/ 規則，會連框架的 src/build/ 一起吃掉
 !src/build/

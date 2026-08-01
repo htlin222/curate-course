@@ -5,18 +5,20 @@ from __future__ import annotations
 
 import importlib
 import json
-import os
 import re
 import shutil
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-COURSE = Path(os.environ.get("COURSE") or ROOT / "course").resolve()
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import coursepath  # 框架自己的模組，要先把 src/build 加進路徑
+
+ROOT = coursepath.ROOT
+COURSE = coursepath.course_dir()
 DATA = COURSE / "data"
 WEB = ROOT / "src" / "web"
-DIST = Path(os.environ.get("DIST") or ROOT / "dist").resolve()
+DIST = coursepath.dist_dir(COURSE)
 OUT = DIST / "course.json"
 
 CFG = json.loads((COURSE / "course.config.json").read_text())

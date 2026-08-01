@@ -12,16 +12,18 @@ from __future__ import annotations
 
 import html
 import json
-import os
 import re
 import sys
 from collections import Counter
 from datetime import date
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-COURSE = Path(os.environ.get("COURSE") or ROOT / "course").resolve()
-PUB = Path(os.environ.get("DIST") or ROOT / "dist").resolve()
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import coursepath  # 框架自己的模組，要先把 src/build 加進路徑
+
+ROOT = coursepath.ROOT
+COURSE = coursepath.course_dir()
+PUB = coursepath.dist_dir(COURSE)
 WEB = ROOT / "src" / "web"
 
 CFG = json.loads((COURSE / "course.config.json").read_text())
@@ -536,19 +538,26 @@ def write_llms(course: dict) -> None:
 # 兩個地方，改了標籤忘了改數字，圖上就會留著上一門課的統計，而且沒有任何檢查會發現。
 # 這些值 build 全部都算好了，所以改成注入 + 對不上就讓 build 掛掉。
 
-ICONS_JS = WEB / "js" / "icons.js"
+# 這門課線上實際會拿到的那一份 sprite。sync_web() 先複製 src/web、再讓
+# $COURSE/assets/ 覆蓋同名檔，所以課程有自己的 icons.js 時，dist 拿到的是
+# 課程那一份——og 圖必須看同一份，否則品牌圖示會莫名其妙地留白。
+ICONS_JS_CANDIDATES = (COURSE / "assets" / "js" / "icons.js", WEB / "js" / "icons.js")
 _SPRITE: dict[str, str] = {}
 
 
 def sprite() -> dict[str, str]:
     """讀 build_icons.py 產生的 sprite，讓 og.html 不必內嵌寫死的 <path>。"""
-    if not _SPRITE and ICONS_JS.exists():
-        m = re.search(r'ICON_SPRITE\s*=\s*("(?:[^"\\]|\\.)*")', ICONS_JS.read_text(), re.S)
-        if m:
-            for name, inner in re.findall(
-                r'<symbol id="i-([^"]+)"[^>]*>(.*?)</symbol>', json.loads(m.group(1)), re.S
-            ):
-                _SPRITE[name] = inner
+    if not _SPRITE:
+        for path in ICONS_JS_CANDIDATES:
+            if not path.exists():
+                continue
+            m = re.search(r'ICON_SPRITE\s*=\s*("(?:[^"\\]|\\.)*")', path.read_text(), re.S)
+            if m:
+                for name, inner in re.findall(
+                    r'<symbol id="i-([^"]+)"[^>]*>(.*?)</symbol>', json.loads(m.group(1)), re.S
+                ):
+                    _SPRITE[name] = inner
+                break
     return _SPRITE
 
 
@@ -557,7 +566,7 @@ def icon_svg(name: str | None, size: int) -> str:
     inner = sprite().get(name or "")
     if not inner:
         if name:
-            print(f"   ⚠ og.html 找不到圖示 i-{name}，先留白（加進 build_icons.py 再跑 make icons）")
+            print(f"   ⚠ og.html 找不到圖示 i-{name}，先留白（跑 make icons 重打包這門課的 sprite）")
         return ""
     return (
         f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
@@ -658,7 +667,7 @@ def render_og(course: dict) -> None:
     # #11：make og 以前寫進 gitignored 的 dist/，重新 clone 之後 /og.png 就是 404。
     # 現在的正解是輸出到 course/assets/（會進版控，build 時再複製到 dist）。
     if not (COURSE / "assets" / "og.png").exists():
-        warn("找不到 course/assets/og.png，社群卡片會破圖。跑 make og 產一張（會進版控）")
+        warn(f"找不到 {COURSE.name}/assets/og.png，社群卡片會破圖。跑 make og 產一張（會進版控）")
 
 
 def main() -> int:
