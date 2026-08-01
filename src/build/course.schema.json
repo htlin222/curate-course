@@ -500,8 +500,12 @@
         },
         "repo": {
           "type": "string",
-          "description": "留言要送去的 GitHub repo（owner/name）。務必換成自己的——這個值填錯不會有任何錯誤，留言只會安靜地跑到別人家。",
+          "description": "留言要送去的 GitHub repo（owner/name）。務必換成自己的——這個值填錯不會有任何錯誤，留言只會安靜地跑到別人家。make audit 會比對它是不是這個 checkout 的 origin。",
           "pattern": "^[\\w.-]+/[\\w.-]+$"
+        },
+        "allowExternalRepo": {
+          "type": "boolean",
+          "description": "刻意把留言送到「不是這個 checkout」的 repo 時設為 true，否則 make audit 會擋下來"
         },
         "repoId": {
           "type": "string"

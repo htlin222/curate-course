@@ -64,26 +64,39 @@ def fetch_doi(doi: str) -> dict | None:
 
 
 BLOBS: dict[Path, dict] = {}
+BROKEN: list[str] = []
+
+# 兩層都要掃：類別層級（categories）與單元層級（conditions）。只驗其中一層
+# 等於留了一半的門沒鎖。
+LAYERS = (("categories", "id"), ("conditions", "unit"))
 
 
 def collect() -> list[tuple[str, str, str, dict]]:
     """回傳 (檔名, 類別／單元 id, 識別碼, citation dict)。citation 是可就地修改的參照。
 
-    兩層都要掃：`drill-evidence-*.json` 的類別層級與 `oe-*.json` 的單元層級。
-    只驗其中一層等於留了一半的門沒鎖。
+    掃 `course/data/*.json` 並**依頂層鍵**判斷是哪一層，不看檔名。這裡本來寫死
+    `drill-evidence-*.json` 與 `oe-*.json` 兩個 glob，但那兩個前綴是「這門課用
+    OpenEvidence」的歷史（見 build.py）：換一個實證來源、改了檔名，這支腳本會
+    安靜地驗 0 筆然後印「通過 0/0」——漏驗比報錯更糟，因為它會通過。
 
     識別碼優先取 `pmid`（生醫），沒有就取 `doi`（人文社科走 Crossref）。
     """
     out = []
-    sources = [
-        ("drill-evidence-*.json", "categories", "id"),
-        ("oe-*.json", "conditions", "unit"),
-    ]
-    for pattern, key, id_field in sources:
-        for path in sorted(DATA.glob(pattern)):
+    for path in sorted(DATA.glob("*.json")):
+        try:
             blob = json.loads(path.read_text())
+        except json.JSONDecodeError as e:
+            BROKEN.append(f"{path.name}：第 {e.lineno} 行 {e.msg}")
+            continue
+        if not isinstance(blob, dict):
+            continue
+        for key, id_field in LAYERS:
+            entries = blob.get(key)
+            if not isinstance(entries, list):
+                continue
+            # 只有真的含引用層的檔案才進 BLOBS，--fix 才不會去重寫章節檔
             BLOBS[path] = blob
-            for entry in blob.get(key, []):
+            for entry in entries:
                 if not isinstance(entry, dict):
                     continue
                 eid = entry.get(id_field, "?")
@@ -140,6 +153,11 @@ def main() -> int:
             if year.isdigit():
                 c["year"] = int(year)
 
+    if BROKEN:
+        print(f"✗ {len(BROKEN)} 個資料檔不是合法 JSON（裡面的引用整批沒驗到）：")
+        for b in BROKEN:
+            print(f"   {b}")
+
     if bad_pmid:
         print(f"✗ 缺少可驗證的識別碼（pmid 或 doi）{len(bad_pmid)} 筆：")
         for f, cid, _, c in bad_pmid[:10]:
@@ -165,7 +183,7 @@ def main() -> int:
             path.write_text(json.dumps(blob, ensure_ascii=False, indent=1))
         print(f"→ --fix：已用 API 回傳值覆寫 {len(BLOBS)} 個檔案的 title/journal/year")
 
-    return 1 if (missing or bad_pmid) else 0
+    return 1 if (missing or bad_pmid or BROKEN) else 0
 
 
 if __name__ == "__main__":

@@ -20,6 +20,7 @@ import importlib
 import json
 import os
 import re
+import subprocess
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -482,6 +483,90 @@ def audit_config(cfg: dict, rep: Report) -> None:
 
     # 佔位符檢查已移到 audit_topic_coupling()：那裡掃 hero/landing/llms/stance
     # 的所有欄位，涵蓋範圍比這裡原本寫死的四條路徑廣。
+
+
+def checkout_repo() -> str | None:
+    """這個 checkout 對應的 GitHub repo（owner/name）；問不到回 None。
+
+    只讀本地 git 設定，不打網路，符合這支腳本「同樣輸入永遠同樣輸出」的前提。
+    """
+    try:
+        out = subprocess.run(
+            ["git", "config", "--get", "remote.origin.url"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+    except Exception:
+        return None
+    m = re.search(r"github\.com[/:]([\w.-]+/[\w.-]+?)(?:\.git)?$", out.stdout.strip())
+    return m.group(1) if m else None
+
+
+def audit_identity(cfg: dict, rep: Report) -> None:
+    """留言與網址必須指向**這門課自己**，不是上一個主題、也不是框架作者。
+
+    這一條是真的發生過的：`discussions` 沿用了範例值，讀者的留言全部靜靜流進
+    框架自己的 repo，上線之後才被框架作者發現。失敗模式特別惡劣——前端不報錯、
+    討論面板正常顯示、出事的是讀者、發現的是別人。
+
+    判斷基準刻意用「這個 checkout 的 origin」而不是寫死框架的 repo 名：
+    寫死只擋得住指向框架的那一種，而且框架自己要填回真值就得再寫死一個例外
+    （「site.project 不是 body-course 才檢查」——那是把範例課程的名字寫進框架，
+    正是這個專案在消滅的東西）。比對 origin 一併擋掉「從別的課程複製設定檔」，
+    範例課程也不需要任何例外。
+    """
+    sec = "設定檔"
+    site = cfg.get("site") or {}
+    project = str(site.get("project") or "")
+
+    # 1) site.url 與 site.project 對不起來 → sitemap、JSON-LD、OG 卡全指向別人的網域
+    m = re.match(r"^https://([\w-]+)\.pages\.dev/?$", str(site.get("url") or ""))
+    if m and project and m.group(1) != project:
+        rep.err(
+            sec,
+            f"site.url 指向 {m.group(1)}.pages.dev，但 site.project 是 {project}"
+            f"：sitemap、JSON-LD 與 OG 卡都會指向別人的網站",
+        )
+
+    disc = cfg.get("discussions") or {}
+    if not disc:
+        return  # 沒有討論面板是合法的（也是還沒有自己 repo 時的正解）
+
+    # 2) 佔位值只警告：出貨的設定檔本來就是 REPLACE_ME，壞掉好過靜靜送進別人家
+    fields = ("repo", "repoId", "categoryId")
+    todo = [k for k in fields if not disc.get(k) or "REPLACE_ME" in str(disc.get(k))]
+    if todo:
+        rep.warn(
+            sec,
+            f"discussions 有 {len(todo)} 個欄位還沒換（{'、'.join(todo)}）：討論面板會顯示 giscus "
+            f"錯誤。到 https://giscus.app 換成自己的 repo，或整組 discussions 刪掉",
+        )
+        return  # 還是佔位就沒有「指向誰」的問題
+
+    repo = str(disc.get("repo"))
+    if disc.get("allowExternalRepo"):
+        rep.ok(sec, f"discussions 指向 {repo}（已宣告 allowExternalRepo）")
+        return
+
+    own = checkout_repo()
+    if own and repo.lower() != own.lower():
+        rep.err(
+            sec,
+            f"discussions.repo 是 {repo}，但這個 checkout 是 {own}"
+            f"：讀者的留言會靜靜送進別人的 repo。刻意要送到別的 repo 請設"
+            f" discussions.allowExternalRepo: true",
+        )
+    elif own:
+        rep.ok(sec, f"discussions 指向這個 checkout 自己的 repo（{own}）")
+    elif project and repo.split("/")[-1] != project:
+        # 問不到 origin（下載 tarball、沒有 remote）就退回名字比對這個較弱的訊號
+        rep.warn(
+            sec,
+            f"問不到這個 checkout 的 GitHub repo，無法確認 discussions.repo（{repo}）"
+            f"指向自己；它的 repo 名與 site.project（{project}）也對不起來，請人工確認",
+        )
 
 
 def audit_data_files(cfg: dict, opts: dict, rep: Report) -> None:
@@ -1020,6 +1105,7 @@ def main() -> int:
     rep = Report()
     audit_config(cfg, rep)
     audit_topic_coupling(cfg, rep)
+    audit_identity(cfg, rep)
     audit_data_files(cfg, opts, rep)
     units = walk(cfg, rep)
     audit_structure(cfg, units, opts, rep)
