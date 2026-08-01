@@ -11,6 +11,11 @@
     "chapters"
   ],
   "properties": {
+    "frameworkVersion": {
+      "type": "string",
+      "description": "這份設定檔寫給哪一版框架（semver）。只有主版號有意義：主版號對得上就保證相容，對不上代表中間有破壞性變更，make audit 會擋下來並指向 docs/MIGRATION.md。沒填視為 v1。",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
     "site": {
       "type": "object",
       "description": "站台身分，直接餵給 SEO 與 JSON-LD",

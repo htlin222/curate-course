@@ -34,6 +34,7 @@ DATA = COURSE / "data"
 WEB = ROOT / "src" / "web"
 DIST = coursepath.dist_dir(COURSE)
 SCHEMA = Path(__file__).parent / "course.schema.json"
+MIGRATION = "docs/MIGRATION.md"
 
 # 沒寫 audit 區塊時的通則門檻。單位：秒數用 "分:秒" 字串，比例用 0–1。
 DEFAULTS = {
@@ -472,10 +473,61 @@ def audit_copy(cfg: dict, rep: Report) -> None:
         rep.ok(sec, "文案欄位都沒有 HTML 標籤（一律逸出 + **粗體**）")
 
 
+def audit_framework_version(cfg: dict, rep: Report) -> None:
+    """設定檔宣告的框架版號 vs 這份框架自己的版號。
+
+    這是**第一個**該回答的問題：版號對不上的話，底下所有檢查都是在拿新框架的
+    規則去量一份舊設定檔，錯誤訊息會指向一堆不是根因的地方。破壞性變更的代價
+    也不會是紅色的——設定檔照樣通過 schema，build 照樣成功，只有頁面上的字
+    悄悄變成字面的 `<strong>`。
+    """
+    sec = "設定檔"
+    fw = coursepath.FRAMEWORK_VERSION
+    fw_major = coursepath.major(fw)
+    if fw_major is None:
+        rep.warn(sec, "讀不到框架版號（pyproject.toml 的 project.version），略過版號檢查")
+        return
+
+    declared = cfg.get("frameworkVersion")
+    if declared is None:
+        rep.err(
+            sec,
+            f"設定檔沒有 frameworkVersion，視為 v1；這份框架是 v{fw_major}（{fw}）",
+            [
+                f"照 {MIGRATION} 的「v1 → v2」逐項改完，再把",
+                f'"frameworkVersion": "{fw}" 加到設定檔頂層',
+            ],
+        )
+        return
+
+    dec_major = coursepath.major(declared)
+    if dec_major is None:
+        rep.err(sec, f"frameworkVersion「{declared}」不是 semver（要 主.次.修，例如 {fw}）")
+    elif dec_major < fw_major:
+        rep.err(
+            sec,
+            f"設定檔寫給 v{dec_major}，框架已經是 v{fw_major}（{fw}）——中間有破壞性變更",
+            [
+                *(f"{MIGRATION} 的「v{n} → v{n + 1}」" for n in range(dec_major, fw_major)),
+                f'全部做完再把 frameworkVersion 改成 "{fw}"',
+            ],
+        )
+    elif dec_major > fw_major:
+        rep.err(
+            sec,
+            f"設定檔寫給 v{dec_major}，但這份框架只到 v{fw_major}（{fw}）——太舊的是框架",
+            ["git pull 更新框架，不要把設定檔的版號改回去遷就它"],
+        )
+    else:
+        rep.ok(sec, f"框架 v{fw} · 設定檔宣告 {declared}")
+
+
 def audit_config(cfg: dict, rep: Report) -> None:
     sec = "設定檔"
     # 設定檔可能本身就壞掉——稽核要能報出來，不能自己爆掉，所以一律用 .get()
     chapters = [c for c in cfg.get("chapters") or [] if isinstance(c, dict)]
+
+    audit_framework_version(cfg, rep)
 
     schema = load_json(SCHEMA)
     if isinstance(schema, dict):
