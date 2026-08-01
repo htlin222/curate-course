@@ -127,12 +127,12 @@ function lessonBox(u) {
 
 /* --- 動作清單 ------------------------------------------------------------ */
 
-function muscleTags(list) {
+function facetTags(list) {
   return (list || [])
     .map(
-      (m) =>
-        `<button class="Label Label--neutral Label--muscle" data-muscle="${esc(m)}"
-                 type="button" title="${esc((UI.facetFilterHint || "篩選涉及 {name} 的內容").replace("{name}", m))}">${esc(m)}</button>`,
+      (f) =>
+        `<button class="Label Label--neutral Label--facet" data-facet="${esc(f)}"
+                 type="button" title="${esc((UI.facetFilterHint || "篩選涉及 {name} 的內容").replace("{name}", f))}">${esc(f)}</button>`,
     )
     .join("");
 }
@@ -148,7 +148,7 @@ function drill(d) {
         ${d.channel ? `<span>· ${esc(d.channel)}</span>` : ""}
         ${d.duration ? `<span>· ${esc(d.duration)}</span>` : ""}
       </span>
-      ${(d.facets || []).length ? `<span class="Drill__muscles">${muscleTags(d.facets)}</span>` : ""}
+      ${(d.facets || []).length ? `<span class="Drill__facets">${facetTags(d.facets)}</span>` : ""}
     </span>
     ${playBtn(true, !d.url)}`;
 
@@ -289,22 +289,24 @@ function drillEvidence(u) {
     </section>`;
 }
 
-/* --- 肌群 ---------------------------------------------------------------- */
+/* --- 對立的兩組特徵 -------------------------------------------------------
+   單元底下兩張並排的清單，標題由 ui.tightLabel / ui.weakLabel 決定，
+   框架不知道也不該知道它們在講什麼。 */
 
-function muscles(tight, weak) {
+function traitLists(tight, weak) {
   if (!tight?.length && !weak?.length) return "";
   const block = (mod, iconName, title, list) =>
     list?.length
-      ? `<div class="MuscleBlock MuscleBlock--${mod}">
-           <h4 class="MuscleBlock__title">${icon(iconName, 12)} ${title}</h4>
-           <div class="MuscleBlock__list">
-             ${list.map((m) => `<span class="Label Label--neutral">${esc(m)}</span>`).join("")}
+      ? `<div class="TraitBlock TraitBlock--${mod}">
+           <h4 class="TraitBlock__title">${icon(iconName, 12)} ${title}</h4>
+           <div class="TraitBlock__list">
+             ${list.map((t) => `<span class="Label Label--neutral">${esc(t)}</span>`).join("")}
            </div>
          </div>`
       : "";
 
   return `
-    <div class="MuscleGrid">
+    <div class="TraitGrid">
       ${block("tight", "flame", UI.tightLabel || "", tight)}
       ${block("weak", "battery-low", UI.weakLabel || "", weak)}
     </div>`;
@@ -337,7 +339,7 @@ export function renderUnit(u, done, locked = false) {
     .map((k) => drillGroup(k.id, (u.drills || []).filter((d) => d.kind === k.id)))
     .join("");
 
-  // 單元自身的肌群 + 底下所有動作的肌群，供側欄篩選比對
+  // 單元自身的分面 + 底下所有項目的分面，供側欄篩選比對
   const allFacets = [
     ...new Set([...(u.facets || []), ...(u.drills || []).flatMap((d) => d.facets || [])]),
   ];
@@ -384,7 +386,7 @@ export function renderUnit(u, done, locked = false) {
                </div>`
             : ""
         }
-        ${muscles(u.tight, u.weak)}
+        ${traitLists(u.tight, u.weak)}
         ${evidence(u.evidence, u.id)}
         ${groups}
         ${drillEvidence(u)}

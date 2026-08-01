@@ -14,6 +14,9 @@ description: Use when building a curated video course website from YouTube — p
    捏造一個看起來合理的 ID 比留空更糟。
 2. **留空要說明。** 找不到合格影片就 `url: null` + `note` 寫清楚查過什麼、為什麼不合格。
 3. **不信任任何上游宣稱**，包括自己剛才說已經驗證過的。交付前一定跑 `make audit` 與 `make verify`。
+   **能播 ≠ 能嵌入**——yt-dlp 與 innertube 只回答前者，可嵌入與否只有 `make verify` 的
+   oEmbed 算數。**影片死活也只認 oEmbed**：yt-dlp 被限流時是 exit 0 + 空輸出，
+   拿它判死刑會靜靜殺掉活著的影片（見 `reference/curating.md`）。
 4. **誠實比好看重要。** 查證結果對課程不利就照實寫，標成 `contested`。
 
 ## 全景
@@ -39,11 +42,14 @@ dist/                  ← 建置產物
 → 欄位、schema、圖示、tone、詞彙模組：**`reference/config.md`**
 
 **3. 策展影片**（最耗時，一定要並行）——一次一章，派獨立輸出路徑的 subagent。
+用 `yt-dlp --flat-playlist` 搜尋，一次就拿到 id／秒數／觀看數／頻道／標題，
+挑片與中繼資料出自同一次 API 回應。
 → agent 指示範本、oEmbed 驗證、資料格式、多語言：**`reference/curating.md`**
 
-**4. 補真實中繼資料**——策展抄下來的長度常有誤差。在**真實 YouTube 分頁的 context 內**
-呼叫 innertube API，把 `{videoId: {status, seconds, views, channel, title}}` 寫進
+**4. 補真實中繼資料**——第 3 步沒順手寫出來（或事後換過片）就補跑一次
+`yt-dlp --batch-file`，把 `{videoId: {status, seconds, views, channel, title}}` 寫進
 `course/data/video-meta.json`，建置時覆寫長度、頻道與觀看數。
+**不要用瀏覽器裡的 innertube**——那是備案，而且它的 `playabilityStatus: OK` 不代表可嵌入。
 
 **5. 加上可查證的深度**（選用但強烈建議）——這是策展課程跟收藏清單的差別。
 → 單元層級與類別層級實證、PubMed 用法：**`reference/evidence.md`**

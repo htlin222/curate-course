@@ -4,7 +4,8 @@ import {
   renderChapter, renderStance, renderHome, setDrillEvidence, setConfig, setAccess, esc, UI,
 } from "./render.js";
 import * as paywall from "./paywall.js";
-import { renderMusclePanel, syncMuscleChips, applyFilters as runFilters } from "./filters.js";
+import { renderFacetPanel, syncFacetChips, applyFilters as runFilters } from "./filters.js";
+import { THEME_KEY, keysFor, migrateLegacy } from "./store.js";
 import {
   buildPlaylist, renderPlaylist, play, stop, fitFrame, watchFrame, initResizer, setLanguages,
 } from "./player.js";
@@ -17,15 +18,9 @@ let syncNav = () => {};
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
-const STORE = {
-  done: "bc:done",
-  theme: "bc:theme",
-  open: "bc:open",
-  tab: "bc:tab",
-  playing: "bc:playing",
-  wide: "bc:wide",
-  listW: "bc:listW",
-};
+/** 鍵名要等 course.json 載入、知道 site.project 之後才決定（見 store.js）。
+    在那之前沒有任何東西該碰 localStorage。 */
+let STORE = { theme: THEME_KEY };
 
 /** playlist 的 url -> index，讓課程內容的影片連結能導向站內播放 */
 const urlIndex = new Map();
@@ -35,7 +30,7 @@ const state = {
   done: new Set(),
   filter: "all",
   query: "",
-  muscles: new Set(),
+  facets: new Set(),
   tab: "course",
   playlist: [],
   playing: -1,
@@ -84,7 +79,11 @@ function applyChrome(data) {
   }
   $("#search")?.setAttribute("placeholder", c.ui?.searchPlaceholder || "搜尋…");
   set(".ProgressPanel__title", esc(c.ui?.progressLabel || ""));
-  set("#muscleToggle span:first-of-type", esc(c.ui?.facetLabel || ""));
+  set("#facetToggle span:first-of-type", esc(c.ui?.facetLabel || ""));
+  // 分面面板的圖示同理：index.html 那顆只是預設值，設定檔有指定就換掉
+  const facetSvg = $("#facetToggle > svg");
+  if (facetSvg && c.ui?.facetIcon) facetSvg.outerHTML = icon(c.ui.facetIcon, 16);
+  applyFavicon(site.brandIcon);
 
   for (const [key, label] of Object.entries(c.ui?.tabs || {})) {
     set(`.TabNav__item[data-tab="${key}"] .TabNav__label`, esc(label));
@@ -95,6 +94,20 @@ function applyChrome(data) {
   set(".Hero__lede", fillTokens(c.hero?.lede || "", data.meta));
   set(".AppFooter__disclaimer", c.footer?.disclaimer || "");
   set(".AppFooter__credits", esc(c.footer?.credits || ""));
+}
+
+/** favicon 也跟著 site.brandIcon 走。index.html 裡那顆只是首屏用的中性預設值，
+    不從設定檔重畫的話，換主題後分頁上會一直掛著框架的通用圖示——
+    這正是「寫死的預設值會活過換主題」那一類問題。 */
+function applyFavicon(name) {
+  const symbol = name && document.getElementById(`i-${name}`);
+  const link = $('link[rel="icon"]');
+  if (!symbol || !link) return;
+  const svg =
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" ' +
+    'stroke="#0969da" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+    `${symbol.innerHTML}</svg>`;
+  link.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
 /* --- 瀏覽次數 -------------------------------------------------------------
@@ -225,7 +238,7 @@ function updateChapterMeta() {
 
 function applyFilters() {
   runFilters(state, state.course);
-  syncMuscleChips(state.muscles);
+  syncFacetChips(state.facets);
 }
 
 /* --- 分頁 ---------------------------------------------------------------- */
@@ -342,25 +355,25 @@ function bindEvents() {
     }
   });
 
-  // 肌群篩選：側欄 chip 與動作內的標籤共用同一組 data-muscle
+  // 分面篩選：側欄 chip 與項目內的標籤共用同一組 data-facet
   document.addEventListener("click", (e) => {
-    const chip = e.target.closest("[data-muscle]");
+    const chip = e.target.closest("[data-facet]");
     if (!chip) return;
     e.preventDefault();
     e.stopPropagation();
-    const m = chip.dataset.muscle;
-    state.muscles.has(m) ? state.muscles.delete(m) : state.muscles.add(m);
+    const f = chip.dataset.facet;
+    state.facets.has(f) ? state.facets.delete(f) : state.facets.add(f);
     if (state.tab !== "course") setTab("course");
     applyFilters();
   });
 
-  $("#muscleToggle")?.addEventListener("click", () =>
-    $("#musclePanel").classList.toggle("is-open"),
+  $("#facetToggle")?.addEventListener("click", () =>
+    $("#facetPanel").classList.toggle("is-open"),
   );
 
-  $("#muscleBody")?.addEventListener("click", (e) => {
-    if (!e.target.closest("#muscleClear")) return;
-    state.muscles.clear();
+  $("#facetBody")?.addEventListener("click", (e) => {
+    if (!e.target.closest("#facetClear")) return;
+    state.facets.clear();
     applyFilters();
   });
 
@@ -668,6 +681,13 @@ async function init() {
   }
 
   state.course = data;
+
+  // localStorage 的命名空間要等這裡才決定得了：前綴取自 site.project，
+  // 而 site.project 在 course.json 裡。搬遷必須排在第一次 load() 之前，
+  // 否則升級後的第一次載入會讀到空的進度、然後被存回去覆蓋掉舊資料。
+  migrateLegacy(data.config);
+  STORE = { ...keysFor(data.config), theme: THEME_KEY };
+
   state.done = new Set(load(STORE.done, []));
 
   setConfig(data.config);
@@ -705,7 +725,7 @@ async function init() {
   $("#landingBody").innerHTML = renderHome(data);
   renderStats();
   renderNav();
-  renderMusclePanel(data);
+  renderFacetPanel(data);
   renderProgress();
   bindEvents();
   watchFrame();
