@@ -1,6 +1,7 @@
 // discuss.js — 每支影片一串 GitHub Discussions（giscus）
 import { icon } from "./icons.js";
 import { esc, UI } from "./render.js";
+import { rich } from "./copy.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 
@@ -30,7 +31,7 @@ function term(item) {
 export function button() {
 	if (!CFG) return "";
 	return `<button class="btn" data-toggle-discuss type="button">
-            ${icon("message-circle", 14)} <span class="Player__btnText">${esc(UI.discussLabel || "討論")}</span>
+            ${icon("message-circle", 14)} <span class="Player__btnText">${rich(UI.discussLabel || "討論")}</span>
           </button>`;
 }
 
@@ -39,8 +40,8 @@ export function panel() {
 	return `<section class="Discuss" id="discussPanel" hidden>
             <div class="Discuss__head">
               ${icon("github", 14)}
-              <span>${esc(UI.discussLabel || "討論")}</span>
-              <span class="Discuss__note">${esc(UI.discussNote || "")}</span>
+              <span>${rich(UI.discussLabel || "討論")}</span>
+              <span class="Discuss__note">${rich(UI.discussNote || "")}</span>
             </div>
             <div class="Discuss__body" id="discussBody"></div>
           </section>`;

@@ -3,6 +3,7 @@
 // 純邏輯在 paywall-core.js，設計與「真要收費還缺什麼」見 docs/PAYWALL.md。
 import { icon } from "./icons.js";
 import { esc } from "./render.js";
+import { rich } from "./copy.js";
 import * as core from "./paywall-core.js";
 import { keysFor } from "./store.js";
 
@@ -147,7 +148,7 @@ function priceBlock(amount, listAmount) {
       <span class="Price__now">${esc(core.formatAmount(amount, cur))}</span>
       ${
         discounted && T("discountBadge")
-          ? `<span class="Label Label--danger Price__badge">${icon("tag", 11)} ${esc(T("discountBadge"))}</span>`
+          ? `<span class="Label Label--danger Price__badge">${icon("tag", 11)} ${rich(T("discountBadge"))}</span>`
           : ""
       }
     </span>`;
@@ -155,7 +156,7 @@ function priceBlock(amount, listAmount) {
 
 function honestyNote() {
   return PW.honesty
-    ? `<p class="Paywall__honesty">${icon("info", 13)} ${esc(PW.honesty)}</p>`
+    ? `<p class="Paywall__honesty">${icon("info", 13)} ${rich(PW.honesty)}</p>`
     : "";
 }
 
@@ -168,13 +169,13 @@ function viewGate() {
   return `
     <header class="Paywall__head">
       <span class="Paywall__icon">${icon("lock", 20)}</span>
-      <h2 class="Paywall__title" id="pwTitle">${esc(T("gateTitle", "這一章需要完整課程"))}</h2>
+      <h2 class="Paywall__title" id="pwTitle">${rich(T("gateTitle", "這一章需要完整課程"))}</h2>
       ${closeBtn()}
     </header>
     <div class="Paywall__body">
-      <p class="Paywall__lede">${esc(T("gateBody", ""))}</p>
+      <p class="Paywall__lede">${rich(T("gateBody", ""))}</p>
       <div class="Paywall__product">
-        <span class="Paywall__productName">${icon("sparkles", 14)} ${esc(p.name)}</span>
+        <span class="Paywall__productName">${icon("sparkles", 14)} ${rich(p.name)}</span>
         ${priceBlock(p.amount, p.listAmount)}
       </div>
       ${honestyNote()}
@@ -183,13 +184,13 @@ function viewGate() {
       ${
         inCart
           ? `<button class="btn btn-primary" type="button" data-pw="cart">
-               ${icon("shopping-cart", 14)} ${esc(T("goCheckout", "前往結帳"))}
+               ${icon("shopping-cart", 14)} ${rich(T("goCheckout", "前往結帳"))}
              </button>`
           : `<button class="btn btn-primary" type="button" data-pw="add" data-id="${esc(p.id)}">
-               ${icon("shopping-cart", 14)} ${esc(T("addToCart", "加入購物車"))}
+               ${icon("shopping-cart", 14)} ${rich(T("addToCart", "加入購物車"))}
              </button>`
       }
-      <button class="btn" type="button" data-pw-close>${esc(T("laterLabel", "再看看"))}</button>
+      <button class="btn" type="button" data-pw-close>${rich(T("laterLabel", "再看看"))}</button>
     </footer>`;
 }
 
@@ -201,7 +202,7 @@ function viewCart() {
   return `
     <header class="Paywall__head">
       <span class="Paywall__icon">${icon("shopping-cart", 20)}</span>
-      <h2 class="Paywall__title" id="pwTitle">${esc(T("cartLabel", "購物車"))}</h2>
+      <h2 class="Paywall__title" id="pwTitle">${rich(T("cartLabel", "購物車"))}</h2>
       ${closeBtn()}
     </header>
     <div class="Paywall__body">
@@ -213,8 +214,8 @@ function viewCart() {
                    (p) => `
                  <li class="CartItem">
                    <span class="CartItem__main">
-                     <span class="CartItem__name">${esc(p.name)}</span>
-                     ${p.note ? `<span class="CartItem__note">${esc(p.note)}</span>` : ""}
+                     <span class="CartItem__name">${rich(p.name)}</span>
+                     ${p.note ? `<span class="CartItem__note">${rich(p.note)}</span>` : ""}
                    </span>
                    ${priceBlock(p.amount, p.listAmount)}
                    <button class="btn btn-invisible btn-icon" type="button"
@@ -230,7 +231,7 @@ function viewCart() {
                ${
                  t.discount
                    ? `<div class="CartTotals__discount">
-                        <dt>${icon("tag", 12)} ${esc(T("discountBadge", "折扣"))}</dt>
+                        <dt>${icon("tag", 12)} ${rich(T("discountBadge", "折扣"))}</dt>
                         <dd>-${esc(core.formatAmount(t.discount, cur))}</dd>
                       </div>`
                    : ""
@@ -240,15 +241,15 @@ function viewCart() {
              ${honestyNote()}`
           : `<div class="Blankslate">
                ${icon("shopping-cart", 28)}
-               <p class="Blankslate__heading">${esc(T("emptyCart", "購物車是空的"))}</p>
+               <p class="Blankslate__heading">${rich(T("emptyCart", "購物車是空的"))}</p>
              </div>`
       }
     </div>
     <footer class="Paywall__foot">
       <button class="btn btn-primary" type="button" data-pw="checkout" ${items.length ? "" : "disabled"}>
-        ${icon("credit-card", 14)} ${esc(T("goCheckout", "前往結帳"))}
+        ${icon("credit-card", 14)} ${rich(T("goCheckout", "前往結帳"))}
       </button>
-      <button class="btn" type="button" data-pw-close>${esc(T("keepBrowsing", "繼續逛"))}</button>
+      <button class="btn" type="button" data-pw-close>${rich(T("keepBrowsing", "繼續逛"))}</button>
     </footer>`;
 }
 
@@ -257,7 +258,7 @@ function viewCheckout() {
   return `
     <header class="Paywall__head">
       <span class="Paywall__icon">${icon("credit-card", 20)}</span>
-      <h2 class="Paywall__title" id="pwTitle">${esc(T("checkoutTitle", "結帳"))}</h2>
+      <h2 class="Paywall__title" id="pwTitle">${rich(T("checkoutTitle", "結帳"))}</h2>
       ${closeBtn()}
     </header>
     <div class="Paywall__body">
@@ -277,7 +278,7 @@ function viewCheckout() {
           <legend class="Field__label">付款方式</legend>
           <label class="Radio">
             <input type="radio" name="pay" value="none" checked />
-            <span>${esc(T("payNone", "不用付款"))} · <strong>${esc(core.formatAmount(t.amount, PW.currency))}</strong></span>
+            <span>${rich(T("payNone", "不用付款"))} · <strong>${esc(core.formatAmount(t.amount, PW.currency))}</strong></span>
           </label>
           <label class="Radio is-disabled">
             <input type="radio" name="pay" value="card" disabled />
@@ -290,7 +291,7 @@ function viewCheckout() {
           ${
             t.discount
               ? `<div class="CartTotals__discount">
-                   <dt>${icon("tag", 12)} ${esc(T("discountBadge", "折扣"))}</dt>
+                   <dt>${icon("tag", 12)} ${rich(T("discountBadge", "折扣"))}</dt>
                    <dd>-${esc(core.formatAmount(t.discount, PW.currency))}</dd>
                  </div>`
               : ""
@@ -300,15 +301,15 @@ function viewCheckout() {
 
         <label class="Check">
           <input type="checkbox" name="terms" id="pwTerms" />
-          <span>${esc(T("termsLabel", ""))}</span>
+          <span>${rich(T("termsLabel", ""))}</span>
         </label>
       </form>
     </div>
     <footer class="Paywall__foot">
       <button class="btn btn-primary" type="button" data-pw="pay" id="pwPay" disabled>
-        ${icon("check", 14)} ${esc(T("payLabel", "完成結帳"))} ${esc(core.formatAmount(t.amount, PW.currency))}
+        ${icon("check", 14)} ${rich(T("payLabel", "完成結帳"))} ${esc(core.formatAmount(t.amount, PW.currency))}
       </button>
-      <button class="btn" type="button" data-pw="cart">${esc(T("backToCart", "回購物車"))}</button>
+      <button class="btn" type="button" data-pw="cart">${rich(T("backToCart", "回購物車"))}</button>
     </footer>`;
 }
 
@@ -319,18 +320,18 @@ function viewReceipt() {
   return `
     <header class="Paywall__head">
       <span class="Paywall__icon Paywall__icon--ok">${icon("circle-check-big", 20)}</span>
-      <h2 class="Paywall__title" id="pwTitle">${esc(T("receiptTitle", "結帳完成"))}</h2>
+      <h2 class="Paywall__title" id="pwTitle">${rich(T("receiptTitle", "結帳完成"))}</h2>
       ${closeBtn()}
     </header>
     <div class="Paywall__body">
-      <p class="Paywall__lede">${esc(T("receiptBody", ""))}</p>
+      <p class="Paywall__lede">${rich(T("receiptBody", ""))}</p>
       <div class="Receipt">
         <div class="Receipt__row"><span>訂單編號</span><code>${esc(o.id)}</code></div>
         ${when ? `<div class="Receipt__row"><span>日期</span><span>${esc(when)}</span></div>` : ""}
         ${o.items
           .map(
             (i) => `<div class="Receipt__row Receipt__row--item">
-                      <span>${esc(i.name)}</span>
+                      <span>${rich(i.name)}</span>
                       <span>${esc(core.formatAmount(i.amount, o.currency))}</span>
                     </div>`,
           )
@@ -339,13 +340,13 @@ function viewReceipt() {
           <span>實付</span><strong>${esc(core.formatAmount(o.amount, o.currency))}</strong>
         </div>
       </div>
-      ${T("receiptHint") ? `<p class="Paywall__honesty">${icon("info", 13)} ${esc(T("receiptHint"))}</p>` : ""}
+      ${T("receiptHint") ? `<p class="Paywall__honesty">${icon("info", 13)} ${rich(T("receiptHint"))}</p>` : ""}
     </div>
     <footer class="Paywall__foot">
       <button class="btn btn-primary" type="button" data-pw="start">
-        ${icon("play", 14)} ${esc(T("startLearning", "開始上課"))}
+        ${icon("play", 14)} ${rich(T("startLearning", "開始上課"))}
       </button>
-      <button class="btn" type="button" data-pw-close>${esc(T("closeLabel", "關閉"))}</button>
+      <button class="btn" type="button" data-pw-close>${rich(T("closeLabel", "關閉"))}</button>
     </footer>`;
 }
 
@@ -394,7 +395,7 @@ async function pay(btn) {
   // 假的處理中：0 元也要有一點等待，不然「結帳」不像結帳
   btn.disabled = true;
   btn.classList.add("is-busy");
-  btn.innerHTML = `${icon("clock", 14)} ${esc(T("payingLabel", "處理中…"))}`;
+  btn.innerHTML = `${icon("clock", 14)} ${rich(T("payingLabel", "處理中…"))}`;
   await new Promise((r) => setTimeout(r, 700));
 
   await grant(candidate);

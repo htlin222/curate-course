@@ -10,6 +10,7 @@
 
 from __future__ import annotations
 
+import html
 import json
 import os
 import re
@@ -38,6 +39,32 @@ DESC = SITE_CFG["description"]
 LOCALE = SITE_CFG.get("locale")
 # 語言標記統一從這裡展開，才不會漏掉其中一處
 LANG = {"inLanguage": LOCALE} if LOCALE else {}
+
+
+# ── 文案契約 ──────────────────────────────────────────────────────────────
+# 設定檔的文案一律先逸出，然後只認得 `**粗體**`。src/web/js/copy.js 有一份等價
+# 實作（執行期用），兩份必須永遠給出同一個字串，由 tests/copy-contract.test.js 比對。
+#
+# 這裡以前完全不逸出：`site.title` 或 `ui.searchPlaceholder` 裡出現一個雙引號，
+# 就直接切斷 <meta content="…"> 或 placeholder="…"，產出壞掉的 HTML——
+# 而且 build、audit、測試全部照樣通過。
+
+_BOLD = re.compile(r"\*\*([\s\S]+?)\*\*")
+
+
+def esc(value) -> str:
+    """HTML 逸出。五個字元與 copy.js 的 esc() 完全一致。"""
+    return html.escape("" if value is None else str(value), quote=True)
+
+
+def rich(value) -> str:
+    """段落文案（元素內容）：逸出後把 `**粗體**` 展開成 <strong>。"""
+    return _BOLD.sub(r"<strong>\1</strong>", esc(value))
+
+
+def plain(value) -> str:
+    """屬性與純文字：標籤在這裡塞不進去，所以把 `**` 記號拿掉只留文字。"""
+    return _BOLD.sub(r"\1", esc(value))
 
 
 def iso_duration(seconds: int) -> str:
@@ -179,45 +206,63 @@ def build_schema(course: dict) -> dict:
     }
 
 
-def render_template(meta: dict) -> None:
-    """把 {{a.b}} 換成課程設定裡的值。
+def lookup(dotted: str):
+    """依 "a.b.c" 從設定檔取值，任何一段不存在就回 None。"""
+    node = CFG
+    for part in dotted.split("."):
+        if not isinstance(node, dict) or part not in node:
+            return None
+        node = node[part]
+    return node
+
+
+def is_attr_context(markup: str, pos: int) -> bool:
+    """這個位置是不是在某個標籤的屬性值裡面？
+
+    判斷方式是往前找最後一個 `<` 與 `>`：`<` 比較近就代表還在標籤內。
+    首屏的 placeholder="{{ui.searchPlaceholder}}" 屬於這一類，展開 <strong>
+    會直接把屬性切斷；元素內容（<p>{{hero.lede}}</p>）才允許粗體。
+    """
+    head = markup[:pos]
+    if head.rfind("<") > head.rfind(">"):
+        return True
+    # <title> 是 RCDATA：塞進去的 <strong> 不會變成標籤，只會出現在分頁標題上
+    return head.rfind("<title") > head.rfind("</title")
+
+
+def render_template(meta: dict) -> list[str]:
+    """把 {{a.b}} 換成課程設定裡的值，回傳沒解析掉的佔位符。
 
     文案在 build 時就寫進 HTML，而不是等 JS 跑完才填——首屏就有真實內容，
     對搜尋引擎與未執行 JS 的爬蟲都友善。
     """
     path = PUB / "index.html"
-    html = path.read_text()
-
-    def lookup(dotted: str):
-        node = CFG
-        for part in dotted.split("."):
-            if not isinstance(node, dict) or part not in node:
-                return None
-            node = node[part]
-        return node
+    markup = path.read_text()
 
     def sub(m):
         val = lookup(m.group(1))
         if val is None:
             return m.group(0)
-        return fill(val, meta)
+        text = fill(val, meta)
+        return plain(text) if is_attr_context(m.string, m.start()) else rich(text)
 
-    html, n = re.subn(r"\{\{([\w.]+)\}\}", sub, html)
-    path.write_text(html)
-    left = re.findall(r"\{\{[\w.]+\}\}", html)
-    print(f"   index.html  文案注入 {n} 處" + (f"，未解析 {left}" if left else ""))
+    markup, n = re.subn(r"\{\{([\w.]+)\}\}", sub, markup)
+    path.write_text(markup)
+    left = sorted(set(re.findall(r"\{\{[\w.]+\}\}", markup)))
+    print(f"   index.html  文案注入 {n} 處" + (f"，⚠ 未解析 {left}（make audit 會擋）" if left else ""))
+    return left
 
 
 def inject_schema(schema: dict) -> None:
     """把 JSON-LD 寫進 index.html 的佔位 script。"""
     path = PUB / "index.html"
-    html = path.read_text()
+    markup = path.read_text()
     # JSON 內出現 </script> 會提前結束標籤，必須跳脫
     payload = json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     new, n = re.subn(
         r'(<script type="application/ld\+json" id="schema">).*?(</script>)',
         lambda m: m.group(1) + payload + m.group(2),
-        html,
+        markup,
         flags=re.S,
     )
     if n != 1:
@@ -247,30 +292,34 @@ HEAD_TAGS = """    <link rel="canonical" href="{site}/" />
 
 
 def inject_meta(course: dict) -> None:
-    """用設定重建 head 裡的 SEO 標籤，取代模板中的佔位區塊。"""
+    """用設定重建 head 裡的 SEO 標籤，取代模板中的佔位區塊。
+
+    每一個值都進到 content="…" 或 href="…" 裡，所以一律走 plain()：
+    以前是直接字串格式化，`site.title` 裡一個雙引號就會把 <meta> 切成兩半。
+    """
     path = PUB / "index.html"
-    html = path.read_text()
+    markup = path.read_text()
     block = HEAD_TAGS.format(
-        site=SITE,
-        name=NAME,
-        title=TITLE,
-        desc=DESC,
-        ogdesc=SITE_CFG.get("ogDescription", DESC),
+        site=plain(SITE),
+        name=plain(NAME),
+        title=plain(TITLE),
+        desc=plain(DESC),
+        ogdesc=plain(SITE_CFG.get("ogDescription", DESC)),
         # 原本預設 "zh_TW"。沒設定就整個標籤不要輸出——社群平台寧可自己猜語言，
         # 也好過被我們斬釘截鐵地告知一個錯的。
         oglocale=(
-            f'    <meta property="og:locale" content="{SITE_CFG["ogLocale"]}" />\n'
+            f'    <meta property="og:locale" content="{plain(SITE_CFG["ogLocale"])}" />\n'
             if SITE_CFG.get("ogLocale")
             else ""
         ),
     )
-    html, n = re.subn(
+    markup, n = re.subn(
         r"<!-- seo:start -->.*?<!-- seo:end -->",
         lambda _: f"<!-- seo:start -->\n{block}    <!-- seo:end -->",
-        html,
+        markup,
         flags=re.S,
     )
-    path.write_text(html)
+    path.write_text(markup)
     print(f"   index.html  SEO 標籤{'已注入' if n else '找不到佔位區塊'}")
 
 
@@ -286,7 +335,9 @@ def write_sitemap() -> None:
         "    <priority>1.0</priority>\n"
         "    <image:image>\n"
         f"      <image:loc>{SITE}/og.png</image:loc>\n"
-        "      <image:title>{NAME}</image:title>\n"
+        # 這一行以前不是 f-string，sitemap 上線後真的印著字面的「{NAME}」。
+        # 跟 #28 是同一種病：沒替換掉的佔位符靜靜流進正式產物。
+        f"      <image:title>{esc(NAME)}</image:title>\n"
         "    </image:image>\n"
         "  </url>\n"
         "</urlset>\n"
@@ -319,20 +370,22 @@ def write_robots() -> None:
 
 # 文案佔位符只有這一份定義。之前 HTML 注入與 llms.txt 各有一套替換邏輯，
 # 結果 llms.txt 只認得兩個 token，作者在設定檔用了第三個就直接 KeyError。
-TOKENS = ("units", "lessonUnits", "drillUnits", "slots", "videos", "problems", "evidence")
+# 前端曾經還有第三套（只認得兩個 token，且 {videos} 指向另一個數字），
+# 現在統一由 src/web/js/copy.js 的 TOKEN_FIELDS 對應，兩份逐項相等。
+TOKEN_FIELDS = {
+    "units": "units",
+    "lessonUnits": "lesson_units",
+    "drillUnits": "drill_units",
+    "slots": "video_slots",
+    "videos": "video_unique",
+    "problems": "problem_units",
+    "evidence": "evidence_checked",
+}
 
 
 def token_map(meta: dict) -> dict:
     """三個數字互不相同：units 是影片欄位合計，lessonUnits 才是章節單元數。"""
-    return {
-        "units": meta["units"],
-        "lessonUnits": meta.get("lesson_units", 0),
-        "drillUnits": meta.get("drill_units", 0),
-        "slots": meta.get("video_slots", meta["units"]),
-        "videos": meta.get("video_unique", 0),
-        "problems": meta.get("problem_units", 0),
-        "evidence": meta.get("evidence_checked", 0),
-    }
+    return {tok: meta.get(field, 0) for tok, field in TOKEN_FIELDS.items()}
 
 
 def fill(text: str | None, meta: dict) -> str:
@@ -446,6 +499,15 @@ def og_stat_value(field: str, meta: dict) -> str:
     return str(meta[field])
 
 
+def og_text(text: str | None, meta: dict) -> str:
+    """og 圖上的文案。跟站台一樣是「逸出 + **粗體**」，另外多一條：
+
+    真正的換行字元會變成 <br>。og 是一張 1200×630 的固定畫布，斷句位置得由作者決定，
+    這是唯一需要它的地方——以前是讓作者直接寫 <br />，代價是整個 og 區塊變成 raw HTML。
+    """
+    return rich(fill(text, meta)).replace("\n", "<br>")
+
+
 def render_og(course: dict) -> None:
     meta = course["meta"]
     og = CFG.get("og") or {}
@@ -456,8 +518,8 @@ def render_og(course: dict) -> None:
 
     stats = og.get("stats") or (_UI.get("stats") or [])[:4]
     stats_html = "".join(
-        f'<div class="stat"><b>{og_stat_value(s["field"], meta)}</b>'
-        f"<span>{fill(s.get('label', ''), meta)}</span></div>"
+        f'<div class="stat"><b>{esc(og_stat_value(s["field"], meta))}</b>'
+        f"<span>{og_text(s.get('label', ''), meta)}</span></div>"
         for s in stats
     )
 
@@ -473,30 +535,33 @@ def render_og(course: dict) -> None:
             "放著不管的話 og 圖上的「查核題數」與分級 chip 會兜不起來"
         )
     chips_html = "".join(
-        f'<span class="chip t-{g.get("tone", "neutral")}">{g["label"]} <i>{counts.get(g["id"], 0)}</i></span>'
+        f'<span class="chip t-{esc(g.get("tone", "neutral"))}">{rich(g["label"])} '
+        f'<i>{counts.get(g["id"], 0)}</i></span>'
         for g in grades
     )
 
     values = {
         # 整個屬性一起給，沒設定 locale 就不要留下 lang=""（更不能是 lang="None"）
-        "htmlLang": f' lang="{LOCALE}"' if LOCALE else "",
+        "htmlLang": f' lang="{plain(LOCALE)}"' if LOCALE else "",
         "brandIcon": icon_svg(SITE_CFG.get("brandIcon"), 26),
-        "brandName": NAME,
-        "title": fill(og.get("title") or (CFG.get("hero") or {}).get("heading") or TITLE, meta),
-        "lede": fill(og.get("lede") or SITE_CFG.get("ogDescription") or DESC, meta),
+        "brandName": rich(NAME),
+        "title": og_text(og.get("title") or (CFG.get("hero") or {}).get("heading") or TITLE, meta),
+        "lede": og_text(og.get("lede") or SITE_CFG.get("ogDescription") or DESC, meta),
         "stats": stats_html,
         "evidenceIcon": icon_svg(og.get("evidenceIcon"), 20),
         # 這句話是課程自己的措辭（連查證來源都不一定是 OpenEvidence），
         # 沒設定就留白，不要由框架代寫一句中文
-        "evidenceLabel": fill(og.get("evidenceLabel", ""), meta),
+        "evidenceLabel": og_text(og.get("evidenceLabel", ""), meta),
         "chips": chips_html,
-        "url": og.get("url") or re.sub(r"^https?://|/$", "", SITE),
+        "url": rich(og.get("url") or re.sub(r"^https?://|/$", "", SITE)),
     }
 
-    html = re.sub(r"\{\{(\w+)\}\}", lambda m: str(values.get(m.group(1), m.group(0))), tpl.read_text())
-    if left := sorted(set(re.findall(r"\{\{\w+\}\}", html))):
+    markup = re.sub(
+        r"\{\{(\w+)\}\}", lambda m: str(values.get(m.group(1), m.group(0))), tpl.read_text()
+    )
+    if left := sorted(set(re.findall(r"\{\{\w+\}\}", markup))):
         die(f"og.html：模板還有沒填的佔位符 {left}，截出來的圖會直接印出 {{{{…}}}}")
-    (PUB / "og.html").write_text(html)
+    (PUB / "og.html").write_text(markup)
     print(
         f"   og.html    注入 {len(stats)} 個統計、{len(grades)} 個分級"
         f"（合計 {counted} 題）· make og 由這一份截圖"

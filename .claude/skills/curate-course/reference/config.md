@@ -8,7 +8,7 @@
 | 欄位 | 作用 |
 |---|---|
 | `site` | 標題、描述、網址、語系、關鍵字 → 直接餵給 SEO 與 JSON-LD |
-| `hero` | 首頁大標與說明，可用 `{units}` `{problems}` 佔位 |
+| `hero` | 首頁大標與說明，可用 `{units}` `{problems}` 等佔位符（見下） |
 | `ui` | **所有介面文案**。分頁名、篩選標籤、統計欄位、實證欄位標題、單元型別，以及**所有主題名詞**（`unitNoun`／`lessonNoun`／`drillNoun`／`evidenceSource` 等，見 `quality.md`）|
 | `kinds` | 項目類型與配色（`id` / `label` / `tone`），至少一種 |
 | `grades` | 證據分級（沒有實證維度就整組刪掉） |
@@ -19,66 +19,67 @@
 | `audit` | **品質門檻** → `make audit` 照這裡檢查（見 `quality.md`） |
 | `counter` | 選用：header 的累計瀏覽次數徽章（Pages Function + D1）。整組拿掉就不顯示，也完全不打 API |
 | `discussions` | 選用：giscus 設定，每支影片一串 GitHub Discussions。整組拿掉就沒有討論面板。**換主題必換 `repo`/`repoId`/`categoryId`**，否則留言會靜靜掉到上一個主題的 repo |
-| `landing` / `stance` / `footer` / `llms` | 首頁、立場頁、頁尾、`llms.txt` 的文案。**哪些欄位吃 HTML 見下一節**——預設全部是純文字 |
+| `landing` / `stance` / `footer` / `llms` | 首頁、立場頁、頁尾、`llms.txt` 的文案。寫法見下一節「文案怎麼寫」 |
 
-## 哪些文案欄位吃 HTML
+## 文案怎麼寫
 
-**預設答案是「不吃」。** 絕大多數文案欄位都會被 `esc()` 逸出，寫 `<strong>` 只會在頁面上
-印出字面的 `<strong>`。只有下面這幾個是例外，而且不是每一個都是刻意設計的。
+**一句話：所有文案都會先被逸出，然後只認得 `**粗體**`。**
 
-### 可以放心寫 HTML 的（三個，建置期與執行期行為一致）
+```jsonc
+"disclaimer": "**免責聲明。**本課程為衛教與運動指引，**不構成醫療診斷或治療建議**。"
+```
 
-| 欄位 | 出現在 |
+這條規則對每一個文案欄位都成立，不分建置期或執行期，也不分渲染在哪裡：
+
+| 你寫的 | 頁面上看到的 |
 |---|---|
-| `hero.lede` | 首頁大標下方的說明段 |
-| `footer.disclaimer` | 頁尾那一行免責 |
-| `stance.outro` | 立場頁最下面的結語 |
+| `**重點**` | **重點**（`<strong>`） |
+| `<strong>重點</strong>` | 字面的 `<strong>重點</strong>`，而且 `make audit` 會直接報錯 |
+| `說 "你好"` | `說 "你好"`——引號不會再切斷 `placeholder="…"` 或 `<meta content="…">` |
 
-**`stance.intro` 不在這裡。** 同一個 `stance` 物件底下，`intro` 走 `esc()`、`outro` 走 raw
-（`src/web/js/render.js` 的 `renderStance`），相鄰兩行的處理方式相反。範例課剛好只在 `outro`
-用了 `<strong>`，所以這個不對稱一直沒被撞到——換主題時很自然會假設「立場區塊的長文都吃 HTML」，
-然後在 `intro` 看到字面的 `<strong>`。
+短標籤與屬性（`site.title`、`ui.searchPlaceholder`、`ui.playlistSearch`、各種 `title=`）
+塞不進 `<strong>`，所以那裡的 `**` 記號會被**拿掉只留文字**，不會讓使用者看到字面的星號。
 
-### 沒有逸出，但**別當成功能用**的
+唯一的額外規則在 `og.title` / `og.lede`：真正的換行字元會變成 `<br>`。og 是一張
+1200×630 的固定畫布，斷句位置必須由你決定。
 
-這些欄位在某些呼叫點是 raw，在另一些呼叫點卻是逸出的——是呼叫點漏了 `esc()`，不是設計：
+### 為什麼值得記這一條
 
-| 欄位 | 不一致在哪 |
+以前沒有契約，只有一堆呼叫點各自的習慣：同一個 `stance` 物件底下 `intro` 逸出、`outro`
+是 raw HTML；`{videos}` 在建置期是去重支數、在前端卻是影片欄位數；`site.title` 裡一個雙引號
+就會產生壞掉的 `<meta>`，而 build、audit、測試全部照樣通過。現在這三件事分別由
+`tests/copy-contract.test.js` 與 `make audit` 的「文案」區段擋住。
+
+實作在 `src/web/js/copy.js`（執行期）與 `src/build/seo.py`（建置期首屏注入），
+兩份有測試逐字比對。
+
+### 數字佔位符
+
+文案裡可以放這七個 token，build 時換成真的數字：
+
+| token | 意思 |
 |---|---|
-| `kinds[].label` | 項目分組標題是 raw；篩選列（`app.js`）與播放清單（`player.js`）是逸出的 |
-| `grades[].label` | 所有分級標籤都是 raw |
-| `ui.tightLabel` / `ui.weakLabel` | 兩欄對照的小標是 raw |
-| `ui.unitNoun` / `lessonNoun` / `drillNoun` / `drillNounShort` | 統計行與章節列是 raw，篩選計數是純文字 |
-| `nav[].title` | 側欄分組標題是 raw |
+| `{units}` | 影片欄位合計（主課 + 項目） |
+| `{lessonUnits}` | 章節單元數 |
+| `{drillUnits}` | 項目數 |
+| `{slots}` | 影片欄位總數（含多語言版本） |
+| `{videos}` | 去重後的實際影片支數 |
+| `{problems}` | `ui.problemType` 那一類的單元數 |
+| `{evidence}` | 單元層級的查核則數 |
 
-在這些欄位寫 HTML，換一個渲染位置就會露餡。當成純文字用。
-
-### 建置期是 raw，執行期會被改成逸出的（最容易誤判）
-
-`index.html` 裡的 `{{a.b}}` 由 `src/build/seo.py` 的 `render_template()` 直接字串替換，
-**完全不逸出**。但 `src/web/js/app.js` 的 `applyChrome()` 在 JS 跑完後又會把其中大部分
-重寫一次，這次過 `esc()`：
-
-| 欄位 | 首屏（建置期注入） | JS 跑完之後 |
-|---|---|---|
-| `site.name`、`hero.eyebrow`、`hero.heading`、`footer.credits`、`ui.progressLabel`、`ui.facetLabel`、`ui.tabs.*` | raw HTML | 逸出成字面文字 |
-| `site.title` | raw，進 `<title>` 與 `<meta content="…">` | `document.title` 改成純文字 |
-| `ui.searchPlaceholder` | raw，進 `placeholder="…"` | `setAttribute` 改成純文字 |
-| `ui.playlistSearch` | raw，進 `placeholder="…"`，**沒有執行期覆寫** | 不變 |
-
-在這些欄位寫 `<strong>`，畫面會先粗體再變回字面文字——看起來像閃爍，很難查。
-更實際的風險是**雙引號**：`site.title` 或 `ui.searchPlaceholder` 裡的 `"` 會直接切斷
-`<meta content="…">` 與 `placeholder="…"` 的屬性。這幾個欄位連 `"` 都別寫。
-
-### 一句話結論
-
-**除了 `hero.lede`、`footer.disclaimer`、`stance.outro`，所有文案欄位一律當純文字寫。**
-需要強調就換句話說，或改用標點；`llms.*` 是純文字檔的內容，本來就不涉及 HTML。
+七個在建置期與執行期指向同一個 meta 欄位。打錯字（`{unit}`）不會被靜靜吞掉：
+原樣保留，然後 `make audit` 報錯。
 
 ## Schema
 
 欄位結構定義在 `src/build/course.schema.json`。設定檔頂端的 `$schema` 讓編輯器自動完成，
 `make audit` 也會拿它擋錯：欄位拼錯（`units` 打成 `unit`）、型別不對、`tone` 用了不存在的值。
+
+`ui` / `footer` / `stance` / `llms` / `landing` 都是 `additionalProperties: false`：
+**沒宣告的欄位一律報錯**。反過來說，schema 裡有的就是前端真的會讀的全部——
+不必再從 build 的「未解析 `{{ui.x}}`」警告去反推還有哪些欄位存在。
+`index.html` 用到的 `{{a.b}}` 少填一個，`make audit` 就是紅的（以前只會印一行警告，
+然後把字面的 `{{ui.progressLabel}}` 送上線）。
 
 ```jsonc
 {

@@ -52,8 +52,10 @@
         letter-spacing: -0.025em;
       }
 
-      .title em {
-        font-style: normal;
+      /* og.title 的 `**強調**` 會展開成 <strong>（見 src/build/seo.py 的 og_text）。
+         整行本來就是 700，所以強調靠顏色而不是字重。 */
+      .title strong {
+        font-weight: inherit;
         color: #4493f8;
       }
 

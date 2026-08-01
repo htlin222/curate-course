@@ -1,6 +1,7 @@
 // player.js — 上課模式：把整門課攤平成播放清單，左側嵌入播放
 import { icon } from "./icons.js";
 import { esc, KIND, UI } from "./render.js";
+import { plain, rich } from "./copy.js";
 import { button as discussButton, panel as discussPanel } from "./discuss.js";
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -8,6 +9,9 @@ const $ = (s, r = document) => r.querySelector(s);
 const EMBED = "https://www.youtube-nocookie.com/embed/";
 let LANG = {};
 export function setLanguages(m) { LANG = m || {}; }
+
+/** 語言標籤來自設定檔（走文案契約），對不到就退回資料裡的語言碼 */
+const langLabel = (l) => (LANG[l] ? rich(LANG[l]) : esc(l));
 
 /** 把 course.json 攤平成一維播放清單 */
 export function buildPlaylist(course) {
@@ -102,8 +106,8 @@ export function renderPlaylist(items, { doneSet, currentIndex, query, onlyTodo, 
               type="button" data-play="${it.i}"${locked ? ' data-locked="1"' : ""}>
         <span class="PlaylistItem__dot" style="background:var(--fgColor-${esc(it.kind === "lesson" ? "accent" : (KIND[it.kind] || {}).tone || "accent")})"></span>
         <span class="PlaylistItem__main">
-          <span class="PlaylistItem__name">${esc(it.kind === "lesson" ? `${UI.lessonLabel || ""} · ${it.name}` : it.name)}</span>
-          <span class="PlaylistItem__meta">${k ? esc(k.label) + " · " : ""}${it.lang ? esc(LANG[it.lang] || it.lang) + " · " : ""}${esc(it.channel || "")}</span>
+          <span class="PlaylistItem__name">${it.kind === "lesson" ? `${rich(UI.lessonLabel || "")} · ` : ""}${esc(it.name)}</span>
+          <span class="PlaylistItem__meta">${k ? rich(k.label) + " · " : ""}${it.lang ? langLabel(it.lang) + " · " : ""}${esc(it.channel || "")}</span>
         </span>
         <span class="PlaylistItem__dur">${locked ? icon("lock", 12) : esc(dur(it.duration))}</span>
       </button>`);
@@ -132,8 +136,8 @@ export function play(item, { total }) {
 
   const k = item.kind === "lesson" ? null : KIND[item.kind];
   const badge = k
-    ? `<span class="Label Label--${esc(k.tone || "neutral")}">${esc(k.label)}</span>`
-    : `<span class="Label Label--accent">${esc(UI.lessonLabel || "")}</span>`;
+    ? `<span class="Label Label--${esc(k.tone || "neutral")}">${rich(k.label)}</span>`
+    : `<span class="Label Label--accent">${rich(UI.lessonLabel || "")}</span>`;
 
   $("#playerInfo").innerHTML = `
     <div class="Player__bar">
@@ -145,25 +149,25 @@ export function play(item, { total }) {
           <a href="#${esc(item.unitId)}" data-goto-unit="${esc(item.unitId)}">${esc(item.unitName)}</a>
           <span>· ${item.i + 1} / ${total}</span>
           ${badge}
-          ${item.lang ? `<span class="Label Label--neutral">${esc(LANG[item.lang] || item.lang)}</span>` : ""}
+          ${item.lang ? `<span class="Label Label--neutral">${langLabel(item.lang)}</span>` : ""}
           <span>${esc(item.channel || "")}</span>
           ${item.duration ? `<span>· ${esc(item.duration)}</span>` : ""}
           ${item.dose ? `<span class="Drill__dose">${esc(item.dose)}</span>` : ""}
         </div>
       </div>
       <div class="Player__actions">
-        <button class="btn" data-step="-1" type="button">${icon("chevron-left", 14)} <span class="Player__btnText">${esc(UI.prevLabel || "")}</span></button>
-        <button class="btn" data-step="1" type="button"><span class="Player__btnText">${esc(UI.nextLabel || "")}</span> ${icon("chevron-right", 14)}</button>
-        <button class="btn" data-mark-unit="${esc(item.unitId)}" type="button">${icon("check", 14)} ${esc(UI.doneLabel || "")}</button>
+        <button class="btn" data-step="-1" type="button">${icon("chevron-left", 14)} <span class="Player__btnText">${rich(UI.prevLabel || "")}</span></button>
+        <button class="btn" data-step="1" type="button"><span class="Player__btnText">${rich(UI.nextLabel || "")}</span> ${icon("chevron-right", 14)}</button>
+        <button class="btn" data-mark-unit="${esc(item.unitId)}" type="button">${icon("check", 14)} ${rich(UI.doneLabel || "")}</button>
         <button class="btn btn-icon" data-toggle-list type="button" title="收起／顯示清單">${icon("layers", 16)}<span class="visually-hidden" data-list-label>收起清單</span></button>
         ${discussButton()}
-        <a class="btn btn-icon" href="${esc(item.url)}" target="_blank" rel="noopener" title="${esc(UI.openExternal || "")}">${icon("external-link", 16)}</a>
+        <a class="btn btn-icon" href="${esc(item.url)}" target="_blank" rel="noopener" title="${plain(UI.openExternal || "")}">${icon("external-link", 16)}</a>
       </div>
     </div>
     ${
       item.why || item.assessment
         ? `<details class="Player__more">
-             <summary>${esc(UI.moreLabel || "")}</summary>
+             <summary>${rich(UI.moreLabel || "")}</summary>
              ${item.why ? `<p class="Player__note">${esc(item.why)}</p>` : ""}
              ${item.assessment ? `<p class="Player__note"><strong>怎麼自己評估　</strong>${esc(item.assessment)}</p>` : ""}
            </details>`

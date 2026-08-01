@@ -1,14 +1,15 @@
 // render.js — 把 course.json 的資料轉成 DOM 字串
 import { icon } from "./icons.js";
 import { normalize as normalizePaywall, formatAmount } from "./paywall-core.js";
+import { esc, plain, rich, richTokens } from "./copy.js";
 
-/** HTML 逸出，資料雖為自產仍一律過濾 */
-export const esc = (s) =>
-  String(s ?? "").replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
-  );
+// 逸出規則搬到 copy.js（跟建置期的 seo.py 是同一份契約），這裡轉出去讓既有的
+// import { esc } from "./render.js" 繼續有效。
+export { esc };
+
+/* 一條線：**設定檔的文案** 走 rich()／plain()，吃 `**粗體**`；
+   **課程資料**（單元名、影片標題、頻道名、摘要）走 esc()，一律純文字。
+   以前是憑呼叫點決定，同一個 stance 物件的 intro 逸出、outro 不逸出。 */
 
 /* 這些全部由 course.config.json 注入，框架本身不預設任何主題詞彙。
    用可變物件而非重新指派，import 過的模組才拿得到更新後的內容。 */
@@ -72,8 +73,8 @@ function videoCard(v) {
       <div class="VideoCard VideoCard--missing">
         <span class="VideoCard__badge">${icon("book-open", 16)}</span>
         <span class="VideoCard__main">
-          <span class="VideoCard__title">${esc(UI.missingTitle || "尚未找到合格影片")}</span>
-          <span class="VideoCard__meta">${esc(v?.note || UI.missingHint || "這個主題在 YouTube 上沒有品質足夠的示範")}</span>
+          <span class="VideoCard__title">${rich(UI.missingTitle || "尚未找到合格影片")}</span>
+          <span class="VideoCard__meta">${v?.note ? esc(v.note) : rich(UI.missingHint || "這個主題在 YouTube 上沒有品質足夠的示範")}</span>
         </span>
         ${playBtn(false, true)}
       </div>`;
@@ -95,7 +96,9 @@ function videoCard(v) {
     </a>`;
 }
 
-const langLabel = (l) => (CFG.languages || {})[l] || l || "其他";
+/** 語言標籤是設定檔的文案；沒對應到就退回資料裡的語言碼 */
+const langLabel = (l) =>
+  (CFG.languages || {})[l] ? rich(CFG.languages[l]) : esc(l || "其他");
 
 /** 主課可能有多個語言版本，用小分頁切換 */
 function lessonBox(u) {
@@ -105,13 +108,13 @@ function lessonBox(u) {
 
   return `
     <div class="LessonBox">
-      <div class="LessonBox__langs" role="tablist" aria-label="${esc(UI.lessonLangLabel || "主課語言")}">
+      <div class="LessonBox__langs" role="tablist" aria-label="${plain(UI.lessonLangLabel || "主課語言")}">
         ${lessons
           .map(
             (l, i) => `
           <button class="LessonBox__lang${i === 0 ? " is-active" : ""}" type="button"
                   role="tab" aria-selected="${i === 0}" data-lesson="${i}">
-            ${esc(langLabel(l.lang))}
+            ${langLabel(l.lang)}
           </button>`,
           )
           .join("")}
@@ -132,7 +135,7 @@ function facetTags(list) {
     .map(
       (f) =>
         `<button class="Label Label--neutral Label--facet" data-facet="${esc(f)}"
-                 type="button" title="${esc((UI.facetFilterHint || "篩選涉及 {name} 的內容").replace("{name}", f))}">${esc(f)}</button>`,
+                 type="button" title="${plain((UI.facetFilterHint || "篩選涉及 {name} 的內容").replace("{name}", f))}">${esc(f)}</button>`,
     )
     .join("");
 }
@@ -155,19 +158,20 @@ function drill(d) {
   const attrs = `class="Drill" data-kind="${esc(d.kind)}" data-facets="${esc((d.facets || []).join("|"))}"${d.cat ? ` data-cat="${esc(d.cat)}"` : ""}`;
 
   // 有連結就整列可點，跟主課卡片一致
+  const hint = d.title ? esc(d.title) : plain(UI.watchLabel || "觀看示範");
   return d.url
-    ? `<li ${attrs}><a class="Drill__link" href="${esc(d.url)}" target="_blank" rel="noopener" title="${esc(d.title || UI.watchLabel || "觀看示範")}">${inner}</a></li>`
-    : `<li ${attrs}><span class="Drill__link" aria-disabled="true" title="${esc(UI.missingTitle || "尚未找到合格影片")}">${inner}</span></li>`;
+    ? `<li ${attrs}><a class="Drill__link" href="${esc(d.url)}" target="_blank" rel="noopener" title="${hint}">${inner}</a></li>`
+    : `<li ${attrs}><span class="Drill__link" aria-disabled="true" title="${plain(UI.missingTitle || "尚未找到合格影片")}">${inner}</span></li>`;
 }
 
 function drillGroup(kind, list) {
   if (!list.length) return "";
   const k = KIND[kind];
   return `
-    <div class="DrillGroup" data-group="${kind}">
+    <div class="DrillGroup" data-group="${esc(kind)}">
       <h4 class="DrillGroup__title">
         <span class="Drill__marker" style="background:var(--fgColor-${esc(k.tone)})"></span>
-        ${k.label}
+        ${rich(k.label)}
         <span class="Counter">${list.length}</span>
       </h4>
       <ul class="DrillList">${list.map(drill).join("")}</ul>
@@ -182,7 +186,7 @@ function evidence(ev, unitId) {
 
   const row = (key, val) =>
     val
-      ? `<div class="Evidence__row"><span class="Evidence__key">${key}</span><span>${esc(val)}</span></div>`
+      ? `<div class="Evidence__row"><span class="Evidence__key">${rich(key)}</span><span>${esc(val)}</span></div>`
       : "";
 
   const cites = (ev.citations || []).length
@@ -201,7 +205,7 @@ function evidence(ev, unitId) {
       r.type === "flags"
         ? (ev[r.field] || []).length
           ? `<div class="Evidence__row">
-               <span class="Evidence__key">${esc(r.label)}</span>
+               <span class="Evidence__key">${rich(r.label)}</span>
                <span class="Evidence__flags">
                  ${ev[r.field].map((f) => `<span class="Label Label--danger">${esc(f)}</span>`).join("")}
                </span>
@@ -215,10 +219,10 @@ function evidence(ev, unitId) {
     <section class="Evidence" data-evidence="${esc(unitId)}">
       <button class="Evidence__header" type="button" data-toggle="evidence">
         ${icon("microscope", 14)}
-        <span>${esc(UI.unitEvidenceLabel || "")}</span>
-        <span class="Label ${toneCls(g)}">${g.label}</span>
+        <span>${rich(UI.unitEvidenceLabel || "")}</span>
+        <span class="Label ${toneCls(g)}">${rich(g.label)}</span>
         <span class="Evidence__spacer"></span>
-        ${ev.url && UI.evidenceSource ? `<span class="Label Label--neutral">${esc(UI.evidenceSource)}</span>` : ""}
+        ${ev.url && UI.evidenceSource ? `<span class="Label Label--neutral">${rich(UI.evidenceSource)}</span>` : ""}
         <span class="Evidence__chevron">${icon("chevron-right", 14)}</span>
       </button>
       <div class="Evidence__body">
@@ -226,7 +230,7 @@ function evidence(ev, unitId) {
         ${cites}
         ${
           ev.url
-            ? `<div class="Evidence__cite"><a href="${esc(ev.url)}" target="_blank" rel="noopener">${esc(UI.evidenceSourceLink || "讀完整回答")} ${icon("external-link", 11)}</a></div>`
+            ? `<div class="Evidence__cite"><a href="${esc(ev.url)}" target="_blank" rel="noopener">${rich(UI.evidenceSourceLink || "讀完整回答")} ${icon("external-link", 11)}</a></div>`
             : ""
         }
       </div>
@@ -255,7 +259,7 @@ function drillEvidence(u) {
       <details class="DrillEvCat">
         <summary>
           <span class="DrillEvCat__name">${esc(cat.name)}</span>
-          <span class="Label ${toneCls(g)}">${g.label}</span>
+          <span class="Label ${toneCls(g)}">${rich(g.label)}</span>
           <span class="Counter">${cat.citations.length}</span>
         </summary>
         ${cat.summary ? `<p class="DrillEvCat__summary">${esc(cat.summary)}</p>` : ""}
@@ -279,7 +283,7 @@ function drillEvidence(u) {
     <section class="Evidence DrillEv" data-drillev="${esc(u.id)}">
       <button class="Evidence__header" type="button" data-toggle="drillev">
         ${icon("microscope", 14)}
-        <span>${esc(UI.drillEvidenceLabel || "")}</span>
+        <span>${rich(UI.drillEvidenceLabel || "")}</span>
         <span class="Counter">${cats.length} 類 · ${totalCites} 篇</span>
         <span class="Evidence__spacer"></span>
         <span class="Label Label--neutral">PubMed</span>
@@ -298,7 +302,7 @@ function traitLists(tight, weak) {
   const block = (mod, iconName, title, list) =>
     list?.length
       ? `<div class="TraitBlock TraitBlock--${mod}">
-           <h4 class="TraitBlock__title">${icon(iconName, 12)} ${title}</h4>
+           <h4 class="TraitBlock__title">${icon(iconName, 12)} ${rich(title)}</h4>
            <div class="TraitBlock__list">
              ${list.map((t) => `<span class="Label Label--neutral">${esc(t)}</span>`).join("")}
            </div>
@@ -325,13 +329,13 @@ export function renderUnit(u, done, locked = false) {
   const typeLabel = (UI.unitTypes || {})[u.type];
   const badges = [
     typeLabel
-      ? `<span class="Label Label--${u.type === "foundation" ? "accent" : "neutral"}">${esc(typeLabel)}</span>`
+      ? `<span class="Label Label--${u.type === "foundation" ? "accent" : "neutral"}">${rich(typeLabel)}</span>`
       : "",
     total ? `<span class="Label Label--neutral">${icon("layers", 11)} ${total}</span>` : "",
     // 實證強度直接標在標題列。contested 的單元不該要展開才看得到
     u.evidence?.evidence_grade
       ? `<span class="Label ${toneCls(gradeOf(u.evidence.evidence_grade))}"
-               title="${esc(UI.unitEvidenceLabel || "")}">${icon("microscope", 11)} ${gradeOf(u.evidence.evidence_grade).label}</span>`
+               title="${plain(UI.unitEvidenceLabel || "")}">${icon("microscope", 11)} ${rich(gradeOf(u.evidence.evidence_grade).label)}</span>`
       : "",
   ].join("");
 
@@ -351,10 +355,10 @@ export function renderUnit(u, done, locked = false) {
       <article class="Unit is-locked" id="${esc(u.id)}" data-unit="${esc(u.id)}"
                data-facets="${esc(allFacets.join("|"))}" data-locked="1">
         <button class="Unit__header" type="button" data-pw-gate>
-          <span class="Unit__lock" title="${esc(pwT("lockedLabel", "鎖定"))}">${icon("lock", 13)}</span>
+          <span class="Unit__lock" title="${plain(pwT("lockedLabel", "鎖定"))}">${icon("lock", 13)}</span>
           <span class="Unit__main">
             <span class="Unit__title">${esc(u.name)} ${badges}
-              <span class="Label Label--neutral">${icon("lock", 10)} ${esc(pwT("lockedLabel", "鎖定"))}</span>
+              <span class="Label Label--neutral">${icon("lock", 10)} ${rich(pwT("lockedLabel", "鎖定"))}</span>
             </span>
             ${u.summary ? `<span class="Unit__summary">${esc(u.summary)}</span>` : ""}
           </span>
@@ -382,7 +386,7 @@ export function renderUnit(u, done, locked = false) {
           u.assessment
             ? `<div class="Assessment">
                  <span class="Assessment__icon">${icon("clipboard-check", 16)}</span>
-                 <span><span class="Assessment__label">${esc(UI.assessmentLabel || "")}</span>${esc(u.assessment)}</span>
+                 <span><span class="Assessment__label">${rich(UI.assessmentLabel || "")}</span>${esc(u.assessment)}</span>
                </div>`
             : ""
         }
@@ -427,10 +431,10 @@ export function renderStance(stance) {
         <header class="StanceCard__head">
           <span class="StanceCard__n">${i + 1}</span>
           <span class="StanceCard__name">${esc(s.name)}</span>
-          <span class="Label ${toneCls(g)}">${g.label}</span>
+          <span class="Label ${toneCls(g)}">${rich(g.label)}</span>
         </header>
         <div class="StanceCard__body">
-          <p class="StanceCard__verdict">${esc((CFG.stance?.verdicts || {})[s.unit] || "")}</p>
+          <p class="StanceCard__verdict">${rich((CFG.stance?.verdicts || {})[s.unit] || "")}</p>
           <p class="StanceCard__summary">${esc(s.summary)}</p>
           ${findings}
         </div>
@@ -439,7 +443,7 @@ export function renderStance(stance) {
           ${
             s.url
               ? `<div class="StanceCard__cites" style="margin-top:6px">
-                   <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(UI.evidenceSourceLink || "讀完整回答")} ${icon("external-link", 10)}</a>
+                   <a href="${esc(s.url)}" target="_blank" rel="noopener">${rich(UI.evidenceSourceLink || "讀完整回答")} ${icon("external-link", 10)}</a>
                  </div>`
               : ""
           }
@@ -447,15 +451,17 @@ export function renderStance(stance) {
       </article>`;
   };
 
+  // intro 與 outro 是同一個區塊的兩段長文，以前一個逸出一個 raw（#20）。
+  // 現在兩個都是 rich()：一樣可以用 `**粗體**` 標重點，一樣不吃 HTML。
   return `
     <div class="StancePage__intro">
-      <h2>${icon("microscope", 22)} ${esc(CFG.stance?.title || "")}</h2>
-      <p>${esc(CFG.stance?.intro || "")}</p>
+      <h2>${icon("microscope", 22)} ${rich(CFG.stance?.title || "")}</h2>
+      <p>${rich(CFG.stance?.intro || "")}</p>
     </div>
     <div class="StancePage__grid">${stance.map(card).join("")}</div>
     <div class="StancePage__outro">
-      <strong>${esc(CFG.stance?.outroTitle || "")}</strong>
-      ${CFG.stance?.outro || ""}
+      <strong>${rich(CFG.stance?.outroTitle || "")}</strong>
+      ${rich(CFG.stance?.outro || "")}
     </div>`;
 }
 
@@ -469,10 +475,10 @@ function gateCard(drillTotal, unitTotal) {
     <div class="PaywallGate">
       <span class="PaywallGate__icon">${icon("lock", 16)}</span>
       <span class="PaywallGate__main">
-        <p class="PaywallGate__title">${esc(pwT("gateTitle", "這一章需要完整課程"))}</p>
+        <p class="PaywallGate__title">${rich(pwT("gateTitle", "這一章需要完整課程"))}</p>
         <p class="PaywallGate__note">
           ${unitTotal} 個單元${drillTotal ? ` · ${drillTotal} 支跟練影片` : ""}
-          ${esc(pwT("gateCardNote", ""))}
+          ${rich(pwT("gateCardNote", ""))}
         </p>
       </span>
       <span class="Price">
@@ -480,7 +486,7 @@ function gateCard(drillTotal, unitTotal) {
         <span class="Price__now">${esc(formatAmount(p.amount, PW.currency))}</span>
       </span>
       <button class="btn btn-primary" type="button" data-pw-gate>
-        ${icon("shopping-cart", 14)} ${esc(pwT("addToCart", "加入購物車"))}
+        ${icon("shopping-cart", 14)} ${rich(pwT("addToCart", "加入購物車"))}
       </button>
     </div>`;
 }
@@ -501,13 +507,13 @@ export function renderChapter(ch, doneSet) {
             ${esc(ch.title)}
           </span>
           <span class="Chapter__meta">
-            ${ch.units.length} ${UI.unitNoun || "個單元"}${drillTotal ? ` · ${drillTotal} ${UI.drillNoun || "支跟練影片"}` : ""}
+            ${ch.units.length} ${rich(UI.unitNoun || "個單元")}${drillTotal ? ` · ${drillTotal} ${rich(UI.drillNoun || "支跟練影片")}` : ""}
             ${doneCount ? ` · 已完成 ${doneCount}` : ""}
           </span>
         </span>
         ${
           locked
-            ? `<span class="Chapter__lock">${icon("lock", 13)} ${esc(pwT("lockedLabel", "鎖定"))}</span>`
+            ? `<span class="Chapter__lock">${icon("lock", 13)} ${rich(pwT("lockedLabel", "鎖定"))}</span>`
             : ""
         }
         <span class="Chapter__progress">
@@ -535,8 +541,8 @@ export function renderHome(course) {
     <div class="Step">
       <span class="Step__n">${icon(s.icon || "circle-dot", 18)}</span>
       <div>
-        <h3 class="Step__title">${i + 1}. ${esc(s.title)}</h3>
-        <p class="Step__body">${esc(s.body)}</p>
+        <h3 class="Step__title">${i + 1}. ${rich(s.title)}</h3>
+        <p class="Step__body">${rich(s.body)}</p>
       </div>
     </div>`,
   ).join("");
@@ -549,7 +555,7 @@ export function renderHome(course) {
           <span class="Label ${toneCls(g)}">${g.label}</span>
           <strong>${esc(s.name)}</strong>
         </div>
-        <p>${esc((CFG.stance?.verdicts || {})[s.unit] || "")}</p>
+        <p>${rich((CFG.stance?.verdicts || {})[s.unit] || "")}</p>
       </div>`;
   }).join("");
 
@@ -562,8 +568,8 @@ export function renderHome(course) {
         <span class="ChapterCard__main">
           <span class="ChapterCard__title"><span class="Chapter__code">${esc(ch.code)}</span> ${esc(ch.title)}</span>
           <span class="ChapterCard__meta">
-            ${ch.units.length} ${(UI.unitNoun || "個單元").replace(/^個/, "")}${drills ? ` · ${drills} ${UI.drillNounShort || "支跟練"}` : ""}
-            ${PW ? ` · ${esc(locked ? pwT("lockedLabel", "鎖定") : pwT("trialLabel", "試看"))}` : ""}
+            ${ch.units.length} ${rich((UI.unitNoun || "個單元").replace(/^個/, ""))}${drills ? ` · ${drills} ${rich(UI.drillNounShort || "支跟練")}` : ""}
+            ${PW ? ` · ${rich(locked ? pwT("lockedLabel", "鎖定") : pwT("trialLabel", "試看"))}` : ""}
           </span>
           <span class="ChapterCard__units">${ch.units.map((u) => esc(u.name)).join("、")}</span>
         </span>
@@ -578,8 +584,8 @@ export function renderHome(course) {
       ? `<div class="PaywallCta">
            <span class="PaywallGate__icon">${icon("lock", 16)}</span>
            <span class="PaywallCta__main">
-             <p class="PaywallCta__title">${esc(pwT("ctaLockedTitle", ""))}</p>
-             <p class="PaywallCta__note">${esc(pwT("ctaLockedNote", ""))}</p>
+             <p class="PaywallCta__title">${rich(pwT("ctaLockedTitle", ""))}</p>
+             <p class="PaywallCta__note">${rich(pwT("ctaLockedNote", ""))}</p>
            </span>
            <span class="Price">
              ${
@@ -590,55 +596,55 @@ export function renderHome(course) {
              <span class="Price__now">${esc(formatAmount(PW.products[0].amount, PW.currency))}</span>
            </span>
            <button class="btn btn-primary" type="button" data-pw-gate>
-             ${icon("shopping-cart", 14)} ${esc(pwT("addToCart", "加入購物車"))}
+             ${icon("shopping-cart", 14)} ${rich(pwT("addToCart", "加入購物車"))}
            </button>
          </div>`
       : `<div class="PaywallCta">
            <span class="PaywallGate__icon">${icon("lock-open", 16)}</span>
            <span class="PaywallCta__main">
-             <p class="PaywallCta__title">${esc(pwT("ctaOwnedTitle", ""))}</p>
-             <p class="PaywallCta__note">${esc(pwT("ctaOwnedNote", ""))}</p>
+             <p class="PaywallCta__title">${rich(pwT("ctaOwnedTitle", ""))}</p>
+             <p class="PaywallCta__note">${rich(pwT("ctaOwnedNote", ""))}</p>
            </span>
            <button class="btn" type="button" data-pw-receipt>
-             ${icon("receipt", 14)} ${esc(pwT("viewReceipt", "看收據"))}
+             ${icon("receipt", 14)} ${rich(pwT("viewReceipt", "看收據"))}
            </button>
          </div>`;
 
   return `
     <section class="Landing__section">
-      <h2 class="Landing__h2">${icon("book-open", 20)} ${esc(L.howTitle || "")}</h2>
+      <h2 class="Landing__h2">${icon("book-open", 20)} ${rich(L.howTitle || "")}</h2>
       <div class="Steps">${steps}</div>
     </section>
 
     <section class="Landing__section">
-      <h2 class="Landing__h2">${icon("microscope", 20)} ${esc(L.stanceTitle || "")}</h2>
+      <h2 class="Landing__h2">${icon("microscope", 20)} ${rich(L.stanceTitle || "")}</h2>
       <p class="Landing__lede">
-${esc(L.stanceLede || "")}
+${rich(L.stanceLede || "")}
       </p>
       <div class="Landing__stance">${stanceCards}</div>
       <button class="btn" type="button" data-tab-link="stance">
-        ${esc(CFG.ui?.tabs?.stance || "立場")} ${icon("chevron-right", 14)}
+        ${rich(CFG.ui?.tabs?.stance || "立場")} ${icon("chevron-right", 14)}
       </button>
     </section>
 
     <section class="Landing__section">
-      <h2 class="Landing__h2">${icon("layers", 20)} ${esc(L.chaptersTitle || "")}</h2>
+      <h2 class="Landing__h2">${icon("layers", 20)} ${rich(L.chaptersTitle || "")}</h2>
       <div class="ChapterGrid">${chapterCards}</div>
     </section>
 
     <section class="Landing__cta">
       <div>
-        <h2 class="Landing__h2">${esc(L.ctaTitle || "")}</h2>
+        <h2 class="Landing__h2">${rich(L.ctaTitle || "")}</h2>
         <p class="Landing__lede">
-${esc((L.ctaLede || "").replace("{units}", meta.units).replace("{videos}", meta.video_slots))}
+${richTokens(L.ctaLede, meta)}
         </p>
       </div>
       <div class="Landing__ctaBtns">
         <button class="btn btn-primary" type="button" data-tab-link="player">
-          ${icon("play", 14)} ${esc(CFG.ui?.tabs?.player || "")}
+          ${icon("play", 14)} ${rich(CFG.ui?.tabs?.player || "")}
         </button>
         <button class="btn" type="button" data-tab-link="course">
-          ${icon("layers", 14)} ${esc(CFG.ui?.tabs?.course || "")}
+          ${icon("layers", 14)} ${rich(CFG.ui?.tabs?.course || "")}
         </button>
       </div>
     </section>

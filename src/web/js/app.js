@@ -1,8 +1,10 @@
 // app.js — 載入課程資料、渲染、互動與進度追蹤
 import { mountIcons, icon } from "./icons.js";
 import {
-  renderChapter, renderStance, renderHome, setDrillEvidence, setConfig, setAccess, esc, UI,
+  renderChapter, renderStance, renderHome, setDrillEvidence, setConfig, setAccess, UI,
 } from "./render.js";
+// 文案契約只有一份（見 copy.js），建置期的等價實作在 src/build/seo.py
+import { esc, rich, text, fillTokens } from "./copy.js";
 import * as paywall from "./paywall.js";
 import { renderFacetPanel, syncFacetChips, applyFilters as runFilters } from "./filters.js";
 import { THEME_KEY, keysFor, migrateLegacy } from "./store.js";
@@ -67,9 +69,10 @@ function applyChrome(data) {
     if (el && html != null) el.innerHTML = html;
   };
 
-  document.title = site.title || site.name || document.title;
+  // document.title 與 setAttribute 都是純文字 sink，逸出反而會讓使用者看到 &amp;
+  document.title = text(site.title || site.name || document.title);
   document.documentElement.lang = site.locale || "zh-Hant";
-  set(".AppHeader__brand span", esc(site.name || ""));
+  set(".AppHeader__brand span", rich(site.name || ""));
   // 品牌圖示：index.html 裡的那顆只是預設值，換主題一定要從設定檔重畫，
   // 否則 header 會一直掛著上一個主題的圖示（稽核查得到 brandIcon 有打包，
   // 但查不到前端有沒有真的去讀它）。
@@ -77,23 +80,26 @@ function applyChrome(data) {
   if (brandSvg && site.brandIcon) {
     brandSvg.outerHTML = icon(site.brandIcon, 20);
   }
-  $("#search")?.setAttribute("placeholder", c.ui?.searchPlaceholder || "搜尋…");
-  set(".ProgressPanel__title", esc(c.ui?.progressLabel || ""));
-  set("#facetToggle span:first-of-type", esc(c.ui?.facetLabel || ""));
+  // setAttribute 吃純文字（瀏覽器不會再解析一次），所以這裡直接給原字串去掉 ** 記號
+  $("#search")?.setAttribute("placeholder", text(c.ui?.searchPlaceholder || "搜尋…"));
+  $("#playlistSearch")?.setAttribute("placeholder", text(c.ui?.playlistSearch || ""));
+  set(".ProgressPanel__title", rich(c.ui?.progressLabel || ""));
+  set("#facetToggle span:first-of-type", rich(c.ui?.facetLabel || ""));
   // 分面面板的圖示同理：index.html 那顆只是預設值，設定檔有指定就換掉
   const facetSvg = $("#facetToggle > svg");
   if (facetSvg && c.ui?.facetIcon) facetSvg.outerHTML = icon(c.ui.facetIcon, 16);
   applyFavicon(site.brandIcon);
 
   for (const [key, label] of Object.entries(c.ui?.tabs || {})) {
-    set(`.TabNav__item[data-tab="${key}"] .TabNav__label`, esc(label));
+    set(`.TabNav__item[data-tab="${key}"] .TabNav__label`, rich(label));
   }
 
-  set(".Hero__eyebrow", `${$(".Hero__eyebrow svg")?.outerHTML || ""} ${esc(c.hero?.eyebrow || "")}`);
-  set(".Hero h1", esc(c.hero?.heading || ""));
-  set(".Hero__lede", fillTokens(c.hero?.lede || "", data.meta));
-  set(".AppFooter__disclaimer", c.footer?.disclaimer || "");
-  set(".AppFooter__credits", esc(c.footer?.credits || ""));
+  set(".Hero__eyebrow", `${$(".Hero__eyebrow svg")?.outerHTML || ""} ${rich(c.hero?.eyebrow || "")}`);
+  set(".Hero h1", rich(c.hero?.heading || ""));
+  set(".Hero__lede", rich(fillTokens(c.hero?.lede || "", data.meta)));
+  // disclaimer 以前是唯一一個 raw 的頁尾欄位，credits 就在隔壁卻是逸出的。現在一致。
+  set(".AppFooter__disclaimer", rich(c.footer?.disclaimer || ""));
+  set(".AppFooter__credits", rich(c.footer?.credits || ""));
 }
 
 /** favicon 也跟著 site.brandIcon 走。index.html 裡那顆只是首屏用的中性預設值，
@@ -132,8 +138,8 @@ async function renderHits(cfg) {
     if (typeof hits !== "number") return;
 
     $("#hitCount").textContent = hits.toLocaleString();
-    $("#hitLabel").textContent = conf.label || "";
-    box.title = conf.title || "";
+    $("#hitLabel").textContent = text(conf.label || "");
+    box.title = text(conf.title || "");
     box.hidden = false;
   } catch {
     /* 靜默失敗：計數器不該影響課程本身 */
@@ -150,14 +156,16 @@ function renderStats() {
       (s) => `
         <div class="Stat">
           <span class="Stat__value">${icon(s.icon, 16)}<span>${esc(meta[s.field] ?? "")}</span></span>
-          <span class="Stat__label">${esc(s.label)}</span>
+          <span class="Stat__label">${rich(s.label)}</span>
         </div>`,
     )
     .join("");
 
   // 單元數／影片欄位數／去重後支數是三個不同的東西，講清楚免得對不上
+  // 名詞全部來自設定檔，一樣走文案契約——這裡以前是唯一一處把 ui.*Noun 直接串進
+  // innerHTML 的地方，設定檔寫一個 & 就會產生壞掉的 HTML
   $("#heroNote").innerHTML =
-    `${meta.lesson_units} ${UI.unitNoun || "個單元"}，每個單元 1 ${UI.lessonNoun || "堂主課"} + 共 ${meta.drill_units} ${UI.drillNoun || "支跟練影片"}。` +
+    `${meta.lesson_units} ${rich(UI.unitNoun || "個單元")}，每個單元 1 ${rich(UI.lessonNoun || "堂主課")} + 共 ${meta.drill_units} ${rich(UI.drillNoun || "支跟練影片")}。` +
     `另有 ${meta.alt_lessons} 支多語言版本，播放清單共 ${meta.video_slots} 支；` +
     `扣掉跨單元共用的，實際是 ${meta.video_unique} 支不重複影片，` +
     `每個語言版本都看過的話總長 ${meta.duration_all}。`;
@@ -174,7 +182,7 @@ function renderNav() {
   $("#nav").innerHTML = groups
     .map(
       (g) => `
-      <div class="NavList__group-title">${g.title}</div>
+      <div class="NavList__group-title">${rich(g.title)}</div>
       ${g.codes
         .map((code) => {
           const ch = state.course.chapters.find((c) => c.code === code);
@@ -230,7 +238,7 @@ function updateChapterMeta() {
     $(".Chapter__progress .ProgressBar__fill", el).style.width = `${pct}%`;
     const drillTotal = ch.units.reduce((n, u) => n + (u.drills?.length || 0), 0);
     $(".Chapter__meta", el).textContent =
-      `${ch.units.length} ${UI.unitNoun || "個單元"}${drillTotal ? ` · ${drillTotal} ${UI.drillNoun || "支跟練影片"}` : ""}${done ? ` · 已完成 ${done}` : ""}`;
+      `${ch.units.length} ${text(UI.unitNoun || "個單元")}${drillTotal ? ` · ${drillTotal} ${text(UI.drillNoun || "支跟練影片")}` : ""}${done ? ` · 已完成 ${done}` : ""}`;
   });
 }
 
@@ -788,29 +796,14 @@ init();
 function renderFilterBar(cfg) {
   const group = $(".FilterBar__group");
   if (!group) return;
-  group.setAttribute("aria-label", cfg?.ui?.kindFilterLabel || "類型篩選");
+  group.setAttribute("aria-label", text(cfg?.ui?.kindFilterLabel || "類型篩選"));
   group.innerHTML =
     '<button class="FilterBar__btn is-active" data-filter="all" type="button">全部</button>' +
     (cfg?.kinds || [])
       .map(
         (k) =>
           `<button class="FilterBar__btn" data-filter="${esc(k.id)}" type="button">` +
-          `<span class="Drill__marker Drill__marker--${esc(k.id)}"></span>${esc(k.label)}</button>`,
+          `<span class="Drill__marker Drill__marker--${esc(k.id)}"></span>${rich(k.label)}</button>`,
       )
       .join("");
-}
-
-/** 文案佔位符。三個數字互不相同，只給 {units} 會逼人把「368 個影片欄位」寫成
-    「368 個單元」——meta.units 是欄位合計，不是章節單元數。 */
-export function fillTokens(text, meta) {
-  const map = {
-    units: meta.units,
-    lessonUnits: meta.lesson_units,
-    drillUnits: meta.drill_units,
-    slots: meta.video_slots,
-    videos: meta.video_unique,
-    problems: meta.problem_units,
-    evidence: meta.evidence_checked,
-  };
-  return String(text ?? "").replace(/\{(\w+)\}/g, (m, k) => (k in map ? map[k] : m));
 }
