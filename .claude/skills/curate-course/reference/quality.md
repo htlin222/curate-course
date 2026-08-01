@@ -64,7 +64,10 @@ COURSE=courses/guitar python3 src/build/audit.py   # 多課程並存
 |---|---|
 | `WebFetch` 打 `youtube.com/watch` 拿不到東西 | 會被 Google 導向 captcha 頁，改用 oEmbed 端點 |
 | `yt-dlp` 說影片不存在 | 無 cookie 時會誤報「Sign in to confirm you're not a bot」，不是影片失效。單次搜尋沒事，連抓數百支就會被擋——加 `--cookies-from-browser chrome` 借用登入狀態即可。另有少數影片要 `--ignore-no-formats-error` 才拿得到中繼資料 |
-| innertube API 回 ERROR | 必須在真實 YouTube 分頁的 context 內呼叫才有效 |
+| **`yt-dlp` 什麼都沒說**（exit 0 + 空 stdout） | 被限流的樣子，不是影片下架。同一支影片 oEmbed 照樣回 200，`--flat-playlist` 的搜尋也照樣正常，休息一陣子單片查詢就自己好了。**自製複查腳本一定要比對輸入 id 數與輸出行數**，不要「沒回東西就標成失效」——跑得越久、規模越大，被誤殺的越多 |
+| 影片明明能播，網站上卻是死掉的播放器 | 能播 ≠ 能嵌入。yt-dlp 拿得到完整中繼資料、innertube 回 `playabilityStatus: OK`，都不代表允許 iframe 嵌入。**只有 oEmbed（`make verify`）算數**，401 就是不能嵌入，得換片 |
+| innertube API 回 ERROR | 必須在真實 YouTube 分頁的 context 內呼叫才有效——但那是備案，中繼資料改用 `yt-dlp --batch-file` 就不必開瀏覽器（見 `curating.md`） |
+| `--print "%(id)s\t…"` 解析出 0 筆 | `--print` 不解析跳脫序列，`\t` 輸出的是字面上的反斜線加 t（`od -c` 看得到）。改用 `\|` 當分隔符，並把可能含 `\|` 的 `title` 排在最後一欄 |
 | 改了樣式但線上沒變 | 檢查 `_headers` 的 Cache-Control，沒有 hash 檔名就別設長快取 |
 | 並行 agent 互相覆蓋檔案 | 每個 agent 給獨立的輸出路徑與檔名前綴，**暫存目錄也要各給一個子目錄**——`q1.txt` 這種通用檔名一定會被別人蓋掉 |
 | 數字對不起來 | 單元數、影片欄位數、去重後支數是三個不同的東西，UI 上要講清楚 |
