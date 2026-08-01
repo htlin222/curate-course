@@ -26,7 +26,14 @@ UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/
 
 
 def check(url: str) -> tuple[str, bool, str]:
-    """回傳 (url, ok, 說明)。ok=True 代表影片存在且可嵌入。"""
+    """回傳 (url, ok, 說明)。
+
+    ok=True 只代表**影片存在且公開**——oEmbed 回 200 並不保證允許嵌入。
+    YouTube 的「禁止嵌入」是獨立設定，oEmbed 看不到。實測本專案 344 支
+    影片全部可嵌入（`yt-dlp --print "%(playable_in_embed)s"`），所以沒有
+    為此加一道需要 yt-dlp 的檢查；真的遇到播放器顯示「無法播放」但這裡
+    回報正常時，用上面那個指令單獨查。
+    """
     endpoint = OEMBED.format(urllib.parse.quote(url, safe=""))
     req = urllib.request.Request(endpoint, headers={"User-Agent": UA})
     try:
@@ -35,7 +42,9 @@ def check(url: str) -> tuple[str, bool, str]:
             return url, True, f"{meta.get('author_name', '?')} — {meta.get('title', '?')}"
     except urllib.error.HTTPError as e:
         reason = {
-            401: "影片不允許嵌入或已設為私人",
+            # 401 有兩種成因，處置完全不同：設為私人要換片，
+            # 只是禁止嵌入則影片還在、連結仍可用，只是站內播放器放不了
+            401: "已設為私人／不公開，或上傳者禁止嵌入（前者要換片，後者可保留連結但站內播放器放不了）",
             403: "受限制",
             404: "影片已刪除或網址錯誤",
         }.get(e.code, f"HTTP {e.code}")
