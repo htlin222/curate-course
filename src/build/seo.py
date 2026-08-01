@@ -396,50 +396,138 @@ def fill(text: str | None, meta: dict) -> str:
     )
 
 
+# ── llms.txt ──────────────────────────────────────────────────────────────────
+# 這裡以前是整段寫死的中文句型：「共 X 個單元（X 個影片欄位、去重後 X 支…）」、
+# 「## 章節」、「## 免責」、條列的「（分級）：摘要…」。設定檔全部可換之後，
+# 就只剩這一份產出物還會用中文對著一門英文課或日文課講話——而且寫死的句型
+# 連覆寫的接縫都沒有（fallback 至少還能蓋掉）。
+#
+# 改法跟 og.html 的 render_og() 同一套：模板 + 一份 build 算好的值。
+# 差別只在模板住在 course.config.json 的 llms 區塊，而不是 src/web 的檔案裡——
+# llms.txt 的模板本體就是文案，跟課程一起走比較合理。
+#
+# 值的記號是 [[值]] 而不是 og.html 的 {{值}}，唯一的理由是位置不同：模板住在設定檔裡，
+# 而 audit.py 用 \{(\w+)\} 掃設定檔文案裡打錯的數字佔位符，`{{durationHours}}` 會被它
+# 讀成 `{durationHours}` 然後報「未定義的佔位符」。等 audit.py 學會跳過 {{…}} 就能統一。
+#
+# **受限標記在這裡的行為**：不逸出、不展開。llms.txt 是純文字（Markdown 風格），
+# 沒有任何 HTML sink——逸出只會讓讀者看到字面的 &amp;，而 `**粗體**` 本來就是
+# Markdown 自己的粗體語法，原樣送出正好。這是文案契約裡唯一一個「原樣輸出」的出口，
+# 理由是這裡根本沒有需要被防的注入面。詳見 reference/config.md。
+
+LLMS_VALUE = re.compile(r"\[\[(\w+)\]\]")
+LLMS_VALUES = "[[course]]、[[url]]、[[durationHours]]、[[durationMinutes]]"
+LLMS_STANCE_VALUES = "[[name]]、[[grade]]、[[summary]]、[[summaryShort]]"
+LLMS_CHAPTER_VALUES = "[[code]]、[[title]]、[[units]]、[[unitCount]]"
+
+# 立場條目的摘要在 llms.txt 裡要截短，否則整份檔案會被三段長摘要吃掉。
+# 截斷後不補任何符號：要不要加「…」由模板自己決定（那是標點，屬於語言）。
+STANCE_SUMMARY_CHARS = 180
+
+
 def write_llms(course: dict) -> None:
     meta, chapters = course["meta"], course["chapters"]
-    llm = CFG.get("llms", {})
-    lines = [
-        f"# {NAME}",
-        "",
-        f"> {DESC}",
-        "",
-        fill(llm.get("summary"), meta)
-        + f" 共 {meta['lesson_units']} {UNIT_NOUN}".rstrip()
-        + f"（{meta['video_slots']} 個影片欄位、去重後 {meta['video_unique']} 支，"
-        f"總長 {meta['duration']}）。",
-        "",
-    ]
-    # 標題是課程自己的用語，框架不替它發明一個（原本沒設定就寫死「立場」）
-    stance_title = (CFG.get("stance") or {}).get("title")
-    if course.get("stance") and not stance_title:
-        warn("有立場聲明但沒設定 stance.title，llms.txt 的這一段會沒有標題")
-    if stance_title:
-        lines += [f"## {stance_title}（重要）", ""]
-    lines += [fill(llm.get("stanceIntro"), meta), ""]
-    for s in course.get("stance", []):
-        lines.append(f"- **{s['name']}**（{s['evidence_grade']}）：{s.get('summary', '')[:180]}…")
-    lines += [
-        "",
-        llm.get("stanceConclusion", ""),
-        "",
-        "## 章節",
-        "",
-    ]
-    for ch in chapters:
-        names = "、".join(u["name"] for u in ch["units"])
-        lines.append(f"- **{ch['code']} {ch['title']}**：{names}")
-    lines += [
-        "",
-        "## 免責",
-        "",
-        llm.get("disclaimer", ""),
-        "",
-        f"完整內容：{SITE}/",
-        "",
-    ]
-    (PUB / "llms.txt").write_text("\n".join(lines))
-    print("   llms.txt")
+    llm = CFG.get("llms") or {}
+    stance = course.get("stance") or []
+    left: set[str] = set()
+
+    # 總長刻意拆成「時」與「分」兩個數字：meta["duration"] 是 build.py 組好的
+    # 「26 小時 3 分」，把它塞進來等於又從別的檔案漏一次中文進 llms.txt。
+    base = {
+        "course": NAME,
+        "url": f"{SITE}/",
+        "durationHours": meta.get("duration_seconds", 0) // 3600,
+        "durationMinutes": meta.get("duration_seconds", 0) % 3600 // 60,
+    }
+
+    def render(text: str | None, extra: dict | None = None) -> str:
+        """設定檔的一段文案 → 最終字串。[[值]] 先填，再填 {數字}。"""
+        if not text:
+            return ""
+        values = base if extra is None else {**base, **extra}
+        out = LLMS_VALUE.sub(lambda m: str(values.get(m.group(1), m.group(0))), str(text))
+        left.update(LLMS_VALUE.findall(out))
+        return fill(out, meta)
+
+    def bullets(template: str, rows: list[dict]) -> str:
+        """條列。`- ` 是 Markdown 的結構，一行裡的其他東西全部由模板決定。"""
+        return "\n".join(f"- {render(template, row)}" for row in rows)
+
+    def section(title: str | None, *parts: str) -> list[str]:
+        """一段內容 + 它的標題。整段都沒東西時連標題一起消失——
+        一個底下什麼都沒有的 `## 免責` 比沒有那一段更難看。"""
+        body = [p for p in parts if p]
+        if not body:
+            return []
+        return ([f"## {title}"] if title else []) + body
+
+    # 區塊之間一律空一行；沒宣告的文案就整塊不輸出，不要留下空行或半截的段落
+    blocks = [f"# {NAME}", f"> {DESC}", render(llm.get("summary"))]
+
+    if stance:
+        if item := llm.get("stanceItem"):
+            rows = [
+                {
+                    "name": s.get("name", ""),
+                    "grade": s.get("evidence_grade", ""),
+                    "summary": s.get("summary", ""),
+                    "summaryShort": s.get("summary", "")[:STANCE_SUMMARY_CHARS],
+                }
+                for s in stance
+            ]
+        else:
+            rows = []
+            warn(f"有立場聲明但沒設定 llms.stanceItem，llms.txt 不會列出任何一條（可用 {LLMS_STANCE_VALUES}）")
+        # 標題是課程自己的用語，框架不替它發明一個
+        title = render(llm.get("stanceTitle")) or (CFG.get("stance") or {}).get("title", "")
+        if not title:
+            warn("有立場聲明但沒設定 llms.stanceTitle（或 stance.title），llms.txt 這一段不會有標題")
+        blocks += section(
+            title,
+            render(llm.get("stanceIntro")),
+            bullets(item, rows) if rows else "",
+            render(llm.get("stanceConclusion")),
+        )
+
+    if chapter_item := llm.get("chapterItem"):
+        sep = llm.get("unitSeparator")
+        if sep is None and "[[units]]" in chapter_item:
+            sep = ", "
+            warn("llms.chapterItem 用了 [[units]] 但沒設定 llms.unitSeparator，先用 \", \" 串（中日韓多半要「、」）")
+        blocks += section(
+            render(llm.get("chaptersTitle")),
+            bullets(
+                chapter_item,
+                [
+                    {
+                        "code": ch["code"],
+                        "title": ch["title"],
+                        "units": (sep or "").join(u["name"] for u in ch["units"]),
+                        "unitCount": len(ch["units"]),
+                    }
+                    for ch in chapters
+                ],
+            ),
+        )
+    else:
+        warn(f"沒有設定 llms.chapterItem，llms.txt 不會列出章節（可用 {LLMS_CHAPTER_VALUES}）")
+
+    blocks += section(render(llm.get("disclaimerTitle")), render(llm.get("disclaimer")))
+
+    # 沒寫 footer 就只印裸網址：那是這份檔案的功能（讓 LLM 找得到本體），
+    # 不是文案；框架可以自己給網址，但不會替課程寫一句中文帶出它。
+    blocks.append(render(llm.get("footer")) or f"{SITE}/")
+
+    if left:
+        die(
+            "llms.txt：文案裡有填不了的值 "
+            + "、".join(f"[[{n}]]" for n in sorted(left))
+            + f"。每個欄位都能用 {LLMS_VALUES}；stanceItem 另有 {LLMS_STANCE_VALUES}、"
+            f"chapterItem 另有 {LLMS_CHAPTER_VALUES}"
+        )
+
+    (PUB / "llms.txt").write_text("\n\n".join(b for b in blocks if b) + "\n")
+    print(f"   llms.txt   {len(chapters)} 章" + (f"、{len(stance)} 條立場" if stance else ""))
 
 
 # ── 社群預覽圖 ────────────────────────────────────────────────────────────────

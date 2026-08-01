@@ -580,24 +580,52 @@
     },
     "llms": {
       "type": "object",
-      "description": "llms.txt 的文案。純文字檔，不涉及 HTML",
+      "description": "llms.txt 的整份模板。純文字檔（Markdown 風格），不涉及 HTML：文案原樣輸出，不逸出也不展開 `**粗體**`（`**` 在這裡本來就是 Markdown 的粗體）。框架只提供 `#`/`##`/`-`/空行這些結構，一個字都不寫——沒宣告的欄位就整塊不輸出。除了 {units} 這類數字佔位符，還可以用 [[course]] [[url]] [[durationHours]] [[durationMinutes]]",
       "additionalProperties": false,
       "properties": {
         "summary": {
           "type": "string",
-          "description": "開頭那一段課程摘要。可用文案佔位符 {units} {lessonUnits} {drillUnits} {slots} {videos} {problems} {evidence}"
+          "description": "開頭那一段課程摘要（緊接在 # 標題與 > 描述之後）。課程規模的數字要自己寫進來：{units} {lessonUnits} {drillUnits} {slots} {videos} {problems} {evidence}，總長用 [[durationHours]] 與 [[durationMinutes]]"
+        },
+        "stanceTitle": {
+          "type": "string",
+          "description": "立場聲明段的標題文字（框架加上 `## `）。沒寫就退回 stance.title；兩個都沒有就沒有標題"
         },
         "stanceIntro": {
           "type": "string",
           "description": "立場聲明段的開場。可用文案佔位符 {units} {lessonUnits} {drillUnits} {slots} {videos} {problems} {evidence}"
         },
+        "stanceItem": {
+          "type": "string",
+          "description": "立場聲明每一條的模板（框架加上 `- `）。可用 [[name]] [[grade]] [[summary]] [[summaryShort]]（前 180 字，不含刪節號——要不要加「…」由你決定）。沒寫就不列任何一條"
+        },
         "stanceConclusion": {
           "type": "string",
           "description": "立場聲明段的結語"
         },
+        "chaptersTitle": {
+          "type": "string",
+          "description": "章節段的標題文字（框架加上 `## `）。沒寫就只有清單、沒有標題"
+        },
+        "chapterItem": {
+          "type": "string",
+          "description": "章節每一行的模板（框架加上 `- `）。可用 [[code]] [[title]] [[units]]（單元名清單）[[unitCount]]。沒寫就不列章節"
+        },
+        "unitSeparator": {
+          "type": "string",
+          "description": "[[units]] 串接單元名用的分隔符。中日韓通常是「、」，拉丁語系是「, 」。沒寫而又用了 [[units]] 會退回 \", \" 並警告"
+        },
+        "disclaimerTitle": {
+          "type": "string",
+          "description": "免責段的標題文字（框架加上 `## `）"
+        },
         "disclaimer": {
           "type": "string",
-          "description": "免責段"
+          "description": "免責段。沒寫就整段不輸出（連標題也不會出現）"
+        },
+        "footer": {
+          "type": "string",
+          "description": "結尾帶出網站本體的那一行，通常放 [[url]]。沒寫就只印裸網址——網址是這份檔案的功能，但帶出它的那句話是文案"
         }
       }
     },

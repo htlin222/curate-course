@@ -156,6 +156,86 @@ describe("seo.py 沒有寫死這門課的主題", { skip }, () => {
   });
 });
 
+/* --- #14 llms.txt：框架不准替課程講任何一句話 ------------------------------ */
+
+describe("llms.txt 的每一個字都來自課程", { skip }, () => {
+  // llms.txt 以前有一整批寫死的中文句型（「共 X 個單元（X 個影片欄位…）」、
+  // 「## 章節」、「## 免責」、條列的「（分級）：摘要…」）。那比 fallback 更糟：
+  // fallback 至少還能覆寫，寫死的句型連接縫都沒有，一門英文課的 llms.txt 就會
+  // 冒出中文——而且沒有任何檢查會發現，因為檔案本身完全合法。
+  //
+  // 做法：把「設定檔提供的文案」與「course.json 的資料」逐段從產出物裡刪掉，
+  // 剩下的必須只有 ASCII 結構（# > - ** 空行 數字 網址）。
+  // 還留著非 ASCII 字元，就代表那個字是框架自己寫的。
+  const llms = () => readFileSync(dist("llms.txt"), "utf8");
+
+  /** 模板裡的坑：`[[值]]`（build 算出來的）與 `{數字}`（七個文案佔位符） */
+  const PLACEHOLDER = /\[\[\w+\]\]|\{\w+\}/g;
+
+  /** 設定檔的文案：去掉坑之後剩下的字面片段 */
+  function copyFragments() {
+    const out = [];
+    for (const value of Object.values(config.llms || {})) {
+      if (typeof value === "string") out.push(...value.split(PLACEHOLDER));
+    }
+    const site = config.site || {};
+    out.push(site.name, site.description, site.url, config.stance?.title);
+    return out;
+  }
+
+  /** course.json 的資料：章節、單元名、立場條目 */
+  function dataFragments() {
+    const out = [];
+    for (const ch of course.chapters) {
+      out.push(ch.code, ch.title, ...ch.units.map((u) => u.name));
+    }
+    for (const s of course.stance || []) out.push(s.name, s.evidence_grade, s.summary);
+    return out;
+  }
+
+  /** 把每個片段從文字裡刪光。找不到完整片段時退而求其次刪最長的前綴——
+   *  立場摘要在 llms.txt 裡是截短的，那一段仍然是課程自己的字。 */
+  function strip(text, fragments) {
+    for (const f of [...new Set(fragments)].filter(Boolean).sort((a, b) => b.length - a.length)) {
+      if (text.includes(f)) {
+        text = text.split(f).join("");
+        continue;
+      }
+      let piece = f;
+      while (piece.length > 4 && !text.includes(piece)) piece = piece.slice(0, -1);
+      if (piece.length > 4) text = text.split(piece).join("");
+    }
+    return text;
+  }
+
+  test("產出物裡沒有任何設定檔以外的固定句型", () => {
+    const rest = strip(llms(), [...copyFragments(), ...dataFragments()]);
+    const leaked = [...new Set(rest.match(/[^\x00-\x7F]/g) || [])];
+    assert.deepEqual(
+      leaked,
+      [],
+      `這些字元不是來自 course.config.json 也不是來自 course.json，` +
+        `就是 seo.py 自己寫的：${leaked.join("")}\n剩下的內容：\n${rest.trim()}`,
+    );
+  });
+
+  test("設定檔宣告的每個文案欄位都真的出現在產出物裡", () => {
+    // 反向檢查：只掃「沒有多餘的字」會漏掉「少了整段」——
+    // 把某個欄位讀丟了，llms.txt 只是安靜地短一截。
+    const text = llms();
+    const missing = Object.entries(config.llms || {})
+      .filter(([, v]) => typeof v === "string")
+      .map(([k, v]) => [k, v.split(PLACEHOLDER).sort((a, b) => b.length - a.length)[0] || ""])
+      .filter(([, frag]) => frag.length > 2 && !text.includes(frag))
+      .map(([k]) => k);
+    assert.deepEqual(missing, [], "這些 llms.* 欄位設定了卻沒有出現在 llms.txt 裡");
+  });
+
+  test("沒有殘留未填的佔位符", () => {
+    assert.equal(llms().match(PLACEHOLDER), null);
+  });
+});
+
 /* --- #31 og.html：圖上每一個數字都要跟 course.json 對得起來 ----------------- */
 
 describe("og.html", { skip: skip || (existsSync(dist("og.html")) ? false : "沒有 dist/og.html") }, () => {
