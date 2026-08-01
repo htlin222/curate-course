@@ -33,4 +33,7 @@ SOFTWARE.
 - **PubMed 與 OpenEvidence 引用的文獻**，著作權屬各出版者；本專案僅存書目
   資訊與連結。
 
-課程內容為衛教與運動指引，不構成醫療診斷或治療建議。
+課程內容一律不構成專業建議。免責聲明由各課程自行宣告，寫在該課程
+`course.config.json` 的 `footer.disclaimer` 與 `llms.disclaimer`——框架不替任何
+主題決定該說什麼。本 repo 附的範例課程 `examples/body/` 為衛教與運動指引，不構成
+醫療診斷或治療建議。
