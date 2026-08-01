@@ -551,8 +551,12 @@
         },
         "repo": {
           "type": "string",
-          "description": "留言要送去的 GitHub repo（owner/name）。務必換成自己的——這個值填錯不會有任何錯誤，留言只會安靜地跑到別人家。",
+          "description": "留言要送去的 GitHub repo（owner/name）。務必換成自己的——這個值填錯不會有任何錯誤，留言只會安靜地跑到別人家。make audit 會比對它是不是這個 checkout 的 origin。",
           "pattern": "^[\\w.-]+/[\\w.-]+$"
+        },
+        "allowExternalRepo": {
+          "type": "boolean",
+          "description": "刻意把留言送到「不是這個 checkout」的 repo 時設為 true，否則 make audit 會擋下來"
         },
         "repoId": {
           "type": "string"
@@ -658,6 +662,18 @@
           "type": "integer",
           "minimum": 0,
           "description": "容許幾個誠實留空的格子"
+        },
+        "maxCategoryShare": {
+          "type": "number",
+          "minimum": 0,
+          "description": "單一類別佔已分類項目的比例上限（0–1），超過只會警告：通常代表 patterns 用到了會出現在 target 欄位的詞"
+        },
+        "ignoreDataFiles": {
+          "type": "array",
+          "description": "course/data/ 底下刻意不給建置讀的檔名；其餘讀不到的資料檔一律報錯",
+          "items": {
+            "type": "string"
+          }
         }
       }
     }
