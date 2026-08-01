@@ -19,7 +19,61 @@
 | `audit` | **品質門檻** → `make audit` 照這裡檢查（見 `quality.md`） |
 | `counter` | 選用：header 的累計瀏覽次數徽章（Pages Function + D1）。整組拿掉就不顯示，也完全不打 API |
 | `discussions` | 選用：giscus 設定，每支影片一串 GitHub Discussions。整組拿掉就沒有討論面板。**換主題必換 `repo`/`repoId`/`categoryId`**，否則留言會靜靜掉到上一個主題的 repo |
-| `landing` / `stance` / `footer` / `llms` | 首頁、立場頁、頁尾、`llms.txt` 的文案 |
+| `landing` / `stance` / `footer` / `llms` | 首頁、立場頁、頁尾、`llms.txt` 的文案。**哪些欄位吃 HTML 見下一節**——預設全部是純文字 |
+
+## 哪些文案欄位吃 HTML
+
+**預設答案是「不吃」。** 絕大多數文案欄位都會被 `esc()` 逸出，寫 `<strong>` 只會在頁面上
+印出字面的 `<strong>`。只有下面這幾個是例外，而且不是每一個都是刻意設計的。
+
+### 可以放心寫 HTML 的（三個，建置期與執行期行為一致）
+
+| 欄位 | 出現在 |
+|---|---|
+| `hero.lede` | 首頁大標下方的說明段 |
+| `footer.disclaimer` | 頁尾那一行免責 |
+| `stance.outro` | 立場頁最下面的結語 |
+
+**`stance.intro` 不在這裡。** 同一個 `stance` 物件底下，`intro` 走 `esc()`、`outro` 走 raw
+（`src/web/js/render.js` 的 `renderStance`），相鄰兩行的處理方式相反。範例課剛好只在 `outro`
+用了 `<strong>`，所以這個不對稱一直沒被撞到——換主題時很自然會假設「立場區塊的長文都吃 HTML」，
+然後在 `intro` 看到字面的 `<strong>`。
+
+### 沒有逸出，但**別當成功能用**的
+
+這些欄位在某些呼叫點是 raw，在另一些呼叫點卻是逸出的——是呼叫點漏了 `esc()`，不是設計：
+
+| 欄位 | 不一致在哪 |
+|---|---|
+| `kinds[].label` | 項目分組標題是 raw；篩選列（`app.js`）與播放清單（`player.js`）是逸出的 |
+| `grades[].label` | 所有分級標籤都是 raw |
+| `ui.tightLabel` / `ui.weakLabel` | 兩欄對照的小標是 raw |
+| `ui.unitNoun` / `lessonNoun` / `drillNoun` / `drillNounShort` | 統計行與章節列是 raw，篩選計數是純文字 |
+| `nav[].title` | 側欄分組標題是 raw |
+
+在這些欄位寫 HTML，換一個渲染位置就會露餡。當成純文字用。
+
+### 建置期是 raw，執行期會被改成逸出的（最容易誤判）
+
+`index.html` 裡的 `{{a.b}}` 由 `src/build/seo.py` 的 `render_template()` 直接字串替換，
+**完全不逸出**。但 `src/web/js/app.js` 的 `applyChrome()` 在 JS 跑完後又會把其中大部分
+重寫一次，這次過 `esc()`：
+
+| 欄位 | 首屏（建置期注入） | JS 跑完之後 |
+|---|---|---|
+| `site.name`、`hero.eyebrow`、`hero.heading`、`footer.credits`、`ui.progressLabel`、`ui.facetLabel`、`ui.tabs.*` | raw HTML | 逸出成字面文字 |
+| `site.title` | raw，進 `<title>` 與 `<meta content="…">` | `document.title` 改成純文字 |
+| `ui.searchPlaceholder` | raw，進 `placeholder="…"` | `setAttribute` 改成純文字 |
+| `ui.playlistSearch` | raw，進 `placeholder="…"`，**沒有執行期覆寫** | 不變 |
+
+在這些欄位寫 `<strong>`，畫面會先粗體再變回字面文字——看起來像閃爍，很難查。
+更實際的風險是**雙引號**：`site.title` 或 `ui.searchPlaceholder` 裡的 `"` 會直接切斷
+`<meta content="…">` 與 `placeholder="…"` 的屬性。這幾個欄位連 `"` 都別寫。
+
+### 一句話結論
+
+**除了 `hero.lede`、`footer.disclaimer`、`stance.outro`，所有文案欄位一律當純文字寫。**
+需要強調就換句話說，或改用標點；`llms.*` 是純文字檔的內容，本來就不涉及 HTML。
 
 ## Schema
 
