@@ -41,7 +41,8 @@ async function fresh(page, { theme } = {}) {
   await page.goto(BASE, { waitUntil: "domcontentloaded" });
   await page.evaluate((t) => {
     localStorage.clear();
-    if (t) localStorage.setItem("bc:theme", JSON.stringify(t));
+    // 跨課程共用的主題鍵，見 src/web/js/store.js 的 THEME_KEY
+    if (t) localStorage.setItem("curate:theme", JSON.stringify(t));
   }, theme);
   await page.goto(BASE, { waitUntil: "networkidle" });
   // 首頁分頁時 #main 是 hidden，所以等「掛上」而不是「看得見」

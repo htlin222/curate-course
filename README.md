@@ -29,6 +29,8 @@ OpenEvidence 查證，其中 9 個被判為 `contested`——結果照實寫進�
 ## 快速開始
 
 需要 [uv](https://docs.astral.sh/uv/)。建置腳本只用 Python 標準庫，沒有執行期相依。
+（策展階段另外會用到 [yt-dlp](https://github.com/yt-dlp/yt-dlp) 搜尋影片與抓中繼資料，
+建置與稽核則不需要。）
 
 ```bash
 git clone https://github.com/<you>/curate-course.git
@@ -129,14 +131,19 @@ Skill 本身採漸進揭露，主檔只有流程骨架，細節按需載入：
 ```
 .claude/skills/curate-course/
   SKILL.md              鐵則、七步流程、驗收清單
-  reference/config.md   設定檔欄位、schema、圖示、tone、詞彙模組
-  reference/curating.md 策展 agent 指示範本、oEmbed 驗證、資料格式、多語言
+  reference/config.md   設定檔欄位、schema、圖示、tone、詞彙模組、哪些文案吃 HTML
+  reference/curating.md yt-dlp 搜尋與中繼資料、oEmbed 驗證、資料格式、多語言
   reference/evidence.md 單元／類別兩層實證、PubMed E-utilities 用法
   reference/quality.md  audit 與 verify 的分工、門檻怎麼調、踩過的坑
 ```
 
 裡頭寫死了幾條不可退讓的規則，最重要的是：**video ID 必須取自實際搜尋結果，
 不可憑記憶拼湊；找不到合格影片就留空並在 `note` 說明原因**——留空而不說明會被稽核擋下。
+
+挑片與中繼資料是同一個動作：`yt-dlp --flat-playlist` 的搜尋一次就回 id／秒數／觀看數／
+頻道／標題，agent 沒有機會憑記憶寫長度。但**影片的死活與可嵌入與否一律不看 yt-dlp**——
+它被限流時是 exit 0 加空輸出，而且「能播」不等於「能嵌入」，只有 `make verify` 的
+oEmbed 算數。
 
 ---
 

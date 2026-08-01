@@ -75,6 +75,11 @@
           "items": {
             "type": "string"
           }
+        },
+        "legacyStorePrefix": {
+          "type": "string",
+          "description": "舊版 localStorage 前綴（例如 \"bc:\"）。前綴改成跟著 project 走之後，有設這個欄位才會把舊資料搬過來，既有使用者的進度才不會消失。新課程不需要設。",
+          "pattern": "^[a-zA-Z0-9-]+:$"
         }
       }
     },
@@ -203,6 +208,10 @@
           "type": "string",
           "description": "分面標籤的 title，{name} 會被替換成標籤名（預設「篩選涉及 {name} 的內容」）"
         },
+        "facetIcon": {
+          "$ref": "#/$defs/icon",
+          "description": "分面篩選面板的圖示，不設就用中性的 sliders-horizontal"
+        },
         "evidenceSource": {
           "type": "string",
           "description": "實證查核的來源名稱，例如 OpenEvidence。留空則不顯示這個標籤（預設「OpenEvidence」）"
@@ -232,6 +241,13 @@
       "type": "object",
       "additionalProperties": {
         "type": "string"
+      }
+    },
+    "icons": {
+      "type": "array",
+      "description": "額外要打包進 sprite 的 Lucide 圖示。build_icons.py 已經會自動掃出所有 icon／xxxIcon 欄位，這裡是給設定檔以外（course/assets 自訂樣板）用的逃生門。",
+      "items": {
+        "$ref": "#/$defs/icon"
       }
     },
     "taxonomy": {
@@ -472,6 +488,10 @@
       "type": "object",
       "description": "每支影片一串留言（giscus → GitHub Discussions）。整組拿掉就沒有討論面板。",
       "properties": {
+        "setupNote": {
+          "type": "string",
+          "description": "給人看的設定提醒，程式不讀。三個識別碼換成自己的之後可以刪掉。"
+        },
         "provider": {
           "type": "string",
           "enum": [
@@ -480,6 +500,7 @@
         },
         "repo": {
           "type": "string",
+          "description": "留言要送去的 GitHub repo（owner/name）。務必換成自己的——這個值填錯不會有任何錯誤，留言只會安靜地跑到別人家。",
           "pattern": "^[\\w.-]+/[\\w.-]+$"
         },
         "repoId": {

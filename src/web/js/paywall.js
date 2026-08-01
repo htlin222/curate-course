@@ -4,10 +4,16 @@
 import { icon } from "./icons.js";
 import { esc } from "./render.js";
 import * as core from "./paywall-core.js";
+import { keysFor } from "./store.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 
-const KEY = { cart: "bc:cart", order: "bc:order" };
+const PW_KEYS = ["cart", "order"];
+
+/** 購物車與訂單的鍵名跟著 site.project 走（見 store.js）。寫死前綴的話，
+    同一個 origin 下的兩門課會共用同一張購物車與同一筆訂單——
+    等於買了 A 課就解鎖了 B 課。init() 拿到設定檔才決定得了。 */
+let KEY = keysFor(null, PW_KEYS);
 
 let PW = null;
 let CART = [];
@@ -43,6 +49,8 @@ export function init(config, { onChange } = {}) {
   PW = core.normalize(config?.paywall);
   notify = onChange || (() => {});
   if (!PW) return false;
+
+  KEY = keysFor(config, PW_KEYS);
 
   CART = (read(KEY.cart, []) || []).filter((id) => PW.products.some((p) => p.id === id));
   ORDER = core.validateOrder(read(KEY.order, null), PW);

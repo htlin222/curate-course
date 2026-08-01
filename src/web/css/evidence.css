@@ -1,5 +1,5 @@
 /* ==========================================================================
-   evidence.css — 自我評估、肌群分析、動作清單、實證註記
+   evidence.css — 自我評估、特徵分析、項目清單、實證註記
    ========================================================================== */
 
 .Assessment {
@@ -24,9 +24,9 @@
   margin-right: var(--base-size-4);
 }
 
-/* --- MuscleGrid --------------------------------------------------------- */
+/* --- TraitGrid --------------------------------------------------------- */
 
-.MuscleGrid {
+.TraitGrid {
   display: grid;
   /* 同 Stance__grid：窄視窗要能塌成單欄，不能被 220px 下限撐開 */
   grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
@@ -34,14 +34,14 @@
   margin-top: var(--base-size-12);
 }
 
-.MuscleBlock {
+.TraitBlock {
   padding: var(--base-size-12);
   background-color: var(--bgColor-default);
   border: 1px solid var(--borderColor-default);
   border-radius: var(--borderRadius-medium);
 }
 
-.MuscleBlock__title {
+.TraitBlock__title {
   display: flex;
   align-items: center;
   gap: var(--base-size-4);
@@ -51,15 +51,15 @@
   color: var(--fgColor-muted);
 }
 
-.MuscleBlock--tight .MuscleBlock__title {
+.TraitBlock--tight .TraitBlock__title {
   color: var(--fgColor-danger);
 }
 
-.MuscleBlock--weak .MuscleBlock__title {
+.TraitBlock--weak .TraitBlock__title {
   color: var(--fgColor-accent);
 }
 
-.MuscleBlock__list {
+.TraitBlock__list {
   display: flex;
   flex-wrap: wrap;
   gap: var(--base-size-4);
@@ -116,7 +116,7 @@
   color: var(--fgColor-muted);
 }
 
-.Drill__muscles {
+.Drill__facets {
   display: flex;
   flex-wrap: wrap;
   gap: var(--base-size-4);
@@ -283,8 +283,8 @@
   }
 }
 
-/* 長肌群名與英文動作名在窄欄位要能斷行，否則會頂出卡片。
-   .Label 預設 nowrap，肌群標籤這裡必須解除 */
+/* 長的分面名與英文項目名在窄欄位要能斷行，否則會頂出卡片。
+   .Label 預設 nowrap，分面標籤這裡必須解除 */
 .Drill__name,
 .Drill__en,
 .Drill__dose,
@@ -294,7 +294,7 @@
   overflow-wrap: anywhere;
 }
 
-.MuscleBlock__list .Label {
+.TraitBlock__list .Label {
   white-space: normal;
   overflow-wrap: anywhere;
   text-align: left;
