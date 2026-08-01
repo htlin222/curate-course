@@ -1,5 +1,10 @@
 <!doctype html>
-<html lang="zh-Hant">
+<!--
+  社群預覽圖的模板。這裡不寫任何課程專屬的數字或文案：
+  seo.py 的 render_og() 會把 {{...}} 換成 course.json 算好的值，寫出 dist/og.html，
+  make og 再對那一份截圖。手改這個檔案裡的數字沒有意義，下次 make build 就會被蓋掉。
+-->
+<html lang="{{locale}}">
   <head>
     <meta charset="utf-8" />
     <title>OG image</title>
@@ -72,6 +77,7 @@
         font-weight: 700;
         line-height: 1.1;
         font-variant-numeric: tabular-nums;
+        white-space: nowrap;
       }
 
       .stat span {
@@ -119,10 +125,14 @@
         opacity: 0.75;
       }
 
-      .c-contested { color: #f85149; background: #f8514926; border-color: #f8514966; }
-      .c-limited   { color: #d29922; background: #bb800926; border-color: #d2992266; }
-      .c-moderate  { color: #4493f8; background: #388bfd1a; border-color: #4493f866; }
-      .c-strong    { color: #3fb950; background: #23863633; border-color: #3fb95066; }
+      /* 分級用的是設定檔裡的 tone，不是分級 id：換主題改了 grades[].id
+         也不用回來改 CSS。tone 的列舉見 course.schema.json 的 $defs.labelled。 */
+      .t-danger    { color: #f85149; background: #f8514926; border-color: #f8514966; }
+      .t-attention { color: #d29922; background: #bb800926; border-color: #d2992266; }
+      .t-accent    { color: #4493f8; background: #388bfd1a; border-color: #4493f866; }
+      .t-success   { color: #3fb950; background: #23863633; border-color: #3fb95066; }
+      .t-done      { color: #ab7df8; background: #ab7df826; border-color: #ab7df866; }
+      .t-neutral   { color: #9198a1; background: #9198a11a; border-color: #9198a166; }
 
       .url {
         font-size: 21px;
@@ -133,44 +143,22 @@
     </style>
   </head>
   <body>
-    <div class="brand">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
-      </svg>
-      體態矯正課程
-    </div>
+    <div class="brand">{{brandIcon}}{{brandName}}</div>
 
     <div class="main">
-      <h1 class="title">從頭到腳，<br />把體態拆解成<em>可以練的東西</em></h1>
-      <p class="lede">頸椎到足踝 24 個體態問題，每個都告訴你怎麼自測、該練什麼，<br />以及這套說法在醫學文獻裡站不站得住腳。</p>
+      <h1 class="title">{{title}}</h1>
+      <p class="lede">{{lede}}</p>
 
-      <div class="stats">
-        <div class="stat"><b>371</b><span>個單元</span></div>
-        <div class="stat"><b>26 小時</b><span>影片總時長</span></div>
-        <div class="stat"><b>24</b><span>個體態問題</span></div>
-        <div class="stat"><b>27</b><span>題實證查核</span></div>
-      </div>
+      <div class="stats">{{stats}}</div>
     </div>
 
     <div class="foot">
       <div class="grades">
-        <div class="grades-label">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 18h8M3 22h18M14 22a7 7 0 1 0 0-14h-1M9 14h2" />
-            <path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z" />
-            <path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3" />
-          </svg>
-          全部經 OpenEvidence 查證，結果照實寫
-        </div>
-        <div class="chips">
-          <span class="chip c-contested">證據互斥 <i>9</i></span>
-          <span class="chip c-limited">證據有限 <i>8</i></span>
-          <span class="chip c-moderate">證據中等 <i>8</i></span>
-          <span class="chip c-strong">證據充分 <i>2</i></span>
-        </div>
+        <div class="grades-label">{{evidenceIcon}}{{evidenceLabel}}</div>
+        <div class="chips">{{chips}}</div>
       </div>
 
-      <div class="url">body-course.pages.dev</div>
+      <div class="url">{{url}}</div>
     </div>
   </body>
 </html>

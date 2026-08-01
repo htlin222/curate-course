@@ -94,6 +94,53 @@
         }
       }
     },
+    "og": {
+      "type": "object",
+      "description": "社群預覽圖（dist/og.html → make og）。全部可省略，省略就退回 hero 與 site 的值；數字一律由 build 算出，不在這裡手寫",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "大標，允許 <br> 與 <em>；預設用 hero.heading"
+        },
+        "lede": {
+          "type": "string",
+          "description": "副標，允許 <br>，可用 {units} {problems} 佔位；預設用 site.ogDescription"
+        },
+        "stats": {
+          "type": "array",
+          "description": "圖上的統計數字，預設取 ui.stats 前四項",
+          "items": {
+            "type": "object",
+            "required": [
+              "field",
+              "label"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "field": {
+                "type": "string",
+                "description": "course.json 的 meta 欄位，另外可用 duration_hours（整數小時）"
+              },
+              "label": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidenceIcon": {
+          "$ref": "#/$defs/icon"
+        },
+        "evidenceLabel": {
+          "type": "string",
+          "description": "分級列上方那句話；預設用 ui.evidenceSource 組出來"
+        },
+        "url": {
+          "type": "string",
+          "description": "頁尾網域；預設把 site.url 去掉 scheme"
+        }
+      }
+    },
     "ui": {
       "type": "object",
       "description": "所有介面文案，程式裡不寫死任何一個字",
