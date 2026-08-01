@@ -421,10 +421,17 @@
     "credits": "影片為 YouTube 上第三方創作者的作品，版權歸原頻道所有，本站僅提供連結。"
   },
   "llms": {
-    "summary": "這是一門免費的線上自學課程，涵蓋頸椎到足踝的 {problems} 個常見體態問題。所有影片皆為 YouTube 上第三方專業頻道的作品，本站僅提供策展與連結。",
+    "summary": "這是一門免費的線上自學課程，涵蓋頸椎到足踝的 {problems} 個常見體態問題。所有影片皆為 YouTube 上第三方專業頻道的作品，本站僅提供策展與連結。共 {lessonUnits} 個單元（{slots} 個影片欄位、去重後 {videos} 支，總長 [[durationHours]] 小時 [[durationMinutes]] 分）。",
+    "stanceTitle": "這門課的立場（重要）",
     "stanceIntro": "課程中 {evidence} 個主題全部經 OpenEvidence 查證，結果照實呈現，包含對課程本身不利的部分：",
+    "stanceItem": "**[[name]]**（[[grade]]）：[[summaryShort]]…",
     "stanceConclusion": "簡言之：矯正運動的價值在於肌力、負荷耐受度與不適感改善，體態數值的變化是伴隨現象而非療效機轉；並無證據顯示矯正課表優於一般運動。",
-    "disclaimer": "本課程為衛教與運動指引，不構成醫療診斷或治療建議。持續疼痛、麻木、無力、外傷史或體態短期內明顯惡化，應先諮詢醫師或物理治療師。"
+    "chaptersTitle": "章節",
+    "chapterItem": "**[[code]] [[title]]**：[[units]]",
+    "unitSeparator": "、",
+    "disclaimerTitle": "免責",
+    "disclaimer": "本課程為衛教與運動指引，不構成醫療診斷或治療建議。持續疼痛、麻木、無力、外傷史或體態短期內明顯惡化，應先諮詢醫師或物理治療師。",
+    "footer": "完整內容：[[url]]"
   },
   "discussions": {
     "setupNote": "留言會送到下面這個 repo 的 GitHub Discussions。三個 REPLACE_ME 換成你自己的：到 https://giscus.app 填入你的 repo（需先安裝 giscus App 並開啟 Discussions），把它產生的 data-repo / data-repo-id / data-category-id 抄過來。沒換之前討論面板只會顯示 giscus 的錯誤——這是刻意的，壞掉好過把讀者的留言靜靜送進別人的 repo。整組 discussions 刪掉就沒有討論面板。",
