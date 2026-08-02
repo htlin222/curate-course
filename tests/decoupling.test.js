@@ -291,9 +291,13 @@ function courseTokens(config) {
   return tokens;
 }
 
-test("#22 src/ 底下沒有任何範例課的專屬字串（框架不准認識任何主題）", () => {
-  const courses = courseDirs(["examples"]);
-  assert.ok(courses.length > 0, "examples/ 底下至少要有一門範例課，測試才有意義");
+test("#22 src/ 底下沒有任何課程的專屬字串（框架不准認識任何主題）", () => {
+  // 兩個地方都算。這裡本來寫死 examples/，而那是**框架 repo** 才成立的假設：
+  // 下游的課程 repo（gym-course）把自己的課放在 courses/，一門 examples 都沒有，
+  // 於是整個測試在那邊直接斷言失敗——框架自己把「我是框架 repo」釘死在測試裡。
+  // 實測同步 gym-course 時撞到。
+  const courses = courseDirs(["courses", "examples"]);
+  assert.ok(courses.length > 0, "repo 裡至少要有一門課（courses/ 或 examples/），測試才有意義");
 
   const files = frameworkFiles().map((f) => [
     path.relative(ROOT, f),
