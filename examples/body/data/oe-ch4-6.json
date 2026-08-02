@@ -1,471 +1,528 @@
 {
-  "_meta": {
-    "source": "OpenEvidence (Ask OpenEvidence Light with citations)",
-    "queried_at": "2026-07-25",
-    "note": "本檔為課程 CH4-CH6 八個體態問題的實證註記。所有 evidence_grade 與敘述均依 OpenEvidence 回答如實記錄，未做美化。多數體態偏差與疼痛之關聯為相關性而非因果，課程引用時務必保留 caveats。"
-  },
-  "conditions": [
+ "_meta": {
+  "source": "OpenEvidence (Ask OpenEvidence Light with citations)",
+  "queried_at": "2026-07-25",
+  "note": "本檔為課程 CH4-CH6 八個體態問題的實證註記。所有 evidence_grade 與敘述均依 OpenEvidence 回答如實記錄，未做美化。多數體態偏差與疼痛之關聯為相關性而非因果，課程引用時務必保留 caveats。"
+ },
+ "conditions": [
+  {
+   "unit": "ch4-u1",
+   "name": "頭前伸",
+   "name_en": "Forward head posture (FHP)",
+   "article_id": "8d4dcf11-f654-41e9-844d-93d5aec3f327",
+   "url": "https://www.openevidence.com/ask/8d4dcf11-f654-41e9-844d-93d5aec3f327",
+   "evidence_grade": "moderate",
+   "pain_link": "頭前伸與頸痛、失能有多項研究呈現關聯，但屬相關性而非明確因果，文獻上仍有爭議。20-50 歲健康成人中至少 66% 有頭前伸，卻多數無症狀；也無法確定是頭前伸先出現、還是疼痛導致姿勢改變。長時間電腦作業、靜態姿勢與心理壓力都是干擾因子。",
+   "muscle_model": "Janda 提出的「上交叉症候群」（上斜方肌、提肩胛肌、胸大小肌緊繃；深頸屈肌、中下斜方肌無力）主要仍是臨床模型，缺乏直接 EMG 或影像驗證。相關系統性回顧探討了運動治療效果，但沒有提供驗證此肌肉長度-張力模式的 EMG 或影像證據；此症候群甚至沒有專屬 ICD 診斷碼。",
+   "intervention": "矯正運動對「改善姿勢角度」有中到大的效果量。一項 RCT 比較肩胛後收運動與 McKenzie 法，8 週（每次 20 分鐘、每週 3 次）後在頸椎椎體角、頸痛與失能上得到 Cohen's d = 0.79-1.69 的大效果量，兩種方法效果相當。上交叉症候群運動治療的統合分析也顯示頭前伸、圓肩、胸椎後凸角度顯著改善（p = 0.001）。但多數研究因未設盲、結果指標不一致而有「some concerns」等級的偏誤風險。",
+   "assessment_validity": "頸椎椎體角（craniovertebral angle, CVA）是最常用且最有驗證的方法，可用側面照片測量（C7 水平線與 C7-耳屏連線夾角）。Surgimap 手機 App 測量 CVA 與軟體相關 0.95、組內信度 ICC 0.972-0.991、最小可偵測變化 1.3-1.7 度、敏感度 100%/特異度 93.55%；建議站姿測量（坐姿數值會系統性偏低）。",
+   "red_flags": [
+    "外傷史、頸部手術史",
+    "癌症病史、不明原因體重下降、夜間痛、疼痛進行性惡化",
+    "全身性疾病（僵直性脊椎炎、發炎性關節炎、DISH）",
+    "疑似感染、靜脈注射藥物使用史",
+    "50 歲以上合併血管疾病",
+    "神經學缺損、神經根症狀、脊椎體壓痛",
+    "自覺撐不住頭頸、功能明顯退化",
+    "發炎指標異常（ESR、CRP、WBC 升高）"
+   ],
+   "caveats": "課程應誠實說明：頭前伸與疼痛的關聯是相關性、不是因果，很多有頭前伸的人完全不痛，因此「矯正角度」不等於「一定會不痛」。上交叉症候群是好用的教學框架，但目前缺乏 EMG／影像的高品質驗證，各研究對頭前伸也沒有統一的診斷角度閾值。",
+   "citations": [
     {
-      "unit": "ch4-u1",
-      "name": "頭前伸",
-      "name_en": "Forward head posture (FHP)",
-      "article_id": "8d4dcf11-f654-41e9-844d-93d5aec3f327",
-      "url": "https://www.openevidence.com/ask/8d4dcf11-f654-41e9-844d-93d5aec3f327",
-      "evidence_grade": "moderate",
-      "pain_link": "頭前伸與頸痛、失能有多項研究呈現關聯，但屬相關性而非明確因果，文獻上仍有爭議。20-50 歲健康成人中至少 66% 有頭前伸，卻多數無症狀；也無法確定是頭前伸先出現、還是疼痛導致姿勢改變。長時間電腦作業、靜態姿勢與心理壓力都是干擾因子。",
-      "muscle_model": "Janda 提出的「上交叉症候群」（上斜方肌、提肩胛肌、胸大小肌緊繃；深頸屈肌、中下斜方肌無力）主要仍是臨床模型，缺乏直接 EMG 或影像驗證。相關系統性回顧探討了運動治療效果，但沒有提供驗證此肌肉長度-張力模式的 EMG 或影像證據；此症候群甚至沒有專屬 ICD 診斷碼。",
-      "intervention": "矯正運動對「改善姿勢角度」有中到大的效果量。一項 RCT 比較肩胛後收運動與 McKenzie 法，8 週（每次 20 分鐘、每週 3 次）後在頸椎椎體角、頸痛與失能上得到 Cohen's d = 0.79-1.69 的大效果量，兩種方法效果相當。上交叉症候群運動治療的統合分析也顯示頭前伸、圓肩、胸椎後凸角度顯著改善（p = 0.001）。但多數研究因未設盲、結果指標不一致而有「some concerns」等級的偏誤風險。",
-      "assessment_validity": "頸椎椎體角（craniovertebral angle, CVA）是最常用且最有驗證的方法，可用側面照片測量（C7 水平線與 C7-耳屏連線夾角）。Surgimap 手機 App 測量 CVA 與軟體相關 0.95、組內信度 ICC 0.972-0.991、最小可偵測變化 1.3-1.7 度、敏感度 100%/特異度 93.55%；建議站姿測量（坐姿數值會系統性偏低）。",
-      "red_flags": [
-        "外傷史、頸部手術史",
-        "癌症病史、不明原因體重下降、夜間痛、疼痛進行性惡化",
-        "全身性疾病（僵直性脊椎炎、發炎性關節炎、DISH）",
-        "疑似感染、靜脈注射藥物使用史",
-        "50 歲以上合併血管疾病",
-        "神經學缺損、神經根症狀、脊椎體壓痛",
-        "自覺撐不住頭頸、功能明顯退化",
-        "發炎指標異常（ESR、CRP、WBC 升高）"
-      ],
-      "caveats": "課程應誠實說明：頭前伸與疼痛的關聯是相關性、不是因果，很多有頭前伸的人完全不痛，因此「矯正角度」不等於「一定會不痛」。上交叉症候群是好用的教學框架，但目前缺乏 EMG／影像的高品質驗證，各研究對頭前伸也沒有統一的診斷角度閾值。",
-      "citations": [
-        {
-          "title": "Upper Crossed Syndrome in the Workplace: A Narrative Review With Clinical Recommendations for Non-Pharmacologic Management",
-          "journal": "International Journal of Environmental Research and Public Health",
-          "year": 2026,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41595914"
-        },
-        {
-          "title": "The Effect of Various Therapeutic Exercises on Forward Head Posture, Rounded Shoulder, and Hyperkyphosis Among People With Upper Crossed Syndrome: A Systematic Review and Meta-Analysis",
-          "journal": "BMC Musculoskeletal Disorders",
-          "year": 2024,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/38302926"
-        },
-        {
-          "title": "Craniovertebral Angle and Neck Disability Among University Students With Forward Head Posture: A Comparative Study of Scapular Retraction Exercises Versus McKenzie Method",
-          "journal": "Scientific Reports",
-          "year": 2026,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42135384"
-        },
-        {
-          "title": "Clinimetric Properties of a Smartphone Application to Measure the Craniovertebral Angle in Different Age Groups and Positions",
-          "journal": "Heliyon",
-          "year": 2023,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/37810069"
-        },
-        {
-          "title": "Identifying Red Flags for Serious Neck Pathology: A UK Nominal Group Study",
-          "journal": "Musculoskeletal Science & Practice",
-          "year": 2026,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42068775"
-        }
-      ]
+     "title": "Upper Crossed Syndrome in the Workplace: A Narrative Review with Clinical Recommendations for Non-Pharmacologic Management",
+     "journal": "Int J Environ Res Public Health",
+     "year": 2026,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/41595914",
+     "pmid": "41595914",
+     "design": "narrative review"
     },
     {
-      "unit": "ch4-u2",
-      "name": "軍人頸（頸椎過直）",
-      "name_en": "Cervical hypolordosis / military neck",
-      "article_id": "5ab19b0c-5347-432a-bb1e-60ca4ea087bf",
-      "url": "https://www.openevidence.com/ask/5ab19b0c-5347-432a-bb1e-60ca4ea087bf",
-      "evidence_grade": "moderate",
-      "pain_link": "頸椎前凸消失與頸痛是相關性關係，因果方向仍有爭議：無法確定是曲度變直造成疼痛、還是疼痛與肌肉護衛導致姿勢改變，或兩者都是其他病理的結果。無症狀者中也常見前凸減少，因此單獨的影像學曲度變直臨床意義不明。",
-      "muscle_model": "屍體生物力學研究確實量化出型態：枕下伸肌群（頭後直肌大小肌）與胸鎖乳突肌縮短，而跨越 C4-C6 的頸伸肌群（頭夾肌、半棘肌、多裂肌）被拉長。但這是屍體模型、無法反映活體的主動肌肉功能。活體證據方面，EMG 顯示上斜方肌與菱形肌活化下降並在前彎時矛盾性過度發力，MRI 顯示頭半棘肌橫斷面積減少——支持「伸肌失能」，但不等於直接驗證長度-張力模型。",
-      "intervention": "證據品質屬中等但研究規模小。一項 65 人 RCT：3 個月等長頸伸肌訓練使 85.2% 恢復生理性前凸（對照組 22.5%，p < 0.001），疼痛減少約為僅用 NSAID 組的兩倍。另一項 30 人 RCT 以頸椎伸展牽引每週 3 次共 10 週，前凸增加在 2 年追蹤仍維持（p < 0.0001），且前凸增加與疼痛呈負相關（r = -0.49 至 -0.6）；僅做運動的對照組曲度無顯著改善、2 年後疼痛反而惡化。至少需 10 週監督性介入加居家維持。缺乏大型多中心試驗。",
-      "assessment_validity": "Cobb 法（C2-C7）信度最高（ICC > 0.75）且驗證最完整，是建議的臨床與研究首選；Harrison 後切線法與絕對旋轉角信度亦極佳。但後切線法系統性高估約 7 度，不可與 Cobb 法混用。正常前凸約 20-40 度，< 20 度一般視為過直。",
-      "red_flags": [
-        "體質性症狀：發燒、不明原因體重下降、夜間盜汗",
-        "感染風險：免疫抑制、靜脈藥物使用、近期脊椎手術或注射",
-        "惡性腫瘤：癌症病史、50 歲以上新發疼痛、休息無法緩解的進行性疼痛",
-        "血管：突發劇烈頭痛合併頸痛（椎動脈剝離）、頸部搏動性腫塊、暈厥或跌倒發作",
-        "脊髓病變徵象：步態不穩、大小便失禁、雙側上肢症狀、反射亢進",
-        "進行性或嚴重神經根病變、撐不住頭部",
-        "發炎性關節炎：晨僵 > 1 小時、周邊關節受累、ESR/CRP 升高",
-        "外傷史，或骨鬆／高齡者的輕度外傷"
-      ],
-      "caveats": "課程應說明：X 光上「頸椎變直」在無症狀族群也很常見，不能把它直接等同於病因或治療目標。運動介入的正面數據來自 30-65 人的小型試驗，效果可信但外推性有限；且要恢復曲度需要至少 10 週以上的持續訓練，不是幾次課就能改變的事。",
-      "citations": [
-        {
-          "title": "Isometric Exercise for the Cervical Extensors Can Help Restore Physiological Lordosis and Reduce Neck Pain: A Randomized Controlled Trial",
-          "journal": "American Journal of Physical Medicine & Rehabilitation",
-          "year": 2017,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/28118272"
-        },
-        {
-          "title": "The Efficacy of Cervical Lordosis Rehabilitation for Nerve Root Function and Pain in Cervical Spondylotic Radiculopathy: A Randomized Trial With 2-Year Follow-Up",
-          "journal": "Journal of Clinical Medicine",
-          "year": 2022,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/36362743"
-        },
-        {
-          "title": "Analysis of Abnormal Muscle Activities in Patients With Loss of Cervical Lordosis: A Cross-Sectional Study",
-          "journal": "BMC Musculoskeletal Disorders",
-          "year": 2023,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/37608321"
-        },
-        {
-          "title": "Cervical Spine Muscle-Tendon Unit Length Differences Between Neutral and Forward Head Postures: Biomechanical Study Using Human Cadaveric Specimens",
-          "journal": "Physical Therapy",
-          "year": 2017,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/28444241"
-        },
-        {
-          "title": "Reliability of Cervical Lordosis Measurement Techniques on Long-Cassette Radiographs",
-          "journal": "European Spine Journal",
-          "year": 2016,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/26707132"
-        }
-      ]
+     "title": "The effect of various therapeutic exercises on forward head posture, rounded shoulder, and hyperkyphosis among people with upper crossed syndrome: a systematic review and meta-analysis",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2024,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/38302926",
+     "pmid": "38302926",
+     "design": "meta-analysis"
     },
     {
-      "unit": "ch5-u1",
-      "name": "駝背（胸椎過度後凸）",
-      "name_en": "Thoracic hyperkyphosis",
-      "article_id": "af7d2339-3414-40a7-b31a-c0399fd8d966",
-      "url": "https://www.openevidence.com/ask/af7d2339-3414-40a7-b31a-c0399fd8d966",
-      "evidence_grade": "moderate",
-      "pain_link": "駝背與生理功能下降、疼痛與失能、肺功能受損甚至死亡率升高有關聯，但仍屬相關性而非確立的因果；關係很可能是雙向且多因素的。值得注意的是，約 60-70% 的嚴重駝背並沒有椎體壓迫性骨折，顯示姿勢與肌肉因素確實佔重要角色。但「矯正曲度是否就能降低這些不良結果」尚未被證實。",
-      "muscle_model": "傳統「胸前緊、背後鬆」的二分法不太被客觀測量支持。EMG 顯示駝背者在手臂動作時是軀幹屈肌與伸肌「共同收縮」（而非年輕人的交替發力），這反而可能增加脊椎壓力。Framingham 研究以定量 CT 發現胸椎旁肌橫斷面積與密度較低者 Cobb 角較大（每降 1 SD，女性大 3.7 度、男性 2.5 度），但 6 年縱貫分析顯示肌肉流失並不預測駝背進展。證據支持「胸椎伸肌的大小與品質有關」，但不支持單純的縮短-拉長模型。",
-      "intervention": "RCT 證據品質中等且效果實在。SHEAF 試驗（n=99，平均 70.6 歲）以每次 1 小時、每週 3 次、共 6 個月的脊椎強化與姿勢訓練，Cobb 角減少 3.0 度（95% CI -5.2 至 -0.8，p = 0.009），自我形象顯著改善（p < 0.001），但體能功能指標與對照組無差異。年輕族群（n=63，TKA ≥ 40 度）每週 2 次共 8 週：Schroth 三維運動減少 14.76 度、姿勢矯正運動減少 9.71 度（皆 p < 0.001）。年輕人約 8 週可見變化，長者需 6 個月。介入均由物理治療師監督，未監督的自主訓練外推性未知。",
-      "assessment_validity": "Cobb 角（T4-T12）仍是黃金標準。枕牆距（occiput-to-wall）與 Cobb 角有良好同時效度（r = 0.683）、評分者間信度極佳（ICC > 0.9），以 ≥ 6.5 cm 為切點時敏感度 71.4%、特異度 76.6%（AUC 0.846），是實用的篩檢工具。Flexicurve 與影像法相關性中上但會系統性低估，且角度越大誤差越大。",
-      "red_flags": [
-        "駝背快速進展（可能為活動性椎體骨折或其他病理）",
-        "疑似骨質疏鬆，特別是停經後女性與長者（骨鬆可治療，應轉介評估）",
-        "新發或進行性駝背合併背痛，需排除椎體壓迫性骨折",
-        "合併明顯整體脊椎變形的退化性駝背側彎",
-        "嚴重肺功能受損、呼吸困難",
-        "疼痛與失能嚴重影響功能",
-        "跌倒風險增加或反覆跌倒",
-        "任何神經學缺損"
-      ],
-      "caveats": "課程應誠實說明：6 個月的高品質訓練約可改善 3 度 Cobb 角——這在統計與臨床上有意義（相當於一次椎體骨折造成的變化），但不是「把駝背拉直」。而且 SHEAF 試驗中，角度改善並未同步反映在體能功能測驗上，最明顯的改善其實是「自我形象」。此外，60-70% 的嚴重駝背無骨折，但仍應在長者身上先排除骨鬆。",
-      "citations": [
-        {
-          "title": "Targeted Spine Strengthening Exercise and Posture Training Program to Reduce Hyperkyphosis in Older Adults: Results From the Study of Hyperkyphosis, Exercise, and Function (SHEAF) Randomized Controlled Trial",
-          "journal": "Osteoporosis International",
-          "year": 2017,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/28689306"
-        },
-        {
-          "title": "A Randomized Controlled Study of the Effect of Functional Exercises on Postural Kyphosis: Schroth-Based Three-Dimensional Exercises Versus Postural Corrective Exercises",
-          "journal": "Disability and Rehabilitation",
-          "year": 2023,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/35694970"
-        },
-        {
-          "title": "A Longitudinal Study of Trunk Muscle Properties and Severity of Thoracic Kyphosis in Women and Men: The Framingham Study",
-          "journal": "The Journals of Gerontology Series A",
-          "year": 2019,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/29688268"
-        },
-        {
-          "title": "Trunk Muscle Activity Is Modified in Osteoporotic Vertebral Fracture and Thoracic Kyphosis With Potential Consequences for Vertebral Health",
-          "journal": "PLoS One",
-          "year": 2013,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/25285908"
-        },
-        {
-          "title": "Is the Occiput-Wall Distance Valid and Reliable to Determine the Presence of Thoracic Hyperkyphosis?",
-          "journal": "Musculoskeletal Science & Practice",
-          "year": 2018,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/30278368"
-        }
-      ]
+     "title": "Craniovertebral angle and neck disability among university students with forward head posture: a comparative study of scapular retraction exercises versus McKenzie method",
+     "journal": "Scientific Reports",
+     "year": 2026,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/42135384",
+     "doi": "10.1038/s41598-026-52224-0"
     },
     {
-      "unit": "ch5-u2",
-      "name": "肋骨外翻",
-      "name_en": "Rib flare / increased infrasternal angle",
-      "article_id": "d44b8673-0a07-4a30-ad39-472005a1f126",
-      "url": "https://www.openevidence.com/ask/d44b8673-0a07-4a30-ad39-472005a1f126",
-      "evidence_grade": "limited",
-      "pain_link": "沒有任何已發表的證據建立「胸骨下角增大」與疼痛或功能障礙之間的因果、甚至相關關係。這個概念主要出現在復健與健身圈，而非同儕審查的醫學文獻；OpenEvidence 直接判定它是「臨床模型而非實證診斷」。要與真正的結構性病理（滑動肋骨症候群，以 hooking maneuver 診斷）區分開來。",
-      "muscle_model": "所提出的「橫膈上抬／外腹斜肌拉長無力／腹直肌代償」模式在肋骨外翻的脈絡下沒有 EMG 或影像證據支持。基礎生物力學只能提供旁證：刺激腹直肌會減少胸廓前後徑（使其變橢圓）、刺激外腹斜肌會減少橫徑（使其變圓柱狀）；犬類研究顯示功能性肺餘量下腹直肌處於最適長度的 105%、外腹斜肌 83%。這些只說明腹肌能以不同方向改變胸廓形狀，並未驗證所謂的肋骨外翻肌肉失衡模式。",
-      "intervention": "沒有任何研究檢驗過針對肋骨外翻或胸骨下角的介入。90/90 呼吸與 PRI（Postural Restoration Institute）方法在同儕審查文獻中沒有任何療效資料。間接證據：7 週物理治療性呼吸訓練（每次 1 小時、每週 2 次）改善健康女大生的胸廓擴張與脊椎活動度，效果與瑜伽、皮拉提斯相當，但該研究並未測量胸廓位置或胸骨下角；功能性呼吸障礙的非藥物介入系統性回顧顯示呼吸再訓練有正面效果，但證據品質低且異質性高。",
-      "assessment_validity": "沒有任何經驗證的、具信效度的臨床評估方法可測量肋骨外翻。研究用的胸廓評估（CT 測胸骨角、X 光測肋骨角、超音波／透視評估橫膈）都是為肺部研究開發，未針對姿勢評估驗證，也沒有正常值、測量信度或臨床意義閾值。",
-      "red_flags": [
-        "胸痛且無法排除心臟、肺部或消化道病因（胸壁壓痛不能排除急性心肌梗塞）",
-        "滑動肋骨症候群：hooking maneuver 可重現疼痛、下位肋軟骨過動",
-        "肋軟骨炎或 Tietze 症候群：肋軟骨交界處局部壓痛與腫脹",
-        "結構性胸壁變形：漏斗胸、雞胸",
-        "呼吸功能異常：呼吸困難、矛盾呼吸型態",
-        "嚴重或進行性腹直肌分離，合併功能障礙或疝氣可能需外科評估",
-        "疑似神經壓迫或神經根病變的症狀",
-        "外傷史（肋骨骨折、肌肉損傷）"
-      ],
-      "caveats": "這是本章最需要誠實的一題：OpenEvidence 的結論是「肋骨外翻作為一個與特定肌肉失衡相關、需要矯正運動的姿勢偏差，是一個沒有證據支持的臨床模型」——沒有研究驗證它是獨立的問題、沒有證據顯示它與疼痛或功能障礙相關、沒有驗證所謂的肌肉長度模式、也沒有證明矯正介入有效。課程若要教這個主題，應明說這是經驗性的教學框架，並提醒不要把胸痛或腹部不適直接歸因於它。順帶一提，產後腹直肌分離本身的證據基礎明顯較好，但目前沒有文獻把它與胸廓位置連結起來。",
-      "citations": [
-        {
-          "title": "Action of Abdominal Muscles on Rib Cage in Humans",
-          "journal": "Journal of Applied Physiology",
-          "year": 1985,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/3158634"
-        },
-        {
-          "title": "Characteristics and Functional Significance of Canine Abdominal Muscles",
-          "journal": "Journal of Applied Physiology",
-          "year": 1988,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/2975277"
-        },
-        {
-          "title": "Effects of Classical Breathing Exercises on Posture, Spinal and Chest Mobility Among Female University Students Compared to Currently Popular Training Programs",
-          "journal": "International Journal of Environmental Research and Public Health",
-          "year": 2022,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/35329415"
-        },
-        {
-          "title": "Nonpharmacological Interventions for Dysfunctional Breathing in Adults: A Systematic Review",
-          "journal": "The Journal of Allergy and Clinical Immunology: In Practice",
-          "year": 2025,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/40345332"
-        },
-        {
-          "title": "Costochondritis: Rapid Evidence Review",
-          "journal": "American Family Physician",
-          "year": 2021,
-          "url": "https://www.aafp.org/link_out?pmid=34264599"
-        },
-        {
-          "title": "Diastasis Recti Abdominis: A Comprehensive Review",
-          "journal": "Hernia",
-          "year": 2025,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/40622579"
-        }
-      ]
+     "title": "Clinimetric properties of a smartphone application to measure the craniovertebral angle in different age groups and positions",
+     "journal": "Heliyon",
+     "year": 2023,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/37810069",
+     "pmid": "37810069"
     },
     {
-      "unit": "ch5-u3",
-      "name": "富貴包（頸胸交界脂肪墊）",
-      "name_en": "Dowager's hump / cervicothoracic fat pad",
-      "article_id": "a2fa9f87-5406-4dfd-ae0d-0307911a1c2d",
-      "url": "https://www.openevidence.com/ask/a2fa9f87-5406-4dfd-ae0d-0307911a1c2d",
-      "evidence_grade": "limited",
-      "pain_link": "文獻幾乎沒有直接研究 C7-T1 局部隆起本身，多數證據是關於胸椎過度後凸的外推。胸椎後凸 > 55 度者頸部失能指數顯著較高（Scheuermann 氏後凸最嚴重），但那測的是整體曲度而非局部隆起。組成上「脂肪 vs 椎體楔形變」的比例在文獻中仍未被清楚描述；有研究發現頸椎疼痛程度隨 BMI 與體脂含量增加，暗示脂肪組織可能有貢獻。",
-      "muscle_model": "所謂上斜方肌、提肩胛肌、枕下肌群與胸鎖乳突肌縮短，深頸屈肌、下斜方肌、前鋸肌與中段頸伸肌拉長的模式，主要是臨床模型而缺乏客觀驗證。屍體研究量化了前傾姿勢下的肌肉長度變化（枕下伸肌縮短、C4-C6 伸肌拉長）但無法評估主動功能；MyotonPro 研究只在上斜方肌測到張力與硬度上升（r = -0.731、-0.749，p < 0.001），胸鎖乳突肌、頭夾肌、胸大肌都沒有顯著變化。直接驗證此模式的 EMG 證據在檢索文獻中付之闕如。",
-      "intervention": "沒有任何研究專門處理「頸胸脂肪墊或富貴包的縮小」。可外推的最佳證據是年齡相關駝背的運動介入：每次 1 小時、每週 3 次、共 6 個月，Cobb 角減少 3.0 度（95% CI -5.2 至 -0.8，p = 0.009），自我形象改善但體能功能無差異。系統性回顧中的運動方案從 6 週到 6 個月不等（多數 8-12 週），對年齡相關駝背屬低到中等證據。",
-      "assessment_validity": "Cobb 角（站姿側位 X 光）是胸椎後凸的黃金標準；頸椎排列可用 C2-C7 SVA 與絕對旋轉角（ICC > 0.6），頸胸交界可測 C6-T4 角度。臨床常用的 CVA 與影像 C2-C7 SVA 只有弱相關（R² = 0.30）。關鍵限制是：這些方法都在量脊椎曲度與頭部位置，沒有任何一個經驗證的方法能量化「軟組織隆起」本身。",
-      "red_flags": [
-        "庫欣氏症候群：合併中央型肥胖、月亮臉、紫紋、近端肌無力、高血壓、高血糖",
-        "HIV 脂肪失養症：接受抗反轉錄病毒治療者約 50% 出現，合併臉部與四肢皮下脂肪流失",
-        "骨質疏鬆性椎體壓迫骨折：急性劇痛、身高變矮、駝背進行性惡化（停經後女性、長期類固醇使用者）",
-        "Scheuermann 氏後凸：僵硬性後凸 > 55 度合併椎體楔形變",
-        "脂肪瘤或其他軟組織腫塊：快速增大、質地堅硬或不規則、合併神經症狀",
-        "惡性腫瘤：不明原因體重下降、夜間痛、進行性神經缺損、癌症病史",
-        "藥物引起的脂肪失養（蛋白酶抑制劑、類固醇）",
-        "Madelung 氏病（良性對稱性脂肪瘤病）",
-        "急性外傷或感染"
-      ],
-      "caveats": "課程應誠實說明：富貴包在醫學文獻中不是一個被研究過的獨立實體，運動有效的證據全部是從「年齡相關駝背」外推來的，而且那些研究改善的是脊椎曲度，不是脂肪墊。也沒有任何方法能可靠測量隆起大小，所以「練幾週會消多少」無法被實證支持。最重要的教學價值其實在紅旗——隆起若快速變大、疼痛、伴隨全身症狀或神經徵象，應立即轉介排除庫欣氏症候群、脂肪失養、骨鬆骨折或腫瘤。",
-      "citations": [
-        {
-          "title": "Is Thoracic Kyphosis Relevant to Pain, Autonomic Nervous System Function, Disability, and Cervical Sensorimotor Control in Patients With Chronic Nonspecific Neck Pain?",
-          "journal": "Journal of Clinical Medicine",
-          "year": 2023,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/37297903"
-        },
-        {
-          "title": "Acquired and Inherited Lipodystrophies",
-          "journal": "The New England Journal of Medicine",
-          "year": 2004,
-          "url": "https://www.nejm.org/doi/full/10.1056/NEJMra025261"
-        },
-        {
-          "title": "Does Forward Head Posture Influence Muscle Tone, Stiffness, and Elasticity in University Students?",
-          "journal": "Journal of Clinical Medicine",
-          "year": 2025,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/40142696"
-        },
-        {
-          "title": "Targeted Spine Strengthening Exercise and Posture Training Program to Reduce Hyperkyphosis in Older Adults (SHEAF RCT)",
-          "journal": "Osteoporosis International",
-          "year": 2017,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/28689306"
-        },
-        {
-          "title": "Two Methods of Forward Head Posture Assessment: Radiography vs. Posture and Their Clinical Comparison",
-          "journal": "Journal of Clinical Medicine",
-          "year": 2024,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/38610914"
-        }
-      ]
-    },
-    {
-      "unit": "ch5-u4",
-      "name": "胸椎過直",
-      "name_en": "Thoracic hypokyphosis / flat upper back",
-      "article_id": "5e951490-6a79-4a8e-8b58-e75786dbf7a1",
-      "url": "https://www.openevidence.com/ask/5e951490-6a79-4a8e-8b58-e75786dbf7a1",
-      "evidence_grade": "limited",
-      "pain_link": "胸椎過直與疼痛／功能障礙的關係在文獻中幾乎沒有被描述，絕大多數研究都集中在「過度後凸」而非「不足」。僅有的證據來自青少年特發性側彎：胸椎後凸 < 10 度者需以前傾姿勢代償、矢狀垂直軸較大——但那是特定病理情境。孤立性胸椎過直是否致痛完全未被建立。",
-      "muscle_model": "針對胸椎過直的肌肉長度-張力關係、EMG 型態或影像肌肉形態學，檢索不到任何研究。所謂「胸椎伸肌緊、屈肌弱」的說法是從一般姿勢理論外推的，未經客觀測量驗證。也不能把過度後凸的文獻反向推導成過直的模型。",
-      "intervention": "沒有找到任何專門針對「增加胸椎後凸」的運動介入研究。現有的運動證據全部是關於減少過度後凸：統合分析顯示對降低過大的後凸角有大效果量（SMD = -1.400，95% CI -2.150 至 -0.660，p < 0.001），且強化訓練可能比伸展更相關；8 週 Schroth 三維運動減少 14.76 度、姿勢矯正運動減少 9.71 度。假設「反過來做就有效」（拉伸伸肌、強化屈肌）缺乏任何實證驗證。",
-      "assessment_validity": "Cobb 角（側位 X 光或 DXA）是黃金標準但信度曾被質疑。Debrunner 後凸測量器的評分者內／間信度略優於 flexicurve，與 Cobb 角中度相關（rs = 0.65）；flexicurve 與 Cobb 角相關性最高（rs = 0.68）且最具成本效益；blocks 法相關性最低（rs = 0.63）。四種方法彼此顯著相關。",
-      "red_flags": [
-        "合併脊椎側彎的胸椎過直（< 10 度）：需骨科評估，會影響矢狀面平衡與手術規劃",
-        "Scheuermann 氏病：僵硬性後凸、椎體楔形變（≥ 5 度連續 ≥ 3 節）、Schmorl 氏結節——注意此病造成的是「過度後凸」而非過直",
-        "僵直性脊椎炎：進行性胸椎後凸與腰椎前凸消失；早期可能先出現活動度下降",
-        "變形進行性惡化",
-        "神經學症狀",
-        "夜間痛",
-        "體質性症狀（發燒、體重下降）",
-        "18 歲以下出現結構性變化",
-        "外傷史，或保守治療無反應的疼痛"
-      ],
-      "caveats": "課程應誠實說明：文獻並未把「胸椎過直」確立為無症狀者需要矯正的病理實體，多數與胸椎曲度異常有關的病理其實是曲度「增加」而非減少。教這一單元時應以動作品質與胸椎活動度為主軸，不要暗示過直本身會致痛或必須被「矯正」回某個角度。",
-      "citations": [
-        {
-          "title": "Global Sagittal Alignment After Surgery of Right Thoracic Idiopathic Scoliosis in Adolescents and Adults With and Without Thoracic Hypokyphosis",
-          "journal": "Scientific Reports",
-          "year": 2021,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/33737666"
-        },
-        {
-          "title": "Effects of Exercise Programs on Kyphosis and Lordosis Angle: A Systematic Review and Meta-Analysis",
-          "journal": "PLoS One",
-          "year": 2019,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/31034509"
-        },
-        {
-          "title": "Correlations Among Four Measures of Thoracic Kyphosis in Older Adults",
-          "journal": "Osteoporosis International",
-          "year": 2016,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/26475287"
-        },
-        {
-          "title": "Interrater and Intrarater Reliability in the Measurement of Kyphosis in Postmenopausal Women With Osteoporosis",
-          "journal": "Spine",
-          "year": 1998,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/9779531"
-        },
-        {
-          "title": "Insights Into the Pathophysiology of Scheuermann's Kyphosis: From Structural Deformities to Genetic Predisposition and Underlying Signalling Pathways",
-          "journal": "Biomolecules",
-          "year": 2025,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41594596"
-        }
-      ]
-    },
-    {
-      "unit": "ch6-u1",
-      "name": "腰椎過度前拱",
-      "name_en": "Lumbar hyperlordosis / anterior pelvic tilt",
-      "article_id": "d8b8d33b-e686-4e8a-85f2-29e88d0557fd",
-      "url": "https://www.openevidence.com/ask/d8b8d33b-e686-4e8a-85f2-29e88d0557fd",
-      "evidence_grade": "contested",
-      "pain_link": "這一題的證據方向與傳統臨床觀念相反。系統性回顧與統合分析發現：下背痛患者的腰椎前凸角其實偏「小」而非偏大（SMD -0.33，95% CI -0.46 至 -0.21），在椎間盤突出／退化族群更明顯（SMD -0.94，95% CI -1.19 至 -0.69）。唯一相反的證據是一項前瞻性研究，發現「久站會痛」者的前凸、骨盆入射角與薦骨傾斜角較大。整體屬相關性且高度受年齡、疼痛嚴重度與脊椎疾病種類干擾。",
-      "muscle_model": "下交叉症候群（髖屈肌與豎脊肌緊、腹肌與臀肌弱）的客觀證據有限且不一致。MRI 研究發現慢性下背痛者是「腰大肌與腹直肌選擇性萎縮」，豎脊肌、多裂肌、髂肌、臀大肌橫斷面積與對照組無差異——這與「髖屈肌緊」的預期相反。張力肌動圖研究雖發現骨盆傾斜與豎脊肌、臀大肌、腹直肌、外腹斜肌硬度相關，但作者明言「未能確認符合下交叉症候群描述的硬度變化方向」。RCT 中矯正運動雖顯著改善臀大肌活化（F = 5.11，p = 0.032），但腿後肌與豎脊肌組間無顯著差異。",
-      "intervention": "矯正運動對降低腰椎前凸角有中等效果量（統合分析 SMD = 0.550，p < 0.001），年輕（SMD 0.640）與年長（SMD 0.520）族群相似。NASM 取向矯正運動 RCT（8 週 24 次）顯著降低前凸角（F = 24.82，p = 0.001）並改善臀大肌活化。但統合分析僅納入 10 篇，介入方案異質性高，缺乏長期追蹤與最佳處方參數。",
-      "assessment_validity": "站姿側位腰椎 X 光測量脊椎骨盆參數（LL、PI、PT、SS）準確度與信度優異：與全脊椎 EOS 影像差異平均 < 1 度、ICC > 0.870，觀察者內／間信度 ICC > 0.960。臨床用的 flexible ruler（flexicurve）在試驗中被使用，但檢索未找到針對它的驗證研究；影像法仍是參考標準。",
-      "red_flags": [
-        "神經學缺損：進行性無力、大小便功能障礙、鞍區麻木（馬尾症候群）",
-        "近期明顯外傷或跌倒",
-        "全身性症狀：發燒、不明原因體重下降、夜間盜汗",
-        "年齡 < 20 歲或 > 50 歲的新發疼痛",
-        "癌症病史合併新發或惡化的背痛",
-        "嚴重或進行性疼痛、休息無法緩解、夜間痛",
-        "已知或疑似骨折、脊椎滑脫、嚴重椎間盤突出",
-        "發炎性關節病變：晨僵 > 30 分鐘、運動後改善"
-      ],
-      "caveats": "這一題最需要打破迷思：現有最好的統合證據顯示下背痛者的腰椎前凸「偏小」而不是偏大，因此把「骨盆前傾／腰椎過拱」當作下背痛的主因，方向可能是錯的。下交叉症候群作為肌肉失衡模型，在 MRI 與張力測量中並未被一致證實（腰大肌甚至是萎縮的）。矯正運動確實能改變前凸角度（中等效果量），但「角度改變會帶來疼痛改善」這一步並未被同樣強度的證據支持。",
-      "citations": [
-        {
-          "title": "The Relationships Between Low Back Pain and Lumbar Lordosis: A Systematic Review and Meta-Analysis",
-          "journal": "The Spine Journal",
-          "year": 2017,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/28476690"
-        },
-        {
-          "title": "MRI-Based Assessment of Trunk and Hip Muscle Morphology and Strength in Chronic Low Back Pain",
-          "journal": "Medical Science Monitor",
-          "year": 2026,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41691365"
-        },
-        {
-          "title": "Pelvic Tilt and Stiffness of the Muscles Stabilising the Lumbo-Pelvic-Hip (LPH) Complex in Tensiomyography Examination",
-          "journal": "PLoS One",
-          "year": 2023,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/39441879"
-        },
-        {
-          "title": "Effects of Corrective Exercises on Lumbar Lordotic Angle Correction: A Systematic Review and Meta-Analysis",
-          "journal": "International Journal of Environmental Research and Public Health",
-          "year": 2022,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/35457772"
-        },
-        {
-          "title": "The Effect of NASM-based Corrective Exercises on Lumbar Lordosis Angle and Selected Muscle Activity in Women With Lower Cross Syndrome: A Randomized Clinical Trial",
-          "journal": "PLoS One",
-          "year": 2025,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41779719"
-        },
-        {
-          "title": "Accuracy and Reliability of Standing Lateral Lumbar Radiographs for Measurements of Spinopelvic Parameters",
-          "journal": "Spine",
-          "year": 2021,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/34228695"
-        }
-      ]
-    },
-    {
-      "unit": "ch6-u2",
-      "name": "腰椎過直（平背）",
-      "name_en": "Lumbar hypolordosis / flat back",
-      "article_id": "ed7af9df-afb2-46bd-bde2-de7959953518",
-      "url": "https://www.openevidence.com/ask/ed7af9df-afb2-46bd-bde2-de7959953518",
-      "evidence_grade": "moderate",
-      "pain_link": "腰椎前凸減少與下背痛的關聯是相關性，但在特定次族群中相當穩健：椎間盤突出／退化者前凸明顯較小（SMD -0.94，95% CI -1.19 至 -0.69），年齡配對研究則無統計異質性。2024 年研究進一步顯示慢性下背痛者的問題是「骨盆形態與腰椎前凸不匹配」（PI-LL mismatch，AUC 0.69-0.75），而骨盆形態本身兩組相似。因果仍未確立，年齡、疼痛嚴重度與脊椎疾病是主要干擾因子。",
-      "muscle_model": "傳統的下交叉模型在影像證據下呈現更複雜的面貌。MRI 顯示慢性下背痛者腰大肌（L2/L5）與腹直肌橫斷面積較小，而腰方肌、豎脊肌、多裂肌、髂肌、臀大肌無差異——腰大肌是萎縮而非緊縮，直接挑戰「髖屈肌緊」的假設。退化性腰椎後凸（平背）中豎脊肌呈瀰漫性退化與脂肪浸潤，且與腰椎前凸呈負相關；多裂肌退化較呈節段性且在脊椎滑脫中更明顯。整體而言此模型仍偏理論。",
-      "intervention": "證據中等品質但研究規模小。一項 2021 年 RCT（n=36 女性，柔軟性平背）比較矯正運動、阻力訓練與物理治療，12 週、每週 3 次、每次 60 分鐘：矯正運動組腰椎前凸角增加顯著優於阻力訓練（p < 0.01）與物理治療（p < 0.001），ODI 失能分數較低（p < 0.001），腰部肌肉橫斷面積增加（p < 0.05）。但每組僅 12 人、全為女性、未報告標準化效果量、無長期追蹤。8-12 週可見改善，最佳時長與維持效果不明。",
-      "assessment_validity": "影像法信度良好至優異：站姿側位腰椎 X 光測 PI、PT、SS、LL 與全脊椎 EOS 差異 < 1 度（ICC 0.872-0.976），觀察者信度 ICC > 0.960；2024 年納入 64 篇的系統性回顧確認矢狀面腰骨盆生物力學分析信度良好。具鑑別力的臨床閾值包括 ARA T12-S1 < 68 度（AUC 0.83）、ARA L1-L5 < 36 度（AUC 0.78）、PI − ARA T12-S1 < -18 度（AUC 0.75）。傾斜儀（inclinometer）在檢索文獻中未被專門驗證。",
-      "red_flags": [
-        "無法維持水平視線或無代償地站直",
-        "動態矢狀不平衡：站立或行走 30 秒內 C7SVA > 20 cm",
-        "PI-LL 不匹配 > 75 度（嚴重矢狀不平衡）",
-        "動態側位 X 光顯示腰椎曲度僵硬（柔軟度 < 10 度）",
-        "變形進行性惡化",
-        "神經根病變、神經學缺損，或馬尾症候群（大小便功能障礙、鞍區麻木、進行性下肢無力）",
-        "嚴重且持續不緩解的疼痛、夜間痛或休息痛",
-        "體質性症狀（發燒、不明原因體重下降、夜間盜汗）",
-        "癌症病史、骨質疏鬆、長期類固醇使用、重大外傷",
-        "> 50 歲新發背痛，或 < 20 歲發病"
-      ],
-      "caveats": "課程應誠實說明：這是 CH6 兩題中證據方向較一致的一題（下背痛者確實傾向前凸較少），但仍是相關性，且關鍵可能不是「絕對角度」而是「與個人骨盆入射角是否匹配」——同樣的前凸角度在不同人身上意義不同，因此不存在單一的「正確腰椎曲度」。運動證據只來自一項 12 人／組、全女性、無長期追蹤的小型 RCT，外推需保守。",
-      "citations": [
-        {
-          "title": "The Relationships Between Low Back Pain and Lumbar Lordosis: A Systematic Review and Meta-Analysis",
-          "journal": "The Spine Journal",
-          "year": 2017,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/28476690"
-        },
-        {
-          "title": "Can the Mismatch of Measured Pelvic Morphology vs. Lumbar Lordosis Predict Chronic Low Back Pain Patients?",
-          "journal": "Journal of Clinical Medicine",
-          "year": 2024,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/38673450"
-        },
-        {
-          "title": "Effect of Different Exercise Types on the Cross-Sectional Area and Lumbar Lordosis Angle in Patients With Flat Back Syndrome",
-          "journal": "International Journal of Environmental Research and Public Health",
-          "year": 2021,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/34682669"
-        },
-        {
-          "title": "Different Degeneration Patterns of Paraspinal Muscles in Degenerative Lumbar Diseases: A MRI Analysis of 154 Patients",
-          "journal": "European Spine Journal",
-          "year": 2022,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/34978601"
-        },
-        {
-          "title": "Reliability of the Biomechanical Assessment of the Sagittal Lumbar Spine and Pelvis on Radiographs Used in Clinical Practice: A Systematic Review of the Literature",
-          "journal": "Journal of Clinical Medicine",
-          "year": 2024,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/39200793"
-        },
-        {
-          "title": "Adult Spinal Deformity",
-          "journal": "Lancet",
-          "year": 2019,
-          "url": "https://pubmed.ncbi.nlm.nih.gov/31305254"
-        }
-      ]
+     "title": "Identifying red flags for serious neck pathology: A UK nominal group study",
+     "journal": "Musculoskeletal Science and Practice",
+     "year": 2026,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/42068775",
+     "doi": "10.1016/j.msksp.2026.103569"
     }
-  ]
+   ]
+  },
+  {
+   "unit": "ch4-u2",
+   "name": "軍人頸（頸椎過直）",
+   "name_en": "Cervical hypolordosis / military neck",
+   "article_id": "5ab19b0c-5347-432a-bb1e-60ca4ea087bf",
+   "url": "https://www.openevidence.com/ask/5ab19b0c-5347-432a-bb1e-60ca4ea087bf",
+   "evidence_grade": "moderate",
+   "pain_link": "頸椎前凸消失與頸痛是相關性關係，因果方向仍有爭議：無法確定是曲度變直造成疼痛、還是疼痛與肌肉護衛導致姿勢改變，或兩者都是其他病理的結果。無症狀者中也常見前凸減少，因此單獨的影像學曲度變直臨床意義不明。",
+   "muscle_model": "屍體生物力學研究確實量化出型態：枕下伸肌群（頭後直肌大小肌）與胸鎖乳突肌縮短，而跨越 C4-C6 的頸伸肌群（頭夾肌、半棘肌、多裂肌）被拉長。但這是屍體模型、無法反映活體的主動肌肉功能。活體證據方面，EMG 顯示上斜方肌與菱形肌活化下降並在前彎時矛盾性過度發力，MRI 顯示頭半棘肌橫斷面積減少——支持「伸肌失能」，但不等於直接驗證長度-張力模型。",
+   "intervention": "證據品質屬中等但研究規模小。一項 65 人 RCT：3 個月等長頸伸肌訓練使 85.2% 恢復生理性前凸（對照組 22.5%，p < 0.001），疼痛減少約為僅用 NSAID 組的兩倍。另一項 30 人 RCT 以頸椎伸展牽引每週 3 次共 10 週，前凸增加在 2 年追蹤仍維持（p < 0.0001），且前凸增加與疼痛呈負相關（r = -0.49 至 -0.6）；僅做運動的對照組曲度無顯著改善、2 年後疼痛反而惡化。至少需 10 週監督性介入加居家維持。缺乏大型多中心試驗。",
+   "assessment_validity": "Cobb 法（C2-C7）信度最高（ICC > 0.75）且驗證最完整，是建議的臨床與研究首選；Harrison 後切線法與絕對旋轉角信度亦極佳。但後切線法系統性高估約 7 度，不可與 Cobb 法混用。正常前凸約 20-40 度，< 20 度一般視為過直。",
+   "red_flags": [
+    "體質性症狀：發燒、不明原因體重下降、夜間盜汗",
+    "感染風險：免疫抑制、靜脈藥物使用、近期脊椎手術或注射",
+    "惡性腫瘤：癌症病史、50 歲以上新發疼痛、休息無法緩解的進行性疼痛",
+    "血管：突發劇烈頭痛合併頸痛（椎動脈剝離）、頸部搏動性腫塊、暈厥或跌倒發作",
+    "脊髓病變徵象：步態不穩、大小便失禁、雙側上肢症狀、反射亢進",
+    "進行性或嚴重神經根病變、撐不住頭部",
+    "發炎性關節炎：晨僵 > 1 小時、周邊關節受累、ESR/CRP 升高",
+    "外傷史，或骨鬆／高齡者的輕度外傷"
+   ],
+   "caveats": "課程應說明：X 光上「頸椎變直」在無症狀族群也很常見，不能把它直接等同於病因或治療目標。運動介入的正面數據來自 30-65 人的小型試驗，效果可信但外推性有限；且要恢復曲度需要至少 10 週以上的持續訓練，不是幾次課就能改變的事。",
+   "citations": [
+    {
+     "title": "Isometric Exercise for the Cervical Extensors Can Help Restore Physiological Lordosis and Reduce Neck Pain: A Randomized Controlled Trial",
+     "journal": "Am J Phys Med Rehabil",
+     "year": 2017,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28118272",
+     "pmid": "28118272",
+     "design": "RCT"
+    },
+    {
+     "title": "The Efficacy of Cervical Lordosis Rehabilitation for Nerve Root Function and Pain in Cervical Spondylotic Radiculopathy: A Randomized Trial with 2-Year Follow-Up",
+     "journal": "J Clin Med",
+     "year": 2022,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/36362743",
+     "pmid": "36362743"
+    },
+    {
+     "title": "Analysis of abnormal muscle activities in patients with loss of cervical lordosis: a cross-sectional study",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2023,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/37608321",
+     "pmid": "37608321"
+    },
+    {
+     "title": "Cervical Spine Muscle-Tendon Unit Length Differences Between Neutral and Forward Head Postures: Biomechanical Study Using Human Cadaveric Specimens",
+     "journal": "Phys Ther",
+     "year": 2017,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28444241",
+     "pmid": "28444241"
+    },
+    {
+     "title": "Reliability of cervical lordosis measurement techniques on long-cassette radiographs",
+     "journal": "Eur Spine J",
+     "year": 2016,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26707132",
+     "pmid": "26707132"
+    }
+   ]
+  },
+  {
+   "unit": "ch5-u1",
+   "name": "駝背（胸椎過度後凸）",
+   "name_en": "Thoracic hyperkyphosis",
+   "article_id": "af7d2339-3414-40a7-b31a-c0399fd8d966",
+   "url": "https://www.openevidence.com/ask/af7d2339-3414-40a7-b31a-c0399fd8d966",
+   "evidence_grade": "moderate",
+   "pain_link": "駝背與生理功能下降、疼痛與失能、肺功能受損甚至死亡率升高有關聯，但仍屬相關性而非確立的因果；關係很可能是雙向且多因素的。值得注意的是，約 60-70% 的嚴重駝背並沒有椎體壓迫性骨折，顯示姿勢與肌肉因素確實佔重要角色。但「矯正曲度是否就能降低這些不良結果」尚未被證實。",
+   "muscle_model": "傳統「胸前緊、背後鬆」的二分法不太被客觀測量支持。EMG 顯示駝背者在手臂動作時是軀幹屈肌與伸肌「共同收縮」（而非年輕人的交替發力），這反而可能增加脊椎壓力。Framingham 研究以定量 CT 發現胸椎旁肌橫斷面積與密度較低者 Cobb 角較大（每降 1 SD，女性大 3.7 度、男性 2.5 度），但 6 年縱貫分析顯示肌肉流失並不預測駝背進展。證據支持「胸椎伸肌的大小與品質有關」，但不支持單純的縮短-拉長模型。",
+   "intervention": "RCT 證據品質中等且效果實在。SHEAF 試驗（n=99，平均 70.6 歲）以每次 1 小時、每週 3 次、共 6 個月的脊椎強化與姿勢訓練，Cobb 角減少 3.0 度（95% CI -5.2 至 -0.8，p = 0.009），自我形象顯著改善（p < 0.001），但體能功能指標與對照組無差異。年輕族群（n=63，TKA ≥ 40 度）每週 2 次共 8 週：Schroth 三維運動減少 14.76 度、姿勢矯正運動減少 9.71 度（皆 p < 0.001）。年輕人約 8 週可見變化，長者需 6 個月。介入均由物理治療師監督，未監督的自主訓練外推性未知。",
+   "assessment_validity": "Cobb 角（T4-T12）仍是黃金標準。枕牆距（occiput-to-wall）與 Cobb 角有良好同時效度（r = 0.683）、評分者間信度極佳（ICC > 0.9），以 ≥ 6.5 cm 為切點時敏感度 71.4%、特異度 76.6%（AUC 0.846），是實用的篩檢工具。Flexicurve 與影像法相關性中上但會系統性低估，且角度越大誤差越大。",
+   "red_flags": [
+    "駝背快速進展（可能為活動性椎體骨折或其他病理）",
+    "疑似骨質疏鬆，特別是停經後女性與長者（骨鬆可治療，應轉介評估）",
+    "新發或進行性駝背合併背痛，需排除椎體壓迫性骨折",
+    "合併明顯整體脊椎變形的退化性駝背側彎",
+    "嚴重肺功能受損、呼吸困難",
+    "疼痛與失能嚴重影響功能",
+    "跌倒風險增加或反覆跌倒",
+    "任何神經學缺損"
+   ],
+   "caveats": "課程應誠實說明：6 個月的高品質訓練約可改善 3 度 Cobb 角——這在統計與臨床上有意義（相當於一次椎體骨折造成的變化），但不是「把駝背拉直」。而且 SHEAF 試驗中，角度改善並未同步反映在體能功能測驗上，最明顯的改善其實是「自我形象」。此外，60-70% 的嚴重駝背無骨折，但仍應在長者身上先排除骨鬆。",
+   "citations": [
+    {
+     "title": "Targeted spine strengthening exercise and posture training program to reduce hyperkyphosis in older adults: results from the study of hyperkyphosis, exercise, and function (SHEAF) randomized controlled trial",
+     "journal": "Osteoporosis International",
+     "year": 2017,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28689306",
+     "doi": "10.1007/s00198-017-4109-x"
+    },
+    {
+     "title": "A randomized controlled study of the effect of functional exercises on postural kyphosis: Schroth-based three-dimensional exercises versus postural corrective exercises",
+     "journal": "Disabil Rehabil",
+     "year": 2023,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/35694970",
+     "pmid": "35694970",
+     "design": "RCT"
+    },
+    {
+     "title": "A Longitudinal Study of Trunk Muscle Properties and Severity of Thoracic Kyphosis in Women and Men: The Framingham Study",
+     "journal": "J Gerontol A Biol Sci Med Sci",
+     "year": 2019,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/29688268",
+     "pmid": "29688268"
+    },
+    {
+     "title": "Trunk muscle activity is modified in osteoporotic vertebral fracture and thoracic kyphosis with potential consequences for vertebral health",
+     "journal": "PLoS One",
+     "year": 2014,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/25285908",
+     "pmid": "25285908"
+    },
+    {
+     "title": "Is the occiput-wall distance valid and reliable to determine the presence of thoracic hyperkyphosis?",
+     "journal": "Musculoskeletal Science and Practice",
+     "year": 2018,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/30278368",
+     "doi": "10.1016/j.msksp.2018.09.010"
+    }
+   ]
+  },
+  {
+   "unit": "ch5-u2",
+   "name": "肋骨外翻",
+   "name_en": "Rib flare / increased infrasternal angle",
+   "article_id": "d44b8673-0a07-4a30-ad39-472005a1f126",
+   "url": "https://www.openevidence.com/ask/d44b8673-0a07-4a30-ad39-472005a1f126",
+   "evidence_grade": "limited",
+   "pain_link": "沒有任何已發表的證據建立「胸骨下角增大」與疼痛或功能障礙之間的因果、甚至相關關係。這個概念主要出現在復健與健身圈，而非同儕審查的醫學文獻；OpenEvidence 直接判定它是「臨床模型而非實證診斷」。要與真正的結構性病理（滑動肋骨症候群，以 hooking maneuver 診斷）區分開來。",
+   "muscle_model": "所提出的「橫膈上抬／外腹斜肌拉長無力／腹直肌代償」模式在肋骨外翻的脈絡下沒有 EMG 或影像證據支持。基礎生物力學只能提供旁證：刺激腹直肌會減少胸廓前後徑（使其變橢圓）、刺激外腹斜肌會減少橫徑（使其變圓柱狀）；犬類研究顯示功能性肺餘量下腹直肌處於最適長度的 105%、外腹斜肌 83%。這些只說明腹肌能以不同方向改變胸廓形狀，並未驗證所謂的肋骨外翻肌肉失衡模式。",
+   "intervention": "沒有任何研究檢驗過針對肋骨外翻或胸骨下角的介入。90/90 呼吸與 PRI（Postural Restoration Institute）方法在同儕審查文獻中沒有任何療效資料。間接證據：7 週物理治療性呼吸訓練（每次 1 小時、每週 2 次）改善健康女大生的胸廓擴張與脊椎活動度，效果與瑜伽、皮拉提斯相當，但該研究並未測量胸廓位置或胸骨下角；功能性呼吸障礙的非藥物介入系統性回顧顯示呼吸再訓練有正面效果，但證據品質低且異質性高。",
+   "assessment_validity": "沒有任何經驗證的、具信效度的臨床評估方法可測量肋骨外翻。研究用的胸廓評估（CT 測胸骨角、X 光測肋骨角、超音波／透視評估橫膈）都是為肺部研究開發，未針對姿勢評估驗證，也沒有正常值、測量信度或臨床意義閾值。",
+   "red_flags": [
+    "胸痛且無法排除心臟、肺部或消化道病因（胸壁壓痛不能排除急性心肌梗塞）",
+    "滑動肋骨症候群：hooking maneuver 可重現疼痛、下位肋軟骨過動",
+    "肋軟骨炎或 Tietze 症候群：肋軟骨交界處局部壓痛與腫脹",
+    "結構性胸壁變形：漏斗胸、雞胸",
+    "呼吸功能異常：呼吸困難、矛盾呼吸型態",
+    "嚴重或進行性腹直肌分離，合併功能障礙或疝氣可能需外科評估",
+    "疑似神經壓迫或神經根病變的症狀",
+    "外傷史（肋骨骨折、肌肉損傷）"
+   ],
+   "caveats": "這是本章最需要誠實的一題：OpenEvidence 的結論是「肋骨外翻作為一個與特定肌肉失衡相關、需要矯正運動的姿勢偏差，是一個沒有證據支持的臨床模型」——沒有研究驗證它是獨立的問題、沒有證據顯示它與疼痛或功能障礙相關、沒有驗證所謂的肌肉長度模式、也沒有證明矯正介入有效。課程若要教這個主題，應明說這是經驗性的教學框架，並提醒不要把胸痛或腹部不適直接歸因於它。順帶一提，產後腹直肌分離本身的證據基礎明顯較好，但目前沒有文獻把它與胸廓位置連結起來。",
+   "citations": [
+    {
+     "title": "Action of abdominal muscles on rib cage in humans",
+     "journal": "J Appl Physiol (1985)",
+     "year": 1985,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/3158634",
+     "pmid": "3158634"
+    },
+    {
+     "title": "Characteristics and functional significance of canine abdominal muscles",
+     "journal": "J Appl Physiol (1985)",
+     "year": 1988,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/2975277",
+     "pmid": "2975277"
+    },
+    {
+     "title": "Effects of Classical Breathing Exercises on Posture, Spinal and Chest Mobility among Female University Students Compared to Currently Popular Training Programs",
+     "journal": "Int J Environ Res Public Health",
+     "year": 2022,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/35329415",
+     "pmid": "35329415"
+    },
+    {
+     "title": "Nonpharmacological Interventions for Dysfunctional Breathing in Adults: A Systematic Review",
+     "journal": "J Allergy Clin Immunol Pract",
+     "year": 2025,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/40345332",
+     "pmid": "40345332",
+     "design": "systematic review"
+    },
+    {
+     "title": "Costochondritis: Rapid Evidence Review",
+     "journal": "Am Fam Physician",
+     "year": 2021,
+     "url": "https://www.aafp.org/link_out?pmid=34264599",
+     "pmid": "34264599",
+     "design": "narrative review"
+    },
+    {
+     "title": "Diastasis recti abdominis: A comprehensive review",
+     "journal": "Hernia",
+     "year": 2025,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/40622579",
+     "pmid": "40622579",
+     "design": "narrative review"
+    }
+   ]
+  },
+  {
+   "unit": "ch5-u3",
+   "name": "富貴包（頸胸交界脂肪墊）",
+   "name_en": "Dowager's hump / cervicothoracic fat pad",
+   "article_id": "a2fa9f87-5406-4dfd-ae0d-0307911a1c2d",
+   "url": "https://www.openevidence.com/ask/a2fa9f87-5406-4dfd-ae0d-0307911a1c2d",
+   "evidence_grade": "limited",
+   "pain_link": "文獻幾乎沒有直接研究 C7-T1 局部隆起本身，多數證據是關於胸椎過度後凸的外推。胸椎後凸 > 55 度者頸部失能指數顯著較高（Scheuermann 氏後凸最嚴重），但那測的是整體曲度而非局部隆起。組成上「脂肪 vs 椎體楔形變」的比例在文獻中仍未被清楚描述；有研究發現頸椎疼痛程度隨 BMI 與體脂含量增加，暗示脂肪組織可能有貢獻。",
+   "muscle_model": "所謂上斜方肌、提肩胛肌、枕下肌群與胸鎖乳突肌縮短，深頸屈肌、下斜方肌、前鋸肌與中段頸伸肌拉長的模式，主要是臨床模型而缺乏客觀驗證。屍體研究量化了前傾姿勢下的肌肉長度變化（枕下伸肌縮短、C4-C6 伸肌拉長）但無法評估主動功能；MyotonPro 研究只在上斜方肌測到張力與硬度上升（r = -0.731、-0.749，p < 0.001），胸鎖乳突肌、頭夾肌、胸大肌都沒有顯著變化。直接驗證此模式的 EMG 證據在檢索文獻中付之闕如。",
+   "intervention": "沒有任何研究專門處理「頸胸脂肪墊或富貴包的縮小」。可外推的最佳證據是年齡相關駝背的運動介入：每次 1 小時、每週 3 次、共 6 個月，Cobb 角減少 3.0 度（95% CI -5.2 至 -0.8，p = 0.009），自我形象改善但體能功能無差異。系統性回顧中的運動方案從 6 週到 6 個月不等（多數 8-12 週），對年齡相關駝背屬低到中等證據。",
+   "assessment_validity": "Cobb 角（站姿側位 X 光）是胸椎後凸的黃金標準；頸椎排列可用 C2-C7 SVA 與絕對旋轉角（ICC > 0.6），頸胸交界可測 C6-T4 角度。臨床常用的 CVA 與影像 C2-C7 SVA 只有弱相關（R² = 0.30）。關鍵限制是：這些方法都在量脊椎曲度與頭部位置，沒有任何一個經驗證的方法能量化「軟組織隆起」本身。",
+   "red_flags": [
+    "庫欣氏症候群：合併中央型肥胖、月亮臉、紫紋、近端肌無力、高血壓、高血糖",
+    "HIV 脂肪失養症：接受抗反轉錄病毒治療者約 50% 出現，合併臉部與四肢皮下脂肪流失",
+    "骨質疏鬆性椎體壓迫骨折：急性劇痛、身高變矮、駝背進行性惡化（停經後女性、長期類固醇使用者）",
+    "Scheuermann 氏後凸：僵硬性後凸 > 55 度合併椎體楔形變",
+    "脂肪瘤或其他軟組織腫塊：快速增大、質地堅硬或不規則、合併神經症狀",
+    "惡性腫瘤：不明原因體重下降、夜間痛、進行性神經缺損、癌症病史",
+    "藥物引起的脂肪失養（蛋白酶抑制劑、類固醇）",
+    "Madelung 氏病（良性對稱性脂肪瘤病）",
+    "急性外傷或感染"
+   ],
+   "caveats": "課程應誠實說明：富貴包在醫學文獻中不是一個被研究過的獨立實體，運動有效的證據全部是從「年齡相關駝背」外推來的，而且那些研究改善的是脊椎曲度，不是脂肪墊。也沒有任何方法能可靠測量隆起大小，所以「練幾週會消多少」無法被實證支持。最重要的教學價值其實在紅旗——隆起若快速變大、疼痛、伴隨全身症狀或神經徵象，應立即轉介排除庫欣氏症候群、脂肪失養、骨鬆骨折或腫瘤。",
+   "citations": [
+    {
+     "title": "Is Thoracic Kyphosis Relevant to Pain, Autonomic Nervous System Function, Disability, and Cervical Sensorimotor Control in Patients with Chronic Nonspecific Neck Pain?",
+     "journal": "J Clin Med",
+     "year": 2023,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/37297903",
+     "pmid": "37297903"
+    },
+    {
+     "title": "Acquired and inherited lipodystrophies",
+     "journal": "N Engl J Med",
+     "year": 2004,
+     "url": "https://www.nejm.org/doi/full/10.1056/NEJMra025261",
+     "pmid": "15237464"
+    },
+    {
+     "title": "Does Forward Head Posture Influence Muscle Tone, Stiffness, and Elasticity in University Students?",
+     "journal": "J Clin Med",
+     "year": 2025,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/40142696",
+     "pmid": "40142696"
+    },
+    {
+     "title": "Targeted spine strengthening exercise and posture training program to reduce hyperkyphosis in older adults: results from the study of hyperkyphosis, exercise, and function (SHEAF) randomized controlled trial",
+     "journal": "Osteoporosis International",
+     "year": 2017,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28689306",
+     "doi": "10.1007/s00198-017-4109-x"
+    },
+    {
+     "title": "Two Methods of Forward Head Posture Assessment: Radiography vs. Posture and Their Clinical Comparison",
+     "journal": "J Clin Med",
+     "year": 2024,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/38610914",
+     "pmid": "38610914"
+    }
+   ]
+  },
+  {
+   "unit": "ch5-u4",
+   "name": "胸椎過直",
+   "name_en": "Thoracic hypokyphosis / flat upper back",
+   "article_id": "5e951490-6a79-4a8e-8b58-e75786dbf7a1",
+   "url": "https://www.openevidence.com/ask/5e951490-6a79-4a8e-8b58-e75786dbf7a1",
+   "evidence_grade": "limited",
+   "pain_link": "胸椎過直與疼痛／功能障礙的關係在文獻中幾乎沒有被描述，絕大多數研究都集中在「過度後凸」而非「不足」。僅有的證據來自青少年特發性側彎：胸椎後凸 < 10 度者需以前傾姿勢代償、矢狀垂直軸較大——但那是特定病理情境。孤立性胸椎過直是否致痛完全未被建立。",
+   "muscle_model": "針對胸椎過直的肌肉長度-張力關係、EMG 型態或影像肌肉形態學，檢索不到任何研究。所謂「胸椎伸肌緊、屈肌弱」的說法是從一般姿勢理論外推的，未經客觀測量驗證。也不能把過度後凸的文獻反向推導成過直的模型。",
+   "intervention": "沒有找到任何專門針對「增加胸椎後凸」的運動介入研究。現有的運動證據全部是關於減少過度後凸：統合分析顯示對降低過大的後凸角有大效果量（SMD = -1.400，95% CI -2.150 至 -0.660，p < 0.001），且強化訓練可能比伸展更相關；8 週 Schroth 三維運動減少 14.76 度、姿勢矯正運動減少 9.71 度。假設「反過來做就有效」（拉伸伸肌、強化屈肌）缺乏任何實證驗證。",
+   "assessment_validity": "Cobb 角（側位 X 光或 DXA）是黃金標準但信度曾被質疑。Debrunner 後凸測量器的評分者內／間信度略優於 flexicurve，與 Cobb 角中度相關（rs = 0.65）；flexicurve 與 Cobb 角相關性最高（rs = 0.68）且最具成本效益；blocks 法相關性最低（rs = 0.63）。四種方法彼此顯著相關。",
+   "red_flags": [
+    "合併脊椎側彎的胸椎過直（< 10 度）：需骨科評估，會影響矢狀面平衡與手術規劃",
+    "Scheuermann 氏病：僵硬性後凸、椎體楔形變（≥ 5 度連續 ≥ 3 節）、Schmorl 氏結節——注意此病造成的是「過度後凸」而非過直",
+    "僵直性脊椎炎：進行性胸椎後凸與腰椎前凸消失；早期可能先出現活動度下降",
+    "變形進行性惡化",
+    "神經學症狀",
+    "夜間痛",
+    "體質性症狀（發燒、體重下降）",
+    "18 歲以下出現結構性變化",
+    "外傷史，或保守治療無反應的疼痛"
+   ],
+   "caveats": "課程應誠實說明：文獻並未把「胸椎過直」確立為無症狀者需要矯正的病理實體，多數與胸椎曲度異常有關的病理其實是曲度「增加」而非減少。教這一單元時應以動作品質與胸椎活動度為主軸，不要暗示過直本身會致痛或必須被「矯正」回某個角度。",
+   "citations": [
+    {
+     "title": "Global sagittal alignment after surgery of right thoracic idiopathic scoliosis in adolescents and adults with and without thoracic hypokyphosis",
+     "journal": "Sci Rep",
+     "year": 2021,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/33737666",
+     "pmid": "33737666"
+    },
+    {
+     "title": "Effects of exercise programs on kyphosis and lordosis angle: A systematic review and meta-analysis",
+     "journal": "PLOS ONE",
+     "year": 2019,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/31034509",
+     "doi": "10.1371/journal.pone.0216180"
+    },
+    {
+     "title": "Correlations among four measures of thoracic kyphosis in older adults",
+     "journal": "Osteoporos Int",
+     "year": 2016,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26475287",
+     "pmid": "26475287"
+    },
+    {
+     "title": "Interrater and intrarater reliability in the measurement of kyphosis in postmenopausal women with osteoporosis",
+     "journal": "Spine (Phila Pa 1976)",
+     "year": 1998,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/9779531",
+     "pmid": "9779531"
+    },
+    {
+     "title": "Insights into the Pathophysiology of Scheuermann's Kyphosis: From Structural Deformities to Genetic Predisposition and Underlying Signalling Pathways",
+     "journal": "Biomolecules",
+     "year": 2025,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/41594596",
+     "pmid": "41594596",
+     "design": "narrative review"
+    }
+   ]
+  },
+  {
+   "unit": "ch6-u1",
+   "name": "腰椎過度前拱",
+   "name_en": "Lumbar hyperlordosis / anterior pelvic tilt",
+   "article_id": "d8b8d33b-e686-4e8a-85f2-29e88d0557fd",
+   "url": "https://www.openevidence.com/ask/d8b8d33b-e686-4e8a-85f2-29e88d0557fd",
+   "evidence_grade": "contested",
+   "pain_link": "這一題的證據方向與傳統臨床觀念相反。系統性回顧與統合分析發現：下背痛患者的腰椎前凸角其實偏「小」而非偏大（SMD -0.33，95% CI -0.46 至 -0.21），在椎間盤突出／退化族群更明顯（SMD -0.94，95% CI -1.19 至 -0.69）。唯一相反的證據是一項前瞻性研究，發現「久站會痛」者的前凸、骨盆入射角與薦骨傾斜角較大。整體屬相關性且高度受年齡、疼痛嚴重度與脊椎疾病種類干擾。",
+   "muscle_model": "下交叉症候群（髖屈肌與豎脊肌緊、腹肌與臀肌弱）的客觀證據有限且不一致。MRI 研究發現慢性下背痛者是「腰大肌與腹直肌選擇性萎縮」，豎脊肌、多裂肌、髂肌、臀大肌橫斷面積與對照組無差異——這與「髖屈肌緊」的預期相反。張力肌動圖研究雖發現骨盆傾斜與豎脊肌、臀大肌、腹直肌、外腹斜肌硬度相關，但作者明言「未能確認符合下交叉症候群描述的硬度變化方向」。RCT 中矯正運動雖顯著改善臀大肌活化（F = 5.11，p = 0.032），但腿後肌與豎脊肌組間無顯著差異。",
+   "intervention": "矯正運動對降低腰椎前凸角有中等效果量（統合分析 SMD = 0.550，p < 0.001），年輕（SMD 0.640）與年長（SMD 0.520）族群相似。NASM 取向矯正運動 RCT（8 週 24 次）顯著降低前凸角（F = 24.82，p = 0.001）並改善臀大肌活化。但統合分析僅納入 10 篇，介入方案異質性高，缺乏長期追蹤與最佳處方參數。",
+   "assessment_validity": "站姿側位腰椎 X 光測量脊椎骨盆參數（LL、PI、PT、SS）準確度與信度優異：與全脊椎 EOS 影像差異平均 < 1 度、ICC > 0.870，觀察者內／間信度 ICC > 0.960。臨床用的 flexible ruler（flexicurve）在試驗中被使用，但檢索未找到針對它的驗證研究；影像法仍是參考標準。",
+   "red_flags": [
+    "神經學缺損：進行性無力、大小便功能障礙、鞍區麻木（馬尾症候群）",
+    "近期明顯外傷或跌倒",
+    "全身性症狀：發燒、不明原因體重下降、夜間盜汗",
+    "年齡 < 20 歲或 > 50 歲的新發疼痛",
+    "癌症病史合併新發或惡化的背痛",
+    "嚴重或進行性疼痛、休息無法緩解、夜間痛",
+    "已知或疑似骨折、脊椎滑脫、嚴重椎間盤突出",
+    "發炎性關節病變：晨僵 > 30 分鐘、運動後改善"
+   ],
+   "caveats": "這一題最需要打破迷思：現有最好的統合證據顯示下背痛者的腰椎前凸「偏小」而不是偏大，因此把「骨盆前傾／腰椎過拱」當作下背痛的主因，方向可能是錯的。下交叉症候群作為肌肉失衡模型，在 MRI 與張力測量中並未被一致證實（腰大肌甚至是萎縮的）。矯正運動確實能改變前凸角度（中等效果量），但「角度改變會帶來疼痛改善」這一步並未被同樣強度的證據支持。",
+   "citations": [
+    {
+     "title": "The relationships between low back pain and lumbar lordosis: a systematic review and meta-analysis",
+     "journal": "The Spine Journal",
+     "year": 2017,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28476690",
+     "doi": "10.1016/j.spinee.2017.04.034"
+    },
+    {
+     "title": "MRI-Based Assessment of Trunk and Hip Muscle Morphology and Strength in Chronic Low Back Pain",
+     "journal": "Med Sci Monit",
+     "year": 2026,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/41691365",
+     "pmid": "41691365"
+    },
+    {
+     "title": "Pelvic tilt and stiffness of the muscles stabilising the lumbo-pelvic-hip (LPH) complex in tensiomyography examination",
+     "journal": "PLoS One",
+     "year": 2024,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/39441879",
+     "pmid": "39441879",
+     "design": "observational"
+    },
+    {
+     "title": "Effects of Corrective Exercises on Lumbar Lordotic Angle Correction: A Systematic Review and Meta-Analysis",
+     "journal": "Int J Environ Res Public Health",
+     "year": 2022,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/35457772",
+     "pmid": "35457772",
+     "design": "meta-analysis"
+    },
+    {
+     "title": "The effect of NASM-based corrective exercises on lumbar lordosis angle and selected muscle activity in women with lower cross syndrome: A randomized clinical trial",
+     "journal": "PLoS One",
+     "year": 2026,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/41779719",
+     "pmid": "41779719",
+     "design": "RCT"
+    },
+    {
+     "title": "Accuracy and Reliability of Standing Lateral Lumbar Radiographs for Measurements of Spinopelvic Parameters",
+     "journal": "Spine (Phila Pa 1976)",
+     "year": 2021,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/34228695",
+     "pmid": "34228695"
+    }
+   ]
+  },
+  {
+   "unit": "ch6-u2",
+   "name": "腰椎過直（平背）",
+   "name_en": "Lumbar hypolordosis / flat back",
+   "article_id": "ed7af9df-afb2-46bd-bde2-de7959953518",
+   "url": "https://www.openevidence.com/ask/ed7af9df-afb2-46bd-bde2-de7959953518",
+   "evidence_grade": "moderate",
+   "pain_link": "腰椎前凸減少與下背痛的關聯是相關性，但在特定次族群中相當穩健：椎間盤突出／退化者前凸明顯較小（SMD -0.94，95% CI -1.19 至 -0.69），年齡配對研究則無統計異質性。2024 年研究進一步顯示慢性下背痛者的問題是「骨盆形態與腰椎前凸不匹配」（PI-LL mismatch，AUC 0.69-0.75），而骨盆形態本身兩組相似。因果仍未確立，年齡、疼痛嚴重度與脊椎疾病是主要干擾因子。",
+   "muscle_model": "傳統的下交叉模型在影像證據下呈現更複雜的面貌。MRI 顯示慢性下背痛者腰大肌（L2/L5）與腹直肌橫斷面積較小，而腰方肌、豎脊肌、多裂肌、髂肌、臀大肌無差異——腰大肌是萎縮而非緊縮，直接挑戰「髖屈肌緊」的假設。退化性腰椎後凸（平背）中豎脊肌呈瀰漫性退化與脂肪浸潤，且與腰椎前凸呈負相關；多裂肌退化較呈節段性且在脊椎滑脫中更明顯。整體而言此模型仍偏理論。",
+   "intervention": "證據中等品質但研究規模小。一項 2021 年 RCT（n=36 女性，柔軟性平背）比較矯正運動、阻力訓練與物理治療，12 週、每週 3 次、每次 60 分鐘：矯正運動組腰椎前凸角增加顯著優於阻力訓練（p < 0.01）與物理治療（p < 0.001），ODI 失能分數較低（p < 0.001），腰部肌肉橫斷面積增加（p < 0.05）。但每組僅 12 人、全為女性、未報告標準化效果量、無長期追蹤。8-12 週可見改善，最佳時長與維持效果不明。",
+   "assessment_validity": "影像法信度良好至優異：站姿側位腰椎 X 光測 PI、PT、SS、LL 與全脊椎 EOS 差異 < 1 度（ICC 0.872-0.976），觀察者信度 ICC > 0.960；2024 年納入 64 篇的系統性回顧確認矢狀面腰骨盆生物力學分析信度良好。具鑑別力的臨床閾值包括 ARA T12-S1 < 68 度（AUC 0.83）、ARA L1-L5 < 36 度（AUC 0.78）、PI − ARA T12-S1 < -18 度（AUC 0.75）。傾斜儀（inclinometer）在檢索文獻中未被專門驗證。",
+   "red_flags": [
+    "無法維持水平視線或無代償地站直",
+    "動態矢狀不平衡：站立或行走 30 秒內 C7SVA > 20 cm",
+    "PI-LL 不匹配 > 75 度（嚴重矢狀不平衡）",
+    "動態側位 X 光顯示腰椎曲度僵硬（柔軟度 < 10 度）",
+    "變形進行性惡化",
+    "神經根病變、神經學缺損，或馬尾症候群（大小便功能障礙、鞍區麻木、進行性下肢無力）",
+    "嚴重且持續不緩解的疼痛、夜間痛或休息痛",
+    "體質性症狀（發燒、不明原因體重下降、夜間盜汗）",
+    "癌症病史、骨質疏鬆、長期類固醇使用、重大外傷",
+    "> 50 歲新發背痛，或 < 20 歲發病"
+   ],
+   "caveats": "課程應誠實說明：這是 CH6 兩題中證據方向較一致的一題（下背痛者確實傾向前凸較少），但仍是相關性，且關鍵可能不是「絕對角度」而是「與個人骨盆入射角是否匹配」——同樣的前凸角度在不同人身上意義不同，因此不存在單一的「正確腰椎曲度」。運動證據只來自一項 12 人／組、全女性、無長期追蹤的小型 RCT，外推需保守。",
+   "citations": [
+    {
+     "title": "The relationships between low back pain and lumbar lordosis: a systematic review and meta-analysis",
+     "journal": "The Spine Journal",
+     "year": 2017,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/28476690",
+     "doi": "10.1016/j.spinee.2017.04.034"
+    },
+    {
+     "title": "Can the Mismatch of Measured Pelvic Morphology vs. Lumbar Lordosis Predict Chronic Low Back Pain Patients?",
+     "journal": "J Clin Med",
+     "year": 2024,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/38673450",
+     "pmid": "38673450"
+    },
+    {
+     "title": "Effect of Different Exercise Types on the Cross-Sectional Area and Lumbar Lordosis Angle in Patients with Flat Back Syndrome",
+     "journal": "Int J Environ Res Public Health",
+     "year": 2021,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/34682669",
+     "pmid": "34682669",
+     "design": "RCT"
+    },
+    {
+     "title": "Different degeneration patterns of paraspinal muscles in degenerative lumbar disease: a MRI analysis of 154 patients",
+     "journal": "Die Wirbelsäule",
+     "year": 2022,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/34978601",
+     "doi": "10.1055/a-1467-8218"
+    },
+    {
+     "title": "Reliability of the Biomechanical Assessment of the Sagittal Lumbar Spine and Pelvis on Radiographs Used in Clinical Practice: A Systematic Review of the Literature",
+     "journal": "J Clin Med",
+     "year": 2024,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/39200793",
+     "pmid": "39200793",
+     "design": "narrative review"
+    },
+    {
+     "title": "Adult spinal deformity",
+     "journal": "Lancet",
+     "year": 2019,
+     "url": "https://pubmed.ncbi.nlm.nih.gov/31305254",
+     "pmid": "31305254",
+     "design": "narrative review"
+    }
+   ]
+  }
+ ]
 }

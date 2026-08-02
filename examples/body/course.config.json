@@ -219,6 +219,36 @@
       "tone": "danger"
     }
   ],
+  "evidence": {
+    "designTiers": {
+      "meta-analysis": 1,
+      "systematic review": 1,
+      "umbrella review": 1,
+      "RCT": 2,
+      "randomized controlled trial": 2,
+      "cohort": 3,
+      "case-control": 3,
+      "prospective cohort": 3,
+      "cross-sectional": 4,
+      "observational": 4,
+      "simulation": 4,
+      "narrative review": 5,
+      "case series": 5,
+      "case report": 5,
+      "expert opinion": 5
+    },
+    "gradeRequires": {
+      "strong": 1,
+      "moderate": 2
+    },
+    "maxAgeYears": {
+      "strong": 12,
+      "moderate": 18
+    },
+    "requireCaveats": [
+      "contested"
+    ]
+  },
   "languages": {
     "zh": "繁中",
     "en": "English",

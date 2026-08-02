@@ -22,6 +22,7 @@ import re
 import subprocess
 import sys
 from collections import Counter, defaultdict
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -1473,7 +1474,139 @@ def audit_depth(cfg: dict, units: list[dict], opts: dict, rep: Report) -> None:
         categories=len(cats),
         evidence_total=len(ev_units) + len(cats),
     )
+    audit_evidence_backing(cfg, rep)
     audit_built_meta(cfg, units, ev_units, stance_keys, cats, rep)
+
+
+def audit_evidence_backing(cfg: dict, rep: Report) -> None:
+    """證據分級撐不撐得住底下的引用。
+
+    `evidence_grade` 本來是純粹的宣稱：說 strong 就是 strong，掛三篇敘述性
+    回顧也沒人管。實測這門課 4 個 strong 裡有 2 個的引用**完全沒標研究設計**，
+    框架無從知道那是統合分析還是個案報告。有引用不等於有所本。
+
+    **框架不預設任何一套證據階梯。** 生醫的「統合分析 > RCT > 佇列」套到
+    生產力或技能課是錯的——那裡的階梯可能是「隨機田野實驗 > 實驗室實驗 >
+    長期追蹤問卷 > 個案 > 專家意見」，而且「專家意見」在某些領域是合理的
+    最高層。所以階梯、門檻、年限全部由課程在 `evidence` 區塊自己宣告，
+    沒宣告就整組略過並明講略過了——沉默的通過跟沉默的失敗一樣貴。
+    """
+    sec = "內容深度"
+    ev = cfg.get("evidence") or {}
+    tiers = {str(k).lower(): int(v) for k, v in (ev.get("designTiers") or {}).items()}
+    requires = {str(k): int(v) for k, v in (ev.get("gradeRequires") or {}).items()}
+    max_age = {str(k): int(v) for k, v in (ev.get("maxAgeYears") or {}).items()}
+    need_caveats = set(ev.get("requireCaveats") or [])
+    min_caveat_chars = int(ev.get("minCaveatChars") or 40)
+
+    if not (tiers or requires or max_age or need_caveats):
+        if cfg.get("grades"):
+            rep.warn(
+                sec,
+                "設定檔沒有 evidence 區塊，所以「分級撐不撐得住引用」完全沒有檢查"
+                "——evidence_grade 目前只是宣稱。見 skill 的 reference/evidence.md",
+            )
+        return
+
+    # 條目 = 單元層級的 conditions + 類別層級的 categories，兩者同一套規矩
+    entries = [
+        (f"{row.get('unit') or row.get('id') or '?'}", row)
+        for key in ("conditions", "categories")
+        for _, row in data_rows(key)
+    ]
+
+    unknown_design, ungraded, weak_backing, stale, no_caveats = [], [], [], [], []
+    unverifiable = []
+    year_now = date.today().year
+
+    for label, row in entries:
+        grade = row.get("evidence_grade")
+        cites = row.get("citations") or []
+
+        # 沒有 pmid／doi 的引用**任何人都無法覆核**，在稽核上跟捏造的沒有分別。
+        # audit 以前只對 categories 做這個檢查，conditions 那一層完全沒查——
+        # 而實測 conditions 的 144 筆引用是 100% 沒有識別碼的。
+        # quality.md 早就記過同一個坑（「只驗一層等於留了一半的門沒鎖」），
+        # verify_refs.py 修過了，audit 沒有。同一個教訓要記兩次。
+        for c in cites:
+            pmid = str(c.get("pmid") or "").strip()
+            doi = str(c.get("doi") or "").strip()
+            if not ((pmid.isdigit() and 6 <= len(pmid) <= 9) or (doi.startswith("10.") and "/" in doi)):
+                unverifiable.append(f"{label} · {(c.get('title') or '?')[:44]}")
+        designs = [str(c.get("design") or "").strip().lower() for c in cites]
+
+        if tiers:
+            for d in designs:
+                if d and d not in tiers:
+                    unknown_design.append(f"{label} · design={d!r}")
+            if cites and not any(designs):
+                ungraded.append(f"{label}（{len(cites)} 篇全部沒標 design）")
+
+        # 分級要有夠高層的設計撐著
+        if (want := requires.get(grade)) is not None and tiers:
+            best = min((tiers[d] for d in designs if d in tiers), default=None)
+            if best is None or best > want:
+                got = f"最佳第 {best} 層" if best else "沒有任何一篇標了 design"
+                weak_backing.append(f"{label}（{grade}）需要第 {want} 層以上，{got}")
+
+        # 新鮮度。這一條的結果會隨「今天是哪一年」改變，是刻意的——引用會變舊，
+        # 而「去年還過、今年該重看」正是它要講的話。所以只警告，不擋交付。
+        if (limit := max_age.get(grade)) is not None and cites:
+            years = [c.get("year") for c in cites if isinstance(c.get("year"), int)]
+            if years and year_now - max(years) > limit:
+                stale.append(f"{label}（{grade}）最新一篇是 {max(years)}，超過 {limit} 年")
+
+        # 「說有爭議就要寫出爭議在哪」——但爭議寫在哪一個欄位，兩層不一樣：
+        # conditions 有專屬的 caveats，categories 沒有那個欄位，內容寫在 summary
+        # 裡（實測那四個 contested 類別的 summary 都已經帶著 Cochrane 結論與效果量）。
+        # 硬要求一個不存在的欄位只會逼人把同一段話抄兩次。所以兩個都算，但要夠長
+        # ——一句話講不完一個爭議。長度不是實質，是這個 codebase 既有的代理指標
+        # （minAssessmentChars 同一套邏輯）。
+        if grade in need_caveats:
+            said = str(row.get("caveats") or "").strip() or str(row.get("summary") or "").strip()
+            if len(said) < min_caveat_chars:
+                no_caveats.append(f"{label}（{len(said)} 字，至少 {min_caveat_chars}）")
+
+    if unverifiable:
+        rep.err(
+            sec,
+            f"{len(unverifiable)} 筆引用沒有 pmid 或 doi——沒有識別碼就沒有人能覆核，"
+            "在稽核上跟捏造的沒有分別（試 make verify ARGS=--resolve 用標題反查）",
+            unverifiable[:10],
+        )
+    if unknown_design:
+        rep.warn(
+            sec,
+            f"{len(unknown_design)} 筆引用的 design 不在 evidence.designTiers 裡"
+            "（拼字不同就是不同的層，階梯要對得上才有意義）",
+            unknown_design[:8],
+        )
+    if ungraded:
+        rep.warn(
+            sec,
+            f"{len(ungraded)} 個條目的引用完全沒標 design——無從判斷分級撐不撐得住",
+            ungraded[:8],
+        )
+    if weak_backing:
+        rep.err(
+            sec,
+            f"{len(weak_backing)} 個條目的證據分級撐不住底下的引用",
+            weak_backing,
+        )
+    if stale:
+        rep.warn(sec, f"{len(stale)} 個高分級條目的文獻偏舊（值得回頭看一次）", stale[:8])
+    if no_caveats:
+        rep.err(
+            sec,
+            f"{len(no_caveats)} 個條目的分級是 {'、'.join(sorted(need_caveats))} 卻沒寫出爭議在哪"
+            "——caveats 或 summary 擇一寫清楚，否則那個分級只是個標籤",
+            no_caveats,
+        )
+    if not (weak_backing or no_caveats):
+        rep.ok(
+            sec,
+            f"分級與引用相符 · 階梯 {len(tiers)} 層 · 有門檻的分級 {'、'.join(sorted(requires)) or '（無）'}",
+        )
 
 
 def audit_built_meta(

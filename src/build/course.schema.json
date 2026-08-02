@@ -382,6 +382,49 @@
         "$ref": "#/$defs/labelled"
       }
     },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "證據分級撐不撐得住底下的引用。整組拿掉就不檢查（但 audit 會明講「沒檢查」）。框架刻意不預設任何一套階梯——生醫的「統合分析 > RCT」套到生產力或技能課是錯的。",
+      "properties": {
+        "designTiers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "description": "這門課的證據階梯：研究設計名稱 → 層級（1 最強）。名稱由課程自己定，比對時不分大小寫。"
+        },
+        "gradeRequires": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "description": "每個 evidence_grade 最低要有一篇第幾層以上的設計撐著。沒列的分級不檢查——低分級本來就在說「證據不足」。對不上是錯誤。"
+        },
+        "maxAgeYears": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "description": "每個分級的最新一篇引用最多可以多舊（年）。只警告，因為解剖學與基礎生理的老文獻依然成立。"
+        },
+        "requireCaveats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "這些分級必須寫 caveats。說「有爭議」卻不寫爭議在哪，那只是個標籤。"
+        },
+        "minCaveatChars": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "requireCaveats 的分級，caveats（或 summary）至少要幾個字。一句話講不完一個爭議。預設 40（沿用 minAssessmentChars 的校準值，不另外發明一個）"
+        }
+      }
+    },
     "languages": {
       "type": "object",
       "additionalProperties": {
