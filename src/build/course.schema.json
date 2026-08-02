@@ -363,6 +363,17 @@
         "discussNote": {
           "type": "string",
           "description": "討論面板的說明"
+        },
+        "filterAllLabel": {
+          "type": "string",
+          "description": "篩選列「全部」那顆按鈕的文字。以前寫死在 app.js 裡，換語言不會跟著變。預設「全部」"
+        },
+        "text": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "介面字串查表。前端每一句使用者看得到的話都走 t(\"key\", \"中文預設\")——不填就用預設的中文，填了就生效。key 的清單見 src/web/js 裡的呼叫點與 tests/i18n.test.js。這是換語言（不只換主題）唯一要動的地方。"
         }
       },
       "additionalProperties": false

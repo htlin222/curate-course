@@ -219,7 +219,7 @@ function viewCart() {
                    </span>
                    ${priceBlock(p.amount, p.listAmount)}
                    <button class="btn btn-invisible btn-icon" type="button"
-                           data-pw="remove" data-id="${esc(p.id)}" title="移除">
+                           data-pw="remove" data-id="${esc(p.id)}" title="${plain(T("removeLabel", "移除"))}">
                      ${icon("trash-2", 14)}
                    </button>
                  </li>`,
@@ -236,7 +236,7 @@ function viewCart() {
                       </div>`
                    : ""
                }
-               <div class="CartTotals__due"><dt>應付</dt><dd>${esc(core.formatAmount(t.amount, cur))}</dd></div>
+               <div class="CartTotals__due"><dt>${rich(T("dueLabel", "應付"))}</dt><dd>${esc(core.formatAmount(t.amount, cur))}</dd></div>
              </dl>
              ${honestyNote()}`
           : `<div class="Blankslate">
@@ -264,25 +264,25 @@ function viewCheckout() {
     <div class="Paywall__body">
       <form class="Checkout" id="checkoutForm" novalidate>
         <label class="Field">
-          <span class="Field__label">稱呼</span>
+          <span class="Field__label">${rich(T("nameLabel", "稱呼"))}</span>
           <input class="Field__input" name="name" type="text" autocomplete="name"
-                 placeholder="怎麼稱呼你（選填）" />
+                 placeholder="${plain(T("namePlaceholder", "怎麼稱呼你（選填）"))}" />
         </label>
         <label class="Field">
           <span class="Field__label">Email</span>
           <input class="Field__input" name="email" type="email" autocomplete="email"
-                 placeholder="不會寄任何東西給你（選填）" />
+                 placeholder="${plain(T("emailPlaceholder", "不會寄任何東西給你（選填）"))}" />
         </label>
 
         <fieldset class="Field Field--pay">
-          <legend class="Field__label">付款方式</legend>
+          <legend class="Field__label">${rich(T("payMethodLabel", "付款方式"))}</legend>
           <label class="Radio">
             <input type="radio" name="pay" value="none" checked />
             <span>${rich(T("payNone", "不用付款"))} · <strong>${esc(core.formatAmount(t.amount, PW.currency))}</strong></span>
           </label>
           <label class="Radio is-disabled">
             <input type="radio" name="pay" value="card" disabled />
-            <span>信用卡 <span class="Radio__note">這個 demo 沒有接金流</span></span>
+            <span>${rich(T("cardLabel", "信用卡"))} <span class="Radio__note">${rich(T("cardNote", "這個 demo 沒有接金流"))}</span></span>
           </label>
         </fieldset>
 
@@ -326,8 +326,8 @@ function viewReceipt() {
     <div class="Paywall__body">
       <p class="Paywall__lede">${rich(T("receiptBody", ""))}</p>
       <div class="Receipt">
-        <div class="Receipt__row"><span>訂單編號</span><code>${esc(o.id)}</code></div>
-        ${when ? `<div class="Receipt__row"><span>日期</span><span>${esc(when)}</span></div>` : ""}
+        <div class="Receipt__row"><span>${rich(T("orderIdLabel", "訂單編號"))}</span><code>${esc(o.id)}</code></div>
+        ${when ? `<div class="Receipt__row"><span>${rich(T("dateLabel", "日期"))}</span><span>${esc(when)}</span></div>` : ""}
         ${o.items
           .map(
             (i) => `<div class="Receipt__row Receipt__row--item">
@@ -337,7 +337,7 @@ function viewReceipt() {
           )
           .join("")}
         <div class="Receipt__row Receipt__row--total">
-          <span>實付</span><strong>${esc(core.formatAmount(o.amount, o.currency))}</strong>
+          <span>${rich(T("paidLabel", "實付"))}</span><strong>${esc(core.formatAmount(o.amount, o.currency))}</strong>
         </div>
       </div>
       ${T("receiptHint") ? `<p class="Paywall__honesty">${icon("info", 13)} ${rich(T("receiptHint"))}</p>` : ""}
@@ -352,7 +352,7 @@ function viewReceipt() {
 
 const closeBtn = () =>
   `<button class="btn btn-invisible btn-icon Paywall__close" type="button" data-pw-close
-           aria-label="關閉">${icon("x", 16)}</button>`;
+           aria-label="${plain(T("closeLabel", "關閉"))}">${icon("x", 16)}</button>`;
 
 const VIEWS = { gate: viewGate, cart: viewCart, checkout: viewCheckout, receipt: viewReceipt };
 

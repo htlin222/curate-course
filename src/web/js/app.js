@@ -1,7 +1,7 @@
 // app.js — 載入課程資料、渲染、互動與進度追蹤
 import { mountIcons, icon } from "./icons.js";
 import {
-  renderChapter, renderStance, renderHome, setDrillEvidence, setConfig, setAccess, UI,
+  renderChapter, renderStance, renderHome, setDrillEvidence, setConfig, setAccess, UI, t,
 } from "./render.js";
 // 文案契約只有一份（見 copy.js），建置期的等價實作在 src/build/seo.py
 import { esc, rich, text, fillTokens } from "./copy.js";
@@ -297,7 +297,7 @@ function playAt(i) {
   setTimeout(ytListen, 900); // iframe 載入後才收得到 infoDelivery
   if (load(STORE.wide, false)) {
     $(".Player").classList.add("is-wide");
-    $("[data-list-label]").textContent = "顯示清單";
+    $("[data-list-label]").textContent = t("listShow", "顯示清單");
   }
   refreshPlaylist();
   $(".PlaylistItem.is-playing")?.scrollIntoView({ block: "nearest" });
@@ -314,7 +314,7 @@ function renderChapters() {
     .map((ch) => renderChapter(ch, state.done))
     .join("");
   const locked = state.course.chapters.filter((ch) => !paywall.canAccess(ch.code)).length;
-  state.lockedNote = locked ? `${locked} 章尚未解鎖` : "";
+  state.lockedNote = locked ? `${locked} ${t("chaptersLocked", "章尚未解鎖")}` : "";
   syncNav(); // 解鎖後章節重畫，高亮要跟著重算
 }
 
@@ -406,7 +406,7 @@ function bindEvents() {
     if (wide) {
       const on = $(".Player").classList.toggle("is-wide");
       save(STORE.wide, on);
-      $("[data-list-label]").textContent = on ? "顯示清單" : "收起清單";
+      $("[data-list-label]").textContent = on ? t("listShow", "顯示清單") : t("listHide", "收起清單");
       requestAnimationFrame(fitFrame);
       return;
     }
@@ -561,7 +561,7 @@ function bindEvents() {
   // 重設進度
   $("#resetProgress").addEventListener("click", () => {
     if (!state.done.size) return;
-    if (!confirm(`確定要清除 ${state.done.size} 個單元的完成紀錄嗎？`)) return;
+    if (!confirm(t("confirmReset", "確定要清除完成紀錄嗎？") + ` (${state.done.size})`)) return;
     state.done.clear();
     save(STORE.done, []);
     $$(".Unit").forEach((u) => {
@@ -682,7 +682,7 @@ async function init() {
     $("#chapters").innerHTML = `
       <div class="Blankslate">
         ${icon("triangle-alert", 32)}
-        <p class="Blankslate__heading">課程資料載入失敗</p>
+        <p class="Blankslate__heading">${rich(t("loadFailed", "課程資料載入失敗"))}</p>
         <p>${esc(err.message)}</p>
       </div>`;
     return;
@@ -792,13 +792,18 @@ async function init() {
 init();
 
 /** 篩選列的按鈕依設定檔的 kinds 生成。
-    寫死在 index.html 裡的按鈕換主題不會跟著變，而且不會有任何錯誤訊息。 */
+    寫死在 index.html 裡的按鈕換主題不會跟著變，而且不會有任何錯誤訊息。
+
+    「全部」那一顆以前是寫死的字串——就在這個函式裡，緊鄰著上面那句註解。
+    修好了類型按鈕，卻在同一段程式碼裡留下一個換語言不會變的中文字。
+    gym-course 的 v1 設定檔本來有 ui.filterAll 這個欄位，v2 把它弄丟了。 */
 function renderFilterBar(cfg) {
   const group = $(".FilterBar__group");
   if (!group) return;
   group.setAttribute("aria-label", text(cfg?.ui?.kindFilterLabel || "類型篩選"));
   group.innerHTML =
-    '<button class="FilterBar__btn is-active" data-filter="all" type="button">全部</button>' +
+    '<button class="FilterBar__btn is-active" data-filter="all" type="button">' +
+    `${rich(cfg?.ui?.filterAllLabel || "全部")}</button>` +
     (cfg?.kinds || [])
       .map(
         (k) =>

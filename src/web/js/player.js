@@ -1,6 +1,6 @@
 // player.js — 上課模式：把整門課攤平成播放清單，左側嵌入播放
 import { icon } from "./icons.js";
-import { esc, KIND, UI } from "./render.js";
+import { esc, KIND, UI, t } from "./render.js";
 import { plain, rich } from "./copy.js";
 import { button as discussButton, panel as discussPanel } from "./discuss.js";
 
@@ -116,9 +116,11 @@ export function renderPlaylist(items, { doneSet, currentIndex, query, onlyTodo, 
 
   $("#playlist").innerHTML =
     html.join("") ||
-    `<div class="Blankslate">${icon("inbox", 28)}<p class="Blankslate__heading">沒有符合的影片</p></div>`;
+    `<div class="Blankslate">${icon("inbox", 28)}<p class="Blankslate__heading">${rich(t("noMatch", "沒有符合的影片"))}</p></div>`;
   $("#playlistCount").textContent =
-    shown === items.length ? `${items.length} 支影片` : `${shown} / ${items.length} 支`;
+    shown === items.length
+      ? `${items.length} ${t("videoUnit", "支影片")}`
+      : `${shown} / ${items.length}`;
   return shown;
 }
 
@@ -159,7 +161,7 @@ export function play(item, { total }) {
         <button class="btn" data-step="-1" type="button">${icon("chevron-left", 14)} <span class="Player__btnText">${rich(UI.prevLabel || "")}</span></button>
         <button class="btn" data-step="1" type="button"><span class="Player__btnText">${rich(UI.nextLabel || "")}</span> ${icon("chevron-right", 14)}</button>
         <button class="btn" data-mark-unit="${esc(item.unitId)}" type="button">${icon("check", 14)} ${rich(UI.doneLabel || "")}</button>
-        <button class="btn btn-icon" data-toggle-list type="button" title="收起／顯示清單">${icon("layers", 16)}<span class="visually-hidden" data-list-label>收起清單</span></button>
+        <button class="btn btn-icon" data-toggle-list type="button" title="${plain(t("listToggle", "收起／顯示清單"))}">${icon("layers", 16)}<span class="visually-hidden" data-list-label>${rich(t("listHide", "收起清單"))}</span></button>
         ${discussButton()}
         <a class="btn btn-icon" href="${esc(item.url)}" target="_blank" rel="noopener" title="${plain(UI.openExternal || "")}">${icon("external-link", 16)}</a>
       </div>
@@ -169,7 +171,7 @@ export function play(item, { total }) {
         ? `<details class="Player__more">
              <summary>${rich(UI.moreLabel || "")}</summary>
              ${item.why ? `<p class="Player__note">${esc(item.why)}</p>` : ""}
-             ${item.assessment ? `<p class="Player__note"><strong>怎麼自己評估　</strong>${esc(item.assessment)}</p>` : ""}
+             ${item.assessment ? `<p class="Player__note"><strong>${rich(t("assessLabel", "怎麼自己評估"))}　</strong>${esc(item.assessment)}</p>` : ""}
            </details>`
         : ""
     }

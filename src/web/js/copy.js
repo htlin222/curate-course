@@ -57,3 +57,22 @@ export function fillTokens(source, meta) {
 
 /** 先填數字再逸出：token 展開出來的是數字，不可能夾帶標記。 */
 export const richTokens = (source, meta) => rich(fillTokens(source, meta));
+
+/** 介面字串查表：`t("listShow", "顯示清單")`。
+ *
+ * 這個框架宣稱主題無關、`site.locale` 也是設定檔欄位，但實測前端有四十幾個
+ * 寫死的中文字完全沒有設定檔路徑——鍵盤快捷鍵整張表、paywall 的「稱呼」
+ * 「付款方式」、「顯示清單」、「億次／萬次」。網站會正常建置、正常上線，
+ * 然後對著英文讀者說中文，而且不會有任何錯誤訊息。
+ *
+ * 不做成四十個 ui.* 欄位：那會讓 schema 長四十行，而且每加一句話就要改 schema。
+ * paywall.js 早就在用 `T(key, fallback)` 查 `paywall.ui`，這裡只是把同一招推廣到
+ * 整個前端，schema 只需要一個 `ui.text` 物件。
+ *
+ * 中文留在呼叫點當預設值：不填也能跑，填了就生效。
+ * tests/i18n.test.js 擋新的寫死字串。
+ */
+export const makeT = (dict) => (key, fallback = "") => {
+  const v = (dict || {})[key];
+  return typeof v === "string" && v ? v : fallback;
+};
