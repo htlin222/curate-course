@@ -85,6 +85,30 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
+  # 這次改動到的引用，在 PR 上就打真實 API 驗掉。
+  #
+  # 全量的 make verify 要 30 分鐘、打幾百個端點，所以它排在每週——但「每週」的
+  # 意思是改壞了最多要等七天才知道。而實測更慘：verify.yml 從加進來到現在一次
+  # 都沒跑過（cron 還沒輪到），於是 conditions 那一層 144 筆沒有識別碼的引用躺著
+  # 沒人管，而 verify_refs.py 一直在報，只是不在任何會執行的路徑上。
+  #
+  # 有檢查不等於檢查在執行路徑上。這一關只驗這個 PR 動到的資料檔——改一章通常是
+  # 幾十筆引用，幾秒鐘；沒動到資料檔就直接跳過。兩者不互相取代。
+  changed-refs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    name: 這次改動的引用
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 要跟 base 比對 diff，淺 clone 拿不到
+
+      - name: 驗證改動到的引用
+        run: |
+          BASE="${{ github.event.pull_request.base.sha || github.event.before }}"
+          [ -z "$BASE" ] && BASE="origin/main"
+          python3 src/build/verify_changed.py "$BASE"
+
   # matrix 保證每一門課自己建得起來，這一關保證「框架沒有偷偷認識某一門課」。
   # 分開一個 job 是因為它跟課程無關：它掃的是 src/，跑一次就夠。
   decoupling:
