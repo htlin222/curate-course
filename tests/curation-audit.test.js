@@ -29,6 +29,68 @@ function loadAuditCore() {
 
 const auditCuration = loadAuditCore();
 
+test("稽核核心的內部變數沒有洩漏到函式外面被使用", () => {
+  // 實測踩到：把這段算術抽成純函式之後，外面一行 log 還在用 okIds.size。
+  // 整章跑完（搜尋、驗證、潤稿、寫檔全部做完）才在最後一行炸掉。
+  //
+  // 這種錯 `new Function(src)` 的語法檢查抓不到——未定義變數是執行期才炸的。
+  // 所以改用結構性的規則：<audit-core> 裡 const/let 宣告的名字，區塊外面不准出現。
+  // 要用就走 auditCuration 回傳的 report / blocking / summary。
+  const src = fs.readFileSync(WORKFLOW, "utf8");
+  const open = src.indexOf("// <audit-core>");
+  const close = src.indexOf("// </audit-core>");
+  const core = src.slice(open, close);
+  const outside = src.slice(0, open) + src.slice(close);
+
+  // 註解與字串字面值裡出現變數名不算「用到」——'drills' 這種寫在 schema 或
+  // 提示文字裡的字會製造一堆假警報。但模板字面值的 ${…} 要留著：實際踩到的
+  // 那個 bug（${okIds.size}）就在裡面。
+  const codeOnly = (s) =>
+    s
+      .replace(/\/\/[^\n]*/g, "")
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/`(?:\\.|[^`\\])*`/g, (lit) =>
+        [...lit.matchAll(/\$\{([\s\S]*?)\}/g)].map((m) => m[1]).join(";"),
+      )
+      .replace(/'(?:\\.|[^'\\])*'/g, "''")
+      .replace(/"(?:\\.|[^"\\])*"/g, '""');
+
+  /** const/let 宣告的名字，含解構（const { report, blocking } = …）。 */
+  const names = (s) => {
+    const out = [...s.matchAll(/\b(?:const|let|var)\s+([A-Za-z_$][\w$]*)/g)].map((m) => m[1]);
+    for (const m of s.matchAll(/\b(?:const|let|var)\s*[{[]([^}\]]*)[}\]]\s*=/g)) {
+      out.push(
+        ...m[1]
+          .split(",")
+          .map((x) => x.split(":").pop().trim())
+          .filter(Boolean),
+      );
+    }
+    return out;
+  };
+
+  const code = codeOnly(outside);
+  const declaredOutside = new Set(names(code));
+
+  const suspects = names(codeOnly(core)).filter(
+    (n) =>
+      n !== "auditCuration" &&
+      n.length >= 4 && // 迴圈變數 r / v / s 各自為政，不是洩漏
+      !declaredOutside.has(n), // 外面自己也宣告過的是同名不同物
+  );
+
+  // 只認「裸識別字」：前面不是 `.`（屬性存取）、後面不是 `:`（物件鍵）。
+  const leaked = suspects.filter((name) =>
+    new RegExp(`(?<![.\\w$])${name}\\b(?!\\s*:)`).test(code),
+  );
+
+  assert.deepEqual(
+    leaked,
+    [],
+    `這些是 <audit-core> 的內部變數，外面不該用：${leaked.join("、")}。改用 report.*`,
+  );
+});
+
 /** 造一筆「單元已策展完成」的資料。預設是全部合格的樣子，測試只覆寫要壞的部分。 */
 function unitRow(id, { drills = 1, lessonId = `${id}-L`, drillIds = null, results = null } = {}) {
   const ids = drillIds || Array.from({ length: drills }, (_, i) => `${id}-d${i}`);
@@ -88,6 +150,45 @@ test("oEmbed 沒過就擋，並記下 HTTP 狀態", () => {
   assert.equal(report.dead.length, 1);
   assert.match(report.dead[0], /u1-d0 · HTTP 401/);
   assert.equal(report.verified, 1); // 只剩主課
+});
+
+test("200 但頻道對不上是「指錯片」，不是「失效」", () => {
+  // 實測踩到：報告印出「dead · HTTP 200」，讀不通，而且會讓人跑去查連結是不是
+  // 掛了——真正的問題是策展資料指到了別支影片。
+  const rows = [unitRow("u1", { drills: 1 })];
+  rows[0].results[1] = {
+    videoId: "u1-d0",
+    httpStatus: 200,
+    ok: false,
+    mismatch: "頻道是 B 頻道，策展寫的是 A 頻道",
+  };
+  const { report, blocking } = run(plan(["u1"]), rows);
+
+  assert.equal(blocking, true, "指錯片一樣要擋");
+  assert.deepEqual(report.dead, [], "200 不該出現在 dead 裡");
+  assert.equal(report.wrongVideo.length, 1);
+  assert.match(report.wrongVideo[0], /B 頻道/);
+});
+
+test("標題不同但 ok=true：只記進 mismatch，不擋", () => {
+  // YouTube 有多語言與 A/B 標題，同一支片不同時間回不同標題。以前 ok 的定義是
+  // 「200 且標題與頻道相符」，而同一份 prompt 又說「標題不符時以 oEmbed 為準」——
+  // 兩句話矛盾，結果一支完全合格的影片擋掉整章寫檔。
+  const rows = [unitRow("u1", { drills: 1 })];
+  rows[0].results[1] = {
+    videoId: "u1-d0",
+    httpStatus: 200,
+    ok: true,
+    oembedTitle: "中文標題",
+    mismatch: "策展記的是英文標題，oEmbed 回中文",
+  };
+  const { report, blocking } = run(plan(["u1"]), rows);
+
+  assert.equal(blocking, false, "標題差異不該擋");
+  assert.deepEqual(report.dead, []);
+  assert.deepEqual(report.wrongVideo, []);
+  assert.equal(report.mismatched.length, 1);
+  assert.equal(report.verified, 2, "標題不同的影片仍然算驗證通過");
 });
 
 /* --- 這三條對應實測撞到的 bug，是防回歸而不是假想 ---------------------- */

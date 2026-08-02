@@ -85,17 +85,59 @@ const GOAL = A.goal || ''
 const LANGS = A.languages || ['繁中', '簡中', '英文']
 const CHANNELS = A.channels || []
 const MIN_VIEWS = A.minViews || 5000
+// 長度區間（秒）。預設對齊 audit.py 的通則門檻；課程有自己的 audit.duration 就傳進來。
+const LESSON_SEC = A.lessonSeconds || [240, 1440]
+const DRILL_SEC = A.drillSeconds || [30, 600]
 
+/* 搜尋的成本結構——量過才知道，不是猜的。
+
+   實測一次策展（4 單元 43 動作）的遙測：四個搜尋 agent 佔全部 cache 的 88%，
+   而 cache 幾乎正比於**回合數**，不是搜尋結果的大小（cache/turn 在 29K–52K
+   之間近乎常數；線性擬合變異係數 0.26，平方 0.82）。短 agent 的 29K/turn
+   就是固定底價：system prompt 與工具定義每一回合都要重讀一次。
+
+   換句話說，貴的不是「搜了 25 次」，是「分成 25 次 Bash 呼叫」。45 回合的
+   agent 光底價就吃掉 1.3M。所以規則改成兩件事：
+
+   1. 批次：一次 Bash 跑完一批查詢，25 個回合變 4–5 個。
+   2. 先濾再進 context：實測同一個查詢 20 行 1972 bytes → 5 行 481 bytes，
+      而真跑時選中的那支還在濾完的結果裡——濾掉的不是答案，是 agent 本來
+      就要花 token 讀完再拒絕的東西。
+
+   濾用 awk 而不是 yt-dlp 的 --match-filter，理由是**稽核軌跡**：總筆數要
+   留在 log 裡。quality.md 記載 yt-dlp 被限流時會 exit 0 + 空輸出，看起來
+   像「這個查詢沒結果」——批次跑會讓它更難發現，所以每個查詢都必須印出
+   「共 N 筆」，讓「20 筆濾成 3 筆」跟「0 筆」長得不一樣。 */
 const RULES = `
 硬性規則（違反就是這一輪失敗，不要自行放寬）：
 - video id 一律取自 yt-dlp 的實際輸出，**絕不可憑記憶拼湊**。捏造一個看起來合理的 id 比留空更糟。
 - 標題、頻道、秒數、觀看數一律照抄工具輸出，不要自己記憶或估算。
-- 搜尋一律用：
-    yt-dlp "ytsearch20:<查詢>" --flat-playlist --no-update \\
-      --print "%(id)s|%(title)s|%(channel)s|%(duration)s|%(view_count)s"
-  （--print 裡的 \\t 不會被解析成 tab，所以用 | 當分隔；標題本身可能含 |，切欄位時從左邊切）
-- 觀看數 < ${MIN_VIEWS} 一律不採用。
+
+- **搜尋一律批次跑，不要一個查詢叫一次 Bash。** 一次送 5–8 個查詢，跑完再看結果：
+
+    P=/tmp/curate-<你的單元 id>        # 每個 agent 各自的前綴，不要用 q.txt 這種通用名
+    mkdir -p \$P
+    i=0
+    for q in "查詢一" "查詢二" "查詢三" "查詢四" "查詢五"; do
+      i=\$((i+1))
+      yt-dlp "ytsearch20:\$q" --flat-playlist --no-update \\
+        --print "%(id)s|%(title)s|%(channel)s|%(duration)s|%(view_count)s" \\
+        > \$P/\$i.txt 2>/dev/null
+      echo "### \$q → 共 \$(wc -l < \$P/\$i.txt) 筆，其中符合門檻："
+      awk -F'|' -v v=${MIN_VIEWS} -v lo=${DRILL_SEC[0]} -v hi=${DRILL_SEC[1]} \\
+        '\$NF+0>=v && \$(NF-1)+0>=lo && \$(NF-1)+0<=hi' \$P/\$i.txt
+    done
+
+  三件事要記住：
+  · **欄位從右邊數**：標題本身可能含 \`|\`，所以 \$NF 才是觀看數、\$(NF-1) 才是秒數，\$5 會錯位。
+  · **「共 N 筆」那一行不能省**：0 筆代表被限流（yt-dlp 這時是 exit 0 + 空輸出，
+    不是影片不存在），跟「有結果但都不合格」是完全不同的兩件事，要分得出來。
+  · 找主課時把 awk 的 lo/hi 換成 ${LESSON_SEC[0]} 與 ${LESSON_SEC[1]}。
+  · 原始的 20 筆留在 \$P/\$i.txt 裡，要回頭看被濾掉什麼隨時 grep 得到。
+
+- 觀看數 < ${MIN_VIEWS} 一律不採用（上面的 awk 已經先濾掉了）。
 - 語言優先序：${LANGS.join(' > ')}。同等品質下前者勝出。
+- searchLog 每個查詢記一行，**帶上「共 N 筆 → 符合 M 筆」**。這是稽核軌跡，不要省。
 - 找不到合格影片就把 url 設為 null，並在 note 寫清楚**查過哪些關鍵字、為什麼都不合格**。
   留空是允許的；留空而沒有 note 不是。
 ${CHANNELS.length ? `- 優先頻道：${CHANNELS.join('、')}` : ''}
@@ -112,14 +154,17 @@ ${CHANNELS.length ? `- 優先頻道：${CHANNELS.join('、')}` : ''}
 
 phase('對帳')
 
-// out 一定長成 <課程目錄>/data/<章>.json，所以設定檔的位置是算得出來的，不必問。
-const COURSE_DIR = OUT.split('/').slice(0, -2).join('/')
-const CONFIG_PATH = `${COURSE_DIR}/course.config.json`
+// out 通常長成 <課程目錄>/data/<章>.json，所以設定檔的位置多半算得出來——
+// 但「多半」不等於「一定」：寫到暫存路徑做驗證時就推不出來，而推錯的下場是
+// 對帳去讀一個不存在的檔案，然後把「檔案不存在」報成「kinds 對不上」。
+// 所以可以用 args.config 明講，推導只是預設值。
+const CONFIG_PATH = A.config || `${OUT.split('/').slice(0, -2).join('/')}/course.config.json`
 
 const CONFIG_SCHEMA = {
   type: 'object',
-  required: ['kinds', 'chapterFound'],
+  required: ['configFound', 'kinds', 'chapterFound'],
   properties: {
+    configFound: { type: 'boolean', description: '這個路徑到底讀不讀得到檔案' },
     kinds: { type: 'array', items: { type: 'string' }, description: 'kinds[].id，照抄順序' },
     problemType: { type: ['string', 'null'], description: 'ui.problemType，沒有就 null' },
     chapterFound: { type: 'boolean', description: 'chapters 裡有沒有這個 code' },
@@ -138,6 +183,9 @@ const cfg = await agent(
   `讀 \`${CONFIG_PATH}\`，把下面這幾個值**照抄**出來。不要推論、不要修正、
 不要因為覺得哪裡怪就改成你認為對的值——你的工作只有抄。
 
+**檔案不存在或讀不到就把 configFound 設成 false，其餘欄位留空**，
+不要去別的地方找一個看起來像課程設定檔的東西來頂替。
+
 - \`kinds\` 陣列裡每個元素的 \`id\`（保持原順序）
 - \`ui.problemType\`
 - \`chapters\` 裡 \`code\` 等於 \`${CHAPTER}\` 的那一項：有沒有找到、\`title\`、\`units\`、\`drills\`
@@ -149,8 +197,13 @@ const cfg = await agent(
 
 // ── 比對留在腳本裡。agent 抄回來的是事實，這裡才是判斷。
 const mismatches = []
-if (!cfg) {
-  mismatches.push(`讀不到 ${CONFIG_PATH}`)
+if (!cfg || !cfg.configFound) {
+  // 這一條要先判、而且要單獨判：檔案不存在的話底下每一項都會「對不上」，
+  // 報出來的會是一串看似 kinds 與章節碼有問題的假線索。
+  mismatches.push(
+    `讀不到 ${CONFIG_PATH}` +
+      (A.config ? '' : `（由 out 推導而來；out 不在課程目錄底下的話，用 args.config 明講設定檔位置）`),
+  )
 } else {
   const declared = cfg.kinds || []
   const unknown = KINDS.filter((k) => !declared.includes(k))
@@ -295,10 +348,18 @@ const VERIFY_SCHEMA = {
         properties: {
           videoId: { type: 'string' },
           httpStatus: { type: 'integer', description: 'oEmbed 的實際 HTTP 狀態碼' },
-          ok: { type: 'boolean', description: '200 且標題與頻道與策展資料相符' },
-          oembedTitle: { type: 'string' },
+          // ok 的定義以前寫「200 且標題與頻道相符」，但同一份 prompt 又說「標題不符
+          // 時以 oEmbed 為準」——兩句話互相矛盾，agent 照字面選了嚴格的那句，
+          // 於是一支 HTTP 200、頻道相符、只是 YouTube 回了另一種語言標題的影片
+          // 擋掉整章寫檔，報告還印出「dead · HTTP 200」這種讀不通的話。
+          // 現在只有一個定義：**能不能嵌入**。標題差異不是失敗。
+          ok: {
+            type: 'boolean',
+            description: 'HTTP 200 且頻道相符。標題不同不算失敗（YouTube 有多語言與 A/B 標題）',
+          },
+          oembedTitle: { type: 'string', description: 'oEmbed 回傳的標題，這才是權威值' },
           oembedChannel: { type: 'string' },
-          mismatch: { type: 'string', description: '不符時說明差在哪' },
+          mismatch: { type: 'string', description: '與策展資料有出入時說明差在哪（ok 仍可為 true）' },
         },
       },
     },
@@ -313,14 +374,16 @@ const curated = await pipeline(
       `為單元「${u.name}」（id: ${u.id}，章節 ${CHAPTER} ${TITLE}）找影片。
 
 要找：
-- 1 支主課（講解型，4:00–24:00）
+- 1 支主課（講解型，${LESSON_SEC[0]}–${LESSON_SEC[1]} 秒）
 - ${u.drillNames?.length || 0} 支動作影片，依序對應：${(u.drillNames || []).join('、')}
 
-每支動作影片長度 0:30–10:00。kind 從 ${KINDS.join(' / ')} 裡選。
+每支動作影片長度 ${DRILL_SEC[0]}–${DRILL_SEC[1]} 秒。kind 從 ${KINDS.join(' / ')} 裡選。
 assessment 要寫成**讀者可以自己做的檢核方法**，不是問題描述——
 「側面錄影看肋廓下緣有沒有掀起來」是可操作的，「核心穩定很重要」不是。
 
-searchLog 每個查詢字串記一行，含回傳筆數。這是後續稽核的軌跡。
+**先把要查的關鍵字一次想齊**，分成 2–3 批送出去（每批 5–8 個查詢，見下面的批次寫法），
+看完一批的結果再決定還缺什麼。不要一個動作查一次、看一次、再查下一個——
+那會讓這個 agent 的成本變成三倍以上，而找到的片不會比較好。
 ${RULES}`,
       { schema: SEARCH_SCHEMA, label: `search:${u.id}`, phase: '搜尋' },
     ),
@@ -330,14 +393,44 @@ ${RULES}`,
     if (!ids.length) return { unitId: u.id, results: [], _search: res }
     return agent(
       `逐一驗證單元 ${u.id}（${u.name}）的 YouTube 影片是否存在且公開。
-**不要相信上游宣稱**，一支一支打：
+**不要相信上游宣稱**，一支一支打。
 
-curl -s -o /dev/null -w "%{http_code}" \\
-  "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D<ID>&format=json"
+**不要用中間檔。** 這些驗證 agent 是並行跑的，寫 \`/tmp/o.json\` 這種通用檔名
+一定會跟別的單元撞在一起——實測就撞過：兩個 agent 同時用 \`o.json\`，各自讀回
+對方剛寫的內容，於是回報了七筆假的「頻道不符」，看起來像策展把 id 抄錯了。
+（macOS 的 \`/tmp\` 就是 \`/private/tmp\`，換前綴不會讓它變成兩個檔案。）
+
+直接把回應接到 stdout，一次跑完一批：
+
+for id in <所有 id>; do
+  printf '=== %s ' "\$id"
+  curl -s -w '\\nHTTP:%{http_code}\\n' \\
+    "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D\$id&format=json" \\
+    | python3 -c "
+import sys, json
+raw = sys.stdin.read()
+body, _, tail = raw.rpartition('HTTP:')
+print(tail.strip(), end=' ')
+try:
+    d = json.loads(body)
+    print(repr(d.get('title')), '|', repr(d.get('author_name')))
+except Exception:
+    print('(no json)')
+"
+done
+
+真的需要落檔就用 \`\$P/oe-\$id.json\`（\`P=/tmp/curate-${u.id}\`，先 mkdir -p），
+**檔名一定要含 id**——固定檔名在迴圈裡連自己都會覆蓋自己。
 
 200 = 存在且公開；401 = 已設為私人或禁止嵌入；404 = 已刪除。
-200 時再取回 JSON，比對 title 與 author_name 是否與策展資料相符
-（YouTube 會做標題 A/B 測試，不符時以 oEmbed 回傳值為準並寫進 mismatch）。
+200 時再取回 JSON，抄下 title 與 author_name。
+
+**ok 只回答一件事：這支影片能不能嵌入。** 判準是 HTTP 200 且**頻道**相符。
+
+- 標題不同**不是失敗**。YouTube 有多語言標題與 A/B 測試，同一支片不同時間會回不同
+  標題。照抄 oEmbed 回的那個到 oembedTitle，把差異寫進 mismatch，ok 仍然是 true——
+  oEmbed 是權威值，策展時記的標題才是過期的那個。
+- 頻道不同才要把 ok 設成 false：那通常代表策展時抄錯了 id，指到了別支影片。
 
 要驗的影片：
 ${JSON.stringify(
@@ -376,13 +469,22 @@ ${JSON.stringify(
 function auditCuration({ chapter, units, rows, wantUnits, wantDrills, minViews }) {
   const okIds = new Set()
   const dead = []
+  const wrongVideo = []
   const mismatched = []
 
   for (const r of rows) {
     for (const v of r.results || []) {
-      if (v.ok) okIds.add(v.videoId)
-      else dead.push(`${r.unitId} · ${v.videoId} · HTTP ${v.httpStatus}`)
-      if (v.ok && v.mismatch) mismatched.push(`${r.unitId} · ${v.videoId} · ${v.mismatch}`)
+      if (v.ok) {
+        okIds.add(v.videoId)
+        if (v.mismatch) mismatched.push(`${r.unitId} · ${v.videoId} · ${v.mismatch}`)
+      } else if (v.httpStatus === 200) {
+        // 200 卻不 ok = 影片活著但不是我們以為的那支（頻道對不上），多半是抄錯 id。
+        // 以前這種也丟進 dead，於是報告印出「dead · HTTP 200」——讀不通，而且會
+        // 讓人跑去查連結是不是掛了，真正的問題卻是策展資料指錯了片。
+        wrongVideo.push(`${r.unitId} · ${v.videoId} · ${v.mismatch || '頻道與策展資料不符'}`)
+      } else {
+        dead.push(`${r.unitId} · ${v.videoId} · HTTP ${v.httpStatus}`)
+      }
     }
   }
 
@@ -443,6 +545,7 @@ function auditCuration({ chapter, units, rows, wantUnits, wantDrills, minViews }
     duplicateUnitIds: dupeIds,
     unitsWithoutName: namelessUnits,
     dead,
+    wrongVideo,
     mismatched,
     duplicatesWithinUnit: withinUnit,
     duplicatesAcrossUnits: dupes.map(([id, us]) => `${id} 出現在 ${[...new Set(us)].join('、')}`),
@@ -458,6 +561,7 @@ function auditCuration({ chapter, units, rows, wantUnits, wantDrills, minViews }
     !report.units.ok ||
     !report.drills.ok ||
     dead.length > 0 ||
+    wrongVideo.length > 0 ||
     blanksNoNote.length > 0 ||
     withinUnit.length > 0 ||
     badIds.length > 0 ||
@@ -467,7 +571,7 @@ function auditCuration({ chapter, units, rows, wantUnits, wantDrills, minViews }
   const summary =
     `稽核：單元 ${report.units.got}/${report.units.want}、` +
     `動作 ${report.drills.got}/${report.drills.want}、` +
-    `驗證通過 ${okIds.size}、失效 ${dead.length}、` +
+    `驗證通過 ${okIds.size}、失效 ${dead.length}、指錯片 ${wrongVideo.length}、` +
     `同單元重複 ${withinUnit.length}、跨單元共用 ${dupes.length}、` +
     `留空 ${blanks.length}（其中 ${blanksNoNote.length} 筆沒寫 note）、` +
     `身分異常 ${badIds.length + dupeIds.length + namelessUnits.length}`
@@ -496,19 +600,37 @@ if (blocking) {
 }
 
 // 只有全部過關才落地。寫檔是 agent 做的（腳本沒有檔案系統存取）。
+//
+// oEmbed 回的標題是權威值，策展時抄下來的是可能已經過期的那個——規則早就這樣寫，
+// 但寫檔一直用策展的值，等於那句話從來沒有生效。這裡真的採用它，而且是在腳本裡
+// 對著 videoId 查表，不是再問一次 agent。
+const oembed = new Map()
+for (const r of rows) {
+  for (const v of r.results || []) {
+    if (v.ok && v.videoId) oembed.set(v.videoId, v)
+  }
+}
+let retitled = 0
+
 const payload = rows.map((r) => {
   const s = r._search || {}
-  const shape = (v, extra = {}) =>
-    v?.videoId
-      ? {
-          ...(v.name ? { name: v.name, en: v.en, kind: v.kind, target: v.target, dose: v.dose } : {}),
-          title: v.title,
-          channel: v.channel,
-          url: `https://www.youtube.com/watch?v=${v.videoId}`,
-          duration: `${Math.floor(v.seconds / 60)}:${String(v.seconds % 60).padStart(2, '0')}`,
-          ...extra,
-        }
-      : { ...(v?.name ? { name: v.name, kind: v.kind } : {}), url: null, note: v?.note }
+  const shape = (v, extra = {}) => {
+    if (!v?.videoId) {
+      return { ...(v?.name ? { name: v.name, kind: v.kind } : {}), url: null, note: v?.note }
+    }
+    const o = oembed.get(v.videoId)
+    const title = o?.oembedTitle || v.title
+    const channel = o?.oembedChannel || v.channel
+    if (o?.oembedTitle && o.oembedTitle !== v.title) retitled++
+    return {
+      ...(v.name ? { name: v.name, en: v.en, kind: v.kind, target: v.target, dose: v.dose } : {}),
+      title,
+      channel,
+      url: `https://www.youtube.com/watch?v=${v.videoId}`,
+      duration: `${Math.floor(v.seconds / 60)}:${String(v.seconds % 60).padStart(2, '0')}`,
+      ...extra,
+    }
+  }
   return {
     id: r.unitId,
     name: units.find((u) => u.id === r.unitId)?.name,
@@ -520,6 +642,8 @@ const payload = rows.map((r) => {
     drills: (s.drills || []).map((d) => shape(d)),
   }
 })
+
+if (retitled) log(`${retitled} 支影片改用 oEmbed 回的標題（策展時抄的那個已經過期或是別的語言版本）`)
 
 /* ── 5. 潤稿：把散文欄位的 AI 痕跡去掉 ───────────────────────────────────
    策展 agent 一次要寫幾十段 assessment 與 why，寫出來的中文會很穩定地帶上
@@ -637,7 +761,7 @@ log(`✓ 已寫入 ${OUT}`)
 // 寫完不等於這一章做完了。實測把產出灌進 make audit 之後才發現，這兩件事
 // 沒人提醒就會忘記——而它們都要到 build／audit 才會變成紅字。
 log(
-  `還沒做完：(1) 這 ${okIds.size} 支影片還不在 video-meta.json 裡，` +
+  `還沒做完：(1) 這 ${report.verified} 支影片還不在 video-meta.json 裡，` +
     '要跑 yt-dlp --batch-file 補中繼資料，否則 audit 的覆蓋率會不足；' +
     '(2) 這份工作流程只寫這一章的資料檔，看不到多語言的 alt-lessons——' +
     '課程若有多語言版本，同一支影片可能已經被別的語言版用掉了。',
