@@ -324,7 +324,15 @@ const namelessUnits = rows
   .filter((r) => !units.find((u) => u.id === r.unitId)?.name)
   .map((r) => r.unitId)
 
-const dupes = [...seen.entries()].filter(([, us]) => us.length > 1)
+// 同單元重複與跨單元共用是兩件事，以前混在一起叫 duplicatesAcrossUnits，而且都不擋。
+// 但 make audit 對這兩者的態度相反：跨單元共用只是「規格允許的少量重疊」，
+// 同一個單元裡放兩次同一支影片是**錯誤**。混著報的結果是這份工作流程會開心寫出
+// 一份 audit 會拒收的檔案——策展跑了十幾分鐘，卻要到 build 才知道白跑。
+const withinUnit = [...seen.entries()]
+  .map(([id, us]) => [id, us.filter((u, i) => us.indexOf(u) !== i)])
+  .filter(([, repeats]) => repeats.length)
+  .map(([id, repeats]) => `${id} 在 ${[...new Set(repeats)].join('、')} 裡出現不只一次`)
+const dupes = [...seen.entries()].filter(([, us]) => new Set(us).size > 1)
 const lowViews = rows.flatMap((r) =>
   [(r._search || {}).lesson, ...((r._search || {}).drills || [])]
     .filter((v) => v?.videoId && typeof v.views === 'number' && v.views < MIN_VIEWS)
@@ -342,7 +350,8 @@ const report = {
   unitsWithoutName: namelessUnits,
   dead,
   mismatched,
-  duplicatesAcrossUnits: dupes.map(([id, us]) => `${id} 出現在 ${us.join('、')}`),
+  duplicatesWithinUnit: withinUnit,
+  duplicatesAcrossUnits: dupes.map(([id, us]) => `${id} 出現在 ${[...new Set(us)].join('、')}`),
   blanks,
   blanksWithoutNote: blanksNoNote,
   belowMinViews: lowViews,
@@ -351,7 +360,8 @@ const report = {
 
 log(
   `稽核：單元 ${report.units.got}/${report.units.want}、動作 ${report.drills.got}/${report.drills.want}、` +
-    `驗證通過 ${okIds.size}、失效 ${dead.length}、跨單元重複 ${dupes.length}、` +
+    `驗證通過 ${okIds.size}、失效 ${dead.length}、` +
+    `同單元重複 ${withinUnit.length}、跨單元共用 ${dupes.length}、` +
     `留空 ${blanks.length}（其中 ${blanksNoNote.length} 筆沒寫 note）、` +
     `身分異常 ${badIds.length + dupeIds.length + namelessUnits.length}`,
 )
@@ -361,6 +371,7 @@ const blocking =
   !report.drills.ok ||
   dead.length > 0 ||
   blanksNoNote.length > 0 ||
+  withinUnit.length > 0 ||
   badIds.length > 0 ||
   dupeIds.length > 0 ||
   namelessUnits.length > 0
@@ -508,4 +519,13 @@ ${JSON.stringify(payload, null, 1)}`,
 )
 
 log(`✓ 已寫入 ${OUT}`)
+
+// 寫完不等於這一章做完了。實測把產出灌進 make audit 之後才發現，這兩件事
+// 沒人提醒就會忘記——而它們都要到 build／audit 才會變成紅字。
+log(
+  `還沒做完：(1) 這 ${okIds.size} 支影片還不在 video-meta.json 裡，` +
+    '要跑 yt-dlp --batch-file 補中繼資料，否則 audit 的覆蓋率會不足；' +
+    '(2) 這份工作流程只寫這一章的資料檔，看不到多語言的 alt-lessons——' +
+    '課程若有多語言版本，同一支影片可能已經被別的語言版用掉了。',
+)
 return { written: true, out: OUT, report }
