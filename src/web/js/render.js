@@ -1,7 +1,7 @@
 // render.js — 把 course.json 的資料轉成 DOM 字串
 import { icon } from "./icons.js";
 import { normalize as normalizePaywall, formatAmount } from "./paywall-core.js";
-import { esc, plain, rich, richTokens } from "./copy.js";
+import { esc, makeT, plain, rich, richTokens } from "./copy.js";
 
 // 逸出規則搬到 copy.js（跟建置期的 seo.py 是同一份契約），這裡轉出去讓既有的
 // import { esc } from "./render.js" 繼續有效。
@@ -16,11 +16,18 @@ export { esc };
 export const KIND = {};
 export const GRADE = {};
 export const UI = {};
+/** 介面字串查表。ui.text 沒填就用呼叫點寫的中文預設值——見 copy.js 的 makeT。
+    這是換**語言**（不只換主題）唯一要動的地方。 */
+export const T = {};
 let CFG = {};
+
+/** t("listShow", "顯示清單")：ui.text 有就用，沒有就用呼叫點的中文預設值。 */
+export const t = makeT(T);
 
 export function setConfig(cfg) {
   CFG = cfg || {};
-  for (const o of [KIND, GRADE, UI]) for (const k of Object.keys(o)) delete o[k];
+  for (const o of [KIND, GRADE, UI, T]) for (const k of Object.keys(o)) delete o[k];
+  Object.assign(T, (cfg || {}).ui?.text || {});
 
   for (const k of CFG.kinds || []) KIND[k.id] = { label: k.label, tone: k.tone || "accent" };
   for (const g of CFG.grades || []) GRADE[g.id] = { label: g.label, tone: g.tone || "accent" };
@@ -56,9 +63,9 @@ const gradeOf = (id) => GRADE[id] || Object.values(GRADE)[0] || { label: id, ton
 /** 觀看數縮寫：1038712 -> 104 萬 */
 function views(n) {
   if (!n) return "";
-  if (n >= 1e8) return `${(n / 1e8).toFixed(1)} 億次`;
-  if (n >= 1e4) return `${Math.round(n / 1e4)} 萬次`;
-  return `${n.toLocaleString("en-US")} 次`;
+  if (n >= 1e8) return `${(n / 1e8).toFixed(1)} ${t("views100M", "億次")}`;
+  if (n >= 1e4) return `${Math.round(n / 1e4)} ${t("views10K", "萬次")}`;
+  return `${n.toLocaleString("en-US")} ${t("viewsUnit", "次")}`;
 }
 
 /** 播放鈕：主課與跟練共用同一個元件，只差尺寸 */
@@ -98,7 +105,7 @@ function videoCard(v) {
 
 /** 語言標籤是設定檔的文案；沒對應到就退回資料裡的語言碼 */
 const langLabel = (l) =>
-  (CFG.languages || {})[l] ? rich(CFG.languages[l]) : esc(l || "其他");
+  (CFG.languages || {})[l] ? rich(CFG.languages[l]) : esc(l || t("langOther", "其他"));
 
 /** 主課可能有多個語言版本，用小分頁切換 */
 function lessonBox(u) {
@@ -284,7 +291,7 @@ function drillEvidence(u) {
       <button class="Evidence__header" type="button" data-toggle="drillev">
         ${icon("microscope", 14)}
         <span>${rich(UI.drillEvidenceLabel || "")}</span>
-        <span class="Counter">${cats.length} 類 · ${totalCites} 篇</span>
+        <span class="Counter">${cats.length} ${t("catUnit", "類")} · ${totalCites} ${t("citeUnit", "篇")}</span>
         <span class="Evidence__spacer"></span>
         <span class="Label Label--neutral">PubMed</span>
         <span class="Evidence__chevron">${icon("chevron-right", 14)}</span>
@@ -372,7 +379,7 @@ export function renderUnit(u, done, locked = false) {
              data-facets="${esc(allFacets.join("|"))}">
       <button class="Unit__header" type="button" data-toggle="unit">
         <span class="Unit__check" data-action="toggle-done" role="checkbox"
-              aria-checked="${done}" tabindex="0" title="標記為完成">${icon("check", 12)}</span>
+              aria-checked="${done}" tabindex="0" title="${plain(t("markDone", "標記為完成"))}">${icon("check", 12)}</span>
         <span class="Unit__main">
           <span class="Unit__title">${esc(u.name)} ${badges}</span>
           ${u.summary ? `<span class="Unit__summary">${esc(u.summary)}</span>` : ""}
@@ -407,7 +414,7 @@ export function renderStance(stance) {
     const g = gradeOf(s.evidence_grade);
     const findings = (s.key_findings || []).length
       ? `<details>
-           <summary>看完整實證（${s.key_findings.length} 項發現）</summary>
+           <summary>${t("stanceFindings", "看完整實證")}（${s.key_findings.length}）</summary>
            <ul class="StanceCard__findings">
              ${s.key_findings.map((f) => `<li>${esc(f)}</li>`).join("")}
            </ul>
@@ -477,7 +484,7 @@ function gateCard(drillTotal, unitTotal) {
       <span class="PaywallGate__main">
         <p class="PaywallGate__title">${rich(pwT("gateTitle", "這一章需要完整課程"))}</p>
         <p class="PaywallGate__note">
-          ${unitTotal} 個單元${drillTotal ? ` · ${drillTotal} 支跟練影片` : ""}
+          ${unitTotal} ${rich(UI.unitNoun || "個單元")}${drillTotal ? ` · ${drillTotal} ${rich(UI.drillNoun || "支跟練影片")}` : ""}
           ${rich(pwT("gateCardNote", ""))}
         </p>
       </span>
@@ -508,7 +515,7 @@ export function renderChapter(ch, doneSet) {
           </span>
           <span class="Chapter__meta">
             ${ch.units.length} ${rich(UI.unitNoun || "個單元")}${drillTotal ? ` · ${drillTotal} ${rich(UI.drillNoun || "支跟練影片")}` : ""}
-            ${doneCount ? ` · 已完成 ${doneCount}` : ""}
+            ${doneCount ? ` · ${t("doneCount", "已完成")} ${doneCount}` : ""}
           </span>
         </span>
         ${

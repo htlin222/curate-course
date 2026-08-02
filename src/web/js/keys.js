@@ -1,5 +1,6 @@
 // keys.js — 站內鍵盤快捷鍵。iframe 跨域，所以透過 YouTube IFrame API 的 postMessage 控制。
 import { icon } from "./icons.js";
+import { t } from "./render.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 
@@ -74,10 +75,19 @@ function toast(text) {
 
 /* --- 快捷鍵說明 ---------------------------------------------------------- */
 
-const SHEET = [
-  ["播放", [["Space / K", "播放或暫停"], ["J", "倒退 10 秒"], ["L", "快轉 10 秒"], ["← / →", "±5 秒"], ["0–9", "跳到影片 0%–90%"]]],
-  ["聲音與畫面", [["M", "靜音切換"], ["↑ / ↓", "音量 ±10"], ["F", "全螢幕"], ["Shift + . / ,", "加速／減速"]]],
-  ["課程導覽", [["Shift + N", "下一部影片"], ["Shift + P", "上一部影片"], ["/", "搜尋"], ["?", "顯示這張表"]]],
+// 整張表都走 t()：每一格都是使用者看得到的字，換語言的課要能換掉。
+// 寫成函式而不是常數，因為 t() 要等 setConfig() 跑完才有值。
+const sheet = () => [
+  [t("keyGroupPlay", "播放"), [
+    ["Space / K", t("keyPlayPause", "播放或暫停")], ["J", t("keyBack10", "倒退 10 秒")],
+    ["L", t("keyFwd10", "快轉 10 秒")], ["← / →", t("keySeek5", "±5 秒")],
+    ["0–9", t("keyJump", "跳到影片 0%–90%")]]],
+  [t("keyGroupAV", "聲音與畫面"), [
+    ["M", t("keyMuteToggle", "靜音切換")], ["↑ / ↓", t("keyVolume", "音量 ±10")],
+    ["F", t("keyFullscreen", "全螢幕")], ["Shift + . / ,", t("keySpeed", "加速／減速")]]],
+  [t("keyGroupNav", "課程導覽"), [
+    ["Shift + N", t("keyNext", "下一部影片")], ["Shift + P", t("keyPrev", "上一部影片")],
+    ["/", t("keySearch", "搜尋")], ["?", t("keySheet", "顯示這張表")]]],
 ];
 
 function toggleSheet(force) {
@@ -87,13 +97,13 @@ function toggleSheet(force) {
     el.id = "keySheet";
     el.className = "KeySheet";
     el.innerHTML = `
-      <div class="KeySheet__box" role="dialog" aria-label="鍵盤快捷鍵">
+      <div class="KeySheet__box" role="dialog" aria-label="${t("keySheetTitle", "鍵盤快捷鍵")}">
         <div class="KeySheet__head">
-          ${icon("info", 16)}<strong>鍵盤快捷鍵</strong>
+          ${icon("info", 16)}<strong>${t("keySheetTitle", "鍵盤快捷鍵")}</strong>
           <button class="btn btn-invisible btn-icon" data-close type="button">${icon("x", 16)}</button>
         </div>
         <div class="KeySheet__cols">
-          ${SHEET.map(
+          ${sheet().map(
             ([group, rows]) => `
             <div>
               <div class="KeySheet__group">${group}</div>
@@ -101,7 +111,7 @@ function toggleSheet(force) {
             </div>`,
           ).join("")}
         </div>
-        <p class="KeySheet__foot">播放控制透過 YouTube 播放器 API 送出；點進影片後也可直接用 YouTube 原生快捷鍵。</p>
+        <p class="KeySheet__foot">${t("keySheetFoot", "播放控制透過 YouTube 播放器 API 送出；點進影片後也可直接用 YouTube 原生快捷鍵。")}</p>
       </div>`;
     el.addEventListener("click", (e) => {
       if (e.target === el || e.target.closest("[data-close]")) el.classList.remove("is-on");
@@ -134,21 +144,21 @@ export function bindKeys({ next, prev, isPlayerTab }) {
       e.preventDefault();
       send(st.playing ? "pauseVideo" : "playVideo");
       st.playing = !st.playing;
-    } else if (k === "j" || k === "J") { e.preventDefault(); seek(-10); toast("−10 秒"); }
-    else if (k === "l" || k === "L") { e.preventDefault(); seek(10); toast("+10 秒"); }
-    else if (k === "ArrowLeft") { e.preventDefault(); seek(-5); toast("−5 秒"); }
-    else if (k === "ArrowRight") { e.preventDefault(); seek(5); toast("+5 秒"); }
+    } else if (k === "j" || k === "J") { e.preventDefault(); seek(-10); toast(t("toastBack10", "−10 秒")); }
+    else if (k === "l" || k === "L") { e.preventDefault(); seek(10); toast(t("toastFwd10", "+10 秒")); }
+    else if (k === "ArrowLeft") { e.preventDefault(); seek(-5); toast(t("toastBack5", "−5 秒")); }
+    else if (k === "ArrowRight") { e.preventDefault(); seek(5); toast(t("toastFwd5", "+5 秒")); }
     else if (k === "m" || k === "M") {
       e.preventDefault();
       send(st.muted ? "unMute" : "mute");
       st.muted = !st.muted;
-      toast(st.muted ? "靜音" : "取消靜音");
+      toast(st.muted ? t("toastMuted", "靜音") : t("toastUnmuted", "取消靜音"));
     } else if (k === "ArrowUp" || k === "ArrowDown") {
       e.preventDefault();
       const v = Math.max(0, Math.min(100, st.volume + (k === "ArrowUp" ? 10 : -10)));
       st.volume = v;
       send("setVolume", [v]);
-      toast(`音量 ${v}`);
+      toast(`${t("toastVolume", "音量")} ${v}`);
     } else if (k === "f" || k === "F") {
       e.preventDefault();
       const box = $(".Player__frame");
