@@ -1,1020 +1,1020 @@
 {
-  "categories": [
+ "categories": [
+  {
+   "id": "scap-retract",
+   "name": "中下斜方肌與菱形肌訓練",
+   "evidence_grade": "moderate",
+   "summary": "以肩胛為核心的訓練，對肩夾擠／旋轉肌相關疼痛與慢性頸痛能帶來小到中等的疼痛改善（統合分析約 VAS 降 0.8 公分），但幾乎所有統合分析都把證據確定性評為「低到極低」。三個必須講清楚的限制：一、肩胛專項訓練並未優於一般肩部運動，直接比較的 RCT 顯示兩者在疼痛、失能、恐懼迴避上結果相同；二、頸痛族群的統合分析顯示它改善疼痛、但沒有改善頸部失能指數，也沒有改變壓痛閾值；三、患者感受到的改善與肩胛動作學、肌電活動的變化並不對應。練了會比較不痛，但不是因為你「把肩胛擺正了」。",
+   "citations": [
     {
-      "id": "scap-retract",
-      "name": "中下斜方肌與菱形肌訓練",
-      "evidence_grade": "moderate",
-      "summary": "以肩胛為核心的訓練，對肩夾擠／旋轉肌相關疼痛與慢性頸痛能帶來小到中等的疼痛改善（統合分析約 VAS 降 0.8 公分），但幾乎所有統合分析都把證據確定性評為「低到極低」。三個必須講清楚的限制：一、肩胛專項訓練並未優於一般肩部運動，直接比較的 RCT 顯示兩者在疼痛、失能、恐懼迴避上結果相同；二、頸痛族群的統合分析顯示它改善疼痛、但沒有改善頸部失能指數，也沒有改變壓痛閾值；三、患者感受到的改善與肩胛動作學、肌電活動的變化並不對應。練了會比較不痛，但不是因為你「把肩胛擺正了」。",
-      "citations": [
-        {
-          "pmid": "39983700",
-          "title": "Scapular stabilization exercise on pain and functional recovery in people with shoulder impingement syndrome: a systematic review and meta-analysis.",
-          "journal": "Phys Sportsmed",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "14 篇研究：在一般運動之外加入肩胛穩定訓練，疼痛多降 0.8 公分、外展多 2.74 度，但證據確定性被評為低到極低，且有無回饋沒有差別。"
-        },
-        {
-          "pmid": "38497039",
-          "title": "Effect of scapular stabilization exercises on subacromial pain (impingement) syndrome: a systematic review and meta-analysis of randomized controlled trials.",
-          "journal": "Front Neurol",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "針對肩峰下疼痛的 RCT 統合分析：肩胛穩定運動可減痛改善功能，與一般運動相比的額外增益仍不明確。"
-        },
-        {
-          "pmid": "38561733",
-          "title": "Effects of scapular treatment on chronic neck pain: a systematic review and meta-analysis of randomized controlled trials.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "關鍵細節：慢性頸痛加入肩胛治療能改善疼痛強度（女性更明顯），但對頸部失能指數與壓痛閾值皆無效果。"
-        },
-        {
-          "pmid": "36000960",
-          "title": "Scapular movement training is not superior to standardized exercises in the treatment of individuals with chronic shoulder pain and scapular dyskinesis: randomized controlled trial.",
-          "journal": "Disabil Rehabil",
-          "year": 2023,
-          "design": "RCT",
-          "takeaway": "關鍵反例：肩胛動作訓練並未優於標準化運動；作者直言患者自述結果的改善不太可能來自肩胛動作學或肌電的改變。"
-        },
-        {
-          "pmid": "40615303",
-          "title": "Effectiveness of the therapeutic rehabilitation methods applied to scapula on rotator cuff pathologies: A systematic review of randomized controlled trials.",
-          "journal": "J Hand Ther",
-          "year": 2026,
-          "design": "systematic review",
-          "takeaway": "旋轉肌病變的 RCT 系統回顧：肩胛介入普遍有效，但各研究運動處方差異極大，無法指出最佳劑量。"
-        },
-        {
-          "pmid": "42135016",
-          "title": "Comparative effectiveness of physical therapy interventions in adults with rotator cuff tendinopathy: a systematic review and network meta-analysis.",
-          "journal": "Br J Sports Med",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "BJSM 網絡統合分析：旋轉肌肌腱病變的各種物理治療彼此差異小，沒有哪一種明顯勝出。"
-        },
-        {
-          "pmid": "39593708",
-          "title": "The effect of exercise on postural alignment: A systematic review.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2024,
-          "design": "systematic review",
-          "takeaway": "支持面的證據：22 篇研究顯示「強化弱側＋伸展緊側」對姿勢異常有效，但作者強調強度、量與是否針對特定肌群才是關鍵。"
-        },
-        {
-          "pmid": "38219373",
-          "title": "The influence of exercise on pain, disability and quality of life in office workers with chronic neck pain: A systematic review and meta-analysis.",
-          "journal": "Appl Ergon",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "辦公室工作者慢性頸痛：運動介入可降低疼痛與失能，效果為小至中等且需持續執行。"
-        }
-      ]
+     "pmid": "39983700",
+     "title": "Scapular stabilization exercise on pain and functional recovery in people with shoulder impingement syndrome: a systematic review and meta-analysis",
+     "journal": "Phys Sportsmed",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "14 篇研究：在一般運動之外加入肩胛穩定訓練，疼痛多降 0.8 公分、外展多 2.74 度，但證據確定性被評為低到極低，且有無回饋沒有差別。"
     },
     {
-      "id": "serratus",
-      "name": "前鋸肌訓練",
-      "evidence_grade": "limited",
-      "summary": "前鋸肌訓練的證據強在「肌電圖層級」、弱在「臨床結果層級」。大量 EMG 研究可以告訴你哪些動作（push-up plus、牆滑、前推類）誘發前鋸肌較佳，這對動作選擇有用。但幾乎沒有把「單獨強化前鋸肌」連到臨床疼痛與功能改善的高品質 RCT；加上 EMG 生物回饋的統合分析顯示，額外加回饋只在下斜方肌活化上有顯著差異，肩胛動作學改變（上旋僅 1.13 度、p=0.07）並無定論。更根本的問題是：連「怎麼可靠地測出前鋸肌無力」都還在被重新設計。拿它當動作選擇依據合理，但不要宣稱「前鋸肌無力是肩痛原因」。",
-      "citations": [
-        {
-          "pmid": "38116582",
-          "title": "Electromyography of scapular stabilizers in people without scapular dyskinesis during push-ups: a systematic review and meta-analysis.",
-          "journal": "Front Physiol",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "伏地挺身類動作的 EMG 統合分析：量化各變化式對前鋸肌與斜方肌的活化差異，是動作選擇的實證依據。"
-        },
-        {
-          "pmid": "38840951",
-          "title": "Electromyography of shoulder muscles in individuals without scapular dyskinesis during closed kinetic chain exercises on stable and unstable surfaces: a systematic review and meta-analysis.",
-          "journal": "Front Sports Act Living",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "28 篇 EMG 研究：不穩定表面的影響取決於動作類型（降低前三角肌、提高胸大肌與三頭肌），並非一律讓肩胛肌活化更高。"
-        },
-        {
-          "pmid": "41680116",
-          "title": "Effectiveness of electromyography biofeedback training on scapular kinematics and muscle activation in patients with scapular dyskinesis: a systematic review and meta-analysis.",
-          "journal": "Clin Shoulder Elb",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "誠實的限制：加入 EMG 生物回饋僅在下斜方肌活化上有顯著差異（MD 7.22%），肩胛上旋僅差 1.13 度（p=0.07），肩胛動力學改變無定論。"
-        },
-        {
-          "pmid": "42157602",
-          "title": "The Effect of Scapular-Focused Exercise With or Without Electromyography Biofeedback in High-School Baseball Pitchers With Shoulder Impingement Syndrome: A Randomized Controlled Trial.",
-          "journal": "Sports Health",
-          "year": 2026,
-          "design": "RCT",
-          "takeaway": "高中投手 RCT：加 EMG 回饋只讓中斜方肌活化多進步，肌力、功能與疼痛兩組相同——治療師口語與觸覺回饋一樣有效。"
-        },
-        {
-          "pmid": "37648216",
-          "title": "Scapula-Focused Exercises With or Without Biofeedback and Corticospinal Excitability in Recreational Overhead Athletes With Shoulder Impingement.",
-          "journal": "J Athl Train",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "過頭運動員 RCT：肩胛專項運動可改變皮質脊髓興奮性，說明有神經適應，但未證實臨床優勢。"
-        },
-        {
-          "pmid": "40840277",
-          "title": "Modification of the serratus anterior strength test to reduce confounding muscle activation: An EMG-based validation study.",
-          "journal": "Phys Ther Sport",
-          "year": 2025,
-          "design": "cohort",
-          "takeaway": "方法學警訊：傳統前鋸肌肌力測試會被上下斜方肌混淆，需改成仰臥＋肩外轉的改良版才可靠（ICC 0.97）。"
-        },
-        {
-          "pmid": "38876672",
-          "title": "Analysis of the three-dimensional scapular kinematics and associated scapular muscle activity during scapular muscle exercises.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2024,
-          "design": "cohort",
-          "takeaway": "同步分析肩胛三維動力學與肌電：常見肩胛運動誘發的肌肉活化與實際肩胛動作方向並非一一對應。"
-        }
-      ]
+     "pmid": "38497039",
+     "title": "Effect of scapular stabilization exercises on subacromial pain (impingement) syndrome: a systematic review and meta-analysis of randomized controlled trials",
+     "journal": "Front Neurol",
+     "year": 2024,
+     "design": "systematic review",
+     "takeaway": "針對肩峰下疼痛的 RCT 統合分析：肩胛穩定運動可減痛改善功能，與一般運動相比的額外增益仍不明確。"
     },
     {
-      "id": "trigger-point",
-      "name": "激痛點按壓放鬆",
-      "evidence_grade": "contested",
-      "summary": "這是本清單中最該被誠實揭露的一項。目前品質最好的統合分析（17 篇 RCT）發現：缺血性壓迫確實提高壓痛閾值（SMD 0.67），但對患者自己回報的疼痛（VAS/NRS）沒有顯著效果（SMD −0.22，p=0.16）——也就是「按下去比較不痛」不等於「平常比較不痛」。多篇 RCT 進一步顯示，處理上斜方肌激痛點對肩痛者沒有帶來組間差異、缺血性壓迫加在關節鬆動之上也沒有額外效益，而且安慰劑壓迫組同樣改善。網絡統合分析則顯示各種徒手手法彼此難分高下。合理定位：一個舒適、低風險、可能有安慰劑成分的短期工具，不是矯正手段。",
-      "citations": [
-        {
-          "pmid": "36050701",
-          "title": "Effect of ischemic compression on myofascial pain syndrome: a systematic review and meta-analysis.",
-          "journal": "Chiropr Man Therap",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "最關鍵的一篇：缺血性壓迫提高壓痛閾值（SMD 0.67），但對自述疼痛無顯著效果（SMD −0.22, p=0.16）——只提升了對壓力的耐受度。"
-        },
-        {
-          "pmid": "40325744",
-          "title": "Treatment of upper trapezius myofascial trigger points does not influence pain in individuals with shoulder pain: A randomized trial.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "三組（鬆動、鬆動＋壓迫、鬆動＋安慰劑壓迫）疼痛都下降且組間無差異——包含安慰劑組，改善未必來自壓迫本身。"
-        },
-        {
-          "pmid": "37949581",
-          "title": "Ischemic compression associated with joint mobilization does not promote additional clinical effects in individuals with rotator cuff related shoulder pain: A randomized clinical trial.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2023,
-          "design": "RCT",
-          "takeaway": "旋轉肌相關肩痛患者，缺血性壓迫加在關節鬆動之上未帶來任何額外臨床效益。"
-        },
-        {
-          "pmid": "36872769",
-          "title": "Effectiveness of ischemic compression on myofascial trigger points in relieving neck pain: A systematic review and meta-analysis.",
-          "journal": "J Back Musculoskelet Rehabil",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "針對頸痛的統合分析：缺血性壓迫有短期減痛效果，但長期追蹤資料幾乎不存在。"
-        },
-        {
-          "pmid": "36350630",
-          "title": "Comparative Effectiveness of Manual Therapy Interventions on Pain and Pressure Pain Threshold in Patients With Myofascial Trigger Points: A Network Meta-analysis.",
-          "journal": "Clin J Pain",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "網絡統合分析比較各種徒手治療對激痛點的疼痛與壓痛閾值：彼此差異小，沒有任何一種手法明顯勝出。"
-        },
-        {
-          "pmid": "32747150",
-          "title": "The Effectiveness of Ischemic Compression Technique on Pain and Function in Individuals With Shoulder Pain: A Systematic Review.",
-          "journal": "J Manipulative Physiol Ther",
-          "year": 2020,
-          "design": "systematic review",
-          "takeaway": "肩痛族群的系統回顧：缺血性壓迫對疼痛與功能有正向趨勢，但研究數量少、異質性高。"
-        },
-        {
-          "pmid": "39189423",
-          "title": "Effectiveness of trigger point manual therapy for rotator cuff related shoulder pain: a systematic review and meta-analysis.",
-          "journal": "Disabil Rehabil",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "旋轉肌相關肩痛的激痛點徒手治療統合分析：短期有效，但證據確定性被評為低。"
-        },
-        {
-          "pmid": "38402150",
-          "title": "Effects of foam roller on pain intensity in individuals with chronic and acute musculoskeletal pain: a systematic review of randomized trials.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2024,
-          "design": "systematic review",
-          "takeaway": "滾筒對急慢性肌骨疼痛的隨機試驗回顧：可降低疼痛強度，但效果集中在介入後短時間內。"
-        }
-      ]
+     "pmid": "38561733",
+     "title": "Effects of scapular treatment on chronic neck pain: a systematic review and meta-analysis of randomized controlled trials",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "關鍵細節：慢性頸痛加入肩胛治療能改善疼痛強度（女性更明顯），但對頸部失能指數與壓痛閾值皆無效果。"
     },
     {
-      "id": "pec-stretch",
-      "name": "胸肌門框伸展",
-      "evidence_grade": "limited",
-      "summary": "這一項的證據方向很明確，而且對「矯正圓肩」的說法不利。一篇 23 篇研究、969 人的統合分析直接測試「伸展緊繃側＋強化無力側」這個經典公式，結果是：伸展對脊椎與肩帶姿勢完全沒有影響（急性 d=0.01、長期 d=−0.19），有效的是「強化」（d=−0.83），作者的結論是中等確定性證據不支持用伸展治療所謂肌肉失衡。臨床試驗也呼應：在肩峰下疼痛的運動計畫上再加胸小肌伸展，功能與疼痛都沒有額外好處（DASH 反而是對照組較好）。伸展能立即降低胸小肌硬度、增加活動度，這是真的；把它當成矯正體態的手段則沒有支持。",
-      "citations": [
-        {
-          "pmid": "38834878",
-          "title": "Effects of Stretching or Strengthening Exercise on Spinal and Lumbopelvic Posture: A Systematic Review with Meta-Analysis.",
-          "journal": "Sports Med Open",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "最重要的一篇：伸展對脊椎與腰骨盆姿勢毫無效果（急性 d=0.01、長期 d=−0.19），強化才有效（d=−0.83）；作者明言不支持用伸展治療肌肉失衡。"
-        },
-        {
-          "pmid": "31472414",
-          "title": "Does pectoralis minor stretching provide additional benefit over an exercise program in participants with subacromial pain syndrome? A randomized controlled trial.",
-          "journal": "Musculoskelet Sci Pract",
-          "year": 2019,
-          "design": "RCT",
-          "takeaway": "關鍵反例：肩峰下疼痛的 12 週運動計畫再加胸小肌伸展沒有額外好處，DASH 功能分數反而是對照組較佳。"
-        },
-        {
-          "pmid": "33707982",
-          "title": "Acute and Prolonged Effects of Stretching on Shear Modulus of the Pectoralis Minor Muscle.",
-          "journal": "J Sports Sci Med",
-          "year": 2021,
-          "design": "RCT",
-          "takeaway": "超音波證實伸展確實立即降低胸小肌剪切模數（變柔軟），提供「有效但短暫」的客觀機轉證據。"
-        },
-        {
-          "pmid": "33218535",
-          "title": "Evaluation of scapular mobilization and comparison to pectoralis minor stretching in individuals with rounded shoulder posture: A randomized controlled trial.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2020,
-          "design": "RCT",
-          "takeaway": "圓肩族群比較肩胛鬆動與胸小肌伸展：兩者都有改善，但彼此無顯著差異。"
-        },
-        {
-          "pmid": "30860417",
-          "title": "Acute Effects of Pectoralis Minor Self-Mobilization on Shoulder Motion and Posture: A Blinded and Randomized Placebo-Controlled Study in Asymptomatic Individuals.",
-          "journal": "J Sport Rehabil",
-          "year": 2020,
-          "design": "RCT",
-          "takeaway": "安慰劑對照顯示胸小肌自我鬆動對無症狀者的肩關節活動與姿勢只有小幅立即效果。"
-        },
-        {
-          "pmid": "38302926",
-          "title": "The effect of various therapeutic exercises on forward head posture, rounded shoulder, and hyperkyphosis among people with upper crossed syndrome: a systematic review and meta-analysis.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "支持面：22 篇研究顯示治療性運動（含伸展與肌力）能改善上交叉症候群的前頭、圓肩與胸椎後凸角度。"
-        },
-        {
-          "pmid": "37301370",
-          "title": "Chronic effects of stretching on range of motion with consideration of potential moderating variables: A systematic review with meta-analysis.",
-          "journal": "J Sport Health Sci",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "長期伸展確實能持續增加關節活動度，但這是柔軟度的效果，不能外推成姿勢矯正的效果。"
-        }
-      ]
+     "pmid": "36000960",
+     "title": "Scapular movement training is not superior to standardized exercises in the treatment of individuals with chronic shoulder pain and scapular dyskinesis: randomized controlled trial",
+     "journal": "Disabil Rehabil",
+     "year": 2023,
+     "design": "RCT",
+     "takeaway": "關鍵反例：肩胛動作訓練並未優於標準化運動；作者直言患者自述結果的改善不太可能來自肩胛動作學或肌電的改變。"
     },
     {
-      "id": "chin-tuck",
-      "name": "頸深屈肌訓練（chin tuck）",
-      "evidence_grade": "moderate",
-      "summary": "頸深屈肌／頸部專項運動對慢性非特異性頸痛有中等品質證據，統合分析顯示阻力、動作控制與身心類運動都有效，並已能給出劑量區間。姿勢方面也確實有效：治療性運動能明顯改變顱椎角。但要講清楚兩件事——第一，統合分析作者自己指出「前頭姿勢與肌骨疼痛之間的關係，以及兩者在運動後同時改善的意義，仍待確立」，也就是姿勢變好與疼痛變好可能只是同時發生；第二，一篇 RCT 顯示徒手治療原本優於運動，只有當運動依從性拉到 95% 以上時兩者才打平——做不做得到比選哪個動作更關鍵。",
-      "citations": [
-        {
-          "pmid": "37339388",
-          "title": "Resistance, Motor Control, and Mindfulness-Based Exercises Are Effective for Treating Chronic Nonspecific Neck Pain: A Systematic Review With Meta-Analysis and Dose-Response Meta-Regression.",
-          "journal": "J Orthop Sports Phys Ther",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "JOSPT 劑量反應統合分析：阻力、動作控制與身心類運動皆對慢性頸痛有效，並給出可操作的劑量區間。"
-        },
-        {
-          "pmid": "34935963",
-          "title": "Effectiveness of Specific Neck Exercise for Nonspecific Neck Pain; Usefulness of Strategies for Patient Selection and Tailored Exercise-A Systematic Review With Meta-Analysis.",
-          "journal": "Phys Ther",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "頸部專項運動的統合分析：整體有效，但現有證據無法支持依「患者分型」挑選特定運動。"
-        },
-        {
-          "pmid": "37828488",
-          "title": "Summarizing the effects of different exercise types in chronic neck pain - a systematic review and meta-analysis of systematic reviews.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "系統回顧的回顧：多種運動型態對慢性頸痛效果相近，沒有哪一類明顯優於其他。"
-        },
-        {
-          "pmid": "40273517",
-          "title": "Manual therapy and neck-specific exercise are equally effective for treating non-specific neck pain but only when exercise adherence is maximised: A randomised controlled trial.",
-          "journal": "Musculoskelet Sci Pract",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "重要洞見：四週徒手治療原本優於頸部專項運動，只有在運動依從性 ≥95% 的患者身上兩者才效果相當。"
-        },
-        {
-          "pmid": "38570915",
-          "title": "McKenzie neck exercise versus cranio-cervical flexion exercise on strength and endurance of deep neck flexor muscles, pain, disability, and craniovertebral angle in individuals with chronic neck pain: a randomized clinical trial.",
-          "journal": "J Man Manip Ther",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "McKenzie 與顱頸屈曲運動直接對照：兩者在頸深屈肌肌力、耐力、疼痛與顱椎角上結果相近。"
-        },
-        {
-          "pmid": "39700104",
-          "title": "The effects of exercise on neuromuscular function in people with chronic neck pain: A systematic review and meta-analysis.",
-          "journal": "PLoS One",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "運動確實改善慢性頸痛者的神經肌肉功能（肌力、耐力、活化模式），提供機轉層面的支持。"
-        },
-        {
-          "pmid": "30107937",
-          "title": "Effectiveness of Therapeutic Exercise on Forward Head Posture: A Systematic Review and Meta-analysis.",
-          "journal": "J Manipulative Physiol Ther",
-          "year": 2018,
-          "design": "meta-analysis",
-          "takeaway": "7 篇 RCT、627 人：運動能大幅改變顱椎角（OR 6.7）並中度改善疼痛，但作者強調前頭姿勢與疼痛的關係本身尚未確立。"
-        },
-        {
-          "pmid": "35554598",
-          "title": "Reliability, Validity, and Responsiveness of the Craniocervical Flexion Test in People Who Are Asymptomatic and Patients With Nonspecific Neck Pain: A Systematic Review and Meta-Analysis.",
-          "journal": "Phys Ther",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "方法學基礎：顱頸屈曲測試的信度、效度與反應性統合分析，是評估與追蹤 chin tuck 訓練的量測依據。"
-        }
-      ]
+     "pmid": "40615303",
+     "title": "Effectiveness of the therapeutic rehabilitation methods applied to scapula on rotator cuff pathologies: A systematic review of randomized controlled trials",
+     "journal": "J Hand Ther",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "旋轉肌病變的 RCT 系統回顧：肩胛介入普遍有效，但各研究運動處方差異極大，無法指出最佳劑量。"
     },
     {
-      "id": "hip-hinge",
-      "name": "髖鉸鏈與硬舉",
-      "evidence_grade": "moderate",
-      "summary": "高負荷髖鉸鏈（硬舉、羅馬尼亞硬舉）對慢性下背痛是有效且安全的選項：阻力訓練統合分析顯示疼痛顯著改善且達到臨床顯著（SMD −1.15，中等確定性），後鏈訓練也不劣於一般運動與步行方案，並能真的增加腰多裂肌厚度。誠實的但書有兩個：一、直接對照的 RCT 顯示高負荷硬舉與低負荷動作控制運動整體結果相當，而且能從硬舉獲益的是「失能較輕、疼痛較低、背伸肌耐力較好」的人；二、高負荷訓練並未改變矢狀面腰骨盆排列——它讓你更強壯，不是把你「調正」。",
-      "citations": [
-        {
-          "pmid": "25641309",
-          "title": "Individualized low-load motor control exercises and education versus a high-load lifting exercise and education to improve activity, pain intensity, and physical performance in patients with low back pain: a randomized controlled trial.",
-          "journal": "J Orthop Sports Phys Ther",
-          "year": 2015,
-          "design": "RCT",
-          "takeaway": "指標性對照試驗：個別化低負荷動作控制運動 vs 高負荷硬舉，整體疼痛與功能結果無顯著差異。"
-        },
-        {
-          "pmid": "25559899",
-          "title": "Which Patients With Low Back Pain Benefit From Deadlift Training?",
-          "journal": "J Strength Cond Res",
-          "year": 2015,
-          "design": "RCT",
-          "takeaway": "預測因子分析：失能較輕、疼痛較低、Biering-Sørensen 背伸肌耐力較佳者才明顯從硬舉訓練獲益。"
-        },
-        {
-          "pmid": "33683497",
-          "title": "Posterior-Chain Resistance Training Compared to General Exercise and Walking Programmes for the Treatment of Chronic Low Back Pain in the General Population: A Systematic Review and Meta-Analysis.",
-          "journal": "Sports Med Open",
-          "year": 2021,
-          "design": "meta-analysis",
-          "takeaway": "後鏈阻力訓練對慢性下背痛的統合分析：與一般運動、步行方案相比效果相當或略佳。"
-        },
-        {
-          "pmid": "41065407",
-          "title": "Does resistance training improve pain intensity, quality of life, and disability in people with chronic nonspecific low back pain? A systematic review and meta-analysis.",
-          "journal": "Disabil Rehabil",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "10 篇 RCT：阻力訓練改善疼痛（SMD −1.15）、生活品質與失能，中等確定性，但只有疼痛達到臨床顯著門檻。"
-        },
-        {
-          "pmid": "27870804",
-          "title": "Effects of Low-Load Motor Control Exercises and a High-Load Lifting Exercise on Lumbar Multifidus Thickness: A Randomized Controlled Trial.",
-          "journal": "Spine (Phila Pa 1976)",
-          "year": 2017,
-          "design": "RCT",
-          "takeaway": "高負荷舉重確實增加腰多裂肌厚度，提供「硬舉練得到深層穩定肌」的客觀影像證據。"
-        },
-        {
-          "pmid": "28757287",
-          "title": "Sagittal lumbopelvic alignment in patients with low back pain and the effects of a high-load lifting exercise and individualized low-load motor control exercises-a randomized controlled trial.",
-          "journal": "Spine J",
-          "year": 2018,
-          "design": "RCT",
-          "takeaway": "誠實的限制：高負荷舉重運動並未顯著改變矢狀面腰骨盆排列——變強不等於改變體態。"
-        },
-        {
-          "pmid": "35722759",
-          "title": "Best Exercise Options for Reducing Pain and Disability in Adults With Chronic Low Back Pain: Pilates, Strength, Core-Based, and Mind-Body. A Network Meta-analysis.",
-          "journal": "J Orthop Sports Phys Ther",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "JOSPT 網絡統合分析：皮拉提斯、肌力、核心與身心運動對慢性下背痛效果相近，可依偏好選擇。"
-        },
-        {
-          "pmid": "38900182",
-          "title": "The Effect of Cautionary Versus Resiliency Spine Education on Maximum Deadlift Performance and Back Beliefs: A Randomized Control Trial.",
-          "journal": "J Strength Cond Res",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "903 名學員的教學語言實驗：強調「脊椎脆弱」並未降低硬舉成績，但強調「身體強韌」讓改善背部信念的人數多出 3 倍。"
-        }
-      ]
+     "pmid": "42135016",
+     "title": "Comparative effectiveness of physical therapy interventions in adults with rotator cuff tendinopathy: a systematic review and network meta-analysis",
+     "journal": "Br J Sports Med",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "BJSM 網絡統合分析：旋轉肌肌腱病變的各種物理治療彼此差異小，沒有哪一種明顯勝出。"
     },
     {
-      "id": "lat-stretch",
-      "name": "背闊肌伸展",
-      "evidence_grade": "limited",
-      "summary": "背闊肌伸展幾乎沒有針對自身的高品質證據——現有支持全部是從「靜態伸展的一般效果」外推。可以確定的是：規律靜態伸展能增加關節活動度、降低整體僵硬度，但 65 篇研究、1542 人的統合分析發現肌束長度完全沒有改變，ROM 增益同時來自僵硬度下降與伸展耐受度提升，不是肌肉真的變長。另外停訓 2–6 週後 ROM 雖仍高於基線，但會比訓練結束時下滑。用它即時改善過頭活動度是合理的；宣稱它能改變肩帶或胸椎排列則沒有支持（見胸肌伸展一項的統合分析）。",
-      "citations": [
-        {
-          "pmid": "40180774",
-          "title": "Mechanisms Underlying Range of Motion Improvements Following Acute and Chronic Static Stretching: A Systematic Review, Meta-analysis and Multivariate Meta-regression.",
-          "journal": "Sports Med",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "65 篇研究：急慢性靜態伸展都降低整體僵硬度，但都未改變肌束長度；ROM 增益同時與僵硬度下降與伸展耐受度提升相關。"
-        },
-        {
-          "pmid": "39614059",
-          "title": "Optimising the Dose of Static Stretching to Improve Flexibility: A Systematic Review, Meta-analysis and Multivariate Meta-regression.",
-          "journal": "Sports Med",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "劑量統合分析：靜態伸展改善柔軟度存在可辨識的最適劑量區間，總累積時間比單次持續時間更關鍵。"
-        },
-        {
-          "pmid": "37231582",
-          "title": "Long-term static stretching can decrease muscle stiffness: A systematic review and meta-analysis.",
-          "journal": "Scand J Med Sci Sports",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "長期靜態伸展確實可降低肌肉僵硬度，是少數支持「組織性質真的改變」的證據。"
-        },
-        {
-          "pmid": "41269471",
-          "title": "Detraining Effects Following Chronic Stretching Training on Range of Motion: A Systematic Review and Meta-Analysis.",
-          "journal": "Sports Med Open",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "停訓效應：停止伸展 2–6 週後 ROM 仍高於基線（ES 0.55），但比訓練結束時下滑（ES −0.41）——成果會部分保留，仍需維持。"
-        },
-        {
-          "pmid": "37962709",
-          "title": "Acute Effects of Various Stretching Techniques on Range of Motion: A Systematic Review with Meta-Analysis.",
-          "journal": "Sports Med Open",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "各種伸展技術（靜態、動態、PNF）的急性 ROM 效果統合分析：差異不大，可依情境選擇。"
-        },
-        {
-          "pmid": "41035304",
-          "title": "Role of Latissimus Dorsi-Thoracolumbar Fascia Complex Stretching on Pain and Pain-Related Parameters in Patients With Chronic Low Back Pain: A Randomised Clinical Trial.",
-          "journal": "Eur J Pain",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "少數直接針對背闊肌—胸腰筋膜複合體伸展的 RCT：對慢性下背痛的疼痛與相關參數有正向效果。"
-        },
-        {
-          "pmid": "42264851",
-          "title": "Scraping the surface: A systematic review of instrument-assisted soft-tissue mobilization vs passive stretching for throwers' shoulders.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2026,
-          "design": "systematic review",
-          "takeaway": "投擲肩族群的系統回顧：器械輔助軟組織鬆動並未優於單純被動伸展，「工具」不是關鍵。"
-        }
-      ]
+     "pmid": "39593708",
+     "title": "The effect of exercise on postural alignment: A systematic review",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2024,
+     "design": "systematic review",
+     "takeaway": "支持面的證據：22 篇研究顯示「強化弱側＋伸展緊側」對姿勢異常有效，但作者強調強度、量與是否針對特定肌群才是關鍵。"
     },
     {
-      "id": "plantar-release",
-      "name": "足底筋膜放鬆",
-      "evidence_grade": "moderate",
-      "summary": "足底筋膜專項伸展（坐姿手動背屈腳趾牽拉筋膜）是少數有經典 RCT 支持的自我處理方式，8 週時明顯優於一般跟腱伸展，統合分析也給到中等品質證據支持它優於單純小腿伸展。但長期資料講的是另一件事：原始試驗的 2 年追蹤中，兩組在 8 週後都改做筋膜專項伸展，最後組間差異消失，92% 患者滿意。而高負荷肌力訓練（腳趾墊毛巾提踵）在 3 個月時的功能分數比伸展好 29 分，到 12 個月兩組又收斂。合理定位：疼痛期的第一線自我處理，能讓你舒服得比較快，但後面必須接上漸進負荷。",
-      "citations": [
-        {
-          "pmid": "12851352",
-          "title": "Tissue-specific plantar fascia-stretching exercise enhances outcomes in patients with chronic heel pain. A prospective, randomized study.",
-          "journal": "J Bone Joint Surg Am",
-          "year": 2003,
-          "design": "RCT",
-          "takeaway": "奠基研究：足底筋膜專項伸展在 8 週時的疼痛與滿意度顯著優於一般跟腱伸展。"
-        },
-        {
-          "pmid": "16882901",
-          "title": "Plantar fascia-specific stretching exercise improves outcomes in patients with chronic plantar fasciitis. A prospective clinical trial with two-year follow-up.",
-          "journal": "J Bone Joint Surg Am",
-          "year": 2006,
-          "design": "RCT",
-          "takeaway": "2 年追蹤：8 週後兩組都改做筋膜專項伸展，最後組間差異消失，92% 滿意、94% 疼痛減輕——長期看是「有做就好」。"
-        },
-        {
-          "pmid": "33218515",
-          "title": "Calf stretching and plantar fascia-specific stretching for plantar fasciitis: A systematic review and meta-analysis.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2020,
-          "design": "meta-analysis",
-          "takeaway": "中等品質證據支持足底筋膜專項伸展的減痛效果大於小腿伸展，整體證據品質為中等到極低。"
-        },
-        {
-          "pmid": "25145882",
-          "title": "High-load strength training improves outcome in patients with plantar fasciitis: A randomized controlled trial with 12-month follow-up.",
-          "journal": "Scand J Med Sci Sports",
-          "year": 2015,
-          "design": "RCT",
-          "takeaway": "重要對照：高負荷肌力訓練在 3 個月時足部功能指數比伸展好 29 分，但 1、6、12 個月時兩組無差異。"
-        },
-        {
-          "pmid": "33785535",
-          "title": "Management of plantar heel pain: a best practice guide informed by a systematic review, expert clinical reasoning and patient values.",
-          "journal": "Br J Sports Med",
-          "year": 2021,
-          "design": "systematic review",
-          "takeaway": "BJSM 最佳實務指引：足跟痛管理應以衛教、負荷管理與運動為核心，被動放鬆屬輔助角色。"
-        },
-        {
-          "pmid": "36571559",
-          "title": "Effects of therapeutic interventions on pain due to plantar fasciitis: A systematic review and meta-analysis.",
-          "journal": "Clin Rehabil",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "各類治療對足底筋膜炎疼痛的統合分析：多數保守介入短期皆有效，彼此差異小。"
-        },
-        {
-          "pmid": "27692740",
-          "title": "Strength training for plantar fasciitis and the intrinsic foot musculature: A systematic review.",
-          "journal": "Phys Ther Sport",
-          "year": 2017,
-          "design": "systematic review",
-          "takeaway": "足內在肌與肌力訓練的系統回顧：理論合理但直接證據仍稀少、品質偏低。"
-        }
-      ]
-    },
-    {
-      "id": "adductor-stretch",
-      "name": "內收肌伸展",
-      "evidence_grade": "limited",
-      "summary": "內收肌「伸展」本身的證據非常薄弱：現有 RCT 只支持立即增加活動度，且各種手法（MWM、筋膜放鬆、傳統伸展）之間沒有差異，沒有證據顯示能預防鼠蹊傷害或改善長期症狀。相對地，內收肌「肌力訓練」有較清楚的證據能提升離心內收肌力與改善風險因子，而且劑量研究顯示低量（8 週 220 下）就和高量（394 下）一樣有效。這裡必須誠實揭露一件事：2025 年一篇支持 Copenhagen 運動預防傷害的統合分析，已在 2026 年因分析錯誤、誤述三篇原始研究中的兩篇而被撤稿——所以「Copenhagen 能降低鼠蹊傷害發生率」目前缺乏可靠的統合證據。",
-      "citations": [
-        {
-          "pmid": "41975640",
-          "title": "RETRACTION: The Copenhagen Adduction Exercise Effect on Sport Performance and Injury Prevention: A Systematic Review With Meta-Analysis.",
-          "journal": "Scand J Med Sci Sports",
-          "year": 2026,
-          "design": "systematic review",
-          "takeaway": "誠實揭露：支持 Copenhagen 運動預防傷害的統合分析已被撤稿，原因是分析錯誤並誤述三篇原始研究中的兩篇，結論已失效。"
-        },
-        {
-          "pmid": "36180152",
-          "title": "Immediate effect of MWM adductor stretch, myofascial release, and conventional stretching in asymptomatic individuals with hip adductor tightness: A randomized controlled trial.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2022,
-          "design": "RCT",
-          "takeaway": "內收肌緊繃者三種介入比較（MWM 伸展、筋膜放鬆、傳統伸展）：皆有立即 ROM 效果，彼此差異小。"
-        },
-        {
-          "pmid": "28497284",
-          "title": "Exercise Interventions for the Prevention and Treatment of Groin Pain and Injury in Athletes: A Critical and Systematic Review.",
-          "journal": "Sports Med",
-          "year": 2017,
-          "design": "systematic review",
-          "takeaway": "Sports Med 批判性系統回顧：運動介入對鼠蹊痛的預防與治療證據有限，肌力訓練的支持強於伸展。"
-        },
-        {
-          "pmid": "41217257",
-          "title": "Adductor strengthening programme improves groin injury risk factors in youth football players.",
-          "journal": "Res Sports Med",
-          "year": 2026,
-          "design": "RCT",
-          "takeaway": "青少年足球員 RCT：內收肌強化計畫改善鼠蹊傷害的風險因子（內收肌力與內收／外展比值）。"
-        },
-        {
-          "pmid": "40113574",
-          "title": "The Effect of an 8-Week Low- or High-Volume Protocol of the Adductor Strengthening Programme on Hip Adduction Strength in Female Football Players-A Randomized Trial.",
-          "journal": "Scand J Med Sci Sports",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "劑量研究：8 週低量（220 下/側）與高量（394 下/側）內收肌強化在等長肌力增益上無差異，低量已足夠。"
-        },
-        {
-          "pmid": "38376593",
-          "title": "The effectiveness of the Copenhagen adduction exercise on improving eccentric hip adduction strength among soccer players with groin injury: a randomized controlled trial.",
-          "journal": "Phys Sportsmed",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "足球員 RCT：Copenhagen adduction 運動確實提升離心髖內收肌力（可測量的中介指標）。"
-        },
-        {
-          "pmid": "36661128",
-          "title": "Acute Adductor Muscle Injury: A Systematic Review on Diagnostic Imaging, Treatment, and Prevention.",
-          "journal": "Am J Sports Med",
-          "year": 2023,
-          "design": "systematic review",
-          "takeaway": "急性內收肌傷害的系統回顧：影像診斷、治療與預防的證據品質整體偏低。"
-        },
-        {
-          "pmid": "32185630",
-          "title": "Exercise-Based Strategies to Prevent Muscle Injury in Elite Footballers: A Systematic Review and Best Evidence Synthesis.",
-          "journal": "Sports Med",
-          "year": 2020,
-          "design": "systematic review",
-          "takeaway": "菁英足球員肌肉傷害預防的最佳證據綜合：離心肌力訓練有支持，柔軟度介入證據不足。"
-        }
-      ]
-    },
-    {
-      "id": "bird-dog",
-      "name": "鳥狗式",
-      "evidence_grade": "moderate",
-      "summary": "鳥狗式屬於軀幹訓練的一環，這類訓練對慢性下背痛有效——但相對於一般運動的優勢很小而且會消失。2012 年的統合分析顯示核心穩定訓練在 3 個月優於一般運動（疼痛 MD −1.29），到 6 個月與 12 個月差異就不見了；2023 年 40 篇 RCT 的統合分析則顯示軀幹訓練相對一般運動只有微小優勢（疼痛與失能各 SMD 0.20），而且有趣的是，預測改善幅度的因子是「軀幹／髖關節活動度有沒有增加」而不是核心力量。EMG 研究確實證實鳥狗能有效活化深層多裂肌，但活化到深層肌不等於治療機轉。定位：低風險、好教、脊椎負荷低的入門動作，不是必需品。",
-      "citations": [
-        {
-          "pmid": "23284879",
-          "title": "A meta-analysis of core stability exercise versus general exercise for chronic low back pain.",
-          "journal": "PLoS One",
-          "year": 2012,
-          "design": "meta-analysis",
-          "takeaway": "經典統合分析：核心穩定訓練在 3 個月優於一般運動（疼痛 MD −1.29、失能 MD −7.14），但 6 與 12 個月差異消失。"
-        },
-        {
-          "pmid": "36645193",
-          "title": "Effect of Trunk-Focused Exercises on Pain, Disability, Quality of Life, and Trunk Physical Fitness in Low Back Pain and How Potential Effect Modifiers Modulate Their Effects: A Systematic Review With Meta-analyses.",
-          "journal": "J Orthop Sports Phys Ther",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "40 篇 RCT：軀幹訓練相對一般運動只有微小優勢（疼痛、失能各 SMD 0.20）；預測改善的是軀幹／髖活動度的增加，不是核心力量。"
-        },
-        {
-          "pmid": "42089060",
-          "title": "Comparative effectiveness of different core muscle training regimens for chronic non-specific low back pain: a systematic review and meta-analysis.",
-          "journal": "Front Med (Lausanne)",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "近期比較各種核心訓練方案的統合分析：不同核心訓練型態彼此差異小。"
-        },
-        {
-          "pmid": "38035307",
-          "title": "Exercise intervention for patients with chronic low back pain: a systematic review and network meta-analysis.",
-          "journal": "Front Public Health",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "網絡統合分析比較慢性下背痛的各種運動介入，同樣顯示各運動之間差距有限。"
-        },
-        {
-          "pmid": "42320454",
-          "title": "Activation of the deep lumbar multifidus during common rehabilitation and resistance exercises.",
-          "journal": "J Electromyogr Kinesiol",
-          "year": 2026,
-          "design": "cohort",
-          "takeaway": "肌電研究：量化常見復健與阻力動作對深層腰多裂肌的活化，是動作選擇的客觀依據。"
-        },
-        {
-          "pmid": "40180212",
-          "title": "Benefits and harms of exercise therapy and physical activity for low back pain: An umbrella review.",
-          "journal": "J Sport Health Sci",
-          "year": 2025,
-          "design": "systematic review",
-          "takeaway": "傘狀回顧：運動治療對下背痛整體有效且安全，但各類運動之間沒有明確勝出者。"
-        },
-        {
-          "pmid": "37991647",
-          "title": "Systematic Review to Inform a World Health Organization (WHO) Clinical Practice Guideline: Benefits and Harms of Structured Exercise Programs for Chronic Primary Low Back Pain in Adults.",
-          "journal": "J Occup Rehabil",
-          "year": 2023,
-          "design": "systematic review",
-          "takeaway": "支持 WHO 指引的系統回顧：結構化運動計畫對慢性原發性下背痛有益處，不良事件罕見。"
-        }
-      ]
-    },
-    {
-      "id": "spinal-articulation",
-      "name": "脊椎分節控制",
-      "evidence_grade": "limited",
-      "summary": "「一節一節捲起」這類分節控制訓練，缺乏針對「分節動作品質」本身的療效證據。最好的兩筆資料都指向同一個結論：動作品質不是療效的來源。RESOLVE 這篇 JAMA 隨機試驗中，漸進式感覺動作再訓練確實降低慢性下背痛，但 18 週的組間差異只有 1.0 分（0–10 分量表，剛好等於最小臨床重要差異）。而一篇 96 人的皮拉提斯 RCT 更直接：8 週後疼痛降 30%、功能進步 13.4%，但腰椎屈曲—放鬆比完全沒有正常化，兩側不對稱反而增加 11%。也就是說，人變好了，「分節動作」沒有變好。定位：提升身體覺察與動作變異性的工具，不是矯正脊椎排列的技術。",
-      "citations": [
-        {
-          "pmid": "35916848",
-          "title": "Effect of Graded Sensorimotor Retraining on Pain Intensity in Patients With Chronic Low Back Pain: A Randomized Clinical Trial.",
-          "journal": "JAMA",
-          "year": 2022,
-          "design": "RCT",
-          "takeaway": "RESOLVE 試驗（276 人）：漸進式感覺動作再訓練在 18 週的組間差異為 1.0 分（0–10），作者自評改善幅度小。"
-        },
-        {
-          "pmid": "41900492",
-          "title": "Impact of 8-Week Pilates Program on Lumbar Flexion-Relaxation Dynamics and Functional Outcomes in Women with Chronic Low Back Pain.",
-          "journal": "J Funct Morphol Kinesiol",
-          "year": 2026,
-          "design": "RCT",
-          "takeaway": "最誠實的一筆：8 週皮拉提斯讓疼痛降 30%、功能升 13.4%，但腰椎屈曲—放鬆比毫無改善，不對稱反而增加 11%。"
-        },
-        {
-          "pmid": "41528747",
-          "title": "Effect Modifiers of Graded Sensorimotor Retraining for Chronic Low Back Pain: A Secondary Analysis of the RESOLVE Randomized Trial.",
-          "journal": "JAMA Netw Open",
-          "year": 2026,
-          "design": "RCT",
-          "takeaway": "RESOLVE 次級分析：找不到穩定的效果修飾因子，意即無法事先辨識「誰適合這種訓練」。"
-        },
-        {
-          "pmid": "40616045",
-          "title": "Effectiveness of the pilates method in patients with chronic neck pain: a systematic review with meta-analysis.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "皮拉提斯對慢性頸痛的統合分析：可降低疼痛與失能，但與其他運動比較的優勢不明確。"
-        },
-        {
-          "pmid": "40311262",
-          "title": "The effects of exercise therapy on lumbar muscle structure in low back pain: A systematic review and meta-analysis.",
-          "journal": "Ann Phys Rehabil Med",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "運動治療確實改變下背痛者的腰部肌肉結構（厚度、橫斷面積），但結構改變與症狀改善的關聯薄弱。"
-        },
-        {
-          "pmid": "40765243",
-          "title": "Lower limb proprioception and postural control strategies in people with non-specific low back pain: A systematic review and meta-analysis.",
-          "journal": "Clin Rehabil",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "非特異性下背痛者確實存在本體感覺與姿勢控制策略差異，提供分節控制訓練的理論基礎（非療效證據）。"
-        },
-        {
-          "pmid": "41265713",
-          "title": "Comparative efficacy of different mind-body exercise modalities in low back pain: Systematic review and network meta‑analysis.",
-          "journal": "Complement Ther Med",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "身心運動（皮拉提斯、瑜伽、太極）對下背痛的網絡統合分析：彼此效果接近，難以指出最佳選擇。"
-        }
-      ]
-    },
-    {
-      "id": "scap-upward-rot",
-      "name": "肩胛上旋訓練",
-      "evidence_grade": "limited",
-      "summary": "肩胛上旋訓練的證據幾乎全停在「動作選擇的肌電比較」層級：可以知道哪一種 Y-raise、牆滑變化式對下斜方肌／前鋸肌活化較佳。但上游的假設有問題——一篇 20 篇研究的統合回歸直接推翻了兩個常見教材說法：肩胛在手臂上舉一開始就開始上旋（沒有所謂 setting phase），而且肩肱節律不是固定的 3:1（實測 2.86:1 到 3.13:1）。更關鍵的是，有無肩痛者的肩胛靜態上旋差異雖然平均有 6 度，但落在 95% 預測區間之內、證據確定性極低，作者結論是變異太大以致難以判定何謂異常。可以用 EMG 資料挑動作，但不要用「你上旋不夠」當診斷。",
-      "citations": [
-        {
-          "pmid": "40845626",
-          "title": "Scapular kinematics variability in individuals with and without rotator cuff-related shoulder pain: A systematic review with multilevel meta-regression.",
-          "journal": "Braz J Phys Ther",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "關鍵誠實訊息：推翻 setting phase 與固定 3:1 肩肱節律的說法；有無肩痛者的肩胛動力學變異極大，難以判定異常型態。"
-        },
-        {
-          "pmid": "40604589",
-          "title": "Is chronic neck pain related to scapular dyskinesia? A systematic review.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2025,
-          "design": "systematic review",
-          "takeaway": "系統回顧：慢性頸痛與肩胛動作異常的關聯證據不足，不支持「頸痛源於肩胛」的推論。"
-        },
-        {
-          "pmid": "40101273",
-          "title": "Comparison of scapular upward rotator activity among three different Y-raise exercises in healthy male individuals.",
-          "journal": "J Back Musculoskelet Rehabil",
-          "year": 2025,
-          "design": "cohort",
-          "takeaway": "三種 Y-raise 變化式的肩胛上旋肌群活化比較，提供動作選擇的直接肌電依據。"
-        },
-        {
-          "pmid": "41327016",
-          "title": "Comparison of scapular muscle activity during Y-raise exercise with isometric adduction in subjects with and without rounded shoulder posture.",
-          "journal": "Physiother Theory Pract",
-          "year": 2026,
-          "design": "cohort",
-          "takeaway": "圓肩與非圓肩者做 Y-raise 加等長內收的肌肉活化比較，說明姿勢分型未必改變最佳動作選擇。"
-        },
-        {
-          "pmid": "40939370",
-          "title": "Shoulder muscle activity magnitude and timing in individuals with specific scapular movement patterns.",
-          "journal": "J Electromyogr Kinesiol",
-          "year": 2025,
-          "design": "cohort",
-          "takeaway": "不同肩胛動作型態者的肩部肌肉活化強度與時序差異，支持用「型態」而非「好壞」來描述。"
-        },
-        {
-          "pmid": "40954607",
-          "title": "Trapezius muscle activity during wall slide exercise: Natural vs corrected head posture.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2025,
-          "design": "cohort",
-          "takeaway": "牆滑動作中「自然頭部姿勢 vs 刻意矯正姿勢」的斜方肌活化比較，直接檢驗常見教學提示的效果。"
-        },
-        {
-          "pmid": "33540119",
-          "title": "Scapular motion in the presence of rotator cuff tears: a systematic review.",
-          "journal": "J Shoulder Elbow Surg",
-          "year": 2021,
-          "design": "systematic review",
-          "takeaway": "旋轉肌撕裂者的肩胛動作系統回顧：動作改變可能是結果而非原因，因果方向並不明確。"
-        }
-      ]
-    },
-    {
-      "id": "sleeper-stretch",
-      "name": "睡姿伸展（後關節囊）",
-      "evidence_grade": "moderate",
-      "summary": "針對後肩緊繃／GIRD，伸展是這批動作中證據相對紮實的：多篇 RCT 顯示 sleeper stretch 與 cross-body stretch 都能顯著改善內轉受限（4 週約各改善 14.7 度）並降低疼痛 1.5–2.2 分，而且兩者效果相當、耐受度與安全性也相當——沒有必要爭論哪一種才對。誠實的限制有三個：一、統合分析指出 13 篇研究中只有 3 篇的介入執行忠實度達到良好，多數研究對象甚至不是求診的患者；二、效果集中在即刻到短期，缺乏長期維持資料；三、系統回顧比較各技術（含鬆動、貼紮、筋膜放鬆）時，組間差異多半不顯著。",
-      "citations": [
-        {
-          "pmid": "41580269",
-          "title": "The effects of sleeper stretch vs. crossbody stretch in overhead athletes with shoulder pain and glenohumeral internal rotation deficit: a randomized controlled trial.",
-          "journal": "J Shoulder Elbow Surg",
-          "year": 2026,
-          "design": "RCT",
-          "takeaway": "直接對照 RCT：sleeper stretch 與 cross-body stretch 在 4 週各改善 GIRD 約 14.7 度、疼痛降 1.5–2.2 分，組間無差異。"
-        },
-        {
-          "pmid": "30902594",
-          "title": "The efficacy and fidelity of clinical interventions used to reduce posterior shoulder tightness: a systematic review with meta-analysis.",
-          "journal": "J Shoulder Elbow Surg",
-          "year": 2019,
-          "design": "meta-analysis",
-          "takeaway": "誠實的限制：對照無治療時 ROM 有中等效果，但 13 篇研究只有 3 篇執行忠實度良好，且多數對象並非求診患者、只測即刻到短期效果。"
-        },
-        {
-          "pmid": "40843660",
-          "title": "Role of stretching interventions in enhancing the shoulder range of motion in overhead athletes with glenohumeral internal rotation deficit: A systematic review and meta-analysis.",
-          "journal": "PM R",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "針對 GIRD 過頭運動員的統合分析：伸展介入顯著改善肩關節活動度，效果量中等。"
-        },
-        {
-          "pmid": "27475455",
-          "title": "Effects of two stretching methods on shoulder range of motion and muscle stiffness in baseball players with posterior shoulder tightness: a randomized controlled trial.",
-          "journal": "J Shoulder Elbow Surg",
-          "year": 2016,
-          "design": "RCT",
-          "takeaway": "棒球員 RCT：兩種伸展法皆增加活動度並降低肌肉硬度，客觀證實組織層級的改變。"
-        },
-        {
-          "pmid": "28731885",
-          "title": "Effectiveness of a Posterior Shoulder Stretching Program on University-Level Overhead Athletes: Randomized Controlled Trial.",
-          "journal": "Clin J Sport Med",
-          "year": 2018,
-          "design": "RCT",
-          "takeaway": "大學過頭運動員 RCT：後肩伸展計畫可有效增加內轉活動度。"
-        },
-        {
-          "pmid": "27632891",
-          "title": "Effectiveness of Stretching on Posterior Shoulder Tightness and Glenohumeral Internal-Rotation Deficit: A Systematic Review of Randomized Controlled Trials.",
-          "journal": "J Sport Rehabil",
-          "year": 2017,
-          "design": "systematic review",
-          "takeaway": "針對 GIRD 與後肩緊繃的 RCT 系統回顧：伸展有效，但劑量與最佳姿勢缺乏共識。"
-        },
-        {
-          "pmid": "38897400",
-          "title": "Glenohumeral Internal Rotation Deficit and Risk of Upper Extremity Injury in Overhead Athletes: Systematic Review.",
-          "journal": "Arch Phys Med Rehabil",
-          "year": 2025,
-          "design": "systematic review",
-          "takeaway": "9 篇研究的系統回顧：鬆動、sleeper stretch、cross-body stretch、貼紮都改善疼痛與活動度，但技術之間的組間差異多不顯著。"
-        }
-      ]
-    },
-    {
-      "id": "balance",
-      "name": "平衡與本體感覺訓練",
-      "evidence_grade": "moderate",
-      "summary": "平衡訓練有效，但「遷移性差」是這個領域最重要也最少被講的發現。一篇 Sports Med 統合分析明確指出：平衡訓練對「有練到的任務」效果很大（SMD 0.79），對「沒練到的任務」則接近零（SMD −0.07 到 0.18）；作者直接建議單腳站這類通用測試作為整體平衡指標「價值有限」。臨床上它在慢性踝關節不穩與長者跌倒預防有中等品質支持，而且改善同樣呈現方向專一性。另一個誠實的發現是：傷害預防計畫幾乎沒有改變下肢動作學（16 篇 RCT 中只有膝屈曲角多 3.1 度，其餘全無效果），代表它降低傷害的機轉可能根本不是「矯正動作」。實務結論：想改善什麼，就在那個情境下練它。",
-      "citations": [
-        {
-          "pmid": "26993132",
-          "title": "Specificity of Balance Training in Healthy Individuals: A Systematic Review and Meta-Analysis.",
-          "journal": "Sports Med",
-          "year": 2016,
-          "design": "meta-analysis",
-          "takeaway": "核心誠實訊息：平衡訓練對已練任務效果大（SMD 0.79），對未練任務近乎為零（SMD −0.07 到 0.18）；單腳站作為通用指標價值有限。"
-        },
-        {
-          "pmid": "38044391",
-          "title": "Injury Prevention Programmes Fail to Change Most Lower Limb Kinematics and Kinetics in Female Team Field and Court Sports: A Systematic Review and Meta-Analysis of Randomised Controlled Trials.",
-          "journal": "Sports Med",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "關鍵反例：16 篇 RCT 中傷害預防計畫只讓膝屈曲角多 3.1 度，髖膝踝其餘角度與力矩全無改變——效益機轉可能不是矯正動作。"
-        },
-        {
-          "pmid": "42157072",
-          "title": "Direction-specific effects of balance training on dynamic balance in athletes with chronic ankle instability: a multilevel meta-analysis of randomized controlled trials.",
-          "journal": "BMC Sports Sci Med Rehabil",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "多層次統合分析證實方向專一性：慢性踝不穩者的動態平衡改善集中在訓練所涵蓋的方向。"
-        },
-        {
-          "pmid": "42227253",
-          "title": "Effects of exercise therapy on dynamic posture control and self-report function in individuals with chronic ankle instability: a systematic review with pairwise and network meta-analysis.",
-          "journal": "EFORT Open Rev",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "慢性踝關節不穩的網絡統合分析：運動治療改善動態姿勢控制與自述功能，多種型態效果相近。"
-        },
-        {
-          "pmid": "41955546",
-          "title": "Effects of Physical Therapy on Proprioception in Individuals With Chronic Ankle Instability: A Systematic Review With Pairwise and Network Meta-Analyses.",
-          "journal": "Am J Phys Med Rehabil",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "針對本體感覺的網絡統合分析：物理治療可改善慢性踝不穩者的本體感覺，但效果量中等且異質性高。"
-        },
-        {
-          "pmid": "38406839",
-          "title": "Ankle Injury Prevention Programs for Youth Sports: A Systematic Review and Meta-analysis.",
-          "journal": "Sports Health",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "青少年運動族群的統合分析：踝關節傷害預防計畫（含平衡訓練）確實降低傷害發生率。"
-        },
-        {
-          "pmid": "42490619",
-          "title": "Dose-response relationships of sensorimotor-based interventions on balance performance in older adults: A systematic review and meta-regression analysis.",
-          "journal": "PLoS One",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "劑量反應統合回歸：長者感覺動作介入改善平衡有可辨識的劑量區間，總訓練量是關鍵。"
-        },
-        {
-          "pmid": "42200479",
-          "title": "Effect of exercise interventions on fear of falling in older adults: a systematic review and network meta-analysis of randomised controlled trials.",
-          "journal": "Age Ageing",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "網絡統合分析：運動介入可降低長者對跌倒的恐懼，心理層面效益不亞於生理層面。"
-        }
-      ]
-    },
-    {
-      "id": "ankle-mob",
-      "name": "踝關節背屈鬆動",
-      "evidence_grade": "limited",
-      "summary": "踝背屈鬆動能立即增加活動度，這在多篇 RCT 中一致重現，而且好消息是自我操作版本與治療師操作效果相當。但要誠實：目前唯一一篇含 GRADE 評級的統合分析只納入 4 篇試驗、191 人，雖然對照假處置有顯著效果（SMD 0.62），證據確定性被評為「極低」。更重要的是「增加了 ROM」不等於「動作會改變」——兩週的關節鬆動或足底按摩並未改變慢性踝不穩者的步態力學，作者結論是需要針對步態本身的介入。背屈受限確實與落地時較大的衝擊負荷與膝外翻角度有關，所以值得處理，但合理定位是：訓練前打開活動度的準備工作，後面必須接上在新範圍內的負荷與控制訓練。",
-      "citations": [
-        {
-          "pmid": "41204935",
-          "title": "Effect of Manual Therapy Techniques on Ankle Dorsiflexion Range of Motion: A Systematic Review With Meta-Analysis and Grade Recommendations.",
-          "journal": "J Manipulative Physiol Ther",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "誠實的品質評級：4 篇試驗、191 人，徒手治療對照假處置改善背屈 SMD 0.62，但 GRADE 評為「極低」確定性。"
-        },
-        {
-          "pmid": "39392285",
-          "title": "Plantar massage or ankle mobilization do not alter gait biomechanics in those with chronic ankle instability: a randomized controlled trial.",
-          "journal": "J Man Manip Ther",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "關鍵反例：兩週的關節鬆動或足底按摩並未改變慢性踝不穩者的步態力學——ROM 增加不等於動作改變。"
-        },
-        {
-          "pmid": "40327634",
-          "title": "Effects of two mobilization with movement techniques to the talocrural joint in individuals with dorsiflexion limitation: clinician vs self-applied.",
-          "journal": "Physiother Theory Pract",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "實用發現：單次自我操作的 MWM 與治療師操作在改善背屈受限與 Y 平衡測驗上效果相當——可以自己做。"
-        },
-        {
-          "pmid": "38432807",
-          "title": "The effect of manual therapy on ankle dorsiflexion range of motion: A pilot crossover randomized trial.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "交叉設計試驗確認徒手治療對背屈 ROM 有立即效果，但未追蹤效果保留時間。"
-        },
-        {
-          "pmid": "39304079",
-          "title": "Uphill Treadmill Running and Joint Mobilization Improve Dynamic Stability and Ankle Dorsiflexion Range of Motion in Young Adults With Chronic Ankle Instability: A Four-Arm Randomized Controlled Trial.",
-          "journal": "Arch Phys Med Rehabil",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "四臂 RCT：上坡跑加關節鬆動同時改善動態穩定度與背屈 ROM，支持「鬆動＋負荷」的組合策略。"
-        },
-        {
-          "pmid": "41900499",
-          "title": "Effects of Adding Posterior Ankle Joint Mobilization to Eccentric Training on Ankle Range of Motion and Athletic Performance in Basketball Athletes with Restricted Ankle Dorsiflexion: A Randomized Controlled Trial.",
-          "journal": "J Funct Morphol Kinesiol",
-          "year": 2026,
-          "design": "RCT",
-          "takeaway": "籃球員 RCT：後側踝關節鬆動加在離心訓練之上，可額外改善背屈活動度與運動表現。"
-        },
-        {
-          "pmid": "35500979",
-          "title": "The effects of foam rolling on ankle dorsiflexion range of motion in healthy adults: A systematic literature review.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2022,
-          "design": "systematic review",
-          "takeaway": "滾筒對踝背屈 ROM 的系統回顧：有正向效果但研究數量少、方法品質參差。"
-        },
-        {
-          "pmid": "42287683",
-          "title": "The Effect of Limited Ankle Dorsiflexion During Emergency Stop-Jump Movements on Lower Limb Biomechanics.",
-          "journal": "J Foot Ankle Res",
-          "year": 2026,
-          "design": "cohort",
-          "takeaway": "力學基礎：背屈受限者急停跳躍時採取僵硬落地策略，垂直地面反作用力、負荷率與膝外展角皆較大。"
-        }
-      ]
+     "pmid": "38219373",
+     "title": "The influence of exercise on pain, disability and quality of life in office workers with chronic neck pain: A systematic review and meta-analysis",
+     "journal": "Appl Ergon",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "辦公室工作者慢性頸痛：運動介入可降低疼痛與失能，效果為小至中等且需持續執行。"
     }
-  ]
+   ]
+  },
+  {
+   "id": "serratus",
+   "name": "前鋸肌訓練",
+   "evidence_grade": "limited",
+   "summary": "前鋸肌訓練的證據強在「肌電圖層級」、弱在「臨床結果層級」。大量 EMG 研究可以告訴你哪些動作（push-up plus、牆滑、前推類）誘發前鋸肌較佳，這對動作選擇有用。但幾乎沒有把「單獨強化前鋸肌」連到臨床疼痛與功能改善的高品質 RCT；加上 EMG 生物回饋的統合分析顯示，額外加回饋只在下斜方肌活化上有顯著差異，肩胛動作學改變（上旋僅 1.13 度、p=0.07）並無定論。更根本的問題是：連「怎麼可靠地測出前鋸肌無力」都還在被重新設計。拿它當動作選擇依據合理，但不要宣稱「前鋸肌無力是肩痛原因」。",
+   "citations": [
+    {
+     "pmid": "38116582",
+     "title": "Electromyography of scapular stabilizers in people without scapular dyskinesis during push-ups: a systematic review and meta-analysis",
+     "journal": "Front Physiol",
+     "year": 2023,
+     "design": "systematic review",
+     "takeaway": "伏地挺身類動作的 EMG 統合分析：量化各變化式對前鋸肌與斜方肌的活化差異，是動作選擇的實證依據。"
+    },
+    {
+     "pmid": "38840951",
+     "title": "Electromyography of shoulder muscles in individuals without scapular dyskinesis during closed kinetic chain exercises on stable and unstable surfaces: a systematic review and meta-analysis",
+     "journal": "Front Sports Act Living",
+     "year": 2024,
+     "design": "systematic review",
+     "takeaway": "28 篇 EMG 研究：不穩定表面的影響取決於動作類型（降低前三角肌、提高胸大肌與三頭肌），並非一律讓肩胛肌活化更高。"
+    },
+    {
+     "pmid": "41680116",
+     "title": "Effectiveness of electromyography biofeedback training on scapular kinematics and muscle activation in patients with scapular dyskinesis: a systematic review and meta-analysis",
+     "journal": "Clin Shoulder Elb",
+     "year": 2026,
+     "design": "meta-analysis",
+     "takeaway": "誠實的限制：加入 EMG 生物回饋僅在下斜方肌活化上有顯著差異（MD 7.22%），肩胛上旋僅差 1.13 度（p=0.07），肩胛動力學改變無定論。"
+    },
+    {
+     "pmid": "42157602",
+     "title": "The Effect of Scapular-Focused Exercise With or Without Electromyography Biofeedback in High-School Baseball Pitchers With Shoulder Impingement Syndrome: A Randomized Controlled Trial",
+     "journal": "Sports Health",
+     "year": 2026,
+     "design": "RCT",
+     "takeaway": "高中投手 RCT：加 EMG 回饋只讓中斜方肌活化多進步，肌力、功能與疼痛兩組相同——治療師口語與觸覺回饋一樣有效。"
+    },
+    {
+     "pmid": "37648216",
+     "title": "Scapula-Focused Exercises With or Without Biofeedback and Corticospinal Excitability in Recreational Overhead Athletes With Shoulder Impingement",
+     "journal": "J Athl Train",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "過頭運動員 RCT：肩胛專項運動可改變皮質脊髓興奮性，說明有神經適應，但未證實臨床優勢。"
+    },
+    {
+     "pmid": "40840277",
+     "title": "Modification of the serratus anterior strength test to reduce confounding muscle activation: An EMG-based validation study",
+     "journal": "Phys Ther Sport",
+     "year": 2025,
+     "design": "cohort",
+     "takeaway": "方法學警訊：傳統前鋸肌肌力測試會被上下斜方肌混淆，需改成仰臥＋肩外轉的改良版才可靠（ICC 0.97）。"
+    },
+    {
+     "pmid": "38876672",
+     "title": "Analysis of the three-dimensional scapular kinematics and associated scapular muscle activity during scapular muscle exercises",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2024,
+     "design": "cohort",
+     "takeaway": "同步分析肩胛三維動力學與肌電：常見肩胛運動誘發的肌肉活化與實際肩胛動作方向並非一一對應。"
+    }
+   ]
+  },
+  {
+   "id": "trigger-point",
+   "name": "激痛點按壓放鬆",
+   "evidence_grade": "contested",
+   "summary": "這是本清單中最該被誠實揭露的一項。目前品質最好的統合分析（17 篇 RCT）發現：缺血性壓迫確實提高壓痛閾值（SMD 0.67），但對患者自己回報的疼痛（VAS/NRS）沒有顯著效果（SMD −0.22，p=0.16）——也就是「按下去比較不痛」不等於「平常比較不痛」。多篇 RCT 進一步顯示，處理上斜方肌激痛點對肩痛者沒有帶來組間差異、缺血性壓迫加在關節鬆動之上也沒有額外效益，而且安慰劑壓迫組同樣改善。網絡統合分析則顯示各種徒手手法彼此難分高下。合理定位：一個舒適、低風險、可能有安慰劑成分的短期工具，不是矯正手段。",
+   "citations": [
+    {
+     "pmid": "36050701",
+     "title": "Effect of ischemic compression on myofascial pain syndrome: a systematic review and meta-analysis",
+     "journal": "Chiropr Man Therap",
+     "year": 2022,
+     "design": "meta-analysis",
+     "takeaway": "最關鍵的一篇：缺血性壓迫提高壓痛閾值（SMD 0.67），但對自述疼痛無顯著效果（SMD −0.22, p=0.16）——只提升了對壓力的耐受度。"
+    },
+    {
+     "pmid": "40325744",
+     "title": "Treatment of upper trapezius myofascial trigger points does not influence pain in individuals with shoulder pain: A randomized trial",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "三組（鬆動、鬆動＋壓迫、鬆動＋安慰劑壓迫）疼痛都下降且組間無差異——包含安慰劑組，改善未必來自壓迫本身。"
+    },
+    {
+     "pmid": "37949581",
+     "title": "Ischemic compression associated with joint mobilization does not promote additional clinical effects in individuals with rotator cuff related shoulder pain: A randomized clinical trial",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2023,
+     "design": "RCT",
+     "takeaway": "旋轉肌相關肩痛患者，缺血性壓迫加在關節鬆動之上未帶來任何額外臨床效益。"
+    },
+    {
+     "pmid": "36872769",
+     "title": "Effectiveness of ischemic compression on myofascial trigger points in relieving neck pain: A systematic review and meta-analysis",
+     "journal": "J Back Musculoskelet Rehabil",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "針對頸痛的統合分析：缺血性壓迫有短期減痛效果，但長期追蹤資料幾乎不存在。"
+    },
+    {
+     "pmid": "36350630",
+     "title": "Comparative Effectiveness of Manual Therapy Interventions on Pain and Pressure Pain Threshold in Patients With Myofascial Trigger Points: A Network Meta-analysis",
+     "journal": "Clin J Pain",
+     "year": 2022,
+     "design": "narrative review",
+     "takeaway": "網絡統合分析比較各種徒手治療對激痛點的疼痛與壓痛閾值：彼此差異小，沒有任何一種手法明顯勝出。"
+    },
+    {
+     "pmid": "32747150",
+     "title": "The Effectiveness of Ischemic Compression Technique on Pain and Function in Individuals With Shoulder Pain: A Systematic Review",
+     "journal": "J Manipulative Physiol Ther",
+     "year": 2020,
+     "design": "systematic review",
+     "takeaway": "肩痛族群的系統回顧：缺血性壓迫對疼痛與功能有正向趨勢，但研究數量少、異質性高。"
+    },
+    {
+     "pmid": "39189423",
+     "title": "Effectiveness of trigger point manual therapy for rotator cuff related shoulder pain: a systematic review and meta-analysis",
+     "journal": "Disabil Rehabil",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "旋轉肌相關肩痛的激痛點徒手治療統合分析：短期有效，但證據確定性被評為低。"
+    },
+    {
+     "pmid": "38402150",
+     "title": "Effects of foam roller on pain intensity in individuals with chronic and acute musculoskeletal pain: a systematic review of randomized trials",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "滾筒對急慢性肌骨疼痛的隨機試驗回顧：可降低疼痛強度，但效果集中在介入後短時間內。"
+    }
+   ]
+  },
+  {
+   "id": "pec-stretch",
+   "name": "胸肌門框伸展",
+   "evidence_grade": "limited",
+   "summary": "這一項的證據方向很明確，而且對「矯正圓肩」的說法不利。一篇 23 篇研究、969 人的統合分析直接測試「伸展緊繃側＋強化無力側」這個經典公式，結果是：伸展對脊椎與肩帶姿勢完全沒有影響（急性 d=0.01、長期 d=−0.19），有效的是「強化」（d=−0.83），作者的結論是中等確定性證據不支持用伸展治療所謂肌肉失衡。臨床試驗也呼應：在肩峰下疼痛的運動計畫上再加胸小肌伸展，功能與疼痛都沒有額外好處（DASH 反而是對照組較好）。伸展能立即降低胸小肌硬度、增加活動度，這是真的；把它當成矯正體態的手段則沒有支持。",
+   "citations": [
+    {
+     "pmid": "38834878",
+     "title": "Effects of Stretching or Strengthening Exercise on Spinal and Lumbopelvic Posture: A Systematic Review with Meta-Analysis",
+     "journal": "Sports Med Open",
+     "year": 2024,
+     "design": "systematic review",
+     "takeaway": "最重要的一篇：伸展對脊椎與腰骨盆姿勢毫無效果（急性 d=0.01、長期 d=−0.19），強化才有效（d=−0.83）；作者明言不支持用伸展治療肌肉失衡。"
+    },
+    {
+     "pmid": "31472414",
+     "title": "Does pectoralis minor stretching provide additional benefit over an exercise program in participants with subacromial pain syndrome? A randomized controlled trial",
+     "journal": "Musculoskelet Sci Pract",
+     "year": 2019,
+     "design": "RCT",
+     "takeaway": "關鍵反例：肩峰下疼痛的 12 週運動計畫再加胸小肌伸展沒有額外好處，DASH 功能分數反而是對照組較佳。"
+    },
+    {
+     "pmid": "33707982",
+     "title": "Acute and Prolonged Effects of Stretching on Shear Modulus of the Pectoralis Minor Muscle",
+     "journal": "J Sports Sci Med",
+     "year": 2021,
+     "design": "RCT",
+     "takeaway": "超音波證實伸展確實立即降低胸小肌剪切模數（變柔軟），提供「有效但短暫」的客觀機轉證據。"
+    },
+    {
+     "pmid": "33218535",
+     "title": "Evaluation of scapular mobilization and comparison to pectoralis minor stretching in individuals with rounded shoulder posture: A randomized controlled trial",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2020,
+     "design": "RCT",
+     "takeaway": "圓肩族群比較肩胛鬆動與胸小肌伸展：兩者都有改善，但彼此無顯著差異。"
+    },
+    {
+     "pmid": "30860417",
+     "title": "Acute Effects of Pectoralis Minor Self-Mobilization on Shoulder Motion and Posture: A Blinded and Randomized Placebo-Controlled Study in Asymptomatic Individuals",
+     "journal": "J Sport Rehabil",
+     "year": 2020,
+     "design": "RCT",
+     "takeaway": "安慰劑對照顯示胸小肌自我鬆動對無症狀者的肩關節活動與姿勢只有小幅立即效果。"
+    },
+    {
+     "pmid": "38302926",
+     "title": "The effect of various therapeutic exercises on forward head posture, rounded shoulder, and hyperkyphosis among people with upper crossed syndrome: a systematic review and meta-analysis",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "支持面：22 篇研究顯示治療性運動（含伸展與肌力）能改善上交叉症候群的前頭、圓肩與胸椎後凸角度。"
+    },
+    {
+     "pmid": "37301370",
+     "title": "Chronic effects of stretching on range of motion with consideration of potential moderating variables: A systematic review with meta-analysis",
+     "journal": "J Sport Health Sci",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "長期伸展確實能持續增加關節活動度，但這是柔軟度的效果，不能外推成姿勢矯正的效果。"
+    }
+   ]
+  },
+  {
+   "id": "chin-tuck",
+   "name": "頸深屈肌訓練（chin tuck）",
+   "evidence_grade": "moderate",
+   "summary": "頸深屈肌／頸部專項運動對慢性非特異性頸痛有中等品質證據，統合分析顯示阻力、動作控制與身心類運動都有效，並已能給出劑量區間。姿勢方面也確實有效：治療性運動能明顯改變顱椎角。但要講清楚兩件事——第一，統合分析作者自己指出「前頭姿勢與肌骨疼痛之間的關係，以及兩者在運動後同時改善的意義，仍待確立」，也就是姿勢變好與疼痛變好可能只是同時發生；第二，一篇 RCT 顯示徒手治療原本優於運動，只有當運動依從性拉到 95% 以上時兩者才打平——做不做得到比選哪個動作更關鍵。",
+   "citations": [
+    {
+     "pmid": "37339388",
+     "title": "Resistance, Motor Control, and Mindfulness-Based Exercises Are Effective for Treating Chronic Nonspecific Neck Pain: A Systematic Review With Meta-Analysis and Dose-Response Meta-Regression",
+     "journal": "J Orthop Sports Phys Ther",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "JOSPT 劑量反應統合分析：阻力、動作控制與身心類運動皆對慢性頸痛有效，並給出可操作的劑量區間。"
+    },
+    {
+     "pmid": "34935963",
+     "title": "Effectiveness of Specific Neck Exercise for Nonspecific Neck Pain; Usefulness of Strategies for Patient Selection and Tailored Exercise-A Systematic Review With Meta-Analysis",
+     "journal": "Phys Ther",
+     "year": 2022,
+     "design": "meta-analysis",
+     "takeaway": "頸部專項運動的統合分析：整體有效，但現有證據無法支持依「患者分型」挑選特定運動。"
+    },
+    {
+     "pmid": "37828488",
+     "title": "Summarizing the effects of different exercise types in chronic neck pain - a systematic review and meta-analysis of systematic reviews",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "系統回顧的回顧：多種運動型態對慢性頸痛效果相近，沒有哪一類明顯優於其他。"
+    },
+    {
+     "pmid": "40273517",
+     "title": "Manual therapy and neck-specific exercise are equally effective for treating non-specific neck pain but only when exercise adherence is maximised: A randomised controlled trial",
+     "journal": "Musculoskelet Sci Pract",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "重要洞見：四週徒手治療原本優於頸部專項運動，只有在運動依從性 ≥95% 的患者身上兩者才效果相當。"
+    },
+    {
+     "pmid": "38570915",
+     "title": "McKenzie neck exercise versus cranio-cervical flexion exercise on strength and endurance of deep neck flexor muscles, pain, disability, and craniovertebral angle in individuals with chronic neck pain: a randomized clinical trial",
+     "journal": "J Man Manip Ther",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "McKenzie 與顱頸屈曲運動直接對照：兩者在頸深屈肌肌力、耐力、疼痛與顱椎角上結果相近。"
+    },
+    {
+     "pmid": "39700104",
+     "title": "The effects of exercise on neuromuscular function in people with chronic neck pain: A systematic review and meta-analysis",
+     "journal": "PLoS One",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "運動確實改善慢性頸痛者的神經肌肉功能（肌力、耐力、活化模式），提供機轉層面的支持。"
+    },
+    {
+     "pmid": "30107937",
+     "title": "Effectiveness of Therapeutic Exercise on Forward Head Posture: A Systematic Review and Meta-analysis",
+     "journal": "J Manipulative Physiol Ther",
+     "year": 2018,
+     "design": "meta-analysis",
+     "takeaway": "7 篇 RCT、627 人：運動能大幅改變顱椎角（OR 6.7）並中度改善疼痛，但作者強調前頭姿勢與疼痛的關係本身尚未確立。"
+    },
+    {
+     "pmid": "35554598",
+     "title": "Reliability, Validity, and Responsiveness of the Craniocervical Flexion Test in People Who Are Asymptomatic and Patients With Nonspecific Neck Pain: A Systematic Review and Meta-Analysis",
+     "journal": "Phys Ther",
+     "year": 2022,
+     "design": "meta-analysis",
+     "takeaway": "方法學基礎：顱頸屈曲測試的信度、效度與反應性統合分析，是評估與追蹤 chin tuck 訓練的量測依據。"
+    }
+   ]
+  },
+  {
+   "id": "hip-hinge",
+   "name": "髖鉸鏈與硬舉",
+   "evidence_grade": "moderate",
+   "summary": "高負荷髖鉸鏈（硬舉、羅馬尼亞硬舉）對慢性下背痛是有效且安全的選項：阻力訓練統合分析顯示疼痛顯著改善且達到臨床顯著（SMD −1.15，中等確定性），後鏈訓練也不劣於一般運動與步行方案，並能真的增加腰多裂肌厚度。誠實的但書有兩個：一、直接對照的 RCT 顯示高負荷硬舉與低負荷動作控制運動整體結果相當，而且能從硬舉獲益的是「失能較輕、疼痛較低、背伸肌耐力較好」的人；二、高負荷訓練並未改變矢狀面腰骨盆排列——它讓你更強壯，不是把你「調正」。",
+   "citations": [
+    {
+     "pmid": "25641309",
+     "title": "Individualized low-load motor control exercises and education versus a high-load lifting exercise and education to improve activity, pain intensity, and physical performance in patients with low back pain: a randomized controlled trial",
+     "journal": "J Orthop Sports Phys Ther",
+     "year": 2015,
+     "design": "RCT",
+     "takeaway": "指標性對照試驗：個別化低負荷動作控制運動 vs 高負荷硬舉，整體疼痛與功能結果無顯著差異。"
+    },
+    {
+     "pmid": "25559899",
+     "title": "Which Patients With Low Back Pain Benefit From Deadlift Training?",
+     "journal": "J Strength Cond Res",
+     "year": 2015,
+     "design": "RCT",
+     "takeaway": "預測因子分析：失能較輕、疼痛較低、Biering-Sørensen 背伸肌耐力較佳者才明顯從硬舉訓練獲益。"
+    },
+    {
+     "pmid": "33683497",
+     "title": "Posterior-Chain Resistance Training Compared to General Exercise and Walking Programmes for the Treatment of Chronic Low Back Pain in the General Population: A Systematic Review and Meta-Analysis",
+     "journal": "Sports Med Open",
+     "year": 2021,
+     "design": "systematic review",
+     "takeaway": "後鏈阻力訓練對慢性下背痛的統合分析：與一般運動、步行方案相比效果相當或略佳。"
+    },
+    {
+     "pmid": "41065407",
+     "title": "Does resistance training improve pain intensity, quality of life, and disability in people with chronic nonspecific low back pain? A systematic review and meta-analysis",
+     "journal": "Disabil Rehabil",
+     "year": 2026,
+     "design": "meta-analysis",
+     "takeaway": "10 篇 RCT：阻力訓練改善疼痛（SMD −1.15）、生活品質與失能，中等確定性，但只有疼痛達到臨床顯著門檻。"
+    },
+    {
+     "pmid": "27870804",
+     "title": "Effects of Low-Load Motor Control Exercises and a High-Load Lifting Exercise on Lumbar Multifidus Thickness: A Randomized Controlled Trial",
+     "journal": "Spine (Phila Pa 1976)",
+     "year": 2017,
+     "design": "RCT",
+     "takeaway": "高負荷舉重確實增加腰多裂肌厚度，提供「硬舉練得到深層穩定肌」的客觀影像證據。"
+    },
+    {
+     "pmid": "28757287",
+     "title": "Sagittal lumbopelvic alignment in patients with low back pain and the effects of a high-load lifting exercise and individualized low-load motor control exercises-a randomized controlled trial",
+     "journal": "Spine J",
+     "year": 2018,
+     "design": "RCT",
+     "takeaway": "誠實的限制：高負荷舉重運動並未顯著改變矢狀面腰骨盆排列——變強不等於改變體態。"
+    },
+    {
+     "pmid": "35722759",
+     "title": "Best Exercise Options for Reducing Pain and Disability in Adults With Chronic Low Back Pain: Pilates, Strength, Core-Based, and Mind-Body. A Network Meta-analysis",
+     "journal": "J Orthop Sports Phys Ther",
+     "year": 2022,
+     "design": "systematic review",
+     "takeaway": "JOSPT 網絡統合分析：皮拉提斯、肌力、核心與身心運動對慢性下背痛效果相近，可依偏好選擇。"
+    },
+    {
+     "pmid": "38900182",
+     "title": "The Effect of Cautionary Versus Resiliency Spine Education on Maximum Deadlift Performance and Back Beliefs: A Randomized Control Trial",
+     "journal": "J Strength Cond Res",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "903 名學員的教學語言實驗：強調「脊椎脆弱」並未降低硬舉成績，但強調「身體強韌」讓改善背部信念的人數多出 3 倍。"
+    }
+   ]
+  },
+  {
+   "id": "lat-stretch",
+   "name": "背闊肌伸展",
+   "evidence_grade": "limited",
+   "summary": "背闊肌伸展幾乎沒有針對自身的高品質證據——現有支持全部是從「靜態伸展的一般效果」外推。可以確定的是：規律靜態伸展能增加關節活動度、降低整體僵硬度，但 65 篇研究、1542 人的統合分析發現肌束長度完全沒有改變，ROM 增益同時來自僵硬度下降與伸展耐受度提升，不是肌肉真的變長。另外停訓 2–6 週後 ROM 雖仍高於基線，但會比訓練結束時下滑。用它即時改善過頭活動度是合理的；宣稱它能改變肩帶或胸椎排列則沒有支持（見胸肌伸展一項的統合分析）。",
+   "citations": [
+    {
+     "pmid": "40180774",
+     "title": "Mechanisms Underlying Range of Motion Improvements Following Acute and Chronic Static Stretching: A Systematic Review, Meta-analysis and Multivariate Meta-regression",
+     "journal": "Sports Med",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "65 篇研究：急慢性靜態伸展都降低整體僵硬度，但都未改變肌束長度；ROM 增益同時與僵硬度下降與伸展耐受度提升相關。"
+    },
+    {
+     "pmid": "39614059",
+     "title": "Optimising the Dose of Static Stretching to Improve Flexibility: A Systematic Review, Meta-analysis and Multivariate Meta-regression",
+     "journal": "Sports Med",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "劑量統合分析：靜態伸展改善柔軟度存在可辨識的最適劑量區間，總累積時間比單次持續時間更關鍵。"
+    },
+    {
+     "pmid": "37231582",
+     "title": "Long-term static stretching can decrease muscle stiffness: A systematic review and meta-analysis",
+     "journal": "Scand J Med Sci Sports",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "長期靜態伸展確實可降低肌肉僵硬度，是少數支持「組織性質真的改變」的證據。"
+    },
+    {
+     "pmid": "41269471",
+     "title": "Detraining Effects Following Chronic Stretching Training on Range of Motion: A Systematic Review and Meta-Analysis",
+     "journal": "Sports Med Open",
+     "year": 2025,
+     "design": "systematic review",
+     "takeaway": "停訓效應：停止伸展 2–6 週後 ROM 仍高於基線（ES 0.55），但比訓練結束時下滑（ES −0.41）——成果會部分保留，仍需維持。"
+    },
+    {
+     "pmid": "37962709",
+     "title": "Acute Effects of Various Stretching Techniques on Range of Motion: A Systematic Review with Meta-Analysis",
+     "journal": "Sports Med Open",
+     "year": 2023,
+     "design": "systematic review",
+     "takeaway": "各種伸展技術（靜態、動態、PNF）的急性 ROM 效果統合分析：差異不大，可依情境選擇。"
+    },
+    {
+     "pmid": "41035304",
+     "title": "Role of Latissimus Dorsi-Thoracolumbar Fascia Complex Stretching on Pain and Pain-Related Parameters in Patients With Chronic Low Back Pain: A Randomised Clinical Trial",
+     "journal": "Eur J Pain",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "少數直接針對背闊肌—胸腰筋膜複合體伸展的 RCT：對慢性下背痛的疼痛與相關參數有正向效果。"
+    },
+    {
+     "pmid": "42264851",
+     "title": "Scraping the surface: A systematic review of instrument-assisted soft-tissue mobilization vs passive stretching for throwers' shoulders",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "投擲肩族群的系統回顧：器械輔助軟組織鬆動並未優於單純被動伸展，「工具」不是關鍵。"
+    }
+   ]
+  },
+  {
+   "id": "plantar-release",
+   "name": "足底筋膜放鬆",
+   "evidence_grade": "moderate",
+   "summary": "足底筋膜專項伸展（坐姿手動背屈腳趾牽拉筋膜）是少數有經典 RCT 支持的自我處理方式，8 週時明顯優於一般跟腱伸展，統合分析也給到中等品質證據支持它優於單純小腿伸展。但長期資料講的是另一件事：原始試驗的 2 年追蹤中，兩組在 8 週後都改做筋膜專項伸展，最後組間差異消失，92% 患者滿意。而高負荷肌力訓練（腳趾墊毛巾提踵）在 3 個月時的功能分數比伸展好 29 分，到 12 個月兩組又收斂。合理定位：疼痛期的第一線自我處理，能讓你舒服得比較快，但後面必須接上漸進負荷。",
+   "citations": [
+    {
+     "pmid": "12851352",
+     "title": "Tissue-specific plantar fascia-stretching exercise enhances outcomes in patients with chronic heel pain. A prospective, randomized study",
+     "journal": "J Bone Joint Surg Am",
+     "year": 2003,
+     "design": "RCT",
+     "takeaway": "奠基研究：足底筋膜專項伸展在 8 週時的疼痛與滿意度顯著優於一般跟腱伸展。"
+    },
+    {
+     "pmid": "16882901",
+     "title": "Plantar fascia-specific stretching exercise improves outcomes in patients with chronic plantar fasciitis. A prospective clinical trial with two-year follow-up",
+     "journal": "J Bone Joint Surg Am",
+     "year": 2006,
+     "design": "RCT",
+     "takeaway": "2 年追蹤：8 週後兩組都改做筋膜專項伸展，最後組間差異消失，92% 滿意、94% 疼痛減輕——長期看是「有做就好」。"
+    },
+    {
+     "pmid": "33218515",
+     "title": "Calf stretching and plantar fascia-specific stretching for plantar fasciitis: A systematic review and meta-analysis",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2020,
+     "design": "meta-analysis",
+     "takeaway": "中等品質證據支持足底筋膜專項伸展的減痛效果大於小腿伸展，整體證據品質為中等到極低。"
+    },
+    {
+     "pmid": "25145882",
+     "title": "High-load strength training improves outcome in patients with plantar fasciitis: A randomized controlled trial with 12-month follow-up",
+     "journal": "Scand J Med Sci Sports",
+     "year": 2015,
+     "design": "RCT",
+     "takeaway": "重要對照：高負荷肌力訓練在 3 個月時足部功能指數比伸展好 29 分，但 1、6、12 個月時兩組無差異。"
+    },
+    {
+     "pmid": "33785535",
+     "title": "Management of plantar heel pain: a best practice guide informed by a systematic review, expert clinical reasoning and patient values",
+     "journal": "Br J Sports Med",
+     "year": 2021,
+     "design": "systematic review",
+     "takeaway": "BJSM 最佳實務指引：足跟痛管理應以衛教、負荷管理與運動為核心，被動放鬆屬輔助角色。"
+    },
+    {
+     "pmid": "36571559",
+     "title": "Effects of therapeutic interventions on pain due to plantar fasciitis: A systematic review and meta-analysis",
+     "journal": "Clin Rehabil",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "各類治療對足底筋膜炎疼痛的統合分析：多數保守介入短期皆有效，彼此差異小。"
+    },
+    {
+     "pmid": "27692740",
+     "title": "Strength training for plantar fasciitis and the intrinsic foot musculature: A systematic review",
+     "journal": "Phys Ther Sport",
+     "year": 2017,
+     "design": "systematic review",
+     "takeaway": "足內在肌與肌力訓練的系統回顧：理論合理但直接證據仍稀少、品質偏低。"
+    }
+   ]
+  },
+  {
+   "id": "adductor-stretch",
+   "name": "內收肌伸展",
+   "evidence_grade": "limited",
+   "summary": "內收肌「伸展」本身的證據非常薄弱：現有 RCT 只支持立即增加活動度，且各種手法（MWM、筋膜放鬆、傳統伸展）之間沒有差異，沒有證據顯示能預防鼠蹊傷害或改善長期症狀。相對地，內收肌「肌力訓練」有較清楚的證據能提升離心內收肌力與改善風險因子，而且劑量研究顯示低量（8 週 220 下）就和高量（394 下）一樣有效。這裡必須誠實揭露一件事：2025 年一篇支持 Copenhagen 運動預防傷害的統合分析，已在 2026 年因分析錯誤、誤述三篇原始研究中的兩篇而被撤稿——所以「Copenhagen 能降低鼠蹊傷害發生率」目前缺乏可靠的統合證據。",
+   "citations": [
+    {
+     "pmid": "41975640",
+     "title": "RETRACTION: The Copenhagen Adduction Exercise Effect on Sport Performance and Injury Prevention: A Systematic Review With Meta-Analysis",
+     "journal": "Scand J Med Sci Sports",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "誠實揭露：支持 Copenhagen 運動預防傷害的統合分析已被撤稿，原因是分析錯誤並誤述三篇原始研究中的兩篇，結論已失效。"
+    },
+    {
+     "pmid": "36180152",
+     "title": "Immediate effect of MWM adductor stretch, myofascial release, and conventional stretching in asymptomatic individuals with hip adductor tightness: A randomized controlled trial",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2022,
+     "design": "RCT",
+     "takeaway": "內收肌緊繃者三種介入比較（MWM 伸展、筋膜放鬆、傳統伸展）：皆有立即 ROM 效果，彼此差異小。"
+    },
+    {
+     "pmid": "28497284",
+     "title": "Exercise Interventions for the Prevention and Treatment of Groin Pain and Injury in Athletes: A Critical and Systematic Review",
+     "journal": "Sports Med",
+     "year": 2017,
+     "design": "systematic review",
+     "takeaway": "Sports Med 批判性系統回顧：運動介入對鼠蹊痛的預防與治療證據有限，肌力訓練的支持強於伸展。"
+    },
+    {
+     "pmid": "41217257",
+     "title": "Adductor strengthening programme improves groin injury risk factors in youth football players",
+     "journal": "Res Sports Med",
+     "year": 2026,
+     "design": "RCT",
+     "takeaway": "青少年足球員 RCT：內收肌強化計畫改善鼠蹊傷害的風險因子（內收肌力與內收／外展比值）。"
+    },
+    {
+     "pmid": "40113574",
+     "title": "The Effect of an 8-Week Low- or High-Volume Protocol of the Adductor Strengthening Programme on Hip Adduction Strength in Female Football Players-A Randomized Trial",
+     "journal": "Scand J Med Sci Sports",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "劑量研究：8 週低量（220 下/側）與高量（394 下/側）內收肌強化在等長肌力增益上無差異，低量已足夠。"
+    },
+    {
+     "pmid": "38376593",
+     "title": "The effectiveness of the Copenhagen adduction exercise on improving eccentric hip adduction strength among soccer players with groin injury: a randomized controlled trial",
+     "journal": "Phys Sportsmed",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "足球員 RCT：Copenhagen adduction 運動確實提升離心髖內收肌力（可測量的中介指標）。"
+    },
+    {
+     "pmid": "36661128",
+     "title": "Acute Adductor Muscle Injury: A Systematic Review on Diagnostic Imaging, Treatment, and Prevention",
+     "journal": "Am J Sports Med",
+     "year": 2023,
+     "design": "systematic review",
+     "takeaway": "急性內收肌傷害的系統回顧：影像診斷、治療與預防的證據品質整體偏低。"
+    },
+    {
+     "pmid": "32185630",
+     "title": "Exercise-Based Strategies to Prevent Muscle Injury in Elite Footballers: A Systematic Review and Best Evidence Synthesis",
+     "journal": "Sports Med",
+     "year": 2020,
+     "design": "systematic review",
+     "takeaway": "菁英足球員肌肉傷害預防的最佳證據綜合：離心肌力訓練有支持，柔軟度介入證據不足。"
+    }
+   ]
+  },
+  {
+   "id": "bird-dog",
+   "name": "鳥狗式",
+   "evidence_grade": "moderate",
+   "summary": "鳥狗式屬於軀幹訓練的一環，這類訓練對慢性下背痛有效——但相對於一般運動的優勢很小而且會消失。2012 年的統合分析顯示核心穩定訓練在 3 個月優於一般運動（疼痛 MD −1.29），到 6 個月與 12 個月差異就不見了；2023 年 40 篇 RCT 的統合分析則顯示軀幹訓練相對一般運動只有微小優勢（疼痛與失能各 SMD 0.20），而且有趣的是，預測改善幅度的因子是「軀幹／髖關節活動度有沒有增加」而不是核心力量。EMG 研究確實證實鳥狗能有效活化深層多裂肌，但活化到深層肌不等於治療機轉。定位：低風險、好教、脊椎負荷低的入門動作，不是必需品。",
+   "citations": [
+    {
+     "pmid": "23284879",
+     "title": "A meta-analysis of core stability exercise versus general exercise for chronic low back pain",
+     "journal": "PLoS One",
+     "year": 2012,
+     "design": "meta-analysis",
+     "takeaway": "經典統合分析：核心穩定訓練在 3 個月優於一般運動（疼痛 MD −1.29、失能 MD −7.14），但 6 與 12 個月差異消失。"
+    },
+    {
+     "pmid": "36645193",
+     "title": "Effect of Trunk-Focused Exercises on Pain, Disability, Quality of Life, and Trunk Physical Fitness in Low Back Pain and How Potential Effect Modifiers Modulate Their Effects: A Systematic Review With Meta-analyses",
+     "journal": "J Orthop Sports Phys Ther",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "40 篇 RCT：軀幹訓練相對一般運動只有微小優勢（疼痛、失能各 SMD 0.20）；預測改善的是軀幹／髖活動度的增加，不是核心力量。"
+    },
+    {
+     "pmid": "42089060",
+     "title": "Comparative effectiveness of different core muscle training regimens for chronic non-specific low back pain: a systematic review and meta-analysis",
+     "journal": "Front Med (Lausanne)",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "近期比較各種核心訓練方案的統合分析：不同核心訓練型態彼此差異小。"
+    },
+    {
+     "pmid": "38035307",
+     "title": "Exercise intervention for patients with chronic low back pain: a systematic review and network meta-analysis",
+     "journal": "Front Public Health",
+     "year": 2023,
+     "design": "systematic review",
+     "takeaway": "網絡統合分析比較慢性下背痛的各種運動介入，同樣顯示各運動之間差距有限。"
+    },
+    {
+     "pmid": "42320454",
+     "title": "Activation of the deep lumbar multifidus during common rehabilitation and resistance exercises",
+     "journal": "J Electromyogr Kinesiol",
+     "year": 2026,
+     "design": "cohort",
+     "takeaway": "肌電研究：量化常見復健與阻力動作對深層腰多裂肌的活化，是動作選擇的客觀依據。"
+    },
+    {
+     "pmid": "40180212",
+     "title": "Benefits and harms of exercise therapy and physical activity for low back pain: An umbrella review",
+     "journal": "J Sport Health Sci",
+     "year": 2025,
+     "design": "systematic review",
+     "takeaway": "傘狀回顧：運動治療對下背痛整體有效且安全，但各類運動之間沒有明確勝出者。"
+    },
+    {
+     "pmid": "37991647",
+     "title": "Systematic Review to Inform a World Health Organization (WHO) Clinical Practice Guideline: Benefits and Harms of Structured Exercise Programs for Chronic Primary Low Back Pain in Adults",
+     "journal": "J Occup Rehabil",
+     "year": 2023,
+     "design": "systematic review",
+     "takeaway": "支持 WHO 指引的系統回顧：結構化運動計畫對慢性原發性下背痛有益處，不良事件罕見。"
+    }
+   ]
+  },
+  {
+   "id": "spinal-articulation",
+   "name": "脊椎分節控制",
+   "evidence_grade": "limited",
+   "summary": "「一節一節捲起」這類分節控制訓練，缺乏針對「分節動作品質」本身的療效證據。最好的兩筆資料都指向同一個結論：動作品質不是療效的來源。RESOLVE 這篇 JAMA 隨機試驗中，漸進式感覺動作再訓練確實降低慢性下背痛，但 18 週的組間差異只有 1.0 分（0–10 分量表，剛好等於最小臨床重要差異）。而一篇 96 人的皮拉提斯 RCT 更直接：8 週後疼痛降 30%、功能進步 13.4%，但腰椎屈曲—放鬆比完全沒有正常化，兩側不對稱反而增加 11%。也就是說，人變好了，「分節動作」沒有變好。定位：提升身體覺察與動作變異性的工具，不是矯正脊椎排列的技術。",
+   "citations": [
+    {
+     "pmid": "35916848",
+     "title": "Effect of Graded Sensorimotor Retraining on Pain Intensity in Patients With Chronic Low Back Pain: A Randomized Clinical Trial",
+     "journal": "JAMA",
+     "year": 2022,
+     "design": "RCT",
+     "takeaway": "RESOLVE 試驗（276 人）：漸進式感覺動作再訓練在 18 週的組間差異為 1.0 分（0–10），作者自評改善幅度小。"
+    },
+    {
+     "pmid": "41900492",
+     "title": "Impact of 8-Week Pilates Program on Lumbar Flexion-Relaxation Dynamics and Functional Outcomes in Women with Chronic Low Back Pain",
+     "journal": "J Funct Morphol Kinesiol",
+     "year": 2026,
+     "design": "RCT",
+     "takeaway": "最誠實的一筆：8 週皮拉提斯讓疼痛降 30%、功能升 13.4%，但腰椎屈曲—放鬆比毫無改善，不對稱反而增加 11%。"
+    },
+    {
+     "pmid": "41528747",
+     "title": "Effect Modifiers of Graded Sensorimotor Retraining for Chronic Low Back Pain: A Secondary Analysis of the RESOLVE Randomized Trial",
+     "journal": "JAMA Netw Open",
+     "year": 2026,
+     "design": "RCT",
+     "takeaway": "RESOLVE 次級分析：找不到穩定的效果修飾因子，意即無法事先辨識「誰適合這種訓練」。"
+    },
+    {
+     "pmid": "40616045",
+     "title": "Effectiveness of the pilates method in patients with chronic neck pain: a systematic review with meta-analysis",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "皮拉提斯對慢性頸痛的統合分析：可降低疼痛與失能，但與其他運動比較的優勢不明確。"
+    },
+    {
+     "pmid": "40311262",
+     "title": "The effects of exercise therapy on lumbar muscle structure in low back pain: A systematic review and meta-analysis",
+     "journal": "Ann Phys Rehabil Med",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "運動治療確實改變下背痛者的腰部肌肉結構（厚度、橫斷面積），但結構改變與症狀改善的關聯薄弱。"
+    },
+    {
+     "pmid": "40765243",
+     "title": "Lower limb proprioception and postural control strategies in people with non-specific low back pain: A systematic review and meta-analysis",
+     "journal": "Clin Rehabil",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "非特異性下背痛者確實存在本體感覺與姿勢控制策略差異，提供分節控制訓練的理論基礎（非療效證據）。"
+    },
+    {
+     "pmid": "41265713",
+     "title": "Comparative efficacy of different mind-body exercise modalities in low back pain: Systematic review and network meta‑analysis",
+     "journal": "Complement Ther Med",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "身心運動（皮拉提斯、瑜伽、太極）對下背痛的網絡統合分析：彼此效果接近，難以指出最佳選擇。"
+    }
+   ]
+  },
+  {
+   "id": "scap-upward-rot",
+   "name": "肩胛上旋訓練",
+   "evidence_grade": "limited",
+   "summary": "肩胛上旋訓練的證據幾乎全停在「動作選擇的肌電比較」層級：可以知道哪一種 Y-raise、牆滑變化式對下斜方肌／前鋸肌活化較佳。但上游的假設有問題——一篇 20 篇研究的統合回歸直接推翻了兩個常見教材說法：肩胛在手臂上舉一開始就開始上旋（沒有所謂 setting phase），而且肩肱節律不是固定的 3:1（實測 2.86:1 到 3.13:1）。更關鍵的是，有無肩痛者的肩胛靜態上旋差異雖然平均有 6 度，但落在 95% 預測區間之內、證據確定性極低，作者結論是變異太大以致難以判定何謂異常。可以用 EMG 資料挑動作，但不要用「你上旋不夠」當診斷。",
+   "citations": [
+    {
+     "pmid": "40845626",
+     "title": "Scapular kinematics variability in individuals with and without rotator cuff-related shoulder pain: A systematic review with multilevel meta-regression",
+     "journal": "Braz J Phys Ther",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "關鍵誠實訊息：推翻 setting phase 與固定 3:1 肩肱節律的說法；有無肩痛者的肩胛動力學變異極大，難以判定異常型態。"
+    },
+    {
+     "pmid": "40604589",
+     "title": "Is chronic neck pain related to scapular dyskinesia? A systematic review",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2025,
+     "design": "systematic review",
+     "takeaway": "系統回顧：慢性頸痛與肩胛動作異常的關聯證據不足，不支持「頸痛源於肩胛」的推論。"
+    },
+    {
+     "pmid": "40101273",
+     "title": "Comparison of scapular upward rotator activity among three different Y-raise exercises in healthy male individuals",
+     "journal": "J Back Musculoskelet Rehabil",
+     "year": 2025,
+     "design": "cohort",
+     "takeaway": "三種 Y-raise 變化式的肩胛上旋肌群活化比較，提供動作選擇的直接肌電依據。"
+    },
+    {
+     "pmid": "41327016",
+     "title": "Comparison of scapular muscle activity during Y-raise exercise with isometric adduction in subjects with and without rounded shoulder posture",
+     "journal": "Physiother Theory Pract",
+     "year": 2026,
+     "design": "cohort",
+     "takeaway": "圓肩與非圓肩者做 Y-raise 加等長內收的肌肉活化比較，說明姿勢分型未必改變最佳動作選擇。"
+    },
+    {
+     "pmid": "40939370",
+     "title": "Shoulder muscle activity magnitude and timing in individuals with specific scapular movement patterns",
+     "journal": "J Electromyogr Kinesiol",
+     "year": 2025,
+     "design": "cohort",
+     "takeaway": "不同肩胛動作型態者的肩部肌肉活化強度與時序差異，支持用「型態」而非「好壞」來描述。"
+    },
+    {
+     "pmid": "40954607",
+     "title": "Trapezius muscle activity during wall slide exercise: Natural vs corrected head posture",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2025,
+     "design": "cohort",
+     "takeaway": "牆滑動作中「自然頭部姿勢 vs 刻意矯正姿勢」的斜方肌活化比較，直接檢驗常見教學提示的效果。"
+    },
+    {
+     "pmid": "33540119",
+     "title": "Scapular motion in the presence of rotator cuff tears: a systematic review",
+     "journal": "J Shoulder Elbow Surg",
+     "year": 2021,
+     "design": "systematic review",
+     "takeaway": "旋轉肌撕裂者的肩胛動作系統回顧：動作改變可能是結果而非原因，因果方向並不明確。"
+    }
+   ]
+  },
+  {
+   "id": "sleeper-stretch",
+   "name": "睡姿伸展（後關節囊）",
+   "evidence_grade": "moderate",
+   "summary": "針對後肩緊繃／GIRD，伸展是這批動作中證據相對紮實的：多篇 RCT 顯示 sleeper stretch 與 cross-body stretch 都能顯著改善內轉受限（4 週約各改善 14.7 度）並降低疼痛 1.5–2.2 分，而且兩者效果相當、耐受度與安全性也相當——沒有必要爭論哪一種才對。誠實的限制有三個：一、統合分析指出 13 篇研究中只有 3 篇的介入執行忠實度達到良好，多數研究對象甚至不是求診的患者；二、效果集中在即刻到短期，缺乏長期維持資料；三、系統回顧比較各技術（含鬆動、貼紮、筋膜放鬆）時，組間差異多半不顯著。",
+   "citations": [
+    {
+     "pmid": "41580269",
+     "title": "The effects of sleeper stretch vs. crossbody stretch in overhead athletes with shoulder pain and glenohumeral internal rotation deficit: a randomized controlled trial",
+     "journal": "J Shoulder Elbow Surg",
+     "year": 2026,
+     "design": "RCT",
+     "takeaway": "直接對照 RCT：sleeper stretch 與 cross-body stretch 在 4 週各改善 GIRD 約 14.7 度、疼痛降 1.5–2.2 分，組間無差異。"
+    },
+    {
+     "pmid": "30902594",
+     "title": "The efficacy and fidelity of clinical interventions used to reduce posterior shoulder tightness: a systematic review with meta-analysis",
+     "journal": "J Shoulder Elbow Surg",
+     "year": 2019,
+     "design": "meta-analysis",
+     "takeaway": "誠實的限制：對照無治療時 ROM 有中等效果，但 13 篇研究只有 3 篇執行忠實度良好，且多數對象並非求診患者、只測即刻到短期效果。"
+    },
+    {
+     "pmid": "40843660",
+     "title": "Role of stretching interventions in enhancing the shoulder range of motion in overhead athletes with glenohumeral internal rotation deficit: A systematic review and meta-analysis",
+     "journal": "PM R",
+     "year": 2026,
+     "design": "meta-analysis",
+     "takeaway": "針對 GIRD 過頭運動員的統合分析：伸展介入顯著改善肩關節活動度，效果量中等。"
+    },
+    {
+     "pmid": "27475455",
+     "title": "Effects of two stretching methods on shoulder range of motion and muscle stiffness in baseball players with posterior shoulder tightness: a randomized controlled trial",
+     "journal": "J Shoulder Elbow Surg",
+     "year": 2016,
+     "design": "RCT",
+     "takeaway": "棒球員 RCT：兩種伸展法皆增加活動度並降低肌肉硬度，客觀證實組織層級的改變。"
+    },
+    {
+     "pmid": "28731885",
+     "title": "Effectiveness of a Posterior Shoulder Stretching Program on University-Level Overhead Athletes: Randomized Controlled Trial",
+     "journal": "Clin J Sport Med",
+     "year": 2018,
+     "design": "RCT",
+     "takeaway": "大學過頭運動員 RCT：後肩伸展計畫可有效增加內轉活動度。"
+    },
+    {
+     "pmid": "27632891",
+     "title": "Effectiveness of Stretching on Posterior Shoulder Tightness and Glenohumeral Internal-Rotation Deficit: A Systematic Review of Randomized Controlled Trials",
+     "journal": "J Sport Rehabil",
+     "year": 2017,
+     "design": "systematic review",
+     "takeaway": "針對 GIRD 與後肩緊繃的 RCT 系統回顧：伸展有效，但劑量與最佳姿勢缺乏共識。"
+    },
+    {
+     "pmid": "38897400",
+     "title": "Glenohumeral Internal Rotation Deficit and Risk of Upper Extremity Injury in Overhead Athletes: Systematic Review",
+     "journal": "Arch Phys Med Rehabil",
+     "year": 2025,
+     "design": "systematic review",
+     "takeaway": "9 篇研究的系統回顧：鬆動、sleeper stretch、cross-body stretch、貼紮都改善疼痛與活動度，但技術之間的組間差異多不顯著。"
+    }
+   ]
+  },
+  {
+   "id": "balance",
+   "name": "平衡與本體感覺訓練",
+   "evidence_grade": "moderate",
+   "summary": "平衡訓練有效，但「遷移性差」是這個領域最重要也最少被講的發現。一篇 Sports Med 統合分析明確指出：平衡訓練對「有練到的任務」效果很大（SMD 0.79），對「沒練到的任務」則接近零（SMD −0.07 到 0.18）；作者直接建議單腳站這類通用測試作為整體平衡指標「價值有限」。臨床上它在慢性踝關節不穩與長者跌倒預防有中等品質支持，而且改善同樣呈現方向專一性。另一個誠實的發現是：傷害預防計畫幾乎沒有改變下肢動作學（16 篇 RCT 中只有膝屈曲角多 3.1 度，其餘全無效果），代表它降低傷害的機轉可能根本不是「矯正動作」。實務結論：想改善什麼，就在那個情境下練它。",
+   "citations": [
+    {
+     "pmid": "26993132",
+     "title": "Specificity of Balance Training in Healthy Individuals: A Systematic Review and Meta-Analysis",
+     "journal": "Sports Med",
+     "year": 2016,
+     "design": "meta-analysis",
+     "takeaway": "核心誠實訊息：平衡訓練對已練任務效果大（SMD 0.79），對未練任務近乎為零（SMD −0.07 到 0.18）；單腳站作為通用指標價值有限。"
+    },
+    {
+     "pmid": "38044391",
+     "title": "Injury Prevention Programmes Fail to Change Most Lower Limb Kinematics and Kinetics in Female Team Field and Court Sports: A Systematic Review and Meta-Analysis of Randomised Controlled Trials",
+     "journal": "Sports Med",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "關鍵反例：16 篇 RCT 中傷害預防計畫只讓膝屈曲角多 3.1 度，髖膝踝其餘角度與力矩全無改變——效益機轉可能不是矯正動作。"
+    },
+    {
+     "pmid": "42157072",
+     "title": "Direction-specific effects of balance training on dynamic balance in athletes with chronic ankle instability: a multilevel meta-analysis of randomized controlled trials",
+     "journal": "BMC Sports Sci Med Rehabil",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "多層次統合分析證實方向專一性：慢性踝不穩者的動態平衡改善集中在訓練所涵蓋的方向。"
+    },
+    {
+     "pmid": "42227253",
+     "title": "Effects of exercise therapy on dynamic posture control and self-report function in individuals with chronic ankle instability: a systematic review with pairwise and network meta-analysis",
+     "journal": "EFORT Open Rev",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "慢性踝關節不穩的網絡統合分析：運動治療改善動態姿勢控制與自述功能，多種型態效果相近。"
+    },
+    {
+     "pmid": "41955546",
+     "title": "Effects of Physical Therapy on Proprioception in Individuals With Chronic Ankle Instability: A Systematic Review With Pairwise and Network Meta-Analyses",
+     "journal": "Am J Phys Med Rehabil",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "針對本體感覺的網絡統合分析：物理治療可改善慢性踝不穩者的本體感覺，但效果量中等且異質性高。"
+    },
+    {
+     "pmid": "38406839",
+     "title": "Ankle Injury Prevention Programs for Youth Sports: A Systematic Review and Meta-analysis",
+     "journal": "Sports Health",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "青少年運動族群的統合分析：踝關節傷害預防計畫（含平衡訓練）確實降低傷害發生率。"
+    },
+    {
+     "pmid": "42490619",
+     "title": "Dose-response relationships of sensorimotor-based interventions on balance performance in older adults: A systematic review and meta-regression analysis",
+     "journal": "PLoS One",
+     "year": 2026,
+     "design": "meta-analysis",
+     "takeaway": "劑量反應統合回歸：長者感覺動作介入改善平衡有可辨識的劑量區間，總訓練量是關鍵。"
+    },
+    {
+     "pmid": "42200479",
+     "title": "Effect of exercise interventions on fear of falling in older adults: a systematic review and network meta-analysis of randomised controlled trials",
+     "journal": "Age Ageing",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "網絡統合分析：運動介入可降低長者對跌倒的恐懼，心理層面效益不亞於生理層面。"
+    }
+   ]
+  },
+  {
+   "id": "ankle-mob",
+   "name": "踝關節背屈鬆動",
+   "evidence_grade": "limited",
+   "summary": "踝背屈鬆動能立即增加活動度，這在多篇 RCT 中一致重現，而且好消息是自我操作版本與治療師操作效果相當。但要誠實：目前唯一一篇含 GRADE 評級的統合分析只納入 4 篇試驗、191 人，雖然對照假處置有顯著效果（SMD 0.62），證據確定性被評為「極低」。更重要的是「增加了 ROM」不等於「動作會改變」——兩週的關節鬆動或足底按摩並未改變慢性踝不穩者的步態力學，作者結論是需要針對步態本身的介入。背屈受限確實與落地時較大的衝擊負荷與膝外翻角度有關，所以值得處理，但合理定位是：訓練前打開活動度的準備工作，後面必須接上在新範圍內的負荷與控制訓練。",
+   "citations": [
+    {
+     "pmid": "41204935",
+     "title": "Effect of Manual Therapy Techniques on Ankle Dorsiflexion Range of Motion: A Systematic Review With Meta-Analysis and Grade Recommendations",
+     "journal": "J Manipulative Physiol Ther",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "誠實的品質評級：4 篇試驗、191 人，徒手治療對照假處置改善背屈 SMD 0.62，但 GRADE 評為「極低」確定性。"
+    },
+    {
+     "pmid": "39392285",
+     "title": "Plantar massage or ankle mobilization do not alter gait biomechanics in those with chronic ankle instability: a randomized controlled trial",
+     "journal": "J Man Manip Ther",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "關鍵反例：兩週的關節鬆動或足底按摩並未改變慢性踝不穩者的步態力學——ROM 增加不等於動作改變。"
+    },
+    {
+     "pmid": "40327634",
+     "title": "Effects of two mobilization with movement techniques to the talocrural joint in individuals with dorsiflexion limitation: clinician vs self-applied",
+     "journal": "Physiother Theory Pract",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "實用發現：單次自我操作的 MWM 與治療師操作在改善背屈受限與 Y 平衡測驗上效果相當——可以自己做。"
+    },
+    {
+     "pmid": "38432807",
+     "title": "The effect of manual therapy on ankle dorsiflexion range of motion: A pilot crossover randomized trial",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "交叉設計試驗確認徒手治療對背屈 ROM 有立即效果，但未追蹤效果保留時間。"
+    },
+    {
+     "pmid": "39304079",
+     "title": "Uphill Treadmill Running and Joint Mobilization Improve Dynamic Stability and Ankle Dorsiflexion Range of Motion in Young Adults With Chronic Ankle Instability: A Four-Arm Randomized Controlled Trial",
+     "journal": "Arch Phys Med Rehabil",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "四臂 RCT：上坡跑加關節鬆動同時改善動態穩定度與背屈 ROM，支持「鬆動＋負荷」的組合策略。"
+    },
+    {
+     "pmid": "41900499",
+     "title": "Effects of Adding Posterior Ankle Joint Mobilization to Eccentric Training on Ankle Range of Motion and Athletic Performance in Basketball Athletes with Restricted Ankle Dorsiflexion: A Randomized Controlled Trial",
+     "journal": "J Funct Morphol Kinesiol",
+     "year": 2026,
+     "design": "RCT",
+     "takeaway": "籃球員 RCT：後側踝關節鬆動加在離心訓練之上，可額外改善背屈活動度與運動表現。"
+    },
+    {
+     "pmid": "35500979",
+     "title": "The effects of foam rolling on ankle dorsiflexion range of motion in healthy adults: A systematic literature review",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2022,
+     "design": "systematic review",
+     "takeaway": "滾筒對踝背屈 ROM 的系統回顧：有正向效果但研究數量少、方法品質參差。"
+    },
+    {
+     "pmid": "42287683",
+     "title": "The Effect of Limited Ankle Dorsiflexion During Emergency Stop-Jump Movements on Lower Limb Biomechanics",
+     "journal": "J Foot Ankle Res",
+     "year": 2026,
+     "design": "cohort",
+     "takeaway": "力學基礎：背屈受限者急停跳躍時採取僵硬落地策略，垂直地面反作用力、負荷率與膝外展角皆較大。"
+    }
+   ]
+  }
+ ]
 }

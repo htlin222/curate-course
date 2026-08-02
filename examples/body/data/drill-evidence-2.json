@@ -1,988 +1,988 @@
 {
-  "categories": [
+ "categories": [
+  {
+   "id": "foam-roll",
+   "name": "泡棉滾筒自我筋膜放鬆",
+   "evidence_grade": "moderate",
+   "summary": "泡棉滾筒能穩定帶來短期活動度增加與運動後痠痛減輕，效果量小到中等；長期（>4 週）滾筒訓練對關節活動度也有中等效果，但主要出現在大腿前後側，小腿三頭肌則未見改善。關鍵限制有三：一是滾筒並未改變肌筋膜的機械性質（僵硬度、組織長度），效果比較像神經與疼痛耐受度的變化；二是在急性熱身情境下，滾筒與伸展並不優於任何其他能提升組織溫度的活動（如慢跑、動態暖身）；三是對力量與運動表現的影響微乎其微。實務結論：滾筒是安全、便宜、感覺好的熱身選項，但不是「放鬆筋膜」，也不是不可取代的。",
+   "citations": [
     {
-      "id": "foam-roll",
-      "name": "泡棉滾筒自我筋膜放鬆",
-      "evidence_grade": "moderate",
-      "summary": "泡棉滾筒能穩定帶來短期活動度增加與運動後痠痛減輕，效果量小到中等；長期（>4 週）滾筒訓練對關節活動度也有中等效果，但主要出現在大腿前後側，小腿三頭肌則未見改善。關鍵限制有三：一是滾筒並未改變肌筋膜的機械性質（僵硬度、組織長度），效果比較像神經與疼痛耐受度的變化；二是在急性熱身情境下，滾筒與伸展並不優於任何其他能提升組織溫度的活動（如慢跑、動態暖身）；三是對力量與運動表現的影響微乎其微。實務結論：滾筒是安全、便宜、感覺好的熱身選項，但不是「放鬆筋膜」，也不是不可取代的。",
-      "citations": [
-        {
-          "pmid": "35616852",
-          "title": "Foam Rolling Training Effects on Range of Motion: A Systematic Review and Meta-Analysis.",
-          "journal": "Sports Med",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "11 篇研究、290 人：長期滾筒訓練對活動度有中等效果（ES = 0.82），且 >4 週優於 ≤4 週；但只在腿後肌與股四頭肌有效，小腿三頭肌無顯著改善。"
-        },
-        {
-          "pmid": "38760635",
-          "title": "Static Stretch Training versus Foam Rolling Training Effects on Range of Motion: A Systematic Review and Meta-Analysis.",
-          "journal": "Sports Med",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "85 篇研究比較：靜態伸展（ES = -1.01）與滾筒（ES = -0.73）長期都能增加活動度且整體無顯著差異，但若訓練期只有 ≤4 週，靜態伸展明顯優於滾筒（滾筒此時無效，ES = -0.23, p = 0.25）。"
-        },
-        {
-          "pmid": "38244921",
-          "title": "Foam rolling and stretching do not provide superior acute flexibility and stiffness improvements compared to any other warm-up intervention: A systematic review with meta-analysis.",
-          "journal": "J Sport Health Sci",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "急性熱身時，滾筒／伸展與其他熱身活動相比，活動度（ES = 0.01）、僵硬度（ES = 0.09）、被動峰值扭矩皆無顯著差異——作者直言這挑戰了「熱身必須含伸展或滾筒」的既定觀點。"
-        },
-        {
-          "pmid": "36227232",
-          "title": "Foam Rolling Acute Effects on Myofascial Tissue Stiffness and Muscle Strength: A Systematic Review and Meta-Analysis.",
-          "journal": "J Strength Cond Res",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "統合分析顯示滾筒並未急性改變肌筋膜組織僵硬度，也未改變等長肌力、離心扭矩或發力率（僅膝伸向心扭矩略增），且證據確定性低。"
-        },
-        {
-          "pmid": "31256353",
-          "title": "Do Self-Myofascial Release Devices Release Myofascia? Rolling Mechanisms: A Narrative Review.",
-          "journal": "Sports Med",
-          "year": 2019,
-          "design": "narrative review",
-          "takeaway": "系統性檢視機轉後認為滾筒不太可能真的「鬆解筋膜」，觀察到的效果更可能來自神經反射、痛覺調節與局部血流／溫度改變。"
-        },
-        {
-          "pmid": "39593540",
-          "title": "Preventive effect of foam rolling on muscle soreness after exercise: A systematic review and meta-analysis.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "16 篇 RCT、515 人：滾筒可降低運動後痠痛主觀評分，24 h（SMD = -0.53）與 48 h（SMD = -0.77）效果最明顯，但客觀的壓痛閾值未達統計顯著。"
-        },
-        {
-          "pmid": "39593677",
-          "title": "The effect of foam rolling on local and distant pain sensitivity assessed with pressure pain thresholds in healthy participants and musculoskeletal pain patients: A systematic review.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2024,
-          "design": "systematic review",
-          "takeaway": "滾筒前後比較確有小幅壓痛閾值變化（局部 SMD = -0.42、遠端 -0.47），但與對照組相比則無差異（SMD = 0.10），代表大部分是非特異性效應。"
-        },
-        {
-          "pmid": "31024339",
-          "title": "A Meta-Analysis of the Effects of Foam Rolling on Performance and Recovery.",
-          "journal": "Front Physiol",
-          "year": 2019,
-          "design": "meta-analysis",
-          "takeaway": "21 篇研究：滾筒對表現與恢復的效果「偏小甚至可忽略」，作者結論是證據較支持把滾筒當熱身工具，而非恢復工具。"
-        }
-      ]
+     "pmid": "35616852",
+     "title": "Foam Rolling Training Effects on Range of Motion: A Systematic Review and Meta-Analysis",
+     "journal": "Sports Med",
+     "year": 2022,
+     "design": "meta-analysis",
+     "takeaway": "11 篇研究、290 人：長期滾筒訓練對活動度有中等效果（ES = 0.82），且 >4 週優於 ≤4 週；但只在腿後肌與股四頭肌有效，小腿三頭肌無顯著改善。"
     },
     {
-      "id": "hip-abduction",
-      "name": "髖外展肌訓練",
-      "evidence_grade": "moderate",
-      "summary": "髖外展肌訓練對髕股疼痛的止痛與功能改善有一致的中等品質證據，加入髖部訓練通常優於單練股四頭肌，且疼痛緩解出現得更早；對下背痛也有小幅助益，但效果量很小且僅限短期。最需要誠實說明的落差是：訓練確實能增加肌力，卻不一定改變「動態膝外翻」——多數研究並未發現髖外展肌力與膝外翻角度有顯著相關，訓練後膝關節運動學的改變也常不顯著。也就是說，練髖外展有效，但「因為它矯正了膝外翻所以有效」這個機轉說法目前站不住腳。",
-      "citations": [
-        {
-          "pmid": "30074970",
-          "title": "Effects of Hip Abductor Muscles Exercises on Pain and Function in Patients With Patellofemoral Pain: A Systematic Review and Meta-Analysis.",
-          "journal": "J Strength Cond Res",
-          "year": 2019,
-          "design": "meta-analysis",
-          "takeaway": "12 篇研究、604 人：髖＋膝合併訓練相較單純膝訓練，疼痛 SMD = -0.99、功能 SMD = 0.70 favor 合併組；但納入研究方法學品質普遍偏低。"
-        },
-        {
-          "pmid": "35988215",
-          "title": "Effect of hip abductors and lateral rotators' muscle strengthening on pain and functional outcome in adult patients with patellofemoral pain: A systematic review and meta-analysis.",
-          "journal": "J Back Musculoskelet Rehabil",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "14 篇研究一致顯示髖外展與外旋肌訓練改善髕股疼痛與膝功能，且在短期與長期都優於傳統股四頭肌訓練。"
-        },
-        {
-          "pmid": "25365133",
-          "title": "Strengthening of the hip and core versus knee muscles for the treatment of patellofemoral pain: a multicenter randomized controlled trial.",
-          "journal": "J Athl Train",
-          "year": 2015,
-          "design": "RCT",
-          "takeaway": "199 人多中心 RCT：髖／核心組與膝組 6 週後疼痛與功能改善相當，但髖組疼痛提早 1 週緩解，且髖外展、髖伸肌力與後側核心耐力增益更大。"
-        },
-        {
-          "pmid": "42476040",
-          "title": "The effect of hip abductor or external rotator strength on dynamic knee valgus in healthy subjects-a systematic review with partial meta-analysis.",
-          "journal": "Knee",
-          "year": 2026,
-          "design": "systematic review",
-          "takeaway": "22 篇研究中，探討髖外展肌力與動態膝外翻關係者有 12 篇發現「無顯著相關」，僅 2 篇支持假說——直接挑戰「髖外展無力導致膝外翻」的常見說法。"
-        },
-        {
-          "pmid": "25935843",
-          "title": "A randomised trial into the effect of an isolated hip abductor strengthening programme and a functional motor control programme on knee kinematics and hip muscle strength.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2015,
-          "design": "RCT",
-          "takeaway": "單純髖外展肌力訓練使肌力增加 35%，但動態膝外翻與內旋的改變未達統計顯著；肌力增加與動作改變並非同一件事。"
-        },
-        {
-          "pmid": "27048463",
-          "title": "Modifiable Factors Associated with Knee Abduction During Weight-Bearing Activities: A Systematic Review and Meta-Analysis.",
-          "journal": "Sports Med",
-          "year": 2016,
-          "design": "meta-analysis",
-          "takeaway": "33 篇研究：與膝外翻中度相關的是軀幹肌力下降、臀大肌活化不足與踝關節活動度受限；髖外展／外旋／伸肌力量的關聯最多只到弱相關（r ≤ 0.21）。"
-        },
-        {
-          "pmid": "32691625",
-          "title": "Addition of specific hip strengthening exercises to conventional rehabilitation therapy for low back pain: a systematic review and meta-analysis.",
-          "journal": "Clin Rehabil",
-          "year": 2020,
-          "design": "meta-analysis",
-          "takeaway": "5 篇研究、309 人：在常規復健外加髖部肌力訓練，疼痛改善僅 -5.4 mm（VAS 0–100）、失能改善 -2.9 分，統計顯著但低於一般認定的臨床最小重要差異。"
-        },
-        {
-          "pmid": "37037144",
-          "title": "The effectiveness of hip interventions in patients with low-back pain: A systematic review and meta-analysis.",
-          "journal": "Braz J Phys Ther",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "8 篇研究、508 人：髖部介入僅在短期改善疼痛與失能，中期與長期皆無益處，且證據確定性被評為「非常低」。"
-        }
-      ]
+     "pmid": "38760635",
+     "title": "Static Stretch Training versus Foam Rolling Training Effects on Range of Motion: A Systematic Review and Meta-Analysis",
+     "journal": "Sports Med",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "85 篇研究比較：靜態伸展（ES = -1.01）與滾筒（ES = -0.73）長期都能增加活動度且整體無顯著差異，但若訓練期只有 ≤4 週，靜態伸展明顯優於滾筒（滾筒此時無效，ES = -0.23, p = 0.25）。"
     },
     {
-      "id": "glute-bridge",
-      "name": "臀橋與髖伸展啟動",
-      "evidence_grade": "moderate",
-      "summary": "以髖伸阻力訓練（含臀橋、髖推）確實能讓臀大肌肥大，效果量中等（SMD 約 0.71），這部分證據相當扎實。但「臀橋能提升運動表現」的推論要保守：髖推長期訓練只顯著提升它自己的專項肌力，並未轉移到深蹲肌力或跳躍表現，對衝刺的轉移也僅在統計邊緣。EMG 研究可用來優化姿勢（例如單腳臀橋把膝屈至 135° 可大幅降低腿後肌代償而維持臀肌活化），但 EMG 高低不等於訓練成效。至於臨床上「臀肌失憶／啟動不良」的說法，缺乏高品質對照研究支持。",
-      "citations": [
-        {
-          "pmid": "40276368",
-          "title": "The impact of resistance training on gluteus maximus hypertrophy: a systematic review and meta-analysis.",
-          "journal": "Front Physiol",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "11 篇研究：髖伸阻力訓練對臀大肌肥大有中等效果（SMD = 0.71, 95% CI 0.50–0.91, I² = 22%）；若目標是專攻臀大肌，槓鈴髖推應優先。"
-        },
-        {
-          "pmid": "41777686",
-          "title": "Acute and long-term effects of hip thrust training on athletic performance: a systematic review and meta-analysis.",
-          "journal": "PeerJ",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "20 篇 RCT：髖推長期訓練只提升自身專項肌力（ES = 0.53），未轉移到深蹲肌力或跳躍；對衝刺加速的獨立轉移僅 ES = 0.22（p = 0.05），作者稱「效益極小」。"
-        },
-        {
-          "pmid": "40988435",
-          "title": "Comparing the impact of hip thrust versus squat training on lower limb performance in sub-elite athletes: a systematic review and meta-analysis.",
-          "journal": "Sports Biomech",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "深蹲訓練顯著提升垂直跳且優於髖推；兩者對水平跳、短衝刺與變向都沒有顯著影響。"
-        },
-        {
-          "pmid": "28900560",
-          "title": "BUILDING A BETTER GLUTEAL BRIDGE: ELECTROMYOGRAPHIC ANALYSIS OF HIP MUSCLE ACTIVITY DURING MODIFIED SINGLE-LEG BRIDGES.",
-          "journal": "Int J Sports Phys Ther",
-          "year": 2017,
-          "design": "cross-sectional",
-          "takeaway": "單腳臀橋把支撐腳膝屈由 90° 改為 135°，腿後肌活化由 75.3% MVIC 降到 23.5%，臀大／臀中肌活化仍維持高檔——可作為「腿後抽筋」時的姿勢修正依據。"
-        },
-        {
-          "pmid": "31356511",
-          "title": "Comparison Between Back Squat, Romanian Deadlift, and Barbell Hip Thrust for Leg and Hip Muscle Activities During Hip Extension.",
-          "journal": "J Strength Cond Res",
-          "year": 2019,
-          "design": "cross-sectional",
-          "takeaway": "羅馬尼亞硬舉在孤立髖伸肌群上與槓鈴髖推同樣有效；深蹲則同時徵召髖伸與膝伸肌群——動作選擇取決於目標而非「哪個臀肌 EMG 最高」。"
-        },
-        {
-          "pmid": "33948095",
-          "title": "Comparison of Muscle Activity in Three Single-Joint, Hip Extension Exercises in Resistance-Trained Women.",
-          "journal": "J Sports Sci Med",
-          "year": 2021,
-          "design": "RCT",
-          "takeaway": "在受過阻力訓練的女性中，羅馬椅背伸展與羅馬式硬舉的臀大肌活化都優於坐姿背伸機；三種動作對豎脊肌活化無差異。"
-        },
-        {
-          "pmid": "38016398",
-          "title": "Effectiveness of a specific strength program of the gluteus maximus muscle to improve dynamic postural control in female basketball players. A randomized controlled trial.",
-          "journal": "Gait Posture",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "臀大肌專項肌力訓練改善了動態平衡與跳躍高度，但疼痛與膝外翻並未顯著改善——訓練有效不代表「矯正」了排列。"
-        },
-        {
-          "pmid": "39424858",
-          "title": "Effectiveness of gluteal control training in chronic low back pain patients with functional leg length inequality.",
-          "journal": "Sci Rep",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "在合併功能性長短腳的慢性下背痛者，臀肌控制訓練在疼痛（VAS 1.41 vs 3.38）、骨盆傾斜與髖控制能力上都優於一般阻力訓練組。"
-        }
-      ]
+     "pmid": "38244921",
+     "title": "Foam rolling and stretching do not provide superior acute flexibility and stiffness improvements compared to any other warm-up intervention: A systematic review with meta-analysis",
+     "journal": "J Sport Health Sci",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "急性熱身時，滾筒／伸展與其他熱身活動相比，活動度（ES = 0.01）、僵硬度（ES = 0.09）、被動峰值扭矩皆無顯著差異——作者直言這挑戰了「熱身必須含伸展或滾筒」的既定觀點。"
     },
     {
-      "id": "calf-stretch",
-      "name": "小腿伸展",
-      "evidence_grade": "limited",
-      "summary": "小腿伸展能增加踝背屈活動度，但幅度通常只有數度，且機轉主要是「伸展耐受度上升」與小幅僵硬度下降，不是肌肉真的變長（筋膜束長度並未改變）。在特定族群甚至完全無效：糖尿病合併踝馬蹄足者做 8 週靜態伸展，背屈與足底壓力都沒有顯著改善。用於足底筋膜炎時，兩週伸展計畫相較不伸展並無統計顯著益處，正式物理治療也不優於自行在家伸展；最新指引把伸展定位為輔助而非主力。最重要的是：統合分析明確顯示伸展無法降低運動傷害風險（RR 0.96），也幾乎無法減輕運動後痠痛（Cochrane 估計僅約 1 分／100 分）。",
-      "citations": [
-        {
-          "pmid": "24100287",
-          "title": "The effectiveness of exercise interventions to prevent sports injuries: a systematic review and meta-analysis of randomised controlled trials.",
-          "journal": "Br J Sports Med",
-          "year": 2014,
-          "design": "meta-analysis",
-          "takeaway": "25 篇 RCT、26,610 人：伸展對傷害預防無效（RR 0.963, 95% CI 0.846–1.095），而肌力訓練把運動傷害降到不到 1/3（RR 0.315）、本體感覺訓練 RR 0.550。"
-        },
-        {
-          "pmid": "21735398",
-          "title": "Stretching to prevent or reduce muscle soreness after exercise.",
-          "journal": "Cochrane Database Syst Rev",
-          "year": 2011,
-          "design": "meta-analysis",
-          "takeaway": "Cochrane 回顧結論：運動前或運動後伸展對延遲性肌肉痠痛的減輕幅度極小，臨床上可視為無意義。"
-        },
-        {
-          "pmid": "40180774",
-          "title": "Mechanisms Underlying Range of Motion Improvements Following Acute and Chronic Static Stretching: A Systematic Review, Meta-analysis and Multivariate Meta-regression.",
-          "journal": "Sports Med",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "65 篇研究、1,542 人：長期靜態伸展僅小幅降低整體僵硬度（g = 0.37），主要機轉是可耐受被動阻力扭矩上升（g = 0.74）；筋膜束長度不論急性或長期都沒有顯著改變。"
-        },
-        {
-          "pmid": "31302489",
-          "title": "Calf muscle stretching is ineffective in increasing ankle range of motion or reducing plantar pressures in people with diabetes and ankle equinus: A randomised controlled trial.",
-          "journal": "Clin Biomech (Bristol)",
-          "year": 2019,
-          "design": "RCT",
-          "takeaway": "68 人 RCT：8 週靜態小腿伸展對非負重背屈（+1.3°）、負重背屈（+0.5°）與足底壓力都沒有統計或臨床上有意義的改善。"
-        },
-        {
-          "pmid": "17442119",
-          "title": "Effectiveness of calf muscle stretching for the short-term treatment of plantar heel pain: a randomised trial.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2007,
-          "design": "RCT",
-          "takeaway": "兩週小腿伸展相較不伸展，起步痛差異僅 -7.9 mm（95% CI -18.3 到 2.6，不顯著），且伸展組 10 人出現輕中度不良反應。"
-        },
-        {
-          "pmid": "35797682",
-          "title": "A Prospective Randomized Controlled Trial Comparing Physical Therapy With Independent Home Stretching for Plantar Fasciitis.",
-          "journal": "J Am Acad Orthop Surg",
-          "year": 2022,
-          "design": "RCT",
-          "takeaway": "57 人 RCT：正式物理治療與自行居家伸展在 VAS、FAAM、SF-36 上，任何時間點都無組間差異——自己在家做就夠了。"
-        },
-        {
-          "pmid": "41169885",
-          "title": "Comparison between 6 weeks of static stretching and resistance training programs on passive and active properties of plantar flexors. a randomized controlled trial.",
-          "journal": "Front Physiol",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "6 週靜態伸展與阻力訓練都提升踝背屈活動度（d = 0.65 vs 0.37），但只有阻力訓練同時帶來肌力與肌厚度增加；想改善小腿，練比拉多。"
-        },
-        {
-          "pmid": "33785535",
-          "title": "Management of plantar heel pain: a best practice guide informed by a systematic review, expert clinical reasoning and patient values.",
-          "journal": "Br J Sports Med",
-          "year": 2021,
-          "design": "systematic review",
-          "takeaway": "足跟痛最佳實務指引：伸展屬於可用但非核心的選項，衛教、負荷管理與漸進式運動治療才是主軸。"
-        }
-      ]
+     "pmid": "36227232",
+     "title": "Foam Rolling Acute Effects on Myofascial Tissue Stiffness and Muscle Strength: A Systematic Review and Meta-Analysis",
+     "journal": "J Strength Cond Res",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "統合分析顯示滾筒並未急性改變肌筋膜組織僵硬度，也未改變等長肌力、離心扭矩或發力率（僅膝伸向心扭矩略增），且證據確定性低。"
     },
     {
-      "id": "childs-pose",
-      "name": "嬰兒式與後側肋廓呼吸",
-      "evidence_grade": "limited",
-      "summary": "呼吸訓練介入慢性非特異性下背痛的統合分析顯示疼痛（SMD 約 -1.1）與功能都有改善，橫膈導向介入的結果也類似，但兩篇的異質性都很高、多篇研究有高偏誤風險，GRADE 評為「低至極低確定性」。在非特異性頸痛的 RCT 中，呼吸訓練確實改變了呼吸型態，但疼痛與失能的組間差異不顯著。緩慢呼吸本身能可靠提升迷走神經調控指標（心率變異度），這部分證據較穩。至於「嬰兒式能擴張後側肋廓、改善姿勢」的說法，目前沒有直接的對照試驗，屬於合理但未驗證的推論——課程中應以「放鬆與呼吸覺察」定位，而非結構矯正。",
-      "citations": [
-        {
-          "pmid": "40965964",
-          "title": "Can breathing exercises effectively treat people with chronic non-specific low back pain? A systemic review with meta-analysis.",
-          "journal": "J Back Musculoskelet Rehabil",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "17 篇研究、633 人：呼吸訓練降低疼痛（SMD -1.11）與失能（ODI SMD -0.56），並提升腹橫肌活化（SMD 0.82）；但異質性高、5 篇高偏誤風險，GRADE 為低至極低確定性。"
-        },
-        {
-          "pmid": "41662208",
-          "title": "Diaphragmatic dysfunction and activation interventions for chronic nonspecific low back pain: A systematic review and meta-analysis.",
-          "journal": "J Back Musculoskelet Rehabil",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "7 篇 RCT、283 人：橫膈導向介入顯著降低疼痛（SMD -1.11, 95% CI -1.52 到 -0.71），其中橫膈訓練 SMD -1.37；但樣本量小，證據基礎薄弱。"
-        },
-        {
-          "pmid": "35623448",
-          "title": "Effects of voluntary slow breathing on heart rate and heart rate variability: A systematic review and a meta-analysis.",
-          "journal": "Neurosci Biobehav Rev",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "主動緩慢呼吸在進行中、剛結束與間隔後都能提升迷走神經調控的心率變異度指標，是低成本、低風險的自律神經調節手段。"
-        },
-        {
-          "pmid": "40967423",
-          "title": "The impact of a breathing exercise program on pain, disability, and breathing patterns in patients with non-specific neck pain: A randomized controlled trial.",
-          "journal": "Complement Ther Med",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "呼吸訓練顯著改善呼吸型態（MD 2.73），但疼痛（MD 0.34, p = .24）與頸部失能指數（MD 0.86, p = .25）的組間差異都不顯著。"
-        },
-        {
-          "pmid": "38205226",
-          "title": "Effect of Adding Diaphragmatic Breathing Exercises to Core Stabilization Exercises on Pain, Muscle Activity, Disability, and Sleep Quality in Patients With Chronic Low Back Pain: A Randomized Control Trial.",
-          "journal": "J Chiropr Med",
-          "year": 2023,
-          "design": "RCT",
-          "takeaway": "僅 22 人的小型 RCT：橫膈呼吸加上核心穩定訓練，在恐懼迴避信念與胸廓擴張上有組間效應，但疼痛與失能主要是時間效應而非組間差異。"
-        },
-        {
-          "pmid": "42058410",
-          "title": "Is yoga more beneficial than exercise-based interventions for patients with chronic low back pain? A systematic review and meta-analysis.",
-          "journal": "Front Med (Lausanne)",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "7 篇 RCT：瑜珈（含嬰兒式等姿勢）在疼痛上並未優於一般運動（SMD -0.52, 95% CI -1.38 到 0.35, I² = 95%），僅在情緒健康上有較一致的優勢。"
-        },
-        {
-          "pmid": "39593648",
-          "title": "Exploring the therapeutic effects of yoga on spine and shoulder mobility: A systematic review.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2024,
-          "design": "systematic review",
-          "takeaway": "系統性回顧支持瑜珈可改善脊椎與肩部活動度，但作者亦指出納入研究品質參差、需要更強的證據才能定論。"
-        }
-      ]
+     "pmid": "31256353",
+     "title": "Do Self-Myofascial Release Devices Release Myofascia? Rolling Mechanisms: A Narrative Review",
+     "journal": "Sports Med",
+     "year": 2019,
+     "design": "narrative review",
+     "takeaway": "系統性檢視機轉後認為滾筒不太可能真的「鬆解筋膜」，觀察到的效果更可能來自神經反射、痛覺調節與局部血流／溫度改變。"
     },
     {
-      "id": "couch-stretch",
-      "name": "沙發伸展（髖屈肌）",
-      "evidence_grade": "limited",
-      "summary": "髖屈肌伸展能可靠地增加被動髖伸活動度，這點沒有爭議；但它改變不了姿勢。一篇 23 研究、969 人的統合分析明確顯示，急性（d = 0.01）或長期（d = -0.19）伸展對脊椎與腰骨盆姿勢（含骨盆前傾）都沒有影響，肌力訓練才有（d = -0.83），且伸展在所有部位都無效。在跑者身上，3 週伸展雖增加被動髖伸，跑步時的骨盆前傾與腰椎伸展卻完全沒變。老年人族群是少數例外：對走路時髖伸受限者，10 週監督式伸展確實增加了步幅與髖伸並減少骨盆前傾，但基礎研究的改善幅度只有 1.6°。此外效果會流失——停止 4 週後活動度與止痛效果都顯著回退。",
-      "citations": [
-        {
-          "pmid": "38834878",
-          "title": "Effects of Stretching or Strengthening Exercise on Spinal and Lumbopelvic Posture: A Systematic Review with Meta-Analysis.",
-          "journal": "Sports Med Open",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "23 篇研究、969 人：伸展對姿勢無效（急性 d = 0.01、長期 d = -0.19），肌力訓練有大效果（d = -0.83）且優於伸展（d = 0.81）；作者結論是中等確定性證據「不支持用伸展治療肌肉失衡」。"
-        },
-        {
-          "pmid": "29927892",
-          "title": "Effects of a Hip Flexor Stretching Program on Running Kinematics in Individuals With Limited Passive Hip Extension.",
-          "journal": "J Strength Cond Res",
-          "year": 2019,
-          "design": "RCT",
-          "takeaway": "3 週髖屈肌靜態伸展增加了被動髖伸，但跑步時的主動髖伸、骨盆前傾與腰椎伸展全都沒有改變，兩者間也無相關。"
-        },
-        {
-          "pmid": "40180774",
-          "title": "Mechanisms Underlying Range of Motion Improvements Following Acute and Chronic Static Stretching: A Systematic Review, Meta-analysis and Multivariate Meta-regression.",
-          "journal": "Sports Med",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "活動度增加主要來自伸展耐受度提高（g = 0.74）與小幅僵硬度下降（g = 0.37），筋膜束長度不變——伸展改變的是「你能忍受多少」，不是「肌肉多長」。"
-        },
-        {
-          "pmid": "37231582",
-          "title": "Long-term static stretching can decrease muscle stiffness: A systematic review and meta-analysis.",
-          "journal": "Scand J Med Sci Sports",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "10 篇研究：≥2 週的長期靜態伸展確實可降低肌肉僵硬度，是少數支持伸展帶來組織性質改變的統合證據，但研究數量仍少。"
-        },
-        {
-          "pmid": "39462416",
-          "title": "Comparison of two different stretching strategies to improve hip extension mobility in healthy and active adults: a crossover clinical trial.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "26 人交叉試驗：半跪姿伸展加上骨盆後傾，比只把骨盆前推的傳統做法多降低 4.85 N·m 的髖屈肌反應性張力——技術細節（骨盆後傾）比動作名稱重要。"
-        },
-        {
-          "pmid": "40465522",
-          "title": "The training and detraining effects of 8-week dynamic stretching of hip flexors on hip range of motion, pain, and physical performance in male professional football players with low back pain. A randomized controlled trial.",
-          "journal": "J Sports Sci",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "40 名職業足球員：8 週動態髖屈肌伸展改善活動度與下背痛，但 20 公尺衝刺與敏捷度無改善；停練 4 週後活動度（ES 0.64–0.80）與止痛效果顯著回退。"
-        },
-        {
-          "pmid": "21497318",
-          "title": "Effect of a supervised hip flexor stretching program on gait in elderly individuals.",
-          "journal": "PM R",
-          "year": 2011,
-          "design": "RCT",
-          "takeaway": "10 週監督式伸展：只在「走路時髖伸原本就受限」的長者身上增加了步幅與髖伸並減少骨盆前傾；沒有受限者則無此效益。"
-        },
-        {
-          "pmid": "12589613",
-          "title": "Effect of a hip flexor-stretching program on gait in the elderly.",
-          "journal": "Arch Phys Med Rehabil",
-          "year": 2003,
-          "design": "RCT",
-          "takeaway": "靜態髖伸僅由 6.1° 增至 7.7°（約 1.6°），走路時的動態髖伸僅呈趨勢（p = .10）未達顯著——效果真實但幅度很小。"
-        }
-      ]
+     "pmid": "39593540",
+     "title": "Preventive effect of foam rolling on muscle soreness after exercise: A systematic review and meta-analysis",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "16 篇 RCT、515 人：滾筒可降低運動後痠痛主觀評分，24 h（SMD = -0.53）與 48 h（SMD = -0.77）效果最明顯，但客觀的壓痛閾值未達統計顯著。"
     },
     {
-      "id": "short-foot",
-      "name": "足內在肌訓練（short foot）",
-      "evidence_grade": "moderate",
-      "summary": "足內在肌訓練（short foot）在改善足弓形態指標（舟狀骨下墜、內側縱弓角）與足部肌肉大小上有多篇統合分析支持，方向一致；在動態平衡與慢性踝關節不穩者的靜態姿勢控制上也有 RCT 支持。但要誠實說兩點：一是多數統合分析的證據確定性被評為「低到極低」，主因是研究數量少、偏誤風險高；二是改善的多半是形態與實驗室指標，「因此減少受傷或疼痛」的長期臨床證據仍然不足。最新 RCT 也顯示 4 週訓練改善了靜態平衡與主觀不穩感，但動態平衡沒有變化。",
-      "citations": [
-        {
-          "pmid": "35724360",
-          "title": "Evidence for Intrinsic Foot Muscle Training in Improving Foot Function: A Systematic Review and Meta-Analysis.",
-          "journal": "J Athl Train",
-          "year": 2023,
-          "design": "meta-analysis",
-          "takeaway": "系統性回顧 ≥2 週的足內在肌訓練 RCT，在足部姿勢（舟狀骨下墜、Foot Posture Index）、平衡與肌力等面向整理出正向但品質不一的證據。"
-        },
-        {
-          "pmid": "35442981",
-          "title": "Effect of intrinsic foot muscles training on foot function and dynamic postural balance: A systematic review and meta-analysis.",
-          "journal": "PLoS One",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "16 篇研究（10 篇高品質）：足內在肌訓練對內側縱弓形態與動態姿勢平衡有正向的生物力學效應。"
-        },
-        {
-          "pmid": "36231295",
-          "title": "Effects of the Short-Foot Exercise on Foot Alignment and Muscle Hypertrophy in Flatfoot Individuals: A Meta-Analysis.",
-          "journal": "Int J Environ Res Public Health",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "6 篇 RCT、201 名扁平足者：short foot 運動相較鞋墊或其他訓練，顯著改善足部排列並使足內在肌肥大。"
-        },
-        {
-          "pmid": "39709752",
-          "title": "The effects of foot core exercises and minimalist footwear on foot muscle sizes, foot strength, and biomechanics: A systematic review and meta-analysis.",
-          "journal": "Clin Biomech (Bristol)",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "28 篇試驗、1,399 人：足部運動確實降低跑步時內側縱弓活動幅度、提升足部力量，但對肌肉大小的結果互相衝突，且證據確定性為低到極低。"
-        },
-        {
-          "pmid": "41938328",
-          "title": "Short-Foot Exercises Improve Postural Control and Ankle Instability in Chronic Ankle Instability: A Randomized Controlled Trial.",
-          "journal": "J Athl Train",
-          "year": 2026,
-          "design": "RCT",
-          "takeaway": "24 名慢性踝不穩者：4 週 short foot 訓練改善靜態姿勢控制與主觀不穩感（p < .05），但動態姿勢控制無差異。"
-        },
-        {
-          "pmid": "36988565",
-          "title": "The combined effect of short foot exercises and orthosis in symptomatic flexible flatfoot: a randomized controlled trial.",
-          "journal": "Eur J Phys Rehabil Med",
-          "year": 2023,
-          "design": "RCT",
-          "takeaway": "有症狀柔軟性扁平足者：short foot 運動加鞋墊在足壓分布、疼痛與功能上優於單用鞋墊，支持「運動＋輔具」的合併策略。"
-        },
-        {
-          "pmid": "39480362",
-          "title": "Strengthening the Intrinsic Muscles of the Foot and Its Action on Foot Posture and Self-Reported Function in Individuals With Lower Limb Injuries: Systematic Review and Meta-Analysis.",
-          "journal": "J Manipulative Physiol Ther",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "從 1,051 篇篩選後僅 4 篇可納入：足內在肌訓練顯著提升內側縱弓高度（p < .00001），但可用研究極少，結論仍待更多試驗。"
-        },
-        {
-          "pmid": "36526555",
-          "title": "A comprehensive exercise program improves foot alignment in people with flexible flat foot: a randomised trial.",
-          "journal": "J Physiother",
-          "year": 2023,
-          "design": "RCT",
-          "takeaway": "52 人隨機分派：6 週綜合運動（含 short foot、臀肌訓練與伸展）比單純踝背屈／蹠屈多改善舟狀骨下墜 0.4 cm、縱弓角 16 度。"
-        }
-      ]
+     "pmid": "39593677",
+     "title": "The effect of foam rolling on local and distant pain sensitivity assessed with pressure pain thresholds in healthy participants and musculoskeletal pain patients: A systematic review",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "滾筒前後比較確有小幅壓痛閾值變化（局部 SMD = -0.42、遠端 -0.47），但與對照組相比則無差異（SMD = 0.10），代表大部分是非特異性效應。"
     },
     {
-      "id": "hip-9090",
-      "name": "90/90 髖旋轉伸展",
-      "evidence_grade": "limited",
-      "summary": "髖旋轉活動度受限與下背痛、棒球投擲側肩肘傷害有橫斷面與世代研究上的關聯（尤其是髖內旋不足），但這只是相關，不是因果。介入端證據薄弱：能改善髖旋轉活動度的交叉試驗多為單次或短期、樣本數小，且無長期追蹤；在髖夾擠症候群的高品質 RCT（PhysioFIRST）中，伸展組與肌力組在 6 個月的髖相關生活品質上沒有差異，次要分析反而顯示肌力訓練在自覺疼痛改善上較好。另外，可用的髖旋轉活動度有很大一部分由骨盆傾斜與髖臼股骨形態決定，不是伸展能改變的。90/90 可作為感覺良好的活動度練習，但不宜宣稱能「矯正髖關節」。",
-      "citations": [
-        {
-          "pmid": "42082318",
-          "title": "Physiotherapist-led treatment for femoroacetabular impingement syndrome (the PhysioFIRST study): an assessor-blinded, limited disclosure randomised controlled trial.",
-          "journal": "Br J Sports Med",
-          "year": 2026,
-          "design": "RCT",
-          "takeaway": "154 人 RCT：伸展組與肌力組在 6 個月髖相關生活品質無差異（MD 0.2），但肌力組自覺疼痛改善比例較高（72% vs 52%, OR 2.36）且肌力增益較大。"
-        },
-        {
-          "pmid": "39932225",
-          "title": "Is Decreased Hip Flexibility a Risk Factor of Arm Injuries in Young Baseball Players? Systematic Review and Meta-Analysis.",
-          "journal": "Clin J Sport Med",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "11 篇報告：有肩／肘傷的棒球選手髖內旋活動度確實較小（橫斷面 p = 0.04、世代 p = 0.02），但髖外旋與直膝抬腿都沒有關聯。"
-        },
-        {
-          "pmid": "38807086",
-          "title": "Hip biomechanics in patients with low back pain, what do we know? A systematic review.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2024,
-          "design": "systematic review",
-          "takeaway": "54 篇研究：下背痛者髖活動度普遍下降、尤其髖內旋，並伴隨髖外展與伸肌無力；但為橫斷面關聯，無法判定先後因果。"
-        },
-        {
-          "pmid": "40021069",
-          "title": "Posterior Pelvic Tilt Allows for Increased Hip Motion, While Anterior Pelvic Tilt Decreases Joint Stress: A Systematic Review of Biomechanical and Motion Analyses.",
-          "journal": "Arthroscopy",
-          "year": 2025,
-          "design": "systematic review",
-          "takeaway": "14 篇研究、577 髖：骨盆後傾時屈曲下的內旋可達 12.9–31.4°，前傾時僅 -6.5 到 15.5°——同一個人「髖內旋多少」大幅取決於骨盆位置而非軟組織長度。"
-        },
-        {
-          "pmid": "39926033",
-          "title": "The effects of gluteal stretching vs. Lightback® on hip rotation range of motion and posterior chain flexibility in healthy subjects: a cross-over clinical trial.",
-          "journal": "PeerJ",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "交叉試驗顯示靜態臀肌伸展與器械輔助組都能增加被動髖旋轉活動度，但器械組在主動內外旋（含屈髖 90° 位）改善更明顯——單純伸展對「主動可用範圍」較弱。"
-        },
-        {
-          "pmid": "40010367",
-          "title": "Normative Hip Range of Motion and Strength Profiles of Uninjured Baseball Athletes: A Systematic Review.",
-          "journal": "J Sport Rehabil",
-          "year": 2025,
-          "design": "systematic review",
-          "takeaway": "在無傷棒球員身上，髖外旋普遍大於內旋，且隨年齡與競技層級上升，內外旋差距反而更大——旋轉不對稱是常態適應，不必然是需要矯正的問題。"
-        },
-        {
-          "pmid": "40180774",
-          "title": "Mechanisms Underlying Range of Motion Improvements Following Acute and Chronic Static Stretching: A Systematic Review, Meta-analysis and Multivariate Meta-regression.",
-          "journal": "Sports Med",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "伸展帶來的活動度增加主要來自伸展耐受度，筋膜束長度不變；套用到 90/90，改變的是耐受度而非關節結構。"
-        },
-        {
-          "pmid": "39462416",
-          "title": "Comparison of two different stretching strategies to improve hip extension mobility in healthy and active adults: a crossover clinical trial.",
-          "journal": "BMC Musculoskelet Disord",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "同一伸展加上骨盆控制（後傾）效果顯著較好（多降 4.85 N·m 反應性張力），提示髖活動度練習的關鍵在骨盆位置控制。"
-        }
-      ]
-    },
-    {
-      "id": "hipflexor-strength",
-      "name": "髖屈肌肌力訓練",
-      "evidence_grade": "limited",
-      "summary": "髖屈肌是少數「練得起來、也可能真的有用」但臨床試驗嚴重不足的部位。彈力帶髖屈訓練 6 週可使等長髖屈肌力提升 17%，這是高品質 RCT 的直接證據；長跑者的腰大肌阻力訓練也顯示橫截面積增加與等速跑持續時間改善相關。肌肉骨骼模擬則指出最大衝刺速度對髖屈肌力最敏感（髖肌力 +10% → 速度 +2.59%，遠高於踝的 1.02% 與膝的 0.33%）。但要誠實說：這些是小樣本 RCT 與電腦模擬，缺乏「髖屈訓練能減少傷害或改善疼痛」的臨床終點試驗；模擬也顯示髖屈肌力增加會提高步行時的髖關節接觸力，對髖部退化族群需個別評估。",
-      "citations": [
-        {
-          "pmid": "25796586",
-          "title": "Large strengthening effect of a hip-flexor training programme: a randomized controlled trial.",
-          "journal": "Knee Surg Sports Traumatol Arthrosc",
-          "year": 2016,
-          "design": "RCT",
-          "takeaway": "僅 6 週彈力帶髖屈訓練使受訓腿等長髖屈肌力增加 17%，組間差 0.34 Nm/kg（95% CI 0.17–0.52, p < 0.001）——簡單器材即可產生實質肌力增益。"
-        },
-        {
-          "pmid": "42189432",
-          "title": "Running Speed is Maximized by Strengthening the Hip Flexors and Hip Adductors.",
-          "journal": "Ann Biomed Eng",
-          "year": 2026,
-          "design": "simulation",
-          "takeaway": "肌肉骨骼模擬：髖肌力 +10% 使最大衝刺速度 +2.59%（踝 1.02%、膝 0.33%）；單獨強化腰大肌貢獻最大（+1.07%），主要透過提高步頻而非步長。"
-        },
-        {
-          "pmid": "33668016",
-          "title": "Effect of Resistance Training of Psoas Major in Combination With Regular Running Training on Performance in Long-Distance Runners.",
-          "journal": "Int J Sports Physiol Perform",
-          "year": 2021,
-          "design": "RCT",
-          "takeaway": "長跑者加入腰大肌阻力訓練後，腰大肌橫截面積顯著增加（d = 0.34），等速跑持續時間由 500 s 增至 715 s（d = 1.41），且兩者變化量顯著相關。"
-        },
-        {
-          "pmid": "41770406",
-          "title": "Differences in Psoas Major Muscle Properties Between Elite Athletes with and Without Chronic Low Back Pain.",
-          "journal": "Sports Med Open",
-          "year": 2026,
-          "design": "cohort",
-          "takeaway": "菁英運動員中，與慢性下背痛相關的是腰大肌「僵硬度」上升（優勢側 +17.2%, MD 3.21 kPa），而不是肌力或柔軟度——這兩項與下背痛皆無關聯。"
-        },
-        {
-          "pmid": "41252918",
-          "title": "Iliopsoas strengthening increases hip joint forces during gait: A simulation study.",
-          "journal": "J Biomech",
-          "year": 2026,
-          "design": "simulation",
-          "takeaway": "模擬顯示增加髂腰肌肌力會在整個步態週期一致提高髖關節接觸力——對髖關節退化或術後族群，強化髖屈肌未必是中性的介入。"
-        },
-        {
-          "pmid": "38394308",
-          "title": "A simulation framework to determine optimal strength training and musculoskeletal geometry for sprinting and distance running.",
-          "journal": "PLoS Comput Biol",
-          "year": 2024,
-          "design": "simulation",
-          "takeaway": "建立可決定「哪些肌群強化最能提升跑步表現」的模擬框架；此類結果是假說產生工具，尚需前瞻性訓練試驗驗證。"
-        },
-        {
-          "pmid": "41242937",
-          "title": "Lower limb muscle strength profiles and injury associations: a two-season prospective cohort study in men's professional rugby union.",
-          "journal": "J Sci Med Sport",
-          "year": 2026,
-          "design": "cohort",
-          "takeaway": "兩季前瞻世代：腿後與髖／鼠蹊傷害占下肢非接觸性傷害的 43%，曾有髖／鼠蹊傷者再發腿後傷的勝算比達 4.0（p = 0.0016），支持把髖部力量納入監測。"
-        }
-      ]
-    },
-    {
-      "id": "mckenzie",
-      "name": "McKenzie 俯臥撐起",
-      "evidence_grade": "contested",
-      "summary": "McKenzie 方法是本清單中證據最分歧的一項。2023 年 Cochrane 對急性／亞急性非特異性下背痛的結論是：相較最小介入，短期疼痛僅小幅下降（MD -7.3／100 分），失能沒有改善，且所有納入試驗都有高偏誤風險。但另一篇針對「有方向偏好（directional preference）的慢性下背痛、由認證治療師執行」的統合分析，卻找到臨床上有意義的疼痛（MD -1.11／10 分）與失能改善。整體來看，把病人分類再給對應運動的策略，效果小到不具臨床意義。McKenzie 真正較穩的價值不在治療，而在預後判讀：能出現「症狀集中化」的病人結果明顯較好，不集中化者接受手術的機率高出約 6 倍。",
-      "citations": [
-        {
-          "pmid": "37017272",
-          "title": "The McKenzie method for (sub)acute non-specific low back pain.",
-          "journal": "Cochrane Database Syst Rev",
-          "year": 2023,
-          "design": "systematic review",
-          "takeaway": "5 篇 RCT、563 人：相較最小介入，短期疼痛僅降 7.3 分（0–100，低確定性），中期不顯著，失能短中期皆無改善；所有試驗都有高執行與偵測偏誤風險。"
-        },
-        {
-          "pmid": "39383118",
-          "title": "The McKenzie Method delivered by credentialed therapists for chronic low back pain with directional preference: systematic review with meta-analysis.",
-          "journal": "J Man Manip Ther",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "5 篇試驗、743 人：在有方向偏好且由認證治療師執行的前提下，短期疼痛改善 MD -1.11／10 分、中期失能 SMD -0.53，達臨床重要程度（低確定性證據）。"
-        },
-        {
-          "pmid": "34775831",
-          "title": "Classification Approaches for Treating Low Back Pain Have Small Effects That Are Not Clinically Meaningful: A Systematic Review With Meta-analysis.",
-          "journal": "J Orthop Sports Phys Ther",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "24 篇試驗、4,416 人：分類導向治療相較一般化介入，疼痛 SMD -0.31、失能 -0.27，全部低於臨床有意義門檻；沒有任何一種分類系統勝出。"
-        },
-        {
-          "pmid": "37605454",
-          "title": "The McKenzie Method versus guideline-based advice in the treatment of sciatica: 24-month outcomes of a randomised clinical trial.",
-          "journal": "Clin Rehabil",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "66 名坐骨神經痛患者、24 個月追蹤：McKenzie 多次治療與單純指引式衛教在所有病人自述結果與手術率上都沒有顯著差異。"
-        },
-        {
-          "pmid": "15928538",
-          "title": "Centralization: its prognostic value in patients with referred symptoms and sciatica.",
-          "journal": "Spine (Phila Pa 1976)",
-          "year": 2005,
-          "design": "cohort",
-          "takeaway": "60 名坐骨神經痛患者：出現症狀集中化者 1–3 個月結果顯著較佳，且未集中化組接受手術的勝算比達 6.2（16/35 vs 3/25）。"
-        },
-        {
-          "pmid": "11295896",
-          "title": "Centralization phenomenon as a prognostic factor for chronic low back pain and disability.",
-          "journal": "Spine (Phila Pa 1976)",
-          "year": 2001,
-          "design": "cohort",
-          "takeaway": "疼痛型態未集中化與初診時腿部疼痛，是預測慢性化與失能最強的兩個變項——動態評估的預後價值高於治療價值。"
-        },
-        {
-          "pmid": "29932871",
-          "title": "Reliability of the Mechanical Diagnosis and Therapy System in Patients With Spinal Pain: A Systematic Review.",
-          "journal": "J Orthop Sports Phys Ther",
-          "year": 2018,
-          "design": "systematic review",
-          "takeaway": "MDT 分類系統的評分者間信度高度依賴施測者是否受過完整認證訓練；未受訓者的分類一致性明顯較差。"
-        },
-        {
-          "pmid": "41316625",
-          "title": "Comparison of the effectiveness of home-based video-supported McKenzie versus Pilates exercise programs in patients with chronic non-specific low back pain: a randomized controlled trial.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "居家影片指導的 McKenzie 與 Pilates 在慢性非特異性下背痛上效果相近，支持「病人願意持續做的運動」比特定流派更重要。"
-        }
-      ]
-    },
-    {
-      "id": "glute-stretch",
-      "name": "臀肌／梨狀肌伸展",
-      "evidence_grade": "limited",
-      "summary": "臀肌／梨狀肌伸展能增加髖旋轉與後側鏈活動度，這一點有交叉試驗支持；但用它「治療梨狀肌症候群／深臀症候群」的證據很弱。深臀症候群的系統性回顧納入 13 篇研究後結論是：證據品質低，沒有任何一種保守療法可以推薦優於另一種，臨床應回到一般下背痛與坐骨神經痛的處理原則。梨狀肌症候群本身的診斷就不可靠——一篇回顧 212 位病例的研究顯示，僅憑臨床診斷（無影像佐證）者治療失敗的勝算比高達 5.3。RCT 層級的資料多為小樣本且結果不一致：有試驗顯示伸展加在薦髂關節鬆動之上只改善失能不改善疼痛，也有試驗顯示伸展與壓迫運動對背肌屈曲放鬆比都沒有效果。",
-      "citations": [
-        {
-          "pmid": "37949567",
-          "title": "A systematic review of conservative and surgical treatments for deep gluteal syndrome.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2023,
-          "design": "systematic review",
-          "takeaway": "13 篇研究、508 人：僅 3 篇達到疼痛的最小臨床重要差異、1 篇達失能的 MCID；整體證據品質低，作者結論是無法推薦任何單一保守療法。"
-        },
-        {
-          "pmid": "32349600",
-          "title": "Deep gluteal syndrome as a cause of posterior hip pain and sciatica-like pain.",
-          "journal": "Bone Joint J",
-          "year": 2020,
-          "design": "narrative review",
-          "takeaway": "綜論指出深臀症候群多因坐骨神經受多種結構卡壓，保守處理應為多面向（休息、避免誘發活動、藥物、注射、物理治療），單靠伸展不足以解決。"
-        },
-        {
-          "pmid": "41068685",
-          "title": "Piriformis syndrome: a systematic review of case reports.",
-          "journal": "BMC Surg",
-          "year": 2025,
-          "design": "systematic review",
-          "takeaway": "212 例病例：保守治療僅在 41.1% 有效、58.9% 最終需手術；純靠臨床診斷（無影像佐證）者治療失敗勝算比為 5.3。"
-        },
-        {
-          "pmid": "40954575",
-          "title": "Additional effects of piriformis stretch in the management of sacroiliac joint dysfunction: A randomized control trial.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "36 人 RCT：在薦髂關節鬆動之外再加梨狀肌伸展，對疼痛沒有額外效果，僅失能分數有顯著改善。"
-        },
-        {
-          "pmid": "39593660",
-          "title": "Comparing the effect of stretching and compression exercises on flexion relaxation ratio of back muscles in patients having deep gluteal syndrome: A randomized trial.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2024,
-          "design": "RCT",
-          "takeaway": "伸展組與壓迫組的背肌屈曲放鬆比相較對照組都沒有顯著改善，組內前後也無變化；僅伸展組的失能分數較壓迫組低。"
-        },
-        {
-          "pmid": "32894238",
-          "title": "Effects of ELDOA and post-facilitation stretching technique on pain and functional performance in patients with piriformis syndrome: A randomized controlled trial.",
-          "journal": "J Back Musculoskelet Rehabil",
-          "year": 2020,
-          "design": "RCT",
-          "takeaway": "小樣本 RCT：促進後伸展技術在疼痛、梨狀肌長度、直膝抬腿與下肢功能量表上都優於 ELDOA——伸展技術的細節（收縮—放鬆）可能比單純靜態拉更重要。"
-        },
-        {
-          "pmid": "39926033",
-          "title": "The effects of gluteal stretching vs. Lightback® on hip rotation range of motion and posterior chain flexibility in healthy subjects: a cross-over clinical trial.",
-          "journal": "PeerJ",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "健康受試者交叉試驗：靜態臀肌伸展確實增加被動髖旋轉與後側鏈柔軟度，但在主動活動度的改善上不如器械輔助組。"
-        },
-        {
-          "pmid": "35901473",
-          "title": "Efficacy of Botulinum Toxin, Local Anesthetics, and Corticosteroids in Patients With Piriformis Syndrome: A Systematic Review and Meta-analysis.",
-          "journal": "Pain Physician",
-          "year": 2022,
-          "design": "meta-analysis",
-          "takeaway": "16 篇研究：注射治療（局麻＋類固醇 SMD -4.34、肉毒 -2.00）效果遠大於安慰劑（-0.04），提示頑固個案的處理路徑不是加大伸展強度。"
-        }
-      ]
-    },
-    {
-      "id": "clamshell",
-      "name": "蚌殼式",
-      "evidence_grade": "limited",
-      "summary": "蚌殼式的證據幾乎全部來自實驗室 EMG 研究，沒有任何以蚌殼式為單一介入的療效 RCT。而這些 EMG 研究彼此矛盾：一篇跑者研究發現蚌殼式的髖屈肌活化（54.2% MVIC）反而高於臀中肌（32.6%），結論是想練臀中肌就別選蚌殼式；另一篇用細針電極的髕股疼痛研究卻發現，加了彈力帶的蚌殼式是 11 個動作中唯一讓臀大／臀中肌活化明顯高於闊筋膜張肌的。共同結論是：蚌殼式的絕對負荷很低，適合早期動作控制與臀中／闊筋膜張肌活化比的調整，不適合當作肌力訓練；且 EMG 高低本身不等於臨床療效。",
-      "citations": [
-        {
-          "pmid": "22488226",
-          "title": "Hip muscle activity during 3 side-lying hip-strengthening exercises in distance runners.",
-          "journal": "J Athl Train",
-          "year": 2012,
-          "design": "cross-sectional",
-          "takeaway": "20 名跑者：蚌殼式的髖屈肌活化（54.2% MVIC）高於闊筋膜張肌（34.4%）與臀中肌（32.6%）；作者明言若目標是臀中肌，單純側臥外展才是首選。"
-        },
-        {
-          "pmid": "37212292",
-          "title": "Comparison of electromyographic activity of the gluteal muscles and tensor fascia lata in persons with patellofemoral pain: evaluation of selected, hip-targeted exercises using indwelling fine-wire electrodes.",
-          "journal": "Physiother Theory Pract",
-          "year": 2024,
-          "design": "cross-sectional",
-          "takeaway": "細針電極測 11 個髖部動作：只有加彈力帶的蚌殼式讓上部臀大肌（24.2%）與臀中肌（37.2%）活化顯著高於闊筋膜張肌（12.5%）——與跑者研究結論相反。"
-        },
-        {
-          "pmid": "42356038",
-          "title": "Effects of Knee Flexion Angle on Gluteus Medius Activation and Activation Ratios During the Modified Clamshell Exercise.",
-          "journal": "Medicina (Kaunas)",
-          "year": 2026,
-          "design": "cross-sectional",
-          "takeaway": "膝屈由 60° 增至 90° 可提高臀中肌活化與 GMed/TFL 比值，但超過 90° 無額外好處；作者強調絕對活化量低，屬低負荷動作控制而非肌力訓練。"
-        },
-        {
-          "pmid": "25246373",
-          "title": "Examining the effects of altering hip orientation on gluteus medius and tensor fascae latae interplay during common non-weight-bearing hip rehabilitation exercises.",
-          "journal": "Clin Biomech (Bristol)",
-          "year": 2014,
-          "design": "cross-sectional",
-          "takeaway": "改變髖屈角或內外旋角並不顯著改變臀中肌與闊筋膜張肌的活化關係，但蚌殼式的 GMed:TFL 比值遠高於側臥外展。"
-        },
-        {
-          "pmid": "35500965",
-          "title": "Hip abduction machine is better than free weights to target the gluteus medius while minimizing tensor fascia latae activation.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2022,
-          "design": "cross-sectional",
-          "takeaway": "三種動作的臀中肌活化沒有差異，但以 GMed:TFL 比值來看，髖外展機優於蚌殼式與側臥抬腿。"
-        },
-        {
-          "pmid": "22034614",
-          "title": "Electromyographic analysis of gluteus medius and gluteus maximus during rehabilitation exercises.",
-          "journal": "Int J Sports Phys Ther",
-          "year": 2011,
-          "design": "cross-sectional",
-          "takeaway": "在 12 個動作中，只有進階到第 4 級的蚌殼式達到臀中肌 77% MVIC；基礎版蚌殼式遠低於側平板外展（89–103%）與單腳蹲（82%）。"
-        },
-        {
-          "pmid": "37949594",
-          "title": "Influence of hip flexion angle on strength and gluteal muscle activities in the clinical pilates clamshell exercise.",
-          "journal": "J Bodyw Mov Ther",
-          "year": 2023,
-          "design": "cross-sectional",
-          "takeaway": "受試者在有症狀側的臀中肌活化較低（平均差 26.2%, p = .045），顯示蚌殼式或可作為左右不對稱的評估工具，但作為訓練工具的證據仍不足。"
-        },
-        {
-          "pmid": "30074970",
-          "title": "Effects of Hip Abductor Muscles Exercises on Pain and Function in Patients With Patellofemoral Pain: A Systematic Review and Meta-Analysis.",
-          "journal": "J Strength Cond Res",
-          "year": 2019,
-          "design": "meta-analysis",
-          "takeaway": "有臨床療效的是「髖外展肌訓練」這個整體方案（疼痛 SMD -0.99、功能 SMD 0.70），沒有任何統合分析單獨檢驗過蚌殼式的療效。"
-        }
-      ]
-    },
-    {
-      "id": "tibialis-post",
-      "name": "脛後肌訓練（內翻）",
-      "evidence_grade": "limited",
-      "summary": "脛後肌訓練的臨床證據非常薄弱。針對第二期脛後肌腱功能失能的高品質 RCT 顯示，在鞋墊之外再加上中等強度居家肌力訓練，相較只做伸展並沒有明顯額外好處，深後腔室等長肌力也沒有差異。系統性回顧同樣指出可用 RCT 只有 4 篇、186 人，且多數有高偏誤風險，結論僅能說鞋墊（尤其個人化內側縱弓支撐）可能減痛。網絡統合分析在柔軟性扁平足族群反而顯示髖部與下肢整體肌力訓練排名最高，脛後肌離心訓練是搭配鞋墊與伸展時較有優勢。實務上：脛後肌訓練值得做，但應放在「鞋墊＋整體下肢負荷管理」的框架裡，別當成單獨解方。",
-      "citations": [
-        {
-          "pmid": "25857939",
-          "title": "Randomized Controlled Trial Comparing Orthosis Augmented by Either Stretching or Stretching and Strengthening for Stage II Tibialis Posterior Tendon Dysfunction.",
-          "journal": "Foot Ankle Int",
-          "year": 2015,
-          "design": "RCT",
-          "takeaway": "12 週 Level I RCT：在鞋墊＋伸展之外再加中等強度居家肌力訓練，自述結果差異極小，深後腔室等長肌力也沒有差別。"
-        },
-        {
-          "pmid": "33040609",
-          "title": "Orthotic treatment for stage I and II posterior tibial tendon dysfunction (flat foot): A systematic review.",
-          "journal": "Clin Rehabil",
-          "year": 2021,
-          "design": "systematic review",
-          "takeaway": "僅 4 篇 RCT、186 人，75% 在盲化上有高偏誤風險；結論是鞋墊（尤其個人化內側縱弓支撐）配合運動計畫可能減痛，需更多研究。"
-        },
-        {
-          "pmid": "39261538",
-          "title": "Comparing the efficacy of exercise therapy on adult flexible flatfoot individuals through a network meta-analysis of randomized controlled trials.",
-          "journal": "Sci Rep",
-          "year": 2024,
-          "design": "meta-analysis",
-          "takeaway": "網絡統合分析：足弓形態改善以「綜合性強化（含髖與下肢整體）」排名最高（SUCRA 0.98）；足部功能指數則以「鞋墊＋伸展＋脛後肌漸進離心阻力」最佳（SUCRA 0.92）。"
-        },
-        {
-          "pmid": "41724415",
-          "title": "Ultrasound-guided application of percutaneous electrolysis as an adjunct to exercise and manual therapy for tibialis posterior tendinopathy: A randomized clinical trial.",
-          "journal": "J Pain",
-          "year": 2026,
-          "design": "RCT",
-          "takeaway": "Level 1b RCT：運動＋徒手治療的基礎上加超音波導引經皮電解，短中期疼痛與失能改善優於單純運動＋徒手——反過來看，單靠運動的效果有其天花板。"
-        },
-        {
-          "pmid": "31715431",
-          "title": "Gait alterations in posterior tibial tendonitis: A systematic review and meta-analysis.",
-          "journal": "Gait Posture",
-          "year": 2020,
-          "design": "meta-analysis",
-          "takeaway": "8 篇研究統合：脛後肌腱病變者步態站立期呈現前足背屈與外展增加、後足蹠屈與外翻增加，可作為評估與再評估的客觀指標。"
-        },
-        {
-          "pmid": "40578291",
-          "title": "Effects of prefabricated and custom foot orthoses on the biomechanics of the lower limbs of individuals with a posterior tibialis tendon dysfunction during stair climbing.",
-          "journal": "Clin Biomech (Bristol)",
-          "year": 2025,
-          "design": "RCT",
-          "takeaway": "客製鞋墊顯著減少後足外翻並增加踝外翻力矩（p < 0.001），但作者明言長期效果與這些生物力學改變的臨床意義尚待確認。"
-        },
-        {
-          "pmid": "38898672",
-          "title": "Non-surgical management of posterior tibial tendon dysfunction- a UK survey.",
-          "journal": "J Foot Ankle Res",
-          "year": 2024,
-          "design": "cohort",
-          "takeaway": "153 位英國臨床人員調查：實務核心是衛教／建議＋鞋墊＋足部專項與整體運動；常用結果指標為疼痛量表與單腳提踵，病人自述量表反而少用。"
-        }
-      ]
-    },
-    {
-      "id": "landing-control",
-      "name": "落地緩衝與減速控制",
-      "evidence_grade": "strong",
-      "summary": "這是本清單中證據最強的一類。多篇統合分析一致顯示，含落地控制的神經肌肉訓練可把 ACL 傷害風險降低約 50–60%（RR 0.46–0.50），對膝關節整體傷害也有約 22% 的降幅，且效果在 18 歲以下族群更明顯、隨年齡遞減。關鍵不是動作有多花俏，而是依從性——依從率 ≥75%、每次 ≥15 分鐘、每週 2–3 次是最重要的調節因子。落地生物力學的改變則較不確定：訓練後膝屈角增加（g = 0.58）、膝外翻減少（g = -0.86）達顯著，但其他運動學／動力學參數改變微小；即時回饋的 RCT 結果也不一致，有的能改善膝運動學，有的（針對膝外展力矩的即時回饋）則完全無效。也就是說，傷害真的減少了，但「因為改變了落地力學所以減少」這條因果鏈仍未完全證實。",
-      "citations": [
-        {
-          "pmid": "41486737",
-          "title": "A Systematic Review and Meta-analysis of Anterior Cruciate Ligament Injury Prevention Programs: Training to Stay in the Game.",
-          "journal": "Am J Sports Med",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "18 篇研究、25,166 名運動員：參加 ACL 預防計畫者傷害風險降低約一半（RR 0.46, 95% CI 0.36–0.57），<18 歲效果更大（RR 0.35）。"
-        },
-        {
-          "pmid": "42273628",
-          "title": "Age-related differences in the effectiveness of neuromuscular training for preventing anterior cruciate ligament injuries in athletes: a systematic review and meta-analysis.",
-          "journal": "Front Public Health",
-          "year": 2026,
-          "design": "meta-analysis",
-          "takeaway": "19 篇研究：神經肌肉訓練整體 OR 0.456；<18 歲顯著（OR 0.365），≥18 歲則未達顯著（OR 0.567, CI 0.291–1.104），meta 迴歸顯示保護效果隨年齡遞減。"
-        },
-        {
-          "pmid": "41175154",
-          "title": "Neuromuscular training for preventing knee injuries in female team athletes: a meta-analysis.",
-          "journal": "Ann Med",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "膝傷整體降低 22%（RR 0.78）、ACL 傷害降低 50%（RR 0.50）；最強的調節因子是依從率 ≥75%（RR 0.67），且每次 >15 分鐘、每週 2–3 次才顯著。"
-        },
-        {
-          "pmid": "40645751",
-          "title": "Prevention strategies for lower extremity injury: a systematic review and meta-analyses for the Female, woman and/or girl Athlete Injury pRevention (FAIR) consensus.",
-          "journal": "Br J Sports Med",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "82 篇研究、154,561 人：神經肌肉訓練（每週 2 次、每次至少 10 分鐘）使下肢傷害降 19%（低確定性）、踝扭傷降 39%、ACL 傷害降 61%。"
-        },
-        {
-          "pmid": "40246764",
-          "title": "Influence of Neuromuscular Training Interventions on Jump-Landing Biomechanics and Implications for ACL Injuries in Youth Females: A Systematic Review and Meta-analysis.",
-          "journal": "Sports Med",
-          "year": 2025,
-          "design": "meta-analysis",
-          "takeaway": "13 篇研究、648 名女性：訓練後膝屈峰值角增加（g = 0.58, p = 0.05）、膝外翻減少（g = -0.86, p = 0.05），但其他運動學與動力學參數的改變都極小且不顯著。"
-        },
-        {
-          "pmid": "23371471",
-          "title": "Augmented feedback supports skill transfer and reduces high-risk injury landing mechanics: a double-blind, randomized controlled laboratory study.",
-          "journal": "Am J Sports Med",
-          "year": 2013,
-          "design": "RCT",
-          "takeaway": "雙盲 RCT：接受擴增回饋組在最極端的落地試驗中，額狀面膝角度減少 6.5–6.9°（降幅 37.7–40.1%），對照組無此變化，且技能能轉移到未訓練的動作。"
-        },
-        {
-          "pmid": "23347094",
-          "title": "Real-time feedback on knee abduction moment does not improve frontal-plane knee mechanics during jump landings.",
-          "journal": "Scand J Med Sci Sports",
-          "year": 2014,
-          "design": "RCT",
-          "takeaway": "針對膝外展力矩給予即時回饋，並未比一般訓練更能改善額狀面膝力學（兩組膝外展力矩都降 12%）——回饋的內容選錯就沒有加成。"
-        },
-        {
-          "pmid": "26144663",
-          "title": "Real-time feedback during drop landing training improves subsequent frontal and sagittal plane knee kinematics.",
-          "journal": "Clin Biomech (Bristol)",
-          "year": 2015,
-          "design": "RCT",
-          "takeaway": "以 Kinect 提供即時回饋的組別在膝屈峰值與兩膝間距（額狀面）上改善幅度都優於對照組，顯示低成本回饋工具在臨床情境可行。"
-        }
-      ]
+     "pmid": "31024339",
+     "title": "A Meta-Analysis of the Effects of Foam Rolling on Performance and Recovery",
+     "journal": "Front Physiol",
+     "year": 2019,
+     "design": "systematic review",
+     "takeaway": "21 篇研究：滾筒對表現與恢復的效果「偏小甚至可忽略」，作者結論是證據較支持把滾筒當熱身工具，而非恢復工具。"
     }
-  ]
+   ]
+  },
+  {
+   "id": "hip-abduction",
+   "name": "髖外展肌訓練",
+   "evidence_grade": "moderate",
+   "summary": "髖外展肌訓練對髕股疼痛的止痛與功能改善有一致的中等品質證據，加入髖部訓練通常優於單練股四頭肌，且疼痛緩解出現得更早；對下背痛也有小幅助益，但效果量很小且僅限短期。最需要誠實說明的落差是：訓練確實能增加肌力，卻不一定改變「動態膝外翻」——多數研究並未發現髖外展肌力與膝外翻角度有顯著相關，訓練後膝關節運動學的改變也常不顯著。也就是說，練髖外展有效，但「因為它矯正了膝外翻所以有效」這個機轉說法目前站不住腳。",
+   "citations": [
+    {
+     "pmid": "30074970",
+     "title": "Effects of Hip Abductor Muscles Exercises on Pain and Function in Patients With Patellofemoral Pain: A Systematic Review and Meta-Analysis",
+     "journal": "J Strength Cond Res",
+     "year": 2019,
+     "design": "meta-analysis",
+     "takeaway": "12 篇研究、604 人：髖＋膝合併訓練相較單純膝訓練，疼痛 SMD = -0.99、功能 SMD = 0.70 favor 合併組；但納入研究方法學品質普遍偏低。"
+    },
+    {
+     "pmid": "35988215",
+     "title": "Effect of hip abductors and lateral rotators' muscle strengthening on pain and functional outcome in adult patients with patellofemoral pain: A systematic review and meta-analysis",
+     "journal": "J Back Musculoskelet Rehabil",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "14 篇研究一致顯示髖外展與外旋肌訓練改善髕股疼痛與膝功能，且在短期與長期都優於傳統股四頭肌訓練。"
+    },
+    {
+     "pmid": "25365133",
+     "title": "Strengthening of the hip and core versus knee muscles for the treatment of patellofemoral pain: a multicenter randomized controlled trial",
+     "journal": "J Athl Train",
+     "year": 2015,
+     "design": "RCT",
+     "takeaway": "199 人多中心 RCT：髖／核心組與膝組 6 週後疼痛與功能改善相當，但髖組疼痛提早 1 週緩解，且髖外展、髖伸肌力與後側核心耐力增益更大。"
+    },
+    {
+     "pmid": "42476040",
+     "title": "The effect of hip abductor or external rotator strength on dynamic knee valgus in healthy subjects-a systematic review with partial meta-analysis",
+     "journal": "Knee",
+     "year": 2026,
+     "design": "narrative review",
+     "takeaway": "22 篇研究中，探討髖外展肌力與動態膝外翻關係者有 12 篇發現「無顯著相關」，僅 2 篇支持假說——直接挑戰「髖外展無力導致膝外翻」的常見說法。"
+    },
+    {
+     "pmid": "25935843",
+     "title": "A randomised trial into the effect of an isolated hip abductor strengthening programme and a functional motor control programme on knee kinematics and hip muscle strength",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2015,
+     "design": "RCT",
+     "takeaway": "單純髖外展肌力訓練使肌力增加 35%，但動態膝外翻與內旋的改變未達統計顯著；肌力增加與動作改變並非同一件事。"
+    },
+    {
+     "pmid": "27048463",
+     "title": "Modifiable Factors Associated with Knee Abduction During Weight-Bearing Activities: A Systematic Review and Meta-Analysis",
+     "journal": "Sports Med",
+     "year": 2016,
+     "design": "meta-analysis",
+     "takeaway": "33 篇研究：與膝外翻中度相關的是軀幹肌力下降、臀大肌活化不足與踝關節活動度受限；髖外展／外旋／伸肌力量的關聯最多只到弱相關（r ≤ 0.21）。"
+    },
+    {
+     "pmid": "32691625",
+     "title": "Addition of specific hip strengthening exercises to conventional rehabilitation therapy for low back pain: a systematic review and meta-analysis",
+     "journal": "Clin Rehabil",
+     "year": 2020,
+     "design": "meta-analysis",
+     "takeaway": "5 篇研究、309 人：在常規復健外加髖部肌力訓練，疼痛改善僅 -5.4 mm（VAS 0–100）、失能改善 -2.9 分，統計顯著但低於一般認定的臨床最小重要差異。"
+    },
+    {
+     "pmid": "37037144",
+     "title": "The effectiveness of hip interventions in patients with low-back pain: A systematic review and meta-analysis",
+     "journal": "Braz J Phys Ther",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "8 篇研究、508 人：髖部介入僅在短期改善疼痛與失能，中期與長期皆無益處，且證據確定性被評為「非常低」。"
+    }
+   ]
+  },
+  {
+   "id": "glute-bridge",
+   "name": "臀橋與髖伸展啟動",
+   "evidence_grade": "moderate",
+   "summary": "以髖伸阻力訓練（含臀橋、髖推）確實能讓臀大肌肥大，效果量中等（SMD 約 0.71），這部分證據相當扎實。但「臀橋能提升運動表現」的推論要保守：髖推長期訓練只顯著提升它自己的專項肌力，並未轉移到深蹲肌力或跳躍表現，對衝刺的轉移也僅在統計邊緣。EMG 研究可用來優化姿勢（例如單腳臀橋把膝屈至 135° 可大幅降低腿後肌代償而維持臀肌活化），但 EMG 高低不等於訓練成效。至於臨床上「臀肌失憶／啟動不良」的說法，缺乏高品質對照研究支持。",
+   "citations": [
+    {
+     "pmid": "40276368",
+     "title": "The impact of resistance training on gluteus maximus hypertrophy: a systematic review and meta-analysis",
+     "journal": "Front Physiol",
+     "year": 2025,
+     "design": "systematic review",
+     "takeaway": "11 篇研究：髖伸阻力訓練對臀大肌肥大有中等效果（SMD = 0.71, 95% CI 0.50–0.91, I² = 22%）；若目標是專攻臀大肌，槓鈴髖推應優先。"
+    },
+    {
+     "pmid": "41777686",
+     "title": "Acute and long-term effects of hip thrust training on athletic performance: a systematic review and meta-analysis",
+     "journal": "PeerJ",
+     "year": 2026,
+     "design": "meta-analysis",
+     "takeaway": "20 篇 RCT：髖推長期訓練只提升自身專項肌力（ES = 0.53），未轉移到深蹲肌力或跳躍；對衝刺加速的獨立轉移僅 ES = 0.22（p = 0.05），作者稱「效益極小」。"
+    },
+    {
+     "pmid": "40988435",
+     "title": "Comparing the impact of hip thrust versus squat training on lower limb performance in sub-elite athletes: a systematic review and meta-analysis",
+     "journal": "Sports Biomech",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "深蹲訓練顯著提升垂直跳且優於髖推；兩者對水平跳、短衝刺與變向都沒有顯著影響。"
+    },
+    {
+     "pmid": "28900560",
+     "title": "BUILDING A BETTER GLUTEAL BRIDGE: ELECTROMYOGRAPHIC ANALYSIS OF HIP MUSCLE ACTIVITY DURING MODIFIED SINGLE-LEG BRIDGES",
+     "journal": "Int J Sports Phys Ther",
+     "year": 2017,
+     "design": "cross-sectional",
+     "takeaway": "單腳臀橋把支撐腳膝屈由 90° 改為 135°，腿後肌活化由 75.3% MVIC 降到 23.5%，臀大／臀中肌活化仍維持高檔——可作為「腿後抽筋」時的姿勢修正依據。"
+    },
+    {
+     "pmid": "31356511",
+     "title": "Comparison Between Back Squat, Romanian Deadlift, and Barbell Hip Thrust for Leg and Hip Muscle Activities During Hip Extension",
+     "journal": "J Strength Cond Res",
+     "year": 2019,
+     "design": "cross-sectional",
+     "takeaway": "羅馬尼亞硬舉在孤立髖伸肌群上與槓鈴髖推同樣有效；深蹲則同時徵召髖伸與膝伸肌群——動作選擇取決於目標而非「哪個臀肌 EMG 最高」。"
+    },
+    {
+     "pmid": "33948095",
+     "title": "Comparison of Muscle Activity in Three Single-Joint, Hip Extension Exercises in Resistance-Trained Women",
+     "journal": "J Sports Sci Med",
+     "year": 2021,
+     "design": "RCT",
+     "takeaway": "在受過阻力訓練的女性中，羅馬椅背伸展與羅馬式硬舉的臀大肌活化都優於坐姿背伸機；三種動作對豎脊肌活化無差異。"
+    },
+    {
+     "pmid": "38016398",
+     "title": "Effectiveness of a specific strength program of the gluteus maximus muscle to improve dynamic postural control in female basketball players. A randomized controlled trial",
+     "journal": "Gait Posture",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "臀大肌專項肌力訓練改善了動態平衡與跳躍高度，但疼痛與膝外翻並未顯著改善——訓練有效不代表「矯正」了排列。"
+    },
+    {
+     "pmid": "39424858",
+     "title": "Effectiveness of gluteal control training in chronic low back pain patients with functional leg length inequality",
+     "journal": "Sci Rep",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "在合併功能性長短腳的慢性下背痛者，臀肌控制訓練在疼痛（VAS 1.41 vs 3.38）、骨盆傾斜與髖控制能力上都優於一般阻力訓練組。"
+    }
+   ]
+  },
+  {
+   "id": "calf-stretch",
+   "name": "小腿伸展",
+   "evidence_grade": "limited",
+   "summary": "小腿伸展能增加踝背屈活動度，但幅度通常只有數度，且機轉主要是「伸展耐受度上升」與小幅僵硬度下降，不是肌肉真的變長（筋膜束長度並未改變）。在特定族群甚至完全無效：糖尿病合併踝馬蹄足者做 8 週靜態伸展，背屈與足底壓力都沒有顯著改善。用於足底筋膜炎時，兩週伸展計畫相較不伸展並無統計顯著益處，正式物理治療也不優於自行在家伸展；最新指引把伸展定位為輔助而非主力。最重要的是：統合分析明確顯示伸展無法降低運動傷害風險（RR 0.96），也幾乎無法減輕運動後痠痛（Cochrane 估計僅約 1 分／100 分）。",
+   "citations": [
+    {
+     "pmid": "24100287",
+     "title": "The effectiveness of exercise interventions to prevent sports injuries: a systematic review and meta-analysis of randomised controlled trials",
+     "journal": "Br J Sports Med",
+     "year": 2014,
+     "design": "meta-analysis",
+     "takeaway": "25 篇 RCT、26,610 人：伸展對傷害預防無效（RR 0.963, 95% CI 0.846–1.095），而肌力訓練把運動傷害降到不到 1/3（RR 0.315）、本體感覺訓練 RR 0.550。"
+    },
+    {
+     "pmid": "21735398",
+     "title": "Stretching to prevent or reduce muscle soreness after exercise",
+     "journal": "Cochrane Database Syst Rev",
+     "year": 2011,
+     "design": "meta-analysis",
+     "takeaway": "Cochrane 回顧結論：運動前或運動後伸展對延遲性肌肉痠痛的減輕幅度極小，臨床上可視為無意義。"
+    },
+    {
+     "pmid": "40180774",
+     "title": "Mechanisms Underlying Range of Motion Improvements Following Acute and Chronic Static Stretching: A Systematic Review, Meta-analysis and Multivariate Meta-regression",
+     "journal": "Sports Med",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "65 篇研究、1,542 人：長期靜態伸展僅小幅降低整體僵硬度（g = 0.37），主要機轉是可耐受被動阻力扭矩上升（g = 0.74）；筋膜束長度不論急性或長期都沒有顯著改變。"
+    },
+    {
+     "pmid": "31302489",
+     "title": "Calf muscle stretching is ineffective in increasing ankle range of motion or reducing plantar pressures in people with diabetes and ankle equinus: A randomised controlled trial",
+     "journal": "Clin Biomech (Bristol)",
+     "year": 2019,
+     "design": "RCT",
+     "takeaway": "68 人 RCT：8 週靜態小腿伸展對非負重背屈（+1.3°）、負重背屈（+0.5°）與足底壓力都沒有統計或臨床上有意義的改善。"
+    },
+    {
+     "pmid": "17442119",
+     "title": "Effectiveness of calf muscle stretching for the short-term treatment of plantar heel pain: a randomised trial",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2007,
+     "design": "RCT",
+     "takeaway": "兩週小腿伸展相較不伸展，起步痛差異僅 -7.9 mm（95% CI -18.3 到 2.6，不顯著），且伸展組 10 人出現輕中度不良反應。"
+    },
+    {
+     "pmid": "35797682",
+     "title": "A Prospective Randomized Controlled Trial Comparing Physical Therapy With Independent Home Stretching for Plantar Fasciitis",
+     "journal": "J Am Acad Orthop Surg",
+     "year": 2022,
+     "design": "RCT",
+     "takeaway": "57 人 RCT：正式物理治療與自行居家伸展在 VAS、FAAM、SF-36 上，任何時間點都無組間差異——自己在家做就夠了。"
+    },
+    {
+     "pmid": "41169885",
+     "title": "Comparison between 6 weeks of static stretching and resistance training programs on passive and active properties of plantar flexors. a randomized controlled trial",
+     "journal": "Front Physiol",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "6 週靜態伸展與阻力訓練都提升踝背屈活動度（d = 0.65 vs 0.37），但只有阻力訓練同時帶來肌力與肌厚度增加；想改善小腿，練比拉多。"
+    },
+    {
+     "pmid": "33785535",
+     "title": "Management of plantar heel pain: a best practice guide informed by a systematic review, expert clinical reasoning and patient values",
+     "journal": "Br J Sports Med",
+     "year": 2021,
+     "design": "systematic review",
+     "takeaway": "足跟痛最佳實務指引：伸展屬於可用但非核心的選項，衛教、負荷管理與漸進式運動治療才是主軸。"
+    }
+   ]
+  },
+  {
+   "id": "childs-pose",
+   "name": "嬰兒式與後側肋廓呼吸",
+   "evidence_grade": "limited",
+   "summary": "呼吸訓練介入慢性非特異性下背痛的統合分析顯示疼痛（SMD 約 -1.1）與功能都有改善，橫膈導向介入的結果也類似，但兩篇的異質性都很高、多篇研究有高偏誤風險，GRADE 評為「低至極低確定性」。在非特異性頸痛的 RCT 中，呼吸訓練確實改變了呼吸型態，但疼痛與失能的組間差異不顯著。緩慢呼吸本身能可靠提升迷走神經調控指標（心率變異度），這部分證據較穩。至於「嬰兒式能擴張後側肋廓、改善姿勢」的說法，目前沒有直接的對照試驗，屬於合理但未驗證的推論——課程中應以「放鬆與呼吸覺察」定位，而非結構矯正。",
+   "citations": [
+    {
+     "pmid": "40965964",
+     "title": "Can breathing exercises effectively treat people with chronic non-specific low back pain? A systemic review with meta-analysis",
+     "journal": "J Back Musculoskelet Rehabil",
+     "year": 2026,
+     "design": "meta-analysis",
+     "takeaway": "17 篇研究、633 人：呼吸訓練降低疼痛（SMD -1.11）與失能（ODI SMD -0.56），並提升腹橫肌活化（SMD 0.82）；但異質性高、5 篇高偏誤風險，GRADE 為低至極低確定性。"
+    },
+    {
+     "pmid": "41662208",
+     "title": "Diaphragmatic dysfunction and activation interventions for chronic nonspecific low back pain: A systematic review and meta-analysis",
+     "journal": "J Back Musculoskelet Rehabil",
+     "year": 2026,
+     "design": "meta-analysis",
+     "takeaway": "7 篇 RCT、283 人：橫膈導向介入顯著降低疼痛（SMD -1.11, 95% CI -1.52 到 -0.71），其中橫膈訓練 SMD -1.37；但樣本量小，證據基礎薄弱。"
+    },
+    {
+     "pmid": "35623448",
+     "title": "Effects of voluntary slow breathing on heart rate and heart rate variability: A systematic review and a meta-analysis",
+     "journal": "Neurosci Biobehav Rev",
+     "year": 2022,
+     "design": "meta-analysis",
+     "takeaway": "主動緩慢呼吸在進行中、剛結束與間隔後都能提升迷走神經調控的心率變異度指標，是低成本、低風險的自律神經調節手段。"
+    },
+    {
+     "pmid": "40967423",
+     "title": "The impact of a breathing exercise program on pain, disability, and breathing patterns in patients with non-specific neck pain: A randomized controlled trial",
+     "journal": "Complement Ther Med",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "呼吸訓練顯著改善呼吸型態（MD 2.73），但疼痛（MD 0.34, p = .24）與頸部失能指數（MD 0.86, p = .25）的組間差異都不顯著。"
+    },
+    {
+     "pmid": "38205226",
+     "title": "Effect of Adding Diaphragmatic Breathing Exercises to Core Stabilization Exercises on Pain, Muscle Activity, Disability, and Sleep Quality in Patients With Chronic Low Back Pain: A Randomized Control Trial",
+     "journal": "J Chiropr Med",
+     "year": 2023,
+     "design": "RCT",
+     "takeaway": "僅 22 人的小型 RCT：橫膈呼吸加上核心穩定訓練，在恐懼迴避信念與胸廓擴張上有組間效應，但疼痛與失能主要是時間效應而非組間差異。"
+    },
+    {
+     "pmid": "42058410",
+     "title": "Is yoga more beneficial than exercise-based interventions for patients with chronic low back pain? A systematic review and meta-analysis",
+     "journal": "Front Med (Lausanne)",
+     "year": 2026,
+     "design": "systematic review",
+     "takeaway": "7 篇 RCT：瑜珈（含嬰兒式等姿勢）在疼痛上並未優於一般運動（SMD -0.52, 95% CI -1.38 到 0.35, I² = 95%），僅在情緒健康上有較一致的優勢。"
+    },
+    {
+     "pmid": "39593648",
+     "title": "Exploring the therapeutic effects of yoga on spine and shoulder mobility: A systematic review",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2024,
+     "design": "systematic review",
+     "takeaway": "系統性回顧支持瑜珈可改善脊椎與肩部活動度，但作者亦指出納入研究品質參差、需要更強的證據才能定論。"
+    }
+   ]
+  },
+  {
+   "id": "couch-stretch",
+   "name": "沙發伸展（髖屈肌）",
+   "evidence_grade": "limited",
+   "summary": "髖屈肌伸展能可靠地增加被動髖伸活動度，這點沒有爭議；但它改變不了姿勢。一篇 23 研究、969 人的統合分析明確顯示，急性（d = 0.01）或長期（d = -0.19）伸展對脊椎與腰骨盆姿勢（含骨盆前傾）都沒有影響，肌力訓練才有（d = -0.83），且伸展在所有部位都無效。在跑者身上，3 週伸展雖增加被動髖伸，跑步時的骨盆前傾與腰椎伸展卻完全沒變。老年人族群是少數例外：對走路時髖伸受限者，10 週監督式伸展確實增加了步幅與髖伸並減少骨盆前傾，但基礎研究的改善幅度只有 1.6°。此外效果會流失——停止 4 週後活動度與止痛效果都顯著回退。",
+   "citations": [
+    {
+     "pmid": "38834878",
+     "title": "Effects of Stretching or Strengthening Exercise on Spinal and Lumbopelvic Posture: A Systematic Review with Meta-Analysis",
+     "journal": "Sports Med Open",
+     "year": 2024,
+     "design": "systematic review",
+     "takeaway": "23 篇研究、969 人：伸展對姿勢無效（急性 d = 0.01、長期 d = -0.19），肌力訓練有大效果（d = -0.83）且優於伸展（d = 0.81）；作者結論是中等確定性證據「不支持用伸展治療肌肉失衡」。"
+    },
+    {
+     "pmid": "29927892",
+     "title": "Effects of a Hip Flexor Stretching Program on Running Kinematics in Individuals With Limited Passive Hip Extension",
+     "journal": "J Strength Cond Res",
+     "year": 2019,
+     "design": "RCT",
+     "takeaway": "3 週髖屈肌靜態伸展增加了被動髖伸，但跑步時的主動髖伸、骨盆前傾與腰椎伸展全都沒有改變，兩者間也無相關。"
+    },
+    {
+     "pmid": "40180774",
+     "title": "Mechanisms Underlying Range of Motion Improvements Following Acute and Chronic Static Stretching: A Systematic Review, Meta-analysis and Multivariate Meta-regression",
+     "journal": "Sports Med",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "活動度增加主要來自伸展耐受度提高（g = 0.74）與小幅僵硬度下降（g = 0.37），筋膜束長度不變——伸展改變的是「你能忍受多少」，不是「肌肉多長」。"
+    },
+    {
+     "pmid": "37231582",
+     "title": "Long-term static stretching can decrease muscle stiffness: A systematic review and meta-analysis",
+     "journal": "Scand J Med Sci Sports",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "10 篇研究：≥2 週的長期靜態伸展確實可降低肌肉僵硬度，是少數支持伸展帶來組織性質改變的統合證據，但研究數量仍少。"
+    },
+    {
+     "pmid": "39462416",
+     "title": "Comparison of two different stretching strategies to improve hip extension mobility in healthy and active adults: a crossover clinical trial",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "26 人交叉試驗：半跪姿伸展加上骨盆後傾，比只把骨盆前推的傳統做法多降低 4.85 N·m 的髖屈肌反應性張力——技術細節（骨盆後傾）比動作名稱重要。"
+    },
+    {
+     "pmid": "40465522",
+     "title": "The training and detraining effects of 8-week dynamic stretching of hip flexors on hip range of motion, pain, and physical performance in male professional football players with low back pain. A randomized controlled trial",
+     "journal": "J Sports Sci",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "40 名職業足球員：8 週動態髖屈肌伸展改善活動度與下背痛，但 20 公尺衝刺與敏捷度無改善；停練 4 週後活動度（ES 0.64–0.80）與止痛效果顯著回退。"
+    },
+    {
+     "pmid": "21497318",
+     "title": "Effect of a supervised hip flexor stretching program on gait in elderly individuals",
+     "journal": "PM R",
+     "year": 2011,
+     "design": "RCT",
+     "takeaway": "10 週監督式伸展：只在「走路時髖伸原本就受限」的長者身上增加了步幅與髖伸並減少骨盆前傾；沒有受限者則無此效益。"
+    },
+    {
+     "pmid": "12589613",
+     "title": "Effect of a hip flexor-stretching program on gait in the elderly",
+     "journal": "Arch Phys Med Rehabil",
+     "year": 2003,
+     "design": "RCT",
+     "takeaway": "靜態髖伸僅由 6.1° 增至 7.7°（約 1.6°），走路時的動態髖伸僅呈趨勢（p = .10）未達顯著——效果真實但幅度很小。"
+    }
+   ]
+  },
+  {
+   "id": "short-foot",
+   "name": "足內在肌訓練（short foot）",
+   "evidence_grade": "moderate",
+   "summary": "足內在肌訓練（short foot）在改善足弓形態指標（舟狀骨下墜、內側縱弓角）與足部肌肉大小上有多篇統合分析支持，方向一致；在動態平衡與慢性踝關節不穩者的靜態姿勢控制上也有 RCT 支持。但要誠實說兩點：一是多數統合分析的證據確定性被評為「低到極低」，主因是研究數量少、偏誤風險高；二是改善的多半是形態與實驗室指標，「因此減少受傷或疼痛」的長期臨床證據仍然不足。最新 RCT 也顯示 4 週訓練改善了靜態平衡與主觀不穩感，但動態平衡沒有變化。",
+   "citations": [
+    {
+     "pmid": "35724360",
+     "title": "Evidence for Intrinsic Foot Muscle Training in Improving Foot Function: A Systematic Review and Meta-Analysis",
+     "journal": "J Athl Train",
+     "year": 2023,
+     "design": "meta-analysis",
+     "takeaway": "系統性回顧 ≥2 週的足內在肌訓練 RCT，在足部姿勢（舟狀骨下墜、Foot Posture Index）、平衡與肌力等面向整理出正向但品質不一的證據。"
+    },
+    {
+     "pmid": "35442981",
+     "title": "Effect of intrinsic foot muscles training on foot function and dynamic postural balance: A systematic review and meta-analysis",
+     "journal": "PLoS One",
+     "year": 2022,
+     "design": "meta-analysis",
+     "takeaway": "16 篇研究（10 篇高品質）：足內在肌訓練對內側縱弓形態與動態姿勢平衡有正向的生物力學效應。"
+    },
+    {
+     "pmid": "36231295",
+     "title": "Effects of the Short-Foot Exercise on Foot Alignment and Muscle Hypertrophy in Flatfoot Individuals: A Meta-Analysis",
+     "journal": "Int J Environ Res Public Health",
+     "year": 2022,
+     "design": "meta-analysis",
+     "takeaway": "6 篇 RCT、201 名扁平足者：short foot 運動相較鞋墊或其他訓練，顯著改善足部排列並使足內在肌肥大。"
+    },
+    {
+     "pmid": "39709752",
+     "title": "The effects of foot core exercises and minimalist footwear on foot muscle sizes, foot strength, and biomechanics: A systematic review and meta-analysis",
+     "journal": "Clin Biomech (Bristol)",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "28 篇試驗、1,399 人：足部運動確實降低跑步時內側縱弓活動幅度、提升足部力量，但對肌肉大小的結果互相衝突，且證據確定性為低到極低。"
+    },
+    {
+     "pmid": "41938328",
+     "title": "Short-Foot Exercises Improve Postural Control and Ankle Instability in Chronic Ankle Instability: A Randomized Controlled Trial",
+     "journal": "J Athl Train",
+     "year": 2026,
+     "design": "RCT",
+     "takeaway": "24 名慢性踝不穩者：4 週 short foot 訓練改善靜態姿勢控制與主觀不穩感（p < .05），但動態姿勢控制無差異。"
+    },
+    {
+     "pmid": "36988565",
+     "title": "The combined effect of short foot exercises and orthosis in symptomatic flexible flatfoot: a randomized controlled trial",
+     "journal": "Eur J Phys Rehabil Med",
+     "year": 2023,
+     "design": "RCT",
+     "takeaway": "有症狀柔軟性扁平足者：short foot 運動加鞋墊在足壓分布、疼痛與功能上優於單用鞋墊，支持「運動＋輔具」的合併策略。"
+    },
+    {
+     "pmid": "39480362",
+     "title": "Strengthening the Intrinsic Muscles of the Foot and Its Action on Foot Posture and Self-Reported Function in Individuals With Lower Limb Injuries: Systematic Review and Meta-Analysis",
+     "journal": "J Manipulative Physiol Ther",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "從 1,051 篇篩選後僅 4 篇可納入：足內在肌訓練顯著提升內側縱弓高度（p < .00001），但可用研究極少，結論仍待更多試驗。"
+    },
+    {
+     "pmid": "36526555",
+     "title": "A comprehensive exercise program improves foot alignment in people with flexible flat foot: a randomised trial",
+     "journal": "J Physiother",
+     "year": 2023,
+     "design": "RCT",
+     "takeaway": "52 人隨機分派：6 週綜合運動（含 short foot、臀肌訓練與伸展）比單純踝背屈／蹠屈多改善舟狀骨下墜 0.4 cm、縱弓角 16 度。"
+    }
+   ]
+  },
+  {
+   "id": "hip-9090",
+   "name": "90/90 髖旋轉伸展",
+   "evidence_grade": "limited",
+   "summary": "髖旋轉活動度受限與下背痛、棒球投擲側肩肘傷害有橫斷面與世代研究上的關聯（尤其是髖內旋不足），但這只是相關，不是因果。介入端證據薄弱：能改善髖旋轉活動度的交叉試驗多為單次或短期、樣本數小，且無長期追蹤；在髖夾擠症候群的高品質 RCT（PhysioFIRST）中，伸展組與肌力組在 6 個月的髖相關生活品質上沒有差異，次要分析反而顯示肌力訓練在自覺疼痛改善上較好。另外，可用的髖旋轉活動度有很大一部分由骨盆傾斜與髖臼股骨形態決定，不是伸展能改變的。90/90 可作為感覺良好的活動度練習，但不宜宣稱能「矯正髖關節」。",
+   "citations": [
+    {
+     "pmid": "42082318",
+     "title": "Physiotherapist-led treatment for femoroacetabular impingement syndrome (the PhysioFIRST study): an assessor-blinded, limited disclosure randomised controlled trial",
+     "journal": "Br J Sports Med",
+     "year": 2026,
+     "design": "RCT",
+     "takeaway": "154 人 RCT：伸展組與肌力組在 6 個月髖相關生活品質無差異（MD 0.2），但肌力組自覺疼痛改善比例較高（72% vs 52%, OR 2.36）且肌力增益較大。"
+    },
+    {
+     "pmid": "39932225",
+     "title": "Is Decreased Hip Flexibility a Risk Factor of Arm Injuries in Young Baseball Players? Systematic Review and Meta-Analysis",
+     "journal": "Clin J Sport Med",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "11 篇報告：有肩／肘傷的棒球選手髖內旋活動度確實較小（橫斷面 p = 0.04、世代 p = 0.02），但髖外旋與直膝抬腿都沒有關聯。"
+    },
+    {
+     "pmid": "38807086",
+     "title": "Hip biomechanics in patients with low back pain, what do we know? A systematic review",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2024,
+     "design": "systematic review",
+     "takeaway": "54 篇研究：下背痛者髖活動度普遍下降、尤其髖內旋，並伴隨髖外展與伸肌無力；但為橫斷面關聯，無法判定先後因果。"
+    },
+    {
+     "pmid": "40021069",
+     "title": "Posterior Pelvic Tilt Allows for Increased Hip Motion, While Anterior Pelvic Tilt Decreases Joint Stress: A Systematic Review of Biomechanical and Motion Analyses",
+     "journal": "Arthroscopy",
+     "year": 2025,
+     "design": "systematic review",
+     "takeaway": "14 篇研究、577 髖：骨盆後傾時屈曲下的內旋可達 12.9–31.4°，前傾時僅 -6.5 到 15.5°——同一個人「髖內旋多少」大幅取決於骨盆位置而非軟組織長度。"
+    },
+    {
+     "pmid": "39926033",
+     "title": "The effects of gluteal stretching vs. Lightback® on hip rotation range of motion and posterior chain flexibility in healthy subjects: a cross-over clinical trial",
+     "journal": "PeerJ",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "交叉試驗顯示靜態臀肌伸展與器械輔助組都能增加被動髖旋轉活動度，但器械組在主動內外旋（含屈髖 90° 位）改善更明顯——單純伸展對「主動可用範圍」較弱。"
+    },
+    {
+     "pmid": "40010367",
+     "title": "Normative Hip Range of Motion and Strength Profiles of Uninjured Baseball Athletes: A Systematic Review",
+     "journal": "J Sport Rehabil",
+     "year": 2025,
+     "design": "systematic review",
+     "takeaway": "在無傷棒球員身上，髖外旋普遍大於內旋，且隨年齡與競技層級上升，內外旋差距反而更大——旋轉不對稱是常態適應，不必然是需要矯正的問題。"
+    },
+    {
+     "pmid": "40180774",
+     "title": "Mechanisms Underlying Range of Motion Improvements Following Acute and Chronic Static Stretching: A Systematic Review, Meta-analysis and Multivariate Meta-regression",
+     "journal": "Sports Med",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "伸展帶來的活動度增加主要來自伸展耐受度，筋膜束長度不變；套用到 90/90，改變的是耐受度而非關節結構。"
+    },
+    {
+     "pmid": "39462416",
+     "title": "Comparison of two different stretching strategies to improve hip extension mobility in healthy and active adults: a crossover clinical trial",
+     "journal": "BMC Musculoskelet Disord",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "同一伸展加上骨盆控制（後傾）效果顯著較好（多降 4.85 N·m 反應性張力），提示髖活動度練習的關鍵在骨盆位置控制。"
+    }
+   ]
+  },
+  {
+   "id": "hipflexor-strength",
+   "name": "髖屈肌肌力訓練",
+   "evidence_grade": "limited",
+   "summary": "髖屈肌是少數「練得起來、也可能真的有用」但臨床試驗嚴重不足的部位。彈力帶髖屈訓練 6 週可使等長髖屈肌力提升 17%，這是高品質 RCT 的直接證據；長跑者的腰大肌阻力訓練也顯示橫截面積增加與等速跑持續時間改善相關。肌肉骨骼模擬則指出最大衝刺速度對髖屈肌力最敏感（髖肌力 +10% → 速度 +2.59%，遠高於踝的 1.02% 與膝的 0.33%）。但要誠實說：這些是小樣本 RCT 與電腦模擬，缺乏「髖屈訓練能減少傷害或改善疼痛」的臨床終點試驗；模擬也顯示髖屈肌力增加會提高步行時的髖關節接觸力，對髖部退化族群需個別評估。",
+   "citations": [
+    {
+     "pmid": "25796586",
+     "title": "Large strengthening effect of a hip-flexor training programme: a randomized controlled trial",
+     "journal": "Knee Surg Sports Traumatol Arthrosc",
+     "year": 2016,
+     "design": "RCT",
+     "takeaway": "僅 6 週彈力帶髖屈訓練使受訓腿等長髖屈肌力增加 17%，組間差 0.34 Nm/kg（95% CI 0.17–0.52, p < 0.001）——簡單器材即可產生實質肌力增益。"
+    },
+    {
+     "pmid": "42189432",
+     "title": "Running Speed is Maximized by Strengthening the Hip Flexors and Hip Adductors",
+     "journal": "Ann Biomed Eng",
+     "year": 2026,
+     "design": "simulation",
+     "takeaway": "肌肉骨骼模擬：髖肌力 +10% 使最大衝刺速度 +2.59%（踝 1.02%、膝 0.33%）；單獨強化腰大肌貢獻最大（+1.07%），主要透過提高步頻而非步長。"
+    },
+    {
+     "pmid": "33668016",
+     "title": "Effect of Resistance Training of Psoas Major in Combination With Regular Running Training on Performance in Long-Distance Runners",
+     "journal": "Int J Sports Physiol Perform",
+     "year": 2021,
+     "design": "RCT",
+     "takeaway": "長跑者加入腰大肌阻力訓練後，腰大肌橫截面積顯著增加（d = 0.34），等速跑持續時間由 500 s 增至 715 s（d = 1.41），且兩者變化量顯著相關。"
+    },
+    {
+     "pmid": "41770406",
+     "title": "Differences in Psoas Major Muscle Properties Between Elite Athletes with and Without Chronic Low Back Pain",
+     "journal": "Sports Med Open",
+     "year": 2026,
+     "design": "cohort",
+     "takeaway": "菁英運動員中，與慢性下背痛相關的是腰大肌「僵硬度」上升（優勢側 +17.2%, MD 3.21 kPa），而不是肌力或柔軟度——這兩項與下背痛皆無關聯。"
+    },
+    {
+     "pmid": "41252918",
+     "title": "Iliopsoas strengthening increases hip joint forces during gait: A simulation study",
+     "journal": "J Biomech",
+     "year": 2026,
+     "design": "simulation",
+     "takeaway": "模擬顯示增加髂腰肌肌力會在整個步態週期一致提高髖關節接觸力——對髖關節退化或術後族群，強化髖屈肌未必是中性的介入。"
+    },
+    {
+     "pmid": "38394308",
+     "title": "A simulation framework to determine optimal strength training and musculoskeletal geometry for sprinting and distance running",
+     "journal": "PLoS Comput Biol",
+     "year": 2024,
+     "design": "simulation",
+     "takeaway": "建立可決定「哪些肌群強化最能提升跑步表現」的模擬框架；此類結果是假說產生工具，尚需前瞻性訓練試驗驗證。"
+    },
+    {
+     "pmid": "41242937",
+     "title": "Lower limb muscle strength profiles and injury associations: a two-season prospective cohort study in men's professional rugby union",
+     "journal": "J Sci Med Sport",
+     "year": 2026,
+     "design": "cohort",
+     "takeaway": "兩季前瞻世代：腿後與髖／鼠蹊傷害占下肢非接觸性傷害的 43%，曾有髖／鼠蹊傷者再發腿後傷的勝算比達 4.0（p = 0.0016），支持把髖部力量納入監測。"
+    }
+   ]
+  },
+  {
+   "id": "mckenzie",
+   "name": "McKenzie 俯臥撐起",
+   "evidence_grade": "contested",
+   "summary": "McKenzie 方法是本清單中證據最分歧的一項。2023 年 Cochrane 對急性／亞急性非特異性下背痛的結論是：相較最小介入，短期疼痛僅小幅下降（MD -7.3／100 分），失能沒有改善，且所有納入試驗都有高偏誤風險。但另一篇針對「有方向偏好（directional preference）的慢性下背痛、由認證治療師執行」的統合分析，卻找到臨床上有意義的疼痛（MD -1.11／10 分）與失能改善。整體來看，把病人分類再給對應運動的策略，效果小到不具臨床意義。McKenzie 真正較穩的價值不在治療，而在預後判讀：能出現「症狀集中化」的病人結果明顯較好，不集中化者接受手術的機率高出約 6 倍。",
+   "citations": [
+    {
+     "pmid": "37017272",
+     "title": "The McKenzie method for (sub)acute non-specific low back pain",
+     "journal": "Cochrane Database Syst Rev",
+     "year": 2023,
+     "design": "systematic review",
+     "takeaway": "5 篇 RCT、563 人：相較最小介入，短期疼痛僅降 7.3 分（0–100，低確定性），中期不顯著，失能短中期皆無改善；所有試驗都有高執行與偵測偏誤風險。"
+    },
+    {
+     "pmid": "39383118",
+     "title": "The McKenzie Method delivered by credentialed therapists for chronic low back pain with directional preference: systematic review with meta-analysis",
+     "journal": "J Man Manip Ther",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "5 篇試驗、743 人：在有方向偏好且由認證治療師執行的前提下，短期疼痛改善 MD -1.11／10 分、中期失能 SMD -0.53，達臨床重要程度（低確定性證據）。"
+    },
+    {
+     "pmid": "34775831",
+     "title": "Classification Approaches for Treating Low Back Pain Have Small Effects That Are Not Clinically Meaningful: A Systematic Review With Meta-analysis",
+     "journal": "J Orthop Sports Phys Ther",
+     "year": 2022,
+     "design": "meta-analysis",
+     "takeaway": "24 篇試驗、4,416 人：分類導向治療相較一般化介入，疼痛 SMD -0.31、失能 -0.27，全部低於臨床有意義門檻；沒有任何一種分類系統勝出。"
+    },
+    {
+     "pmid": "37605454",
+     "title": "The McKenzie Method versus guideline-based advice in the treatment of sciatica: 24-month outcomes of a randomised clinical trial",
+     "journal": "Clin Rehabil",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "66 名坐骨神經痛患者、24 個月追蹤：McKenzie 多次治療與單純指引式衛教在所有病人自述結果與手術率上都沒有顯著差異。"
+    },
+    {
+     "pmid": "15928538",
+     "title": "Centralization: its prognostic value in patients with referred symptoms and sciatica",
+     "journal": "Spine (Phila Pa 1976)",
+     "year": 2005,
+     "design": "cohort",
+     "takeaway": "60 名坐骨神經痛患者：出現症狀集中化者 1–3 個月結果顯著較佳，且未集中化組接受手術的勝算比達 6.2（16/35 vs 3/25）。"
+    },
+    {
+     "pmid": "11295896",
+     "title": "Centralization phenomenon as a prognostic factor for chronic low back pain and disability",
+     "journal": "Spine (Phila Pa 1976)",
+     "year": 2001,
+     "design": "cohort",
+     "takeaway": "疼痛型態未集中化與初診時腿部疼痛，是預測慢性化與失能最強的兩個變項——動態評估的預後價值高於治療價值。"
+    },
+    {
+     "pmid": "29932871",
+     "title": "Reliability of the Mechanical Diagnosis and Therapy System in Patients With Spinal Pain: A Systematic Review",
+     "journal": "J Orthop Sports Phys Ther",
+     "year": 2018,
+     "design": "systematic review",
+     "takeaway": "MDT 分類系統的評分者間信度高度依賴施測者是否受過完整認證訓練；未受訓者的分類一致性明顯較差。"
+    },
+    {
+     "pmid": "41316625",
+     "title": "Comparison of the effectiveness of home-based video-supported McKenzie versus Pilates exercise programs in patients with chronic non-specific low back pain: a randomized controlled trial",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "居家影片指導的 McKenzie 與 Pilates 在慢性非特異性下背痛上效果相近，支持「病人願意持續做的運動」比特定流派更重要。"
+    }
+   ]
+  },
+  {
+   "id": "glute-stretch",
+   "name": "臀肌／梨狀肌伸展",
+   "evidence_grade": "limited",
+   "summary": "臀肌／梨狀肌伸展能增加髖旋轉與後側鏈活動度，這一點有交叉試驗支持；但用它「治療梨狀肌症候群／深臀症候群」的證據很弱。深臀症候群的系統性回顧納入 13 篇研究後結論是：證據品質低，沒有任何一種保守療法可以推薦優於另一種，臨床應回到一般下背痛與坐骨神經痛的處理原則。梨狀肌症候群本身的診斷就不可靠——一篇回顧 212 位病例的研究顯示，僅憑臨床診斷（無影像佐證）者治療失敗的勝算比高達 5.3。RCT 層級的資料多為小樣本且結果不一致：有試驗顯示伸展加在薦髂關節鬆動之上只改善失能不改善疼痛，也有試驗顯示伸展與壓迫運動對背肌屈曲放鬆比都沒有效果。",
+   "citations": [
+    {
+     "pmid": "37949567",
+     "title": "A systematic review of conservative and surgical treatments for deep gluteal syndrome",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2023,
+     "design": "systematic review",
+     "takeaway": "13 篇研究、508 人：僅 3 篇達到疼痛的最小臨床重要差異、1 篇達失能的 MCID；整體證據品質低，作者結論是無法推薦任何單一保守療法。"
+    },
+    {
+     "pmid": "32349600",
+     "title": "Deep gluteal syndrome as a cause of posterior hip pain and sciatica-like pain",
+     "journal": "Bone Joint J",
+     "year": 2020,
+     "design": "systematic review",
+     "takeaway": "綜論指出深臀症候群多因坐骨神經受多種結構卡壓，保守處理應為多面向（休息、避免誘發活動、藥物、注射、物理治療），單靠伸展不足以解決。"
+    },
+    {
+     "pmid": "41068685",
+     "title": "Piriformis syndrome: a systematic review of case reports",
+     "journal": "BMC Surg",
+     "year": 2025,
+     "design": "systematic review",
+     "takeaway": "212 例病例：保守治療僅在 41.1% 有效、58.9% 最終需手術；純靠臨床診斷（無影像佐證）者治療失敗勝算比為 5.3。"
+    },
+    {
+     "pmid": "40954575",
+     "title": "Additional effects of piriformis stretch in the management of sacroiliac joint dysfunction: A randomized control trial",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "36 人 RCT：在薦髂關節鬆動之外再加梨狀肌伸展，對疼痛沒有額外效果，僅失能分數有顯著改善。"
+    },
+    {
+     "pmid": "39593660",
+     "title": "Comparing the effect of stretching and compression exercises on flexion relaxation ratio of back muscles in patients having deep gluteal syndrome: A randomized trial",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2024,
+     "design": "RCT",
+     "takeaway": "伸展組與壓迫組的背肌屈曲放鬆比相較對照組都沒有顯著改善，組內前後也無變化；僅伸展組的失能分數較壓迫組低。"
+    },
+    {
+     "pmid": "32894238",
+     "title": "Effects of ELDOA and post-facilitation stretching technique on pain and functional performance in patients with piriformis syndrome: A randomized controlled trial",
+     "journal": "J Back Musculoskelet Rehabil",
+     "year": 2020,
+     "design": "RCT",
+     "takeaway": "小樣本 RCT：促進後伸展技術在疼痛、梨狀肌長度、直膝抬腿與下肢功能量表上都優於 ELDOA——伸展技術的細節（收縮—放鬆）可能比單純靜態拉更重要。"
+    },
+    {
+     "pmid": "39926033",
+     "title": "The effects of gluteal stretching vs. Lightback® on hip rotation range of motion and posterior chain flexibility in healthy subjects: a cross-over clinical trial",
+     "journal": "PeerJ",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "健康受試者交叉試驗：靜態臀肌伸展確實增加被動髖旋轉與後側鏈柔軟度，但在主動活動度的改善上不如器械輔助組。"
+    },
+    {
+     "pmid": "35901473",
+     "title": "Efficacy of Botulinum Toxin, Local Anesthetics, and Corticosteroids in Patients With Piriformis Syndrome: A Systematic Review and Meta-analysis",
+     "journal": "Pain Physician",
+     "year": 2022,
+     "design": "meta-analysis",
+     "takeaway": "16 篇研究：注射治療（局麻＋類固醇 SMD -4.34、肉毒 -2.00）效果遠大於安慰劑（-0.04），提示頑固個案的處理路徑不是加大伸展強度。"
+    }
+   ]
+  },
+  {
+   "id": "clamshell",
+   "name": "蚌殼式",
+   "evidence_grade": "limited",
+   "summary": "蚌殼式的證據幾乎全部來自實驗室 EMG 研究，沒有任何以蚌殼式為單一介入的療效 RCT。而這些 EMG 研究彼此矛盾：一篇跑者研究發現蚌殼式的髖屈肌活化（54.2% MVIC）反而高於臀中肌（32.6%），結論是想練臀中肌就別選蚌殼式；另一篇用細針電極的髕股疼痛研究卻發現，加了彈力帶的蚌殼式是 11 個動作中唯一讓臀大／臀中肌活化明顯高於闊筋膜張肌的。共同結論是：蚌殼式的絕對負荷很低，適合早期動作控制與臀中／闊筋膜張肌活化比的調整，不適合當作肌力訓練；且 EMG 高低本身不等於臨床療效。",
+   "citations": [
+    {
+     "pmid": "22488226",
+     "title": "Hip muscle activity during 3 side-lying hip-strengthening exercises in distance runners",
+     "journal": "J Athl Train",
+     "year": 2012,
+     "design": "cross-sectional",
+     "takeaway": "20 名跑者：蚌殼式的髖屈肌活化（54.2% MVIC）高於闊筋膜張肌（34.4%）與臀中肌（32.6%）；作者明言若目標是臀中肌，單純側臥外展才是首選。"
+    },
+    {
+     "pmid": "37212292",
+     "title": "Comparison of electromyographic activity of the gluteal muscles and tensor fascia lata in persons with patellofemoral pain: evaluation of selected, hip-targeted exercises using indwelling fine-wire electrodes",
+     "journal": "Physiother Theory Pract",
+     "year": 2024,
+     "design": "cross-sectional",
+     "takeaway": "細針電極測 11 個髖部動作：只有加彈力帶的蚌殼式讓上部臀大肌（24.2%）與臀中肌（37.2%）活化顯著高於闊筋膜張肌（12.5%）——與跑者研究結論相反。"
+    },
+    {
+     "pmid": "42356038",
+     "title": "Effects of Knee Flexion Angle on Gluteus Medius Activation and Activation Ratios During the Modified Clamshell Exercise",
+     "journal": "Medicina (Kaunas)",
+     "year": 2026,
+     "design": "cross-sectional",
+     "takeaway": "膝屈由 60° 增至 90° 可提高臀中肌活化與 GMed/TFL 比值，但超過 90° 無額外好處；作者強調絕對活化量低，屬低負荷動作控制而非肌力訓練。"
+    },
+    {
+     "pmid": "25246373",
+     "title": "Examining the effects of altering hip orientation on gluteus medius and tensor fascae latae interplay during common non-weight-bearing hip rehabilitation exercises",
+     "journal": "Clin Biomech (Bristol)",
+     "year": 2014,
+     "design": "cross-sectional",
+     "takeaway": "改變髖屈角或內外旋角並不顯著改變臀中肌與闊筋膜張肌的活化關係，但蚌殼式的 GMed:TFL 比值遠高於側臥外展。"
+    },
+    {
+     "pmid": "35500965",
+     "title": "Hip abduction machine is better than free weights to target the gluteus medius while minimizing tensor fascia latae activation",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2022,
+     "design": "cross-sectional",
+     "takeaway": "三種動作的臀中肌活化沒有差異，但以 GMed:TFL 比值來看，髖外展機優於蚌殼式與側臥抬腿。"
+    },
+    {
+     "pmid": "22034614",
+     "title": "Electromyographic analysis of gluteus medius and gluteus maximus during rehabilitation exercises",
+     "journal": "Int J Sports Phys Ther",
+     "year": 2011,
+     "design": "cross-sectional",
+     "takeaway": "在 12 個動作中，只有進階到第 4 級的蚌殼式達到臀中肌 77% MVIC；基礎版蚌殼式遠低於側平板外展（89–103%）與單腳蹲（82%）。"
+    },
+    {
+     "pmid": "37949594",
+     "title": "Influence of hip flexion angle on strength and gluteal muscle activities in the clinical pilates clamshell exercise",
+     "journal": "J Bodyw Mov Ther",
+     "year": 2023,
+     "design": "cross-sectional",
+     "takeaway": "受試者在有症狀側的臀中肌活化較低（平均差 26.2%, p = .045），顯示蚌殼式或可作為左右不對稱的評估工具，但作為訓練工具的證據仍不足。"
+    },
+    {
+     "pmid": "30074970",
+     "title": "Effects of Hip Abductor Muscles Exercises on Pain and Function in Patients With Patellofemoral Pain: A Systematic Review and Meta-Analysis",
+     "journal": "J Strength Cond Res",
+     "year": 2019,
+     "design": "meta-analysis",
+     "takeaway": "有臨床療效的是「髖外展肌訓練」這個整體方案（疼痛 SMD -0.99、功能 SMD 0.70），沒有任何統合分析單獨檢驗過蚌殼式的療效。"
+    }
+   ]
+  },
+  {
+   "id": "tibialis-post",
+   "name": "脛後肌訓練（內翻）",
+   "evidence_grade": "limited",
+   "summary": "脛後肌訓練的臨床證據非常薄弱。針對第二期脛後肌腱功能失能的高品質 RCT 顯示，在鞋墊之外再加上中等強度居家肌力訓練，相較只做伸展並沒有明顯額外好處，深後腔室等長肌力也沒有差異。系統性回顧同樣指出可用 RCT 只有 4 篇、186 人，且多數有高偏誤風險，結論僅能說鞋墊（尤其個人化內側縱弓支撐）可能減痛。網絡統合分析在柔軟性扁平足族群反而顯示髖部與下肢整體肌力訓練排名最高，脛後肌離心訓練是搭配鞋墊與伸展時較有優勢。實務上：脛後肌訓練值得做，但應放在「鞋墊＋整體下肢負荷管理」的框架裡，別當成單獨解方。",
+   "citations": [
+    {
+     "pmid": "25857939",
+     "title": "Randomized Controlled Trial Comparing Orthosis Augmented by Either Stretching or Stretching and Strengthening for Stage II Tibialis Posterior Tendon Dysfunction",
+     "journal": "Foot Ankle Int",
+     "year": 2015,
+     "design": "RCT",
+     "takeaway": "12 週 Level I RCT：在鞋墊＋伸展之外再加中等強度居家肌力訓練，自述結果差異極小，深後腔室等長肌力也沒有差別。"
+    },
+    {
+     "pmid": "33040609",
+     "title": "Orthotic treatment for stage I and II posterior tibial tendon dysfunction (flat foot): A systematic review",
+     "journal": "Clin Rehabil",
+     "year": 2021,
+     "design": "systematic review",
+     "takeaway": "僅 4 篇 RCT、186 人，75% 在盲化上有高偏誤風險；結論是鞋墊（尤其個人化內側縱弓支撐）配合運動計畫可能減痛，需更多研究。"
+    },
+    {
+     "pmid": "39261538",
+     "title": "Comparing the efficacy of exercise therapy on adult flexible flatfoot individuals through a network meta-analysis of randomized controlled trials",
+     "journal": "Sci Rep",
+     "year": 2024,
+     "design": "meta-analysis",
+     "takeaway": "網絡統合分析：足弓形態改善以「綜合性強化（含髖與下肢整體）」排名最高（SUCRA 0.98）；足部功能指數則以「鞋墊＋伸展＋脛後肌漸進離心阻力」最佳（SUCRA 0.92）。"
+    },
+    {
+     "pmid": "41724415",
+     "title": "Ultrasound-guided application of percutaneous electrolysis as an adjunct to exercise and manual therapy for tibialis posterior tendinopathy: A randomized clinical trial",
+     "journal": "J Pain",
+     "year": 2026,
+     "design": "RCT",
+     "takeaway": "Level 1b RCT：運動＋徒手治療的基礎上加超音波導引經皮電解，短中期疼痛與失能改善優於單純運動＋徒手——反過來看，單靠運動的效果有其天花板。"
+    },
+    {
+     "pmid": "31715431",
+     "title": "Gait alterations in posterior tibial tendonitis: A systematic review and meta-analysis",
+     "journal": "Gait Posture",
+     "year": 2020,
+     "design": "meta-analysis",
+     "takeaway": "8 篇研究統合：脛後肌腱病變者步態站立期呈現前足背屈與外展增加、後足蹠屈與外翻增加，可作為評估與再評估的客觀指標。"
+    },
+    {
+     "pmid": "40578291",
+     "title": "Effects of prefabricated and custom foot orthoses on the biomechanics of the lower limbs of individuals with a posterior tibialis tendon dysfunction during stair climbing",
+     "journal": "Clin Biomech (Bristol)",
+     "year": 2025,
+     "design": "RCT",
+     "takeaway": "客製鞋墊顯著減少後足外翻並增加踝外翻力矩（p < 0.001），但作者明言長期效果與這些生物力學改變的臨床意義尚待確認。"
+    },
+    {
+     "pmid": "38898672",
+     "title": "Non-surgical management of posterior tibial tendon dysfunction- a UK survey",
+     "journal": "J Foot Ankle Res",
+     "year": 2024,
+     "design": "cohort",
+     "takeaway": "153 位英國臨床人員調查：實務核心是衛教／建議＋鞋墊＋足部專項與整體運動；常用結果指標為疼痛量表與單腳提踵，病人自述量表反而少用。"
+    }
+   ]
+  },
+  {
+   "id": "landing-control",
+   "name": "落地緩衝與減速控制",
+   "evidence_grade": "strong",
+   "summary": "這是本清單中證據最強的一類。多篇統合分析一致顯示，含落地控制的神經肌肉訓練可把 ACL 傷害風險降低約 50–60%（RR 0.46–0.50），對膝關節整體傷害也有約 22% 的降幅，且效果在 18 歲以下族群更明顯、隨年齡遞減。關鍵不是動作有多花俏，而是依從性——依從率 ≥75%、每次 ≥15 分鐘、每週 2–3 次是最重要的調節因子。落地生物力學的改變則較不確定：訓練後膝屈角增加（g = 0.58）、膝外翻減少（g = -0.86）達顯著，但其他運動學／動力學參數改變微小；即時回饋的 RCT 結果也不一致，有的能改善膝運動學，有的（針對膝外展力矩的即時回饋）則完全無效。也就是說，傷害真的減少了，但「因為改變了落地力學所以減少」這條因果鏈仍未完全證實。",
+   "citations": [
+    {
+     "pmid": "41486737",
+     "title": "A Systematic Review and Meta-analysis of Anterior Cruciate Ligament Injury Prevention Programs: Training to Stay in the Game",
+     "journal": "Am J Sports Med",
+     "year": 2026,
+     "design": "meta-analysis",
+     "takeaway": "18 篇研究、25,166 名運動員：參加 ACL 預防計畫者傷害風險降低約一半（RR 0.46, 95% CI 0.36–0.57），<18 歲效果更大（RR 0.35）。"
+    },
+    {
+     "pmid": "42273628",
+     "title": "Age-related differences in the effectiveness of neuromuscular training for preventing anterior cruciate ligament injuries in athletes: a systematic review and meta-analysis",
+     "journal": "Front Public Health",
+     "year": 2026,
+     "design": "meta-analysis",
+     "takeaway": "19 篇研究：神經肌肉訓練整體 OR 0.456；<18 歲顯著（OR 0.365），≥18 歲則未達顯著（OR 0.567, CI 0.291–1.104），meta 迴歸顯示保護效果隨年齡遞減。"
+    },
+    {
+     "pmid": "41175154",
+     "title": "Neuromuscular training for preventing knee injuries in female team athletes: a meta-analysis",
+     "journal": "Ann Med",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "膝傷整體降低 22%（RR 0.78）、ACL 傷害降低 50%（RR 0.50）；最強的調節因子是依從率 ≥75%（RR 0.67），且每次 >15 分鐘、每週 2–3 次才顯著。"
+    },
+    {
+     "pmid": "40645751",
+     "title": "Prevention strategies for lower extremity injury: a systematic review and meta-analyses for the Female, woman and/or girl Athlete Injury pRevention (FAIR) consensus",
+     "journal": "Br J Sports Med",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "82 篇研究、154,561 人：神經肌肉訓練（每週 2 次、每次至少 10 分鐘）使下肢傷害降 19%（低確定性）、踝扭傷降 39%、ACL 傷害降 61%。"
+    },
+    {
+     "pmid": "40246764",
+     "title": "Influence of Neuromuscular Training Interventions on Jump-Landing Biomechanics and Implications for ACL Injuries in Youth Females: A Systematic Review and Meta-analysis",
+     "journal": "Sports Med",
+     "year": 2025,
+     "design": "meta-analysis",
+     "takeaway": "13 篇研究、648 名女性：訓練後膝屈峰值角增加（g = 0.58, p = 0.05）、膝外翻減少（g = -0.86, p = 0.05），但其他運動學與動力學參數的改變都極小且不顯著。"
+    },
+    {
+     "pmid": "23371471",
+     "title": "Augmented feedback supports skill transfer and reduces high-risk injury landing mechanics: a double-blind, randomized controlled laboratory study",
+     "journal": "Am J Sports Med",
+     "year": 2013,
+     "design": "RCT",
+     "takeaway": "雙盲 RCT：接受擴增回饋組在最極端的落地試驗中，額狀面膝角度減少 6.5–6.9°（降幅 37.7–40.1%），對照組無此變化，且技能能轉移到未訓練的動作。"
+    },
+    {
+     "pmid": "23347094",
+     "title": "Real-time feedback on knee abduction moment does not improve frontal-plane knee mechanics during jump landings",
+     "journal": "Scand J Med Sci Sports",
+     "year": 2014,
+     "design": "RCT",
+     "takeaway": "針對膝外展力矩給予即時回饋，並未比一般訓練更能改善額狀面膝力學（兩組膝外展力矩都降 12%）——回饋的內容選錯就沒有加成。"
+    },
+    {
+     "pmid": "26144663",
+     "title": "Real-time feedback during drop landing training improves subsequent frontal and sagittal plane knee kinematics",
+     "journal": "Clin Biomech (Bristol)",
+     "year": 2015,
+     "design": "RCT",
+     "takeaway": "以 Kinect 提供即時回饋的組別在膝屈峰值與兩膝間距（額狀面）上改善幅度都優於對照組，顯示低成本回饋工具在臨床情境可行。"
+    }
+   ]
+  }
+ ]
 }
