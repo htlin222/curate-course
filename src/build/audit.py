@@ -1252,6 +1252,104 @@ def audit_videos(cfg: dict, units: list[dict], opts: dict, rep: Report) -> None:
         duration_seconds=total,
     )
 
+    audit_selection(cfg, units, opts, rep)
+
+
+def audit_selection(cfg: dict, units: list[dict], opts: dict, rep: Report) -> None:
+    """選片品質——不是「有沒有片」，是「挑得好不好」。
+
+    這一節的每一條都是實測有分辨力才留下的。試過但**丟掉**的：
+
+    - 「動作名與影片標題的字元重疊率」當相關性代理。人工把關過的策展在這個
+      指標上是最差的（覆蓋率中位數 0%，43 支裡 39 支「完全無關」）——因為
+      中文動作名配英文標題的好影片，重疊本來就是 0。它量的是語言巧合，不是
+      相關性，上線只會反過來懲罰做得好的多語言策展。
+    - 「長度貼著門檻邊緣的比例」。三份資料的方向相反，分不出好壞。
+
+    給好資料與壞資料同一個數字的指標不是指標。
+    """
+    sec = "影片"
+
+    # 逐章統計，不是整門課統計。策展是一章一章做的，出問題也是一章一章出——
+    # 整門課 37 支主課裡有 4 支被濾短了，中位數幾乎不動，指標就完全看不見。
+    # 粒度錯的指標跟沒有指標一樣。
+    by_chapter: dict[str, list[int]] = defaultdict(list)
+    channels = Counter()
+    for row in units:
+        u = row.get("unit") if isinstance(row, dict) and "unit" in row else row
+        code = row.get("code") if isinstance(row, dict) else None
+        if not isinstance(u, dict):
+            continue
+        for role, item in [
+            ("lesson", u.get("lesson")),
+            *(("drill", d) for d in (u.get("drills") or [])),
+        ]:
+            if not isinstance(item, dict) or not item.get("url"):
+                continue
+            if ch := item.get("channel"):
+                channels[ch] += 1
+            if (s := parse_clock(item.get("duration"))) < 0:
+                continue
+            if role == "lesson":
+                by_chapter[code or "?"].append(s)
+
+    lessons = [s for xs in by_chapter.values() for s in xs]
+
+    # ── 主課是不是照著動作的長度挑的
+    #
+    # 實測踩到：策展 agent 的搜尋過濾器沿用了動作的長度上限，於是超過那條線的
+    # 講解型長片從來沒進過它的視野。選出來的每一支都「符合門檻」，稽核一句話
+    # 都不會說，但主課長度中位數只有人工策展的一半——整章的深度就這樣少了。
+    #
+    # 判準不看絕對值（每門課的主課該多長不一樣），看**設定檔給了主課更寬的
+    # 區間，實際卻沒有用到**。那代表挑的時候根本沒把長片納入考慮。
+    # 判準是「跟這門課自己的其他章比」，不是絕對長度。
+    #
+    # 試過而且**丟掉**的版本：「一章的主課全部在動作上限以內」——實測時那一章
+    # 剛好有一支 616 秒踩過 600 秒的線，整條規則就失效了。再試「中位數低於動作
+    # 上限」——12 章裡標記 6 章，誤報率 50%，因為這門課本來就有很多章的主課在
+    # 十分鐘以內。絕對門檻在這件事上沒有意義：每章的主題深度本來就不一樣。
+    #
+    # 有意義的是**離群**。實測退步的那一章比值 0.52，而正常章節最低 0.68。
+    medians = {code: sorted(xs)[len(xs) // 2] for code, xs in by_chapter.items() if len(xs) >= 3}
+    if len(medians) >= 4:
+        course = sorted(medians.values())[len(medians) // 2]
+        limit = float((cfg.get("audit") or {}).get("minChapterLessonRatio", 0.6))
+        short = [
+            f"{code}：中位 {clock(m)}，只有全課中位（{clock(course)}）的 {m / course:.0%}"
+            for code, m in sorted(medians.items())
+            if course and m / course < limit
+        ]
+        if short:
+            rep.warn(
+                sec,
+                f"{len(short)} 章的主課明顯比其他章短（門檻 {limit:.0%}）"
+                "——檢查策展時是不是沿用了動作的長度門檻，把講解型的長片濾掉了",
+                short,
+            )
+        else:
+            median = sorted(lessons)[len(lessons) // 2]
+            rep.ok(
+                sec,
+                f"主課長度中位 {clock(median)} · 各章之間沒有明顯偏短的"
+                f"（最低 {min(m / course for m in medians.values()):.0%}）",
+            )
+
+    # ── 頻道集中度。少數幾個頻道包辦整章，通常代表搜尋關鍵字換得不夠，
+    # 而不是那幾個頻道真的最好。這條只提醒，因為「一個頻道剛好很強」是可能的。
+    if channels:
+        top, n = channels.most_common(1)[0]
+        share = n / sum(channels.values())
+        limit = float((cfg.get("audit") or {}).get("maxChannelShare", 0.25))
+        if share > limit:
+            rep.warn(
+                sec,
+                f"單一頻道佔 {share:.0%}（{top}，{n} 支，門檻 {limit:.0%}）"
+                "——多半是搜尋關鍵字換得不夠，不是那個頻道真的最好",
+            )
+        else:
+            rep.ok(sec, f"{len(channels)} 個不同頻道 · 最大單一頻道佔 {share:.0%}")
+
 
 # ── 內容深度 ──────────────────────────────────────────────────────────────
 

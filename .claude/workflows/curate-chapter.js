@@ -113,27 +113,40 @@ const RULES = `
 - video id 一律取自 yt-dlp 的實際輸出，**絕不可憑記憶拼湊**。捏造一個看起來合理的 id 比留空更糟。
 - 標題、頻道、秒數、觀看數一律照抄工具輸出，不要自己記憶或估算。
 
-- **搜尋一律批次跑，不要一個查詢叫一次 Bash。** 一次送 5–8 個查詢，跑完再看結果：
+- **搜尋一律批次跑，不要一個查詢叫一次 Bash。** 一次送 5–8 個查詢。
+  先把這個函式貼進 shell（每個 agent 一次就好）：
 
     P=/tmp/curate-<你的單元 id>        # 每個 agent 各自的前綴，不要用 q.txt 這種通用名
-    mkdir -p \$P
-    i=0
-    for q in "查詢一" "查詢二" "查詢三" "查詢四" "查詢五"; do
-      i=\$((i+1))
-      yt-dlp "ytsearch20:\$q" --flat-playlist --no-update \\
-        --print "%(id)s|%(title)s|%(channel)s|%(duration)s|%(view_count)s" \\
-        > \$P/\$i.txt 2>/dev/null
-      echo "### \$q → 共 \$(wc -l < \$P/\$i.txt) 筆，其中符合門檻："
-      awk -F'|' -v v=${MIN_VIEWS} -v lo=${DRILL_SEC[0]} -v hi=${DRILL_SEC[1]} \\
-        '\$NF+0>=v && \$(NF-1)+0>=lo && \$(NF-1)+0<=hi' \$P/\$i.txt
-    done
+    mkdir -p \$P; n=0
+    find_videos() {                    # 用法：find_videos <下限秒> <上限秒> "查詢" ...
+      local lo=\$1 hi=\$2; shift 2
+      for q in "\$@"; do
+        n=\$((n+1))
+        yt-dlp "ytsearch20:\$q" --flat-playlist --no-update \\
+          --print "%(id)s|%(title)s|%(channel)s|%(duration)s|%(view_count)s" \\
+          > \$P/\$n.txt 2>/dev/null
+        echo "### \$q（\${lo}-\${hi}s）→ 共 \$(wc -l < \$P/\$n.txt) 筆，符合："
+        awk -F'|' -v v=${MIN_VIEWS} -v lo=\$lo -v hi=\$hi \\
+          '\$NF+0>=v && \$(NF-1)+0>=lo && \$(NF-1)+0<=hi' \$P/\$n.txt
+      done
+    }
 
-  三件事要記住：
+  然後**主課與動作分開叫，長度區間是參數不是預設值**：
+
+    find_videos ${LESSON_SEC[0]} ${LESSON_SEC[1]} "主課查詢一" "主課查詢二" "主課查詢三"
+    find_videos ${DRILL_SEC[0]} ${DRILL_SEC[1]} "動作查詢一" "動作查詢二" "動作查詢三" "動作查詢四"
+
+  **為什麼寫成函式而不是一段可以直接改的迴圈**：上一版把動作的區間寫死在
+  範例裡，主課的區間只寫在下面一行附註「記得換 lo/hi」。附註打不贏複製貼上——
+  實測整章四支主課有三支被 600 秒的上限濾掉，選出來的主課長度中位數只有
+  332 秒，而人工把關的版本是 716 秒。講解型的長片根本沒進視野，稽核也不會
+  說話，因為每一支都「符合門檻」。**能填錯的參數就不要給預設值。**
+
+  另外兩件事：
   · **欄位從右邊數**：標題本身可能含 \`|\`，所以 \$NF 才是觀看數、\$(NF-1) 才是秒數，\$5 會錯位。
   · **「共 N 筆」那一行不能省**：0 筆代表被限流（yt-dlp 這時是 exit 0 + 空輸出，
     不是影片不存在），跟「有結果但都不合格」是完全不同的兩件事，要分得出來。
-  · 找主課時把 awk 的 lo/hi 換成 ${LESSON_SEC[0]} 與 ${LESSON_SEC[1]}。
-  · 原始的 20 筆留在 \$P/\$i.txt 裡，要回頭看被濾掉什麼隨時 grep 得到。
+  · 原始的 20 筆留在 \$P/\$n.txt 裡，要回頭看被濾掉什麼隨時 grep 得到。
 
 - 觀看數 < ${MIN_VIEWS} 一律不採用（上面的 awk 已經先濾掉了）。
 - 語言優先序：${LANGS.join(' > ')}。同等品質下前者勝出。

@@ -894,6 +894,18 @@
           "items": {
             "type": "string"
           }
+        },
+        "maxChannelShare": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "單一頻道最多能佔整門課影片的幾成。超過通常代表搜尋關鍵字換得不夠，不是那個頻道真的最好。預設 0.25"
+        },
+        "minChapterLessonRatio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "一章的主課長度中位數，最低要是全課中位數的幾成。用來抓「這一章的主課被動作的長度門檻濾短了」——絕對長度沒有意義，每章深度本來就不同，所以比的是離群程度。預設 0.6"
         }
       }
     }
