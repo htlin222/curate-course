@@ -277,7 +277,7 @@ function drillEvidence(u) {
               return `
             <li>
               <a href="${esc(ref.href)}" target="_blank" rel="noopener">${esc(c.title)}</a>
-              <span class="DrillEvCat__src">${esc(c.journal || "")}${c.year ? ` ${esc(c.year)}` : ""}${c.design ? ` · ${esc(c.design)}` : ""}${ref.label ? ` · ${esc(ref.label)}` : ""}</span>
+              <span class="DrillEvCat__src">${esc(c.journal || "")}${c.year ? ` ${esc(c.year)}` : ""}${c.design ? ` · ${esc(c.design)}` : ""}${ref.label ? ` · ${esc(ref.label)}` : ""}${c.oa_url ? ` · <a class="DrillEvCat__oa" href="${esc(c.oa_url)}" target="_blank" rel="noopener">${esc(UI.oaLabel || "免費全文")}</a>` : ""}</span>
               ${c.takeaway ? `<span class="DrillEvCat__take">${esc(c.takeaway)}</span>` : ""}
             </li>`;
             })

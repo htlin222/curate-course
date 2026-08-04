@@ -64,8 +64,9 @@ counter: ## 建立瀏覽次數用的 D1 資料庫並寫出 wrangler 綁定（冪
 audit: ## 離線稽核設定檔、配額、影片長度與實證深度（確定性，不打網路）
 	$(PY) src/build/audit.py
 
-test: ## 前端純邏輯的單元測試（零依賴、不需要瀏覽器）
+test: ## 純邏輯的單元測試（零依賴、不打網路、不需要瀏覽器）
 	node --test 'tests/*.test.js'
+	$(PY) -m unittest discover -s tests -p 'test_*.py' -v
 
 e2e: build ## paywall 端對端流程並截圖到 .tmp/paywall-shots（需要 Chrome）
 	@mkdir -p .tmp

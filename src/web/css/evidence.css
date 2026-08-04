@@ -390,6 +390,21 @@
   font-size: 11px;
 }
 
+/* 開放取用的全文連結。只在 citations[].oa_url 存在時才會出現——那個欄位由
+   verify_refs.py --fix 從 Unpaywall／Europe PMC 寫入，付費牆的引用不會有。
+   刻意比同一行的其他中繼資料醒目一點：對學習者來說，「這篇讀得到」比期刊
+   名稱或研究設計更能決定他要不要點下去。 */
+.DrillEvCat__oa {
+  color: var(--fgColor-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.DrillEvCat__oa:hover,
+.DrillEvCat__oa:focus-visible {
+  text-decoration: underline;
+}
+
 .DrillEvCat__take {
   display: block;
   margin-top: 2px;

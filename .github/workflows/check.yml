@@ -103,7 +103,16 @@ jobs:
         with:
           fetch-depth: 0   # 要跟 base 比對 diff，淺 clone 拿不到
 
+      # 這幾把憑證只是讓查詢快一點、涵蓋廣一點，全部選填。
+      #
+      # 特別要注意：**fork 來的 PR 拿不到 repository secrets**，這裡會全部展開
+      # 成空字串。腳本因此必須在缺憑證時走降級路徑而不是報錯——否則外部貢獻者
+      # 的 PR 一律紅掉，而錯誤訊息指向一個他們無權取得的東西。
       - name: 驗證改動到的引用
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          CROSSREF_MAILTO: ${{ secrets.CROSSREF_MAILTO }}
+          OPENALEX_MAILTO: ${{ secrets.OPENALEX_MAILTO }}
         run: |
           BASE="${{ github.event.pull_request.base.sha || github.event.before }}"
           [ -z "$BASE" ] && BASE="origin/main"
