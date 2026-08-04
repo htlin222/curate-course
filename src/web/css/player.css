@@ -362,11 +362,12 @@ body[data-tab="player"] {
 
   /* 開關鈕浮到抽屜之上。它原本待在影片下方的按鈕列裡，
      抽屜一升起就把自己的開關蓋掉了。
-     z-index 要高過固定頁尾（60），bottom 也要讓開頁尾的高度。 */
+     上課模式的頁尾是隱藏的（見上面的 body[data-tab="player"]），
+     所以貼底即可；z-index 仍取高值，免得日後頁尾在這一頁復活。 */
   .Player__actions [data-toggle-list] {
     position: fixed;
     right: var(--base-size-16);
-    bottom: calc(var(--footer-height) + var(--base-size-16));
+    bottom: var(--base-size-16);
     z-index: 70;
     width: 48px;
     height: 48px;
