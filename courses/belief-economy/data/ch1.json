@@ -1,0 +1,191 @@
+{
+	"chapter": "CH1",
+	"title": "為什麼有人願意付錢相信",
+	"units": [
+		{
+			"id": "ch1-u1",
+			"name": "水晶沒有能量，但顯化生意是真的",
+			"type": "belief",
+			"assessment": "拿一個你自己追蹤中的靈性／顯化帳號，開一張表做兩件事。第一件：抄下它最近三則貼文，逐條標記「這句話有沒有可否證的預測？」，有具體時間與結果的算有，只說「宇宙會回應準備好的人」算沒有。三則裡若一則都標不到「有」，你面對的是不可否證話術。第二件：從貼文點進它的簡介連結，一路點到要輸入信用卡為止，數這中間隔了幾層（貼文→免費社群→免費講座→低價課→高價課），把每層的價格與「限時」字樣抄下來。你能把層級與價格完整列出來，代表你已經看懂漏斗；如果你點了五分鐘還數不出價格在哪一層，代表價格被刻意延後揭露，這本身就是可記錄的證據。兩張表都做完再回答一句話：「我付的錢買到的是什麼？」寫不出具體交付物就是紅燈。",
+			"tight": [
+				"把個人失敗自動歸因成「信念不夠」的內在迴圈",
+				"對不可否證承諾的情緒依附（越沒證據越想相信）",
+				"把「我認識的某人成功了」當作證據的倖存者偏誤",
+				"急著在情緒低點做出高價購買決定的衝動"
+			],
+			"weak": [
+				"把宣稱翻譯成可否證預測的能力",
+				"追蹤金流層級、辨識銷售漏斗的能力",
+				"區分「機制為假」與「需求為真」的雙軌判讀",
+				"在不嘲笑消費者的前提下分析產業的態度"
+			],
+			"lesson": {
+				"name": "揭露身心靈／顯化／吸引力法則的謊言",
+				"en": "The Manifestation Industry's Lies, Unpacked",
+				"kind": "teardown",
+				"target": "顯化話術、吸引力法則、身心靈產業、倖存者偏誤、付費動機",
+				"dose": "完整看 1 遍不快轉；第 2 遍只做一件事——每聽到一句「你之所以沒成功是因為你信得不夠」就按暫停，抄進筆記，最後數總共幾句",
+				"title": "揭露市面上身心靈/顯化/吸引力法則的驚人謊言",
+				"channel": "霏霏Acacia",
+				"url": "https://www.youtube.com/watch?v=850wf-ENm7c",
+				"duration": "13:23",
+				"why": "本單元要建立的是「機制為假、生意為真」的雙軌判讀。這支影片由一位曾經身在其中的創作者拆解顯化話術的內部結構，包括不可否證的承諾、把失敗歸因給學員的迴圈，以及靠這套話術變現的路徑，剛好把兩軌一次講完。繁中、沒有推銷自己的課程，適合當本章的定調課。"
+			},
+			"drills": [
+				{
+					"name": "我來賣一門假導師課程（給你看金流怎麼跑）",
+					"en": "I'm Selling a Fake Guru Course (Here's Why)",
+					"kind": "teardown",
+					"target": "資訊產品漏斗、前端引流、高價後端、成交話術、真實金流",
+					"dose": "看 1 遍；第 2 遍拿紙畫出他示範的漏斗層級（免費內容→名單→低價→高價），每一層旁邊寫下他提到的價格與轉換假設",
+					"title": "I'm selling a Fake Guru course. (here's why)",
+					"channel": "Coffeezilla",
+					"url": "https://www.youtube.com/watch?v=bASTsYxgJcM",
+					"duration": "4:17"
+				},
+				{
+					"name": "水晶能治癒心靈，還是安慰劑？",
+					"en": "Healing Crystals: Placebo, and How It Became an Industry",
+					"kind": "mechanism",
+					"target": "安慰劑效應、能量宣稱、水晶產業、文化流行機制、消費需求",
+					"dose": "看 1 遍；看完立刻寫下兩句話——「它說水晶不能做到的是＿＿」與「它說人們仍然買單的原因是＿＿」，兩句都寫得出來才算看懂",
+					"title": "水晶真的可以治癒心靈、還是「安慰劑效應」？ How Healing Crystals Became a Cultural Phenomenon｜VOGUE冷知識｜Vogue Taiwan",
+					"channel": "VOGUE Taiwan",
+					"url": "https://www.youtube.com/watch?v=jg7cMOMhYgI",
+					"duration": "5:53"
+				},
+				{
+					"name": "自我成長產業的完整商業拆解",
+					"en": "The Toxic World of Self Help: Hustle Culture, Toxic Positivity, Addiction, and Fake Gurus.",
+					"kind": "cautionary",
+					"target": "假導師漏斗、hustle 文化、毒性正能量、成癮式消費、產業規模",
+					"dose": "看 1 遍；過程中記下他點名的每一種變現手法，逐條寫出「我打算做的版本跟這個差在哪」，至少五條",
+					"title": "The Toxic World of Self Help: Hustle Culture, Toxic Positivity, Addiction, and Fake Gurus.",
+					"channel": "James Jani",
+					"url": "https://www.youtube.com/watch?v=dmLTLkCBSN8",
+					"duration": "18:51"
+				}
+			]
+		},
+		{
+			"id": "ch1-u2",
+			"name": "顯化為什麼真的有效",
+			"type": "belief",
+			"assessment": "做一次為期兩週的「命中率記帳」，用一張兩欄的紙自己驗收。左欄每天睡前寫下當天你覺得「顯化中／被宇宙回應」的事件，右欄同時寫下那天你許過但沒有發生的願望，兩欄都要寫，不准只寫左欄。第 14 天算兩個數字：命中率＝左欄件數 ÷（左欄＋右欄），以及左欄裡「當天有具體行動配套」的比例。判讀：若你原本主觀感覺「幾乎每次都靈」，但算出的命中率低於三成，你抓到的是頻率錯覺與記憶取樣；若命中率高、但九成以上都伴隨具體行動，有效的是執行意圖，把它留著、把玄學那層拿掉。第二個檢核更快：拿最近一個願望問自己「什麼結果會讓我承認這套方法這次沒用」，三十秒內講不出一個可觀察、可打叉的結果，代表這個信念已經是不可證偽的閉環，該調整的是說法。",
+			"tight": [
+				"願望只要沒成真就歸因於「我信得不夠純」——不可證偽的閉環，愈用力愈難修正",
+				"每天大量做視覺化冥想，但行事曆上沒有任何一項對應的具體行動",
+				"把別人的壞事解釋成「他自己吸引來的」，開始迴避需要幫忙的人",
+				"為了維持「正能量」而拒絕看帳單、體檢報告、專案落後數字"
+			],
+			"weak": [
+				"看完就說「果然都是假的」，卻連自己上週寫過什麼目標都想不起來——否定得比相信還省力",
+				"知道執行意圖有效，但寫下來的都是「我要更努力」這種沒有觸發條件的句子",
+				"只記得靈驗的那幾次，從來沒有把沒發生的願望也寫進同一張表",
+				"對他人的期待從未落到具體行為（回饋、指派任務、給時間），只停在心裡覺得對方會變好"
+			],
+			"lesson": {
+				"name": "心想事成真的有科學根據嗎",
+				"en": "Does Wishful Thinking Actually Work? A Psychologist's Take",
+				"kind": "mechanism",
+				"target": "選擇性注意、匱乏感、想像力、期待效應、動機啟動",
+				"dose": "完整看完一次（約 19 分鐘），中途不要跳；看完當下寫下 3 件你最近覺得「被顯化」的事，留著給後面 4 支動作影片逐一比對",
+				"title": "心想事成有科學根據？用想像力戰勝匱乏感陷阱｜Sherry's Notes 雪力的心理學筆記 #心理學 #吸引力法則 #心想事成",
+				"channel": "Sherry's Notes 雪力的心理學筆記",
+				"url": "https://www.youtube.com/watch?v=TthVcPhV3pY",
+				"duration": "19:14",
+				"why": "繁中、心理學專業頻道，直接處理本單元的核心問題：顯化背後的注意力分配、匱乏感與動機等心理機制。它把「有效」與「玄學」拆開，正好給後面四支動作影片當總綱，先承認現象真的存在，再一層層交代它為什麼存在。57 萬觀看且非帶貨導向，適合當單元入口。"
+			},
+			"drills": [
+				{
+					"name": "頻率錯覺：為什麼你一想到就到處看到",
+					"en": "Why The Frequency Illusion Is Everywhere Now",
+					"kind": "mechanism",
+					"target": "選擇性注意、頻率錯覺、Baader-Meinhof 現象、確認偏誤、記憶取樣",
+					"dose": "看 1 遍（4 分半）；接著隨機指定一個你平常不會注意的物件（例如黃色車、某個字），計時 48 小時記錄出現次數，第三天回看記錄",
+					"title": "Why The Frequency Illusion Is Everywhere Now",
+					"channel": "MinuteEarth",
+					"url": "https://www.youtube.com/watch?v=5b3e2blXsZk",
+					"duration": "4:27"
+				},
+				{
+					"name": "WOOP：把願望變成真的會執行的動作",
+					"en": "What is WOOP? (Wish, Outcome, Obstacle, Plan)",
+					"kind": "mechanism",
+					"target": "行為啟動、執行意圖、心智對比、障礙預想、目標設定",
+					"dose": "看 1 遍（3 分鐘）；當場用紙筆跑完一輪 WOOP，願望限定一件本週內可驗收的事，Plan 一定要寫成「如果⋯我就⋯」的句型",
+					"title": "What is WOOP?",
+					"channel": "WOOP",
+					"url": "https://www.youtube.com/watch?v=DpbCMzQqZAU",
+					"duration": "3:03"
+				},
+				{
+					"name": "羅森塔爾效應：期待怎麼把人推成那個樣子",
+					"en": "The Rosenthal / Pygmalion Effect Explained",
+					"kind": "teardown",
+					"target": "自我實現預言、Pygmalion effect、期待效應、教師預期、行為回饋迴路",
+					"dose": "看 1 遍（5 分半）；看完寫下你目前對某一個人（同事、小孩、伴侶）的既定評價，以及過去一週你因為這個評價而少做／多做的 2 個具體行為",
+					"title": "【好葉】羅森塔爾效應 - 說你行你就行 - 5分鐘心理學",
+					"channel": "Better Leaf 好葉",
+					"url": "https://www.youtube.com/watch?v=M0bRF-_CezU",
+					"duration": "5:16"
+				}
+			]
+		},
+		{
+			"id": "ch1-u3",
+			"name": "你的客人有四種，第四種不能賣",
+			"type": "belief",
+			"assessment": "拿你最近 10 位付費或詢價的客人，一人一行寫在紙上，每行只填三格：他第一句話問的是什麼、他為什麼現在來、他期待多久看到結果。填完把每一行標上求方法／求歸屬／求身分／求奇蹟其中一個。檢核有三條可操作的線：第一，若有超過三行你標不出來，代表你根本沒問過對方的處境，成交靠的是氣氛；第二，把標成「求奇蹟」的那幾行圈出來，逐一回答「他來之前有沒有中斷過醫療、法律或財務上的正規處理」，只要有一個是，就是這單元說的第四種，不能賣，要轉介；第三，翻出你的銷售頁，找出所有「相信就會發生」「還沒好是你不夠相信」句型並數出數量，這個數字就是你目前正在對第四種客人招手的強度，數字不是零就要改寫。",
+			"tight": ["成交渴望", "救世心態", "課程神效承諾"],
+			"weak": ["拒絕與轉介能力", "客人處境問診", "成效邊界說明"],
+			"lesson": {
+				"name": "人人都想加入邪教：三大話術一次破解",
+				"en": "Why everyone is susceptible: three persuasion scripts of cults",
+				"kind": "mechanism",
+				"target": "歸屬需求、身分認同、話術結構、易感族群",
+				"dose": "完整看一遍（約 10 分鐘），第二遍暫停在每一個話術段落，寫下自己銷售頁上對應的那一句",
+				"title": "其實人人都想加入邪教？三大邪教話術一次破解！《七七說書》EP 051｜志祺七七",
+				"channel": "志祺七七",
+				"url": "https://www.youtube.com/watch?v=FJxA8WwKl2o",
+				"duration": "10:15",
+				"why": "本單元要講的是「客人為什麼付錢相信」。這支片用講解型結構拆解歸屬、身分、確定性三種需求如何被話術接管，剛好對應四種客人裡的求歸屬與求身分；也讓學員看見自己寫的文案跟這些話術的距離有多近，可作為本章的自我對照材料。"
+			},
+			"drills": [
+				{
+					"name": "用 VALS 把客人依購買動機分群",
+					"en": "Segment buyers by primary motivation with VALS",
+					"kind": "mechanism",
+					"target": "購買動機、受眾分群、理想型、成就型、自我表現型",
+					"dose": "看 1 遍後暫停，把最近 5 位詢價對象各標一個動機類別，寫在紙上，標不出來的那幾位就是資訊不足",
+					"title": "Understand customer motivation with VALS in 3 minutes",
+					"channel": "Game Thinking TV",
+					"url": "https://www.youtube.com/watch?v=EFNJPWK75jQ",
+					"duration": "3:25"
+				},
+				{
+					"name": "看新聞查證：心靈成長團體如何收割脆弱客人",
+					"en": "News teardown: how a personal-growth group harvested vulnerable clients",
+					"kind": "cautionary",
+					"target": "無照諮商、高價課程、脆弱族群、吸金手法",
+					"dose": "看 1 遍，記下報導裡的三個結構特徵（收費金額、無照身分、拉人層級），再逐條比對自己的方案",
+					"title": "3天2夜學費竟要2萬多！ 心靈成長團體「無照諮商」涉詐4千萬",
+					"channel": "年代新聞CH50",
+					"url": "https://www.youtube.com/watch?v=KUNFPPWkjDk",
+					"duration": "2:27"
+				},
+				{
+					"name": "拆解《秘密》：顯化敘事為什麼危險",
+					"en": "Teardown of The Secret and the manifestation promise",
+					"kind": "cautionary",
+					"target": "顯化信念、求奇蹟客群、責備受害者、財務風險",
+					"dose": "看 1 遍，寫下影片指出的「失敗都是你自己不夠相信」這個結構，再檢查自己的退費／成效說明有沒有同樣的邏輯",
+					"title": "Why The Secret Is Bullshit",
+					"channel": "TMM",
+					"url": "https://www.youtube.com/watch?v=xYq83xGEe5o",
+					"duration": "2:38"
+				}
+			]
+		}
+	]
+}

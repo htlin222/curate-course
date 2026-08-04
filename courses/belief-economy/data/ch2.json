@@ -1,0 +1,607 @@
+{
+	"chapter": "CH2",
+	"title": "產品設計",
+	"units": [
+		{
+			"id": "ch2-u1",
+			"name": "你的我曾經很慘是資產不是傷疤",
+			"type": "blueprint",
+			"assessment": "拿手機把自己的起源故事講一遍、錄成 90 秒語音並轉成逐字稿，然後做四項可判定的檢核。一、逐句貼四色標籤（低谷／轉折／方法／使命），算各段字數比例：低谷超過全文 40%、或使命段落為 0 字，就只是在展示傷疤。二、用編輯器搜尋功能數「我」與「你（顧客）」的出現次數，「我」超過「你」兩倍以上，代表主角站錯位置，要照 StoryBrand 把顧客改回主角。三、把逐字稿傳給三個不認識你的人，只問兩題：「這個人幫誰解決什麼問題？」「他憑什麼有資格？」三人裡有兩人答不出來或答錯，故事就還沒變成資產。四、把每句事實陳述標上時間、地點、可查證數字，任何一句填不出來就整句刪掉。這是防翻車的最低門檻。",
+			"tight": [
+				"主課（Y4ah7UwgeLs）直接處理「為什麼故事比產品規格更有說服力」，正好是本單元把低谷重新定價成資產的前提",
+				"動作 1（故事圈）與動作 2（StoryBrand）形成互補：前者管「怎麼排順序」，後者管「誰是主角」，合起來覆蓋起源故事最常出錯的兩個面向",
+				"動作 4 是真實商業案例，可直接驗證主課的機轉主張，不是空談",
+				"動作 5 為繁中在地案例，翻車情境對台灣讀者的可信度與警示力最強，且直指「故事與行為對不上」這個核心風險"
+			],
+			"weak": [
+				"動作 3（逐句寫作流程）沒有找到真正逐句示範改寫的影片；The Futur 這支講的是敘事原則多於逐句操作，需靠 dose 的兩遍改寫練習補足",
+				"繁中／簡中在「創辦人起源故事結構拆解」這個題目上幾乎沒有合格內容（『創辦人故事 低谷 轉折 拆解』20 筆 0 符合、『偽造 人設 崩塌 網紅 創業 造假』20 筆 0 符合），動作 1 只能用英文的通用敘事結構影片替代，缺少創業情境的直接示範",
+				"動作 5 是新聞片段而非教學拆解，只呈現事件不分析機制，分析責任落在 assessment 的第四項檢核"
+			],
+			"lesson": {
+				"name": "故事行銷：高手不賣產品，只說故事",
+				"en": "Story Marketing: Pros Don't Sell Products, They Tell Stories",
+				"kind": "mechanism",
+				"target": "故事行銷原理、個人經歷變現、品牌記憶點、購買動機、情緒連結",
+				"dose": "完整看一遍（約 14 分鐘），第二遍暫停三次，把影片舉的每個故事套到自己的低谷經歷上，各寫一句話",
+				"title": "99%有效的故事行销 | 高手不卖产品，他们只说故事 | 創造品牌力",
+				"channel": "富人俱樂部",
+				"url": "https://www.youtube.com/watch?v=Y4ah7UwgeLs",
+				"duration": "13:34",
+				"why": "單元要說服讀者「我曾經很慘」是資產，需要先建立的是機轉理解：為什麼人買故事不買規格、為什麼親身經歷的挫折比功能列表更難被競品複製。這支影片正面處理這個因果鏈（故事→情緒→記憶→購買），814 秒的長度足以把原理講完，觀看數 92 萬。選簡中而非繁中的同題影片，是因為繁中候選（如 uGMkMB1A5NA，941 秒／23,232 觀看）主題偏向直效行銷分類學，對「個人低谷如何成為品牌資產」的貼合度明顯較低。"
+			},
+			"drills": [
+				{
+					"name": "故事圈八步：把低谷轉折拆成可複製的結構",
+					"en": "Dan Harmon Story Circle: 8 Proven Steps to Better Stories",
+					"kind": "teardown",
+					"target": "故事結構、低谷、轉折、方法、使命、角色動機、段落切分",
+					"dose": "看一遍後拿一張紙畫八格圓圈，把自己的創業起源故事逐格填入，空格最多的那一格就是你講故事時最會跳過的部分",
+					"title": "Dan Harmon Story Circle: 8 Proven Steps to Better Stories",
+					"channel": "StudioBinder",
+					"url": "https://www.youtube.com/watch?v=-XGUVkOmPTA",
+					"duration": "8:57"
+				},
+				{
+					"name": "StoryBrand 七元素：讓顧客當主角、你當嚮導",
+					"en": "The StoryBrand Framework Explained In 7 Minutes",
+					"kind": "mechanism",
+					"target": "顧客為主角、品牌為嚮導、問題定義、行動呼籲、失敗代價、成功樣貌",
+					"dose": "看一遍，暫停在七元素圖表上截圖，用自己的產品把七格各填一句話，重點檢查「主角」那格填的是顧客不是自己",
+					"title": "the StoryBrand Framework Explained In 7 Minutes",
+					"channel": "StoryBrand With Donald Miller",
+					"url": "https://www.youtube.com/watch?v=YFDJYdMd1wU",
+					"duration": "6:51"
+				},
+				{
+					"name": "把故事寫成別人記得住的品牌敘事",
+					"en": "How to Craft a Story Brand That People Remember",
+					"kind": "mechanism",
+					"target": "敘事寫作流程、句子節奏、記憶點設計、抽象經歷具體化、品牌訊息一致性",
+					"dose": "看兩遍：第一遍不動筆，第二遍每聽到一個寫作原則就暫停，用它改寫自己起源故事的同一段落，最後比對前後兩版哪一版更短更具體",
+					"title": "How to Craft a Story Brand That People Remember",
+					"channel": "The Futur",
+					"url": "https://www.youtube.com/watch?v=v8rfMt87Lb8",
+					"duration": "5:28"
+				},
+				{
+					"name": "個人品牌起源故事的商業拆解：Huda Kattan 從 6 千到 10 億",
+					"en": "How Huda Kattan Turned $6K into $1 Billion",
+					"kind": "teardown",
+					"target": "個人品牌起源、經歷變產品、受眾信任、變現路徑、真實案例拆解",
+					"dose": "看一遍並記時間戳：標出她講「自己的困擾」的秒數、講「解法」的秒數、講「顧客」的秒數，算三者比例，再拿自己的故事對照",
+					"title": "How Huda Kattan Turned $6K into $1 Billion | Glamour",
+					"channel": "Glamour",
+					"url": "https://www.youtube.com/watch?v=vsKtpd-_gas",
+					"duration": "6:17"
+				},
+				{
+					"name": "人設造假被抓包：NanaQ 極簡翻車事件",
+					"en": "NanaQ's Minimalist Persona Exposed as Fake",
+					"kind": "cautionary",
+					"target": "人設造假、可查證性、故事與行為落差、信任崩塌、翻車成本",
+					"dose": "看一遍，然後把自己起源故事裡每一句「事實陳述」列出來，逐句寫下「若有人拍照／查帳／問當年同事，會不會對得上」，對不上的整句刪掉",
+					"title": "NanaQ被抓包「極簡」造假  陳沂轟：作假都不認真｜鏡週刊",
+					"channel": "鏡週刊",
+					"url": "https://www.youtube.com/watch?v=pcqeR-Klcpg",
+					"duration": "1:56"
+				}
+			]
+		},
+		{
+			"id": "ch2-u2",
+			"name": "找出你要反對的那一句話",
+			"type": "blueprint",
+			"assessment": "把你寫好的那句反對句攤在桌上，做四道可自己執行的檢核。一、朗讀測試：念給三個不在你同溫層的人聽，如果沒有任何人皺眉、追問或想反駁，代表它是常識，重寫。二、主詞測試：用螢光筆圈出句子裡被反對的對象，圈不出一個具體「做法／說法」（只圈到一群人或一種情緒）就不合格。敵人必須是可指認的做法。三、條件測試：計時 90 秒，錄音說明「主流那句話在哪些條件下會失效、在哪些條件下仍然成立」；說不滿 90 秒或講不出它成立的場合，代表這是發洩。四、客戶測試：把句子念出來，問自己「我的目標讀者聽完會覺得被罵到嗎？」如果會，把敵人從人身上移回做法上再測一次。四題全過才進下一單元。",
+			"tight": [
+				"主課用繁中定位框架打底，動作 1（指名敵人的操作法）、動作 2（自建品類）、動作 3（反主流命題）形成「先定座標→再開新格→再寫反對句」的遞進，沒有內容重疊",
+				"動作 4 直接對到本課程的靈性語境（假設法則 vs 吸引力法則），示範了「教義分歧」在真實社群裡長什麼樣，讓抽象的『反對一句話』有具體樣本",
+				"動作 5 是繁中在地新聞案例，操弄風險不是理論警語而是可對照的具體行為清單，assessment 的第四題可以直接拿它比對"
+			],
+			"weak": [
+				"「共同敵人行銷」這個關鍵詞在 YouTube 上幾乎沒有過 5000 觀看的專題片（實測 20+ 支多在 6～400 觀看），動作 1 只能用 StoryBrand 框架片間接覆蓋，villain 只佔其中約一分鐘，讀者需要自行放大該段",
+				"動作 3 的 Zero to One 講的是創業與壟斷，不是內容／論述層次的 contrarian positioning，遷移到『寫一句反主流論述』需要讀者自己轉譯",
+				"動作 4 為簡中，繁中沒有找到同時處理兩套法則分歧且過門檻的影片；且該頻道立場偏向假設法則，比較不完全中立",
+				"動作 5 是新聞報導而非教學拆解，只呈現極端結果，沒有拆解操弄是怎麼一步步升級的；Apple 1984（VtvjbmoDx-I，60 秒、639 萬觀看）這種經典『指名敵人』廣告本可補位，但五個動作槽位已被指定主題佔滿"
+			],
+			"lesson": {
+				"name": "品牌定位三大重點：走出差異化",
+				"en": "Brand Positioning: 3 Keys to Differentiation",
+				"kind": "mechanism",
+				"target": "品牌定位、差異化、目標客群、競品比較、價值主張",
+				"dose": "完整看 1 遍，第二遍每講到一個「重點」就暫停，把自己的產品套進去寫一句話，共寫 3 句",
+				"title": "品牌定位３大重點，輕鬆走出差異化！｜Business Wednesday",
+				"channel": "RBAY",
+				"url": "https://www.youtube.com/watch?v=b7d2XytnCHM",
+				"duration": "7:49",
+				"why": "這一單元要做的事是「找出你要反對的那一句話」，而反對句成立的前提是先知道自己站在座標上的哪一格。這支繁中影片用三個步驟把定位拆成可填空的欄位（對誰、跟誰不一樣、不一樣在哪），是寫反對句前的地基；沒有這層，反對句只會變成情緒宣言。長度 469 秒、觀看 36954，講解型節奏穩，適合當主課。"
+			},
+			"drills": [
+				{
+					"name": "品牌定位的基本盤",
+					"en": "What Is Brand Positioning? [With Examples]",
+					"kind": "mechanism",
+					"target": "定位陳述、目標客群、差異點、競爭參考框架、佐證理由",
+					"dose": "看完後用影片給的定位公式寫出你的一句話定位，先寫三個版本，再刪到只剩一個",
+					"title": "What Is Brand Positioning? [With Examples]",
+					"channel": "Brand Master Academy",
+					"url": "https://www.youtube.com/watch?v=Rcv-J6534oE",
+					"duration": "10:17"
+				},
+				{
+					"name": "藍海策略拆解 IKEA：不搶既有市場，自己開一格",
+					"en": "Blue Ocean Strategy Teardown: How IKEA Created Its Own Category",
+					"kind": "teardown",
+					"target": "品類創造、藍海策略、既有市場、價值曲線、取捨",
+					"dose": "看 1 遍，暫停後畫一條表格：既有品類做的四件事，你要「減少／剔除」哪兩件、「提升／創造」哪兩件",
+					"title": "藍海策略｜思維分析：IKEA 崛起 【尼歐充電站】",
+					"channel": "賴春輯Neo Sharing",
+					"url": "https://www.youtube.com/watch?v=mN219a-R0-w",
+					"duration": "7:30"
+				},
+				{
+					"name": "Zero to One 的反主流提問：少數人同意的那個真相",
+					"en": "Zero to One Core Message: The Contrarian Question",
+					"kind": "mechanism",
+					"target": "反主流論述、壟斷、祕密、逆向命題、市場切分",
+					"dose": "看 1 遍，然後用 Thiel 的問句寫 5 個候選句：「有什麼重要的事，很少人同意我？」只留下你能舉出兩個證據的那一句",
+					"title": "ZERO TO ONE by Peter Thiel | Core Message",
+					"channel": "Productivity Game",
+					"url": "https://www.youtube.com/watch?v=Hd9pHZC7Sak",
+					"duration": "8:14"
+				},
+				{
+					"name": "假設法則 vs 吸引力法則：兩套教義差在哪",
+					"en": "Law of Assumption vs Law of Attraction: Where the Doctrines Split",
+					"kind": "mechanism",
+					"target": "假設法則、吸引力法則、教義分歧、內維爾戈達德、方法論比較",
+					"dose": "看 1 遍，邊看邊做兩欄筆記：左欄「吸引力法則主張」、右欄「假設法則反對的點」，至少各記 3 條",
+					"title": "到底用哪個？吸引力法則還是假設法則？",
+					"channel": "财富的信仰 Path of Wealth",
+					"url": "https://www.youtube.com/watch?v=B3DeJYTAIt8",
+					"duration": "8:18"
+				},
+				{
+					"name": "靠站定立場獲利的實例",
+					"en": "How Nike Turns Controversy Into Dollars",
+					"kind": "teardown",
+					"target": "爭議定位、目標客群篩選、流失與獲得的取捨、品牌聲量、營收變化",
+					"dose": "看完後寫下你要反對的那句話，並列出「講出來會流失哪一群人、會吸引哪一群人」各三項，流失那欄寫不滿三項代表你的立場不夠具體",
+					"title": "How Nike Turns Controversy Into Dollars",
+					"channel": "CNBC",
+					"url": "https://www.youtube.com/watch?v=Yvkf88eSTrI",
+					"duration": "6:03"
+				}
+			]
+		},
+		{
+			"id": "ch2-u3",
+			"name": "設計你自己的顯化法：五個零件",
+			"type": "blueprint",
+			"assessment": "把你寫好的方法整份印出來，找一個完全沒聽過你講課的人（同事、家人都行），請他只照著紙上的文字自己做完一輪，過程中你不准補充、不准解釋，只做三件事：計時、記下他每一次抬頭問你問題的時間點、記下他做錯或做不下去的那一行。做完後檢查四項可數的指標：一，他問問題的次數，超過三次代表你的步驟寫成了概念；二，紙上每個零件是否都有一個數字（幾次、幾天、幾分鐘、第幾點），沒有數字的零件他一定會停下來；三，他能不能在不看你臉色的情況下自己判斷「這一輪做完了」，如果他做完後抬頭問「這樣算好了嗎」，代表完成訊號這個零件缺席；四，一週後再問他一次「你上次做到哪」，答不出來就代表回顧點沒有被設計進去。四項裡任一項不過，回頭只修那一個零件，不要整套重寫。",
+			"tight": [
+				"儀式細節過度堆疊：蠟燭、時辰、月相、特定筆色全部綁在一起，任一項缺席學員就整套停擺",
+				"書寫量訂得過重（同時要求 55x5＋每日 scripting＋感恩日記），第四天起實際完成率會崩",
+				"承諾語氣過強：文案裡「一定」「保證」「三天內」這類詞，把方法綁死在你無法交付的結果上"
+			],
+			"weak": [
+				"完成訊號缺席：學員做完不知道算不算做完，只能回頭問老師",
+				"回顧點缺席：沒有指定「哪一天、看哪一張紙」，進度無法被自己看見",
+				"方法沒有名字，無法被複述、被轉介，也就無法被封裝成可販售資產",
+				"失敗路徑沒寫：中斷一天之後要從第幾天接回去，整份文件沒有交代"
+			],
+			"lesson": {
+				"name": "新年顯化全攻略：把「顯化劇本」拆成一條可重複走的流程",
+				"en": "New Year Manifestation Playbook: Breaking Scripting Down into a Repeatable Process",
+				"kind": "teardown",
+				"target": "顯化劇本、步驟順序、書寫頻率、完成訊號、可重複流程",
+				"dose": "第一遍不做筆記整支看完（22 分鐘）；第二遍邊看邊暫停，每聽到一個「你要做什麼」就抄成一行動詞開頭的句子，最後數數看抄到幾行，超過 12 行代表這套流程還沒被壓縮成零件。",
+				"title": "【新年顯化全攻略】寫下顯化劇本，打造你的夢想人生！",
+				"channel": "Angel Talks 蔓蔓說",
+				"url": "https://www.youtube.com/watch?v=E_qBb2JtY30",
+				"duration": "22:22",
+				"why": "本輪搜尋中唯一一支把整套顯化流程從進場到收尾完整演過一遍的繁中長片（1342 秒）。單元要教「拆零件」，前提是先看過一個沒被剪碎的完整成品；短片會讓學員誤以為方法等於一個動作。她把劇本書寫、時間點、心理狀態、事後回顧都講到，對應本單元五個零件的落點，學員看完可以直接在她的流程上畫刀。"
+			},
+			"drills": [
+				{
+					"name": "把你的方法變成一個有名字的模型：三步驟命名與封裝",
+					"en": "Create Your Own Coaching Model in 3 Simple Steps",
+					"kind": "teardown",
+					"target": "方法命名、模型封裝、步驟數量、可販售資產、教練框架",
+					"dose": "看一次後立刻做：用 10 分鐘寫出你的方法名稱（限 5 個字以內）＋三到五個階段名稱，每個階段只准寫一句話。寫不出階段名稱就回頭再看一次 3:00–7:00 那段。",
+					"title": "Create your own coaching model in 3 simple steps",
+					"channel": "Mindvalley Coach",
+					"url": "https://www.youtube.com/watch?v=yMwjfds0FZE",
+					"duration": "9:11"
+				},
+				{
+					"name": "369 特斯拉顯化法：完整書寫步驟拆解",
+					"en": "The 369 (Tesla) Method: Full Writing Procedure Walkthrough",
+					"kind": "mechanism",
+					"target": "書寫次數、時間點、句型格式、週期長度、零件辨識",
+					"dose": "看完後在紙上把這套方法切成四欄：頻率（幾次）、時點（何時寫）、句型（寫什麼格式）、週期（做幾天）。四欄都填得出來才算完成，任何一欄空白就重看該段落。",
+					"title": "369特斯拉顯化法完整教學，宇宙終極密碼是369，宇宙的鑰匙，更快地實現你的夢想 [顯化教學] [請開CC字幕]",
+					"channel": "秘密學院 Henry Pedia",
+					"url": "https://www.youtube.com/watch?v=aRmzLrWr9gs",
+					"duration": "6:00"
+				},
+				{
+					"name": "55x5 與 scripting 對照：同一個願望的兩種寫法",
+					"en": "55x5 vs Scripting: Two Ways to Write the Same Desire",
+					"kind": "teardown",
+					"target": "重複次數、敘事時態、篇幅長度、情緒負載、兩法差異",
+					"dose": "挑一個你自己的願望，先用 55x5 的規則寫 5 分鐘（同句寫 55 次寫不完就寫到時間到），再用 scripting 的規則寫 5 分鐘。寫完把兩張紙並排，圈出「哪一種讓你寫到後面開始分心」。",
+					"title": "SECRET 55x5 MANIFESTATION Technique | SCRIPTING To Manifest Anything",
+					"channel": "My World of Metaphysics",
+					"url": "https://www.youtube.com/watch?v=qWS5eYHIXJk",
+					"duration": "9:08"
+				},
+				{
+					"name": "把進度變成看得見的格子：習慣打卡版面的六種設計",
+					"en": "Six Habit-Tracker Layouts That Make Progress Visible",
+					"kind": "teardown",
+					"target": "完成訊號、回顧週期、視覺化格式、連續性顯示、版面選擇",
+					"dose": "從片中六種版面挑一種，當場畫出 30 格，並在旁邊寫下兩件事：一格代表什麼行為（要具體到動詞），以及你每週幾號會回頭看它。兩件事沒寫齊就不算完成。",
+					"title": "新手必看！子彈筆記的習慣打卡可以這樣設置 | 6 Types Bullet Journal Habit Trackers",
+					"channel": "Shawna 手写的小日常",
+					"url": "https://www.youtube.com/watch?v=agjNYWccS3o",
+					"duration": "7:05"
+				},
+				{
+					"name": "顯化產業的反面拆解",
+					"en": "the constant grift of manifestation.",
+					"kind": "cautionary",
+					"target": "過度承諾、歸罪迴圈、付費升級、見證挑選、退場成本",
+					"dose": "看 1 遍；逐條抄下影片點名的話術，比對你設計的方法有沒有同一句，有就當場改寫",
+					"title": "the constant grift of manifestation.",
+					"channel": "elle literacy",
+					"url": "https://www.youtube.com/watch?v=DgrPkgqvkEU",
+					"duration": "33:05"
+				}
+			]
+		},
+		{
+			"id": "ch2-u4",
+			"name": "顯化日記本的商業模型",
+			"type": "blueprint",
+			"assessment": "拿一張紙分成三欄自己驗收，不要憑感覺。第一欄寫成本：把你日記本的頁數、開本、紙質輸入印刷商或 KDP 的成本計算器，抄下單本印製成本再減出淨利；淨利低於售價 35% 就不能上線。第二欄寫回訪：在日曆上標出讀者用完這本的日期，倒推 14 天，寫下那天你會用什麼觸發他買下一本（補充包、續訂提醒、還是缺頁本身）；寫不出具體動作，就代表你只有一次性商品。第三欄寫價格辯護：把售價寫在最上面，下面列三條「為什麼值這個價」的理由，再把客訴影片裡的每一句抱怨逐條套上去問自己會不會中招；只要有一條理由是「因為設計很美」這種無法驗證的說法，就刪掉重寫。最後做朗讀測試：把內頁提示語念給沒看過的人聽，請他當場寫一句回應，若他反問「這題是什麼意思」，這條提示語就要改。",
+			"tight": [
+				"成本與定價這段有可實際套數字的工具導向影片，讀者能當場算出自己的淨利，不是聽概念",
+				"補充包／續購的機制用刀柄刀片模型講得極短且清楚，124 秒就能把顯化日記本的耗材化思路建立起來",
+				"主課同時涵蓋定位、定價、出貨、複購四件事，與五支動作影片的分工沒有重疊"
+			],
+			"weak": [
+				"「缺頁設計製造回訪」這個很特定的手法沒有直接對應影片，只能用 90 天目標週期的節奏概念替代，讀者需自行轉譯",
+				"文具訂閱制本身（月配盒、refill 訂閱的營運細節）查了兩輪都沒有觀看數過門檻的專門影片，目前只用刀柄刀片模型涵蓋商業邏輯，缺實際文具訂閱品牌的營運拆解",
+				"定價爭議只找到單一品牌的出貨客訴案例，觀看數 6277 偏低，且爭議點集中在履約而非價格本身，價格正當性的正面辯論仍然缺席",
+				"五支動作影片全為英文；繁中／簡中在此題材搜尋結果多為手帳開箱與文具評測，無法對應商業拆解需求"
+			],
+			"lesson": {
+				"name": "用日記本做出七位數生意的完整拆解",
+				"en": "How I Built a 7-Figure Business Selling Journals Online",
+				"kind": "teardown",
+				"target": "產品定位、單價結構、通路選擇、庫存模式、複購來源",
+				"dose": "完整看一遍，暫停三次把她講到的「產品線／定價／出貨方式」抄成三欄表",
+				"title": "How I Built a 7-Figure Business Selling Journals Online (Beginners Guide)",
+				"channel": "Laura Buhl",
+				"url": "https://www.youtube.com/watch?v=pqmVIuFfUlI",
+				"duration": "11:14",
+				"why": "這支把日記本從「一本本子」講成「一門生意」：她同時交代選題怎麼決定、一本賣多少、成本怎麼壓、以及第二本第三本從哪來。單元要教的是顯化日記本的商業模型，所以主課必須先建立「收入 = 單價 × 首購 × 複購次數」這個骨架，後面五支動作才有掛勾的位置。674 秒屬於講解型長度，資訊密度足夠又不至於變成推銷漏斗。"
+			},
+			"drills": [
+				{
+					"name": "內頁結構與提示語的實作拆解",
+					"en": "Designing sellable notebook interiors in Canva",
+					"kind": "mechanism",
+					"target": "內頁版型、提示語欄位、頁面重複單位、封面與內頁比重",
+					"dose": "跟著做一頁：一個提示語 + 一個書寫區 + 一個回顧欄，再複製成 7 天",
+					"title": "Make Money Selling Digital Notebooks! Easy Canva Tutorial",
+					"channel": "Design Made Clear",
+					"url": "https://www.youtube.com/watch?v=8vEwQRGJtIM",
+					"duration": "9:09"
+				},
+				{
+					"name": "印刷成本與版稅的利潤拆解",
+					"en": "KDP pricing and printing cost strategy",
+					"kind": "teardown",
+					"target": "印製單價、頁數成本、版稅級距、售價下限、毛利率",
+					"dose": "拿自己的頁數與開本，跟著影片算一次每本淨利，寫下售價的最低可行點",
+					"title": "Amazon KDP Pricing Strategy For MAXIMUM Profits",
+					"channel": "Rachel Harrison-Sund",
+					"url": "https://www.youtube.com/watch?v=aIIlD1uhOLc",
+					"duration": "9:13"
+				},
+				{
+					"name": "補充包續購的經濟學",
+					"en": "The razor-and-blades model explained",
+					"kind": "mechanism",
+					"target": "主體與耗材、首購毛利、續購頻率、鎖定機制、顧客終身價值",
+					"dose": "看完後在紙上標出：你的日記本哪一部分是刀柄、哪一部分是刀片",
+					"title": "The Razor & Blades Business Model: EXPLAINED",
+					"channel": "Supply® High-Performance Grooming",
+					"url": "https://www.youtube.com/watch?v=x6FvJ-D4VjQ",
+					"duration": "2:04"
+				},
+				{
+					"name": "90 天週期如何製造回訪節奏",
+					"en": "Why 90-day cycles work",
+					"kind": "mechanism",
+					"target": "週期長度、階段目標、用完時點、回訪觸發、下一本的接口",
+					"dose": "對照自己的日記本，標出第 30／60／90 天各要發生什麼事",
+					"title": "90 Day Goals Changed My Life (How To Use Them)",
+					"channel": "Gabe Bult",
+					"url": "https://www.youtube.com/watch?v=RTYqgoKQWds",
+					"duration": "8:10"
+				},
+				{
+					"name": "高價手帳品牌的客訴現場",
+					"en": "Premium planner brand order complaint case",
+					"kind": "cautionary",
+					"target": "出貨瑕疵、退換流程、客服回應、價格期待落差、口碑損耗",
+					"dose": "看完列出三個此品牌踩到的雷，並寫下自己要怎麼避開",
+					"title": "Erin Condren messed up my order...again",
+					"channel": "Thobbysquare",
+					"url": "https://www.youtube.com/watch?v=HvhorFEZ_FQ",
+					"duration": "6:57"
+				}
+			]
+		},
+		{
+			"id": "ch2-u5",
+			"name": "21 天挑戰的完整機制",
+			"type": "blueprint",
+			"assessment": "攤開自己這一期挑戰的後台數字，做三個可以自己執行的檢核。一、同期群表：把 Day1 到 Day21 每天「實際交作業人數」除以報名人數列成一排，找出第一個相對前一天掉超過 30% 的格子，那就是脫落點；如果掉點落在 Day 5–8，就是 onboarding 沒把啟動時刻做出來。二、成交路徑點名：把報名頁、確認信、Day1 信、群公告、成交頁、追售信逐一列出，每一項旁邊寫下「這一步要讓人做的唯一動作是什麼」，寫不出唯一動作的那幾步就是漏斗破洞。三、承諾稽核：用搜尋功能在自己所有文案裡找「21 天」「養成」「改變」三個詞，每一句都問「這句話有沒有承諾一個我無法交付的生理結果」，有的就改成過程承諾（21 天內完成 21 次練習）。三項都做完不到一小時，且每一項都會產出一張可以直接改的清單。",
+			"tight": [
+				"挑戰營的產品結構與成交節點（主課 Heights Platform 直接對題）",
+				"21 天說法的反面材料（Develop Good Habits 標題就是在反駁 21 天）",
+				"streak 的副作用（Berrohn 那支正是在講連續紀錄不等於習慣）"
+			],
+			"weak": [
+				"Day-7 流失用戶的回收流程：只找到 ONbCFZohSF8「4 Tips To Win Back Lost Customers」（InTouchCRM，213 秒，8220 次），內容偏泛用 CRM 話術、不是挑戰營情境，最後讓位給同期群診斷那支；回收流程這塊建議自己補教材",
+				"繁中／簡中素材幾乎全軍覆沒：中文查詢多半回傳 0–1 筆或回傳房仲招生、健身挑戰等不相干內容，六支全部只能用英文片",
+				"challenge funnel 專有名詞（Pedro Adao 式的挑戰式行銷）在 YouTube 上多為未達 5000 次的自媒體推銷片，只能改用通用 funnel 教學替代，顆粒度比理想粗一階"
+			],
+			"lesson": {
+				"name": "21 天挑戰的完整機制：從招募到成交的設計圖",
+				"en": "How to Create a Online Challenge to Grow Your Business",
+				"kind": "mechanism",
+				"target": "挑戰營結構、每日任務設計、社群互動、成交節點、招募流程",
+				"dose": "完整看一次 15 分鐘，第二次只看他講「每日交付什麼」的段落並抄成自己的 21 天格線",
+				"title": "How to Create a Online Challenge to Grow Your Business",
+				"channel": "Heights Platform",
+				"url": "https://www.youtube.com/watch?v=Z8W07trNA6g",
+				"duration": "15:10",
+				"why": "整支就是在講挑戰營這個產品形式本身：為什麼用挑戰而不是課程、天數怎麼定、每天要交付什麼、社群怎麼帶、最後怎麼接到付費方案。是本單元唯一一支從頭到尾把「挑戰」當成一個可設計物件來拆的講解型影片，長度也落在主課區間中段，適合當骨架，其餘五支動作各補一塊它講得太快的地方。"
+			},
+			"drills": [
+				{
+					"name": "漏斗拆解：從報名頁到成交頁的每一步在做什麼",
+					"en": "Proven Funnel Formula That Has Made MILLIONS",
+					"kind": "teardown",
+					"target": "報名頁、名單磁鐵、培育信、成交頁、追售、轉換節點",
+					"dose": "看一遍後，把自己挑戰營的每一個頁面／每一封信對照他的階段標上名字，找出沒有對應物的空格",
+					"title": "Proven Funnel Formula That Has Made MILLIONS",
+					"channel": "Alex Cattoni",
+					"url": "https://www.youtube.com/watch?v=yZuz2VmkMxU",
+					"duration": "8:19"
+				},
+				{
+					"name": "前七天的啟動時刻：讓人真正開始用的 onboarding 設計",
+					"en": "6 user onboarding best practices to boost your activation and retention",
+					"kind": "mechanism",
+					"target": "啟動時刻、首次成功體驗、進度提示、空狀態、開通留存",
+					"dose": "對照六條做法逐條檢查自己的第 1–7 天信件與群公告，缺哪一條就補哪一條，一次只補一條",
+					"title": "6 user onboarding best practices to boost your activation and retention",
+					"channel": "Appcues",
+					"url": "https://www.youtube.com/watch?v=03P6UYokxzY",
+					"duration": "7:07"
+				},
+				{
+					"name": "用同期群圖找出脫落點：Day-7 掉在哪一格",
+					"en": "What is a Cohort? How to Read a Cohort Analysis Chart...",
+					"kind": "mechanism",
+					"target": "同期群分析、留存曲線、脫落點、回訪率、批次比較",
+					"dose": "看完後把自己前三期挑戰的每日完成人數排成同期群表格，圈出第一個掉超過三成的那一天",
+					"title": "What is a Cohort? How to Read a Cohort Analysis Chart...",
+					"channel": "Peel",
+					"url": "https://www.youtube.com/watch?v=mb2_kskQDDU",
+					"duration": "5:32"
+				},
+				{
+					"name": "連續紀錄的兩面刃：streak 撐住的是習慣還是焦慮",
+					"en": "You Didn’t Build a Habit, You Built a Streak",
+					"kind": "cautionary",
+					"target": "連續天數、遊戲化獎勵、外在動機、斷線崩潰、假性習慣",
+					"dose": "看完後找出自己挑戰營裡「斷一天就前功盡棄」的規則，改成允許補救的版本再上線",
+					"title": "You Didn’t Build a Habit, You Built a Streak",
+					"channel": "Berrohn",
+					"url": "https://www.youtube.com/watch?v=HJE_KAnQtiM",
+					"duration": "9:27"
+				},
+				{
+					"name": "21 天養成習慣的實證檢驗：這個數字從哪來、又錯在哪",
+					"en": "How Long Does It Take to Build a Habit? HINT: It's NOT 21 Days",
+					"kind": "cautionary",
+					"target": "21 天說法、習慣養成時間、個體差異、行為研究、行銷話術",
+					"dose": "看一次，把自己文案裡所有「21 天養成習慣」的承諾句抓出來，改寫成不作養成保證的版本",
+					"title": "How Long Does It Take to Build a Habit? HINT: It's NOT 21 Days",
+					"channel": "Develop Good Habits",
+					"url": "https://www.youtube.com/watch?v=cJ2gxIsScmk",
+					"duration": "5:56"
+				}
+			]
+		},
+		{
+			"id": "ch2-u6",
+			"name": "語言系統：自造詞與禁用詞",
+			"type": "blueprint",
+			"assessment": "拿你產品現有的 30 則文案（貼文、課程頁、群組公告、客服罐頭回覆各抓一些）做四道自檢。一、自造詞盤點：把只有內部人看得懂的詞全部畫線，逐一問「換成日常說法，這句話還成立嗎」；換掉後意思沒變的，代表這個詞只是身分標記，可留；換掉後主張立刻站不住腳的，代表你在用詞語替代論證，必須改寫。二、禁用詞測試：唸出每一句，凡是出現「還沒準備好」「頻率不對」「業障」「不夠相信」這類把質疑翻譯成當事人缺陷的句型，全部標紅，紅字超過三句就是語言系統已經越線。三、退出成本測試：假設一個學員今天要退費離開，把你的文案逐句讀給他聽，只要有任何一句會讓他覺得離開等於失敗或背叛，就刪掉。四、外人測試：把三則文案給一個完全不懂這領域的朋友讀，請他複述你在賣什麼；他複述不出來、只能重複你的自造詞，代表這些詞在阻擋理解。四道各記分，紅字句數與外人複述失敗數應該逐月下降，這兩個數字就是這個單元的成績。",
+			"tight": [
+				"內部行話密度過高，外人讀三句就掉出去",
+				"金句寫得太滿，每一句都在收束結論，讀者沒有留白可以自己想",
+				"禁用詞清單只列了負面詞，卻沒列那些聽起來正向但實際在轉移責任的詞"
+			],
+			"weak": [
+				"語調規則只停在形容詞（溫暖、專業），沒有落到具體句型與可比對的正反例",
+				"缺少退出情境的語言設計，只寫了怎麼吸引人進來，沒寫怎麼讓人體面地離開",
+				"沒有定期回頭稽核既有文案，語言系統只在上線那天正確過一次"
+			],
+			"lesson": {
+				"name": "邪教如何用語言控制人：自造詞、負載詞與封閉語彙",
+				"en": "How Cults Use Language to Control | Otherwords",
+				"kind": "mechanism",
+				"target": "自造詞、負載語言、思考終止語、內團體語彙、我們他們界線、語言封閉性",
+				"dose": "完整看一次（11 分鐘），第二次邊看邊在紙上開兩欄：左欄抄下影片提到的每個「只有內部人懂的詞」，右欄寫下它被用來取代掉的日常詞。抄滿 8 組再停。",
+				"title": "How Cults Use Language to Control | Otherwords",
+				"channel": "Storied",
+				"url": "https://www.youtube.com/watch?v=3ZGTT_Vy_Bw",
+				"duration": "11:14",
+				"why": "這是全單元唯一一支把「語言系統」當成可拆解機制講的解說片：從 Lifton 的 loading the language 出發，逐一示範自造詞如何壓縮思考、思考終止語如何把提問變成不忠誠、內部語彙如何同時做到黏著與隔離。1440 秒內講完機制，觀看數 150 萬。它給後面五支動作片一個共同的分析框架：先懂為什麼語言能控制人，再談自己產品要不要、以及能到哪裡為止。"
+			},
+			"drills": [
+				{
+					"name": "品牌語調系統怎麼建：五條可執行的語調規則",
+					"en": "5 Tips on How to Create a Great Brand Voice & Tone | Salesforce on Salesforce",
+					"kind": "teardown",
+					"target": "語調規則、品牌人格、用詞清單、禁用詞、語氣一致性、寫作規範",
+					"dose": "看完後照片中格式做一張三欄表：情境／我們會說／我們不會說，先填 10 列。禁用詞欄一定要寫滿，不准留白。",
+					"title": "5 Tips on How to Create a Great Brand Voice & Tone | Salesforce on Salesforce",
+					"channel": "Salesforce",
+					"url": "https://www.youtube.com/watch?v=swjMI70gFe4",
+					"duration": "6:52"
+				},
+				{
+					"name": "行話如何劃線：內部語彙製造歸屬與排除",
+					"en": "Corporate Language: Jargon & Buzzwords",
+					"kind": "mechanism",
+					"target": "行話、內團體標記、排他性、術語通膨、模糊化、身分訊號",
+					"dose": "看一次，暫停三次，每次記下一個「說了等於沒說但聽起來很內行」的詞。看完後在自己產品文案裡搜同類詞，找到幾個就刪幾個。",
+					"title": "Corporate Language: Jargon & Buzzwords",
+					"channel": "Georg Rockall-Schmidt",
+					"url": "https://www.youtube.com/watch?v=d_TrHBSnFqQ",
+					"duration": "8:09"
+				},
+				{
+					"name": "自造詞與金句設計：命名一個概念讓人願意轉發",
+					"en": "How To Write A Memorable Tagline, Slogan or Online Course Name",
+					"kind": "teardown",
+					"target": "命名、標語、自造詞、記憶點、節奏、可轉述性",
+					"dose": "跟著影片流程實做一輪：先寫 20 個候選名，砍到 5 個，念出聲測試，最後留 1 個。整段限時 25 分鐘，不准隔天再改。",
+					"title": "How To Write A Memorable Tagline, Slogan or Online Course Name",
+					"channel": "Alex Cattoni",
+					"url": "https://www.youtube.com/watch?v=w2YlC2QymB4",
+					"duration": "9:50"
+				},
+				{
+					"name": "高強度品牌的語言結構拆解：從健身房到直銷",
+					"en": "The Sneaky Language Tricks Cults Use to Influence You | Amanda Montell | TED",
+					"kind": "teardown",
+					"target": "cult branding、語言結構、思考終止語、委婉語、我們他們、忠誠測試",
+					"dose": "看兩次。第二次只做一件事：把影片舉的每個例子改寫成你自己產業的版本，寫滿 5 條，然後圈出你已經在用的那幾條。",
+					"title": "The Sneaky Language Tricks Cults Use to Influence You | Amanda Montell | TED",
+					"channel": "TED",
+					"url": "https://www.youtube.com/watch?v=uzlDEWVKjLI",
+					"duration": "5:55"
+				},
+				{
+					"name": "話術造成的實際傷害：靈性與宗教控制的受害者案例",
+					"en": "How to Escape Cult Control - Dr. Teng Hui-wen on Religious Fraud (Taiwanese talk show highlight)",
+					"kind": "cautionary",
+					"target": "負載語言、心理傷害、罪惡感操控、脫離成本、受害者案例、倫理紅線",
+					"dose": "看完後寫下三句你自己產品裡「一旦有人想退出就會被拿來用」的句子，逐句判定要刪掉還是改寫，並把判定理由寫成一行。",
+					"title": "【精華版】如何擺脫邪教操控？鄧惠文醫師揭「宗教詐騙」悲慘真相",
+					"channel": "新聞挖挖哇！",
+					"url": "https://www.youtube.com/watch?v=lG2wNa1b2-g",
+					"duration": "8:01"
+				}
+			]
+		},
+		{
+			"id": "ch2-u7",
+			"name": "象徵物：水晶、卡牌、香品作為錨",
+			"type": "blueprint",
+			"assessment": "拿你現在真的在賣（或打算賣）的一件實體物，做三個可錄影、可計數的檢核。第一，開箱計時：手機架在桌面側面錄，從收件人手碰到外箱那一秒開始計，到物件第一次被握在手上為止，數出中間有幾個獨立動作（撕、掀、抽、拆袋各算一個）。超過五個動作或超過九十秒，節奏就是拖的；少於兩個動作，儀式感等於沒有。第二，錨點測試：把物件放在你希望觸發的行為旁邊（牌放在書桌燈下、香放在坐墊前），連續七天在同一張紙上打勾記錄「看到它之後三分鐘內有沒有做那個動作」，七天低於四次代表這個位置只是裝飾。第三，毛利驗算：在同一張表上列出料錢、包材、工時（用你自己的時薪計）、金流手續費、平均運費，加總後除以售價；毛利率低於百分之五十，代表任何一次退貨或運費調漲都會把這個品項吃成負的。第四，產地問句：寄一封信給供應商，只問三句：礦區在哪個國家哪個礦場、有沒有第三方稽核報告、中間經過幾手。三題答不出兩題，就不要在文案上寫「能量純淨」。",
+			"tight": [
+				"行為錨點（動作 4）與定價毛利（動作 3）兩支都是高觀看、公式明確、可以直接照著算或照著擺的實作型內容，落地成本最低",
+				"主課直接命中單元的核心主張——象徵物的作用來自使用者的期待與意念聚焦，而非物件本身，讓整章『產品設計』有誠實的立論起點",
+				"動作 1（微軟自適應控制器）是罕見的真・開箱動線拆解，把拉環、環扣、單手開啟一個個示範出來，可以逐格數動作數，比一般 3C 開箱片有用得多",
+				"動作 5 用 Business Insider 的緬甸玉石礦調查，觀看 31 萬、來源可查，避免了倫理議題常見的自媒體臆測"
+			],
+			"weak": [
+				"「Packaging as ritual」這個題目在 YouTube 上幾乎沒有合格影片：三組英文查詢在 30-600 秒區間全部 0 筆符合。目前用《How Package Design Affects Sales》頂上，它講的是包裝如何塑造開封前的預期，離『包裝本身成為使用前的儀式』還有一段，教學時需要老師自行補上『拆封動作 = 進入狀態的開關』這一層",
+				"沒有找到專門處理水晶（石英、紫水晶等）供應鏈的合格影片；現用的是玉石與雲母礦，結構類似但礦種不同，講的時候要明講這是類比不是同一條供應鏈",
+				"整組動作影片全為英文，繁中／簡中在開箱設計、包裝儀式、礦石倫理三個題目上都沒有觀看數過 5000 且長度合格的內容（中文查詢最好的一筆是蝦皮包貨教學，不切題）",
+				"動作 3 的定價案例是手作飾品，公式通用但沒有處理靈性商品特有的『象徵溢價』——同樣成本的石頭因為敘事可以賣三倍，這部分影片不會講"
+			],
+			"lesson": {
+				"name": "水晶為什麼「有效」：象徵物的心理機轉",
+				"en": "The Science Behind Healing Crystals",
+				"kind": "mechanism",
+				"target": "期待效應、安慰劑、意念聚焦、象徵物、信念",
+				"dose": "完整看完 626 秒一次；第二次只聽 focus/intention 段落並抄下講者用來解釋『石頭本身沒作用、作用在使用者』的三個論證",
+				"title": "The Science Behind Healing Crystals Explained | Dr David Hamilton",
+				"channel": "Guy Lawrence",
+				"url": "https://www.youtube.com/watch?v=8XVDFTOKiMo",
+				"duration": "10:26",
+				"why": "這一單元的核心主張是『象徵物是行為的錨，不是功效來源』。這支由生化背景的 David Hamilton 主講，把水晶的作用歸因到期待、意念聚焦與安慰劑路徑，給產品設計一個誠實的立論基礎：你賣的是提示物與儀式入口。講解型、626 秒、觀看數 10 萬以上，符合主課長度區間。備選 q_xJpVlry14（The School of Life《HISTORY OF IDEAS - Rituals》792s / 691976）只談儀式不談象徵物本身，故列為延伸。"
+			},
+			"drills": [
+				{
+					"name": "開箱動線拆解：微軟自適應控制器包裝",
+					"en": "Unboxing Teardown: Xbox Adaptive Controller Packaging",
+					"kind": "teardown",
+					"target": "開箱節奏、拉環、單手開啟、環扣、第一觸點",
+					"dose": "看完 350 秒，暫停在每一個開啟動作，把『使用者做了幾個動作才碰到本體』數出來，寫成 1-2-3 的動線清單",
+					"title": "Unboxing the Xbox Adaptive Controller from Microsoft's new packaging design",
+					"channel": "CNET",
+					"url": "https://www.youtube.com/watch?v=QOvwS71YjEk",
+					"duration": "5:50"
+				},
+				{
+					"name": "包裝如何改變感知與購買",
+					"en": "How Package Design Affects Sales",
+					"kind": "mechanism",
+					"target": "包裝感知、貨架第一印象、材質訊號、開封前預期",
+					"dose": "看兩次共約 9 分鐘：第一次記下他舉的每個感知槓桿，第二次對照你自己的水晶袋／牌盒逐項打勾",
+					"title": "How Package Design Affects Sales",
+					"channel": "The Packaging School",
+					"url": "https://www.youtube.com/watch?v=euacI5VTBhY",
+					"duration": "4:34"
+				},
+				{
+					"name": "手作飾品定價與毛利結構拆解",
+					"en": "Pricing Handmade Jewelry for Profit",
+					"kind": "teardown",
+					"target": "材料成本、工時成本、批發價、零售倍率、毛利率",
+					"dose": "看完 562 秒後停下來，用她的公式把你自己一顆水晶／一副牌的成本表算過一遍，算到零售價為止",
+					"title": "How to Easily Price Handmade Jewelry and Make a PROFIT!",
+					"channel": "Kellie's Bead Boutique",
+					"url": "https://www.youtube.com/watch?v=LS1OAy9UEXg",
+					"duration": "9:22"
+				},
+				{
+					"name": "環境提示與行為錨點",
+					"en": "Atomic Habits: Cues and Environment Design",
+					"kind": "mechanism",
+					"target": "提示、環境設計、行為錨點、習慣堆疊、可見性",
+					"dose": "看完 484 秒，只抓 cue／environment 段落，寫出三個『把物件放在哪裡會觸發哪個動作』的具體配對",
+					"title": "Atomic Habits: How to Get 1% Better Every Day - James Clear",
+					"channel": "APB Speakers",
+					"url": "https://www.youtube.com/watch?v=U_nzqnXWvSo",
+					"duration": "8:04"
+				},
+				{
+					"name": "血玉：靈性礦石背後的供應鏈代價",
+					"en": "Blood Jade: The Risky Trade in Myanmar",
+					"kind": "cautionary",
+					"target": "礦區勞動、傷亡、環境破壞、產地不透明、供應鏈倫理",
+					"dose": "完整看 592 秒一次，記下三個你在自家供應商身上無法回答的問題（產地、礦區、中間商）",
+					"title": "How China's Thirst For 'Blood Jade' Fuels A Risky Trade In Myanmar | Risky Business",
+					"channel": "Business Insider",
+					"url": "https://www.youtube.com/watch?v=WSyRe8j2vmk",
+					"duration": "9:52"
+				}
+			]
+		}
+	]
+}

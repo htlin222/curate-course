@@ -1,0 +1,223 @@
+{
+	"conditions": [
+		{
+			"unit": "concept-manifestation-effect",
+			"name": "顯化到底有沒有效",
+			"evidence_grade": "contested",
+			"summary": "「相信就會實現」目前沒有支持因果效果的研究。已發表的實證處理的是相信顯化的人有什麼特徵，不是顯化本身管不管用。Dixon 與 Hornsey 在 Personality and Social Psychology Bulletin 的研究發現，顯化量表得分高的人自認更成功、對未來期待更高，但同時更容易被高風險投資吸引，也更可能經歷破產。這門課因此把商業機制與效果宣稱分開：前者可以觀察並拆解，後者不能。",
+			"mechanism": "使用者感覺到的「有效」有可辨識的來源。選擇性注意讓人只數命中不數落空；因果錯覺讓人在無關聯的兩件事之間看出因果，Matute 等人指出這正是偽科學信念的共同認知基礎；設定目標並寫下來本身就會改變行為，效果來自目標設定與行動，不需要引入宇宙回應。",
+			"commercial": "機制為假不等於生意為假。使用者確實得到注意力聚焦、情緒調節與身分認同，這些是真實的交付物。誠實的做法是把產品定位在這幾項上，而不是承諾結果。",
+			"red_flags": [
+				"把「沒顯化成功」歸因為使用者信念不足",
+				"用個案見證取代對照組",
+				"鼓勵以顯化取代醫療、法律或財務專業協助",
+				"對重大財務決策提供顯化式建議"
+			],
+			"caveats": "課程必須誠實告知的部分：顯化與財務結果的關聯來自橫斷面調查，只能說相關，不能推論顯化信念導致破產，也可能是同一種樂觀傾向同時造成兩者。反過來說，同一份資料也不足以宣稱顯化能帶來成功。兩個方向都缺乏因果證據。",
+			"citations": [
+				{
+					"pmid": "37421301",
+					"title": "\"The Secret\" to Success? The Psychology of Belief in Manifestation.",
+					"journal": "Pers Soc Psychol Bull",
+					"year": 2025,
+					"url": "https://pubmed.ncbi.nlm.nih.gov/37421301/",
+					"design": "cross-sectional survey",
+					"takeaway": "顯化量表得分高者自認更成功、期待更高，但更易受高風險投資吸引且更可能經歷破產。"
+				},
+				{
+					"doi": "10.7551/mitpress/9780262037426.003.0003",
+					"title": "The Illusion of Causality: A Cognitive Bias Underlying Pseudoscience",
+					"journal": "Pseudoscience",
+					"year": 2018,
+					"url": "https://doi.org/10.7551/mitpress/9780262037426.003.0003",
+					"design": "conceptual analysis",
+					"takeaway": "在實際無關聯的行為與結果之間感知到因果，是偽科學信念形成與維持的共同認知機制。"
+				},
+				{
+					"pmid": "12416922",
+					"title": "The motivating function of thinking about the future: expectations versus fantasies.",
+					"journal": "J Pers Soc Psychol",
+					"year": 2002,
+					"url": "https://pubmed.ncbi.nlm.nih.gov/12416922/",
+					"design": "laboratory experiment",
+					"takeaway": "基於過往表現的期待預測較高成就，正向幻想則預測較低成就，兩者方向相反。"
+				}
+			]
+		},
+		{
+			"unit": "concept-positive-fantasy",
+			"name": "正向想像會不會反而降低行動",
+			"evidence_grade": "moderate",
+			"summary": "Oettingen 與 Mayer 區分了兩件常被混為一談的事：對未來的期待，以及對未來的幻想。期待建立在過往表現上，預測較高的成就；幻想是在腦中先享受結果，預測較低的成就。這對顯化產品是直接的設計約束，因為觀想與情緒預演正是幻想那一類。",
+			"mechanism": "先在腦中體驗到達成的感覺，會提前釋放動機張力，行動的迫切性隨之下降。相對地，實施意向這類把「什麼情況下做什麼」寫死的技術，在 Gollwitzer 與 Sheeran 的統合分析中有中等偏上的效果量。差別在於前者處理感受，後者處理觸發條件。",
+			"commercial": "這解釋了為什麼課綱的第二條自律線要求產品裡必須有「今天你實際做了什麼」欄位。純觀想的產品不只是效果存疑，設計上還可能抵銷使用者原本會有的行動。把觀想與具體行動綁在同一頁，是可以直接落實的修正。",
+			"red_flags": [
+				"產品只有觀想與情緒練習，沒有任何行動欄位",
+				"教材鼓勵「先感覺已經擁有」而不設定下一步",
+				"把行動描述成缺乏信心的表現"
+			],
+			"caveats": "這組證據來自實驗室與田野研究，不是統合分析，且原始研究的情境（求職、減重、學業）與靈性產品不完全相同。可以說「純幻想沒有幫助且可能有害」，不宜推論到「所有觀想都有害」。",
+			"citations": [
+				{
+					"pmid": "12416922",
+					"title": "The motivating function of thinking about the future: expectations versus fantasies.",
+					"journal": "J Pers Soc Psychol",
+					"year": 2002,
+					"url": "https://pubmed.ncbi.nlm.nih.gov/12416922/",
+					"design": "laboratory experiment",
+					"takeaway": "正向幻想預測較低成就，跨四個生活領域一致。"
+				},
+				{
+					"doi": "10.1016/s0065-2601(06)38002-1",
+					"title": "Implementation Intentions and Goal Achievement: A Meta‐analysis of Effects and Processes",
+					"journal": "Advances in Experimental Social Psychology",
+					"year": 2006,
+					"url": "https://doi.org/10.1016/s0065-2601(06)38002-1",
+					"design": "meta-analysis",
+					"takeaway": "把情境與行為綁定的「若則」計畫對目標達成有中等偏上的效果，機制是把行動的啟動交給環境線索。"
+				}
+			]
+		},
+		{
+			"unit": "concept-21-days",
+			"name": "21 天養成一個習慣",
+			"evidence_grade": "contested",
+			"summary": "21 天這個數字沒有實證來源。Lally 等人實際追蹤日常行為的自動化過程，中位數是 66 天，個別差異從 18 天到 254 天。課綱用 21 天挑戰作為產品結構是合理的商業選擇，但它的正當性來自節奏設計，不是習慣科學。",
+			"mechanism": "挑戰期間的行為維持主要靠外部結構：固定推播、公開承諾、同儕可見度。這些在挑戰結束後同時消失，所以脫落集中在結束後而不是結束前。要讓行為延續，需要把觸發條件從活動轉移到使用者自己的環境，實施意向是證據較強的做法。",
+			"commercial": "第 7 天掉一半人是設計問題不是使用者問題。可操作的修正有兩個：把第 7 天前後的難度降到最低，以及在挑戰結束前就讓使用者寫下結束後的「若則」計畫，把觸發從你的推播換成他自己的日常線索。",
+			"red_flags": [
+				"宣稱固定天數必然養成習慣",
+				"把未達成歸因為使用者不夠堅持",
+				"把脫落歸因為使用者意志力不足",
+				"挑戰結束後沒有任何延續機制",
+				"文案宣稱 21 天後習慣就會養成",
+				"用連續紀錄天數取代行為本身的成效"
+			],
+			"caveats": "標成證據互斥，是因為「挑戰能提高短期依從」與「21 天能養成習慣」這兩個宣稱的證據方向不同。前者有留存數據支持，後者被 Lally 的資料否定。課程若把兩者混為一談，就是拿前者的證據替後者背書。另外，Lally 的樣本量不大且以簡單的飲食與運動行為為主，中位數 66 天不應被當成新的通用天數；可以確定的只是 21 天沒有依據。",
+			"citations": [
+				{
+					"doi": "10.1002/ejsp.674",
+					"title": "How are habits formed: Modelling habit formation in the real world",
+					"journal": "European Journal of Social Psychology",
+					"year": 2009,
+					"url": "https://doi.org/10.1002/ejsp.674",
+					"design": "longitudinal survey",
+					"takeaway": "自動化中位數 66 天，個別差異極大，21 天不足以讓多數行為自動化。"
+				},
+				{
+					"doi": "10.1016/s0065-2601(06)38002-1",
+					"title": "Implementation Intentions and Goal Achievement: A Meta‐analysis of Effects and Processes",
+					"journal": "Advances in Experimental Social Psychology",
+					"year": 2006,
+					"url": "https://doi.org/10.1016/s0065-2601(06)38002-1",
+					"design": "meta-analysis",
+					"takeaway": "若則計畫把行動啟動交給環境線索，是挑戰結束後維持行為的可行機制。"
+				}
+			]
+		},
+		{
+			"unit": "ch1-u2",
+			"name": "顯化為什麼真的有效",
+			"evidence_grade": "moderate",
+			"summary": "這個單元講的三個機制各自有獨立的研究基礎，而且都不需要假設宇宙會回應。自我實現預言在管理情境的統合分析中有可測量的效果；目標設定與行為啟動是動機研究裡證據最厚的一塊；因果錯覺則解釋了為什麼使用者會把命中歸給方法、把落空歸給自己。",
+			"mechanism": "他人的期待會改變對待方式，進而改變被期待者的表現，這是 Pygmalion 效應的核心路徑。具體且有難度的目標比「盡力而為」帶來更高績效，Locke 與 Latham 累積三十五年的研究支持這一點。至於使用者主觀感受到的靈驗，因果錯覺提供了不需要超自然假設的解釋。",
+			"commercial": "這一單元是整門課的信任基礎。承認機制真實存在，同時說明它們不是宇宙回應，可以同時取得兩種讀者的信任：想做這門生意的人，以及懷疑這門生意的人。",
+			"red_flags": [
+				"把心理機制的效果誇大成保證結果",
+				"引用 Pygmalion 效應時略過它的效果量有限",
+				"用機制解釋替代對產品實際交付的說明"
+			],
+			"caveats": "Pygmalion 效應的統合分析來自管理與教育情境，效果量中等且受情境調節，不能直接套用到自我期待。把「他人期待影響表現」講成「自我期待必然影響結果」是跨越了原始證據。",
+			"citations": [
+				{
+					"pmid": "10783547",
+					"title": "Ancient Pygmalion joins contemporary management: a meta-analysis of the result.",
+					"journal": "J Appl Psychol",
+					"year": 2000,
+					"url": "https://pubmed.ncbi.nlm.nih.gov/10783547/",
+					"design": "meta-analysis",
+					"takeaway": "管理情境下領導者期待對部屬績效有可測量的效果，效果量受情境調節。"
+				},
+				{
+					"doi": "10.1037/0003-066x.57.9.705",
+					"title": "Building a practically useful theory of goal setting and task motivation: A 35-year odyssey.",
+					"journal": "American Psychologist",
+					"year": 2002,
+					"url": "https://doi.org/10.1037/0003-066x.57.9.705",
+					"design": "narrative review",
+					"takeaway": "具體且有難度的目標帶來高於「盡力而為」的績效，機制包含注意力導向、努力、堅持與策略發展。"
+				},
+				{
+					"doi": "10.7551/mitpress/9780262037426.003.0003",
+					"title": "The Illusion of Causality: A Cognitive Bias Underlying Pseudoscience",
+					"journal": "Pseudoscience",
+					"year": 2018,
+					"url": "https://doi.org/10.7551/mitpress/9780262037426.003.0003",
+					"design": "conceptual analysis",
+					"takeaway": "當結果本身發生機率高時，人容易高估自己行為與結果之間的因果連結。"
+				}
+			]
+		},
+		{
+			"unit": "ch1-u3",
+			"name": "四種客人與第四種的風險",
+			"evidence_grade": "limited",
+			"summary": "課綱把第四種客人定義為求奇蹟，並主張不能賣給他。目前最接近的實證是 Dixon 與 Hornsey 的研究：顯化信念較強的人對未來期待更高，同時更容易被高風險投資吸引、更可能經歷破產。這支持「這一群人的財務脆弱度較高」，但不足以支持任何關於個別客人的判斷。",
+			"mechanism": "研究測量的是信念強度與財務行為的關聯，沒有處理購買決策。把它用在客戶分群上是外推，價值在於提醒而不是篩選工具。",
+			"commercial": "商業上的結論不依賴這份研究也成立：承接抱著奇蹟期待進來的客人，交付不可能達成，退款、負評與訴訟風險都集中在這一群。轉介出去是成本最低的處理方式。",
+			"red_flags": [
+				"客人把課程當成重大財務危機的解方",
+				"客人以借貸支付高價課程",
+				"客人在重病或喪親期間尋求顯化服務",
+				"客人要求保證特定金額的收入結果"
+			],
+			"caveats": "這是橫斷面調查，只能建立相關。不能說顯化信念導致破產，也不能反過來用它給任何客人貼標籤。課程引用它的正當用途是說明族群層級的風險分布，不是個案診斷。",
+			"citations": [
+				{
+					"pmid": "37421301",
+					"title": "\"The Secret\" to Success? The Psychology of Belief in Manifestation.",
+					"journal": "Pers Soc Psychol Bull",
+					"year": 2025,
+					"url": "https://pubmed.ncbi.nlm.nih.gov/37421301/",
+					"design": "cross-sectional survey",
+					"takeaway": "顯化信念較強者更可能參與高風險投資、更可能經歷破產，但主觀成功感受較高。"
+				}
+			]
+		},
+		{
+			"unit": "ch4-u2",
+			"name": "顯化倫理三條線",
+			"evidence_grade": "moderate",
+			"summary": "三條自律線各自對應一個有文獻基礎的風險。不歸罪對應毒性正能量，也就是把正向情緒當成唯一許可的反應，因而否定他人的真實處境。不取代行動對應正向幻想降低成就的實驗結果。不承接絕望對應顯化信念與財務脆弱的關聯。",
+			"mechanism": "毒性正能量的概念分析指出，它的傷害不在鼓勵樂觀，而在讓當事人失去表達負面情緒的空間，並把處境的責任移轉到當事人身上。顯化話術中「沒成功是你信念不夠」正是這個結構的完整版本，因為它同時完成了否定與歸責。",
+			"commercial": "退出摩擦是同一組倫理問題的商業版本。用聯繫客服才能取消換到的留存，代價是永久失去推薦意願。在靈性市場，負評的傳播速度高於好評，這筆帳長期是負的。",
+			"red_flags": [
+				"把使用者的痛苦重新描述為功課或安排",
+				"取消訂閱必須離開產品介面才能完成",
+				"退款保證的條件寫在使用者看不到的地方",
+				"對重病、重大財務危機或喪親者往上銷售"
+			],
+			"caveats": "毒性正能量目前是概念分析而非實驗研究，說它「造成傷害」的證據強度低於說正向幻想「降低成就」。課程可以主張這是倫理選擇，不宜宣稱有實驗證明毒性正能量的因果傷害。",
+			"citations": [
+				{
+					"pmid": "38243659",
+					"title": "Analyzing the concept of toxic positivity for nursing: A dimensional analysis approach.",
+					"journal": "J Adv Nurs",
+					"year": 2024,
+					"url": "https://pubmed.ncbi.nlm.nih.gov/38243659/",
+					"design": "narrative review",
+					"takeaway": "毒性正能量的核心是否定他人真實情緒並將處境責任移轉給當事人，而不是鼓勵樂觀本身。"
+				},
+				{
+					"pmid": "12416922",
+					"title": "The motivating function of thinking about the future: expectations versus fantasies.",
+					"journal": "J Pers Soc Psychol",
+					"year": 2002,
+					"url": "https://pubmed.ncbi.nlm.nih.gov/12416922/",
+					"design": "laboratory experiment",
+					"takeaway": "正向幻想預測較低成就，支持產品必須保留具體行動欄位。"
+				}
+			]
+		}
+	]
+}

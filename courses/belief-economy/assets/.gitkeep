@@ -1,0 +1,3 @@
+# course/assets/ 的內容會在 build 時覆蓋到 dist/ 同名路徑上。
+# 這門課專屬的 favicon、og.png（make og 產生）、自訂樣式、
+# 以及 make icons 產出的 js/icons.js 都住在這裡。
