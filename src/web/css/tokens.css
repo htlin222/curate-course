@@ -32,9 +32,9 @@
   --shadow-floating-small: 0 6px 12px -3px rgba(31, 35, 40, 0.12),
     0 6px 18px 0 rgba(31, 35, 40, 0.12);
 
-  --borderRadius-small: 4px;
-  --borderRadius-medium: 6px;
-  --borderRadius-large: 12px;
+  --borderRadius-small: 0;
+  --borderRadius-medium: 0;
+  --borderRadius-large: 0;
   --borderRadius-full: 624rem;
 
   --base-size-4: 4px;
