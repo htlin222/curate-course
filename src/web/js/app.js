@@ -295,7 +295,9 @@ function playAt(i) {
   save(STORE.playing, i);
   play(state.playlist[i], { total: state.playlist.length });
   setTimeout(ytListen, 900); // iframe 載入後才收得到 infoDelivery
-  if (load(STORE.wide, false)) {
+  // 窄螢幕的清單是會蓋住影片的抽屜，所以預設收起；寬螢幕它在右欄，預設展開
+  const narrow = matchMedia("(max-width: 1012px)").matches;
+  if (load(STORE.wide, narrow)) {
     $(".Player").classList.add("is-wide");
     $("[data-list-label]").textContent = t("listShow", "顯示清單");
   }
