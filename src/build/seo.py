@@ -26,7 +26,7 @@ COURSE = coursepath.course_dir()
 PUB = coursepath.dist_dir(COURSE)
 WEB = ROOT / "src" / "web"
 
-CFG = json.loads((COURSE / "course.config.json").read_text())
+CFG = coursepath.load_config(COURSE)
 SITE_CFG = CFG["site"]
 _UI = CFG.get("ui") or {}
 # 名詞一律走設定檔。沒設定就只留數字，不要把中文名詞塞進別的語言的課程裡。

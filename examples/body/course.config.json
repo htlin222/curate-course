@@ -1,5 +1,6 @@
 {
   "$schema": "../src/build/course.schema.json",
+  "extends": "../../src/build/defaults.json",
   "frameworkVersion": "2.0.0",
   "site": {
     "project": "body-course",
@@ -71,13 +72,11 @@
       "player": "上課模式",
       "stance": "這門課的立場"
     },
-    "progressLabel": "學習進度",
     "facetLabel": "依肌群篩選",
     "facetIcon": "accessibility",
     "assessmentLabel": "怎麼自己評估",
     "tightLabel": "傾向緊繃／過度活躍",
     "weakLabel": "傾向無力／活化不足",
-    "lessonLabel": "主課",
     "drillEvidenceLabel": "這些動作的實證",
     "unitEvidenceLabel": "實證強度",
     "stats": [
@@ -163,16 +162,12 @@
     "prevLabel": "上一部影片",
     "nextLabel": "下一部影片",
     "doneLabel": "完成",
-    "openExternal": "在 YouTube 開啟",
     "moreLabel": "選片理由與自我評估",
     "discussLabel": "討論",
     "discussNote": "留言會同步到 GitHub Discussions，需要 GitHub 帳號才能發言。每支影片各有一串討論。",
-    "lessonNoun": "堂主課",
     "drillNoun": "支跟練影片",
     "drillNounShort": "支跟練",
-    "unitNoun": "個單元",
     "kindFilterLabel": "動作類型篩選",
-    "missingTitle": "尚未找到合格影片",
     "missingHint": "這個主題在 YouTube 上沒有品質足夠的示範",
     "lessonLangLabel": "主課語言",
     "watchLabel": "觀看示範",
@@ -197,28 +192,6 @@
       "tone": "danger"
     }
   ],
-  "grades": [
-    {
-      "id": "strong",
-      "label": "證據充分",
-      "tone": "success"
-    },
-    {
-      "id": "moderate",
-      "label": "證據中等",
-      "tone": "accent"
-    },
-    {
-      "id": "limited",
-      "label": "證據有限",
-      "tone": "attention"
-    },
-    {
-      "id": "contested",
-      "label": "證據互斥",
-      "tone": "danger"
-    }
-  ],
   "evidence": {
     "designTiers": {
       "meta-analysis": 1,
@@ -238,16 +211,12 @@
       "expert opinion": 5
     },
     "gradeRequires": {
-      "strong": 1,
       "moderate": 2
     },
     "maxAgeYears": {
       "strong": 12,
       "moderate": 18
-    },
-    "requireCaveats": [
-      "contested"
-    ]
+    }
   },
   "languages": {
     "zh": "繁中",
@@ -391,8 +360,6 @@
         "max": "10:00"
       }
     },
-    "driftSeconds": 30,
-    "minViews": 5000,
     "metaCoverage": 1,
     "drillsPerUnit": {
       "min": 5,
@@ -403,7 +370,6 @@
       "posture"
     ],
     "minAssessmentChars": 80,
-    "minCitations": 2,
     "allowMissingUrls": 4
   },
   "evidenceAlias": {
@@ -412,7 +378,6 @@
     "ch0-u1": "concept-3"
   },
   "stance": {
-    "title": "這門課的立場",
     "intro": "課程開始之前，先將三個最根本的問題送交 OpenEvidence 查證：體態是否會導致疼痛？Janda 的交叉症候群是否成立？矯正運動的效果有多大？查證結果與坊間說法有明顯落差，因此在此先行說明。以下每一條結論都附原始文獻連結，可自行覆核。",
     "verdicts": {
       "concept-1": "體態偏差與疼痛確實相關，但因果關係在文獻中沒有共識。",
@@ -423,7 +388,6 @@
     "outro": "運動的效益來自肌力、負荷耐受度、神經生理止痛與心理社會因素，**而非生物力學上把體態「調正」**。體態數值的改善屬於伴隨現象，並非療效機轉；現有證據也未顯示精心設計的矯正課表優於一般運動。這並不表示不該練。合理的定位是把它當成提升肌力與活動品質的訓練，而不是治療手段。真正需要診斷與治療的狀況，應諮詢醫師或物理治療師。"
   },
   "landing": {
-    "howTitle": "怎麼用這門課",
     "steps": [
       {
         "icon": "clipboard-check",
@@ -457,10 +421,7 @@
     "stanceIntro": "課程中 {evidence} 個主題全部經 OpenEvidence 查證，結果照實呈現，包含對課程本身不利的部分：",
     "stanceItem": "**[[name]]**（[[grade]]）：[[summaryShort]]…",
     "stanceConclusion": "矯正運動的價值在於肌力、負荷耐受度與不適感的改善；體態數值的變化屬於伴隨現象，並非療效機轉。現有證據亦未顯示矯正課表優於一般運動。",
-    "chaptersTitle": "章節",
     "chapterItem": "**[[code]] [[title]]**：[[units]]",
-    "unitSeparator": "、",
-    "disclaimerTitle": "免責",
     "disclaimer": "本課程為衛教與運動指引，不構成醫療診斷或治療建議。持續疼痛、麻木、無力、外傷史或體態短期內明顯惡化，應先諮詢醫師或物理治療師。",
     "footer": "完整內容：[[url]]"
   },

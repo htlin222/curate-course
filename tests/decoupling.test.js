@@ -248,7 +248,15 @@ function stripComments(text, ext) {
   return out;
 }
 
-/** src/ 底下所有檔案（框架的全部：前端、建置腳本、schema、範本）。 */
+/** src/ 底下所有檔案（框架的全部：前端、建置腳本、schema、範本）。
+ *
+ * defaults.json 排除在外。它是「框架提供、課程可繼承」的共用設定，裡面本來
+ * 就有「個單元」「主課」這類詞——那是給課程用的預設值，不是框架認識了某個
+ * 主題。不排除的話，任何一門選擇不繼承、自己把同一個詞寫進設定檔的課，都會
+ * 讓這個測試紅在一個沒有人做錯事的地方。
+ */
+const SHARED_DEFAULTS = path.join("build", "defaults.json");
+
 function frameworkFiles() {
   const out = [];
   const walk = (dir) => {
@@ -258,6 +266,7 @@ function frameworkFiles() {
         if (entry.name === "__pycache__") continue;
         walk(full);
       } else if (entry.isFile() && !/\.(png|jpg|jpeg|gif|webp|ico|woff2?)$/i.test(entry.name)) {
+        if (full.endsWith(SHARED_DEFAULTS)) continue;
         out.push(full);
       }
     }

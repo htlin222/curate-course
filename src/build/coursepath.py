@@ -21,6 +21,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import sys
 import tomllib
@@ -29,6 +30,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 
 CONFIG_NAME = "course.config.json"
+
+# 框架提供的共用設定。課程設定檔寫 `"extends": "../../src/build/defaults.json"`
+# 才會生效，沒寫就完全不繼承——既有課程的行為一個字都不會變。
+DEFAULTS_NAME = "defaults.json"
 
 # 課程可以放在哪裡。`courses/` 是自己的課，`examples/` 是隨框架附的範例課；
 # 兩者結構完全相同——範例課沒有任何特權，才能證明框架真的與主題無關。
@@ -132,6 +137,58 @@ def dist_dir(course: Path, root: Path = ROOT, env: dict | None = None) -> Path:
         path = Path(raw)
         return (path if path.is_absolute() else root / path).resolve()
     return (root / "dist" / course.name).resolve()
+
+
+# ── 設定檔 ────────────────────────────────────────────────────────────────
+#
+# 四個進入點（build、audit、build_icons、setup_counter）以前各自
+# `json.loads(COURSE / "course.config.json")`。只要合併規則出現在其中一處而
+# 不在另一處，就會變成「build 過了但 audit 看到的是另一份設定」——那種不一致
+# 沒有任何錯誤訊息，只會在產出物裡靜靜地對不上。所以載入一律走這裡。
+
+
+def deep_merge(base: dict, override: dict) -> dict:
+    """物件遞迴合併；其餘型別（**包含陣列**）由 override 整個取代。
+
+    陣列刻意不逐元素合併。`grades` 與 `kinds` 是「一整組」而不是一堆獨立項目：
+    課程把 grades 從四級改成三級時，逐元素合併會留下第四級的殘骸，而設定檔
+    上完全看不出來。整組覆蓋的規則雖然囉嗦一點，但看得見。
+    """
+    out = dict(base)
+    for key, value in override.items():
+        if isinstance(value, dict) and isinstance(out.get(key), dict):
+            out[key] = deep_merge(out[key], value)
+        else:
+            out[key] = value
+    return out
+
+
+def load_config(course: Path, root: Path = ROOT) -> dict:
+    """讀課程設定，處理 `extends`，回傳實際生效的那一份。
+
+    `extends` 的值是相對於課程目錄的路徑。刻意只支援一層：巢狀繼承會讓
+    「這個欄位到底從哪來」需要翻三個檔案才答得出來，而設定檔的價值就在於
+    一眼看得出生效值。回傳的 dict 不含 `extends` 本身，所以 schema 驗證與
+    產出物看到的都是合併後的結果。
+    """
+    path = course / CONFIG_NAME
+    cfg = json.loads(path.read_text(encoding="utf-8"))
+    ref = cfg.pop("extends", None)
+    if not ref:
+        return cfg
+
+    base_path = (course / ref).resolve()
+    if not base_path.is_file():
+        raise CourseError(
+            f"{_rel(path, root)} 的 extends 指向 {ref}，但 {_rel(base_path, root)} 不存在。"
+        )
+    base = json.loads(base_path.read_text(encoding="utf-8"))
+    if "extends" in base:
+        raise CourseError(
+            f"{_rel(base_path, root)} 自己也有 extends。繼承只支援一層，"
+            "巢狀繼承會讓生效值要翻好幾個檔案才查得出來。"
+        )
+    return deep_merge(base, cfg)
 
 
 def main() -> int:

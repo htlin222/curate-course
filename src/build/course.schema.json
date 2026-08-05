@@ -11,6 +11,10 @@
     "chapters"
   ],
   "properties": {
+    "extends": {
+      "type": "string",
+      "description": "選用：要繼承的共用設定檔，路徑相對於課程目錄（框架提供的是 ../../src/build/defaults.json）。物件遞迴合併、陣列整組覆蓋，只支援一層。沒寫就完全不繼承。合併後這個欄位會被移除，所以驗證與產出物看到的都是實際生效的設定。"
+    },
     "frameworkVersion": {
       "type": "string",
       "description": "這份設定檔寫給哪一版框架（semver）。只有主版號有意義：主版號對得上就保證相容，對不上代表中間有破壞性變更，make audit 會擋下來並指向 docs/MIGRATION.md。沒填視為 v1。",

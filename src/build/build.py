@@ -21,7 +21,7 @@ WEB = ROOT / "src" / "web"
 DIST = coursepath.dist_dir(COURSE)
 OUT = DIST / "course.json"
 
-CFG = json.loads((COURSE / "course.config.json").read_text())
+CFG = coursepath.load_config(COURSE)
 
 # 章節、配額、別名全部由課程設定決定，框架本身不認識任何主題
 CHAPTERS = [(c["code"], c["title"], c["icon"], c["source"]) for c in CFG["chapters"]]

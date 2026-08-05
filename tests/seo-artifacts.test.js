@@ -10,7 +10,7 @@ import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
-import { repo, activeCourse, activeDist } from "./_paths.js";
+import { repo, activeCourse, activeDist, loadConfig } from "./_paths.js";
 
 // DIST 跟著 COURSE 走（dist/<課程名>），兩門課才不會互相覆蓋產物
 const dist = (name) => join(activeDist(), name);
@@ -23,10 +23,10 @@ const skip = ready ? false : "需要先跑 make build（make check 會自動處�
 const course = ready ? JSON.parse(readFileSync(dist("course.json"), "utf8")) : null;
 const meta = course?.meta ?? {};
 const index = ready ? readFileSync(dist("index.html"), "utf8") : "";
-// build.py 只把一部分區塊複製進 course.json.config，og 不在其中，所以直接讀設定檔
-const config = ready
-  ? JSON.parse(readFileSync(join(courseDir, "course.config.json"), "utf8"))
-  : {};
+// build.py 只把一部分區塊複製進 course.json.config（og 與 llms 都不在其中），
+// 所以直接讀設定檔——但要讀「處理過 extends 的那一份」，否則繼承來的文案
+// 會被當成 seo.py 自己寫死的句子。
+const config = ready ? loadConfig(courseDir) : {};
 
 /** 從 index.html 抓出注入好的 Course JSON-LD */
 function schemaGraph() {
