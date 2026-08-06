@@ -1,0 +1,462 @@
+{
+ "chapter": "CH3",
+ "title": "成功行銷",
+ "units": [
+  {
+   "id": "ch3-u1",
+   "name": "診斷型入口：先讓人被看見",
+   "type": "market",
+   "assessment": "拿你現有的診斷型入口做三件事：一、把結果頁的每一句描述抄下來，逐句問「這句換成任何一位讀者是不是也成立」，成立的畫掉；畫掉超過三成，代表你做的是巴納姆式安慰而不是診斷，必須重寫成含具體行為或數字的句子。二、拿紙畫一張兩欄表，左欄寫你的題目，右欄寫這題會把人推向哪一個出口；若有任何一題兩欄對不起來，那題就是湊數的，刪掉。三、找三位不認識你的人實際做一次，全程計時並記錄他們在第幾題停頓或關掉；中途流失率超過三分之一，題數就要砍到十題以內。最後檢查出口數：少於三個代表分眾沒有意義，多於五個代表你自己也還沒想清楚要賣什麼。",
+   "tight": [
+    "題目數量太多，把診斷做成問卷調查，完成率先死在第十二題",
+    "結果頁寫得太安全、太通用，讀者看完點頭但不覺得被指認",
+    "急著在結果頁塞購買連結，讓「被看見」的瞬間立刻變成推銷現場"
+   ],
+   "weak": [
+    "分數區間與產品出口沒有對應表，測驗做完不知道要把人送去哪裡",
+    "缺少後續信件序列，名單拿到手卻沒有把診斷結論延續下去",
+    "沒有交代資料如何使用與保存，蒐集個資的正當性一片空白",
+    "從沒實測過陌生人的完成率，只靠自己試做就上線"
+   ],
+   "lesson": {
+    "name": "診斷型入口主課：把測驗當成名單引擎",
+    "en": "The $1,000,000 Lead Gen System",
+    "kind": "mechanism",
+    "target": "測驗漏斗、名單引擎、分眾邏輯、結果頁報告、後續轉換動線",
+    "dose": "完整看完一次（約 21 分），第二次看時暫停三處：題目設計、結果分群、結果頁的行動呼籲，各寫下三行筆記",
+    "title": "The $1,000,000 Lead Gen System",
+    "channel": "ScoreApp",
+    "url": "https://www.youtube.com/watch?v=A8MsTp_N-e4",
+    "duration": "21:26",
+    "why": "這支把「評測 → 個人化報告 → 分眾 → 產品出口」講成一條可複製的流程，而不是只喊「做個測驗吧」。它剛好對應本單元的核心主張：診斷型入口的價值不在蒐集名單，而在讓對方第一次覺得自己被準確描述了；有了這個前提，後面四支動作影片才有共同的骨架可以掛。"
+   },
+   "drills": [
+    {
+     "name": "測驗漏斗全流程拆解",
+     "en": "ScoreApp: Turn cold prospects into warm leads with the quiz marketing",
+     "kind": "teardown",
+     "target": "冷名單、題目數量、結果分群、產品出口、追蹤信序列",
+     "dose": "看兩遍：第一遍純看流程，第二遍拿紙畫出「題目 → 分數區間 → 出口」的對照表，至少畫出四個出口",
+     "title": "ScoreApp: Turn cold prospects into warm leads with the quiz marketing",
+     "channel": "ScoreApp",
+     "url": "https://www.youtube.com/watch?v=GtQU0xAaRmk",
+     "duration": "2:50"
+    },
+    {
+     "name": "評測型誘因的實際成效拆解",
+     "en": "How I Collected 714,000 Emails Through A Simple Quiz",
+     "kind": "mechanism",
+     "target": "誘因設計、完成率、名單品質、分眾提問、結果頁轉換",
+     "dose": "看完後把自己現有的一個電子書型誘因改寫成測驗題綱，限時 25 分鐘，題數上限十題",
+     "title": "How I Collected 714,000 Emails Through A Simple Quiz",
+     "channel": "Neil Patel",
+     "url": "https://www.youtube.com/watch?v=Gr64i-ZiG68",
+     "duration": "8:58"
+    },
+    {
+     "name": "Mindvalley 會員旅程拆解",
+     "en": "Mindvalley Exposed After 5 Years - WHY? Review 2026",
+     "kind": "teardown",
+     "target": "會員旅程、入口設計、免費大師課、續訂節奏、退出點",
+     "dose": "邊看邊記錄「他在第幾分鐘被要求做選擇」，列出至少三個決策點，並標記哪一個最接近診斷型入口",
+     "title": "Mindvalley Exposed After 5 Years - WHY?  Review 2026",
+     "channel": "Vitaliy Lano",
+     "url": "https://www.youtube.com/watch?v=1Ght_-g5BeQ",
+     "duration": "6:20"
+    },
+    {
+     "name": "測驗式行銷的反面案例",
+     "en": "被心理測驗騙一點也不笨！心靈雞湯背後運作的巴納姆效應【#幹嘛不匠說EP5】",
+     "kind": "cautionary",
+     "target": "巴納姆效應、模糊描述、被說中錯覺、信任透支、個資蒐集爭議",
+     "dose": "看完後回頭讀自己測驗結果頁的每一句話，圈出「換成任何人都成立」的句子，比例超過三成就重寫",
+     "title": "被心理測驗騙一點也不笨！心靈雞湯背後運作的巴納姆效應【#幹嘛不匠說EP5】",
+     "channel": "黃豪平",
+     "url": "https://www.youtube.com/watch?v=SIzeO790iNM",
+     "duration": "9:32"
+    }
+   ]
+  },
+  {
+   "id": "ch3-u2",
+   "name": "每週免費場：稀缺比免費重要",
+   "type": "market",
+   "assessment": "拿一張表連做四週：每場記下「報名數／到場數／留到報價點的人數／成交數」，自己算出到場率＝到場÷報名、成交率＝成交÷到場，四週數字並排看有沒有一週比一週掉。同時做三個可操作檢查：(1) 用碼表量從開場到第一次講出「今天結束後價格恢復」的秒數，超過 40 分鐘代表急迫感放太後面；(2) 用無痕視窗把自己的報名頁重新整理三次，若倒數計時器每次都重置回原本數字，那就是假倒數，立刻拆掉；(3) 翻出過去四週的收場話術逐字稿，數「最後一次」「只剩 X 名」這類句子出現幾次、事後是否真的關閉。只要有一次沒兌現，稀缺就已經在客戶端貶值。",
+   "tight": [
+    "稀缺話術過量：每週都喊「最後一次」「只剩三個名額」，四週後同一批名單已經免疫",
+    "報價段講太久、太用力，佔掉超過三分之一場次時間，聽眾在留言區流失",
+    "報名頁堆滿倒數計時器與紅字，反而讓人先懷疑再離開"
+   ],
+   "weak": [
+    "到場提醒不足：只寄一封確認信，開場前 1 小時與 10 分鐘沒有再推，到場率被壓在三成以下",
+    "截止設計缺席：免費場結束後沒有任何真的會關閉的東西，稀缺變成純話術",
+    "場次沒有固定星期與時間，觀眾養不成習慣，每週都得重新募集一批新報名",
+    "沒有留存每場的報名／到場／成交三個數字，改動了什麼、影響哪一段完全無法歸因"
+   ],
+   "lesson": {
+    "name": "高轉換 Webinar 漏斗的七個環節",
+    "en": "Seven parts of a high-converting webinar funnel",
+    "kind": "mechanism",
+    "target": "報名頁、到場提醒、內容結構、報價段、稀缺與截止、追售信",
+    "dose": "完整看 1 遍，邊看邊把七個環節對照自己每週免費場，標出目前缺哪幾個",
+    "title": "7 Tips For a High Converting Webinar Funnel In 2026",
+    "channel": "Jon Penberthy",
+    "url": "https://www.youtube.com/watch?v=uTIoiNtIJVY",
+    "duration": "17:33",
+    "why": "這支把免費場從報名到成交的每個環節攤開講，正好證明本單元的主張：免費只負責讓人報名，真正把人推到決定點的是內容結構與截止設計。長度足夠展開整條漏斗，講解型、有具體操作，適合當主課。"
+   },
+   "drills": [
+    {
+     "name": "漏斗數字拆解：把一場的報名、到場、成交攤開對帳",
+     "en": "Webinar funnel number teardown",
+     "kind": "teardown",
+     "target": "報名率、到場率、成交率、單場營收、名單成本",
+     "dose": "看 1 遍，暫停 3 次，把自己上一場的三個比率填進同樣欄位",
+     "title": "Case Study: How Matt Made $89K In Sales From A Webinar - High Converting Webinar Secrets Ep.9",
+     "channel": "Dan Lok",
+     "url": "https://www.youtube.com/watch?v=OoE94YinKho",
+     "duration": "5:28"
+    },
+    {
+     "name": "每週固定場：把單場活動變成可重複的營運儀式",
+     "en": "Turning a one-off webinar into a weekly ritual",
+     "kind": "mechanism",
+     "target": "固定時段、重播與直播差異、互動設計、後續信件節奏",
+     "dose": "看 1 遍，寫下自己每週固定場的星期、時間、開場稿三件不變的元素",
+     "title": "Automated Webinars Don’t Work Unless You Do This",
+     "channel": "Casey Zeman",
+     "url": "https://www.youtube.com/watch?v=Eof8Z7p_zwQ",
+     "duration": "4:23"
+    },
+    {
+     "name": "稀缺與急迫的行為根據：限時如何改變決策",
+     "en": "Scarcity and urgency: the behavioural basis",
+     "kind": "mechanism",
+     "target": "稀缺原則、損失規避、決策時限、真稀缺與偽稀缺分界",
+     "dose": "看 1 遍，列出自己場次裡三個稀缺點，逐一標注是真的有限還是自己編的",
+     "title": "The Scarcity Principle in UX: Don't Miss Out!",
+     "channel": "NNgroup",
+     "url": "https://www.youtube.com/watch?v=Xz6j9AHcJuI",
+     "duration": "2:49"
+    },
+    {
+     "name": "假倒數與偽稀缺：被拆穿的手法與代價",
+     "en": "Fake countdowns and false scarcity exposed",
+     "kind": "cautionary",
+     "target": "暗黑模式、假倒數計時器、假庫存提示、信任成本、法規風險",
+     "dose": "看 1 遍，回頭把自己頁面上每個倒數與「僅剩名額」逐條核對是否屬實",
+     "title": "How Dark Patterns Trick You Online",
+     "channel": "Nerdwriter1",
+     "url": "https://www.youtube.com/watch?v=kxkrdLI6e6M",
+     "duration": "6:57"
+    }
+   ]
+  },
+  {
+   "id": "ch3-u3",
+   "name": "見證行銷：怎麼收，怎麼不造假",
+   "type": "market",
+   "assessment": "拿你目前網站與提案簡報上所有的見證，一則一則過三欄檢核表，自己就能算出通過率：第一欄「可查證數字」：這則見證裡有沒有出現一個可以被追問的數字（例如「三個月從 12 萬做到 31 萬」「等待時間從 40 分鐘降到 9 分鐘」）；只有「服務很棒」「非常推薦」的一律打叉。第二欄「可指認的人」：有沒有同時具備真實姓名、職稱、公司或城市，讓外人理論上找得到這個人；只有「王先生」「新竹 A 小姐」的打叉。第三欄「對價揭露」：這則見證的當事人有沒有拿過折扣、免費商品、抽佣或現金；有拿而文案裡沒寫出來的，直接打叉，不管拿多少。三欄全勾才算 1 分，算出「合格則數 ÷ 總則數」。低於 60% 代表你收見證的方式有問題，回到見證收集 SOP 的四個問題重收；第三欄若有任何一則打叉，那是法律風險不是文案問題，當天就要補揭露或下架。另外做一次「原話比對」：隨機抽 3 則，把你發布的版本跟客戶原始的訊息或錄音逐句對照，凡是你自己加上去、客戶沒說過的形容詞，全部刪掉。刪完還站得住的才是真見證。",
+   "tight": [
+    "過度潤稿：把顧客口語改寫成行銷文案腔，讀起來全部像同一個人寫的",
+    "只挑最完美的案例，見證裡沒有任何猶豫、缺點或落差，反而降低可信度",
+    "剪輯過度：訪談被切成 3 秒一句的快剪，觀眾來不及建立對說話者的信任"
+   ],
+   "weak": [
+    "沒有固定的開口時機，等到客戶熱度過了才想到要見證",
+    "問題太籠統（「您覺得如何？」），拿不到任何具體數字",
+    "沒有記錄見證人的可指認資訊（姓名、職稱、公司），事後無法佐證",
+    "提供折扣或報酬換取好評卻沒有揭露，踩到 FTC 假評價規範"
+   ],
+   "lesson": {
+    "name": "見證行銷主課：把客戶好評變成可複製的收集系統",
+    "en": "How To Get 10x More Client Testimonials & Referrals (Plus TWO Example Emails For You To Swipe)",
+    "kind": "teardown",
+    "target": "見證收集、推薦請求、email 腳本、時機選擇、社會證明",
+    "dose": "完整看完 1 次（約 10 分鐘），暫停抄下影片給的兩封範例信，當天改寫成自己的版本並寄給最近 3 位成交客戶",
+    "title": "How To Get 10x More Client Testimonials & Referrals (Plus TWO Example Emails For You To Swipe)",
+    "channel": "Alex Cattoni",
+    "url": "https://www.youtube.com/watch?v=BmiOPbJfGBs",
+    "duration": "10:08",
+    "why": "這支是整個單元最接近「怎麼收」的完整流程課：它直接處理「什麼時候開口、用什麼措辭開口、對方不回怎麼辦」，而且把兩封可直接抄的請求信念出來。對本單元第二個主題「怎麼不造假」也有幫助。它主張把顧客講的原話原封不動留著，不要幫顧客潤稿，這正是造假與不造假的分界線。長度 608 秒屬於講解型的合理密度，看完就能動手，不會只剩一堆概念。"
+   },
+   "drills": [
+    {
+     "name": "見證收集 SOP：問哪四題才問得到具體數字",
+     "en": "4 Powerful Testimonial Questions",
+     "kind": "teardown",
+     "target": "提問腳本、前後對比、具體數字、猶豫點、訪談時機",
+     "dose": "看完 1 次，把四個問題逐字抄成一張卡片，下次客戶訪談時照順序念，每題追問一次「可以給我一個數字嗎」",
+     "title": "4 Powerful Testimonial Questions",
+     "channel": "Jody Jelas | Phunnels",
+     "url": "https://www.youtube.com/watch?v=PGSqv2doNVk",
+     "duration": "4:10"
+    },
+    {
+     "name": "案例影片拆解：把顧客訪談剪成會成交的素材",
+     "en": "Case Study: 5 Keys to Creating a Killer Testimonial Video",
+     "kind": "teardown",
+     "target": "訪談素材、剪輯結構、開場鉤子、故事線、可成交素材",
+     "dose": "看完 1 次並記下五個要點，接著拿自己手上任一支既有見證影片對照打分（0-5 分），只針對得 0 分的那一項重剪",
+     "title": "Case Study: 5 Keys to Creating a Killer Testimonial Video",
+     "channel": "Andrew Davis",
+     "url": "https://www.youtube.com/watch?v=PMW8VY6gpC4",
+     "duration": "8:27"
+    },
+    {
+     "name": "從眾實驗：社會證明為什麼會蓋過自己的判斷",
+     "en": "Asch conformity experiments explained (Traditional Chinese)",
+     "kind": "mechanism",
+     "target": "從眾實驗、社會證明、多數意見、判斷偏移、群體壓力",
+     "dose": "看完 1 次（157 秒），看完後寫下一句話：你的頁面目前呈現的是「幾個人這樣說」還是「哪一個人這樣說」",
+     "title": "阿希從眾實驗(Asch conformity experiments)",
+     "channel": "Ming Lee",
+     "url": "https://www.youtube.com/watch?v=-HKe_r0M3b4",
+     "duration": "2:37"
+    },
+    {
+     "name": "假評價裁罰案例：FTC 新規與付費見證的法律責任",
+     "en": "FTC cracks down on fake reviews with new rule set to ban phony feedback",
+     "kind": "cautionary",
+     "target": "FTC 規範、假評價、付費見證、揭露義務、裁罰案例",
+     "dose": "看完 1 次，對照自家所有見證素材列一張清單，標出哪幾則曾提供折扣、免費商品或報酬換取，逐則補上揭露文字",
+     "title": "FTC cracks down on fake reviews with new rule set to ban phony feedback",
+     "channel": "CBS Mornings",
+     "url": "https://www.youtube.com/watch?v=PLboz88rM7E",
+     "duration": "5:07"
+    }
+   ]
+  },
+  {
+   "id": "ch3-u4",
+   "name": "從賣課到賣歸屬",
+   "type": "market",
+   "assessment": "拿你自己的後台數據做這三個檢核，全部要有數字，不能用感覺回答。第一，續訂曲線檢核：把過去 12 個月每個月新加入的會員各自獨立成一列，橫向填第 1、2、3、6、12 個月還在繳費的人數百分比，做成一張世代表。如果第 3 個月普遍掉到 50% 以下，而且第 6 到第 12 個月的曲線還在往下、沒有變成一條接近水平的線，代表你賣的還是「一次性內容」而不是歸屬感。真正有歸屬感的會員制會出現留存平原。第二，價差倍數檢核：把你三個方案的售價寫成一行，算相鄰兩層的倍數。如果最高階與最低階差不到 3 倍，或有任何一層佔總營收不到 10%，那一層就是無效層級，應該砍掉或重新定義。第三，年費誘因檢核：算出「年繳人數 ÷ 總付費人數」。低於 20% 表示折扣誘因不夠，高於 60% 且流失集中在年度續約月，表示你只是把流失往後延、沒有真的解決留存。第四，歸屬感的行為檢核（不是問卷）：連續四週統計「每週至少發言或回覆一次的會員佔比」，並且看這批人的次月續訂率是否明顯高於沉默會員。若兩者差距小於 10 個百分點，代表你的社群互動只是熱鬧，還沒有轉成留存機轉。",
+   "tight": [
+    "過度依賴一次性課程銷售與檔期折扣的營收結構",
+    "把行銷預算集中在新客獲取、廣告投放的慣性",
+    "以內容產量（上片數、單元數）當作價值交付的唯一指標",
+    "用「限時優惠」推年繳，把折扣當成唯一的續訂誘因"
+   ],
+   "weak": [
+    "世代留存與續訂曲線的數據追蹤機制",
+    "層級定價中高階方案的價值定義與升級路徑",
+    "會員之間的橫向互動設計（成員彼此認識、彼此回覆）",
+    "續訂前的主動接觸流程與流失預警訊號",
+    "年費與月費之間的現金流權衡計算"
+   ],
+   "lesson": {
+    "name": "訂閱制真的可行嗎：做會員制之前必須先想清楚的四個問題",
+    "en": "Is a subscription model actually viable? Four questions to settle first",
+    "kind": "teardown",
+    "target": "訂閱制、會員制、經常性收入、續訂動機、成本結構、商業模式適配性",
+    "dose": "完整看完一次（約 14 分鐘），第二次看時暫停在四個問題處，各寫下自己產品的答案，總計約 30 分鐘",
+    "title": "【M觀點商學院】#12 訂閱制真的可行嗎? 要做訂閱制前一定要想清楚的四個問題 | M觀點",
+    "channel": "M觀點",
+    "url": "https://www.youtube.com/watch?v=QElmo-5szdI",
+    "duration": "14:12",
+    "why": "這一單元的核心是「賣一次的課」與「賣持續歸屬」在商業結構上根本不同。這支繁中影片沒有停留在「訂閱很棒」的口號，而是逐一拆開四個決定訂閱制成敗的前提：使用者是否有反覆發生的需求、你能否持續交付新價值、續訂成本與獲客成本的關係、以及什麼樣的產品其實不該做訂閱。這正是學員在把一次性課程改成會員制之前最容易跳過的那一步，也是後面四支動作影片（層級定價、流失率、社群留存、年費設計）的共同前提。繁中口語、有具體案例，門檻低但不空泛。"
+   },
+   "drills": [
+    {
+     "name": "三層定價的 10-5-20 法則：層級價差與經常性收入結構拆解",
+     "en": "The 10-5-20 rule for tiered SaaS/membership pricing",
+     "kind": "teardown",
+     "target": "層級定價、價差倍數、方案結構、月經常性收入、升級路徑、錨定效應",
+     "dose": "看完 6 分鐘，暫停後把自己現有的方案價格填進三層表格，算出實際倍數差，約 20 分鐘",
+     "title": "How To Perfect Your SaaS Pricing Using The 10-5-20 Rule",
+     "channel": "Dan Martell",
+     "url": "https://www.youtube.com/watch?v=LKh9VY_XooQ",
+     "duration": "5:58"
+    },
+    {
+     "name": "流失率怎麼降：可操作的拆解",
+     "en": "How To Reduce Your SaaS Churn",
+     "kind": "teardown",
+     "target": "流失率、續訂動機、取消原因分類、挽回時機、經常性收入",
+     "dose": "看完後把上一季所有取消的會員列出來，逐筆標上取消原因，歸成不超過四類，找出佔比最高的那一類先處理",
+     "title": "How To Reduce Your SaaS Churn",
+     "channel": "Dan Martell",
+     "url": "https://www.youtube.com/watch?v=2y-cxWkz_jQ",
+     "duration": "3:45"
+    },
+    {
+     "name": "社群怎麼變成留存：付費社群的參與設計拆解",
+     "en": "Seven mechanics behind a $45k/month paid community",
+     "kind": "mechanism",
+     "target": "社群驅動成長、參與度、歸屬感、成員互動、留存機轉、付費社群",
+     "dose": "看完一次並逐條記下七個做法，勾出你目前完全沒做的項目，約 20 分鐘",
+     "title": "Top 7 Secrets To Building a $45,000/Month Skool Community",
+     "channel": "Adnan Pilditch",
+     "url": "https://www.youtube.com/watch?v=mf1WAw0FyaI",
+     "duration": "7:35"
+    },
+    {
+     "name": "訂閱定價模型速覽：計費週期、方案切分與現金流取捨",
+     "en": "SaaS Pricing Models Explained in 5 Minutes",
+     "kind": "mechanism",
+     "target": "計費週期、年費方案、月費方案、預付折扣、現金流、定價模型",
+     "dose": "看完一次（約 4.5 分鐘），對照自己方案寫下年繳折扣百分比與相對應的現金流影響，約 15 分鐘",
+     "title": "SaaS Pricing Models Explained in 5 Minutes",
+     "channel": "Rob Walling",
+     "url": "https://www.youtube.com/watch?v=lC6Gpn0ugFI",
+     "duration": "4:22"
+    }
+   ]
+  },
+  {
+   "id": "ch3-u5",
+   "name": "高價層：聚會與認證",
+   "type": "market",
+   "assessment": "拿一位你目前正在觀望或已經付過錢的老師，開一張三欄表：免費入口（公開講座、直播、電子書）、中價位（線上課、訂閱社群）、高價層（實體聚會、mastermind、認證或授權）。到官網、報名頁、IG 精選限動與過去學員的貼文，把每一層的實際價格逐格填進去；查不到公開價格的那格就寫「需先通話才報價」。這一格本身就是資訊。表填完後做三個檢查：(1) 中價位課程的內容裡，有多少比例的時間在介紹或推薦下一層？超過 10%，那它就是漏斗而不是課程。(2) 高價層的交付物寫下來後，去掉「見面」「同儕」「身分／頭銜」這三類詞，還剩下什麼可驗證的技能或成果？如果幾乎清空，你買的是入場券不是內容。(3) 認證那一層，把受訓時數 × 每小時學費 ＋ 考試費 ＋ 續證費算出總額，再去人力銀行或該領域的公開行情查「有這張證照的人實際收費多少、要幾個案子才回本」；回本需要的案子數超過你一年可能接到的量，這張證照的買方就是你，不是市場。三個檢查有兩個成立，就把付款延後 14 天再看一次這張表。",
+   "tight": [
+    "對『被同儕與導師接納』的過度需求",
+    "已付款後產生的沉沒成本辯護反射",
+    "把集體儀式帶來的情緒強度誤讀為內容價值",
+    "認為公開質疑老師等於背叛群體的內建禁忌"
+   ],
+   "weak": [
+    "把台上口頭承諾即時換算成金額的算術習慣",
+    "在情緒高點時把決定延後 14 天的能力",
+    "主動查證講師實際交付物、資格與退費條款的習慣",
+    "分辨『收費結構』與『內容價值』是兩件事的判讀力"
+   ],
+   "lesson": {
+    "name": "高價層的完整拆解：從免費講座一路走到頂層聚會",
+    "en": "The Contrepreneur Formula Exposed",
+    "kind": "teardown",
+    "target": "高價階梯、免費講座入口、後端加購、票價結構、大師人設、聚會型交付",
+    "dose": "完整看一次（約 22 分鐘）；第二次快轉重看，只在出現價格或報名畫面時暫停，把每一層的價格與承諾抄成一張由低到高的階梯表",
+    "title": "The Contrepreneur Formula Exposed",
+    "channel": "Mike Winnet",
+    "url": "https://www.youtube.com/watch?v=vC5cmW8O3L8",
+    "duration": "21:56",
+    "why": "這支片是作者自己付錢、報名、走完整條漏斗後的第一手拆解，正好把本單元要講的「高價層」放回它所屬的位置：免費講座與中價位課程存在的目的，就是把人送到這一層。片中反覆出現同一套結構：免費入場、情緒鋪陳、社會證明、然後才是報價，而報的價一次比一次高，最後停在實體聚會與同儕社群。學員先看完這支，再看四支動作影片時就有一個共用座標：任何一段素材都可以問「這是階梯的哪一層、下一層要賣什麼」。長度 1316 秒落在主課區間內，觀看數 72 萬，且是英文圈少數把整條路徑走完而非只罵人的作品。"
+   },
+   "drills": [
+    {
+     "name": "高價實體活動的數字拆解",
+     "en": "I Attended The GRANT CARDONE 10X Workshop!",
+     "kind": "teardown",
+     "target": "票價階梯、場地與人數、台上報價、加購方案、mastermind 定價邏輯",
+     "dose": "看 1 遍；第 2 遍拿紙筆，把片中出現的每一個金額（入場票、升級票、後端方案）抄下來，並記下「開場到第一次報價」相隔幾分鐘",
+     "title": "I Attended The GRANT CARDONE 10X Workshop!",
+     "channel": "Mike Winnet",
+     "url": "https://www.youtube.com/watch?v=DtbKx2pvZbs",
+     "duration": "8:39"
+    },
+    {
+     "name": "認證與授權的收費結構",
+     "en": "ICF Coaching Credentials Explained Simply in Under 5 Minutes (2025)",
+     "kind": "mechanism",
+     "target": "認證等級、受訓時數、督導時數、考試費、續證費、授權講師",
+     "dose": "看 1 遍，暫停在等級對照表那一段，自己把每一級的「受訓時數 × 每小時學費 ＋ 考試費 ＋ 每幾年一次的續證費」乘出來寫在旁邊",
+     "title": "ICF Coaching Credentials Explained Simply in Under 5 Minutes (2025)",
+     "channel": "IGC Coaching School",
+     "url": "https://www.youtube.com/watch?v=462mdxd-NMM",
+     "duration": "4:52"
+    },
+    {
+     "name": "集體儀式與朝聖感如何把顧客變成傳教士",
+     "en": "What is the Landmark Forum and is it a Cult?",
+     "kind": "mechanism",
+     "target": "集體儀式、公開見證、當場打電話邀請、身分轉換、志工制、朝聖感",
+     "dose": "看 1 遍，把片中提到「課堂上被要求做的每一個動作」逐條列出（分享、上台、打電話、帶朋友來），再在會直接產生新報名的那幾條旁邊打勾",
+     "title": "What is the Landmark Forum and is it a Cult?",
+     "channel": "Estelle Mae",
+     "url": "https://www.youtube.com/watch?v=d6lWhr5eF_4",
+     "duration": "5:00"
+    },
+    {
+     "name": "高價課程與靈修活動的事故與爭議案例",
+     "en": "Taiwanese \"spiritual institute\" accused of NT$40M fraud: unlicensed instructors, members pressured to recruit family and friends (SET News)",
+     "kind": "cautionary",
+     "target": "高價心靈課程、無照講師、拉親友入會、詐欺指控、退費爭議、台灣在地案例",
+     "dose": "看 1 遍，把新聞中出現的「涉及金額、受害人數、被指控的具體行為」抄成三行，再回頭對照主課那張階梯表，標出這個案子出事在哪一層",
+     "title": "是心靈機構還是\"邪教\"? POP公司涉嫌詐騙4千萬 洗腦學員拉親友加入 爆無執照講師逼學員向加害人道歉 負責人移送北檢時親友拿毛毯幫\"遮羞\"│【LIVE大現場】20231017│三立新聞台",
+     "channel": "三立新聞LIVE",
+     "url": "https://www.youtube.com/watch?v=3p7ioOkTm8g",
+     "duration": "3:44"
+    }
+   ]
+  },
+  {
+   "id": "ch3-u6",
+   "name": "創辦人可死，教義不死",
+   "type": "market",
+   "assessment": "做一次「創辦人依賴度」自檢，兩步都要留下可查的證據。第一步：打開過去 30 天的行事曆與通訊軟體，逐項標記「只有我能做」或「別人照文件也能做」，算出只有我能做的時數佔總工時的百分比，超過 40% 就屬高度依賴。第二步：挑其中一項對外交付任務，指定一位同事執行，你全程不出聲、不接手、不私下補充，只給他現有文件，過程錄影或錄音，事後數他被迫回頭問你的次數。問超過 3 次，代表那件事還停在你腦袋裡，不在制度裡。兩項數字每季重測一次，寫在同一張表上比較趨勢；佔比與提問次數同時下降，才算真的把魅力寫成了教義。",
+   "tight": [
+    "決策簽核集中在創辦人",
+    "關鍵客戶只認創辦人本人",
+    "對外內容與發言全由創辦人產出",
+    "招募面試最後一關非創辦人不可",
+    "定價與破例折扣只有創辦人能拍板"
+   ],
+   "weak": [
+    "核心流程沒有書面 SOP",
+    "沒有第二梯隊在真實情境練習過",
+    "品牌敘事的所有權沒有從個人移轉到公司",
+    "從未做過創辦人缺席的交接演練",
+    "知識散在私人筆記與對話紀錄，沒有共用知識庫"
+   ],
+   "lesson": {
+    "name": "讓事業在你不在場時照常運轉：E-Myth 系統化總論",
+    "en": "Build a Business That Runs Without You (E-Myth Revisited)",
+    "kind": "mechanism",
+    "target": "創辦人依賴、系統化、可複製流程、角色分工、交棒準備",
+    "dose": "完整看一遍不快轉；第二遍每 2 分鐘暫停一次，把影片提到的每個「該由系統做而不是由你做」的環節，對照寫下你自己事業裡的對應項，最少湊滿 10 條，貼在工作區看得到的地方",
+    "title": "How to Build a Business That Runs Without You: The E-Myth Revisited",
+    "channel": "Becoming More",
+    "url": "https://www.youtube.com/watch?v=wnsU-9YPGow",
+    "duration": "9:36",
+    "why": "這支片把單元的核心主張講完整：事業的價值不在創辦人本人有多強，而在創辦人抽離後流程還能不能跑。它用 working on the business vs. working in the business 把抽象的「教義不死」落到可操作的分工設計上，長度 576 秒夠展開又不注水，觀看數近百萬代表講法經得起大量檢驗，適合當本單元的框架課。中文候選（麥當勞標準化、個人品牌公司化）主題偏離或觀看數偏低，故採英文片。"
+   },
+   "drills": [
+    {
+     "name": "關鍵人風險體檢：為什麼賺錢的公司賣不掉",
+     "en": "Key-Person Risk: Why a Profitable Business Is Unsellable",
+     "kind": "teardown",
+     "target": "關鍵人風險、估值折價、買方盡職調查、客戶集中度、可轉移性",
+     "dose": "看完後拿一張紙做買方視角清單：把片中提到的每一個折價因子逐條打勾，只要有 3 項以上打勾就把它們寫進本季待辦。重看一次，暫停在講估值倍數的段落，估算自己事業如果今天要賣，倍數會被扣掉幾成",
+     "title": "Is Your Profitable Business Quietly Unsellable?",
+     "channel": "FUND IT",
+     "url": "https://www.youtube.com/watch?v=dijYD7Erct4",
+     "duration": "9:35"
+    },
+    {
+     "name": "把魅力寫成 SOP：一次寫出可交付的標準流程",
+     "en": "Write Your Charisma into an SOP, Step by Step",
+     "kind": "mechanism",
+     "target": "標準作業流程、流程拆解、觸發條件、驗收標準、交接文件",
+     "dose": "邊看邊做：選你事業中「只有你會做」的第一名任務，照片中的步驟結構當場寫成一份 SOP，限時 30 分鐘、不准超過兩頁。寫完交給一位同事，不解說、不補充，看他能不能只靠文件走完",
+     "title": "Creating SOPs: How To Write Standard Operating Procedures (Step By Step)",
+     "channel": "Jordan Ross",
+     "url": "https://www.youtube.com/watch?v=nRhozVH_9EA",
+     "duration": "4:21"
+    },
+    {
+     "name": "創辦人退場實例拆解：張忠謀交棒台積電",
+     "en": "Founder Exit Teardown: Morris Chang's TSMC Succession",
+     "kind": "teardown",
+     "target": "創辦人退場、接班人養成、權力移轉、組織延續、品牌敘事",
+     "dose": "短片看兩遍。第一遍純聽，記下「準備」二字落在哪些具體作為上；第二遍暫停在提到接班安排的畫面，寫下你的事業要複製這套安排缺哪三件事（人選、練習場、公開背書），逐件標上日期",
+     "title": "魏哲家出席張忠謀新書發表 創辦人揭接班內幕 魏哲家妙語如珠 面對對手競爭霸氣回:門都沒有 張忠謀曝台積\"接班內幕\" 讚魏哲家\"準備最齊全CEO\"│台灣要聞20241209│三立iNEWS",
+     "channel": "三立財經iNEWS",
+     "url": "https://www.youtube.com/watch?v=13Yl799msrs",
+     "duration": "1:52"
+    },
+    {
+     "name": "正典是怎麼固定下來的：創教者離場後的權威移轉",
+     "en": "How a Canon Forms: Authority After the Founder Is Gone",
+     "kind": "mechanism",
+     "target": "正典形成、文本固定、權威來源、繼承者認證、教義標準化",
+     "dose": "看一遍後用三欄表抄下片中的機制：哪些文本被收、憑什麼標準、由誰認定。接著把三欄換成你的品牌：哪些說法算官方版、判準是什麼、誰有權拍板。三欄各寫滿 5 條才算完成",
+     "title": "How Did the New Testament Form?",
+     "channel": "ReligionForBreakfast",
+     "url": "https://www.youtube.com/watch?v=SCy7NuujCLc",
+     "duration": "7:24"
+    }
+   ]
+  }
+ ]
+}

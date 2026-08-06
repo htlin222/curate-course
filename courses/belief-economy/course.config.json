@@ -1,0 +1,345 @@
+{
+	"$schema": "../../src/build/course.schema.json",
+	"frameworkVersion": "2.0.0",
+	"site": {
+		"project": "belief-economy",
+		"name": "信念經濟",
+		"url": "https://belief-economy.pages.dev",
+		"locale": "zh-Hant",
+		"ogLocale": "zh_TW",
+		"brandIcon": "gem",
+		"title": "信念經濟｜顯化生意的設計手冊",
+		"description": "把顯化與自我成長市場當成產品來拆。18 個單元、90 個影片欄位，每一項都對照已經在市場上運作的商業模型。",
+		"ogDescription": "顯化不是玄學，是一套會讓人每天回來的產品設計。用 YouTube 公開影片組成的學習地圖。",
+		"keywords": [
+			"顯化",
+			"信念經濟",
+			"自我成長市場",
+			"資訊產品",
+			"會員制",
+			"訂閱留存",
+			"起源故事",
+			"行銷心理學",
+			"廣告法規"
+		],
+		"audience": "想進靈性與自我成長市場的創業者、個人品牌經營者",
+		"about": [
+			"商業模式設計",
+			"行銷心理學",
+			"訂閱與會員經濟",
+			"廣告法規與商業倫理"
+		],
+		"learningResourceType": ["策展影片課程", "商業模型拆解"]
+	},
+	"hero": {
+		"eyebrow": "信念經濟",
+		"heading": "顯化生意的設計手冊",
+		"lede": "{lessonUnits} 個單元、{videos} 支公開影片。從起源故事、方法命名，到會員留存與法規紅線，每一項都對照已經在市場上運作的案例。"
+	},
+	"og": {
+		"title": "顯化生意的設計手冊",
+		"lede": "顯化不是玄學，是一套會讓人每天回來的產品設計。\n{lessonUnits} 個單元、{videos} 支公開影片。"
+	},
+	"ui": {
+		"stats": [
+			{
+				"icon": "layers",
+				"field": "units",
+				"label": "個影片欄位"
+			},
+			{
+				"icon": "clock",
+				"field": "duration",
+				"label": "課程時長"
+			},
+			{
+				"icon": "book-open",
+				"field": "lesson_units",
+				"label": "個單元"
+			},
+			{
+				"icon": "video",
+				"field": "video_unique",
+				"label": "支去重影片"
+			},
+			{
+				"icon": "drafting-compass",
+				"field": "problem_units",
+				"label": "個設計模組"
+			},
+			{
+				"icon": "scale",
+				"field": "evidence_checked",
+				"label": "則查核"
+			}
+		],
+		"tabs": {
+			"landing": "首頁",
+			"course": "課程",
+			"stance": "立場",
+			"player": "上課"
+		},
+		"unitTypes": {
+			"belief": "為什麼有效",
+			"blueprint": "產品設計",
+			"market": "市場模型",
+			"guard": "風險與倫理",
+			"concept": "立場"
+		},
+		"problemType": "blueprint",
+		"unitNoun": "個單元",
+		"lessonNoun": "堂主課",
+		"drillNoun": "支延伸影片",
+		"drillNounShort": "支延伸",
+		"kindFilterLabel": "影片類型篩選",
+		"lessonLabel": "主課",
+		"assessmentLabel": "你可以自己驗證的事",
+		"unitEvidenceLabel": "這個單元的查核",
+		"drillEvidenceLabel": "這個類別的文獻",
+		"tightLabel": "常見錯誤",
+		"weakLabel": "該練的能力",
+		"missingTitle": "尚未找到合格影片",
+		"missingHint": "這個題目在 YouTube 上沒有品質足夠的公開影片",
+		"evidenceRows": [
+			{
+				"field": "summary",
+				"label": "查證結果"
+			},
+			{
+				"field": "mechanism",
+				"label": "機制怎麼說"
+			},
+			{
+				"field": "commercial",
+				"label": "對產品設計的意涵"
+			},
+			{
+				"field": "red_flags",
+				"label": "紅旗",
+				"type": "flags"
+			},
+			{
+				"field": "caveats",
+				"label": "課程須誠實告知"
+			}
+		],
+		"evidenceSource": "PubMed 與 Crossref",
+		"evidenceSourceLink": "查看原始文獻",
+		"searchPlaceholder": "搜尋單元",
+		"playlistSearch": "搜尋播放清單",
+		"progressLabel": "學習進度",
+		"facetLabel": "面向篩選",
+		"facetClear": "清除",
+		"facetPrefix": "面向",
+		"doneLabel": "標記完成",
+		"prevLabel": "上一支",
+		"nextLabel": "下一支",
+		"moreLabel": "為什麼選這支",
+		"watchLabel": "觀看影片",
+		"openExternal": "在 YouTube 開啟",
+		"emptyTitle": "沒有符合的內容",
+		"emptyHint": "換一組篩選條件試試"
+	},
+	"kinds": [
+		{
+			"id": "teardown",
+			"label": "拆解",
+			"tone": "accent"
+		},
+		{
+			"id": "mechanism",
+			"label": "機制",
+			"tone": "success"
+		},
+		{
+			"id": "cautionary",
+			"label": "反面教材",
+			"tone": "danger"
+		}
+	],
+	"grades": [
+		{
+			"id": "strong",
+			"label": "證據充分",
+			"tone": "success"
+		},
+		{
+			"id": "moderate",
+			"label": "證據中等",
+			"tone": "accent"
+		},
+		{
+			"id": "limited",
+			"label": "證據有限",
+			"tone": "attention"
+		},
+		{
+			"id": "contested",
+			"label": "證據互斥",
+			"tone": "danger"
+		}
+	],
+	"evidence": {
+		"designTiers": {
+			"meta-analysis": 1,
+			"systematic review": 1,
+			"randomized field experiment": 2,
+			"randomized controlled trial": 2,
+			"laboratory experiment": 3,
+			"longitudinal survey": 4,
+			"cross-sectional survey": 5,
+			"case study": 6,
+			"conceptual analysis": 6,
+			"narrative review": 6,
+			"expert opinion": 7
+		},
+		"gradeRequires": {
+			"strong": 1,
+			"moderate": 3
+		},
+		"maxAgeYears": {
+			"strong": 20,
+			"moderate": 25
+		},
+		"requireCaveats": ["contested", "limited"],
+		"minCaveatChars": 40
+	},
+	"nav": [
+		{
+			"title": "第一幕｜為什麼有人願意付錢相信",
+			"chapters": ["CH1"]
+		},
+		{
+			"title": "第二幕｜產品設計",
+			"chapters": ["CH2"]
+		},
+		{
+			"title": "第三幕｜成功行銷",
+			"chapters": ["CH3"]
+		},
+		{
+			"title": "第四幕｜不翻車",
+			"chapters": ["CH4"]
+		}
+	],
+	"chapters": [
+		{
+			"code": "CH1",
+			"title": "為什麼有人願意付錢相信",
+			"icon": "hand-coins",
+			"source": "ch1",
+			"units": 3,
+			"drills": 9
+		},
+		{
+			"code": "CH2",
+			"title": "產品設計",
+			"icon": "drafting-compass",
+			"source": "ch2",
+			"units": 7,
+			"drills": 35
+		},
+		{
+			"code": "CH3",
+			"title": "成功行銷",
+			"icon": "megaphone",
+			"source": "ch3",
+			"units": 6,
+			"drills": 24
+		},
+		{
+			"code": "CH4",
+			"title": "不翻車",
+			"icon": "shield-alert",
+			"source": "ch4",
+			"units": 2,
+			"drills": 4
+		}
+	],
+	"evidenceAlias": {
+		"ch1-u1": "concept-manifestation-effect",
+		"ch2-u3": "concept-positive-fantasy",
+		"ch2-u5": "concept-21-days"
+	},
+	"stance": {
+		"title": "這門課的立場",
+		"verdicts": {
+			"concept-manifestation-effect": "沒有支持因果效果的研究。可以拆解的是生意，不是效力。",
+			"concept-positive-fantasy": "只觀想不行動的設計，可能抵銷使用者本來會有的行動。",
+			"concept-21-days": "21 天沒有依據。實測自動化的中位數是 66 天。"
+		},
+		"intro": "顯化的商業機制可以觀察，顯化的效果宣稱不行。這兩件事在這門課裡分開處理：商業模型照實拆解，效果宣稱標上證據分級。查到對課程不利的結果也照樣寫進去。",
+		"outroTitle": "三條自律線",
+		"outro": "不歸罪：課程裡不會出現「沒顯化成功是你信念不夠」。不取代行動：產品設計必須留下「今天實際做了什麼」的欄位。不承接絕望：重病、重大財務危機與喪親者往外轉介，不往上賣。"
+	},
+	"landing": {
+		"howTitle": "怎麼用這門課",
+		"steps": [
+			{
+				"icon": "map",
+				"title": "先看第一幕",
+				"body": "三個單元講清楚願意付錢相信的人在買什麼，以及哪一種客人不該賣。看完再決定要不要繼續。"
+			},
+			{
+				"icon": "drafting-compass",
+				"title": "照第二幕做一次",
+				"body": "起源故事、方法命名、日記本、21 天挑戰的機制拆完之後，用同一組零件組出你自己的版本。"
+			},
+			{
+				"icon": "shield-alert",
+				"title": "上線前對一次第四幕",
+				"body": "藥事法與醫療法的禁用詞、退訂摩擦的長期代價，這兩件事在有營收之後才處理成本最高。"
+			}
+		],
+		"stanceTitle": "查證結果照實寫",
+		"stanceLede": "課程裡的效果宣稱都標了證據分級。分級對課程不利的那幾則，也留在頁面上。",
+		"chaptersTitle": "四幕十八個單元",
+		"ctaTitle": "從第一集開始",
+		"ctaLede": "{videos} 支影片全部公開，不需要註冊。進度存在你自己的瀏覽器裡。"
+	},
+	"footer": {
+		"disclaimer": "**這門課教的是商業設計，不是療癒方法。**內容不構成醫療、心理或投資建議。法規段落為一般性資訊，實際請諮詢律師。",
+		"credits": "影片版權屬於各自的 YouTube 頻道，本站只收錄連結與公開中繼資料。"
+	},
+	"llms": {
+		"summary": "《信念經濟》是一門用 YouTube 公開影片策展的課程，把顯化與自我成長市場當成產品設計來拆解。共 {lessonUnits} 個單元、{videos} 支去重影片，總長 [[durationHours]] 小時 [[durationMinutes]] 分。四幕分別處理：付費相信的心理機制、產品結構設計、已驗證的商業模型、法規與倫理紅線。",
+		"stanceTitle": "立場",
+		"stanceIntro": "效果宣稱標上證據分級，查證結果對課程不利也照實寫。",
+		"stanceItem": "**[[name]]**（[[grade]]）：[[summaryShort]]",
+		"stanceConclusion": "商業模型可以拆解，效果宣稱需要證據。這門課把兩者分開。",
+		"chaptersTitle": "章節",
+		"chapterItem": "**[[code]] [[title]]**（[[unitCount]] 個單元）：[[units]]",
+		"unitSeparator": "、",
+		"disclaimerTitle": "免責",
+		"disclaimer": "本課程教的是商業設計，不構成醫療、心理或投資建議。法規段落為一般性資訊。",
+		"footer": "完整課程：[[url]]"
+	},
+	"audit": {
+		"duration": {
+			"lesson": {
+				"min": "5:00",
+				"max": "45:00"
+			},
+			"drill": {
+				"min": "2:00",
+				"max": "40:00"
+			}
+		},
+		"driftSeconds": 30,
+		"minViews": 5000,
+		"metaCoverage": 0.98,
+		"drillsPerUnit": {
+			"min": 2,
+			"max": 6
+		},
+		"maxSharedVideos": 10,
+		"requireAssessment": ["belief", "blueprint", "market", "guard"],
+		"minAssessmentChars": 60,
+		"minCitations": 2,
+		"allowMissingUrls": 8,
+		"maxChannelShare": 0.25,
+		"copyStyle": {
+			"maxDashRatio": 0.05
+		}
+	}
+}
