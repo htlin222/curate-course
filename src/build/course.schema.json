@@ -264,6 +264,10 @@
           "type": "string",
           "description": "項目連結的預設 title（預設「觀看示範」）"
         },
+        "oaLabel": {
+          "type": "string",
+          "description": "引用旁的開放取用全文連結文字（預設「免費全文」）。連結由 verify_refs.py --fix 從 Unpaywall／Europe PMC 寫進 citations[].oa_url，沒有的引用不會顯示"
+        },
         "facetFilterHint": {
           "type": "string",
           "description": "分面標籤的 title，{name} 會被替換成標籤名（預設「篩選涉及 {name} 的內容」）"

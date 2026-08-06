@@ -7,14 +7,19 @@
 不信任任何上游宣稱（含 agent 自稱已驗證），一律重打 PubMed E-utilities 或 Crossref。
 捏造的引用比沒有引用更糟，這是最後一道關卡。
 
-除了「存不存在」，還查兩件事：**這篇有沒有被撤稿**（esummary 的 pubtype 一直
-有回傳，只是以前沒讀——引用撤稿論文比沒有引用更糟，因為它看起來完全通過驗證），
-以及**研究設計是什麼**（PubMed 自己標的 publication type，比策展 agent 手寫的
-自由文字可靠；evidence_grade 建立在這上面）。
+除了「存不存在」，還查三件事：**這篇有沒有被撤稿**、**研究設計是什麼**（PubMed
+自己標的 publication type，比策展 agent 手寫的自由文字可靠；evidence_grade 建立
+在這上面），以及**有沒有免費全文**（`--fix` 會寫進 oa_url）。
+
+撤稿要問三個來源，因為單一來源會漏。實測 Wakefield 1998
+（DOI 10.1016/S0140-6736(97)11096-0）：PubMed 的 pubtype 抓得到，但 Crossref 的
+`update-to` 是 null、`relation` 是 {}——走 DOI 的引用如果只問 Crossref，撤稿偵測
+等於不存在。所以 PMID 問 PubMed，DOI 問 Crossref（含標題的 RETRACTED: 前綴）
+**加上** OpenAlex 的 is_retracted。
 
 用法：
     python3 verify_refs.py             # 驗證並列出不符者
-    python3 verify_refs.py --fix       # 用 API 回傳值覆寫 title/journal/year/design
+    python3 verify_refs.py --fix       # 用 API 回傳值覆寫 title/journal/year/design/oa_url
     python3 verify_refs.py --resolve   # 補上缺失的識別碼：先從 url 抽，再用標題
                                        # 反查 PubMed，最後試 Crossref。配 --fix 用
 """
@@ -22,29 +27,50 @@
 from __future__ import annotations
 
 import json
-import os
 import re
 import sys
 import time
-import urllib.parse
-import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import coursepath  # 框架自己的模組，要先把 src/build 加進路徑
+import refsources  # 外部資料庫的憑證與呼叫，全部集中在那裡
 
 ROOT = coursepath.ROOT
 DATA = coursepath.course_dir() / "data"
-ESUMMARY = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
-CROSSREF = "https://api.crossref.org/works/"
 BATCH = 180
 
-# Crossref 的 polite pool 要求 User-Agent 帶聯絡信箱，沒帶會被降速。
-CONTACT = os.environ.get("CROSSREF_MAILTO", "curate-course@example.com")
-UA = f"curate-course/1.0 (mailto:{CONTACT})"
+UA = refsources.UA  # 保留給既有呼叫端；真正的來源是 refsources
 
 
 FILLED: list[str] = []
+OA_FILLED: list[str] = []
+# (被引用次數, 條目 id, 識別碼, 標題)。只用來印，永遠不寫回資料檔——見 main()。
+CITED: list[tuple[int, str, str, str]] = []
+_OA_CACHE: dict[str, str | None] = {}
+
+
+def oa_url_for(ident: str) -> str | None:
+    """`pmid:…` / `doi:…` → 免費全文連結。查不到或缺憑證回 None。
+
+    兩條路是因為兩邊的權威來源不同：DOI 問 Unpaywall（實測它找得到 OpenAlex
+    漏掉的 PMC 全文），PMID 問 Europe PMC（免憑證，而且直接回 PMCID）。
+    走 PMID 的引用佔絕大多數，少了後者「免費全文」只會出現在零星幾筆上，
+    前端看起來像壞掉。
+
+    同一個識別碼可能出現在很多筆引用裡，快取住，不要重複打。
+    """
+    if ident in _OA_CACHE:
+        return _OA_CACHE[ident]
+    if ident.startswith("doi:"):
+        url = refsources.unpaywall_oa_url(ident.removeprefix("doi:"))
+    elif ident.startswith("pmid:"):
+        url = refsources.pmc_oa_url(ident.removeprefix("pmid:"))
+    else:
+        url = None
+    _OA_CACHE[ident] = url
+    time.sleep(0.1)
+    return url
 
 
 def norm(s: str) -> str:
@@ -79,9 +105,6 @@ def design_of(pubtypes: list) -> str | None:
     return None
 
 
-ESEARCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
-
-
 def resolve_pmid(title: str) -> tuple[str, str] | None:
     """用標題反查 PMID。回傳 (pmid, PubMed 上的標題)；比對不夠像就回 None。
 
@@ -92,29 +115,12 @@ def resolve_pmid(title: str) -> tuple[str, str] | None:
     比對刻意嚴格：PubMed 的 esearch 對長標題常常回一堆近似結果，取第一筆而不驗
     等於在資料裡種一個看起來完全合理的錯誤。前 60 個正規化字元不相符就寧可留空。
     """
-    q = urllib.parse.urlencode(
-        {"db": "pubmed", "retmode": "json", "retmax": "3", "term": f"{title}[Title]"}
-    )
-    hits = []
-    for attempt in range(3):
-        try:
-            req = urllib.request.Request(f"{ESEARCH}?{q}", headers={"User-Agent": UA})
-            with urllib.request.urlopen(req, timeout=30) as res:
-                hits = json.loads(res.read()).get("esearchresult", {}).get("idlist") or []
-            break
-        except Exception:
-            time.sleep(1.5 * (attempt + 1))
+    # 退避重試已經在 refsources.get_json 裡做掉了。每筆要打 esearch + esummary
+    # 兩次，匿名時 3 req/s 很容易撞 HTTP 500；單一筆查不到不該讓整批中斷。
+    hits = refsources.esearch_title(title)
     if not hits:
         return None
-    # NCBI 無金鑰時是 3 req/s，而這裡每筆要打 esearch + esummary 兩次，很容易撞到
-    # HTTP 500。單一筆查不到不該讓整批中斷——退避重試，還是不行就當作沒查到。
-    got = {}
-    for attempt in range(3):
-        try:
-            got = fetch(hits)
-            break
-        except Exception:
-            time.sleep(1.5 * (attempt + 1))
+    got = fetch(hits)
     if not got:
         return None
     want = norm(title)
@@ -137,13 +143,7 @@ def ids_in_url(url: str) -> tuple[str, str] | None:
 
 def resolve_doi(title: str) -> tuple[str, str] | None:
     """用標題反查 DOI。比對規則與 resolve_pmid 一樣嚴格，不夠像就回 None。"""
-    q = urllib.parse.urlencode({"query.bibliographic": title, "rows": "3"})
-    try:
-        req = urllib.request.Request(f"{CROSSREF}?{q}", headers={"User-Agent": UA})
-        with urllib.request.urlopen(req, timeout=30) as res:
-            items = json.loads(res.read())["message"].get("items") or []
-    except Exception:
-        return None
+    items = refsources.crossref_by_title(title)
     want = norm(title)
     for it in items:
         actual = (it.get("title") or [""])[0].rstrip(".")
@@ -153,28 +153,41 @@ def resolve_doi(title: str) -> tuple[str, str] | None:
 
 
 def fetch(pmids: list[str]) -> dict:
-    data = urllib.parse.urlencode(
-        {"db": "pubmed", "retmode": "json", "id": ",".join(pmids)}
-    ).encode()
-    req = urllib.request.Request(ESUMMARY, data=data, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=60) as res:
-        return json.loads(res.read()).get("result", {})
+    """一批 PMID 的 metadata。整批打不到就逐筆退到 Europe PMC。
+
+    以前這裡失敗會往上拋，由呼叫端退避三次然後**放棄整批**——那一整批引用就
+    這樣沒被驗到，而輸出看起來跟通過一模一樣。Europe PMC 免憑證、資料同源
+    （SRC:MED 就是 MEDLINE），拿來當 NCBI 抽風時的替補剛好。
+    """
+    got = refsources.esummary(pmids)
+    if got:
+        return got
+    if not pmids:
+        return {}
+    print(f"   ⚠ PubMed 整批取數失敗（{len(pmids)} 筆），改走 Europe PMC…")
+    out = {}
+    for pmid in pmids:
+        if rec := refsources.europepmc(pmid):
+            out[pmid] = rec
+        time.sleep(0.1)  # Europe PMC 沒有公告的硬限速，但不要打太兇
+    return out
 
 
 def fetch_doi(doi: str) -> dict | None:
-    """Crossref 逐筆反查，回傳與 esummary 對齊的 {title, source, pubdate}。"""
-    url = CROSSREF + urllib.parse.quote(doi, safe="")
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": UA})
-        with urllib.request.urlopen(req, timeout=30) as res:
-            m = json.loads(res.read())["message"]
-    except Exception:
+    """Crossref 逐筆反查 + OpenAlex 的撤稿與被引用次數。
+
+    為什麼一定要多打一次 OpenAlex：Crossref 對真實的撤稿論文可能什麼都不說。
+    實測 Wakefield 1998 的 update-to 是 null、relation 是 {}，唯一線索是標題
+    被改成 "RETRACTED: …"（refsources.crossref 已經認這個前綴）。OpenAlex 則
+    直接回 is_retracted: true。少了它，走 DOI 的引用等於沒有撤稿防線。
+    """
+    rec = refsources.crossref(doi)
+    if rec is None:
         return None
-    return {
-        "title": (m.get("title") or [""])[0],
-        "source": (m.get("container-title") or [""])[0],
-        "pubdate": str((m.get("issued", {}).get("date-parts") or [[""]])[0][0] or ""),
-    }
+    if extra := refsources.openalex(doi):
+        rec["retracted"] = rec.get("retracted") or extra["retracted"]
+        rec["cited_by"] = extra["cited_by"]
+    return rec
 
 
 BLOBS: dict[Path, dict] = {}
@@ -252,7 +265,7 @@ def main() -> int:
                 # 這篇論文不存在——evidence.md 早就寫過 DOI 是更通用的識別碼。
                 c["doi"], c["title"] = hit[0], hit[1]
                 found += 1
-            time.sleep(0.4)  # NCBI 無金鑰時 3 req/s，留餘裕
+            time.sleep(refsources.NCBI_DELAY)  # 匿名 3 req/s、有金鑰 10 req/s
         for path, blob in BLOBS.items():
             path.write_text(json.dumps(blob, ensure_ascii=False, indent=1))
         print(f"→ 反查到 {found}/{len(bad_pmid)} 筆並寫回；剩下的請人工補或刪掉\n")
@@ -267,12 +280,13 @@ def main() -> int:
     parts = [f"{len(pmids)} 個 PMID"] if pmids else []
     if dois:
         parts.append(f"{len(dois)} 個 DOI")
+    print(refsources.credentials_summary())
     print(f"檢查 {len(rows)} 筆引用（{'、'.join(parts) or '0 個識別碼'}）…\n")
 
     meta: dict = {}
     for i in range(0, len(pmids), BATCH):
         meta.update({f"pmid:{k}": v for k, v in fetch(pmids[i : i + BATCH]).items()})
-        time.sleep(0.4)
+        time.sleep(refsources.NCBI_DELAY)
     for doi in dois:  # Crossref 沒有批次端點，逐筆打
         rec = fetch_doi(doi)
         if rec:
@@ -286,20 +300,29 @@ def main() -> int:
             missing.append((fname, cid, pmid, c.get("title", "")))
             continue
 
-        # 撤稿。esummary 本來就回傳 pubtype，只是以前沒讀——一篇論文可以「真的
-        # 存在」、標題也完全對得上，卻早就被撤回。引用撤稿論文比沒有引用更糟：
-        # 它看起來完全通過驗證。Crossref 那邊對應的是 update-to 裡 type=retraction。
+        # 撤稿。一篇論文可以「真的存在」、標題也完全對得上，卻早就被撤回——
+        # 引用撤稿論文比沒有引用更糟，因為它看起來完全通過驗證。
+        #
+        # 兩條路各有各的來源，而且都不能省：
+        #   PMID → esummary 的 pubtype 有 "Retracted Publication"
+        #   DOI  → Crossref 的 update-to **可能整個是 null**（實測 Wakefield
+        #          1998 就是），所以 refsources 另外認標題的 RETRACTED: 前綴，
+        #          並用 OpenAlex 的 is_retracted 補上。rec["retracted"] 是那
+        #          三個訊號 or 起來的結果。
         types = [str(t).lower() for t in (rec.get("pubtype") or [])]
-        updates = rec.get("update-to") or []
-        if "retracted publication" in types or any(
-            str(u.get("type", "")).lower() == "retraction" for u in updates
-        ):
+        if "retracted publication" in types or rec.get("retracted"):
             retracted.append((fname, cid, pmid, rec["title"]))
 
         actual, claimed = rec["title"].rstrip("."), c.get("title", "")
         a, b = norm(actual), norm(claimed)
         if not (a.startswith(b[:55]) or b.startswith(a[:55]) or b[:55] in a):
             mismatch.append((fname, cid, pmid, claimed, actual))
+        # 被引用次數**只印出來，不寫回資料檔**。它三個月就變了，寫進 repo 等於
+        # 種一個會慢慢變錯、又沒有任何檢查會抓到的數字——跟當初手寫 design 是
+        # 同一類問題，只是錯誤來自時間而不是人。
+        if (n := rec.get("cited_by")) is not None:
+            CITED.append((n, cid, pmid, actual))
+
         if fix:
             c["title"] = actual
             c["journal"] = rec.get("source", c.get("journal"))
@@ -311,6 +334,11 @@ def main() -> int:
             if d := design_of(rec.get("pubtype")):
                 c["design"] = d
                 FILLED.append(d)
+            # 免費全文。跟 design 一樣寫回資料檔：一篇論文的開放取用狀態幾乎
+            # 不倒退，寫進去是淨賺——學習者點得到全文，而不是撞上付費牆。
+            if oa := oa_url_for(pmid):
+                c["oa_url"] = oa
+                OA_FILLED.append(pmid)
 
     if BROKEN:
         print(f"✗ {len(BROKEN)} 個資料檔不是合法 JSON（裡面的引用整批沒驗到）：")
@@ -339,7 +367,22 @@ def main() -> int:
             print(f"      宣稱: {claimed[:78]}")
             print(f"      實際: {actual[:78]}")
 
-    ok = len(rows) - len(missing) - len(mismatch)
+    # OpenAlex 的被引用次數。這裡**不判定通過與否**——引用次數低不代表論文有問題
+    # （新論文、冷門但正確的次領域都會很低），它只是一個值得人看一眼的訊號。
+    # 把門檻寫死成 pass/fail 才是真的在製造假訊號。
+    if CITED:
+        cold = sorted(CITED)[:8]
+        print(f"\nℹ 被引用次數（OpenAlex，僅供參考，不寫回資料檔）：{len(CITED)} 筆查得到")
+        print(f"   最低的 {len(cold)} 筆：")
+        for n, cid, ident, title in cold:
+            print(f"      {n:>5} 次 · {cid} · {ident} · {title[:48]}")
+
+    # 撤稿也要從「通過」裡扣掉。以前 ok 只扣 missing 與 mismatch，於是一份報告
+    # 可以同時印「✗ 2 筆已撤稿」和「通過 3/3（100.0%）」——那個 100% 正是這支
+    # 腳本存在的理由要消滅的東西。三類問題可能落在同一筆上（撤稿論文的標題常
+    # 被改成 RETRACTED: 開頭，順帶觸發 mismatch），所以去重再扣。
+    flagged = {r[:3] for r in missing} | {r[:3] for r in retracted} | {r[:3] for r in mismatch}
+    ok = len(rows) - len(flagged)
     print(f"\n通過 {ok} / {len(rows)}（{ok / max(len(rows), 1) * 100:.1f}%）")
 
     if fix:
@@ -349,6 +392,13 @@ def main() -> int:
         tally = "、".join(f"{k}×{v}" for k, v in _c.Counter(FILLED).most_common())
         print(f"→ --fix：已用 API 回傳值覆寫 {len(BLOBS)} 個檔案的 title/journal/year")
         print(f"   design 由 PubMed 的 publication type 填了 {len(FILLED)} 筆：{tally or '（無）'}")
+        if OA_FILLED:
+            print(f"   oa_url 免費全文填了 {len(OA_FILLED)} 筆")
+        # 這兩個訊息要各自獨立印。PMID 走 Europe PMC（免憑證）、DOI 走 Unpaywall，
+        # 只有後者需要信箱——串成 if/elif 的話，PMID 填成功就會把「DOI 全部被跳過」
+        # 這件事整個吃掉，看報告的人會以為 oa_url 已經填齊了。
+        if dois and not refsources.UNPAYWALL_EMAIL:
+            print(f"   oa_url：{len(dois)} 個 DOI 已跳過（沒有 UNPAYWALL_EMAIL，見 .env.example）")
 
     # 撤稿一律讓交付失敗。它跟「查無此筆」是同一個等級的問題：這篇文獻撐不起
     # 任何主張，而且它比捏造的引用更難發現——標題、期刊、年份全部對得上。

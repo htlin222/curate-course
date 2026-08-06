@@ -38,8 +38,21 @@ jobs:
       - name: 先建置
         run: make build
 
+      # 六把憑證全部是選填的。**一個都沒設也會正常跑完**，只是慢一點、少三項
+      # 檢查（嵌入權限、地區限制、影片長度核對）。未設定的 secret 在這裡會展開
+      # 成空字串，refsources 讀到空值就走降級路徑——所以不必先去 repo 設定裡
+      # 加東西，這個 workflow 就能動。
+      #
+      # 申請流程寫在 .env.example，名字與這裡一模一樣：
+      # Settings → Secrets and variables → Actions → New repository secret。
       - name: 重驗連結與引用
         id: verify
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          CROSSREF_MAILTO: ${{ secrets.CROSSREF_MAILTO }}
+          OPENALEX_MAILTO: ${{ secrets.OPENALEX_MAILTO }}
+          UNPAYWALL_EMAIL: ${{ secrets.UNPAYWALL_EMAIL }}
         run: |
           set +e
           make verify 2>&1 | tee /tmp/verify.log

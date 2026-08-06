@@ -22,10 +22,12 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import coursepath  # 框架自己的模組，要先把 src/build 加進路徑
+import refsources
 import verify_refs
 
 ROOT = coursepath.ROOT
@@ -96,26 +98,38 @@ def main(argv: list[str]) -> int:
     no_id = [r for r in rows if not r[2]]
     rows = [r for r in rows if r[2]]
     pmids = sorted({r[2].removeprefix("pmid:") for r in rows if r[2].startswith("pmid:")})
-    print(f"\n驗證 {len(rows)} 筆引用（{len(pmids)} 個 PMID）…")
+    dois = sorted({r[2].removeprefix("doi:") for r in rows if r[2].startswith("doi:")})
+    print(refsources.credentials_summary())
+    print(f"\n驗證 {len(rows)} 筆引用（{len(pmids)} 個 PMID、{len(dois)} 個 DOI）…")
 
     meta: dict = {}
     for i in range(0, len(pmids), verify_refs.BATCH):
-        try:
-            batch = verify_refs.fetch(pmids[i : i + verify_refs.BATCH])
-        except Exception as e:  # 外部 API 抽風不該讓 PR 紅掉
-            print(f"⚠ PubMed 取數失敗（{e}）——這一輪跳過，每週的全量驗證仍會抓到")
+        batch = verify_refs.fetch(pmids[i : i + verify_refs.BATCH])
+        if not batch:
+            # fetch 內部已經退避重試、也試過 Europe PMC 了。兩邊都拿不到就是
+            # 外部服務出事，不該讓 PR 紅掉——每週的全量驗證仍會抓到。
+            print("⚠ PubMed 與 Europe PMC 都取不到數——這一輪跳過")
             return 0
         meta.update({f"pmid:{k}": v for k, v in batch.items()})
+
+    # DOI 以前整段跳過（原註解：「Crossref 逐筆打太慢，留給每週的全量驗證」）。
+    # 但走 DOI 的撤稿偵測正是這次補起來的洞——Crossref 的 update-to 對真實的
+    # 撤稿論文可能整個是 null，要靠 OpenAlex 才看得見。一個 PR 通常只動幾十筆
+    # 引用，逐筆打是幾秒鐘的事；為了省這幾秒讓撤稿的 DOI 進 main、再等一週才
+    # 被發現，不划算。
+    for doi in dois:
+        if rec := verify_refs.fetch_doi(doi):
+            meta[f"doi:{doi}"] = rec
+        time.sleep(0.15)
 
     missing, retracted = [], []
     for fname, cid, ident, c in rows:
         rec = meta.get(ident)
-        if ident.startswith("doi:"):
-            continue  # Crossref 逐筆打太慢，留給每週的全量驗證
         if not rec or rec.get("error") or not rec.get("title"):
             missing.append(f"{fname} · {cid} · {ident} · {(c.get('title') or '')[:50]}")
             continue
-        if "retracted publication" in {str(t).lower() for t in (rec.get("pubtype") or [])}:
+        types = {str(t).lower() for t in (rec.get("pubtype") or [])}
+        if "retracted publication" in types or rec.get("retracted"):
             retracted.append(f"{fname} · {cid} · {ident} · {rec['title'][:50]}")
 
     if no_id:
