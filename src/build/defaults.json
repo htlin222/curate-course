@@ -1,0 +1,38 @@
+{
+  "grades": [
+    { "id": "strong", "label": "證據充分", "tone": "success" },
+    { "id": "moderate", "label": "證據中等", "tone": "accent" },
+    { "id": "limited", "label": "證據有限", "tone": "attention" },
+    { "id": "contested", "label": "證據互斥", "tone": "danger" }
+  ],
+  "evidence": {
+    "gradeRequires": { "strong": 1 },
+    "requireCaveats": ["contested"],
+    "minCaveatChars": 40
+  },
+  "audit": {
+    "driftSeconds": 30,
+    "minViews": 5000,
+    "minCitations": 2,
+    "copyStyle": { "maxDashRatio": 0.05 }
+  },
+  "ui": {
+    "unitNoun": "個單元",
+    "lessonNoun": "堂主課",
+    "lessonLabel": "主課",
+    "progressLabel": "學習進度",
+    "missingTitle": "尚未找到合格影片",
+    "openExternal": "在 YouTube 開啟"
+  },
+  "landing": {
+    "howTitle": "怎麼用這門課"
+  },
+  "stance": {
+    "title": "這門課的立場"
+  },
+  "llms": {
+    "chaptersTitle": "章節",
+    "disclaimerTitle": "免責",
+    "unitSeparator": "、"
+  }
+}

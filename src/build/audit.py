@@ -105,13 +105,9 @@ def video_id(url: str | None) -> str | None:
     return m.group(1) if m else None
 
 
-def deep_merge(base: dict, over: dict) -> dict:
-    out = dict(base)
-    for k, v in (over or {}).items():
-        out[k] = (
-            deep_merge(base[k], v) if isinstance(v, dict) and isinstance(base.get(k), dict) else v
-        )
-    return out
+# 合併規則只有一份（見 coursepath）：課程設定的 extends 與 audit 門檻用的是
+# 同一套語意，各寫一份遲早會分岔成兩種行為。
+deep_merge = coursepath.deep_merge
 
 
 def load_json(path: Path):
@@ -1651,9 +1647,13 @@ def main() -> int:
     strict = "--strict" in sys.argv
     as_json = "--json" in sys.argv
 
-    cfg = load_json(COURSE / "course.config.json")
-    if not isinstance(cfg, dict):
-        print(f"✗ 讀不到 {COURSE / 'course.config.json'}：{cfg}", file=sys.stderr)
+    try:
+        cfg = coursepath.load_config(COURSE)
+    except coursepath.CourseError as e:
+        print(f"✗ {e}", file=sys.stderr)
+        return 1
+    except (OSError, json.JSONDecodeError) as e:
+        print(f"✗ 讀不到 {COURSE / coursepath.CONFIG_NAME}：{e}", file=sys.stderr)
         return 1
     opts = deep_merge(DEFAULTS, cfg.get("audit") or {})
 

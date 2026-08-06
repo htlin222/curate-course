@@ -22,7 +22,7 @@ import coursepath  # 框架自己的模組，要先把 src/build 加進路徑
 ROOT = coursepath.ROOT
 COURSE = coursepath.course_dir()
 DIST = coursepath.dist_dir(COURSE)
-CFG = json.loads((COURSE / "course.config.json").read_text())
+CFG = coursepath.load_config(COURSE)
 PROJECT = CFG["site"]["project"]
 DB_NAME = f"{PROJECT}-hits"
 WRANGLER = ["npx", "--yes", "wrangler@4"]

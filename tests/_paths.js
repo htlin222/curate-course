@@ -6,6 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { execFileSync } from "node:child_process";
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -44,3 +45,20 @@ export function activeDist() {
 }
 
 export const readJSON = (file) => JSON.parse(fs.readFileSync(file, "utf8"));
+
+/** 課程「實際生效」的設定：處理過 extends 的那一份。
+ *
+ * 刻意用子行程去問 coursepath.load_config，而不是在 JS 裡照抄合併規則。
+ * 測試複製一份規則的話，它驗證的就是自己的副本而不是產品程式碼——設定
+ * 繼承這種東西一旦兩份實作分岔，症狀是「build 過了但產出物少一段」，
+ * 而測試會很有信心地說沒問題。
+ */
+export function loadConfig(courseDir) {
+  const code = [
+    "import sys, json, pathlib",
+    `sys.path.insert(0, ${JSON.stringify(repo("src", "build"))})`,
+    "import coursepath",
+    `print(json.dumps(coursepath.load_config(pathlib.Path(${JSON.stringify(courseDir)}))))`,
+  ].join("\n");
+  return JSON.parse(execFileSync("python3", ["-c", code], { encoding: "utf8" }));
+}

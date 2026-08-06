@@ -62,12 +62,19 @@ def main(argv: list[str]) -> int:
         .replace("__FRAMEWORK_VERSION__", coursepath.FRAMEWORK_VERSION)
     )
 
-    # $schema 是相對路徑，深度跟著實際落點走，寫死 ../../ 只有 courses/x 會對
+    # $schema 與 extends 都是相對路徑，深度跟著實際落點走，
+    # 寫死 ../../ 只有 courses/x 會對
     depth = len(rel.parts) if target.is_relative_to(ROOT) else 2
+    up = "../" * depth
     config.write_text(
-        config.read_text().replace(
+        config.read_text()
+        .replace(
             '"$schema": "../../src/build/course.schema.json"',
-            f'"$schema": "{"../" * depth}src/build/course.schema.json"',
+            f'"$schema": "{up}src/build/course.schema.json"',
+        )
+        .replace(
+            '"extends": "../../src/build/defaults.json"',
+            f'"extends": "{up}src/build/defaults.json"',
         )
     )
 

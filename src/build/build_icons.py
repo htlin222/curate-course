@@ -91,18 +91,15 @@ FRAMEWORK_ICONS = [
 ]
 
 
-def course_icons(config_path: Path) -> set[str]:
-    """從課程設定檔掃出所有圖示名。
+def course_icons(cfg: dict) -> set[str]:
+    """從課程設定掃出所有圖示名。
 
     認的是欄位名而不是位置，所以之後設定檔多一個 `ui.facetIcon`、
     `landing.cards[].icon` 之類的欄位，這支腳本不必跟著改。
-    """
-    try:
-        cfg = json.loads(config_path.read_text())
-    except (OSError, json.JSONDecodeError) as e:
-        print(f"✗ 讀不到 {config_path}：{e}", file=sys.stderr)
-        return set()
 
+    收的是已經合併過 extends 的設定（見 coursepath.load_config），不是檔案
+    路徑——繼承來的圖示也必須打包，否則線上會是空白。
+    """
     found: set[str] = set()
 
     def walk(node) -> None:
@@ -175,7 +172,11 @@ def write(path: Path, text: str, label: str) -> None:
 
 def main() -> int:
     framework = sorted(set(FRAMEWORK_ICONS))
-    from_course = course_icons(COURSE / "course.config.json")
+    try:
+        from_course = course_icons(coursepath.load_config(COURSE))
+    except (coursepath.CourseError, OSError, json.JSONDecodeError) as e:
+        print(f"✗ 讀不到 {COURSE / coursepath.CONFIG_NAME}：{e}", file=sys.stderr)
+        return 1
     course_only = sorted(from_course - set(framework))
     wanted = sorted(set(framework) | from_course)
 

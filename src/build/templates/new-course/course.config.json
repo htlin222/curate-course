@@ -1,5 +1,6 @@
 {
   "$schema": "../../src/build/course.schema.json",
+  "extends": "../../src/build/defaults.json",
   "frameworkVersion": "__FRAMEWORK_VERSION__",
   "site": {
     "project": "__PROJECT__",
