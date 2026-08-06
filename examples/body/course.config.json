@@ -3,13 +3,13 @@
   "frameworkVersion": "2.0.0",
   "site": {
     "project": "body-course",
-    "name": "體態矯正課程",
+    "name": "伸展教室線上課程",
     "url": "https://body-course.pages.dev",
     "locale": "zh-Hant",
     "ogLocale": "zh_TW",
     "brandIcon": "activity",
     "legacyStorePrefix": "bc:",
-    "title": "體態矯正課程 — 24 個體態問題的評估、訓練與實證查核",
+    "title": "伸展教室線上課程 — 24 個體態問題的評估、訓練與實證查核",
     "description": "從頭前伸、駝背、圓肩到骨盆前傾與扁平足，24 個常見體態問題的自我評估方法與 371 支示範影片。每個問題均附 OpenEvidence 查證的實證強度，其中包含與坊間說法相衝突的文獻結論。",
     "ogDescription": "頸椎到足踝 24 個體態問題，各附自我評估方法、對應訓練，以及該說法在醫學文獻中的查證結果。371 個單元、27 題實證查核。",
     "keywords": [
