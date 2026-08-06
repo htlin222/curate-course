@@ -2,12 +2,15 @@
    player.css — 上課模式：左側播放器、右側播放清單
    ========================================================================== */
 
-/* 上課模式吃滿視窗高度，整頁不捲動；捲動交給左右兩欄各自處理 */
+/* 上課模式吃滿視窗高度，整頁不捲動；捲動交給左右兩欄各自處理。
+   用 svh 而不是 dvh：手機瀏覽器的網址列收合時 dvh 會變大，
+   整頁因此多出一段可捲動的高度，一捲 sticky header 就蓋住影片上緣。
+   svh 取的是工具列展開時的高度，任何時候都不會溢出。 */
 .Player {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 10px var(--playlist-w, 380px);
   gap: var(--base-size-16);
-  height: calc(100dvh - var(--stick-top));
+  height: calc(100svh - var(--stick-top));
   margin: 0 auto;
   padding: var(--base-size-16);
   align-items: stretch;
@@ -320,13 +323,15 @@ body[data-tab="player"] {
 }
 
 @media (max-width: 1012px) {
-  /* 窄螢幕改上下堆疊：影片在上、清單在下，各自佔一段固定高度 */
+  /* 窄螢幕不再上下堆疊。堆疊時影片與清單瓜分同一塊固定高度，
+     結果兩邊都輸：影片被壓成小方塊，幾十支影片的清單只剩三行可捲。
+     改法是讓影片獨佔版面，清單變成需要時才升起來的抽屜。 */
   .Player {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
   }
 
-  /* 上下堆疊時沒有左右欄可拖 */
+  /* 沒有左右欄可拖 */
   .Player__resizer {
     display: none;
   }
@@ -336,23 +341,60 @@ body[data-tab="player"] {
     min-height: 0;
   }
 
+  /* 上下堆疊時代要留高度給下方清單，所以把影片壓在 42svh。
+     清單改抽屜之後影片獨佔版面，這個上限只會讓影片無謂地小
+     （橫放時尤其明顯）。高度該不該讓，交給 fitFrame() 依實際可用空間算。 */
   .Player__frame {
-    max-width: calc(42dvh * 16 / 9);
+    max-width: 100%;
   }
 
-  .Player__info {
-    overflow: visible;
-  }
-
+  /* 抽屜：從底部升起蓋住影片，而不是跟影片搶高度。
+     這裡的高度是獨立的，跟資訊列多長無關。 */
   .Player__list {
-    min-height: 200px;
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 40;
+    height: 78svh;
+    min-height: 0;
+    border-radius: var(--borderRadius-large) var(--borderRadius-large) 0 0;
+    box-shadow: 0 -8px 32px rgb(0 0 0 / 45%);
+  }
+
+  /* 開關鈕浮到抽屜之上。它原本待在影片下方的按鈕列裡，
+     抽屜一升起就把自己的開關蓋掉了。
+     上課模式的頁尾是隱藏的（見上面的 body[data-tab="player"]），
+     所以貼底即可；z-index 仍取高值，免得日後頁尾在這一頁復活。 */
+  .Player__actions [data-toggle-list] {
+    position: fixed;
+    right: var(--base-size-16);
+    bottom: var(--base-size-16);
+    z-index: 70;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    justify-content: center;
+    border-radius: var(--borderRadius-full);
+    background-color: var(--bgColor-muted);
+    border: 1px solid var(--borderColor-default);
+    box-shadow: 0 2px 12px rgb(0 0 0 / 45%);
   }
 }
 
 @media (max-width: 767px) {
+  /* 手機上影片貼邊全寬：左右各 12px 的 padding 等於白白讓掉 24px 的畫面寬度，
+     而 16:9 之下少 24px 寬就少 13px 高。padding 移到資訊列自己身上。 */
   .Player {
-    padding: var(--base-size-12);
+    padding: 0 0 var(--base-size-12);
     gap: var(--base-size-12);
+  }
+
+  .Player__frame {
+    border-inline: 0;
+    border-radius: 0;
+  }
+
+  .Player__info {
+    padding-inline: var(--base-size-12);
   }
 
   .Player__title {
