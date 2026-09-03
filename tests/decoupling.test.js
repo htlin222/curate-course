@@ -327,13 +327,30 @@ function courseTokens(config, reserved = frameworkReserved()) {
 
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+/**
+ * make new-course 的範本。它本身就是一份 course.config.json，裡面的值是給新課
+ * 起步用的佔位符（「第一章」、`__NAME__`）。CI 當場產生的骨架課一字不改地繼承
+ * 這些值，所以骨架的 chapters[0].title 一定會在範本裡命中——那是「課程還沒改掉
+ * 預設值」，不是框架認識了哪門課。跟範本**同一欄位、同一個值**的命中因此跳過；
+ * 範本裡出現某門課自己改過的值（站名、章名）仍然抓。
+ */
+const TEMPLATE_CONFIG = path.join("src", "build", "templates", "new-course", "course.config.json");
+
+function templateDefaults(project) {
+  const file = repo(TEMPLATE_CONFIG);
+  if (!fs.existsSync(file)) return new Map();
+  const raw = fs.readFileSync(file, "utf8").replaceAll(/__(?:PROJECT|NAME)__/g, project || "");
+  return courseTokens(JSON.parse(raw), new Set());
+}
+
 /** 框架檔案裡撞到課程字串的清單。抽成函式是為了讓下面的自測能餵假檔案。 */
-function couplingHits(files, tokens, label) {
+function couplingHits(files, tokens, label, defaults = new Map()) {
   const hits = [];
   for (const [token, { field, mode }] of tokens) {
     const re =
       mode === "literal" ? new RegExp(`["'\`]${escapeRe(token)}["'\`]`) : null;
     for (const [file, text] of files) {
+      if (file === TEMPLATE_CONFIG && defaults.get(token)?.field === field) continue;
       if (re ? re.test(text) : text.includes(token)) {
         hits.push(`${file} 出現「${token}」（${label} 的 ${field}）`);
       }
@@ -358,8 +375,8 @@ test("#22 src/ 底下沒有任何課程的專屬字串（框架不准認識任�
 
   for (const dir of courses) {
     const rel = path.relative(ROOT, dir);
-    const tokens = courseTokens(readJSON(path.join(dir, "course.config.json")));
-    hits.push(...couplingHits(files, tokens, rel));
+    const config = readJSON(path.join(dir, "course.config.json"));
+    hits.push(...couplingHits(files, courseTokens(config), rel, templateDefaults(config.site?.project)));
   }
 
   assert.deepEqual(
@@ -405,6 +422,19 @@ test("#64 縮小比對範圍之後，真正的寫死仍然抓得到；通用詞�
   }
   // project 是前綴的一部分而不是整個字面量：那是 #14 的測試在管，這裡不重複抓
   assert.ok(!hits.some((h) => h.startsWith("store.js")));
+});
+
+test("#22 骨架課沿用範本的預設值不算耦合；範本裡出現課程自己改過的值才算", () => {
+  const skeleton = { site: { project: "ci-skeleton", name: "ci-skeleton" }, chapters: [{ title: "第一章" }] };
+  const defaults = templateDefaults("ci-skeleton");
+  assert.ok(defaults.size > 0, "讀不到 new-course 範本");
+  const template = [[TEMPLATE_CONFIG, fs.readFileSync(repo(TEMPLATE_CONFIG), "utf8")]];
+  assert.deepEqual(couplingHits(template, courseTokens(skeleton, new Set()), "skeleton", defaults), []);
+
+  // 同一個欄位、不同的值：範本裡有這個字就是範本夾帶了某門課
+  const renamed = { site: { project: "ci-skeleton" }, chapters: [{ title: "頸椎與肩胛" }] };
+  const leaked = [[TEMPLATE_CONFIG, '{"chapters":[{"title":"頸椎與肩胛"}]}']];
+  assert.equal(couplingHits(leaked, courseTokens(renamed, new Set()), "renamed", defaults).length, 1);
 });
 
 /* --- #38：新增章節圖示不必改框架檔案 -------------------------------------- */
