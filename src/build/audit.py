@@ -312,6 +312,21 @@ def css_tones() -> set[str]:
     return set(re.findall(r"\.Label--([a-z-]+)", (WEB / "css" / "tokens.css").read_text()))
 
 
+# 框架自己用掉的名字：資料欄位（unit.why、citation.design…）與輸出文字（「主題」）。
+# 耦合檢查拿課程的識別碼去比對 src/ 時會跳過這些——它們出現在框架裡是因為框架
+# 本來就有這個欄位或這句話，不是框架認識了某一門課。少了這份清單，課程只要把
+# unitTypes 取名叫 why 或 design，就會被逼著改用冷僻的名字來避開誤報（#64）。
+# tests/decoupling.test.js 讀的是同一份，改這裡就好。
+FRAMEWORK_RESERVED = [
+    # 資料檔與 course.json 的欄位名
+    "why", "note", "design", "summary", "name", "title", "unit", "units", "type", "id",
+    "label", "tone", "icon", "kind", "grade", "product", "products", "chapter", "lesson",
+    "drill", "drills", "video", "alt", "url", "citations", "concept",
+    # 稽核與建置輸出裡的一般用語
+    "主題", "分面", "類別", "單元", "章節", "項目", "影片", "文案", "設定", "立場",
+]
+
+
 def audit_topic_coupling(cfg: dict, rep: Report) -> None:
     """抓「換主題時會靜靜壞掉」的那一類問題。
 
@@ -343,20 +358,41 @@ def audit_topic_coupling(cfg: dict, rep: Report) -> None:
 
     # 1b) 建置腳本同理。它不會讓網站壞掉，但輸出與產物會**用上一個主題的話講話**：
     #     `ui.problemType` 退回寫死的預設值，換主題後統計數字會莫名歸零或亂數。
+    #
+    #     只抓「把課程的值當字面量在用」的形式：`== "posture"`、`.get("release")`、
+    #     `kinds["train"]`、`in ("why", …)`。單純的子字串比對會把框架自己的欄位名
+    #     （`for key in ("why", "note")` 讀的是主課的 why 欄位）當成寫死的課程 id，
+    #     逼課程改用冷僻的識別碼來避開（#64）。
     vocab = {
         **{k: "kinds" for k in kind_ids if k},
         **{k: "ui.unitTypes" for k in (cfg.get("ui") or {}).get("unitTypes", {})},
         **{g.get("id"): "grades" for g in cfg.get("grades") or [] if isinstance(g, dict)},
     }
+    reserved = sorted(w for w in vocab if w in FRAMEWORK_RESERVED)
+    literal_use = {
+        word: re.compile(
+            r"(?:==|!=|\.get\(|\.startswith\(|\[|\bin\s*[\(\{\[])\s*[\"']"
+            + re.escape(word)
+            + r"[\"']"
+        )
+        for word in vocab
+        if word and word not in FRAMEWORK_RESERVED
+    }
     leaks = []
     for f in sorted((ROOT / "src" / "build").glob("*.py")):
         for i, line in enumerate(f.read_text().splitlines(), 1):
             code = line.split("#")[0]
-            for word, origin in vocab.items():
-                if word and f'"{word}"' in code:
-                    leaks.append(f"{f.name}:{i} 寫死了 {origin} 的 id「{word}」")
+            for word, pat in literal_use.items():
+                if pat.search(code):
+                    leaks.append(f"{f.name}:{i} 寫死了 {vocab[word]} 的 id「{word}」")
     if leaks:
         rep.warn(sec, f"建置腳本寫死了課程詞彙（{len(leaks)} 處），換主題會靜靜講錯話", leaks)
+    if reserved:
+        rep.ok(
+            sec,
+            f"{len(reserved)} 個識別碼與框架保留字同名，耦合檢查略過（不是問題，框架本來就有這個欄位或用語）",
+            [f"「{w}」（{vocab[w]}）" for w in reserved],
+        )
 
     # 2) ui.problemType 必須真的對得到單元，否則 JSON-LD 的 teaches 會是空的
     ptype = (cfg.get("ui") or {}).get("problemType")

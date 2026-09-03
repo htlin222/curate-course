@@ -15,7 +15,7 @@
 | `grades` | 證據分級（沒有實證維度就整組刪掉） |
 | `chapters` | 章節碼、標題、Lucide 圖示、資料來源檔、配額 |
 | `nav` | 側欄的章節分組。**必須不多不少涵蓋所有章節** |
-| `evidenceAlias` | unit id → 實證資料的 key，用在共用同一份查核的單元 |
+| `evidenceAlias` | unit id → 實證資料的 key。用在多個單元共用同一份查核，或讓某個單元也顯示一則 `concept-*` 立場聲明（立場聲明不 alias 也能獨立存在，見 `evidence.md`） |
 | `taxonomy` | 選用的詞彙模組（見下） |
 | `audit` | **品質門檻** → `make audit` 照這裡檢查（見 `quality.md`） |
 | `counter` | 選用：header 的累計瀏覽次數徽章（Pages Function + D1）。整組拿掉就不顯示，也完全不打 API |
@@ -209,6 +209,28 @@
   ]
 }
 ```
+
+## 識別碼取名：會被拿去比對框架原始碼
+
+`kinds[].id`、`ui.unitTypes` 的 key、`ui.problemType`、`ui.facetPrefix`、`ui.categoryNoun`、
+`site.project`、`taxonomy` 的模組路徑，這些值除了進網站，還會被 `make audit` 的「主題耦合」
+與 `tests/decoupling.test.js` 拿去掃 `src/`——目的是抓「框架把某門課的值寫死了」。
+
+比對只認**當字面量使用**的形式（`== "posture"`、`kinds["release"]`、`import("taxonomy.muscles")`），
+而且會跳過框架自己的欄位名與輸出用語（`why`、`note`、`design`、`summary`、`product`、
+「主題」「分面」「類別」…，完整清單在 `src/build/audit.py` 的 `FRAMEWORK_RESERVED`）。
+所以 `unitTypes` 取名叫 `why` 或 `design` 是合法的，稽核會列一行「與框架保留字同名，略過」
+告訴你它沒在看那個字。
+
+真的誤報時（框架裡剛好有一個跟你的 id 完全相同的字串字面量，而那段程式跟課程無關），
+先確認一下：
+
+```bash
+grep -rn --include='*.py' --include='*.js' --include='*.html' '"<你的 id>"' src/
+```
+
+命中的行若是框架自己的欄位或文字，把那個字加進 `FRAMEWORK_RESERVED` 即可；若是框架
+真的把上一門課的值當字面量用，那才是要修框架的 bug。
 
 ## 圖示
 
