@@ -276,28 +276,87 @@ function frameworkFiles() {
 }
 
 /**
+ * 框架自己用掉的名字（欄位名與輸出用語），定義在 audit.py 的 FRAMEWORK_RESERVED。
+ * 課程的識別碼撞到這些字不是耦合——`why` 出現在 audit.py 是因為主課有 why 欄位，
+ * 不是框架認識了哪門課。這裡跟稽核讀同一份，免得兩邊各養一張清單然後長歪。
+ */
+function frameworkReserved() {
+  const py = read("src/build/audit.py");
+  const block = py.match(/FRAMEWORK_RESERVED = \[(.*?)\n\]/s);
+  assert.ok(block, "audit.py 找不到 FRAMEWORK_RESERVED");
+  return new Set([...block[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]));
+}
+
+/**
  * 一門課的「專屬字串」：出現在框架裡就代表框架認識了這個主題。
  *
  * 刻意從設定檔**推導**而不是手列一份詞表——手列的清單只認得體態課，
  * 換成吉他課或統計課之後它就永遠是綠燈，等於沒有這顆測試。
+ *
+ * 兩種比對強度（#64）：
+ * - `literal`：識別碼（project、problemType、詞彙模組路徑）。真正的耦合長這樣：
+ *   `u.type === "posture"`、`import("taxonomy.muscles")`——一定是**整個字串字面量**
+ *   等於那個值。子字串比對會把 paywall 的 `products` 當成 problemType「product」。
+ * - `phrase`：站名、標題、主題名詞。這些是給人看的字，寫死在框架裡通常是夾在
+ *   一段文字中間（`<title>體態矯正課</title>`），所以子字串比對。但兩個字以內的
+ *   詞（「主題」「面向」）幾乎一定會撞到框架自己的輸出文字，退回整個字面量比對。
  */
-function courseTokens(config) {
-  const tokens = new Map(); // token -> 它是設定檔的哪一個欄位
-  const add = (label, value) => {
-    if (typeof value === "string" && value.trim().length >= 2) tokens.set(value.trim(), label);
+function courseTokens(config, reserved = frameworkReserved()) {
+  const tokens = new Map(); // token -> { field, mode }
+  const add = (field, value, mode) => {
+    if (typeof value !== "string") return;
+    const token = value.trim();
+    if (token.length < 2 || reserved.has(token)) return;
+    tokens.set(token, { field, mode: mode === "phrase" && token.length >= 3 ? "phrase" : "literal" });
   };
 
-  add("site.project", config.site?.project);
-  add("site.name", config.site?.name);
-  add("site.title", config.site?.title);
-  add("hero.heading", config.hero?.heading);
+  add("site.project", config.site?.project, "literal");
+  add("site.name", config.site?.name, "phrase");
+  add("site.title", config.site?.title, "phrase");
+  add("hero.heading", config.hero?.heading, "phrase");
   // 主題名詞：換主題時這幾個一定會變，寫進框架就是把主題釘死在框架上
-  add("ui.problemType", config.ui?.problemType);
-  add("ui.facetPrefix", config.ui?.facetPrefix);
-  add("ui.categoryNoun", config.ui?.categoryNoun);
-  for (const [key, mod] of Object.entries(config.taxonomy || {})) add(`taxonomy.${key}`, mod);
-  (config.chapters || []).forEach((ch, i) => add(`chapters[${i}].title`, ch.title));
+  add("ui.problemType", config.ui?.problemType, "literal");
+  add("ui.facetPrefix", config.ui?.facetPrefix, "phrase");
+  add("ui.categoryNoun", config.ui?.categoryNoun, "phrase");
+  for (const [key, mod] of Object.entries(config.taxonomy || {})) {
+    add(`taxonomy.${key}`, mod, "literal");
+  }
+  (config.chapters || []).forEach((ch, i) => add(`chapters[${i}].title`, ch.title, "phrase"));
   return tokens;
+}
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * make new-course 的範本。它本身就是一份 course.config.json，裡面的值是給新課
+ * 起步用的佔位符（「第一章」、`__NAME__`）。CI 當場產生的骨架課一字不改地繼承
+ * 這些值，所以骨架的 chapters[0].title 一定會在範本裡命中——那是「課程還沒改掉
+ * 預設值」，不是框架認識了哪門課。跟範本**同一欄位、同一個值**的命中因此跳過；
+ * 範本裡出現某門課自己改過的值（站名、章名）仍然抓。
+ */
+const TEMPLATE_CONFIG = path.join("src", "build", "templates", "new-course", "course.config.json");
+
+function templateDefaults(project) {
+  const file = repo(TEMPLATE_CONFIG);
+  if (!fs.existsSync(file)) return new Map();
+  const raw = fs.readFileSync(file, "utf8").replaceAll(/__(?:PROJECT|NAME)__/g, project || "");
+  return courseTokens(JSON.parse(raw), new Set());
+}
+
+/** 框架檔案裡撞到課程字串的清單。抽成函式是為了讓下面的自測能餵假檔案。 */
+function couplingHits(files, tokens, label, defaults = new Map()) {
+  const hits = [];
+  for (const [token, { field, mode }] of tokens) {
+    const re =
+      mode === "literal" ? new RegExp(`["'\`]${escapeRe(token)}["'\`]`) : null;
+    for (const [file, text] of files) {
+      if (file === TEMPLATE_CONFIG && defaults.get(token)?.field === field) continue;
+      if (re ? re.test(text) : text.includes(token)) {
+        hits.push(`${file} 出現「${token}」（${label} 的 ${field}）`);
+      }
+    }
+  }
+  return hits;
 }
 
 test("#22 src/ 底下沒有任何課程的專屬字串（框架不准認識任何主題）", () => {
@@ -316,12 +375,8 @@ test("#22 src/ 底下沒有任何課程的專屬字串（框架不准認識任�
 
   for (const dir of courses) {
     const rel = path.relative(ROOT, dir);
-    const tokens = courseTokens(readJSON(path.join(dir, "course.config.json")));
-    for (const [token, field] of tokens) {
-      for (const [file, text] of files) {
-        if (text.includes(token)) hits.push(`${file} 出現「${token}」（${rel} 的 ${field}）`);
-      }
-    }
+    const config = readJSON(path.join(dir, "course.config.json"));
+    hits.push(...couplingHits(files, courseTokens(config), rel, templateDefaults(config.site?.project)));
   }
 
   assert.deepEqual(
@@ -331,6 +386,55 @@ test("#22 src/ 底下沒有任何課程的專屬字串（框架不准認識任�
       "框架裡出現它的字串，代表「換主題只改課程目錄」這個不變式已經破了：\n" +
       hits.join("\n"),
   );
+});
+
+test("#64 縮小比對範圍之後，真正的寫死仍然抓得到；通用詞不再誤報", () => {
+  // 一門用了通用詞當識別碼的課：problemType 叫 product、facetPrefix 叫「主題」、
+  // unitTypes 用 why／design。#64 的兩輪誤報就是這幾個。
+  const config = {
+    site: { project: "belief-course", name: "信念經濟課" },
+    ui: { problemType: "product", facetPrefix: "主題", categoryNoun: "面向" },
+    taxonomy: { facets: "taxonomy.themes" },
+    chapters: [{ title: "為什麼有效" }],
+  };
+  const tokens = courseTokens(config, new Set(["主題"]));
+
+  // 框架自己的字：purchase 品項叫 products、輸出文字裡有「主題」、schema 描述提到 product
+  const innocent = [
+    ["paywall-core.js", 'const products = raw.products; cart.push(p.id); // product id'],
+    ["audit.py", 'print(f"實證查核 {n} 個主題")'],
+    ["schema.json", '{"description": "不在這裡、也沒被任何 product 解鎖的章節就是鎖定"}'],
+    ["seo.py", 'facet = f"{prefix}面向"'],
+  ];
+  assert.deepEqual(couplingHits(innocent, tokens, "fake"), []);
+
+  // 真的寫死：整個字面量等於課程的值
+  const guilty = [
+    ["render.js", 'if (u.type === "product") count++'],
+    ["build.py", 'facets = importlib.import_module("taxonomy.themes")'],
+    ["store.js", 'const KEY = "belief-course:done"'],
+    ["index.html", "<title>信念經濟課</title>"],
+    ["app.js", 'label = "面向"'],
+  ];
+  const hits = couplingHits(guilty, tokens, "fake");
+  for (const file of ["render.js", "build.py", "index.html", "app.js"]) {
+    assert.ok(hits.some((h) => h.startsWith(file)), `${file} 的寫死沒被抓到：\n${hits.join("\n")}`);
+  }
+  // project 是前綴的一部分而不是整個字面量：那是 #14 的測試在管，這裡不重複抓
+  assert.ok(!hits.some((h) => h.startsWith("store.js")));
+});
+
+test("#22 骨架課沿用範本的預設值不算耦合；範本裡出現課程自己改過的值才算", () => {
+  const skeleton = { site: { project: "ci-skeleton", name: "ci-skeleton" }, chapters: [{ title: "第一章" }] };
+  const defaults = templateDefaults("ci-skeleton");
+  assert.ok(defaults.size > 0, "讀不到 new-course 範本");
+  const template = [[TEMPLATE_CONFIG, fs.readFileSync(repo(TEMPLATE_CONFIG), "utf8")]];
+  assert.deepEqual(couplingHits(template, courseTokens(skeleton, new Set()), "skeleton", defaults), []);
+
+  // 同一個欄位、不同的值：範本裡有這個字就是範本夾帶了某門課
+  const renamed = { site: { project: "ci-skeleton" }, chapters: [{ title: "頸椎與肩胛" }] };
+  const leaked = [[TEMPLATE_CONFIG, '{"chapters":[{"title":"頸椎與肩胛"}]}']];
+  assert.equal(couplingHits(leaked, courseTokens(renamed, new Set()), "renamed", defaults).length, 1);
 });
 
 /* --- #38：新增章節圖示不必改框架檔案 -------------------------------------- */

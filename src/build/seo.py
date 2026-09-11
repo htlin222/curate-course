@@ -575,12 +575,37 @@ def icon_svg(name: str | None, size: int) -> str:
 
 
 def grade_counts(course: dict) -> Counter:
-    """每個證據分級各有幾個單元——og 圖上的 chip 數字唯一的來源。"""
+    """每個證據分級各有幾則查核——og 圖上的 chip 數字唯一的來源。
+
+    數的是**實證條目**而不是單元，理由有二（#63）：
+
+    - 立場聲明不屬於任何章節。以前只走 chapters → units，沒設 evidenceAlias 的
+      `concept-*` 就數不到，合計必然對不上 meta.evidence_checked，build 直接失敗；
+      而 evidence.md 明明說立場聲明可以獨立存在。
+    - evidenceAlias 讓多個單元共用同一份查核。按單元數會把同一則算兩次，
+      合計反而比 evidence_checked 大。
+
+    所以以條目的 key（`evidence.unit`）去重：掛在單元上的、與獨立的立場聲明，
+    每個 key 只算一次。這樣合計恆等於「對得到歸宿的條目數」。
+    """
     counts: Counter = Counter()
+    seen: set[str] = set()
+
+    def take(ev: dict | None) -> None:
+        if not ev:
+            return
+        key = ev.get("unit") or id(ev)
+        if key in seen:
+            return
+        seen.add(key)
+        if grade := ev.get("evidence_grade"):
+            counts[grade] += 1
+
     for ch in course["chapters"]:
         for u in ch["units"]:
-            if grade := (u.get("evidence") or {}).get("evidence_grade"):
-                counts[grade] += 1
+            take(u.get("evidence"))
+    for st in course.get("stance") or []:
+        take(st)
     return counts
 
 
@@ -626,10 +651,13 @@ def render_og(course: dict) -> None:
         die(f"og.html：單元用了設定檔沒有的證據分級 {unknown}，這些單元不會出現在 og 圖上")
     counted = sum(counts.values())
     if grades and counted != meta["evidence_checked"]:
+        # build.py 在掛實證時就會把對不到單元的 key 列出來擋掉（見 attach_evidence 的
+        # 孤兒檢查），正常走不到這裡。留著是最後一道保險：兩個數字若還是對不上，
+        # og 圖上的「查核題數」與分級 chip 會兜不起來，寧可失敗也不要上線。
         die(
             f"og.html：分級計數合計 {counted} 與 meta.evidence_checked {meta['evidence_checked']} 不一致。"
-            "多半是有 oe-*.json 的條目沒對到任何單元（unit id 打錯或缺 evidenceAlias），"
-            "放著不管的話 og 圖上的「查核題數」與分級 chip 會兜不起來"
+            "每一則實證條目都應該掛在某個單元上，或是獨立的立場聲明；"
+            "兩者皆非的條目 build.py 應該已經擋下——這裡對不上代表兩邊的計數規則走岔了"
         )
     chips_html = "".join(
         f'<span class="chip t-{esc(g.get("tone", "neutral"))}">{rich(g["label"])} '

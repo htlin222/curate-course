@@ -215,6 +215,7 @@ def sync_web() -> None:
 
 def main() -> int:
     evidence = collect_evidence()
+    attached: set[str] = set()  # 已經掛到某個單元上的實證 key
     chapters, problems = [], []
     unit_total = drill_total = 0
     seconds = 0
@@ -271,6 +272,7 @@ def main() -> int:
             ev_key = EVIDENCE_ALIAS.get(u["id"], u["id"])
             if ev_key in evidence:
                 u["evidence"] = evidence[ev_key]
+                attached.add(ev_key)
 
             # 單元層級的分面：緊繃 + 無力兩側都算涉及
             u["facets"] = facets.extract(*(u.get("tight") or []), *(u.get("weak") or [])) if facets else []
@@ -349,6 +351,18 @@ def main() -> int:
 
     # 前綴相符的實證條目不屬於任何章節，全部抽出來當首頁的立場聲明
     stance = collect_stance(evidence)
+
+    # 每一則實證條目只有兩種歸宿：掛在某個單元上，或是立場聲明（可以同時是）。
+    # 兩者皆非的條目不會出現在網站任何地方，但 meta.evidence_checked 照樣把它算進去，
+    # og 圖上的分級 chip 也就永遠跟「查核題數」對不上。以前這件事要等到 seo.py 才爆，
+    # 訊息只說「合計不一致」，得自己去猜是哪一筆（#63）——這裡直接點名。
+    orphan_ev = sorted(k for k in evidence if k not in attached and not k.startswith(STANCE_PREFIX))
+    if orphan_ev:
+        print(f"\n✗ {len(orphan_ev)} 則實證條目對不到任何單元，也不是立場聲明：")
+        for k in orphan_ev:
+            print(f"   · unit「{k}」（單元 id 打錯？要掛到單元請設 evidenceAlias，")
+            print(f"     要當首頁的立場聲明請改用 {STANCE_PREFIX}* 命名）")
+        problems.append(f"孤兒實證條目 {len(orphan_ev)} 則")
 
     # 分面索引：依分組排序，數量少的不進篩選器（避免上百個一次性標籤）
     facet_index = [

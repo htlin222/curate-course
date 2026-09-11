@@ -239,15 +239,21 @@ describe("llms.txt 的每一個字都來自課程", { skip }, () => {
 describe("og.html", { skip: skip || (existsSync(dist("og.html")) ? false : "沒有 dist/og.html") }, () => {
   const og = () => readFileSync(dist("og.html"), "utf8");
 
-  /** 由 course.json 重算各證據分級的單元數——og 圖上的 chip 數字唯一的真相 */
+  /** 由 course.json 重算各證據分級的條目數——og 圖上的 chip 數字唯一的真相。
+   *
+   * 跟 seo.py 的 grade_counts() 同一套規則：以實證條目的 key 去重，掛在單元上的
+   * 與獨立的立場聲明各算一次。按單元數會漏掉沒設 evidenceAlias 的立場聲明，
+   * 也會把多個單元共用的同一則查核算兩次（#63）。 */
   function gradeCounts() {
     const counts = {};
-    for (const ch of course.chapters) {
-      for (const u of ch.units) {
-        const g = u.evidence?.evidence_grade;
-        if (g) counts[g] = (counts[g] || 0) + 1;
-      }
-    }
+    const seen = new Set();
+    const take = (ev) => {
+      if (!ev || seen.has(ev.unit)) return;
+      seen.add(ev.unit);
+      if (ev.evidence_grade) counts[ev.evidence_grade] = (counts[ev.evidence_grade] || 0) + 1;
+    };
+    for (const ch of course.chapters) for (const u of ch.units) take(u.evidence);
+    for (const st of course.stance || []) take(st);
     return counts;
   }
 

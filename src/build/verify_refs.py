@@ -37,7 +37,6 @@ import coursepath  # 框架自己的模組，要先把 src/build 加進路徑
 import refsources  # 外部資料庫的憑證與呼叫，全部集中在那裡
 
 ROOT = coursepath.ROOT
-DATA = coursepath.course_dir() / "data"
 BATCH = 180
 
 UA = refsources.UA  # 保留給既有呼叫端；真正的來源是 refsources
@@ -208,8 +207,13 @@ def collect() -> list[tuple[str, str, str, dict]]:
 
     識別碼優先取 `pmid`（生醫），沒有就取 `doi`（人文社科走 Crossref）。
     """
+    # 課程目錄用到才解析，不在 import 時解析。verify_changed.py 只借這個模組的
+    # fetch()／LAYERS，它驗的是 diff 裡的檔案、跟哪一門課無關——repo 一有兩門課，
+    # 模組層級的解析會在 import 那一刻就以「沒設 COURSE」退出，PR 的引用驗證因此
+    # 一律紅掉，而錯誤訊息講的是一個那支腳本根本不需要的東西。
+    data = coursepath.course_dir() / "data"
     out = []
-    for path in sorted(DATA.glob("*.json")):
+    for path in sorted(data.glob("*.json")):
         try:
             blob = json.loads(path.read_text())
         except json.JSONDecodeError as e:
