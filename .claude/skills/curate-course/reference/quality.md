@@ -82,6 +82,7 @@ COURSE=courses/guitar python3 src/build/audit.py   # 多課程並存
 | 側欄少一整章 | `nav` 分組沒列到那個章節碼——章節存在不代表側欄看得到 |
 | 總時長怪怪的 | 多語言版本會灌進「所有欄位合計」，課程時長只算主要版本 |
 | 分類 patterns 加了肌肉名之後歸類全亂 | `classify()` 會比對 `target` 欄位，那裡放的就是肌肉名——把「臀中肌」當 pattern，所有目標含臀中肌的動作都會掉進臀肌啟動。patterns 只能用**動作名**，改完一定要 diff 前後的歸類結果 |
+| 手機版截圖少了元素（例如浮動按鈕不見） | macOS 的 headless Chrome 有**最小視窗寬度 500px**：`--window-size=390,844` 實際拿到 500×757 的 viewport，截圖只擷取左上角 390×844，右側元素被截掉而不是沒渲染。驗手機版面要用 Playwright／Puppeteer 的裝置模擬（CDP `Emulation.setDeviceMetricsOverride`），不要用 `--window-size` |
 | PMID 全部驗過了，卻還是有沒驗到的 | `verify_refs.py` 要同時掃 `drill-evidence-*.json` 的 `categories` **與** `oe-*.json` 的 `conditions`。只驗一層等於留了一半的門沒鎖 |
 
 

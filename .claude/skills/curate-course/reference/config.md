@@ -15,12 +15,25 @@
 | `grades` | 證據分級（沒有實證維度就整組刪掉） |
 | `chapters` | 章節碼、標題、Lucide 圖示、資料來源檔、配額 |
 | `nav` | 側欄的章節分組。**必須不多不少涵蓋所有章節** |
-| `evidenceAlias` | unit id → 實證資料的 key，用在共用同一份查核的單元 |
+| `evidenceAlias` | unit id → 實證資料的 key。用在多個單元共用同一份查核，或讓單元直接沿用某則立場聲明（`concept-*`）的查核 |
 | `taxonomy` | 選用的詞彙模組（見下） |
 | `audit` | **品質門檻** → `make audit` 照這裡檢查（見 `quality.md`） |
 | `counter` | 選用：header 的累計瀏覽次數徽章（Pages Function + D1）。整組拿掉就不顯示，也完全不打 API |
 | `discussions` | 選用：giscus 設定，每支影片一串 GitHub Discussions。整組拿掉就沒有討論面板。**換主題必換 `repo`/`repoId`/`categoryId`**，否則留言會靜靜掉到上一個主題的 repo |
 | `landing` / `stance` / `footer` / `llms` | 首頁、立場頁、頁尾、`llms.txt` 的文案。寫法見下一節「文案怎麼寫」 |
+
+### id 與主題名詞可以用通用詞
+
+`kinds[].id`、`ui.unitTypes` 的 key、`grades[].id`、`ui.problemType`、`ui.facetPrefix`、
+`ui.categoryNoun` 會被拿去比對框架原始碼，抓「框架把某門課寫死」的耦合。比對看的是
+**耦合的形狀**，不是子字串：
+
+- id 只有被當成**值**寫死才算——`== "posture"`、`in ("release", "stretch")`、
+  `or "posture"`／`.get("problemType", "posture")` 這類比對、成員判斷與預設值
+- 顯示用的名詞只有**整個字串字面量**就是它才算（`label = "主題"`）
+
+所以 `why`、`design`、`product`、「主題」這類跟框架欄位名或介面文字撞名的通用詞可以放心用，
+不必為了躲檢查改成冷僻的名字（#64）。
 
 ## 這份設定檔寫給哪一版框架
 

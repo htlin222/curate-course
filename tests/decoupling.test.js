@@ -282,23 +282,83 @@ function frameworkFiles() {
  * 換成吉他課或統計課之後它就永遠是綠燈，等於沒有這顆測試。
  */
 function courseTokens(config) {
-  const tokens = new Map(); // token -> 它是設定檔的哪一個欄位
-  const add = (label, value) => {
-    if (typeof value === "string" && value.trim().length >= 2) tokens.set(value.trim(), label);
+  const tokens = new Map(); // token -> { field, match }
+  const add = (field, value, match = "substring") => {
+    if (typeof value === "string" && value.trim().length >= 2) tokens.set(value.trim(), { field, match });
   };
 
+  // 長而獨特的字串：出現在框架裡的任何地方都不會是巧合
   add("site.project", config.site?.project);
   add("site.name", config.site?.name);
   add("site.title", config.site?.title);
   add("hero.heading", config.hero?.heading);
-  // 主題名詞：換主題時這幾個一定會變，寫進框架就是把主題釘死在框架上
-  add("ui.problemType", config.ui?.problemType);
-  add("ui.facetPrefix", config.ui?.facetPrefix);
-  add("ui.categoryNoun", config.ui?.categoryNoun);
   for (const [key, mod] of Object.entries(config.taxonomy || {})) add(`taxonomy.${key}`, mod);
   (config.chapters || []).forEach((ch, i) => add(`chapters[${i}].title`, ch.title));
+
+  // 主題名詞與 id：換主題時一定會變，但常常是通用詞（product、主題、design）。
+  // #64：以前一律子字串比對，`products`、`Paywall__product`、「切換深色／淺色主題」
+  // 全部中槍，課程被逼去改用冷僻的名字。只看真正耦合的形狀：
+  // - 名詞（顯示用）：整個字串字面量就是它，例如 `label = "主題"`
+  // - id（拿來比對的）：當成值在比對、成員判斷或當預設值，見 literalAsValue()
+  add("ui.facetPrefix", config.ui?.facetPrefix, "literal");
+  add("ui.categoryNoun", config.ui?.categoryNoun, "literal");
+  add("ui.problemType", config.ui?.problemType, "value");
   return tokens;
 }
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** `word` 整個是一個字串字面量。 */
+function isWholeLiteral(line, word) {
+  return new RegExp(`["'\`]${escapeRe(word)}["'\`]`).test(line);
+}
+
+/**
+ * `word` 被當成「值」寫死——比對、成員判斷或退回預設值。
+ * 與 src/build/audit.py 的 literal_as_value() 是同一套規則，改一邊要改另一邊。
+ * 當成鍵取用（`.get("design")`、`c["design"]`）不算：那是框架自己的欄位名。
+ */
+function literalAsValue(line, word) {
+  const lit = `["'\`]${escapeRe(word)}["'\`]`;
+  const patterns = [
+    `(?:===?|!==?)\\s*${lit}`,
+    `${lit}\\s*(?:===?|!==?)`,
+    `\\bcase\\s+${lit}`,
+    `(?:\\bor|\\|\\||\\?\\?)\\s*${lit}`,
+    `\\.get\\([^,()]+,\\s*${lit}\\s*\\)`,
+    `\\.(?:includes|has)\\(\\s*${lit}\\s*\\)`,
+    `\\[[^\\]]*${lit}[^\\]]*\\]\\.includes\\(`,
+  ];
+  if (patterns.some((p) => new RegExp(p).test(line))) return true;
+  // x in ("a", "b") 算；for k in ("a", "b") 是在迭代自己的欄位名，不算
+  for (const m of line.matchAll(new RegExp(`\\bin\\s*[([{][^)\\]}]*${lit}`, "g"))) {
+    if (!/\bfor\s+[\w, ]+\s*$/.test(line.slice(0, m.index))) return true;
+  }
+  return false;
+}
+
+const MATCHERS = {
+  substring: (text, word) => text.includes(word),
+  literal: (text, word) => text.split("\n").some((l) => isWholeLiteral(l, word)),
+  value: (text, word) => text.split("\n").some((l) => literalAsValue(l, word)),
+};
+
+test("#64 名詞與 id 只在真正耦合的形狀才算數", () => {
+  // 誤報：issue 裡實際踩到的那幾行
+  assert.equal(literalAsValue('for key in ("why", "note"):', "why"), false);
+  assert.equal(literalAsValue('designs = [str(c.get("design") or "").strip()]', "design"), false);
+  assert.equal(literalAsValue('c["design"] = d', "design"), false);
+  assert.equal(literalAsValue("const products = raw.products;", "product"), false);
+  assert.equal(isWholeLiteral('title="切換深色／淺色主題"', "主題"), false);
+  // 真的耦合：仍然要抓到
+  assert.equal(literalAsValue('if u.get("type") == "posture":', "posture"), true);
+  assert.equal(literalAsValue('p = UI.get("problemType") or "posture"', "posture"), true);
+  assert.equal(literalAsValue('p = UI.get("problemType", "posture")', "posture"), true);
+  assert.equal(literalAsValue('if kind in ("release", "stretch"):', "stretch"), true);
+  assert.equal(literalAsValue('if (u.type === "product") {', "product"), true);
+  assert.equal(literalAsValue('case "product":', "product"), true);
+  assert.equal(isWholeLiteral('const prefix = "主題";', "主題"), true);
+});
 
 test("#22 src/ 底下沒有任何課程的專屬字串（框架不准認識任何主題）", () => {
   // 兩個地方都算。這裡本來寫死 examples/，而那是**框架 repo** 才成立的假設：
@@ -317,9 +377,9 @@ test("#22 src/ 底下沒有任何課程的專屬字串（框架不准認識任�
   for (const dir of courses) {
     const rel = path.relative(ROOT, dir);
     const tokens = courseTokens(readJSON(path.join(dir, "course.config.json")));
-    for (const [token, field] of tokens) {
+    for (const [token, { field, match }] of tokens) {
       for (const [file, text] of files) {
-        if (text.includes(token)) hits.push(`${file} 出現「${token}」（${rel} 的 ${field}）`);
+        if (MATCHERS[match](text, token)) hits.push(`${file} 出現「${token}」（${rel} 的 ${field}）`);
       }
     }
   }

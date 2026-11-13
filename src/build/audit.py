@@ -312,6 +312,40 @@ def css_tones() -> set[str]:
     return set(re.findall(r"\.Label--([a-z-]+)", (WEB / "css" / "tokens.css").read_text()))
 
 
+def literal_as_value(code: str, word: str) -> bool:
+    """`word` 在這行程式裡是不是被當成「值」寫死——耦合真正的樣子。
+
+    #64：以前只要 `"word"` 出現就算，結果 `for key in ("why", "note")`、
+    `c.get("design")` 這種框架自己的欄位名全部中槍，課程被逼去改用冷僻的 id。
+    真正的耦合是框架拿課程的值來**比對或當預設值**：
+
+        u.get("type") == "posture"        比對
+        kind in ("release", "stretch")    成員判斷（不含 for ... in 的迭代）
+        UI.get("problemType") or "posture" / .get("problemType", "posture")   退回預設值
+
+    當成鍵取用（`.get("design")`、`c["design"]`）不算：那是框架自己的資料欄位，
+    跟課程碰巧同名而已。tests/decoupling.test.js 的 literalAsValue() 是同一套規則。
+    """
+    q = r"""["'`]"""
+    lit = rf"{q}{re.escape(word)}{q}"
+    patterns = (
+        rf"(?:===?|!==?)\s*{lit}",
+        rf"{lit}\s*(?:===?|!==?)",
+        rf"\bcase\s+{lit}",
+        rf"(?:\bor|\|\||\?\?)\s*{lit}",
+        rf"\.get\([^,()]+,\s*{lit}\s*\)",
+        rf"\.(?:includes|has)\(\s*{lit}\s*\)",
+        rf"\[[^\]]*{lit}[^\]]*\]\.includes\(",
+    )
+    if any(re.search(p, code) for p in patterns):
+        return True
+    # 成員判斷：x in ("a", "b")。for k in ("a", "b") 是在迭代自己的欄位名，不算。
+    for m in re.finditer(rf"\bin\s*[(\[{{][^)\]}}]*{lit}", code):
+        if not re.search(r"\bfor\s+[\w, ]+\s*$", code[: m.start()]):
+            return True
+    return False
+
+
 def audit_topic_coupling(cfg: dict, rep: Report) -> None:
     """抓「換主題時會靜靜壞掉」的那一類問題。
 
@@ -353,7 +387,7 @@ def audit_topic_coupling(cfg: dict, rep: Report) -> None:
         for i, line in enumerate(f.read_text().splitlines(), 1):
             code = line.split("#")[0]
             for word, origin in vocab.items():
-                if word and f'"{word}"' in code:
+                if word and literal_as_value(code, word):
                     leaks.append(f"{f.name}:{i} 寫死了 {origin} 的 id「{word}」")
     if leaks:
         rep.warn(sec, f"建置腳本寫死了課程詞彙（{len(leaks)} 處），換主題會靜靜講錯話", leaks)

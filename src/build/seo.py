@@ -29,6 +29,8 @@ WEB = ROOT / "src" / "web"
 CFG = coursepath.load_config(COURSE)
 SITE_CFG = CFG["site"]
 _UI = CFG.get("ui") or {}
+# 與 build.py 同一條規則：前綴相符的實證條目是首頁立場聲明
+STANCE_PREFIX = (CFG.get("stance") or {}).get("keyPrefix") or "concept-"
 # 名詞一律走設定檔。沒設定就只留數字，不要把中文名詞塞進別的語言的課程裡。
 UNIT_NOUN = _UI.get("unitNoun", "")
 DRILL_NOUN = _UI.get("drillNoun", "")
@@ -575,13 +577,22 @@ def icon_svg(name: str | None, size: int) -> str:
 
 
 def grade_counts(course: dict) -> Counter:
-    """每個證據分級各有幾個單元——og 圖上的 chip 數字唯一的來源。"""
-    counts: Counter = Counter()
+    """每個證據分級各有幾則單元層級的查核——og 圖上的 chip 數字唯一的來源。
+
+    以查核條目（oe-*.json 的 `unit` 鍵）為單位，不是以單元為單位，才會跟
+    meta.evidence_checked = len(evidence) 用同一把尺：
+    - 立場聲明不屬於任何章節，但仍是一則查核，要算進來（#63）；
+      以前只走 chapters，沒被 evidenceAlias 指到的 concept-* 永遠數不到，build 必然失敗。
+    - 兩個單元透過 evidenceAlias 共用同一則查核時只算一次，不重複計數。
+    """
+    entries: dict = {}
     for ch in course["chapters"]:
         for u in ch["units"]:
-            if grade := (u.get("evidence") or {}).get("evidence_grade"):
-                counts[grade] += 1
-    return counts
+            if ev := u.get("evidence"):
+                entries[ev.get("unit") or u["id"]] = ev
+    for i, ev in enumerate(course.get("stance") or []):
+        entries.setdefault(ev.get("unit") or f"stance#{i}", ev)
+    return Counter(g for ev in entries.values() if (g := ev.get("evidence_grade")))
 
 
 def og_stat_value(field: str, meta: dict) -> str:
@@ -628,8 +639,9 @@ def render_og(course: dict) -> None:
     if grades and counted != meta["evidence_checked"]:
         die(
             f"og.html：分級計數合計 {counted} 與 meta.evidence_checked {meta['evidence_checked']} 不一致。"
-            "多半是有 oe-*.json 的條目沒對到任何單元（unit id 打錯或缺 evidenceAlias），"
-            "放著不管的話 og 圖上的「查核題數」與分級 chip 會兜不起來"
+            "立場聲明已經算進去了，所以差額來自兩種條目：`unit` 既不是任何單元的 id、"
+            f"也不是 {STANCE_PREFIX}* 開頭（多半是 id 打錯，make audit 會列出是哪幾條），"
+            "或是缺 evidence_grade。放著不管的話 og 圖上的「查核題數」與分級 chip 會兜不起來"
         )
     chips_html = "".join(
         f'<span class="chip t-{esc(g.get("tone", "neutral"))}">{rich(g["label"])} '
